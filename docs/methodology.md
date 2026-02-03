@@ -64,6 +64,19 @@ Morphological analysis was performed using the Digital Pāli Dictionary (https:/
 
 The DPD's lookup table maps all attested inflected forms to their dictionary headwords, enabling automated lemmatization. The deconstructor module provides analysis of sandhi (euphonic combination) compounds.
 
+### 2.3 Dictionary of Pāli Proper Names (DPPN)
+
+For proper noun identification, we have incorporated the Dictionary of Pāli Proper Names by G.P. Malalasekera, available at https://www.aimwell.org/DPPN/. The extracted data includes:
+
+| Category | Count |
+|----------|-------|
+| Person names | 2,541 |
+| Text names | 1,335 |
+| Place names | 69 |
+| **Total entries** | **3,945** |
+
+This resource will be used in future work to improve identification of proper nouns not covered by the DPD.
+
 ## 3. Corpus Description
 
 The Pāli Canon comprises five major collections (nikāyas):
