@@ -200,11 +200,16 @@ Token fields:
 
 The 7,259 word forms (5.7%) not found in the DPD fall into several categories:
 
-1. **Orthographic variants**: Words with alternative spellings (e.g., final -n instead of -ṃ)
-2. **Rare proper nouns**: Names not included in the dictionary
-3. **Hapax legomena**: Words occurring only once in the canon
-4. **Manuscript variants**: Readings from specific textual traditions
-5. **Complex sandhi**: Unusual combinations not in the deconstructor
+1. **Complex sandhi with particles**: Words like `bhikkhusaṅghañcā` (bhikkhu-saṅghaṃ + ca), `tiṭṭhantipī` (tiṭṭhanti + api) where common particles (ca, api, ti) are joined to the preceding word
+2. **Metrical lengthening**: Verse forms where final vowels are lengthened for prosodic reasons: `hotī` (for hoti), `karissatī` (for karissati), `sampajjatī` (for sampajjati)
+3. **Orthographic variants**: Words with alternative spellings (e.g., final -n instead of -ṃ)
+4. **Rare proper nouns**: Names not included in the dictionary (see §2.3 on DPPN)
+5. **Hapax legomena**: Words occurring only once in the canon
+6. **Complex compounds**: Multi-word compounds like `brahmasahabyatāyā`, `upasaṅkamanāyā`
+
+**Note on proper noun handling**: The DPPN provides 3,945 proper name entries, but matching these to text requires handling inflected forms. A name like "Buddha" appears in text as "Buddhassa" (genitive), "Buddhaṃ" (accusative), etc. Future work must either:
+- Generate inflected forms from DPPN base entries
+- Use stemming/lemmatization to match inflected forms back to dictionary entries
 
 ### 5.3 Most Frequent Lemmas
 
