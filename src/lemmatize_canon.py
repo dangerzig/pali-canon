@@ -62,6 +62,7 @@ class Lemmatizer:
             "words_found": 0,
             "words_not_found": 0,
             "sandhi_words": 0,
+            "normalized_variants": 0,
             "unknown_words": Counter(),
             "lemma_counts": Counter(),
         }
@@ -77,6 +78,13 @@ class Lemmatizer:
         tokens = re.split(r'[^a-zA-ZāīūṭḍṇṅñṃḷĀĪŪṬḌṆṄÑṂḶ]+', text.lower())
         return [t for t in tokens if t]
 
+    def _normalize_variant(self, word: str) -> str:
+        """Normalize orthographic variants."""
+        # -n is often a variant of -ṃ (niggahīta)
+        if word.endswith('n'):
+            return word[:-1] + 'ṃ'
+        return word
+
     def lookup_word(self, word: str) -> TokenInfo:
         """Look up a word and return its lemma info."""
         # Check cache first
@@ -87,6 +95,18 @@ class Lemmatizer:
             SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
         """, (word,))
         row = cursor.fetchone()
+
+        # If not found, try normalized variant (-n → -ṃ)
+        normalized = None
+        if not row:
+            normalized = self._normalize_variant(word)
+            if normalized != word:
+                cursor = self.conn.execute("""
+                    SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
+                """, (normalized,))
+                row = cursor.fetchone()
+                if row:
+                    self.stats["normalized_variants"] += 1
 
         token = TokenInfo(word=word)
 
@@ -195,6 +215,7 @@ class Lemmatizer:
             "words_found": self.stats["words_found"],
             "words_not_found": self.stats["words_not_found"],
             "sandhi_words": self.stats["sandhi_words"],
+            "normalized_variants": self.stats["normalized_variants"],
             "coverage": f"{self.stats['words_found'] / max(1, len(self.stats['unique_words'])) * 100:.1f}%",
             "top_lemmas": self.stats["lemma_counts"].most_common(100),
             "unknown_words": self.stats["unknown_words"].most_common(500),
@@ -314,12 +335,13 @@ def main():
     print(f"\n{'=' * 60}")
     print("COMPLETE")
     print(f"{'=' * 60}")
-    print(f"Total words:     {stats['total_words']:,}")
-    print(f"Unique words:    {stats['unique_words']:,}")
-    print(f"Words found:     {stats['words_found']:,}")
-    print(f"Words not found: {stats['words_not_found']:,}")
-    print(f"Sandhi words:    {stats['sandhi_words']:,}")
-    print(f"Coverage:        {stats['coverage']}")
+    print(f"Total words:       {stats['total_words']:,}")
+    print(f"Unique words:      {stats['unique_words']:,}")
+    print(f"Words found:       {stats['words_found']:,}")
+    print(f"Words not found:   {stats['words_not_found']:,}")
+    print(f"Sandhi words:      {stats['sandhi_words']:,}")
+    print(f"Normalized (-n→-ṃ): {stats['normalized_variants']:,}")
+    print(f"Coverage:          {stats['coverage']}")
     print(f"\nOutput saved to: {LEMMATIZED_DIR}")
 
     lemmatizer.close()

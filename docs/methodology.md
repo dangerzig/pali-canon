@@ -240,20 +240,60 @@ data/
 
 ### 7.2 Future Directions
 
-**Priority: Text-Critical Work**
+The goal is a **complete lemmatized Tipiṭaka based on PTS editions with variant apparatus**.
 
-1. **PTS as authoritative base**: Rebuild canonical texts using PTS editions as the primary source
-2. **Critical apparatus**: Record variant readings from SC, VRI/CST, and manuscript sources
-3. **Fine-grained PTS refs**: Map segment IDs to specific PTS volume.page.line citations
-4. **Variant classification**: Categorize variants (orthographic, substantive, omissions, additions)
+**Phase 1: Complete Tipiṭaka Coverage**
 
-**Additional Enhancements**
+Currently only the Sutta Piṭaka is processed. The remaining piṭakas must be added:
 
-5. **Disambiguation**: Implement context-aware lemma selection using word embeddings or language models
-6. **Extended coverage**: Process Vinaya and Abhidhamma piṭakas
-7. **Syntactic annotation**: Add dependency parsing and phrase structure
-8. **Translation alignment**: Link lemmatized Pāli to parallel translations
-9. **Unknown word analysis**: Morphological analysis for words not in DPD
+| Piṭaka | Available Sources | Work Required |
+|--------|-------------------|---------------|
+| Vinaya | PTS (5 vols), VRI (5 files) | Parse, segment, align with PTS pages |
+| Abhidhamma | PTS (12 vols), VRI (13 files) | Parse, segment, align with PTS pages |
+
+Steps:
+1. Parse VRI Vinaya/Abhidhamma mūla texts into segments
+2. Create segment IDs based on PTS volume.page.line references
+3. Run lemmatization pipeline on new texts
+4. Integrate into unified corpus
+
+**Phase 2: PTS as Authoritative Base**
+
+The current release uses SuttaCentral (based on Chaṭṭha Saṅgāyana) as the base text. Future releases should:
+
+1. **Adopt PTS as primary text**: Use PTS editions as the authoritative source
+2. **Fine-grained citations**: Map every segment to PTS volume.page.line (e.g., D i 1.5)
+3. **Retain SC segment IDs**: Maintain compatibility with SuttaCentral translations
+4. **Document editorial choices**: Record where PTS was followed over other editions
+
+**Phase 3: Variant Apparatus**
+
+Record textual variants from multiple editions:
+
+1. **Sources to collate**: PTS, VRI/CST (Chaṭṭha Saṅgāyana), BJT (Buddha Jayanti), SC
+2. **Variant classification**:
+   - Orthographic (spelling differences, e.g., -n/-ṃ)
+   - Substantive (different words/readings)
+   - Omissions/additions
+   - Word order
+3. **Machine-readable format**: Store variants in structured JSON alongside lemmatized text
+4. **Preference rules**: Document which edition to prefer when they disagree
+
+**Phase 4: Improving Lemmatization Coverage**
+
+Current coverage is 95.5%. To reach higher coverage:
+
+1. **Dictionary of Pali Proper Names**: Integrate G.P. Malalasekera's DPPN for person/place identification
+2. **Orthographic normalization**: Expand variant handling beyond -n/-ṃ (e.g., -ṃ/-ŋ, doubled consonants)
+3. **Hapax analysis**: Morphological analysis for rare words not in DPD
+4. **Context-aware disambiguation**: When multiple lemmas are possible, use context to select
+
+**Phase 5: Additional Enhancements**
+
+1. **Syntactic annotation**: Add dependency parsing and phrase structure
+2. **Translation alignment**: Link lemmatized Pāli segments to English translations
+3. **Searchable interface**: Build web/CLI tools for querying the lemmatized corpus
+4. **API access**: Provide programmatic access to lemma lookups and text search
 
 ## 8. Technical Implementation
 
