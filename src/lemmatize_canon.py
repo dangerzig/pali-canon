@@ -1,0 +1,329 @@
+#!/usr/bin/env python3
+"""
+Lemmatize the entire Pāli Canon using the Digital Pali Dictionary.
+
+Processes all canonical files and creates lemmatized versions with:
+- Word-level tokenization
+- Lemma (dictionary headword)
+- Part of speech
+- Verbal root (where applicable)
+- Sandhi decomposition for compound words
+"""
+
+import json
+import re
+import sqlite3
+from pathlib import Path
+from collections import Counter
+from dataclasses import dataclass, asdict
+from typing import Optional
+
+DATA_DIR = Path(__file__).parent.parent / "data"
+CANONICAL_DIR = DATA_DIR / "canonical"
+LEMMATIZED_DIR = DATA_DIR / "lemmatized"
+DPD_DB = DATA_DIR / "dpd/dpd.db"
+
+
+@dataclass
+class TokenInfo:
+    """Information about a lemmatized token."""
+    word: str
+    lemma: Optional[str] = None
+    pos: Optional[str] = None
+    root: Optional[str] = None
+    sandhi: Optional[list] = None
+    components: Optional[list] = None
+
+    def to_dict(self):
+        """Convert to dict, excluding None values."""
+        d = {"word": self.word}
+        if self.lemma:
+            d["lemma"] = self.lemma
+        if self.pos:
+            d["pos"] = self.pos
+        if self.root:
+            d["root"] = self.root
+        if self.sandhi:
+            d["sandhi"] = self.sandhi
+            d["components"] = self.components
+        return d
+
+
+class Lemmatizer:
+    """Lemmatizer using the Digital Pali Dictionary."""
+
+    def __init__(self, db_path: Path = DPD_DB):
+        self.conn = sqlite3.connect(db_path)
+        self.conn.row_factory = sqlite3.Row
+        self.cache = {}  # word -> TokenInfo
+        self.stats = {
+            "total_words": 0,
+            "unique_words": set(),
+            "words_found": 0,
+            "words_not_found": 0,
+            "sandhi_words": 0,
+            "unknown_words": Counter(),
+            "lemma_counts": Counter(),
+        }
+
+    def close(self):
+        self.conn.close()
+
+    def tokenize(self, text: str) -> list[str]:
+        """Tokenize Pāli text into words."""
+        # Normalize niggahīta
+        text = text.replace('ṁ', 'ṃ')
+        # Split on non-Pāli characters
+        tokens = re.split(r'[^a-zA-ZāīūṭḍṇṅñṃḷĀĪŪṬḌṆṄÑṂḶ]+', text.lower())
+        return [t for t in tokens if t]
+
+    def lookup_word(self, word: str) -> TokenInfo:
+        """Look up a word and return its lemma info."""
+        # Check cache first
+        if word in self.cache:
+            return self.cache[word]
+
+        cursor = self.conn.execute("""
+            SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
+        """, (word,))
+        row = cursor.fetchone()
+
+        token = TokenInfo(word=word)
+
+        if row:
+            # Check for sandhi decomposition first
+            if row['deconstructor']:
+                try:
+                    deconstructions = json.loads(row['deconstructor'])
+                    if deconstructions:
+                        # Use first deconstruction
+                        parts = deconstructions[0].replace(' ', '').split('+')
+                        token.sandhi = parts
+                        token.components = []
+                        for part in parts:
+                            comp_info = self._get_headword_info(part)
+                            if comp_info:
+                                token.components.append(comp_info)
+                            else:
+                                token.components.append({"word": part})
+                        self.stats["sandhi_words"] += 1
+                except (json.JSONDecodeError, TypeError):
+                    pass
+
+            # Get headword info if not a sandhi word
+            if not token.sandhi and row['headwords']:
+                try:
+                    headword_ids = json.loads(row['headwords'])
+                    if headword_ids:
+                        # Get first headword's info
+                        hw_info = self._get_headword_by_id(headword_ids[0])
+                        if hw_info:
+                            token.lemma = hw_info.get('lemma')
+                            token.pos = hw_info.get('pos')
+                            token.root = hw_info.get('root')
+                except (json.JSONDecodeError, TypeError):
+                    pass
+
+        # Update stats
+        if token.lemma or token.sandhi:
+            self.stats["words_found"] += 1
+            if token.lemma:
+                self.stats["lemma_counts"][token.lemma] += 1
+        else:
+            self.stats["words_not_found"] += 1
+            self.stats["unknown_words"][word] += 1
+
+        self.cache[word] = token
+        return token
+
+    def _get_headword_info(self, word: str) -> Optional[dict]:
+        """Get headword info for a word (used for sandhi components)."""
+        cursor = self.conn.execute("""
+            SELECT headwords FROM lookup WHERE lookup_key = ?
+        """, (word,))
+        row = cursor.fetchone()
+        if row and row['headwords']:
+            try:
+                headword_ids = json.loads(row['headwords'])
+                if headword_ids:
+                    return self._get_headword_by_id(headword_ids[0])
+            except (json.JSONDecodeError, TypeError):
+                pass
+        return None
+
+    def _get_headword_by_id(self, hw_id: int) -> Optional[dict]:
+        """Get headword details by ID."""
+        cursor = self.conn.execute("""
+            SELECT lemma_1, pos, root_key FROM dpd_headwords WHERE id = ?
+        """, (hw_id,))
+        row = cursor.fetchone()
+        if row:
+            # Clean lemma (remove version numbers like "dhamma 1.01" -> "dhamma")
+            lemma = row['lemma_1']
+            if lemma:
+                lemma = re.sub(r'\s+\d+(\.\d+)?$', '', lemma)
+
+            result = {"lemma": lemma, "pos": row['pos']}
+            if row['root_key']:
+                result["root"] = f"√{row['root_key']}"
+            return result
+        return None
+
+    def lemmatize_segment(self, segment: dict) -> dict:
+        """Lemmatize a single segment."""
+        pali_text = segment.get("pali", "")
+        tokens = self.tokenize(pali_text)
+
+        token_infos = []
+        for word in tokens:
+            self.stats["total_words"] += 1
+            self.stats["unique_words"].add(word)
+            token_info = self.lookup_word(word)
+            token_infos.append(token_info.to_dict())
+
+        return {
+            "id": segment["id"],
+            "pali": pali_text,
+            "tokens": token_infos
+        }
+
+    def get_stats(self) -> dict:
+        """Get current statistics."""
+        return {
+            "total_words": self.stats["total_words"],
+            "unique_words": len(self.stats["unique_words"]),
+            "words_found": self.stats["words_found"],
+            "words_not_found": self.stats["words_not_found"],
+            "sandhi_words": self.stats["sandhi_words"],
+            "coverage": f"{self.stats['words_found'] / max(1, len(self.stats['unique_words'])) * 100:.1f}%",
+            "top_lemmas": self.stats["lemma_counts"].most_common(100),
+            "unknown_words": self.stats["unknown_words"].most_common(500),
+        }
+
+
+def process_dn_mn_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer):
+    """Process DN or MN file (flat segments array)."""
+    with open(input_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    # Lemmatize each segment
+    lemmatized_segments = []
+    for segment in data.get("segments", []):
+        lemmatized_segments.append(lemmatizer.lemmatize_segment(segment))
+
+    # Create output with same metadata
+    output = {k: v for k, v in data.items() if k != "segments"}
+    output["segments"] = lemmatized_segments
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(output, f, indent=2, ensure_ascii=False)
+
+
+def process_sn_an_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer):
+    """Process SN or AN file (nested suttas array)."""
+    with open(input_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    # Lemmatize each sutta's segments
+    lemmatized_suttas = []
+    for sutta in data.get("suttas", []):
+        lemmatized_segments = []
+        for segment in sutta.get("segments", []):
+            lemmatized_segments.append(lemmatizer.lemmatize_segment(segment))
+
+        lemmatized_sutta = {k: v for k, v in sutta.items() if k != "segments"}
+        lemmatized_sutta["segments"] = lemmatized_segments
+        lemmatized_suttas.append(lemmatized_sutta)
+
+    # Create output with same metadata
+    output = {k: v for k, v in data.items() if k != "suttas"}
+    output["suttas"] = lemmatized_suttas
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(output, f, indent=2, ensure_ascii=False)
+
+
+def process_kn_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer):
+    """Process KN file (nested items array)."""
+    with open(input_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    # Lemmatize each item's segments
+    lemmatized_items = []
+    for item in data.get("items", []):
+        lemmatized_segments = []
+        for segment in item.get("segments", []):
+            lemmatized_segments.append(lemmatizer.lemmatize_segment(segment))
+
+        lemmatized_item = {k: v for k, v in item.items() if k != "segments"}
+        lemmatized_item["segments"] = lemmatized_segments
+        lemmatized_items.append(lemmatized_item)
+
+    # Create output with same metadata
+    output = {k: v for k, v in data.items() if k != "items"}
+    output["items"] = lemmatized_items
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, 'w', encoding='utf-8') as f:
+        json.dump(output, f, indent=2, ensure_ascii=False)
+
+
+def process_collection(collection: str, lemmatizer: Lemmatizer):
+    """Process all files in a collection."""
+    input_dir = CANONICAL_DIR / collection
+    output_dir = LEMMATIZED_DIR / collection
+
+    # Get all JSON files (excluding index)
+    files = sorted([f for f in input_dir.glob("*.json") if not f.name.startswith("_")])
+
+    for i, input_path in enumerate(files):
+        output_path = output_dir / input_path.name
+
+        if collection in ("dn", "mn"):
+            process_dn_mn_file(input_path, output_path, lemmatizer)
+        elif collection in ("sn", "an"):
+            process_sn_an_file(input_path, output_path, lemmatizer)
+        elif collection == "kn":
+            process_kn_file(input_path, output_path, lemmatizer)
+
+        print(f"  [{i+1}/{len(files)}] {input_path.name}")
+
+
+def main():
+    print("=" * 60)
+    print("Lemmatizing the Pāli Canon")
+    print("=" * 60)
+
+    lemmatizer = Lemmatizer()
+
+    collections = ["dn", "mn", "sn", "an", "kn"]
+
+    for collection in collections:
+        print(f"\nProcessing {collection.upper()}...")
+        process_collection(collection, lemmatizer)
+
+    # Generate and save statistics
+    stats = lemmatizer.get_stats()
+
+    LEMMATIZED_DIR.mkdir(parents=True, exist_ok=True)
+    with open(LEMMATIZED_DIR / "_stats.json", 'w', encoding='utf-8') as f:
+        json.dump(stats, f, indent=2, ensure_ascii=False)
+
+    print(f"\n{'=' * 60}")
+    print("COMPLETE")
+    print(f"{'=' * 60}")
+    print(f"Total words:     {stats['total_words']:,}")
+    print(f"Unique words:    {stats['unique_words']:,}")
+    print(f"Words found:     {stats['words_found']:,}")
+    print(f"Words not found: {stats['words_not_found']:,}")
+    print(f"Sandhi words:    {stats['sandhi_words']:,}")
+    print(f"Coverage:        {stats['coverage']}")
+    print(f"\nOutput saved to: {LEMMATIZED_DIR}")
+
+    lemmatizer.close()
+
+
+if __name__ == "__main__":
+    main()
