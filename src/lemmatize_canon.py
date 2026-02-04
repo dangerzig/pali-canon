@@ -44,6 +44,26 @@ METRICAL_NORMALIZATIONS = {
     'ū': 'u',
 }
 
+# Pronoun patterns that fuse with verbs
+# Pattern: (prefix_to_remove, replacement_for_word, pronoun_info)
+PRONOUN_VERB_PATTERNS = [
+    # ahaṃ/aham at start: ahamanusāsissāmī → ahaṃ + anusāsissāmi
+    (r'^aham', 'ahaṃ', {'lemma': 'ahaṃ', 'pos': 'pron'}),
+    # asmi/mhi at end: brāhmaṇosmī → brāhmaṇo + asmi
+    (r"[oa]smi[ī]?$", None, {'lemma': 'attā', 'pos': 'pron'}),  # treated specially
+    (r"[oa]mhi[ī]?$", None, {'lemma': 'attā', 'pos': 'pron'}),  # treated specially
+]
+
+# First person verb ending normalizations (metrical lengthening)
+VERB_ENDING_NORMALIZATIONS = [
+    ('āmā', 'āma'),   # 1st person plural -āmā → -āma
+    ('āmī', 'āmi'),   # 1st person singular -āmī → -āmi
+    ('essāmī', 'essāmi'),  # future 1sg
+    ('issāmī', 'issāmi'),  # future 1sg
+    ('essāmā', 'essāma'),  # future 1pl
+    ('issāmā', 'issāma'),  # future 1pl
+]
+
 
 @dataclass
 class TokenInfo:
@@ -86,6 +106,9 @@ class Lemmatizer:
             "normalized_variants": 0,
             "particle_splits": 0,
             "metrical_normalizations": 0,
+            "pronoun_verb_splits": 0,
+            "verb_ending_normalizations": 0,
+            "internal_metrical": 0,
             "dppn_matches": 0,
             "unknown_words": Counter(),
             "lemma_counts": Counter(),
@@ -179,6 +202,44 @@ class Lemmatizer:
                 if stem_a in self.dppn:
                     return {'lemma': stem_a, 'pos': 'name', 'category': self.dppn[stem_a]}
 
+        return None
+
+    def _try_pronoun_verb_split(self, word: str) -> Optional[tuple]:
+        """Try to split pronoun from verb (e.g., ahamanusāsissāmī → ahaṃ + anusāsissāmi)."""
+        # Check for aham- prefix
+        if word.startswith('aham') and len(word) > 6:
+            verb_part = word[4:]  # Remove 'aham'
+            return (verb_part, 'ahaṃ', {'lemma': 'ahaṃ', 'pos': 'pron'})
+
+        # Check for -osmi/-omhi/-asmi/-amhi suffix (verb "to be" fused with noun/adj)
+        for suffix in ['osmī', 'osmi', 'omhī', 'omhi', 'asmī', 'asmi', 'amhī', 'amhi']:
+            if word.endswith(suffix) and len(word) > len(suffix) + 2:
+                base = word[:-len(suffix)]
+                # Restore the -o or -a ending on the base
+                if suffix.startswith('o'):
+                    base = base + 'o'
+                else:
+                    base = base + 'a'
+                verb_lemma = 'asmi' if 'sm' in suffix else 'amhi'
+                return (base, suffix, {'lemma': 'attā', 'pos': 'pron', 'verb': verb_lemma})
+
+        return None
+
+    def _try_verb_ending_normalization(self, word: str) -> Optional[str]:
+        """Try normalizing verb endings (e.g., -āmā → -āma, -āmī → -āmi)."""
+        for long_ending, short_ending in VERB_ENDING_NORMALIZATIONS:
+            if word.endswith(long_ending):
+                return word[:-len(long_ending)] + short_ending
+        return None
+
+    def _try_internal_metrical_normalization(self, word: str) -> Optional[str]:
+        """Try normalizing internal long vowels (full metrical normalization)."""
+        # Replace all long vowels with short ones
+        normalized = word
+        for long_v, short_v in METRICAL_NORMALIZATIONS.items():
+            normalized = normalized.replace(long_v, short_v)
+        if normalized != word:
+            return normalized
         return None
 
     def lookup_word(self, word: str) -> TokenInfo:
@@ -281,6 +342,68 @@ class Lemmatizer:
                 token.pos = dppn_match['pos']
                 self.stats["dppn_matches"] += 1
 
+        # Try pronoun-verb sandhi splitting (ahamanusāsissāmī → ahaṃ + anusāsissāmi)
+        if not token.lemma and not token.sandhi:
+            pv_split = self._try_pronoun_verb_split(word)
+            if pv_split:
+                verb_part, pronoun, pronoun_info = pv_split
+                verb_token = self.lookup_word(verb_part)  # Recursive lookup
+                if verb_token.lemma or verb_token.sandhi:
+                    if verb_token.sandhi:
+                        token.sandhi = [pronoun] + verb_token.sandhi
+                        token.components = [pronoun_info] + verb_token.components
+                    else:
+                        token.sandhi = [pronoun, verb_part]
+                        token.components = [
+                            pronoun_info,
+                            {'lemma': verb_token.lemma, 'pos': verb_token.pos}
+                        ]
+                        if verb_token.root:
+                            token.components[1]['root'] = verb_token.root
+                    self.stats["pronoun_verb_splits"] += 1
+
+        # Try verb ending normalization (-āmā → -āma, -āmī → -āmi)
+        if not token.lemma and not token.sandhi:
+            verb_norm = self._try_verb_ending_normalization(word)
+            if verb_norm:
+                cursor = self.conn.execute("""
+                    SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
+                """, (verb_norm,))
+                row = cursor.fetchone()
+                if row and row['headwords']:
+                    try:
+                        headword_ids = json.loads(row['headwords'])
+                        if headword_ids:
+                            hw_info = self._get_headword_by_id(headword_ids[0])
+                            if hw_info:
+                                token.lemma = hw_info.get('lemma')
+                                token.pos = hw_info.get('pos')
+                                token.root = hw_info.get('root')
+                                self.stats["verb_ending_normalizations"] += 1
+                    except (json.JSONDecodeError, TypeError):
+                        pass
+
+        # Try full internal metrical normalization (all long vowels → short)
+        if not token.lemma and not token.sandhi:
+            internal_norm = self._try_internal_metrical_normalization(word)
+            if internal_norm:
+                cursor = self.conn.execute("""
+                    SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
+                """, (internal_norm,))
+                row = cursor.fetchone()
+                if row and row['headwords']:
+                    try:
+                        headword_ids = json.loads(row['headwords'])
+                        if headword_ids:
+                            hw_info = self._get_headword_by_id(headword_ids[0])
+                            if hw_info:
+                                token.lemma = hw_info.get('lemma')
+                                token.pos = hw_info.get('pos')
+                                token.root = hw_info.get('root')
+                                self.stats["internal_metrical"] += 1
+                    except (json.JSONDecodeError, TypeError):
+                        pass
+
         # Update stats
         if token.lemma or token.sandhi:
             self.stats["words_found"] += 1
@@ -355,6 +478,9 @@ class Lemmatizer:
             "normalized_variants": self.stats["normalized_variants"],
             "particle_splits": self.stats["particle_splits"],
             "metrical_normalizations": self.stats["metrical_normalizations"],
+            "pronoun_verb_splits": self.stats["pronoun_verb_splits"],
+            "verb_ending_normalizations": self.stats["verb_ending_normalizations"],
+            "internal_metrical": self.stats["internal_metrical"],
             "dppn_matches": self.stats["dppn_matches"],
             "coverage": f"{self.stats['words_found'] / max(1, len(self.stats['unique_words'])) * 100:.1f}%",
             "top_lemmas": self.stats["lemma_counts"].most_common(100),
@@ -482,7 +608,10 @@ def main():
     print(f"Sandhi words:        {stats['sandhi_words']:,}")
     print(f"Normalized (-n→-ṃ):  {stats['normalized_variants']:,}")
     print(f"Particle splits:     {stats['particle_splits']:,}")
-    print(f"Metrical norm:       {stats['metrical_normalizations']:,}")
+    print(f"Metrical (final):    {stats['metrical_normalizations']:,}")
+    print(f"Metrical (internal): {stats['internal_metrical']:,}")
+    print(f"Pronoun-verb splits: {stats['pronoun_verb_splits']:,}")
+    print(f"Verb ending norm:    {stats['verb_ending_normalizations']:,}")
     print(f"DPPN matches:        {stats['dppn_matches']:,}")
     print(f"Coverage:            {stats['coverage']}")
     print(f"\nOutput saved to: {LEMMATIZED_DIR}")
