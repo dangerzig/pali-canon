@@ -109,6 +109,7 @@ class Lemmatizer:
             "pronoun_verb_splits": 0,
             "verb_ending_normalizations": 0,
             "internal_metrical": 0,
+            "compound_splits": 0,
             "dppn_matches": 0,
             "unknown_words": Counter(),
             "lemma_counts": Counter(),
@@ -240,6 +241,93 @@ class Lemmatizer:
             normalized = normalized.replace(long_v, short_v)
         if normalized != word:
             return normalized
+        return None
+
+    def _is_valid_word(self, word: str) -> bool:
+        """Check if a word exists in the DPD lookup table."""
+        cursor = self.conn.execute(
+            "SELECT 1 FROM lookup WHERE lookup_key = ? LIMIT 1", (word,))
+        return cursor.fetchone() is not None
+
+    def _try_compound_split(self, word: str, max_depth: int = 8, is_final: bool = True) -> Optional[list]:
+        """
+        Try to split a long compound into component words.
+        Uses greedy longest-match with backtracking.
+        Returns list of component words if successful, None otherwise.
+        """
+        if max_depth <= 0:
+            return None
+
+        # Normalize long vowels for lookup (metrical lengthening in compounds)
+        normalized = word
+        for long_v, short_v in METRICAL_NORMALIZATIONS.items():
+            normalized = normalized.replace(long_v, short_v)
+
+        # Minimum component length to avoid splitting on case endings
+        MIN_PART_LEN = 4
+
+        # Common case endings that might appear at the end of compounds
+        CASE_ENDINGS = ['assa', 'ānaṃ', 'ena', 'āya', 'ssa', 'aṃ', 'ehi', 'āsu', 'esu', 'ā']
+
+        # For final word in compound, try stripping case endings
+        if is_final and len(word) > MIN_PART_LEN + 3:
+            for ending in CASE_ENDINGS:
+                if word.endswith(ending) or normalized.endswith(ending):
+                    stem = word[:-len(ending)]
+                    stem_norm = normalized[:-len(ending)]
+                    # Check if stem + standard nominative 'a' is valid
+                    if self._is_valid_word(stem) or self._is_valid_word(stem_norm):
+                        return [word]  # Return the inflected form as-is
+                    if self._is_valid_word(stem + 'a') or self._is_valid_word(stem_norm + 'a'):
+                        return [word]  # Return the inflected form as-is
+
+        # For short words, just check if valid
+        if len(word) < MIN_PART_LEN * 2:
+            if self._is_valid_word(word) or self._is_valid_word(normalized):
+                return [word]
+            return None
+
+        # Try to find longest valid prefix
+        for prefix_len in range(len(word) - MIN_PART_LEN, MIN_PART_LEN - 1, -1):
+            prefix = word[:prefix_len]
+            prefix_norm = normalized[:prefix_len]
+            remainder = word[prefix_len:]
+
+            # Check if prefix is a valid word (original or normalized)
+            prefix_valid = self._is_valid_word(prefix) or self._is_valid_word(prefix_norm)
+
+            if prefix_valid:
+                if len(remainder) == 0:
+                    return [prefix]
+
+                if len(remainder) >= MIN_PART_LEN:
+                    remainder_split = self._try_compound_split(remainder, max_depth - 1, is_final)
+                    if remainder_split is not None:
+                        return [prefix] + remainder_split
+
+            # Try sandhi junction: doubled consonant at boundary
+            if len(remainder) >= 2 and remainder[0] == remainder[1] and remainder[0] not in 'aeiouāīū':
+                prefix_with_consonant = prefix + remainder[0]
+                prefix_wc_norm = prefix_norm + remainder[0]
+                if self._is_valid_word(prefix_with_consonant) or self._is_valid_word(prefix_wc_norm):
+                    new_remainder = remainder[1:]
+                    if len(new_remainder) >= MIN_PART_LEN:
+                        remainder_split = self._try_compound_split(new_remainder, max_depth - 1, is_final)
+                        if remainder_split is not None:
+                            return [prefix_with_consonant] + remainder_split
+
+            # Try with 'a' added to prefix (compound junction vowel)
+            if not prefix.endswith('a') and len(remainder) >= MIN_PART_LEN:
+                prefix_a = prefix + 'a'
+                if self._is_valid_word(prefix_a):
+                    remainder_split = self._try_compound_split(remainder, max_depth - 1, is_final)
+                    if remainder_split is not None:
+                        return [prefix_a] + remainder_split
+
+        # If word itself is valid (or normalized form), return as single component
+        if self._is_valid_word(word) or self._is_valid_word(normalized):
+            return [word]
+
         return None
 
     def lookup_word(self, word: str) -> TokenInfo:
@@ -404,6 +492,20 @@ class Lemmatizer:
                     except (json.JSONDecodeError, TypeError):
                         pass
 
+        # Try compound splitting for long words (dvandva compounds)
+        if not token.lemma and not token.sandhi and len(word) > 15:
+            parts = self._try_compound_split(word)
+            if parts and len(parts) > 1:
+                token.sandhi = parts
+                token.components = []
+                for part in parts:
+                    comp_info = self._get_headword_info(part)
+                    if comp_info:
+                        token.components.append(comp_info)
+                    else:
+                        token.components.append({"word": part})
+                self.stats["compound_splits"] += 1
+
         # Update stats
         if token.lemma or token.sandhi:
             self.stats["words_found"] += 1
@@ -481,6 +583,7 @@ class Lemmatizer:
             "pronoun_verb_splits": self.stats["pronoun_verb_splits"],
             "verb_ending_normalizations": self.stats["verb_ending_normalizations"],
             "internal_metrical": self.stats["internal_metrical"],
+            "compound_splits": self.stats["compound_splits"],
             "dppn_matches": self.stats["dppn_matches"],
             "coverage": f"{self.stats['words_found'] / max(1, len(self.stats['unique_words'])) * 100:.1f}%",
             "top_lemmas": self.stats["lemma_counts"].most_common(100),
@@ -612,6 +715,7 @@ def main():
     print(f"Metrical (internal): {stats['internal_metrical']:,}")
     print(f"Pronoun-verb splits: {stats['pronoun_verb_splits']:,}")
     print(f"Verb ending norm:    {stats['verb_ending_normalizations']:,}")
+    print(f"Compound splits:     {stats['compound_splits']:,}")
     print(f"DPPN matches:        {stats['dppn_matches']:,}")
     print(f"Coverage:            {stats['coverage']}")
     print(f"\nOutput saved to: {LEMMATIZED_DIR}")
