@@ -191,21 +191,22 @@ Token fields:
 |--------|-------|
 | Total word tokens | 1,618,486 |
 | Unique word forms | 127,033 |
-| Forms found | 123,615 |
-| Forms not found | 4,002 |
+| Forms found | 123,859 |
+| Forms not found | 3,758 |
 | Sandhi compounds (DPD) | 42,440 |
-| Particle splits | 91 |
+| Particle splits | 101 |
 | Metrical normalizations (final) | 2,045 |
 | Metrical normalizations (internal) | 88 |
 | Orthographic variants (-n→-ṃ) | 1,546 |
-| Pronoun-verb splits | 21 |
+| Pronoun-verb splits | 23 |
 | Verb ending normalizations | 3 |
+| Compound splits | 232 |
 | DPPN proper nouns | 21 |
-| **Lemmatization coverage** | **97.3%** |
+| **Lemmatization coverage** | **97.5%** |
 
 ### 5.2 Analysis of Unknown Words
 
-The remaining 4,002 word forms (3.1%) not resolved by the lemmatizer fall into these categories:
+The remaining 3,758 word forms (3.0%) not resolved by the lemmatizer fall into these categories:
 
 1. **Hapax legomena**: Rare words occurring only once in the canon
 2. **Complex compounds**: Multi-word compounds not in the DPD deconstructor (e.g., 108-character dvandva compounds)
@@ -219,9 +220,10 @@ The following categories were successfully handled by the improved lemmatizer:
 |----------|---------------|--------|
 | Metrical lengthening (final) | 2,045 | Normalize final long vowels (ā→a, ī→i, ū→u) |
 | Orthographic variants | 1,546 | Normalize -n to -ṃ |
-| Particle sandhi | 91 | Split trailing ca, api, ti, va, tu |
+| Compound splitting | 232 | Recursive splitting of long dvandva compounds |
+| Particle sandhi | 101 | Split trailing ca, api, ti, va, tu |
 | Internal metrical | 88 | Normalize all long vowels in word |
-| Pronoun-verb sandhi | 21 | Split aham-, -osmi, -omhi patterns |
+| Pronoun-verb sandhi | 23 | Split aham-, -osmi, -omhi patterns |
 | DPPN proper nouns | 21 | Match against DPPN with inflection handling |
 | Verb ending normalization | 3 | Normalize -āmā → -āma, -āmī → -āmi |
 
