@@ -191,32 +191,39 @@ Token fields:
 |--------|-------|
 | Total word tokens | 1,618,486 |
 | Unique word forms | 127,033 |
-| Forms found | 123,493 |
-| Forms not found | 4,100 |
+| Forms found | 123,615 |
+| Forms not found | 4,002 |
 | Sandhi compounds (DPD) | 42,440 |
-| Particle splits | 84 |
-| Metrical normalizations | 2,043 |
+| Particle splits | 91 |
+| Metrical normalizations (final) | 2,045 |
+| Metrical normalizations (internal) | 88 |
 | Orthographic variants (-n→-ṃ) | 1,546 |
+| Pronoun-verb splits | 21 |
+| Verb ending normalizations | 3 |
 | DPPN proper nouns | 21 |
-| **Lemmatization coverage** | **97.2%** |
+| **Lemmatization coverage** | **97.3%** |
 
 ### 5.2 Analysis of Unknown Words
 
-The remaining 4,100 word forms (3.2%) not resolved by the lemmatizer fall into these categories:
+The remaining 4,002 word forms (3.1%) not resolved by the lemmatizer fall into these categories:
 
 1. **Hapax legomena**: Rare words occurring only once in the canon
-2. **Complex compounds**: Multi-word compounds not in the DPD deconstructor
-3. **Unusual orthographic variants**: Non-standard spellings beyond simple -n/-ṃ variation
+2. **Complex compounds**: Multi-word compounds not in the DPD deconstructor (e.g., 108-character dvandva compounds)
+3. **Unusual orthographic variants**: Non-standard spellings beyond handled patterns
 4. **Rare proper nouns**: Names not matched by DPPN inflection patterns
+5. **OCR/text errors**: Non-Pāli fragments (e.g., `of`, `m`)
 
 The following categories were successfully handled by the improved lemmatizer:
 
 | Category | Words Resolved | Method |
 |----------|---------------|--------|
-| Metrical lengthening | 2,043 | Normalize final long vowels (ā→a, ī→i, ū→u) |
+| Metrical lengthening (final) | 2,045 | Normalize final long vowels (ā→a, ī→i, ū→u) |
 | Orthographic variants | 1,546 | Normalize -n to -ṃ |
-| Particle sandhi | 84 | Split trailing ca, api, ti, va, tu |
-| Proper nouns | 21 | Match against DPPN with inflection handling |
+| Particle sandhi | 91 | Split trailing ca, api, ti, va, tu |
+| Internal metrical | 88 | Normalize all long vowels in word |
+| Pronoun-verb sandhi | 21 | Split aham-, -osmi, -omhi patterns |
+| DPPN proper nouns | 21 | Match against DPPN with inflection handling |
+| Verb ending normalization | 3 | Normalize -āmā → -āma, -āmī → -āmi |
 
 **Note on DPPN matching**: The DPPN provides 3,945 proper name entries. Current matching handles common case endings (-ssa, -āya, -ena, -aṃ, etc.) but many proper nouns remain unmatched due to:
 - Complex compound formations
