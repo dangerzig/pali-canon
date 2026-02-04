@@ -191,25 +191,37 @@ Token fields:
 |--------|-------|
 | Total word tokens | 1,618,486 |
 | Unique word forms | 127,033 |
-| Forms found in DPD | 119,774 |
-| Forms not found | 7,259 |
-| Sandhi compounds identified | 42,139 |
-| **Lemmatization coverage** | **94.3%** |
+| Forms found | 123,493 |
+| Forms not found | 4,100 |
+| Sandhi compounds (DPD) | 42,440 |
+| Particle splits | 84 |
+| Metrical normalizations | 2,043 |
+| Orthographic variants (-n→-ṃ) | 1,546 |
+| DPPN proper nouns | 21 |
+| **Lemmatization coverage** | **97.2%** |
 
 ### 5.2 Analysis of Unknown Words
 
-The 7,259 word forms (5.7%) not found in the DPD fall into several categories:
+The remaining 4,100 word forms (3.2%) not resolved by the lemmatizer fall into these categories:
 
-1. **Complex sandhi with particles**: Words like `bhikkhusaṅghañcā` (bhikkhu-saṅghaṃ + ca), `tiṭṭhantipī` (tiṭṭhanti + api) where common particles (ca, api, ti) are joined to the preceding word
-2. **Metrical lengthening**: Verse forms where final vowels are lengthened for prosodic reasons: `hotī` (for hoti), `karissatī` (for karissati), `sampajjatī` (for sampajjati)
-3. **Orthographic variants**: Words with alternative spellings (e.g., final -n instead of -ṃ)
-4. **Rare proper nouns**: Names not included in the dictionary (see §2.3 on DPPN)
-5. **Hapax legomena**: Words occurring only once in the canon
-6. **Complex compounds**: Multi-word compounds like `brahmasahabyatāyā`, `upasaṅkamanāyā`
+1. **Hapax legomena**: Rare words occurring only once in the canon
+2. **Complex compounds**: Multi-word compounds not in the DPD deconstructor
+3. **Unusual orthographic variants**: Non-standard spellings beyond simple -n/-ṃ variation
+4. **Rare proper nouns**: Names not matched by DPPN inflection patterns
 
-**Note on proper noun handling**: The DPPN provides 3,945 proper name entries, but matching these to text requires handling inflected forms. A name like "Buddha" appears in text as "Buddhassa" (genitive), "Buddhaṃ" (accusative), etc. Future work must either:
-- Generate inflected forms from DPPN base entries
-- Use stemming/lemmatization to match inflected forms back to dictionary entries
+The following categories were successfully handled by the improved lemmatizer:
+
+| Category | Words Resolved | Method |
+|----------|---------------|--------|
+| Metrical lengthening | 2,043 | Normalize final long vowels (ā→a, ī→i, ū→u) |
+| Orthographic variants | 1,546 | Normalize -n to -ṃ |
+| Particle sandhi | 84 | Split trailing ca, api, ti, va, tu |
+| Proper nouns | 21 | Match against DPPN with inflection handling |
+
+**Note on DPPN matching**: The DPPN provides 3,945 proper name entries. Current matching handles common case endings (-ssa, -āya, -ena, -aṃ, etc.) but many proper nouns remain unmatched due to:
+- Complex compound formations
+- Unusual declension patterns
+- Names not in DPPN
 
 ### 5.3 Most Frequent Lemmas
 
