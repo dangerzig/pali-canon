@@ -22,6 +22,27 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 CANONICAL_DIR = DATA_DIR / "canonical"
 LEMMATIZED_DIR = DATA_DIR / "lemmatized"
 DPD_DB = DATA_DIR / "dpd/dpd.db"
+DPPN_FILE = DATA_DIR / "dppn/proper_names.json"
+
+# Common enclitics/particles that join via sandhi
+SANDHI_PARTICLES = {
+    'ca': {'lemma': 'ca', 'pos': 'ind'},      # and
+    'pi': {'lemma': 'api', 'pos': 'ind'},     # also, even
+    'pī': {'lemma': 'api', 'pos': 'ind'},     # also (lengthened)
+    'va': {'lemma': 'va', 'pos': 'ind'},      # or, like
+    'vā': {'lemma': 'vā', 'pos': 'ind'},      # or
+    'ti': {'lemma': 'ti', 'pos': 'ind'},      # quotation marker
+    'tī': {'lemma': 'ti', 'pos': 'ind'},      # quotation (lengthened)
+    'tu': {'lemma': 'tu', 'pos': 'ind'},      # but
+    'tū': {'lemma': 'tu', 'pos': 'ind'},      # but (lengthened)
+}
+
+# Metrical lengthening: long vowel → short vowel
+METRICAL_NORMALIZATIONS = {
+    'ā': 'a',
+    'ī': 'i',
+    'ū': 'u',
+}
 
 
 @dataclass
@@ -52,7 +73,7 @@ class TokenInfo:
 class Lemmatizer:
     """Lemmatizer using the Digital Pali Dictionary."""
 
-    def __init__(self, db_path: Path = DPD_DB):
+    def __init__(self, db_path: Path = DPD_DB, dppn_path: Path = DPPN_FILE):
         self.conn = sqlite3.connect(db_path)
         self.conn.row_factory = sqlite3.Row
         self.cache = {}  # word -> TokenInfo
@@ -63,9 +84,31 @@ class Lemmatizer:
             "words_not_found": 0,
             "sandhi_words": 0,
             "normalized_variants": 0,
+            "particle_splits": 0,
+            "metrical_normalizations": 0,
+            "dppn_matches": 0,
             "unknown_words": Counter(),
             "lemma_counts": Counter(),
         }
+
+        # Load DPPN proper names
+        self.dppn = {}
+        self.dppn_stems = {}  # stem -> (name, category)
+        if dppn_path.exists():
+            with open(dppn_path, 'r', encoding='utf-8') as f:
+                dppn_data = json.load(f)
+            # Build lookup by normalized name
+            for entry in dppn_data.get('entries', []):
+                name = entry['normalized']
+                category = entry['category']
+                # Store single-word names
+                if ' ' not in name:
+                    self.dppn[name] = category
+                    # Also store common stems for inflection matching
+                    if name.endswith('a'):
+                        self.dppn_stems[name[:-1]] = (name, category)
+                    elif name.endswith('ā'):
+                        self.dppn_stems[name[:-1]] = (name, category)
 
     def close(self):
         self.conn.close()
@@ -84,6 +127,59 @@ class Lemmatizer:
         if word.endswith('n'):
             return word[:-1] + 'ṃ'
         return word
+
+    def _try_particle_split(self, word: str) -> Optional[tuple]:
+        """Try to split off trailing particles (ca, pi, ti, etc.)."""
+        for particle, particle_info in SANDHI_PARTICLES.items():
+            if word.endswith(particle) and len(word) > len(particle) + 1:
+                base = word[:-len(particle)]
+                # Handle sandhi: ñca → ṃ + ca, etc.
+                if base.endswith('ñ') and particle == 'ca':
+                    base = base[:-1] + 'ṃ'
+                elif base.endswith('ñ') and particle in ('ci', 'ce'):
+                    base = base[:-1] + 'ṃ'
+                return (base, particle, particle_info)
+        return None
+
+    def _try_metrical_normalization(self, word: str) -> Optional[str]:
+        """Try normalizing metrical lengthening (final long vowel → short)."""
+        if word and word[-1] in METRICAL_NORMALIZATIONS:
+            return word[:-1] + METRICAL_NORMALIZATIONS[word[-1]]
+        return None
+
+    def _try_dppn_match(self, word: str) -> Optional[dict]:
+        """Try to match word against DPPN proper names."""
+        # Direct match
+        if word in self.dppn:
+            return {'lemma': word, 'pos': 'name', 'category': self.dppn[word]}
+
+        # Try stem matching for inflected forms
+        # Common noun endings: -ssa (gen), -ṃ (acc), -ena (inst), -āya (dat)
+        endings = [
+            ('ssa', 2),   # genitive -ssa, stem ends in -a
+            ('āya', 2),   # dative -āya
+            ('ena', 2),   # instrumental -ena
+            ('ehi', 2),   # instrumental plural
+            ('ānaṃ', 2),  # genitive plural
+            (' āsu', 2),  # locative plural
+            ('aṃ', 1),    # accusative -aṃ
+            ('ā', 1),     # nominative plural / vocative
+            ('e', 1),     # locative / vocative
+            ('o', 1),     # nominative / vocative
+        ]
+
+        for ending, stem_add in endings:
+            if word.endswith(ending) and len(word) > len(ending) + 2:
+                stem = word[:-len(ending)]
+                if stem in self.dppn_stems:
+                    name, category = self.dppn_stems[stem]
+                    return {'lemma': name, 'pos': 'name', 'category': category}
+                # Try with -a ending
+                stem_a = stem + 'a'
+                if stem_a in self.dppn:
+                    return {'lemma': stem_a, 'pos': 'name', 'category': self.dppn[stem_a]}
+
+        return None
 
     def lookup_word(self, word: str) -> TokenInfo:
         """Look up a word and return its lemma info."""
@@ -108,10 +204,22 @@ class Lemmatizer:
                 if row:
                     self.stats["normalized_variants"] += 1
 
+        # If still not found, try metrical normalization (long → short vowel)
+        metrical_base = None
+        if not row:
+            metrical_base = self._try_metrical_normalization(word)
+            if metrical_base:
+                cursor = self.conn.execute("""
+                    SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
+                """, (metrical_base,))
+                row = cursor.fetchone()
+                if row:
+                    self.stats["metrical_normalizations"] += 1
+
         token = TokenInfo(word=word)
 
         if row:
-            # Check for sandhi decomposition first
+            # Found in DPD - check for sandhi decomposition first
             if row['deconstructor']:
                 try:
                     deconstructions = json.loads(row['deconstructor'])
@@ -143,6 +251,35 @@ class Lemmatizer:
                             token.root = hw_info.get('root')
                 except (json.JSONDecodeError, TypeError):
                     pass
+
+        # If not found in DPD, try particle splitting
+        if not token.lemma and not token.sandhi:
+            split = self._try_particle_split(word)
+            if split:
+                base, particle, particle_info = split
+                base_token = self.lookup_word(base)  # Recursive lookup
+                if base_token.lemma or base_token.sandhi:
+                    # Successfully split!
+                    if base_token.sandhi:
+                        token.sandhi = base_token.sandhi + [particle]
+                        token.components = base_token.components + [particle_info]
+                    else:
+                        token.sandhi = [base, particle]
+                        token.components = [
+                            {'lemma': base_token.lemma, 'pos': base_token.pos},
+                            particle_info
+                        ]
+                        if base_token.root:
+                            token.components[0]['root'] = base_token.root
+                    self.stats["particle_splits"] += 1
+
+        # If still not found, try DPPN proper noun matching
+        if not token.lemma and not token.sandhi:
+            dppn_match = self._try_dppn_match(word)
+            if dppn_match:
+                token.lemma = dppn_match['lemma']
+                token.pos = dppn_match['pos']
+                self.stats["dppn_matches"] += 1
 
         # Update stats
         if token.lemma or token.sandhi:
@@ -216,6 +353,9 @@ class Lemmatizer:
             "words_not_found": self.stats["words_not_found"],
             "sandhi_words": self.stats["sandhi_words"],
             "normalized_variants": self.stats["normalized_variants"],
+            "particle_splits": self.stats["particle_splits"],
+            "metrical_normalizations": self.stats["metrical_normalizations"],
+            "dppn_matches": self.stats["dppn_matches"],
             "coverage": f"{self.stats['words_found'] / max(1, len(self.stats['unique_words'])) * 100:.1f}%",
             "top_lemmas": self.stats["lemma_counts"].most_common(100),
             "unknown_words": self.stats["unknown_words"].most_common(500),
@@ -335,13 +475,16 @@ def main():
     print(f"\n{'=' * 60}")
     print("COMPLETE")
     print(f"{'=' * 60}")
-    print(f"Total words:       {stats['total_words']:,}")
-    print(f"Unique words:      {stats['unique_words']:,}")
-    print(f"Words found:       {stats['words_found']:,}")
-    print(f"Words not found:   {stats['words_not_found']:,}")
-    print(f"Sandhi words:      {stats['sandhi_words']:,}")
-    print(f"Normalized (-n→-ṃ): {stats['normalized_variants']:,}")
-    print(f"Coverage:          {stats['coverage']}")
+    print(f"Total words:         {stats['total_words']:,}")
+    print(f"Unique words:        {stats['unique_words']:,}")
+    print(f"Words found:         {stats['words_found']:,}")
+    print(f"Words not found:     {stats['words_not_found']:,}")
+    print(f"Sandhi words:        {stats['sandhi_words']:,}")
+    print(f"Normalized (-n→-ṃ):  {stats['normalized_variants']:,}")
+    print(f"Particle splits:     {stats['particle_splits']:,}")
+    print(f"Metrical norm:       {stats['metrical_normalizations']:,}")
+    print(f"DPPN matches:        {stats['dppn_matches']:,}")
+    print(f"Coverage:            {stats['coverage']}")
     print(f"\nOutput saved to: {LEMMATIZED_DIR}")
 
     lemmatizer.close()
