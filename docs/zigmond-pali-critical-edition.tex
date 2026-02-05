@@ -59,6 +59,38 @@ A growing body of scholarship holds that the earliest portions of the Tipiṭaka
 
 \subsection{Prior Work}
 
+\subsubsection{Digital Scholarly Editing}
+
+The past three decades have seen intensive theoretical engagement with what constitutes a ``digital scholarly edition'' as distinct from a mere digitization of print. \citet{sahle2016} influentially proposed that a digitized edition is not a digital edition---the latter must exploit the capabilities of the digital medium in ways that could not be replicated in print. His catalog of digital scholarly editions identifies key features including machine-addressable text, explicit encoding of editorial decisions, and the capacity to represent multiple textual states simultaneously. \citet{pierazzo2015} provides a comprehensive theoretical framework, arguing that digital editions fundamentally alter the relationship between editor, text, and reader by making editorial process transparent and enabling multiple reading paths.
+
+The Text Encoding Initiative (TEI) provides the dominant framework for representing textual variance in digital form \citep{tei2023}. TEI's apparatus criticus module enables systematic encoding of variant readings, witness sigla, and editorial interventions. Major projects such as the Homer Multitext \citep{dué2019} and the \emph{Faust} edition \citep{bohnenkamp2019} have demonstrated the scholarly value of this approach for classical and literary texts, while the Nestle-Aland tradition has begun incorporating digital methods for New Testament textual criticism.
+
+Automated collation has emerged as a key methodological concern. \citet{dekker2015} describe CollateX, an algorithm for detecting textual variance across multiple witnesses without requiring pre-alignment. \citet{andrews2013} survey the application of computational phylogenetics to manuscript stemmatology, demonstrating how graph-based models can represent complex transmission histories that resist traditional stemmata. The present work employs similar collation principles, though the relatively stable printed editions of the Pāli Canon present different challenges than manuscript traditions with extensive scribal variation.
+
+\subsubsection{Computational Text Analysis in the Humanities}
+
+Beyond critical editing, computational methods have increasingly been applied to literary and historical analysis. \citet{burrows2002} pioneered stylometric approaches using function word frequencies to attribute authorship, methods subsequently refined by \citet{eder2016} and implemented in tools such as Stylo. \citet{moretti2013} articulated a program of ``distant reading'' that uses quantitative methods to identify patterns across large corpora invisible to traditional close reading. \citet{jockers2013} demonstrated text mining approaches to nineteenth-century fiction, while \citet{underwood2019} applied machine learning to trace genre evolution across centuries.
+
+These methods remain contested. \citet{da2019} critiqued computational literary studies for methodological weaknesses, prompting responses defending the field's empirical foundations \citep{underwood2019response}. The debate highlights the importance of transparency in computational methods and careful attention to what quantitative patterns can and cannot reveal about textual meaning. For religious and historical texts, where questions of authenticity and dating have direct scholarly consequences, computational approaches must be situated within established philological frameworks rather than positioned as replacements for traditional methods.
+
+\subsubsection{Data Standards and Sustainability}
+
+Digital humanities projects increasingly attend to questions of data sustainability and reuse. The FAIR principles---Findable, Accessible, Interoperable, Reusable---articulated by \citet{wilkinson2016} have become a touchstone for research data management. For textual corpora, this entails not only open licensing but also standardized formats, persistent identifiers, and clear documentation of editorial principles. The present project publishes its data in structured JSON format with full provenance tracking, though future work may explore conversion to TEI for broader interoperability with digital humanities infrastructure.
+
+\subsubsection{Computational Linguistics for Sanskrit and Pāli}
+
+Computational approaches to Sanskrit have developed considerably over the past two decades. The Sanskrit Heritage Engine \citep{goyal2012,huet2005} provides morphological analysis and sandhi splitting for Sanskrit, while \citet{hellwig2016} developed neural approaches to Sanskrit word segmentation. More recently, \citet{krishna2018} applied sequence labeling to joint word segmentation and morphological tagging.
+
+Pāli has received less computational attention than Sanskrit, though the languages share many morphological features. \citet{alfter2017} developed a finite-state approach to Pāli morphological analysis, and the Digital Pāli Reader \citep{yuttadhammo2013} provides dictionary lookup with sandhi analysis. The Digital Pāli Dictionary, described in §2.3, represents the most comprehensive computational resource currently available for Pāli morphology.
+
+\subsubsection{Textual Stratification in Early Buddhist Studies}
+
+The question of which portions of the Pāli Canon represent the earliest Buddhist teachings has occupied scholars since the nineteenth century. \citet{rhysdavids1903} and \citet{winternitz1933} offered early assessments based on doctrinal and linguistic criteria. More recently, \citet{wynne2004} argued that certain passages in the Sutta Nipāta preserve very early material, while \citet{analayo2011} has conducted extensive comparative studies between Pāli texts and their Chinese parallels to identify early strata.
+
+Linguistic criteria for dating have been proposed by \citet{norman1983,norman1997}, who identified archaic features in certain verses, and by \citet{vonhinuber1996}, whose \emph{Handbook of Pāli Literature} remains a standard reference for questions of textual history. \citet{collins1992} examined the role of formulaic language in oral transmission, noting that repetitive passages may preserve older material. The computational approaches developed in this project aim to complement these philological methods.
+
+\subsubsection{Earlier Computational Work on the Pāli Canon}
+
 In earlier papers, we demonstrated that computational text-mining techniques could be productively applied to the Pāli Canon. Using k-means clustering based on word frequencies, we showed that volumes of the Tipiṭaka could be separated into groups that roughly matched the scholarly consensus on their relative age, with older texts (Vinaya and most Suttas) clustering apart from younger texts (Abhidhamma) \citep{zigmond2021}. Extending this approach, we found that canonical texts could be reliably distinguished from later commentaries using the same techniques \citep{zigmond2023}.
 
 However, these analyses also revealed significant limitations. As noted in the earlier work, ``the Pāli Canon in raw form is a poor foundation for this sort of textual analysis. Similar words appear in a wide array of dissimilar forms, due to declensions, compounds, and sandhi'' \citep{zigmond2023}. The word \emph{bhikkhu} (monk), for example, appears in 270 distinct forms in the canon when one counts all words beginning with the stem \emph{bhikkh-}, including declensions (\emph{bhikkhave}, \emph{bhikkhū}, \emph{bhikkhuno}), related words (\emph{bhikkhunī}), and compounds (\emph{bhikkhusaṅghaṃ}). Of these forms, fully 42\% appear only once in the entire canon. This proliferation of surface forms severely limits the effectiveness of frequency-based analyses.

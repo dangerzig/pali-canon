@@ -1,0 +1,237 @@
+% Creating a Critical Digital Edition of the Pāli Canon
+% Draft Discussion Paper for Journal of Open Humanities Data
+
+\documentclass[12pt]{article}
+\usepackage{fontspec}
+\setmainfont{Linux Libertine}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{natbib}
+\bibliographystyle{apalike}
+
+\title{Creating a Critical Digital Edition of the Pāli Canon: Methods, Challenges, and Data Documentation}
+
+\author{Dan Zigmond\\Independent Scholar\\djz@shmonk.com}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This discussion paper describes the creation of a lemmatized critical digital edition of the Pāli Canon (Tipiṭaka), the canonical scripture of Theravāda Buddhism. Rather than presenting research findings, this paper documents the methodological decisions, technical challenges, and practical limitations encountered in building a reusable dataset of approximately 1.6 million morphologically annotated words. Key challenges addressed include: reconciling three independent textual traditions with different orthographic conventions; handling the pervasive sandhi (euphonic combination) that obscures word boundaries in Pāli; distinguishing genuine textual variants from transcription errors; and managing the inherent ambiguity of morphological analysis in a heavily inflected language. The paper discusses data format decisions, documentation standards, and considerations for reuse by researchers in computational linguistics, Buddhist studies, and digital humanities. The dataset is released under Creative Commons licensing with full provenance tracking.
+\end{abstract}
+
+\section{Introduction}
+
+The Pāli Canon, known in Pāli as the Tipiṭaka (``three baskets''), comprises the foundational scriptures of Theravāda Buddhism. At approximately 2.7 million words, it is one of the largest surviving textual corpora from the ancient world---roughly three times the length of the Christian Bible. The texts were transmitted orally for several centuries before being committed to writing around 100 BCE in Sri Lanka, and they have subsequently been preserved in manuscript traditions across South and Southeast Asia.
+
+Multiple digital editions of the Pāli Canon now exist, created by different organizations with different editorial principles. However, no existing resource combines three key features: (1) word-level morphological annotation (lemmatization), (2) systematic collation of multiple textual traditions, and (3) structured data formats suitable for computational analysis. This paper documents the creation of such a resource, focusing not on what the data reveals but on how it was constructed, what choices were made, and what limitations users should understand.
+
+The goal of this discussion paper is to provide transparency about the data creation process so that researchers can make informed decisions about whether and how to use this resource. Following the principles articulated by \citet{wilkinson2016} for research data management, we aim for the dataset to be Findable, Accessible, Interoperable, and Reusable (FAIR).
+
+\section{Source Materials and Their Provenance}
+
+\subsection{Three Textual Traditions}
+
+The edition collates three independent digital sources, each representing a distinct textual tradition:
+
+\textbf{Pali Text Society (PTS) editions}, accessed via GRETIL transcriptions. The PTS has published critical editions of the Pāli Canon since 1879, and these remain the standard reference in Western academia. The digital transcriptions were created by the Dhammakaya Foundation (Thailand) between 1989 and 1996, subsequently released by the PTS under Creative Commons licensing. These transcriptions were manually input from the printed editions and have been checked against the originals, though some errors persist.
+
+\textbf{SuttaCentral Mahāsaṅgīti edition}, a digital version of a Sri Lankan recension originally prepared in 1957 for the 2500th anniversary of the Buddha's passing. SuttaCentral has refined this edition with editorial corrections and, crucially, has segmented the text at the sentence level with unique identifiers (e.g., ``dn1:1.1'' for Dīgha Nikāya, sutta 1, segment 1.1). This segmentation provides the structural backbone for the present edition.
+
+\textbf{Vipassana Research Institute (VRI) Chaṭṭha Saṅgāyana edition}, originating from the Sixth Buddhist Council held in Burma (1954--1956). This edition represents the Burmese textual tradition and has been widely used in computational work due to its early digital availability.
+
+\subsection{Licensing and Permissions}
+
+The PTS/GRETIL texts are released under Creative Commons Attribution-ShareAlike 4.0 (CC-BY-SA). SuttaCentral texts are available under Creative Commons Zero (CC0), placing them in the public domain. The VRI edition is freely distributed for non-commercial use. Our derived dataset is released under CC-BY-SA to comply with the most restrictive source license.
+
+\subsection{The Digital Pāli Dictionary}
+
+Morphological analysis depends on the Digital Pāli Dictionary (DPD), a comprehensive lexical database developed specifically for computational applications. The version used (0.3.20260202) includes 88,350 dictionary headwords, 1,275,089 inflected form lookups, and sandhi decomposition for attested compounds. The DPD is released under a permissive license allowing derivative works.
+
+We also incorporated the \textit{Dictionary of Pāli Proper Names} \citep{malalasekera1937} for identifying persons, places, and text titles, extracting 3,945 entries (2,541 persons, 1,335 texts, 69 places).
+
+\section{Methodological Decisions}
+
+\subsection{Choice of Base Text}
+
+A fundamental decision in any critical edition is the choice of base text---the primary witness against which variants are recorded. We selected the PTS editions for several reasons:
+
+\begin{enumerate}
+\item \textbf{Scholarly convention}: PTS citations (e.g., ``D i 1'') are the standard reference system in English-language Buddhist studies. Using PTS as the base ensures compatibility with existing scholarship.
+
+\item \textbf{Critical apparatus}: The PTS editions were created using traditional philological methods, with editors consulting multiple manuscripts and recording variants.
+
+\item \textbf{Stability}: Unlike the SC and VRI editions, which continue to receive corrections, the PTS editions are fixed historical documents.
+\end{enumerate}
+
+This choice has tradeoffs. The PTS editions contain errors, some introduced during nineteenth-century typesetting and others reflecting the manuscript sources available to the original editors. Where the SC and VRI editions agree against a PTS reading that is not attested in the DPD (indicating a likely error rather than a variant), we correct the base text and preserve the original PTS reading in the apparatus.
+
+\subsection{Handling Orthographic Variation}
+
+Pāli has been written in many scripts throughout history (Sinhalese, Burmese, Thai, Khmer, Devanagari, and Roman), and even within romanized editions, orthographic conventions vary. Key decisions include:
+
+\textbf{Niggahīta standardization}: The nasal sound at the end of many Pāli words can be written as ṁ or ṃ. We standardize to ṃ throughout, following modern convention.
+
+\textbf{Case normalization}: All text is lowercased for dictionary lookup, with original case preserved in the data.
+
+\textbf{Hyphenation}: Some editions hyphenate compounds; we remove hyphens and treat the result as a single token.
+
+These normalizations are applied silently and do not generate apparatus entries, as they represent presentational rather than textual differences.
+
+\subsection{Sandhi Decomposition}
+
+Sandhi---the euphonic combination of words at boundaries---poses a significant challenge. When \textit{etad} (``this'') combines with \textit{avoca} (``he said''), the result is \textit{etadavoca}, a single orthographic unit that must be decomposed for lemmatization.
+
+We rely on the DPD's deconstructor module, which provides pre-analyzed sandhi splits for attested compounds. When a token appears in the deconstructor, we:
+
+\begin{enumerate}
+\item Parse the compound into components
+\item Recursively lemmatize each component
+\item Store both the surface form and component analysis
+\end{enumerate}
+
+This approach handles the approximately 42,000 sandhi compounds in the corpus but cannot decompose novel combinations not in the DPD. Such forms are flagged as unresolved.
+
+\subsection{Ambiguity and the Limits of Automation}
+
+Many Pāli surface forms are ambiguous---they could derive from multiple lemmas with different meanings. For example, a form ending in \textit{-assa} might be a genitive singular noun, a dative singular noun, or an optative verb form.
+
+Our current implementation takes the first match returned by the DPD, which is typically the most common interpretation. This is a known limitation. A fully accurate lemmatization would require either:
+
+\begin{itemize}
+\item Manual disambiguation by Pāli scholars (infeasible at corpus scale)
+\item Context-aware neural models trained on disambiguated data (not yet available for Pāli)
+\end{itemize}
+
+Users of the dataset should be aware that approximately 15--20\% of tokens may have alternative valid lemmatizations not recorded in the current release.
+
+\section{Data Structure and Format}
+
+\subsection{Design Principles}
+
+The data format was designed with several goals:
+
+\begin{enumerate}
+\item \textbf{Self-documenting}: Each record contains sufficient metadata to understand its provenance without external documentation.
+
+\item \textbf{Hierarchical}: The structure mirrors the traditional organization of the canon (piṭaka $\rightarrow$ nikāya $\rightarrow$ vagga $\rightarrow$ sutta $\rightarrow$ segment $\rightarrow$ token).
+
+\item \textbf{Interoperable}: JSON format ensures compatibility with common programming languages and tools.
+
+\item \textbf{Extensible}: The schema can accommodate additional annotation layers (POS tags, dependency relations) in future versions.
+\end{enumerate}
+
+\subsection{Record Structure}
+
+Each segment (roughly corresponding to a sentence) is represented as a JSON object:
+
+\begin{verbatim}
+{
+  "segment_id": "dn1:1.1",
+  "pts_ref": "D i 1",
+  "vri_ref": "VRI 1.0001",
+  "text_sc": "Evaṃ me sutaṃ.",
+  "text_pts": "Evaṃ me sutaṃ.",
+  "text_vri": "Evaṃ me sutaṃ.",
+  "tokens": [
+    {
+      "form": "evaṃ",
+      "lemma": "evaṃ",
+      "is_sandhi": false,
+      "dpd_id": 12345
+    },
+    ...
+  ],
+  "variants": [
+    {
+      "position": 5,
+      "pts": "bhikkhūnam",
+      "sc": "bhikkhūnaṃ",
+      "vri": "bhikkhūnaṃ",
+      "type": "correction"
+    }
+  ]
+}
+\end{verbatim}
+
+\subsection{What Is Not Included}
+
+To maintain focus and manage scope, the current release does not include:
+
+\begin{itemize}
+\item Part-of-speech tags (though these could be derived from DPD data)
+\item Syntactic annotation (dependency relations, phrase structure)
+\item Semantic annotation (word senses, named entity types)
+\item Translations or parallel texts
+\item Commentary texts (only the canonical Tipiṭaka)
+\end{itemize}
+
+\section{Challenges and Limitations}
+
+\subsection{Alignment Difficulties}
+
+The three editions do not always segment text identically. Where one edition has a sentence break, another may continue. Where one includes a verse, another may omit it. Our alignment process uses sequence matching to identify corresponding passages, but some segments could not be reliably aligned and are marked accordingly.
+
+Approximately 2\% of segments have alignment confidence below our threshold and should be used with caution for cross-edition comparison.
+
+\subsection{Incomplete Coverage}
+
+SuttaCentral currently covers only the Sutta Piṭaka (the ``Basket of Discourses''). The Vinaya Piṭaka (monastic rules) and Abhidhamma Piṭaka (systematic philosophy) have only two-way comparison (PTS and VRI), limiting the confidence of variant classification for these sections.
+
+\subsection{Unknown Words}
+
+Despite 97.5\% lemmatization coverage, 3,174 unique word forms (appearing in approximately 40,000 tokens) remain unresolved. These include:
+
+\begin{itemize}
+\item Hapax legomena (words appearing only once)
+\item Rare proper nouns not in the DPPN
+\item Complex sandhi compounds not in the DPD deconstructor
+\item Apparent errors in the source transcriptions
+\end{itemize}
+
+A supplementary file lists all unresolved forms for potential manual review or future DPD updates.
+
+\subsection{Lack of Gold Standard}
+
+No manually annotated gold standard exists for Pāli lemmatization. Our coverage statistics are calculated against the DPD's lookup table, which itself may contain gaps or errors. True accuracy can only be assessed through manual evaluation, which we have not undertaken at scale.
+
+\section{Potential Reuse Scenarios}
+
+This dataset may support research in several areas:
+
+\textbf{Computational linguistics}: Development and evaluation of morphological analyzers, POS taggers, and parsers for Pāli. The lemmatized corpus provides training data for supervised learning approaches.
+
+\textbf{Buddhist studies}: Investigation of vocabulary distribution, formulaic language, and textual relationships within the canon. The critical apparatus enables study of transmission history.
+
+\textbf{Historical linguistics}: Comparison with Sanskrit, Prakrit, and other Middle Indo-Aryan languages. The lemmatization facilitates vocabulary-based analysis.
+
+\textbf{Digital humanities}: Methodological case study in creating critical digital editions for non-European classical languages.
+
+\section{Data Availability}
+
+The complete dataset is available at:
+
+\url{https://github.com/dangerzig/pali-canon}
+
+The repository includes:
+\begin{itemize}
+\item Lemmatized corpus files (JSON, organized by nikāya)
+\item Critical apparatus with variant readings
+\item List of unresolved forms
+\item Processing scripts (Python)
+\item This documentation
+\end{itemize}
+
+The data are released under Creative Commons Attribution-ShareAlike 4.0 International (CC-BY-SA 4.0).
+
+\section{Acknowledgments}
+
+This work builds on the contributions of many individuals and organizations. The Pali Text Society has maintained scholarly editions for over a century and generously released digital versions under open licenses. The Vipassana Research Institute created and shared the Chaṭṭha Saṅgāyana edition. SuttaCentral developed the segmentation system that structures this edition. The Digital Pāli Dictionary project, led by Venerable Bodhirasa, provided the morphological database essential for lemmatization. GRETIL at Göttingen has long provided open access to Indic texts. The Dictionary of Pāli Proper Names by G.P. Malalasekera remains invaluable for identifying names in the canon.
+
+\bibliography{references-johd}
+
+\end{document}
