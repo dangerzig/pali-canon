@@ -1,0 +1,3284 @@
+%!TEX program = xelatex
+\documentclass[11pt,twoside,openright]{book}
+
+% Fonts with Pāli diacritics
+\usepackage{fontspec}
+\setmainfont{Linux Libertine O}
+\setsansfont{Linux Biolinum O}
+
+% Critical edition package
+\usepackage[series={A},noend,noeledsec,nofamiliar,noledgroup]{reledmac}
+
+% Page layout
+\usepackage[
+  paperwidth=6in,
+  paperheight=9in,
+  inner=0.75in,
+  outer=0.5in,
+  top=0.75in,
+  bottom=0.75in
+]{geometry}
+
+% Headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\leftmark}
+\fancyhead[RO]{\small\rightmark}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Chapter and section formatting
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\centering}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{}{0pt}{}
+
+% Verse environment
+\usepackage{verse}
+\setlength{\stanzaskip}{0.75\baselineskip}
+
+% PTS references in margins
+\usepackage{marginnote}
+\renewcommand*{\marginfont}{\footnotesize\itshape}
+
+% Hyperlinks (optional, for PDF navigation)
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=blue,
+  pdftitle={Pāli Canon Critical Edition},
+  pdfauthor={Digital Critical Edition Project}
+}
+
+% Pāli-specific commands
+\newcommand{\pali}[1]{\textit{#1}}
+\newcommand{\pts}[1]{\marginnote{[#1]}}
+\newcommand{\suttaref}[1]{\textsf{#1}}
+
+% Critical apparatus commands
+\newcommand{\variant}[3]{%
+  \edtext{#1}{\Afootnote{#2 \textit{#3}}}%
+}
+
+% Start critical apparatus
+\beginnumbering
+
+
+\begin{document}
+\begin{titlepage}
+\centering
+\vspace*{2in}
+{\Huge\bfseries DN dn1}
+\vspace{0.5in}
+{\Large Critical Edition}
+\vfill
+{\large Based on PTS, VRI, and SuttaCentral witnesses}
+\vspace{0.25in}
+{\small Generated: 2026-02-05}
+\end{titlepage}
+
+\chapter{Brahmajālasutta}
+\begin{center}\textit{The Discourse on the All-embracing Net of Views}\end{center}
+
+\section*{Brahmajālasutta}
+\pstart
+1. Paribbājakakathā
+\pend
+
+\pstart
+Evaṃ me sutaṃ—
+\pend
+
+\pstart
+ekaṃ samayaṃ bhagavā antarā ca rājagahaṃ antarā ca nāḷandaṃ addhānamaggappaṭipanno hoti mahatā bhikkhusaṅghena saddhiṃ pañcamattehi bhikkhusatehi.
+\pend
+
+\pstart
+Suppiyopi kho paribbājako antarā ca rājagahaṃ antarā ca nāḷandaṃ addhānamaggappaṭipanno hoti saddhiṃ antevāsinā brahmadattena māṇavena.
+\pend
+
+\begin{verse}
+Tatra sudaṃ suppiyo paribbājako anekapariyāyena buddhassa avaṇṇaṃ bhāsati,\\
+\vin  dhammassa avaṇṇaṃ bhāsati,\\
+\vin  saṅghassa avaṇṇaṃ bhāsati\\
+
+
+\end{verse}
+\pstart
+suppiyassa pana paribbājakassa antevāsī brahmadatto māṇavo anekapariyāyena buddhassa vaṇṇaṃ bhāsati, dhammassa vaṇṇaṃ bhāsati, saṅghassa vaṇṇaṃ bhāsati.
+\pend
+
+\pstart
+Itiha te ubho ācariyantevāsī aññamaññassa ujuvipaccanīkavādā bhagavantaṃ piṭṭhito piṭṭhito anubandhā honti bhikkhusaṅghañca.
+\pend
+
+\pstart
+Atha kho bhagavā ambalaṭṭhikāyaṃ rājāgārake ekarattivāsaṃ upagacchi saddhiṃ bhikkhusaṅghena.
+\pend
+
+\pstart
+Suppiyopi kho paribbājako ambalaṭṭhikāyaṃ rājāgārake ekarattivāsaṃ upagacchi antevāsinā brahmadattena māṇavena.
+\pend
+
+\begin{verse}
+Tatrapi sudaṃ suppiyo paribbājako anekapariyāyena buddhassa avaṇṇaṃ bhāsati,\\
+\vin  dhammassa avaṇṇaṃ bhāsati,\\
+\vin  saṅghassa avaṇṇaṃ bhāsati\\
+
+
+\end{verse}
+\pstart
+suppiyassa pana paribbājakassa antevāsī brahmadatto māṇavo anekapariyāyena buddhassa vaṇṇaṃ bhāsati, dhammassa vaṇṇaṃ bhāsati, saṅghassa vaṇṇaṃ bhāsati.
+\pend
+
+\pstart
+Itiha te ubho ācariyantevāsī aññamaññassa ujuvipaccanīkavādā viharanti.
+\pend
+
+\pstart
+Atha kho sambahulānaṃ bhikkhūnaṃ rattiyā paccūsasamayaṃ paccuṭṭhitānaṃ maṇḍalamāḷe sannisinnānaṃ sannipatitānaṃ ayaṃ saṅkhiyadhammo udapādi:
+\pend
+
+\begin{verse}
+“acchariyaṃ,\\
+\vin  āvuso,\\
+\vin  abbhutaṃ,\\
+\vin  āvuso,\\
+\vin  yāvañcidaṃ tena bhagavatā jānatā passatā arahatā sammāsambuddhena sattānaṃ nānādhimuttikatā suppaṭividitā.
+
+Ayañhi suppiyo paribbājako anekapariyāyena buddhassa avaṇṇaṃ bhāsati,\\
+\vin  dhammassa avaṇṇaṃ bhāsati,\\
+\vin  saṅghassa avaṇṇaṃ bhāsati\\
+
+
+\end{verse}
+\pstart
+suppiyassa pana paribbājakassa antevāsī brahmadatto māṇavo anekapariyāyena buddhassa vaṇṇaṃ bhāsati, dhammassa vaṇṇaṃ bhāsati, saṅghassa vaṇṇaṃ bhāsati.
+\pend
+
+\pstart
+Itihame ubho ācariyantevāsī aññamaññassa ujuvipaccanīkavādā bhagavantaṃ piṭṭhito piṭṭhito anubandhā honti bhikkhusaṅghañcā”ti.
+\pend
+
+\pstart
+Atha kho bhagavā tesaṃ bhikkhūnaṃ imaṃ saṅkhiyadhammaṃ viditvā yena maṇḍalamāḷo tenupasaṅkami; upasaṅkamitvā paññatte āsane nisīdi. Nisajja kho bhagavā bhikkhū āmantesi:
+\pend
+
+\begin{verse}
+“kāya nuttha,\\
+\vin  bhikkhave,\\
+\vin  etarahi kathāya sannisinnā sannipatitā,\\
+\vin  kā ca pana vo antarākathā vippakatā”ti?
+
+Evaṃ vutte,\\
+\vin  te bhikkhū bhagavantaṃ etadavocuṃ:
+
+“idha,\\
+\vin  bhante,\\
+\vin  amhākaṃ rattiyā paccūsasamayaṃ paccuṭṭhitānaṃ maṇḍalamāḷe sannisinnānaṃ sannipatitānaṃ ayaṃ saṅkhiyadhammo udapādi:
+
+‘acchariyaṃ,\\
+\vin  āvuso,\\
+\vin  abbhutaṃ,\\
+\vin  āvuso,\\
+\vin  yāvañcidaṃ tena bhagavatā jānatā passatā arahatā sammāsambuddhena sattānaṃ nānādhimuttikatā suppaṭividitā.
+
+Ayañhi suppiyo paribbājako anekapariyāyena buddhassa avaṇṇaṃ bhāsati,\\
+\vin  dhammassa avaṇṇaṃ bhāsati,\\
+\vin  saṅghassa avaṇṇaṃ bhāsati\\
+
+
+\end{verse}
+\pstart
+suppiyassa pana paribbājakassa antevāsī brahmadatto māṇavo anekapariyāyena buddhassa vaṇṇaṃ bhāsati, dhammassa vaṇṇaṃ bhāsati, saṅghassa vaṇṇaṃ bhāsati.
+\pend
+
+\pstart
+Itihame ubho ācariyantevāsī aññamaññassa ujuvipaccanīkavādā bhagavantaṃ piṭṭhito piṭṭhito anubandhā honti bhikkhusaṅghañcā’ti.
+\pend
+
+\begin{verse}
+Ayaṃ kho no,\\
+\vin  bhante,\\
+\vin  antarākathā vippakatā,\\
+\vin  atha bhagavā anuppatto”ti.
+
+“Mamaṃ vā,\\
+\vin  bhikkhave,\\
+\vin  pare avaṇṇaṃ bhāseyyuṃ,\\
+\vin  dhammassa vā avaṇṇaṃ bhāseyyuṃ,\\
+\vin  saṅghassa vā avaṇṇaṃ bhāseyyuṃ,\\
+\vin  tatra tumhehi na āghāto na appaccayo na cetaso anabhiraddhi karaṇīyā.
+
+Mamaṃ vā,\\
+\vin  bhikkhave,\\
+\vin  pare avaṇṇaṃ bhāseyyuṃ,\\
+\vin  dhammassa vā avaṇṇaṃ bhāseyyuṃ,\\
+\vin  saṅghassa vā avaṇṇaṃ bhāseyyuṃ,\\
+\vin  tatra ce tumhe assatha kupitā vā anattamanā vā,\\
+\vin  tumhaṃ yevassa tena antarāyo.
+
+Mamaṃ vā,\\
+\vin  bhikkhave,\\
+\vin  pare avaṇṇaṃ bhāseyyuṃ,\\
+\vin  dhammassa vā avaṇṇaṃ bhāseyyuṃ,\\
+\vin  saṅghassa vā avaṇṇaṃ bhāseyyuṃ,\\
+\vin  tatra ce tumhe assatha kupitā vā anattamanā vā,\\
+\vin  api nu tumhe paresaṃ subhāsitaṃ dubbhāsitaṃ ājāneyyāthā”ti?
+
+“No hetaṃ,\\
+\vin  bhante”.
+
+“Mamaṃ vā,\\
+\vin  bhikkhave,\\
+\vin  pare avaṇṇaṃ bhāseyyuṃ,\\
+\vin  dhammassa vā avaṇṇaṃ bhāseyyuṃ,\\
+\vin  saṅghassa vā avaṇṇaṃ bhāseyyuṃ,\\
+\vin  tatra tumhehi abhūtaṃ abhūtato nibbeṭhetabbaṃ:
+
+‘itipetaṃ abhūtaṃ,\\
+\vin  itipetaṃ atacchaṃ,\\
+\vin  natthi cetaṃ amhesu,\\
+\vin  na ca panetaṃ amhesu saṃvijjatī’ti.
+
+Mamaṃ vā,\\
+\vin  bhikkhave,\\
+\vin  pare vaṇṇaṃ bhāseyyuṃ,\\
+\vin  dhammassa vā vaṇṇaṃ bhāseyyuṃ,\\
+\vin  saṅghassa vā vaṇṇaṃ bhāseyyuṃ,\\
+\vin  tatra tumhehi na ānando na somanassaṃ na cetaso uppilāvitattaṃ karaṇīyaṃ.
+
+Mamaṃ vā,\\
+\vin  bhikkhave,\\
+\vin  pare vaṇṇaṃ bhāseyyuṃ,\\
+\vin  dhammassa vā vaṇṇaṃ bhāseyyuṃ,\\
+\vin  saṅghassa vā vaṇṇaṃ bhāseyyuṃ,\\
+\vin  tatra ce tumhe assatha ānandino sumanā uppilāvitā tumhaṃ yevassa tena antarāyo.
+
+Mamaṃ vā,\\
+\vin  bhikkhave,\\
+\vin  pare vaṇṇaṃ bhāseyyuṃ,\\
+\vin  dhammassa vā vaṇṇaṃ bhāseyyuṃ,\\
+\vin  saṅghassa vā vaṇṇaṃ bhāseyyuṃ,\\
+\vin  tatra tumhehi bhūtaṃ bhūtato paṭijānitabbaṃ:
+
+‘itipetaṃ bhūtaṃ,\\
+\vin  itipetaṃ tacchaṃ,\\
+\vin  atthi cetaṃ amhesu,\\
+\vin  saṃvijjati ca panetaṃ amhesū’ti.
+
+\end{verse}
+\pstart
+2. Sīla
+\pend
+
+\pstart
+2.1. Cūḷasīla
+\pend
+
+\begin{verse}
+Appamattakaṃ kho panetaṃ,\\
+\vin  bhikkhave,\\
+\vin  oramattakaṃ sīlamattakaṃ,\\
+\vin  yena puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+Katamañca taṃ,\\
+\vin  bhikkhave,\\
+\vin  appamattakaṃ oramattakaṃ sīlamattakaṃ,\\
+\vin  yena puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya?
+
+‘Pāṇātipātaṃ pahāya pāṇātipātā paṭivirato samaṇo gotamo nihitadaṇḍo,\\
+\vin  nihitasattho,\\
+\vin  lajjī,\\
+\vin  dayāpanno,\\
+\vin  sabbapāṇabhūtahitānukampī viharatī’ti—
+
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Adinnādānaṃ pahāya adinnādānā paṭivirato samaṇo gotamo dinnādāyī dinnapāṭikaṅkhī, athenena sucibhūtena attanā viharatī’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Abrahmacariyaṃ pahāya brahmacārī samaṇo gotamo ārācārī virato methunā gāmadhammā’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Musāvādaṃ pahāya musāvādā paṭivirato samaṇo gotamo saccavādī saccasandho theto paccayiko avisaṃvādako lokassā’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Pisuṇaṃ vācaṃ pahāya pisuṇāya vācāya paṭivirato samaṇo gotamo, ito sutvā na amutra akkhātā imesaṃ bhedāya, amutra vā sutvā na imesaṃ akkhātā amūsaṃ bhedāya. Iti bhinnānaṃ vā sandhātā, sahitānaṃ vā anuppadātā samaggārāmo samaggarato samagganandī samaggakaraṇiṃ vācaṃ bhāsitā’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Pharusaṃ vācaṃ pahāya pharusāya vācāya paṭivirato samaṇo gotamo, yā sā vācā nelā kaṇṇasukhā pemanīyā hadayaṅgamā porī bahujanakantā bahujanamanāpā tathārūpiṃ vācaṃ bhāsitā’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Samphappalāpaṃ pahāya samphappalāpā paṭivirato samaṇo gotamo kālavādī bhūtavādī atthavādī dhammavādī vinayavādī, nidhānavatiṃ vācaṃ bhāsitā kālena sāpadesaṃ pariyantavatiṃ atthasaṃhitan’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Bījagāmabhūtagāmasamārambhā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave …pe….
+
+\end{verse}
+\pstart
+‘Ekabhattiko samaṇo gotamo rattūparato virato vikālabhojanā ….
+\pend
+
+\pstart
+Naccagītavāditavisūkadassanā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Mālāgandhavilepanadhāraṇamaṇḍanavibhūsanaṭṭhānā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Uccāsayanamahāsayanā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Jātarūparajatapaṭiggahaṇā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Āmakadhaññapaṭiggahaṇā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Āmakamaṃsapaṭiggahaṇā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Itthikumārikapaṭiggahaṇā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Dāsidāsapaṭiggahaṇā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Ajeḷakapaṭiggahaṇā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Kukkuṭasūkarapaṭiggahaṇā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Hatthigavassavaḷavapaṭiggahaṇā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Khettavatthupaṭiggahaṇā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Dūteyyapahiṇagamanānuyogā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Kayavikkayā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Tulākūṭakaṃsakūṭamānakūṭā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Ukkoṭanavañcananikatisāciyogā paṭivirato samaṇo gotamo ….
+\pend
+
+\pstart
+Chedanavadhabandhanaviparāmosaālopasahasākārā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+Cūḷasīlaṃ niṭṭhitaṃ.
+\pend
+
+\pstart
+2.2. Majjhimasīla
+\pend
+
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpaṃ bījagāmabhūtagāmasamārambhaṃ anuyuttā viharanti,
+\pend
+
+\begin{verse}
+seyyathidaṃ—mūlabījaṃ khandhabījaṃ phaḷubījaṃ aggabījaṃ bījabījameva pañcamaṃ\\
+
+
+\end{verse}
+\pstart
+iti evarūpā bījagāmabhūtagāmasamārambhā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpaṃ sannidhikāraparibhogaṃ anuyuttā viharanti,
+\pend
+
+\pstart
+seyyathidaṃ—annasannidhiṃ pānasannidhiṃ vatthasannidhiṃ yānasannidhiṃ sayanasannidhiṃ gandhasannidhiṃ āmisasannidhiṃ
+\pend
+
+\pstart
+iti vā iti evarūpā sannidhikāraparibhogā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpaṃ visūkadassanaṃ anuyuttā viharanti,
+\pend
+
+\pstart
+seyyathidaṃ—naccaṃ gītaṃ vāditaṃ pekkhaṃ akkhānaṃ pāṇissaraṃ vetāḷaṃ kumbhathūṇaṃ sobhanakaṃ caṇḍālaṃ vaṃsaṃ dhovanaṃ hatthiyuddhaṃ assayuddhaṃ mahiṃsayuddhaṃ usabhayuddhaṃ ajayuddhaṃ meṇḍayuddhaṃ kukkuṭayuddhaṃ vaṭṭakayuddhaṃ daṇḍayuddhaṃ muṭṭhiyuddhaṃ nibbuddhaṃ uyyodhikaṃ balaggaṃ senābyūhaṃ anīkadassanaṃ
+\pend
+
+\pstart
+iti vā iti evarūpā visūkadassanā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpaṃ jūtappamādaṭṭhānānuyogaṃ anuyuttā viharanti,
+\pend
+
+\pstart
+seyyathidaṃ—aṭṭhapadaṃ dasapadaṃ ākāsaṃ parihārapathaṃ santikaṃ khalikaṃ ghaṭikaṃ salākahatthaṃ akkhaṃ paṅgacīraṃ vaṅkakaṃ mokkhacikaṃ ciṅgulikaṃ pattāḷhakaṃ rathakaṃ dhanukaṃ akkharikaṃ manesikaṃ yathāvajjaṃ
+\pend
+
+\pstart
+iti vā iti evarūpā jūtappamādaṭṭhānānuyogā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpaṃ uccāsayanamahāsayanaṃ anuyuttā viharanti,
+\pend
+
+\pstart
+seyyathidaṃ—āsandiṃ pallaṅkaṃ gonakaṃ cittakaṃ paṭikaṃ paṭalikaṃ tūlikaṃ vikatikaṃ uddalomiṃ ekantalomiṃ kaṭṭissaṃ koseyyaṃ kuttakaṃ hatthattharaṃ assattharaṃ rathattharaṃ ajinappaveṇiṃ kadalimigapavarapaccattharaṇaṃ sauttaracchadaṃ ubhatolohitakūpadhānaṃ
+\pend
+
+\pstart
+iti vā iti evarūpā uccāsayanamahāsayanā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpaṃ maṇḍanavibhūsanaṭṭhānānuyogaṃ anuyuttā viharanti, seyyathidaṃ—
+\pend
+
+\pstart
+ucchādanaṃ parimaddanaṃ nhāpanaṃ sambāhanaṃ ādāsaṃ añjanaṃ mālāgandhavilepanaṃ mukhacuṇṇaṃ mukhalepanaṃ hatthabandhaṃ sikhābandhaṃ daṇḍaṃ nāḷikaṃ asiṃ chattaṃ citrupāhanaṃ uṇhīsaṃ maṇiṃ vālabījaniṃ odātāni vatthāni dīghadasāni
+\pend
+
+\pstart
+iti vā iti evarūpā maṇḍanavibhūsanaṭṭhānānuyogā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpaṃ tiracchānakathaṃ anuyuttā viharanti,
+\pend
+
+\pstart
+seyyathidaṃ—rājakathaṃ corakathaṃ mahāmattakathaṃ senākathaṃ bhayakathaṃ yuddhakathaṃ annakathaṃ pānakathaṃ vatthakathaṃ sayanakathaṃ mālākathaṃ gandhakathaṃ ñātikathaṃ yānakathaṃ gāmakathaṃ nigamakathaṃ nagarakathaṃ janapadakathaṃ itthikathaṃ sūrakathaṃ visikhākathaṃ kumbhaṭṭhānakathaṃ pubbapetakathaṃ nānattakathaṃ lokakkhāyikaṃ samuddakkhāyikaṃ itibhavābhavakathaṃ
+\pend
+
+\pstart
+iti vā iti evarūpāya tiracchānakathāya paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpaṃ viggāhikakathaṃ anuyuttā viharanti,
+\pend
+
+\begin{verse}
+seyyathidaṃ—na tvaṃ imaṃ dhammavinayaṃ ājānāsi,\\
+\vin  ahaṃ imaṃ dhammavinayaṃ ājānāmi,\\
+\vin  kiṃ tvaṃ imaṃ dhammavinayaṃ ājānissasi,\\
+\vin  micchā paṭipanno tvamasi,\\
+\vin  ahamasmi sammā paṭipanno,\\
+\vin  sahitaṃ me,\\
+\vin  asahitaṃ te,\\
+\vin  purevacanīyaṃ pacchā avaca,\\
+\vin  pacchāvacanīyaṃ pure avaca,\\
+\vin  adhiciṇṇaṃ te viparāvattaṃ,\\
+\vin  āropito te vādo,\\
+\vin  niggahito tvamasi,\\
+\vin  cara vādappamokkhāya,\\
+\vin  nibbeṭhehi vā sace pahosīti
+
+\end{verse}
+\pstart
+iti vā iti evarūpāya viggāhikakathāya paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpaṃ dūteyyapahiṇagamanānuyogaṃ anuyuttā viharanti,
+\pend
+
+\begin{verse}
+seyyathidaṃ—raññaṃ,\\
+\vin  rājamahāmattānaṃ,\\
+\vin  khattiyānaṃ,\\
+\vin  brāhmaṇānaṃ,\\
+\vin  gahapatikānaṃ,\\
+\vin  kumārānaṃ “idha gaccha,\\
+\vin  amutrāgaccha,\\
+\vin  idaṃ hara,\\
+\vin  amutra idaṃ āharā”ti
+
+\end{verse}
+\pstart
+iti vā iti evarūpā dūteyyapahiṇagamanānuyogā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te kuhakā ca honti, lapakā ca nemittikā ca nippesikā ca, lābhena lābhaṃ nijigīsitāro ca
+\pend
+
+\pstart
+iti evarūpā kuhanalapanā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+Majjhimasīlaṃ niṭṭhitaṃ.
+\pend
+
+\pstart
+2.3. Mahāsīla
+\pend
+
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpāya tiracchānavijjāya micchājīvena jīvitaṃ kappenti,
+\pend
+
+\pstart
+seyyathidaṃ—aṅgaṃ nimittaṃ uppātaṃ supinaṃ lakkhaṇaṃ mūsikacchinnaṃ aggihomaṃ dabbihomaṃ thusahomaṃ kaṇahomaṃ taṇḍulahomaṃ sappihomaṃ telahomaṃ mukhahomaṃ lohitahomaṃ aṅgavijjā vatthuvijjā khattavijjā sivavijjā bhūtavijjā bhūrivijjā ahivijjā visavijjā vicchikavijjā mūsikavijjā sakuṇavijjā vāyasavijjā pakkajjhānaṃ saraparittāṇaṃ migacakkaṃ
+\pend
+
+\pstart
+iti vā iti evarūpāya tiracchānavijjāya micchājīvā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpāya tiracchānavijjāya micchājīvena jīvitaṃ kappenti,
+\pend
+
+\pstart
+seyyathidaṃ—maṇilakkhaṇaṃ vatthalakkhaṇaṃ daṇḍalakkhaṇaṃ satthalakkhaṇaṃ asilakkhaṇaṃ usulakkhaṇaṃ dhanulakkhaṇaṃ āvudhalakkhaṇaṃ itthilakkhaṇaṃ purisalakkhaṇaṃ kumāralakkhaṇaṃ kumārilakkhaṇaṃ dāsalakkhaṇaṃ dāsilakkhaṇaṃ hatthilakkhaṇaṃ assalakkhaṇaṃ mahiṃsalakkhaṇaṃ usabhalakkhaṇaṃ golakkhaṇaṃ ajalakkhaṇaṃ meṇḍalakkhaṇaṃ kukkuṭalakkhaṇaṃ vaṭṭakalakkhaṇaṃ godhālakkhaṇaṃ kaṇṇikālakkhaṇaṃ kacchapalakkhaṇaṃ migalakkhaṇaṃ
+\pend
+
+\pstart
+iti vā iti evarūpāya tiracchānavijjāya micchājīvā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpāya tiracchānavijjāya micchājīvena jīvitaṃ kappenti,
+\pend
+
+\begin{verse}
+seyyathidaṃ—raññaṃ niyyānaṃ bhavissati,\\
+\vin  raññaṃ aniyyānaṃ bhavissati,\\
+\vin  abbhantarānaṃ raññaṃ upayānaṃ bhavissati,\\
+\vin  bāhirānaṃ raññaṃ apayānaṃ bhavissati,\\
+\vin  bāhirānaṃ raññaṃ upayānaṃ bhavissati,\\
+\vin  abbhantarānaṃ raññaṃ apayānaṃ bhavissati,\\
+\vin  abbhantarānaṃ raññaṃ jayo bhavissati,\\
+\vin  bāhirānaṃ raññaṃ parājayo bhavissati,\\
+\vin  bāhirānaṃ raññaṃ jayo bhavissati,\\
+\vin  abbhantarānaṃ raññaṃ parājayo bhavissati,\\
+\vin  iti imassa jayo bhavissati,\\
+\vin  imassa parājayo bhavissati
+
+\end{verse}
+\pstart
+iti vā iti evarūpāya tiracchānavijjāya micchājīvā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpāya tiracchānavijjāya micchājīvena jīvitaṃ kappenti,
+\pend
+
+\begin{verse}
+seyyathidaṃ—candaggāho bhavissati,\\
+\vin  sūriyaggāho bhavissati,\\
+\vin  nakkhattaggāho bhavissati,\\
+\vin  candimasūriyānaṃ pathagamanaṃ bhavissati,\\
+\vin  candimasūriyānaṃ uppathagamanaṃ bhavissati,\\
+\vin  nakkhattānaṃ pathagamanaṃ bhavissati,\\
+\vin  nakkhattānaṃ uppathagamanaṃ bhavissati,\\
+\vin  ukkāpāto bhavissati,\\
+\vin  disāḍāho bhavissati,\\
+\vin  bhūmicālo bhavissati,\\
+\vin  devadudrabhi bhavissati,\\
+\vin  candimasūriyanakkhattānaṃ uggamanaṃ ogamanaṃ saṅkilesaṃ vodānaṃ bhavissati,\\
+\vin  evaṃvipāko candaggāho bhavissati,\\
+\vin  evaṃvipāko sūriyaggāho bhavissati,\\
+\vin  evaṃvipāko nakkhattaggāho bhavissati,\\
+\vin  evaṃvipākaṃ candimasūriyānaṃ pathagamanaṃ bhavissati,\\
+\vin  evaṃvipākaṃ candimasūriyānaṃ uppathagamanaṃ bhavissati,\\
+\vin  evaṃvipākaṃ nakkhattānaṃ pathagamanaṃ bhavissati,\\
+\vin  evaṃvipākaṃ nakkhattānaṃ uppathagamanaṃ bhavissati,\\
+\vin  evaṃvipāko ukkāpāto bhavissati,\\
+\vin  evaṃvipāko disāḍāho bhavissati,\\
+\vin  evaṃvipāko bhūmicālo bhavissati,\\
+\vin  evaṃvipāko devadudrabhi bhavissati,\\
+\vin  evaṃvipākaṃ candimasūriyanakkhattānaṃ uggamanaṃ ogamanaṃ saṅkilesaṃ vodānaṃ bhavissati
+
+\end{verse}
+\pstart
+iti vā iti evarūpāya tiracchānavijjāya micchājīvā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpāya tiracchānavijjāya micchājīvena jīvitaṃ kappenti,
+\pend
+
+\begin{verse}
+seyyathidaṃ—suvuṭṭhikā bhavissati,\\
+\vin  dubbuṭṭhikā bhavissati,\\
+\vin  subhikkhaṃ bhavissati,\\
+\vin  dubbhikkhaṃ bhavissati,\\
+\vin  khemaṃ bhavissati,\\
+\vin  bhayaṃ bhavissati,\\
+\vin  rogo bhavissati,\\
+\vin  ārogyaṃ bhavissati,\\
+\vin  muddā,\\
+\vin  gaṇanā,\\
+\vin  saṅkhānaṃ,\\
+\vin  kāveyyaṃ,\\
+\vin  lokāyataṃ
+
+\end{verse}
+\pstart
+iti vā iti evarūpāya tiracchānavijjāya micchājīvā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpāya tiracchānavijjāya micchājīvena jīvitaṃ kappenti,
+\pend
+
+\pstart
+seyyathidaṃ—āvāhanaṃ vivāhanaṃ saṃvaraṇaṃ vivaraṇaṃ saṅkiraṇaṃ vikiraṇaṃ subhagakaraṇaṃ dubbhagakaraṇaṃ viruddhagabbhakaraṇaṃ jivhānibandhanaṃ hanusaṃhananaṃ hatthābhijappanaṃ hanujappanaṃ kaṇṇajappanaṃ ādāsapañhaṃ kumārikapañhaṃ devapañhaṃ ādiccupaṭṭhānaṃ mahatupaṭṭhānaṃ abbhujjalanaṃ sirivhāyanaṃ
+\pend
+
+\pstart
+iti vā iti evarūpāya tiracchānavijjāya micchājīvā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+‘Yathā vā paneke bhonto samaṇabrāhmaṇā saddhādeyyāni bhojanāni bhuñjitvā te evarūpāya tiracchānavijjāya micchājīvena jīvitaṃ kappenti,
+\pend
+
+\pstart
+seyyathidaṃ—santikammaṃ paṇidhikammaṃ bhūtakammaṃ bhūrikammaṃ vassakammaṃ vossakammaṃ vatthukammaṃ vatthuparikammaṃ ācamanaṃ nhāpanaṃ juhanaṃ vamanaṃ virecanaṃ uddhaṃvirecanaṃ adhovirecanaṃ sīsavirecanaṃ kaṇṇatelaṃ nettatappanaṃ natthukammaṃ añjanaṃ paccañjanaṃ sālākiyaṃ sallakattiyaṃ dārakatikicchā mūlabhesajjānaṃ anuppadānaṃ osadhīnaṃ paṭimokkho
+\pend
+
+\pstart
+iti vā iti evarūpāya tiracchānavijjāya micchājīvā paṭivirato samaṇo gotamo’ti—
+\pend
+
+\begin{verse}
+iti vā hi,\\
+\vin  bhikkhave,\\
+\vin  puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+Idaṃ kho,\\
+\vin  bhikkhave,\\
+\vin  appamattakaṃ oramattakaṃ sīlamattakaṃ,\\
+\vin  yena puthujjano tathāgatassa vaṇṇaṃ vadamāno vadeyya.
+
+\end{verse}
+\pstart
+Mahāsīlaṃ niṭṭhitaṃ.
+\pend
+
+\pstart
+3. Diṭṭhi
+\pend
+
+\pstart
+3.1. Pubbantakappika
+\pend
+
+\begin{verse}
+Atthi,\\
+\vin  bhikkhave,\\
+\vin  aññeva dhammā gambhīrā duddasā duranubodhā santā paṇītā atakkāvacarā nipuṇā paṇḍitavedanīyā,\\
+\vin  ye tathāgato sayaṃ abhiññā sacchikatvā pavedeti,\\
+\vin  yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ.
+
+Katame ca te,\\
+\vin  bhikkhave,\\
+\vin  dhammā gambhīrā duddasā duranubodhā santā paṇītā atakkāvacarā nipuṇā paṇḍitavedanīyā,\\
+\vin  ye tathāgato sayaṃ abhiññā sacchikatvā pavedeti,\\
+\vin  yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ?
+
+Santi,\\
+\vin  bhikkhave,\\
+\vin  eke samaṇabrāhmaṇā pubbantakappikā pubbantānudiṭṭhino,\\
+\vin  pubbantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti aṭṭhārasahi vatthūhi.
+
+\end{verse}
+\pstart
+Te ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha pubbantakappikā pubbantānudiṭṭhino pubbantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti aṭṭhārasahi vatthūhi?
+\pend
+
+\pstart
+3.1.1. Sassatavāda
+\pend
+
+\begin{verse}
+Santi,\\
+\vin  bhikkhave,\\
+\vin  eke samaṇabrāhmaṇā sassatavādā,\\
+\vin  sassataṃ attānañca lokañca paññapenti catūhi vatthūhi.
+
+\end{verse}
+\pstart
+Te ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha sassatavādā sassataṃ attānañca lokañca paññapenti catūhi vatthūhi?
+\pend
+
+\pstart
+Idha, bhikkhave, ekacco samaṇo vā brāhmaṇo vā ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusati, yathāsamāhite citte (…) anekavihitaṃ pubbenivāsaṃ anussarati.
+\pend
+
+\pstart
+Seyyathidaṃ—ekampi jātiṃ dvepi jātiyo tissopi jātiyo catassopi jātiyo pañcapi jātiyo dasapi jātiyo vīsampi jātiyo tiṃsampi jātiyo cattālīsampi jātiyo paññāsampi jātiyo jātisatampi jātisahassampi jātisatasahassampi anekānipi jātisatāni anekānipi jātisahassāni anekānipi jātisatasahassāni: ‘amutrāsiṃ evaṃnāmo evaṅgotto evaṃvaṇṇo evamāhāro evaṃsukhadukkhappaṭisaṃvedī evamāyupariyanto, so tato cuto amutra udapādiṃ; tatrāpāsiṃ evaṃnāmo evaṅgotto evaṃvaṇṇo evamāhāro evaṃsukhadukkhappaṭisaṃvedī evamāyupariyanto, so tato cuto idhūpapanno’ti. Iti sākāraṃ sauddesaṃ anekavihitaṃ pubbenivāsaṃ anussarati.
+\pend
+
+\pstart
+So evamāha:
+\pend
+
+\pstart
+‘sassato attā ca loko ca vañjho kūṭaṭṭho esikaṭṭhāyiṭṭhito;
+\pend
+
+\pstart
+te ca sattā sandhāvanti saṃsaranti cavanti upapajjanti, atthi tveva sassatisamaṃ.
+\pend
+
+\pstart
+Taṃ kissa hetu?
+\pend
+
+\pstart
+Ahañhi ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusāmi, yathāsamāhite citte anekavihitaṃ pubbenivāsaṃ anussarāmi.
+\pend
+
+\pstart
+Seyyathidaṃ—ekampi jātiṃ dvepi jātiyo tissopi jātiyo catassopi jātiyo pañcapi jātiyo dasapi jātiyo vīsampi jātiyo tiṃsampi jātiyo cattālīsampi jātiyo paññāsampi jātiyo jātisatampi jātisahassampi jātisatasahassampi anekānipi jātisatāni anekānipi jātisahassāni anekānipi jātisatasahassāni: “amutrāsiṃ evaṃnāmo evaṅgotto evaṃvaṇṇo evamāhāro evaṃsukhadukkhappaṭisaṃvedī evamāyupariyanto, so tato cuto amutra udapādiṃ; tatrāpāsiṃ evaṃnāmo evaṅgotto evaṃvaṇṇo evamāhāro evaṃsukhadukkhappaṭisaṃvedī evamāyupariyanto, so tato cuto idhūpapanno”ti. Iti sākāraṃ sauddesaṃ anekavihitaṃ pubbenivāsaṃ anussarāmi.
+\pend
+
+\pstart
+Imināmahaṃ etaṃ jānāmi:
+\pend
+
+\pstart
+“yathā sassato attā ca loko ca vañjho kūṭaṭṭho esikaṭṭhāyiṭṭhito;
+\pend
+
+\pstart
+te ca sattā sandhāvanti saṃsaranti cavanti upapajjanti, atthi tveva sassatisaman”’ti.
+\pend
+
+\begin{verse}
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  paṭhamaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā sassatavādā sassataṃ attānañca lokañca paññapenti.
+
+\end{verse}
+\pstart
+Dutiye ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha sassatavādā sassataṃ attānañca lokañca paññapenti?
+\pend
+
+\pstart
+Idha, bhikkhave, ekacco samaṇo vā brāhmaṇo vā ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusati, yathāsamāhite citte anekavihitaṃ pubbenivāsaṃ anussarati.
+\pend
+
+\pstart
+Seyyathidaṃ—ekampi saṃvaṭṭavivaṭṭaṃ dvepi saṃvaṭṭavivaṭṭāni tīṇipi saṃvaṭṭavivaṭṭāni cattāripi saṃvaṭṭavivaṭṭāni pañcapi saṃvaṭṭavivaṭṭāni dasapi saṃvaṭṭavivaṭṭāni: ‘amutrāsiṃ evaṃnāmo evaṅgotto evaṃvaṇṇo evamāhāro evaṃsukhadukkhappaṭisaṃvedī evamāyupariyanto, so tato cuto amutra udapādiṃ; tatrāpāsiṃ evaṃnāmo evaṅgotto evaṃvaṇṇo evamāhāro evaṃsukhadukkhappaṭisaṃvedī evamāyupariyanto, so tato cuto idhūpapanno’ti. Iti sākāraṃ sauddesaṃ anekavihitaṃ pubbenivāsaṃ anussarati.
+\pend
+
+\pstart
+So evamāha:
+\pend
+
+\pstart
+‘sassato attā ca loko ca vañjho kūṭaṭṭho esikaṭṭhāyiṭṭhito;
+\pend
+
+\pstart
+te ca sattā sandhāvanti saṃsaranti cavanti upapajjanti, atthi tveva sassatisamaṃ.
+\pend
+
+\pstart
+Taṃ kissa hetu?
+\pend
+
+\pstart
+Ahañhi ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusāmi yathāsamāhite citte anekavihitaṃ pubbenivāsaṃ anussarāmi.
+\pend
+
+\pstart
+Seyyathidaṃ—ekampi saṃvaṭṭavivaṭṭaṃ dvepi saṃvaṭṭavivaṭṭāni tīṇipi saṃvaṭṭavivaṭṭāni cattāripi saṃvaṭṭavivaṭṭāni pañcapi saṃvaṭṭavivaṭṭāni dasapi saṃvaṭṭavivaṭṭāni: “amutrāsiṃ evaṃnāmo evaṅgotto evaṃvaṇṇo evamāhāro evaṃsukhadukkhappaṭisaṃvedī evamāyupariyanto, so tato cuto amutra udapādiṃ; tatrāpāsiṃ evaṃnāmo evaṅgotto evaṃvaṇṇo evamāhāro evaṃsukhadukkhappaṭisaṃvedī evamāyupariyanto, so tato cuto idhūpapanno”ti. Iti sākāraṃ sauddesaṃ anekavihitaṃ pubbenivāsaṃ anussarāmi.
+\pend
+
+\pstart
+Imināmahaṃ etaṃ jānāmi:
+\pend
+
+\pstart
+“yathā sassato attā ca loko ca vañjho kūṭaṭṭho esikaṭṭhāyiṭṭhito, te ca sattā sandhāvanti saṃsaranti cavanti upapajjanti, atthi tveva sassatisaman”’ti.
+\pend
+
+\begin{verse}
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  dutiyaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā sassatavādā sassataṃ attānañca lokañca paññapenti.
+
+\end{verse}
+\pstart
+Tatiye ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha sassatavādā sassataṃ attānañca lokañca paññapenti?
+\pend
+
+\pstart
+Idha, bhikkhave, ekacco samaṇo vā brāhmaṇo vā ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusati, yathāsamāhite citte anekavihitaṃ pubbenivāsaṃ anussarati.
+\pend
+
+\pstart
+Seyyathidaṃ—dasapi saṃvaṭṭavivaṭṭāni vīsampi saṃvaṭṭavivaṭṭāni tiṃsampi saṃvaṭṭavivaṭṭāni cattālīsampi saṃvaṭṭavivaṭṭāni: ‘amutrāsiṃ evaṃnāmo evaṅgotto evaṃvaṇṇo evamāhāro evaṃsukhadukkhappaṭisaṃvedī evamāyupariyanto, so tato cuto amutra udapādiṃ; tatrāpāsiṃ evaṃnāmo evaṅgotto evaṃvaṇṇo evamāhāro evaṃsukhadukkhappaṭisaṃvedī evamāyupariyanto, so tato cuto idhūpapanno’ti. Iti sākāraṃ sauddesaṃ anekavihitaṃ pubbenivāsaṃ anussarati.
+\pend
+
+\pstart
+So evamāha:
+\pend
+
+\pstart
+‘sassato attā ca loko ca vañjho kūṭaṭṭho esikaṭṭhāyiṭṭhito;
+\pend
+
+\pstart
+te ca sattā sandhāvanti saṃsaranti cavanti upapajjanti, atthi tveva sassatisamaṃ.
+\pend
+
+\pstart
+Taṃ kissa hetu?
+\pend
+
+\pstart
+Ahañhi ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusāmi, yathāsamāhite citte anekavihitaṃ pubbenivāsaṃ anussarāmi.
+\pend
+
+\pstart
+Seyyathidaṃ—dasapi saṃvaṭṭavivaṭṭāni vīsampi saṃvaṭṭavivaṭṭāni tiṃsampi saṃvaṭṭavivaṭṭāni cattālīsampi saṃvaṭṭavivaṭṭāni: “amutrāsiṃ evaṃnāmo evaṅgotto evaṃvaṇṇo evamāhāro evaṃsukhadukkhappaṭisaṃvedī evamāyupariyanto, so tato cuto amutra udapādiṃ; tatrāpāsiṃ evaṃnāmo evaṅgotto evaṃvaṇṇo evamāhāro evaṃsukhadukkhappaṭisaṃvedī evamāyupariyanto, so tato cuto idhūpapanno”ti. Iti sākāraṃ sauddesaṃ anekavihitaṃ pubbenivāsaṃ anussarāmi.
+\pend
+
+\pstart
+Imināmahaṃ etaṃ jānāmi:
+\pend
+
+\pstart
+“yathā sassato attā ca loko ca vañjho kūṭaṭṭho esikaṭṭhāyiṭṭhito, te ca sattā sandhāvanti saṃsaranti cavanti upapajjanti, atthi tveva sassatisaman”’ti.
+\pend
+
+\begin{verse}
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  tatiyaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā sassatavādā sassataṃ attānañca lokañca paññapenti.
+
+\end{verse}
+\pstart
+Catutthe ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha sassatavādā sassataṃ attānañca lokañca paññapenti?
+\pend
+
+\begin{verse}
+Idha,\\
+\vin  bhikkhave,\\
+\vin  ekacco samaṇo vā brāhmaṇo vā takkī hoti vīmaṃsī,\\
+\vin  so takkapariyāhataṃ vīmaṃsānucaritaṃ sayaṃ paṭibhānaṃ evamāha:
+
+\end{verse}
+\pstart
+‘sassato attā ca loko ca vañjho kūṭaṭṭho esikaṭṭhāyiṭṭhito;
+\pend
+
+\pstart
+te ca sattā sandhāvanti saṃsaranti cavanti upapajjanti, atthi tveva sassatisaman’ti.
+\pend
+
+\begin{verse}
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  catutthaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā sassatavādā sassataṃ attānañca lokañca paññapenti.
+
+Imehi kho te,\\
+\vin  bhikkhave,\\
+\vin  samaṇabrāhmaṇā sassatavādā sassataṃ attānañca lokañca paññapenti catūhi vatthūhi.
+
+Ye hi keci,\\
+\vin  bhikkhave,\\
+\vin  samaṇā vā brāhmaṇā vā sassatavādā sassataṃ attānañca lokañca paññapenti,\\
+\vin  sabbe te imeheva catūhi vatthūhi,\\
+\vin  etesaṃ vā aññatarena\\
+ natthi ito bahiddhā.
+
+Tayidaṃ,\\
+\vin  bhikkhave,\\
+\vin  tathāgato pajānāti:
+
+\end{verse}
+\pstart
+‘ime diṭṭhiṭṭhānā evaṅgahitā evaṃparāmaṭṭhā evaṅgatikā bhavanti evaṃabhisamparāyā’ti,
+\pend
+
+\begin{verse}
+tañca tathāgato pajānāti,\\
+\vin  tato ca uttaritaraṃ pajānāti\\
+ tañca pajānanaṃ na parāmasati,\\
+\vin  aparāmasato cassa paccattaññeva nibbuti viditā.
+
+Vedanānaṃ samudayañca atthaṅgamañca assādañca ādīnavañca nissaraṇañca yathābhūtaṃ viditvā anupādāvimutto,\\
+\vin  bhikkhave,\\
+\vin  tathāgato.
+
+Ime kho te,\\
+\vin  bhikkhave,\\
+\vin  dhammā gambhīrā duddasā duranubodhā santā paṇītā atakkāvacarā nipuṇā paṇḍitavedanīyā,\\
+\vin  ye tathāgato sayaṃ abhiññā sacchikatvā pavedeti,\\
+\vin  yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ.
+
+\end{verse}
+\pstart
+Paṭhamabhāṇavāro.
+\pend
+
+\pstart
+3.1.2. Ekaccasassatavāda
+\pend
+
+\pstart
+Santi, bhikkhave, eke samaṇabrāhmaṇā ekaccasassatikā ekaccaasassatikā ekaccaṃ sassataṃ ekaccaṃ asassataṃ attānañca lokañca paññapenti catūhi vatthūhi.
+\pend
+
+\pstart
+Te ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha ekaccasassatikā ekaccaasassatikā ekaccaṃ sassataṃ ekaccaṃ asassataṃ attānañca lokañca paññapenti catūhi vatthūhi?
+\pend
+
+\begin{verse}
+Hoti kho so,\\
+\vin  bhikkhave,\\
+\vin  samayo,\\
+\vin  yaṃ kadāci karahaci dīghassa addhuno accayena ayaṃ loko saṃvaṭṭati.
+
+\end{verse}
+\pstart
+Saṃvaṭṭamāne loke yebhuyyena sattā ābhassarasaṃvattanikā honti.
+\pend
+
+\pstart
+Te tattha honti manomayā pītibhakkhā sayaṃpabhā antalikkhacarā subhaṭṭhāyino, ciraṃ dīghamaddhānaṃ tiṭṭhanti.
+\pend
+
+\begin{verse}
+Hoti kho so,\\
+\vin  bhikkhave,\\
+\vin  samayo,\\
+\vin  yaṃ kadāci karahaci dīghassa addhuno accayena ayaṃ loko vivaṭṭati.
+
+\end{verse}
+\pstart
+Vivaṭṭamāne loke suññaṃ brahmavimānaṃ pātubhavati.
+\pend
+
+\pstart
+Atha kho aññataro satto āyukkhayā vā puññakkhayā vā ābhassarakāyā cavitvā suññaṃ brahmavimānaṃ upapajjati.
+\pend
+
+\pstart
+So tattha hoti manomayo pītibhakkho sayampabho antalikkhacaro subhaṭṭhāyī, ciraṃ dīghamaddhānaṃ tiṭṭhati.
+\pend
+
+\pstart
+Tassa tattha ekakassa dīgharattaṃ nivusitattā anabhirati paritassanā uppajjati:
+\pend
+
+\pstart
+‘aho vata aññepi sattā itthattaṃ āgaccheyyun’ti.
+\pend
+
+\pstart
+Atha aññepi sattā āyukkhayā vā puññakkhayā vā ābhassarakāyā cavitvā brahmavimānaṃ upapajjanti tassa sattassa sahabyataṃ.
+\pend
+
+\pstart
+Tepi tattha honti manomayā pītibhakkhā sayaṃpabhā antalikkhacarā subhaṭṭhāyino, ciraṃ dīghamaddhānaṃ tiṭṭhanti.
+\pend
+
+\begin{verse}
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  yo so satto paṭhamaṃ upapanno tassa evaṃ hoti:
+
+\end{verse}
+\pstart
+‘ahamasmi brahmā mahābrahmā abhibhū anabhibhūto aññadatthudaso vasavattī issaro kattā nimmātā seṭṭho sajitā vasī pitā bhūtabhabyānaṃ.
+\pend
+
+\pstart
+Mayā ime sattā nimmitā.
+\pend
+
+\pstart
+Taṃ kissa hetu?
+\pend
+
+\pstart
+Mamañhi pubbe etadahosi:
+\pend
+
+\pstart
+“aho vata aññepi sattā itthattaṃ āgaccheyyun”ti.
+\pend
+
+\pstart
+Iti mama ca manopaṇidhi, ime ca sattā itthattaṃ āgatā’ti.
+\pend
+
+\pstart
+Yepi te sattā pacchā upapannā, tesampi evaṃ hoti:
+\pend
+
+\pstart
+‘ayaṃ kho bhavaṃ brahmā mahābrahmā abhibhū anabhibhūto aññadatthudaso vasavattī issaro kattā nimmātā seṭṭho sajitā vasī pitā bhūtabhabyānaṃ.
+\pend
+
+\pstart
+Iminā mayaṃ bhotā brahmunā nimmitā.
+\pend
+
+\pstart
+Taṃ kissa hetu?
+\pend
+
+\pstart
+Imañhi mayaṃ addasāma idha paṭhamaṃ upapannaṃ, mayaṃ panamha pacchā upapannā’ti.
+\pend
+
+\begin{verse}
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  yo so satto paṭhamaṃ upapanno,\\
+\vin  so dīghāyukataro ca hoti vaṇṇavantataro ca mahesakkhataro ca.
+
+\end{verse}
+\pstart
+Ye pana te sattā pacchā upapannā, te appāyukatarā ca honti dubbaṇṇatarā ca appesakkhatarā ca.
+\pend
+
+\begin{verse}
+Ṭhānaṃ kho panetaṃ,\\
+\vin  bhikkhave,\\
+\vin  vijjati,\\
+\vin  yaṃ aññataro satto tamhā kāyā cavitvā itthattaṃ āgacchati.
+
+\end{verse}
+\pstart
+Itthattaṃ āgato samāno agārasmā anagāriyaṃ pabbajati.
+\pend
+
+\pstart
+Agārasmā anagāriyaṃ pabbajito samāno ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusati, yathāsamāhite citte taṃ pubbenivāsaṃ anussarati, tato paraṃ nānussarati.
+\pend
+
+\pstart
+So evamāha:
+\pend
+
+\pstart
+‘yo kho so bhavaṃ brahmā mahābrahmā abhibhū anabhibhūto aññadatthudaso vasavattī issaro kattā nimmātā seṭṭho sajitā vasī pitā bhūtabhabyānaṃ, yena mayaṃ bhotā brahmunā nimmitā, so nicco dhuvo sassato avipariṇāmadhammo sassatisamaṃ tatheva ṭhassati.
+\pend
+
+\pstart
+Ye pana mayaṃ ahumhā tena bhotā brahmunā nimmitā, te mayaṃ aniccā addhuvā appāyukā cavanadhammā itthattaṃ āgatā’ti.
+\pend
+
+\begin{verse}
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  paṭhamaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā ekaccasassatikā ekaccaasassatikā ekaccaṃ sassataṃ ekaccaṃ asassataṃ attānañca lokañca paññapenti.
+
+\end{verse}
+\pstart
+Dutiye ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha ekaccasassatikā ekaccaasassatikā ekaccaṃ sassataṃ ekaccaṃ asassataṃ attānañca lokañca paññapenti?
+\pend
+
+\pstart
+Santi, bhikkhave, khiḍḍāpadosikā nāma devā, te ativelaṃ hassakhiḍḍāratidhammasamāpannā viharanti. Tesaṃ ativelaṃ hassakhiḍḍāratidhammasamāpannānaṃ viharataṃ sati sammussati. Satiyā sammosā te devā tamhā kāyā cavanti.
+\pend
+
+\begin{verse}
+Ṭhānaṃ kho panetaṃ,\\
+\vin  bhikkhave,\\
+\vin  vijjati yaṃ aññataro satto tamhā kāyā cavitvā itthattaṃ āgacchati.
+
+\end{verse}
+\pstart
+Itthattaṃ āgato samāno agārasmā anagāriyaṃ pabbajati.
+\pend
+
+\pstart
+Agārasmā anagāriyaṃ pabbajito samāno ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusati, yathāsamāhite citte taṃ pubbenivāsaṃ anussarati, tato paraṃ nānussarati.
+\pend
+
+\pstart
+So evamāha:
+\pend
+
+\pstart
+‘ye kho te bhonto devā na khiḍḍāpadosikā, te na ativelaṃ hassakhiḍḍāratidhammasamāpannā viharanti. Tesaṃ na ativelaṃ hassakhiḍḍāratidhammasamāpannānaṃ viharataṃ sati na sammussati. Satiyā asammosā te devā tamhā kāyā na cavanti;
+\pend
+
+\pstart
+niccā dhuvā sassatā avipariṇāmadhammā sassatisamaṃ tatheva ṭhassanti.
+\pend
+
+\pstart
+Ye pana mayaṃ ahumhā khiḍḍāpadosikā, te mayaṃ ativelaṃ hassakhiḍḍāratidhammasamāpannā viharimhā. Tesaṃ no ativelaṃ hassakhiḍḍāratidhammasamāpannānaṃ viharataṃ sati sammussati. Satiyā sammosā evaṃ mayaṃ tamhā kāyā cutā
+\pend
+
+\pstart
+aniccā addhuvā appāyukā cavanadhammā itthattaṃ āgatā’ti.
+\pend
+
+\begin{verse}
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  dutiyaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā ekaccasassatikā ekaccaasassatikā ekaccaṃ sassataṃ ekaccaṃ asassataṃ attānañca lokañca paññapenti.
+
+\end{verse}
+\pstart
+Tatiye ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha ekaccasassatikā ekaccaasassatikā ekaccaṃ sassataṃ ekaccaṃ asassataṃ attānañca lokañca paññapenti?
+\pend
+
+\pstart
+Santi, bhikkhave, manopadosikā nāma devā, te ativelaṃ aññamaññaṃ upanijjhāyanti. Te ativelaṃ aññamaññaṃ upanijjhāyantā aññamaññamhi cittāni padūsenti. Te aññamaññaṃ paduṭṭhacittā kilantakāyā kilantacittā. Te devā tamhā kāyā cavanti.
+\pend
+
+\begin{verse}
+Ṭhānaṃ kho panetaṃ,\\
+\vin  bhikkhave,\\
+\vin  vijjati yaṃ aññataro satto tamhā kāyā cavitvā itthattaṃ āgacchati.
+
+\end{verse}
+\pstart
+Itthattaṃ āgato samāno agārasmā anagāriyaṃ pabbajati.
+\pend
+
+\pstart
+Agārasmā anagāriyaṃ pabbajito samāno ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusati, yathāsamāhite citte taṃ pubbenivāsaṃ anussarati, tato paraṃ nānussarati.
+\pend
+
+\pstart
+So evamāha:
+\pend
+
+\pstart
+‘ye kho te bhonto devā na manopadosikā, te nātivelaṃ aññamaññaṃ upanijjhāyanti. Te nātivelaṃ aññamaññaṃ upanijjhāyantā aññamaññamhi cittāni nappadūsenti. Te aññamaññaṃ appaduṭṭhacittā akilantakāyā akilantacittā. Te devā tamhā kāyā na cavanti,
+\pend
+
+\pstart
+niccā dhuvā sassatā avipariṇāmadhammā sassatisamaṃ tatheva ṭhassanti.
+\pend
+
+\pstart
+Ye pana mayaṃ ahumhā manopadosikā, te mayaṃ ativelaṃ aññamaññaṃ upanijjhāyimhā. Te mayaṃ ativelaṃ aññamaññaṃ upanijjhāyantā aññamaññamhi cittāni padūsimhā, te mayaṃ aññamaññaṃ paduṭṭhacittā kilantakāyā kilantacittā. Evaṃ mayaṃ tamhā kāyā cutā
+\pend
+
+\pstart
+aniccā addhuvā appāyukā cavanadhammā itthattaṃ āgatā’ti.
+\pend
+
+\begin{verse}
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  tatiyaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā ekaccasassatikā ekaccaasassatikā ekaccaṃ sassataṃ ekaccaṃ asassataṃ attānañca lokañca paññapenti.
+
+\end{verse}
+\pstart
+Catutthe ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha ekaccasassatikā ekaccaasassatikā ekaccaṃ sassataṃ ekaccaṃ asassataṃ attānañca lokañca paññapenti?
+\pend
+
+\pstart
+Idha, bhikkhave, ekacco samaṇo vā brāhmaṇo vā takkī hoti vīmaṃsī. So takkapariyāhataṃ vīmaṃsānucaritaṃ sayampaṭibhānaṃ evamāha:
+\pend
+
+\pstart
+‘yaṃ kho idaṃ vuccati cakkhuṃ itipi sotaṃ itipi ghānaṃ itipi jivhā itipi kāyo itipi, ayaṃ attā anicco addhuvo asassato vipariṇāmadhammo.
+\pend
+
+\pstart
+Yañca kho idaṃ vuccati cittanti vā manoti vā viññāṇanti vā ayaṃ attā nicco dhuvo sassato avipariṇāmadhammo sassatisamaṃ tatheva ṭhassatī’ti.
+\pend
+
+\begin{verse}
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  catutthaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā ekaccasassatikā ekaccaasassatikā ekaccaṃ sassataṃ ekaccaṃ asassataṃ attānañca lokañca paññapenti.
+
+\end{verse}
+\pstart
+Imehi kho te, bhikkhave, samaṇabrāhmaṇā ekaccasassatikā ekaccaasassatikā ekaccaṃ sassataṃ ekaccaṃ asassataṃ attānañca lokañca paññapenti catūhi vatthūhi.
+\pend
+
+\begin{verse}
+Ye hi keci,\\
+\vin  bhikkhave,\\
+\vin  samaṇā vā brāhmaṇā vā ekaccasassatikā ekaccaasassatikā ekaccaṃ sassataṃ ekaccaṃ asassataṃ attānañca lokañca paññapenti,\\
+\vin  sabbe te imeheva catūhi vatthūhi,\\
+\vin  etesaṃ vā aññatarena\\
+ natthi ito bahiddhā.
+
+Tayidaṃ,\\
+\vin  bhikkhave,\\
+\vin  tathāgato pajānāti:
+
+\end{verse}
+\pstart
+‘ime diṭṭhiṭṭhānā evaṅgahitā evaṃparāmaṭṭhā evaṅgatikā bhavanti evaṃabhisamparāyā’ti.
+\pend
+
+\begin{verse}
+Tañca tathāgato pajānāti,\\
+\vin  tato ca uttaritaraṃ pajānāti,\\
+\vin  tañca pajānanaṃ na parāmasati,\\
+\vin  aparāmasato cassa paccattaññeva nibbuti viditā.
+
+Vedanānaṃ samudayañca atthaṅgamañca assādañca ādīnavañca nissaraṇañca yathābhūtaṃ viditvā anupādāvimutto,\\
+\vin  bhikkhave,\\
+\vin  tathāgato.
+
+Ime kho te,\\
+\vin  bhikkhave,\\
+\vin  dhammā gambhīrā duddasā duranubodhā santā paṇītā atakkāvacarā nipuṇā paṇḍitavedanīyā,\\
+\vin  ye tathāgato sayaṃ abhiññā sacchikatvā pavedeti,\\
+\vin  yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ.
+
+\end{verse}
+\pstart
+3.1.3. Antānantavāda
+\pend
+
+\begin{verse}
+Santi,\\
+\vin  bhikkhave,\\
+\vin  eke samaṇabrāhmaṇā antānantikā antānantaṃ lokassa paññapenti catūhi vatthūhi.
+
+\end{verse}
+\pstart
+Te ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha antānantikā antānantaṃ lokassa paññapenti catūhi vatthūhi?
+\pend
+
+\pstart
+Idha, bhikkhave, ekacco samaṇo vā brāhmaṇo vā ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusati, yathāsamāhite citte antasaññī lokasmiṃ viharati.
+\pend
+
+\pstart
+So evamāha:
+\pend
+
+\pstart
+‘antavā ayaṃ loko parivaṭumo.
+\pend
+
+\pstart
+Taṃ kissa hetu?
+\pend
+
+\pstart
+Ahañhi ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusāmi, yathāsamāhite citte antasaññī lokasmiṃ viharāmi.
+\pend
+
+\pstart
+Imināmahaṃ etaṃ jānāmi:
+\pend
+
+\pstart
+“yathā antavā ayaṃ loko parivaṭumo”’ti.
+\pend
+
+\begin{verse}
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  paṭhamaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā antānantikā antānantaṃ lokassa paññapenti.
+
+\end{verse}
+\pstart
+Dutiye ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha antānantikā antānantaṃ lokassa paññapenti?
+\pend
+
+\pstart
+Idha, bhikkhave, ekacco samaṇo vā brāhmaṇo vā ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusati, yathāsamāhite citte anantasaññī lokasmiṃ viharati.
+\pend
+
+\pstart
+So evamāha:
+\pend
+
+\pstart
+‘ananto ayaṃ loko apariyanto.
+\pend
+
+\pstart
+Ye te samaṇabrāhmaṇā evamāhaṃsu:
+\pend
+
+\begin{verse}
+“antavā ayaṃ loko parivaṭumo”ti,\\
+\vin  tesaṃ musā.
+
+\end{verse}
+\pstart
+Ananto ayaṃ loko apariyanto.
+\pend
+
+\pstart
+Taṃ kissa hetu?
+\pend
+
+\pstart
+Ahañhi ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusāmi, yathāsamāhite citte anantasaññī lokasmiṃ viharāmi.
+\pend
+
+\pstart
+Imināmahaṃ etaṃ jānāmi:
+\pend
+
+\pstart
+“yathā ananto ayaṃ loko apariyanto”’ti.
+\pend
+
+\begin{verse}
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  dutiyaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā antānantikā antānantaṃ lokassa paññapenti.
+
+\end{verse}
+\pstart
+Tatiye ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha antānantikā antānantaṃ lokassa paññapenti?
+\pend
+
+\begin{verse}
+Idha,\\
+\vin  bhikkhave,\\
+\vin  ekacco samaṇo vā brāhmaṇo vā ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusati,\\
+\vin  yathāsamāhite citte uddhamadho antasaññī lokasmiṃ viharati,\\
+\vin  tiriyaṃ anantasaññī.
+
+\end{verse}
+\pstart
+So evamāha:
+\pend
+
+\pstart
+‘antavā ca ayaṃ loko ananto ca.
+\pend
+
+\pstart
+Ye te samaṇabrāhmaṇā evamāhaṃsu:
+\pend
+
+\begin{verse}
+“antavā ayaṃ loko parivaṭumo”ti,\\
+\vin  tesaṃ musā.
+
+\end{verse}
+\pstart
+Yepi te samaṇabrāhmaṇā evamāhaṃsu:
+\pend
+
+\begin{verse}
+“ananto ayaṃ loko apariyanto”ti,\\
+\vin  tesampi musā.
+
+\end{verse}
+\pstart
+Antavā ca ayaṃ loko ananto ca.
+\pend
+
+\pstart
+Taṃ kissa hetu?
+\pend
+
+\pstart
+Ahañhi ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusāmi, yathāsamāhite citte uddhamadho antasaññī lokasmiṃ viharāmi, tiriyaṃ anantasaññī.
+\pend
+
+\pstart
+Imināmahaṃ etaṃ jānāmi:
+\pend
+
+\pstart
+“yathā antavā ca ayaṃ loko ananto cā”’ti.
+\pend
+
+\begin{verse}
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  tatiyaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā antānantikā antānantaṃ lokassa paññapenti.
+
+\end{verse}
+\pstart
+Catutthe ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha antānantikā antānantaṃ lokassa paññapenti?
+\pend
+
+\pstart
+Idha, bhikkhave, ekacco samaṇo vā brāhmaṇo vā takkī hoti vīmaṃsī. So takkapariyāhataṃ vīmaṃsānucaritaṃ sayampaṭibhānaṃ evamāha:
+\pend
+
+\begin{verse}
+‘nevāyaṃ loko antavā,\\
+\vin  na panānanto.
+
+\end{verse}
+\pstart
+Ye te samaṇabrāhmaṇā evamāhaṃsu:
+\pend
+
+\begin{verse}
+“antavā ayaṃ loko parivaṭumo”ti,\\
+\vin  tesaṃ musā.
+
+\end{verse}
+\pstart
+Yepi te samaṇabrāhmaṇā evamāhaṃsu:
+\pend
+
+\begin{verse}
+“ananto ayaṃ loko apariyanto”ti,\\
+\vin  tesampi musā.
+
+\end{verse}
+\pstart
+Yepi te samaṇabrāhmaṇā evamāhaṃsu:
+\pend
+
+\pstart
+“antavā ca ayaṃ loko ananto cā”ti, tesampi musā.
+\pend
+
+\begin{verse}
+Nevāyaṃ loko antavā,\\
+\vin  na panānanto’ti.
+
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  catutthaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā antānantikā antānantaṃ lokassa paññapenti.
+
+Imehi kho te,\\
+\vin  bhikkhave,\\
+\vin  samaṇabrāhmaṇā antānantikā antānantaṃ lokassa paññapenti catūhi vatthūhi.
+
+Ye hi keci,\\
+\vin  bhikkhave,\\
+\vin  samaṇā vā brāhmaṇā vā antānantikā antānantaṃ lokassa paññapenti,\\
+\vin  sabbe te imeheva catūhi vatthūhi,\\
+\vin  etesaṃ vā aññatarena\\
+ natthi ito bahiddhā.
+
+Tayidaṃ,\\
+\vin  bhikkhave,\\
+\vin  tathāgato pajānāti:
+
+\end{verse}
+\pstart
+‘ime diṭṭhiṭṭhānā evaṅgahitā evaṃparāmaṭṭhā evaṅgatikā bhavanti evaṃabhisamparāyā’ti.
+\pend
+
+\begin{verse}
+Tañca tathāgato pajānāti,\\
+\vin  tato ca uttaritaraṃ pajānāti,\\
+\vin  tañca pajānanaṃ na parāmasati,\\
+\vin  aparāmasato cassa paccattaññeva nibbuti viditā.
+
+Vedanānaṃ samudayañca atthaṅgamañca assādañca ādīnavañca nissaraṇañca yathābhūtaṃ viditvā anupādāvimutto,\\
+\vin  bhikkhave,\\
+\vin  tathāgato.
+
+Ime kho te,\\
+\vin  bhikkhave,\\
+\vin  dhammā gambhīrā duddasā duranubodhā santā paṇītā atakkāvacarā nipuṇā paṇḍitavedanīyā,\\
+\vin  ye tathāgato sayaṃ abhiññā sacchikatvā pavedeti,\\
+\vin  yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ.
+
+\end{verse}
+\pstart
+3.1.4. Amarāvikkhepavāda
+\pend
+
+\begin{verse}
+Santi,\\
+\vin  bhikkhave,\\
+\vin  eke samaṇabrāhmaṇā amarāvikkhepikā,\\
+\vin  tattha tattha pañhaṃ puṭṭhā samānā vācāvikkhepaṃ āpajjanti amarāvikkhepaṃ catūhi vatthūhi.
+
+\end{verse}
+\pstart
+Te ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha amarāvikkhepikā tattha tattha pañhaṃ puṭṭhā samānā vācāvikkhepaṃ āpajjanti amarāvikkhepaṃ catūhi vatthūhi?
+\pend
+
+\begin{verse}
+Idha,\\
+\vin  bhikkhave,\\
+\vin  ekacco samaṇo vā brāhmaṇo vā ‘idaṃ kusalan’ti yathābhūtaṃ nappajānāti,\\
+\vin  ‘idaṃ akusalan’ti yathābhūtaṃ nappajānāti.
+
+\end{verse}
+\pstart
+Tassa evaṃ hoti:
+\pend
+
+\pstart
+‘ahaṃ kho “idaṃ kusalan”ti yathābhūtaṃ nappajānāmi, “idaṃ akusalan”ti yathābhūtaṃ nappajānāmi.
+\pend
+
+\begin{verse}
+Ahañce kho pana “idaṃ kusalan”ti yathābhūtaṃ appajānanto,\\
+\vin  “idaṃ akusalan”ti yathābhūtaṃ appajānanto,\\
+\vin  “idaṃ kusalan”ti vā byākareyyaṃ,\\
+\vin  “idaṃ akusalan”ti vā byākareyyaṃ,\\
+\vin  taṃ mamassa musā.
+
+Yaṃ mamassa musā,\\
+\vin  so mamassa vighāto.
+
+\end{verse}
+\pstart
+Yo mamassa vighāto so mamassa antarāyo’ti.
+\pend
+
+\pstart
+Iti so musāvādabhayā musāvādaparijegucchā nevidaṃ kusalanti byākaroti, na panidaṃ akusalanti byākaroti, tattha tattha pañhaṃ puṭṭho samāno vācāvikkhepaṃ āpajjati amarāvikkhepaṃ:
+\pend
+
+\begin{verse}
+‘evantipi me no\\
+ tathātipi me no\\
+ aññathātipi me no\\
+ notipi me no\\
+ no notipi me no’ti.
+
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  paṭhamaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā amarāvikkhepikā tattha tattha pañhaṃ puṭṭhā samānā vācāvikkhepaṃ āpajjanti amarāvikkhepaṃ.
+
+\end{verse}
+\pstart
+Dutiye ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha amarāvikkhepikā tattha tattha pañhaṃ puṭṭhā samānā vācāvikkhepaṃ āpajjanti amarāvikkhepaṃ?
+\pend
+
+\begin{verse}
+Idha,\\
+\vin  bhikkhave,\\
+\vin  ekacco samaṇo vā brāhmaṇo vā ‘idaṃ kusalan’ti yathābhūtaṃ nappajānāti,\\
+\vin  ‘idaṃ akusalan’ti yathābhūtaṃ nappajānāti.
+
+\end{verse}
+\pstart
+Tassa evaṃ hoti:
+\pend
+
+\pstart
+‘ahaṃ kho “idaṃ kusalan”ti yathābhūtaṃ nappajānāmi, “idaṃ akusalan”ti yathābhūtaṃ nappajānāmi.
+\pend
+
+\pstart
+Ahañce kho pana “idaṃ kusalan”ti yathābhūtaṃ appajānanto, “idaṃ akusalan”ti yathābhūtaṃ appajānanto, “idaṃ kusalan”ti vā byākareyyaṃ, “idaṃ akusalan”ti vā byākareyyaṃ, tattha me assa chando vā rāgo vā doso vā paṭigho vā.
+\pend
+
+\pstart
+Yattha me assa chando vā rāgo vā doso vā paṭigho vā, taṃ mamassa upādānaṃ.
+\pend
+
+\begin{verse}
+Yaṃ mamassa upādānaṃ,\\
+\vin  so mamassa vighāto.
+
+Yo mamassa vighāto,\\
+\vin  so mamassa antarāyo’ti.
+
+\end{verse}
+\pstart
+Iti so upādānabhayā upādānaparijegucchā nevidaṃ kusalanti byākaroti, na panidaṃ akusalanti byākaroti, tattha tattha pañhaṃ puṭṭho samāno vācāvikkhepaṃ āpajjati amarāvikkhepaṃ:
+\pend
+
+\begin{verse}
+‘evantipi me no\\
+ tathātipi me no\\
+ aññathātipi me no\\
+ notipi me no\\
+ no notipi me no’ti.
+
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  dutiyaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā amarāvikkhepikā tattha tattha pañhaṃ puṭṭhā samānā vācāvikkhepaṃ āpajjanti amarāvikkhepaṃ.
+
+\end{verse}
+\pstart
+Tatiye ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha amarāvikkhepikā tattha tattha pañhaṃ puṭṭhā samānā vācāvikkhepaṃ āpajjanti amarāvikkhepaṃ?
+\pend
+
+\begin{verse}
+Idha,\\
+\vin  bhikkhave,\\
+\vin  ekacco samaṇo vā brāhmaṇo vā ‘idaṃ kusalan’ti yathābhūtaṃ nappajānāti,\\
+\vin  ‘idaṃ akusalan’ti yathābhūtaṃ nappajānāti.
+
+\end{verse}
+\pstart
+Tassa evaṃ hoti:
+\pend
+
+\pstart
+‘ahaṃ kho “idaṃ kusalan”ti yathābhūtaṃ nappajānāmi, “idaṃ akusalan”ti yathābhūtaṃ nappajānāmi.
+\pend
+
+\pstart
+Ahañce kho pana “idaṃ kusalan”ti yathābhūtaṃ appajānanto “idaṃ akusalan”ti yathābhūtaṃ appajānanto “idaṃ kusalan”ti vā byākareyyaṃ, “idaṃ akusalan”ti vā byākareyyaṃ;
+\pend
+
+\pstart
+santi hi kho samaṇabrāhmaṇā paṇḍitā nipuṇā kataparappavādā vālavedhirūpā, te bhindantā maññe caranti paññāgatena diṭṭhigatāni,
+\pend
+
+\pstart
+te maṃ tattha samanuyuñjeyyuṃ samanugāheyyuṃ samanubhāseyyuṃ.
+\pend
+
+\pstart
+Ye maṃ tattha samanuyuñjeyyuṃ samanugāheyyuṃ samanubhāseyyuṃ, tesāhaṃ na sampāyeyyaṃ.
+\pend
+
+\begin{verse}
+Yesāhaṃ na sampāyeyyaṃ,\\
+\vin  so mamassa vighāto.
+
+Yo mamassa vighāto,\\
+\vin  so mamassa antarāyo’ti.
+
+\end{verse}
+\pstart
+Iti so anuyogabhayā anuyogaparijegucchā nevidaṃ kusalanti byākaroti, na panidaṃ akusalanti byākaroti, tattha tattha pañhaṃ puṭṭho samāno vācāvikkhepaṃ āpajjati amarāvikkhepaṃ:
+\pend
+
+\begin{verse}
+‘evantipi me no\\
+ tathātipi me no\\
+ aññathātipi me no\\
+ notipi me no\\
+ no notipi me no’ti.
+
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  tatiyaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā amarāvikkhepikā tattha tattha pañhaṃ puṭṭhā samānā vācāvikkhepaṃ āpajjanti amarāvikkhepaṃ.
+
+\end{verse}
+\pstart
+Catutthe ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha amarāvikkhepikā tattha tattha pañhaṃ puṭṭhā samānā vācāvikkhepaṃ āpajjanti amarāvikkhepaṃ?
+\pend
+
+\begin{verse}
+Idha,\\
+\vin  bhikkhave,\\
+\vin  ekacco samaṇo vā brāhmaṇo vā mando hoti momūho.
+
+\end{verse}
+\pstart
+So mandattā momūhattā tattha tattha pañhaṃ puṭṭho samāno vācāvikkhepaṃ āpajjati amarāvikkhepaṃ:
+\pend
+
+\pstart
+‘atthi paro loko’ti iti ce maṃ pucchasi, ‘atthi paro loko’ti iti ce me assa, ‘atthi paro loko’ti iti te naṃ byākareyyaṃ,
+\pend
+
+\begin{verse}
+‘evantipi me no,\\
+\vin  tathātipi me no,\\
+\vin  aññathātipi me no,\\
+\vin  notipi me no,\\
+\vin  no notipi me no’ti.
+
+\end{verse}
+\pstart
+‘Natthi paro loko …pe…
+\pend
+
+\pstart
+‘atthi ca natthi ca paro loko …pe…
+\pend
+
+\pstart
+‘nevatthi na natthi paro loko …pe…
+\pend
+
+\pstart
+‘atthi sattā opapātikā …pe…
+\pend
+
+\pstart
+‘natthi sattā opapātikā …pe…
+\pend
+
+\pstart
+‘atthi ca natthi ca sattā opapātikā …pe…
+\pend
+
+\pstart
+‘nevatthi na natthi sattā opapātikā …pe…
+\pend
+
+\pstart
+‘atthi sukatadukkaṭānaṃ kammānaṃ phalaṃ vipāko …pe…
+\pend
+
+\pstart
+‘natthi sukatadukkaṭānaṃ kammānaṃ phalaṃ vipāko …pe…
+\pend
+
+\pstart
+‘atthi ca natthi ca sukatadukkaṭānaṃ kammānaṃ phalaṃ vipāko …pe…
+\pend
+
+\pstart
+‘nevatthi na natthi sukatadukkaṭānaṃ kammānaṃ phalaṃ vipāko …pe…
+\pend
+
+\pstart
+‘hoti tathāgato paraṃ maraṇā …pe…
+\pend
+
+\pstart
+‘na hoti tathāgato paraṃ maraṇā …pe…
+\pend
+
+\pstart
+‘hoti ca na ca hoti tathāgato paraṃ maraṇā …pe…
+\pend
+
+\pstart
+‘neva hoti na na hoti tathāgato paraṃ maraṇā’ti iti ce maṃ pucchasi, ‘neva hoti na na hoti tathāgato paraṃ maraṇā’ti iti ce me assa, ‘neva hoti na na hoti tathāgato paraṃ maraṇā’ti iti te naṃ byākareyyaṃ,
+\pend
+
+\begin{verse}
+‘evantipi me no,\\
+\vin  tathātipi me no,\\
+\vin  aññathātipi me no,\\
+\vin  notipi me no,\\
+\vin  no notipi me no’ti.
+
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  catutthaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā amarāvikkhepikā tattha tattha pañhaṃ puṭṭhā samānā vācāvikkhepaṃ āpajjanti amarāvikkhepaṃ.
+
+\end{verse}
+\pstart
+Imehi kho te, bhikkhave, samaṇabrāhmaṇā amarāvikkhepikā tattha tattha pañhaṃ puṭṭhā samānā vācāvikkhepaṃ āpajjanti amarāvikkhepaṃ catūhi vatthūhi.
+\pend
+
+\begin{verse}
+Ye hi keci,\\
+\vin  bhikkhave,\\
+\vin  samaṇā vā brāhmaṇā vā amarāvikkhepikā tattha tattha pañhaṃ puṭṭhā samānā vācāvikkhepaṃ āpajjanti amarāvikkhepaṃ,\\
+\vin  sabbe te imeheva catūhi vatthūhi,\\
+\vin  etesaṃ vā aññatarena,\\
+\vin  natthi ito bahiddhā …
+
+\end{verse}
+\pstart
+pe…
+\pend
+
+\pstart
+yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ.
+\pend
+
+\pstart
+3.1.5. Adhiccasamuppannavāda
+\pend
+
+\begin{verse}
+Santi,\\
+\vin  bhikkhave,\\
+\vin  eke samaṇabrāhmaṇā adhiccasamuppannikā adhiccasamuppannaṃ attānañca lokañca paññapenti dvīhi vatthūhi.
+
+\end{verse}
+\pstart
+Te ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha adhiccasamuppannikā adhiccasamuppannaṃ attānañca lokañca paññapenti dvīhi vatthūhi?
+\pend
+
+\begin{verse}
+Santi,\\
+\vin  bhikkhave,\\
+\vin  asaññasattā nāma devā.
+
+\end{verse}
+\pstart
+Saññuppādā ca pana te devā tamhā kāyā cavanti.
+\pend
+
+\begin{verse}
+Ṭhānaṃ kho panetaṃ,\\
+\vin  bhikkhave,\\
+\vin  vijjati,\\
+\vin  yaṃ aññataro satto tamhā kāyā cavitvā itthattaṃ āgacchati.
+
+\end{verse}
+\pstart
+Itthattaṃ āgato samāno agārasmā anagāriyaṃ pabbajati.
+\pend
+
+\pstart
+Agārasmā anagāriyaṃ pabbajito samāno ātappamanvāya padhānamanvāya anuyogamanvāya appamādamanvāya sammāmanasikāramanvāya tathārūpaṃ cetosamādhiṃ phusati, yathāsamāhite citte saññuppādaṃ anussarati, tato paraṃ nānussarati.
+\pend
+
+\pstart
+So evamāha:
+\pend
+
+\pstart
+‘adhiccasamuppanno attā ca loko ca.
+\pend
+
+\pstart
+Taṃ kissa hetu?
+\pend
+
+\pstart
+Ahañhi pubbe nāhosiṃ, somhi etarahi ahutvā santatāya pariṇato’ti.
+\pend
+
+\begin{verse}
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  paṭhamaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā adhiccasamuppannikā adhiccasamuppannaṃ attānañca lokañca paññapenti.
+
+\end{verse}
+\pstart
+Dutiye ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha adhiccasamuppannikā adhiccasamuppannaṃ attānañca lokañca paññapenti?
+\pend
+
+\begin{verse}
+Idha,\\
+\vin  bhikkhave,\\
+\vin  ekacco samaṇo vā brāhmaṇo vā takkī hoti vīmaṃsī.
+
+\end{verse}
+\pstart
+So takkapariyāhataṃ vīmaṃsānucaritaṃ sayampaṭibhānaṃ evamāha:
+\pend
+
+\pstart
+‘adhiccasamuppanno attā ca loko cā’ti.
+\pend
+
+\begin{verse}
+Idaṃ,\\
+\vin  bhikkhave,\\
+\vin  dutiyaṃ ṭhānaṃ,\\
+\vin  yaṃ āgamma yaṃ ārabbha eke samaṇabrāhmaṇā adhiccasamuppannikā adhiccasamuppannaṃ attānañca lokañca paññapenti.
+
+Imehi kho te,\\
+\vin  bhikkhave,\\
+\vin  samaṇabrāhmaṇā adhiccasamuppannikā adhiccasamuppannaṃ attānañca lokañca paññapenti dvīhi vatthūhi.
+
+Ye hi keci,\\
+\vin  bhikkhave,\\
+\vin  samaṇā vā brāhmaṇā vā adhiccasamuppannikā adhiccasamuppannaṃ attānañca lokañca paññapenti,\\
+\vin  sabbe te imeheva dvīhi vatthūhi,\\
+\vin  etesaṃ vā aññatarena,\\
+\vin  natthi ito bahiddhā …
+
+\end{verse}
+\pstart
+pe…
+\pend
+
+\pstart
+yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ.
+\pend
+
+\pstart
+Imehi kho te, bhikkhave, samaṇabrāhmaṇā pubbantakappikā pubbantānudiṭṭhino pubbantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti aṭṭhārasahi vatthūhi.
+\pend
+
+\begin{verse}
+Ye hi keci,\\
+\vin  bhikkhave,\\
+\vin  samaṇā vā brāhmaṇā vā pubbantakappikā pubbantānudiṭṭhino pubbantamārabbha anekavihitāni adhimuttipadāni abhivadanti,\\
+\vin  sabbe te imeheva aṭṭhārasahi vatthūhi,\\
+\vin  etesaṃ vā aññatarena,\\
+\vin  natthi ito bahiddhā.
+
+Tayidaṃ,\\
+\vin  bhikkhave,\\
+\vin  tathāgato pajānāti:
+
+\end{verse}
+\pstart
+‘ime diṭṭhiṭṭhānā evaṅgahitā evaṃparāmaṭṭhā evaṅgatikā bhavanti evaṃabhisamparāyā’ti.
+\pend
+
+\begin{verse}
+Tañca tathāgato pajānāti,\\
+\vin  tato ca uttaritaraṃ pajānāti,\\
+\vin  tañca pajānanaṃ na parāmasati,\\
+\vin  aparāmasato cassa paccattaññeva nibbuti viditā.
+
+Vedanānaṃ samudayañca atthaṅgamañca assādañca ādīnavañca nissaraṇañca yathābhūtaṃ viditvā anupādāvimutto,\\
+\vin  bhikkhave,\\
+\vin  tathāgato.
+
+Ime kho te,\\
+\vin  bhikkhave,\\
+\vin  dhammā gambhīrā duddasā duranubodhā santā paṇītā atakkāvacarā nipuṇā paṇḍitavedanīyā,\\
+\vin  ye tathāgato sayaṃ abhiññā sacchikatvā pavedeti,\\
+\vin  yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ.
+
+\end{verse}
+\pstart
+Dutiyabhāṇavāro.
+\pend
+
+\pstart
+3.2. Aparantakappika
+\pend
+
+\begin{verse}
+Santi,\\
+\vin  bhikkhave,\\
+\vin  eke samaṇabrāhmaṇā aparantakappikā aparantānudiṭṭhino,\\
+\vin  aparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti catucattārīsāya vatthūhi.
+
+\end{verse}
+\pstart
+Te ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha aparantakappikā aparantānudiṭṭhino aparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti catucattārīsāya vatthūhi?
+\pend
+
+\pstart
+3.2.1. Saññīvāda
+\pend
+
+\begin{verse}
+Santi,\\
+\vin  bhikkhave,\\
+\vin  eke samaṇabrāhmaṇā uddhamāghātanikā saññīvādā uddhamāghātanaṃ saññiṃ attānaṃ paññapenti soḷasahi vatthūhi.
+
+\end{verse}
+\pstart
+Te ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha uddhamāghātanikā saññīvādā uddhamāghātanaṃ saññiṃ attānaṃ paññapenti soḷasahi vatthūhi?
+\pend
+
+\pstart
+‘Rūpī attā hoti arogo paraṃ maraṇā saññī’ti naṃ paññapenti.
+\pend
+
+\pstart
+‘Arūpī attā hoti arogo paraṃ maraṇā saññī’ti naṃ paññapenti.
+\pend
+
+\pstart
+‘Rūpī ca arūpī ca attā hoti …pe….
+\pend
+
+\pstart
+‘Nevarūpī nārūpī attā hoti ….
+\pend
+
+\pstart
+‘Antavā attā hoti ….
+\pend
+
+\pstart
+‘Anantavā attā hoti ….
+\pend
+
+\pstart
+‘Antavā ca anantavā ca attā hoti ….
+\pend
+
+\pstart
+‘Nevantavā nānantavā attā hoti ….
+\pend
+
+\pstart
+‘Ekattasaññī attā hoti ….
+\pend
+
+\pstart
+‘Nānattasaññī attā hoti ….
+\pend
+
+\pstart
+‘Parittasaññī attā hoti ….
+\pend
+
+\pstart
+‘Appamāṇasaññī attā hoti ….
+\pend
+
+\pstart
+‘Ekantasukhī attā hoti ….
+\pend
+
+\pstart
+‘Ekantadukkhī attā hoti ….
+\pend
+
+\pstart
+‘Sukhadukkhī attā hoti ….
+\pend
+
+\pstart
+‘Adukkhamasukhī attā hoti arogo paraṃ maraṇā saññī’ti naṃ paññapenti.
+\pend
+
+\begin{verse}
+Imehi kho te,\\
+\vin  bhikkhave,\\
+\vin  samaṇabrāhmaṇā uddhamāghātanikā saññīvādā uddhamāghātanaṃ saññiṃ attānaṃ paññapenti soḷasahi vatthūhi.
+
+Ye hi keci,\\
+\vin  bhikkhave,\\
+\vin  samaṇā vā brāhmaṇā vā uddhamāghātanikā saññīvādā uddhamāghātanaṃ saññiṃ attānaṃ paññapenti,\\
+\vin  sabbe te imeheva soḷasahi vatthūhi,\\
+\vin  etesaṃ vā aññatarena,\\
+\vin  natthi ito bahiddhā …
+
+\end{verse}
+\pstart
+pe…
+\pend
+
+\pstart
+yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ.
+\pend
+
+\pstart
+3.2.2. Asaññīvāda
+\pend
+
+\begin{verse}
+Santi,\\
+\vin  bhikkhave,\\
+\vin  eke samaṇabrāhmaṇā uddhamāghātanikā asaññīvādā uddhamāghātanaṃ asaññiṃ attānaṃ paññapenti aṭṭhahi vatthūhi.
+
+\end{verse}
+\pstart
+Te ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha uddhamāghātanikā asaññīvādā uddhamāghātanaṃ asaññiṃ attānaṃ paññapenti aṭṭhahi vatthūhi?
+\pend
+
+\pstart
+‘Rūpī attā hoti arogo paraṃ maraṇā asaññī’ti naṃ paññapenti.
+\pend
+
+\pstart
+‘Arūpī attā hoti arogo paraṃ maraṇā asaññī’ti naṃ paññapenti.
+\pend
+
+\pstart
+‘Rūpī ca arūpī ca attā hoti …pe….
+\pend
+
+\pstart
+‘Nevarūpī nārūpī attā hoti ….
+\pend
+
+\pstart
+‘Antavā attā hoti ….
+\pend
+
+\pstart
+‘Anantavā attā hoti ….
+\pend
+
+\pstart
+‘Antavā ca anantavā ca attā hoti ….
+\pend
+
+\pstart
+‘Nevantavā nānantavā attā hoti arogo paraṃ maraṇā asaññī’ti naṃ paññapenti.
+\pend
+
+\begin{verse}
+Imehi kho te,\\
+\vin  bhikkhave,\\
+\vin  samaṇabrāhmaṇā uddhamāghātanikā asaññīvādā uddhamāghātanaṃ asaññiṃ attānaṃ paññapenti aṭṭhahi vatthūhi.
+
+Ye hi keci,\\
+\vin  bhikkhave,\\
+\vin  samaṇā vā brāhmaṇā vā uddhamāghātanikā asaññīvādā uddhamāghātanaṃ asaññiṃ attānaṃ paññapenti,\\
+\vin  sabbe te imeheva aṭṭhahi vatthūhi,\\
+\vin  etesaṃ vā aññatarena,\\
+\vin  natthi ito bahiddhā …
+
+\end{verse}
+\pstart
+pe…
+\pend
+
+\pstart
+yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ.
+\pend
+
+\pstart
+3.2.3. Nevasaññīnāsaññīvāda
+\pend
+
+\begin{verse}
+Santi,\\
+\vin  bhikkhave,\\
+\vin  eke samaṇabrāhmaṇā uddhamāghātanikā nevasaññīnāsaññīvādā,\\
+\vin  uddhamāghātanaṃ nevasaññīnāsaññiṃ attānaṃ paññapenti aṭṭhahi vatthūhi.
+
+\end{verse}
+\pstart
+Te ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha uddhamāghātanikā nevasaññīnāsaññīvādā uddhamāghātanaṃ nevasaññīnāsaññiṃ attānaṃ paññapenti aṭṭhahi vatthūhi?
+\pend
+
+\pstart
+‘Rūpī attā hoti arogo paraṃ maraṇā nevasaññīnāsaññī’ti naṃ paññapenti.
+\pend
+
+\pstart
+‘Arūpī attā hoti …pe….
+\pend
+
+\pstart
+‘Rūpī ca arūpī ca attā hoti ….
+\pend
+
+\pstart
+‘Nevarūpī nārūpī attā hoti ….
+\pend
+
+\pstart
+‘Antavā attā hoti ….
+\pend
+
+\pstart
+‘Anantavā attā hoti ….
+\pend
+
+\pstart
+‘Antavā ca anantavā ca attā hoti ….
+\pend
+
+\pstart
+‘Nevantavā nānantavā attā hoti arogo paraṃ maraṇā nevasaññīnāsaññī’ti naṃ paññapenti.
+\pend
+
+\begin{verse}
+Imehi kho te,\\
+\vin  bhikkhave,\\
+\vin  samaṇabrāhmaṇā uddhamāghātanikā nevasaññīnāsaññīvādā uddhamāghātanaṃ nevasaññīnāsaññiṃ attānaṃ paññapenti aṭṭhahi vatthūhi.
+
+\end{verse}
+\pstart
+Ye hi keci, bhikkhave, samaṇā vā brāhmaṇā vā uddhamāghātanikā nevasaññīnāsaññīvādā uddhamāghātanaṃ nevasaññīnāsaññiṃ attānaṃ paññapenti, sabbe te imeheva aṭṭhahi vatthūhi …
+\pend
+
+\pstart
+pe…
+\pend
+
+\pstart
+yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ.
+\pend
+
+\pstart
+3.2.4. Ucchedavāda
+\pend
+
+\begin{verse}
+Santi,\\
+\vin  bhikkhave,\\
+\vin  eke samaṇabrāhmaṇā ucchedavādā sato sattassa ucchedaṃ vināsaṃ vibhavaṃ paññapenti sattahi vatthūhi.
+
+\end{verse}
+\pstart
+Te ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha ucchedavādā sato sattassa ucchedaṃ vināsaṃ vibhavaṃ paññapenti sattahi vatthūhi?
+\pend
+
+\begin{verse}
+Idha,\\
+\vin  bhikkhave,\\
+\vin  ekacco samaṇo vā brāhmaṇo vā evaṃvādī hoti evaṃdiṭṭhi:
+
+‘yato kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā rūpī cātumahābhūtiko mātāpettikasambhavo kāyassa bhedā ucchijjati vinassati,\\
+\vin  na hoti paraṃ maraṇā,\\
+\vin  ettāvatā kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā sammā samucchinno hotī’ti.
+
+\end{verse}
+\pstart
+Ittheke sato sattassa ucchedaṃ vināsaṃ vibhavaṃ paññapenti.
+\pend
+
+\pstart
+Tamañño evamāha:
+\pend
+
+\begin{verse}
+‘atthi kho,\\
+\vin  bho,\\
+\vin  eso attā,\\
+\vin  yaṃ tvaṃ vadesi,\\
+\vin  neso natthīti vadāmi\\
+
+
+no ca kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā ettāvatā sammā samucchinno hoti.
+
+Atthi kho,\\
+\vin  bho,\\
+\vin  añño attā dibbo rūpī kāmāvacaro kabaḷīkārāhārabhakkho.
+
+\end{verse}
+\pstart
+Taṃ tvaṃ na jānāsi na passasi.
+\pend
+
+\pstart
+Tamahaṃ jānāmi passāmi.
+\pend
+
+\begin{verse}
+So kho,\\
+\vin  bho,\\
+\vin  attā yato kāyassa bhedā ucchijjati vinassati,\\
+\vin  na hoti paraṃ maraṇā,\\
+\vin  ettāvatā kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā sammā samucchinno hotī’ti.
+
+\end{verse}
+\pstart
+Ittheke sato sattassa ucchedaṃ vināsaṃ vibhavaṃ paññapenti.
+\pend
+
+\pstart
+Tamañño evamāha:
+\pend
+
+\begin{verse}
+‘atthi kho,\\
+\vin  bho,\\
+\vin  eso attā,\\
+\vin  yaṃ tvaṃ vadesi,\\
+\vin  neso natthīti vadāmi\\
+
+
+no ca kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā ettāvatā sammā samucchinno hoti.
+
+Atthi kho,\\
+\vin  bho,\\
+\vin  añño attā dibbo rūpī manomayo sabbaṅgapaccaṅgī ahīnindriyo.
+
+\end{verse}
+\pstart
+Taṃ tvaṃ na jānāsi na passasi.
+\pend
+
+\pstart
+Tamahaṃ jānāmi passāmi.
+\pend
+
+\begin{verse}
+So kho,\\
+\vin  bho,\\
+\vin  attā yato kāyassa bhedā ucchijjati vinassati,\\
+\vin  na hoti paraṃ maraṇā,\\
+\vin  ettāvatā kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā sammā samucchinno hotī’ti.
+
+\end{verse}
+\pstart
+Ittheke sato sattassa ucchedaṃ vināsaṃ vibhavaṃ paññapenti.
+\pend
+
+\pstart
+Tamañño evamāha:
+\pend
+
+\begin{verse}
+‘atthi kho,\\
+\vin  bho,\\
+\vin  eso attā,\\
+\vin  yaṃ tvaṃ vadesi,\\
+\vin  neso natthīti vadāmi\\
+
+
+no ca kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā ettāvatā sammā samucchinno hoti.
+
+\end{verse}
+\pstart
+Atthi kho, bho, añño attā sabbaso rūpasaññānaṃ samatikkamā paṭighasaññānaṃ atthaṅgamā nānattasaññānaṃ amanasikārā “ananto ākāso”ti ākāsānañcāyatanūpago.
+\pend
+
+\pstart
+Taṃ tvaṃ na jānāsi na passasi.
+\pend
+
+\pstart
+Tamahaṃ jānāmi passāmi.
+\pend
+
+\begin{verse}
+So kho,\\
+\vin  bho,\\
+\vin  attā yato kāyassa bhedā ucchijjati vinassati,\\
+\vin  na hoti paraṃ maraṇā,\\
+\vin  ettāvatā kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā sammā samucchinno hotī’ti.
+
+\end{verse}
+\pstart
+Ittheke sato sattassa ucchedaṃ vināsaṃ vibhavaṃ paññapenti.
+\pend
+
+\pstart
+Tamañño evamāha:
+\pend
+
+\begin{verse}
+‘atthi kho,\\
+\vin  bho,\\
+\vin  eso attā yaṃ tvaṃ vadesi,\\
+\vin  neso natthīti vadāmi\\
+
+
+no ca kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā ettāvatā sammā samucchinno hoti.
+
+Atthi kho,\\
+\vin  bho,\\
+\vin  añño attā sabbaso ākāsānañcāyatanaṃ samatikkamma “anantaṃ viññāṇan”ti viññāṇañcāyatanūpago.
+
+\end{verse}
+\pstart
+Taṃ tvaṃ na jānāsi na passasi.
+\pend
+
+\pstart
+Tamahaṃ jānāmi passāmi.
+\pend
+
+\begin{verse}
+So kho,\\
+\vin  bho,\\
+\vin  attā yato kāyassa bhedā ucchijjati vinassati,\\
+\vin  na hoti paraṃ maraṇā,\\
+\vin  ettāvatā kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā sammā samucchinno hotī’ti.
+
+\end{verse}
+\pstart
+Ittheke sato sattassa ucchedaṃ vināsaṃ vibhavaṃ paññapenti.
+\pend
+
+\pstart
+Tamañño evamāha:
+\pend
+
+\begin{verse}
+‘atthi kho,\\
+\vin  bho,\\
+\vin  so attā,\\
+\vin  yaṃ tvaṃ vadesi,\\
+\vin  neso natthīti vadāmi\\
+
+
+no ca kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā ettāvatā sammā samucchinno hoti.
+
+Atthi kho,\\
+\vin  bho,\\
+\vin  añño attā sabbaso viññāṇañcāyatanaṃ samatikkamma “natthi kiñcī”ti ākiñcaññāyatanūpago.
+
+\end{verse}
+\pstart
+Taṃ tvaṃ na jānāsi na passasi.
+\pend
+
+\pstart
+Tamahaṃ jānāmi passāmi.
+\pend
+
+\begin{verse}
+So kho,\\
+\vin  bho,\\
+\vin  attā yato kāyassa bhedā ucchijjati vinassati,\\
+\vin  na hoti paraṃ maraṇā,\\
+\vin  ettāvatā kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā sammā samucchinno hotī’ti.
+
+\end{verse}
+\pstart
+Ittheke sato sattassa ucchedaṃ vināsaṃ vibhavaṃ paññapenti.
+\pend
+
+\pstart
+Tamañño evamāha:
+\pend
+
+\begin{verse}
+‘atthi kho,\\
+\vin  bho,\\
+\vin  eso attā,\\
+\vin  yaṃ tvaṃ vadesi,\\
+\vin  neso natthīti vadāmi\\
+
+
+no ca kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā ettāvatā sammā samucchinno hoti.
+
+Atthi kho,\\
+\vin  bho,\\
+\vin  añño attā sabbaso ākiñcaññāyatanaṃ samatikkamma “santametaṃ paṇītametan”ti nevasaññānāsaññāyatanūpago.
+
+\end{verse}
+\pstart
+Taṃ tvaṃ na jānāsi na passasi.
+\pend
+
+\pstart
+Tamahaṃ jānāmi passāmi.
+\pend
+
+\begin{verse}
+So kho,\\
+\vin  bho,\\
+\vin  attā yato kāyassa bhedā ucchijjati vinassati,\\
+\vin  na hoti paraṃ maraṇā,\\
+\vin  ettāvatā kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā sammā samucchinno hotī’ti.
+
+\end{verse}
+\pstart
+Ittheke sato sattassa ucchedaṃ vināsaṃ vibhavaṃ paññapenti.
+\pend
+
+\pstart
+Imehi kho te, bhikkhave, samaṇabrāhmaṇā ucchedavādā sato sattassa ucchedaṃ vināsaṃ vibhavaṃ paññapenti sattahi vatthūhi.
+\pend
+
+\pstart
+Ye hi keci, bhikkhave, samaṇā vā brāhmaṇā vā ucchedavādā sato sattassa ucchedaṃ vināsaṃ vibhavaṃ paññapenti, sabbe te imeheva sattahi vatthūhi …
+\pend
+
+\pstart
+pe…
+\pend
+
+\pstart
+yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ.
+\pend
+
+\pstart
+3.2.5. Diṭṭhadhammanibbānavāda
+\pend
+
+\begin{verse}
+Santi,\\
+\vin  bhikkhave,\\
+\vin  eke samaṇabrāhmaṇā diṭṭhadhammanibbānavādā sato sattassa paramadiṭṭhadhammanibbānaṃ paññapenti pañcahi vatthūhi.
+
+\end{verse}
+\pstart
+Te ca bhonto samaṇabrāhmaṇā kimāgamma kimārabbha diṭṭhadhammanibbānavādā sato sattassa paramadiṭṭhadhammanibbānaṃ paññapenti pañcahi vatthūhi?
+\pend
+
+\begin{verse}
+Idha,\\
+\vin  bhikkhave,\\
+\vin  ekacco samaṇo vā brāhmaṇo vā evaṃvādī hoti evaṃdiṭṭhi:
+
+‘yato kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā pañcahi kāmaguṇehi samappito samaṅgībhūto paricāreti,\\
+\vin  ettāvatā kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā paramadiṭṭhadhammanibbānaṃ patto hotī’ti.
+
+\end{verse}
+\pstart
+Ittheke sato sattassa paramadiṭṭhadhammanibbānaṃ paññapenti.
+\pend
+
+\pstart
+Tamañño evamāha:
+\pend
+
+\begin{verse}
+‘atthi kho,\\
+\vin  bho,\\
+\vin  eso attā,\\
+\vin  yaṃ tvaṃ vadesi,\\
+\vin  neso natthīti vadāmi\\
+
+
+no ca kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā ettāvatā paramadiṭṭhadhammanibbānaṃ patto hoti.
+
+\end{verse}
+\pstart
+Taṃ kissa hetu?
+\pend
+
+\begin{verse}
+Kāmā hi,\\
+\vin  bho,\\
+\vin  aniccā dukkhā vipariṇāmadhammā,\\
+\vin  tesaṃ vipariṇāmaññathābhāvā uppajjanti sokaparidevadukkhadomanassupāyāsā.
+
+Yato kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā vivicceva kāmehi vivicca akusalehi dhammehi savitakkaṃ savicāraṃ vivekajaṃ pītisukhaṃ paṭhamaṃ jhānaṃ upasampajja viharati,\\
+\vin  ettāvatā kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā paramadiṭṭhadhammanibbānaṃ patto hotī’ti.
+
+\end{verse}
+\pstart
+Ittheke sato sattassa paramadiṭṭhadhammanibbānaṃ paññapenti.
+\pend
+
+\pstart
+Tamañño evamāha:
+\pend
+
+\begin{verse}
+‘atthi kho,\\
+\vin  bho,\\
+\vin  eso attā,\\
+\vin  yaṃ tvaṃ vadesi,\\
+\vin  neso natthīti vadāmi\\
+
+
+no ca kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā ettāvatā paramadiṭṭhadhammanibbānaṃ patto hoti.
+
+\end{verse}
+\pstart
+Taṃ kissa hetu?
+\pend
+
+\pstart
+Yadeva tattha vitakkitaṃ vicāritaṃ, etenetaṃ oḷārikaṃ akkhāyati.
+\pend
+
+\begin{verse}
+Yato kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā vitakkavicārānaṃ vūpasamā ajjhattaṃ sampasādanaṃ cetaso ekodibhāvaṃ avitakkaṃ avicāraṃ samādhijaṃ pītisukhaṃ dutiyaṃ jhānaṃ upasampajja viharati,\\
+\vin  ettāvatā kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā paramadiṭṭhadhammanibbānaṃ patto hotī’ti.
+
+\end{verse}
+\pstart
+Ittheke sato sattassa paramadiṭṭhadhammanibbānaṃ paññapenti.
+\pend
+
+\pstart
+Tamañño evamāha:
+\pend
+
+\begin{verse}
+‘atthi kho,\\
+\vin  bho,\\
+\vin  eso attā,\\
+\vin  yaṃ tvaṃ vadesi,\\
+\vin  neso natthīti vadāmi\\
+
+
+no ca kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā ettāvatā paramadiṭṭhadhammanibbānaṃ patto hoti.
+
+\end{verse}
+\pstart
+Taṃ kissa hetu?
+\pend
+
+\pstart
+Yadeva tattha pītigataṃ cetaso uppilāvitattaṃ, etenetaṃ oḷārikaṃ akkhāyati.
+\pend
+
+\begin{verse}
+Yato kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā pītiyā ca virāgā upekkhako ca viharati,\\
+\vin  sato ca sampajāno,\\
+\vin  sukhañca kāyena paṭisaṃvedeti,\\
+\vin  yaṃ taṃ ariyā ācikkhanti “upekkhako satimā sukhavihārī”ti,\\
+\vin  tatiyaṃ jhānaṃ upasampajja viharati,\\
+\vin  ettāvatā kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā paramadiṭṭhadhammanibbānaṃ patto hotī’ti.
+
+\end{verse}
+\pstart
+Ittheke sato sattassa paramadiṭṭhadhammanibbānaṃ paññapenti.
+\pend
+
+\pstart
+Tamañño evamāha:
+\pend
+
+\begin{verse}
+‘atthi kho,\\
+\vin  bho,\\
+\vin  eso attā,\\
+\vin  yaṃ tvaṃ vadesi,\\
+\vin  neso natthīti vadāmi\\
+
+
+no ca kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā ettāvatā paramadiṭṭhadhammanibbānaṃ patto hoti.
+
+\end{verse}
+\pstart
+Taṃ kissa hetu?
+\pend
+
+\pstart
+Yadeva tattha sukhamiti cetaso ābhogo, etenetaṃ oḷārikaṃ akkhāyati.
+\pend
+
+\begin{verse}
+Yato kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā sukhassa ca pahānā dukkhassa ca pahānā pubbeva somanassadomanassānaṃ atthaṅgamā adukkhamasukhaṃ upekkhāsatipārisuddhiṃ catutthaṃ jhānaṃ upasampajja viharati,\\
+\vin  ettāvatā kho,\\
+\vin  bho,\\
+\vin  ayaṃ attā paramadiṭṭhadhammanibbānaṃ patto hotī’ti.
+
+\end{verse}
+\pstart
+Ittheke sato sattassa paramadiṭṭhadhammanibbānaṃ paññapenti.
+\pend
+
+\begin{verse}
+Imehi kho te,\\
+\vin  bhikkhave,\\
+\vin  samaṇabrāhmaṇā diṭṭhadhammanibbānavādā sato sattassa paramadiṭṭhadhammanibbānaṃ paññapenti pañcahi vatthūhi.
+
+Ye hi keci,\\
+\vin  bhikkhave,\\
+\vin  samaṇā vā brāhmaṇā vā diṭṭhadhammanibbānavādā sato sattassa paramadiṭṭhadhammanibbānaṃ paññapenti,\\
+\vin  sabbe te imeheva pañcahi vatthūhi …
+
+\end{verse}
+\pstart
+pe…
+\pend
+
+\pstart
+yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ.
+\pend
+
+\pstart
+Imehi kho te, bhikkhave, samaṇabrāhmaṇā aparantakappikā aparantānudiṭṭhino aparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti catucattārīsāya vatthūhi.
+\pend
+
+\pstart
+Ye hi keci, bhikkhave, samaṇā vā brāhmaṇā vā aparantakappikā aparantānudiṭṭhino aparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti, sabbe te imeheva catucattārīsāya vatthūhi …
+\pend
+
+\pstart
+pe…
+\pend
+
+\pstart
+yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ.
+\pend
+
+\pstart
+Imehi kho te, bhikkhave, samaṇabrāhmaṇā pubbantakappikā ca aparantakappikā ca pubbantāparantakappikā ca pubbantāparantānudiṭṭhino pubbantāparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti dvāsaṭṭhiyā vatthūhi.
+\pend
+
+\begin{verse}
+Ye hi keci,\\
+\vin  bhikkhave,\\
+\vin  samaṇā vā brāhmaṇā vā pubbantakappikā vā aparantakappikā vā pubbantāparantakappikā vā pubbantāparantānudiṭṭhino pubbantāparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti,\\
+\vin  sabbe te imeheva dvāsaṭṭhiyā vatthūhi,\\
+\vin  etesaṃ vā aññatarena\\
+ natthi ito bahiddhā.
+
+Tayidaṃ,\\
+\vin  bhikkhave,\\
+\vin  tathāgato pajānāti:
+
+\end{verse}
+\pstart
+‘ime diṭṭhiṭṭhānā evaṅgahitā evaṃparāmaṭṭhā evaṅgatikā bhavanti evaṃabhisamparāyā’ti.
+\pend
+
+\begin{verse}
+Tañca tathāgato pajānāti,\\
+\vin  tato ca uttaritaraṃ pajānāti,\\
+\vin  tañca pajānanaṃ na parāmasati,\\
+\vin  aparāmasato cassa paccattaññeva nibbuti viditā.
+
+Vedanānaṃ samudayañca atthaṅgamañca assādañca ādīnavañca nissaraṇañca yathābhūtaṃ viditvā anupādāvimutto,\\
+\vin  bhikkhave,\\
+\vin  tathāgato.
+
+Ime kho te,\\
+\vin  bhikkhave,\\
+\vin  dhammā gambhīrā duddasā duranubodhā santā paṇītā atakkāvacarā nipuṇā paṇḍitavedanīyā,\\
+\vin  ye tathāgato sayaṃ abhiññā sacchikatvā pavedeti,\\
+\vin  yehi tathāgatassa yathābhuccaṃ vaṇṇaṃ sammā vadamānā vadeyyuṃ.
+
+\end{verse}
+\pstart
+4. Attālokapaññattivatthu
+\pend
+
+\pstart
+4.1. Paritassitavipphanditavāra
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā sassatavādā sassataṃ attānañca lokañca paññapenti catūhi vatthūhi, tadapi tesaṃ bhavataṃ samaṇabrāhmaṇānaṃ ajānataṃ apassataṃ vedayitaṃ taṇhāgatānaṃ paritassitavipphanditameva.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā ekaccasassatikā ekaccaasassatikā ekaccaṃ sassataṃ ekaccaṃ asassataṃ attānañca lokañca paññapenti catūhi vatthūhi, tadapi tesaṃ bhavataṃ samaṇabrāhmaṇānaṃ ajānataṃ apassataṃ vedayitaṃ taṇhāgatānaṃ paritassitavipphanditameva.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā antānantikā antānantaṃ lokassa paññapenti catūhi vatthūhi, tadapi tesaṃ bhavataṃ samaṇabrāhmaṇānaṃ ajānataṃ apassataṃ vedayitaṃ taṇhāgatānaṃ paritassitavipphanditameva.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā amarāvikkhepikā tattha tattha pañhaṃ puṭṭhā samānā vācāvikkhepaṃ āpajjanti amarāvikkhepaṃ catūhi vatthūhi, tadapi tesaṃ bhavataṃ samaṇabrāhmaṇānaṃ ajānataṃ apassataṃ vedayitaṃ taṇhāgatānaṃ paritassitavipphanditameva.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā adhiccasamuppannikā adhiccasamuppannaṃ attānañca lokañca paññapenti dvīhi vatthūhi, tadapi tesaṃ bhavataṃ samaṇabrāhmaṇānaṃ ajānataṃ apassataṃ vedayitaṃ taṇhāgatānaṃ paritassitavipphanditameva.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā pubbantakappikā pubbantānudiṭṭhino pubbantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti aṭṭhārasahi vatthūhi, tadapi tesaṃ bhavataṃ samaṇabrāhmaṇānaṃ ajānataṃ apassataṃ vedayitaṃ taṇhāgatānaṃ paritassitavipphanditameva.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā uddhamāghātanikā saññīvādā uddhamāghātanaṃ saññiṃ attānaṃ paññapenti soḷasahi vatthūhi, tadapi tesaṃ bhavataṃ samaṇabrāhmaṇānaṃ ajānataṃ apassataṃ vedayitaṃ taṇhāgatānaṃ paritassitavipphanditameva.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā uddhamāghātanikā asaññīvādā uddhamāghātanaṃ asaññiṃ attānaṃ paññapenti aṭṭhahi vatthūhi, tadapi tesaṃ bhavataṃ samaṇabrāhmaṇānaṃ ajānataṃ apassataṃ vedayitaṃ taṇhāgatānaṃ paritassitavipphanditameva.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā uddhamāghātanikā nevasaññīnāsaññīvādā uddhamāghātanaṃ nevasaññīnāsaññiṃ attānaṃ paññapenti aṭṭhahi vatthūhi, tadapi tesaṃ bhavataṃ samaṇabrāhmaṇānaṃ ajānataṃ apassataṃ vedayitaṃ taṇhāgatānaṃ paritassitavipphanditameva.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā ucchedavādā sato sattassa ucchedaṃ vināsaṃ vibhavaṃ paññapenti sattahi vatthūhi, tadapi tesaṃ bhavataṃ samaṇabrāhmaṇānaṃ ajānataṃ apassataṃ vedayitaṃ taṇhāgatānaṃ paritassitavipphanditameva.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā diṭṭhadhammanibbānavādā sato sattassa paramadiṭṭhadhammanibbānaṃ paññapenti pañcahi vatthūhi, tadapi tesaṃ bhavataṃ samaṇabrāhmaṇānaṃ ajānataṃ apassataṃ vedayitaṃ taṇhāgatānaṃ paritassitavipphanditameva.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā aparantakappikā aparantānudiṭṭhino aparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti catucattārīsāya vatthūhi, tadapi tesaṃ bhavataṃ samaṇabrāhmaṇānaṃ ajānataṃ apassataṃ vedayitaṃ taṇhāgatānaṃ paritassitavipphanditameva.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā pubbantakappikā ca aparantakappikā ca pubbantāparantakappikā ca pubbantāparantānudiṭṭhino pubbantāparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti dvāsaṭṭhiyā vatthūhi, tadapi tesaṃ bhavataṃ samaṇabrāhmaṇānaṃ ajānataṃ apassataṃ vedayitaṃ taṇhāgatānaṃ paritassitavipphanditameva.
+\pend
+
+\pstart
+4.2. Phassapaccayāvāra
+\pend
+
+\begin{verse}
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā sassatavādā sassataṃ attānañca lokañca paññapenti catūhi vatthūhi,\\
+\vin  tadapi phassapaccayā.
+
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā ekaccasassatikā ekaccaasassatikā ekaccaṃ sassataṃ ekaccaṃ asassataṃ attānañca lokañca paññapenti catūhi vatthūhi,\\
+\vin  tadapi phassapaccayā.
+
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā antānantikā antānantaṃ lokassa paññapenti catūhi vatthūhi,\\
+\vin  tadapi phassapaccayā.
+
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā amarāvikkhepikā tattha tattha pañhaṃ puṭṭhā samānā vācāvikkhepaṃ āpajjanti amarāvikkhepaṃ catūhi vatthūhi,\\
+\vin  tadapi phassapaccayā.
+
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā adhiccasamuppannikā adhiccasamuppannaṃ attānañca lokañca paññapenti dvīhi vatthūhi,\\
+\vin  tadapi phassapaccayā.
+
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā pubbantakappikā pubbantānudiṭṭhino pubbantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti aṭṭhārasahi vatthūhi,\\
+\vin  tadapi phassapaccayā.
+
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā uddhamāghātanikā saññīvādā uddhamāghātanaṃ saññiṃ attānaṃ paññapenti soḷasahi vatthūhi,\\
+\vin  tadapi phassapaccayā.
+
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā uddhamāghātanikā asaññīvādā uddhamāghātanaṃ asaññiṃ attānaṃ paññapenti aṭṭhahi vatthūhi,\\
+\vin  tadapi phassapaccayā.
+
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā uddhamāghātanikā nevasaññīnāsaññīvādā uddhamāghātanaṃ nevasaññīnāsaññiṃ attānaṃ paññapenti aṭṭhahi vatthūhi,\\
+\vin  tadapi phassapaccayā.
+
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā ucchedavādā sato sattassa ucchedaṃ vināsaṃ vibhavaṃ paññapenti sattahi vatthūhi,\\
+\vin  tadapi phassapaccayā.
+
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā diṭṭhadhammanibbānavādā sato sattassa paramadiṭṭhadhammanibbānaṃ paññapenti pañcahi vatthūhi,\\
+\vin  tadapi phassapaccayā.
+
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā aparantakappikā aparantānudiṭṭhino aparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti catucattārīsāya vatthūhi,\\
+\vin  tadapi phassapaccayā.
+
+\end{verse}
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā pubbantakappikā ca aparantakappikā ca pubbantāparantakappikā ca pubbantāparantānudiṭṭhino pubbantāparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti dvāsaṭṭhiyā vatthūhi, tadapi phassapaccayā.
+\pend
+
+\pstart
+4.3. Netaṃṭhānaṃvijjativāra
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā sassatavādā sassataṃ attānañca lokañca paññapenti catūhi vatthūhi, te vata aññatra phassā paṭisaṃvedissantīti netaṃ ṭhānaṃ vijjati.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā ekaccasassatikā ekaccaasassatikā ekaccaṃ sassataṃ ekaccaṃ asassataṃ attānañca lokañca paññapenti catūhi vatthūhi, te vata aññatra phassā paṭisaṃvedissantīti netaṃ ṭhānaṃ vijjati.
+\pend
+
+\begin{verse}
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā antānantikā antānantaṃ lokassa paññapenti catūhi vatthūhi,\\
+\vin  te vata aññatra phassā paṭisaṃvedissantīti netaṃ ṭhānaṃ vijjati.
+
+\end{verse}
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā amarāvikkhepikā tattha tattha pañhaṃ puṭṭhā samānā vācāvikkhepaṃ āpajjanti amarāvikkhepaṃ catūhi vatthūhi, te vata aññatra phassā paṭisaṃvedissantīti netaṃ ṭhānaṃ vijjati.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā adhiccasamuppannikā adhiccasamuppannaṃ attānañca lokañca paññapenti dvīhi vatthūhi, te vata aññatra phassā paṭisaṃvedissantīti netaṃ ṭhānaṃ vijjati.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā pubbantakappikā pubbantānudiṭṭhino pubbantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti aṭṭhārasahi vatthūhi, te vata aññatra phassā paṭisaṃvedissantīti netaṃ ṭhānaṃ vijjati.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā uddhamāghātanikā saññīvādā uddhamāghātanaṃ saññiṃ attānaṃ paññapenti soḷasahi vatthūhi, te vata aññatra phassā paṭisaṃvedissantīti netaṃ ṭhānaṃ vijjati.
+\pend
+
+\begin{verse}
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā uddhamāghātanikā asaññīvādā,\\
+\vin  uddhamāghātanaṃ asaññiṃ attānaṃ paññapenti aṭṭhahi vatthūhi,\\
+\vin  te vata aññatra phassā paṭisaṃvedissantīti netaṃ ṭhānaṃ vijjati.
+
+\end{verse}
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā uddhamāghātanikā nevasaññīnāsaññīvādā uddhamāghātanaṃ nevasaññīnāsaññiṃ attānaṃ paññapenti aṭṭhahi vatthūhi, te vata aññatra phassā paṭisaṃvedissantīti netaṃ ṭhānaṃ vijjati.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā ucchedavādā sato sattassa ucchedaṃ vināsaṃ vibhavaṃ paññapenti sattahi vatthūhi, te vata aññatra phassā paṭisaṃvedissantīti netaṃ ṭhānaṃ vijjati.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā diṭṭhadhammanibbānavādā sato sattassa paramadiṭṭhadhammanibbānaṃ paññapenti pañcahi vatthūhi, te vata aññatra phassā paṭisaṃvedissantīti netaṃ ṭhānaṃ vijjati.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā aparantakappikā aparantānudiṭṭhino aparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti catucattārīsāya vatthūhi, te vata aññatra phassā paṭisaṃvedissantīti netaṃ ṭhānaṃ vijjati.
+\pend
+
+\pstart
+Tatra, bhikkhave, ye te samaṇabrāhmaṇā pubbantakappikā ca aparantakappikā ca pubbantāparantakappikā ca pubbantāparantānudiṭṭhino pubbantāparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti dvāsaṭṭhiyā vatthūhi, te vata aññatra phassā paṭisaṃvedissantīti netaṃ ṭhānaṃ vijjati.
+\pend
+
+\pstart
+4.4. Diṭṭhigatikādhiṭṭhānavaṭṭakathā
+\pend
+
+\begin{verse}
+Tatra,\\
+\vin  bhikkhave,\\
+\vin  ye te samaṇabrāhmaṇā sassatavādā sassataṃ attānañca lokañca paññapenti catūhi vatthūhi,\\
+\vin  yepi te samaṇabrāhmaṇā ekaccasassatikā ekaccaasassatikā …pe…
+
+\end{verse}
+\pstart
+yepi te samaṇabrāhmaṇā antānantikā …
+\pend
+
+\pstart
+yepi te samaṇabrāhmaṇā amarāvikkhepikā …
+\pend
+
+\pstart
+yepi te samaṇabrāhmaṇā adhiccasamuppannikā …
+\pend
+
+\pstart
+yepi te samaṇabrāhmaṇā pubbantakappikā …
+\pend
+
+\pstart
+yepi te samaṇabrāhmaṇā uddhamāghātanikā saññīvādā …
+\pend
+
+\pstart
+yepi te samaṇabrāhmaṇā uddhamāghātanikā asaññīvādā …
+\pend
+
+\pstart
+yepi te samaṇabrāhmaṇā uddhamāghātanikā nevasaññīnāsaññīvādā …
+\pend
+
+\pstart
+yepi te samaṇabrāhmaṇā ucchedavādā …
+\pend
+
+\pstart
+yepi te samaṇabrāhmaṇā diṭṭhadhammanibbānavādā …
+\pend
+
+\pstart
+yepi te samaṇabrāhmaṇā aparantakappikā …
+\pend
+
+\pstart
+yepi te samaṇabrāhmaṇā pubbantakappikā ca aparantakappikā ca pubbantāparantakappikā ca pubbantāparantānudiṭṭhino pubbantāparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti dvāsaṭṭhiyā vatthūhi, sabbe te chahi phassāyatanehi phussa phussa paṭisaṃvedenti tesaṃ vedanāpaccayā taṇhā, taṇhāpaccayā upādānaṃ, upādānapaccayā bhavo, bhavapaccayā jāti, jātipaccayā jarāmaraṇaṃ sokaparidevadukkhadomanassupāyāsā sambhavanti.
+\pend
+
+\pstart
+5. Vivaṭṭakathādi
+\pend
+
+\begin{verse}
+Yato kho,\\
+\vin  bhikkhave,\\
+\vin  bhikkhu channaṃ phassāyatanānaṃ samudayañca atthaṅgamañca assādañca ādīnavañca nissaraṇañca yathābhūtaṃ pajānāti,\\
+\vin  ayaṃ imehi sabbeheva uttaritaraṃ pajānāti.
+
+\end{verse}
+\pstart
+Ye hi keci, bhikkhave, samaṇā vā brāhmaṇā vā pubbantakappikā vā aparantakappikā vā pubbantāparantakappikā vā pubbantāparantānudiṭṭhino pubbantāparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti, sabbe te imeheva dvāsaṭṭhiyā vatthūhi antojālīkatā, ettha sitāva ummujjamānā ummujjanti, ettha pariyāpannā antojālīkatāva ummujjamānā ummujjanti.
+\pend
+
+\begin{verse}
+Seyyathāpi,\\
+\vin  bhikkhave,\\
+\vin  dakkho kevaṭṭo vā kevaṭṭantevāsī vā sukhumacchikena jālena parittaṃ udakadahaṃ otthareyya. Tassa evamassa: ‘ye kho keci imasmiṃ udakadahe oḷārikā pāṇā,\\
+\vin  sabbe te antojālīkatā. Ettha sitāva ummujjamānā ummujjanti\\
+ ettha pariyāpannā antojālīkatāva ummujjamānā ummujjantī’ti\\
+
+
+\end{verse}
+\pstart
+evameva kho, bhikkhave, ye hi keci samaṇā vā brāhmaṇā vā pubbantakappikā vā aparantakappikā vā pubbantāparantakappikā vā pubbantāparantānudiṭṭhino pubbantāparantaṃ ārabbha anekavihitāni adhimuttipadāni abhivadanti, sabbe te imeheva dvāsaṭṭhiyā vatthūhi antojālīkatā ettha sitāva ummujjamānā ummujjanti, ettha pariyāpannā antojālīkatāva ummujjamānā ummujjanti.
+\pend
+
+\begin{verse}
+Ucchinnabhavanettiko,\\
+\vin  bhikkhave,\\
+\vin  tathāgatassa kāyo tiṭṭhati.
+
+\end{verse}
+\pstart
+Yāvassa kāyo ṭhassati, tāva naṃ dakkhanti devamanussā.
+\pend
+
+\pstart
+Kāyassa bhedā uddhaṃ jīvitapariyādānā na naṃ dakkhanti devamanussā.
+\pend
+
+\begin{verse}
+Seyyathāpi,\\
+\vin  bhikkhave,\\
+\vin  ambapiṇḍiyā vaṇṭacchinnāya yāni kānici ambāni vaṇṭapaṭibandhāni,\\
+\vin  sabbāni tāni tadanvayāni bhavanti\\
+
+
+evameva kho,\\
+\vin  bhikkhave,\\
+\vin  ucchinnabhavanettiko tathāgatassa kāyo tiṭṭhati,\\
+\vin 
+
+yāvassa kāyo ṭhassati,\\
+\vin  tāva naṃ dakkhanti devamanussā,\\
+\vin 
+
+\end{verse}
+\pstart
+kāyassa bhedā uddhaṃ jīvitapariyādānā na naṃ dakkhanti devamanussā”ti.
+\pend
+
+\begin{verse}
+Evaṃ vutte,\\
+\vin  āyasmā ānando bhagavantaṃ etadavoca:
+
+“acchariyaṃ,\\
+\vin  bhante,\\
+\vin  abbhutaṃ,\\
+\vin  bhante,\\
+\vin  ko nāmo ayaṃ,\\
+\vin  bhante,\\
+\vin  dhammapariyāyo”ti?
+
+“Tasmātiha tvaṃ,\\
+\vin  ānanda,\\
+\vin  imaṃ dhammapariyāyaṃ atthajālantipi naṃ dhārehi,\\
+\vin  dhammajālantipi naṃ dhārehi,\\
+\vin  brahmajālantipi naṃ dhārehi,\\
+\vin  diṭṭhijālantipi naṃ dhārehi,\\
+\vin  anuttaro saṅgāmavijayotipi naṃ dhārehī”ti.
+
+\end{verse}
+\pstart
+Idamavoca bhagavā.
+\pend
+
+\pstart
+Attamanā te bhikkhū bhagavato bhāsitaṃ abhinandunti.
+\pend
+
+\pstart
+Imasmiñca pana veyyākaraṇasmiṃ bhaññamāne dasasahassī lokadhātu akampitthāti.
+\pend
+
+\pstart
+Brahmajālasuttaṃ niṭṭhitaṃ paṭhamaṃ.
+\pend
+
+\newpage
+
+\endnumbering
+\end{document}
