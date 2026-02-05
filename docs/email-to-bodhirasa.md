@@ -23,35 +23,52 @@ As part of this work, I used DPD (version 0.3.20260202) to lemmatize the entire 
 
 The results were excellent:
 
-- **Coverage: 97.5%** (123,869 of 127,032 unique words identified)
+- **Coverage: 97.7%** (124,104 of 127,032 unique words identified)
 - Sandhi decompositions: 42,441
 - Orthographic variant normalizations (-n/-m → -ṃ): 1,553
-- Metrical variant normalizations: 2,133
+- Metrical variant normalizations: 2,133+
 - DPPN proper noun matches: 21
 
 This is a testament to the comprehensiveness of DPD!
 
+### Additional Patterns We Handled
+
+Beyond DPD's built-in lookup, our lemmatizer handles several predictable patterns:
+
+| Pattern | Count | Examples |
+|---------|-------|----------|
+| Jhāna compounds | 3 | paṭhamajhāna, dutiyajhāna |
+| Chapter/story titles | 23 | haṃcivagga, sereyyavagga |
+| Apadāna titles | 144 | koraṇḍapupphiyattheraapadāna |
+| Causative absolutives | 79 | abhinivajjayitvā, avatthāpetvā |
+| Pronoun-verb fusions | 23 | dubbalohamasmi, āyāhamasmi |
+| Short pronoun variants | 3 | m→maṃ, tan→taṃ |
+
 ## Unknown Words
 
-I identified **3,235 unique word forms** that weren't found in DPD's lookup table. After filtering out English noise from source markup and analyzing the patterns, the breakdown is:
+After filtering handled patterns, **3,002 unique word forms** remain unidentified. These appear to be genuine candidates for DPD consideration.
 
-| Category | Count | Notes |
-|----------|-------|-------|
-| Potential new headwords | 2,830 | Genuine candidates for DPD |
-| Long compounds (25+ chars) | 192 | Complex dvandva/bahuvrīhi |
-| Metrical variants | 175 | Unusual verbal forms |
-| Story/section titles | 21 | vatthu, vagga endings |
-| Pronoun-verb fusions | 9 | -osmi/-amhi sandhi |
-| Jhāna compounds | 3 | paṭhamajhāna, etc. |
+### Distribution
 
-**96% of the potential new headwords (2,733 of 2,830) come from the Khuddaka Nikāya**—particularly the Jātaka, Apadāna, Milindapañha, Netti, and verse texts.
+**96% come from the Khuddaka Nikāya** (2,889 words):
+- Cūḷaniddesa/Mahāniddesa: technical commentary terms
+- Jātaka: narrative vocabulary, proper nouns
+- Apadāna: verse forms, hagiographic terms
+- Milindapañha: philosophical/debate vocabulary
+- Netti/Peṭakopadesa: hermeneutical technical terms
+
+Only 113 unknowns from DN/MN/SN/AN combined.
 
 ### Examples of Potential New Headwords
 
 From **Netti/Peṭakopadesa** (technical terms):
-- `samāropano` (36x) - appears to be a technical term
+- `samāropano` (36x) - technical term
 - `otaraṇo` (26x) - technical term
 - `vevacano` (23x) - synonym/gloss marker
+
+From **Cūḷaniddesa/Mahāniddesa**:
+- `iccā` (22x) - possibly iti+ca sandhi
+- `dakkhamāno` (8x) - verb form
 
 From **Milindapañha**:
 - `visajjanā` (16x) - answering/response
@@ -60,12 +77,12 @@ From **Milindapañha**:
 From **Jātaka/Apadāna**:
 - `yamalokikā` (11x) - relating to the realm of Yama
 - `nekāsī` (10x) - verb form
-- `haṃcivagga`, `sereyyavagga`, etc. - chapter titles
+- `varākiyā` (9x) - adjective form
 
 From **Nikāyas** (rare but interesting):
 - `tipissa` (55x in SN) - appears in specific contexts
-- `abhisamparāyañcā` (27x in AN) - compound form
 - `ayokhilaṃ` (25x across AN/KN) - iron stake
+- `osāriyamānāni` (7x in DN) - being led away
 
 ## How Can I Help?
 
@@ -73,17 +90,17 @@ I'd be happy to contribute this data to DPD if it would be useful. Before prepar
 
 1. **What format would be most helpful?** (CSV, JSON, plain text list?)
 2. **What information should I include?** (word form, suggested lemma, part of speech, location in canon?)
-3. **Should I separate the categories** (technical terms vs. verse forms vs. titles)?
-4. **Are there any categories you'd prefer I exclude?** (e.g., chapter titles, extremely long compounds)
+3. **Should I prioritize certain categories?** (high-frequency words? Nikāya words over KN?)
+4. **Are there any categories you'd prefer I exclude?** (e.g., extremely long compounds, obvious proper nouns)
 
-I can provide the words with their locations in the canon (e.g., "found in Ja 470") and, where determinable, suggested parts of speech based on morphological analysis.
+I can provide the words with their locations in the canon and, where determinable, suggested parts of speech based on morphological analysis.
 
 ## Project Details
 
 The project is open source and available at:
 https://github.com/dangerzig/pali-canon
 
-It includes ~9,200 lines of Python code for parsing, collating, and lemmatizing the texts.
+It includes ~9,400 lines of Python code for parsing, collating, and lemmatizing the texts.
 
 Thank you for creating such a valuable resource for Pāli studies. DPD has been indispensable for this work.
 
@@ -96,4 +113,4 @@ djz@shmonk.com
 
 ---
 
-*P.S. I also noticed that the jhāna compounds (`paṭhamajhāna`, `dutiyajhāna`, `tatiyajhāna`) are quite common in meditation texts but weren't found in the lookup. These might be quick additions if they're not already planned.*
+*P.S. I also noticed that the jhāna compounds (`paṭhamajhāna`, `dutiyajhāna`, `tatiyajhāna`) are quite common in meditation texts but weren't found in the lookup. We've handled them in our lemmatizer, but they might be worth adding to DPD if not already planned.*
