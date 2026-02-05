@@ -37,6 +37,23 @@ SANDHI_PARTICLES = {
     'tū': {'lemma': 'tu', 'pos': 'ind'},      # but (lengthened)
 }
 
+# Short pronoun variants (with -n/-m instead of -ṃ)
+SHORT_PRONOUN_VARIANTS = {
+    'm': {'lemma': 'ahaṃ', 'pos': 'pron'},         # accusative of ahaṃ (single letter)
+    'man': {'lemma': 'ahaṃ', 'pos': 'pron'},       # accusative of ahaṃ
+    'maṃ': {'lemma': 'ahaṃ', 'pos': 'pron'},       # accusative of ahaṃ
+    'tan': {'lemma': 'so', 'pos': 'pron'},         # accusative neuter of so
+    'taṃ': {'lemma': 'so', 'pos': 'pron'},         # accusative neuter of so
+    'yan': {'lemma': 'ya', 'pos': 'pron'},         # accusative neuter of ya
+    'yaṃ': {'lemma': 'ya', 'pos': 'pron'},         # accusative neuter of ya
+    'kin': {'lemma': 'kiṃ', 'pos': 'pron'},        # accusative of kiṃ
+    'kiṃ': {'lemma': 'kiṃ', 'pos': 'pron'},        # accusative of kiṃ
+}
+
+# Sandhi patterns ending in -ñcā (word + ṃ + ca with lengthening)
+# e.g., abhisamparāyañcā = abhisamparāyaṃ + ca
+SANDHI_NCA_PATTERN = re.compile(r'^(.+)ñcā$')
+
 # Metrical lengthening: long vowel → short vowel
 METRICAL_NORMALIZATIONS = {
     'ā': 'a',
@@ -62,6 +79,35 @@ VERB_ENDING_NORMALIZATIONS = [
     ('issāmī', 'issāmi'),  # future 1sg
     ('essāmā', 'essāma'),  # future 1pl
     ('issāmā', 'issāma'),  # future 1pl
+]
+
+# Known compound decompositions (jhāna compounds, etc.)
+KNOWN_COMPOUNDS = {
+    'paṭhamajhāna': ['paṭhama', 'jhāna'],
+    'dutiyajhāna': ['dutiya', 'jhāna'],
+    'tatiyajhāna': ['tatiya', 'jhāna'],
+    'catutthajhāna': ['catuttha', 'jhāna'],
+}
+
+# Title/chapter patterns (vagga, vatthu endings are proper nouns)
+TITLE_PATTERNS = [
+    (r'vaggo$', 'vagga'),      # chapter title (masculine nominative)
+    (r'vagga$', 'vagga'),      # chapter title (stem)
+    (r'vatthu$', 'vatthu'),    # story title
+]
+
+# Apadāna title patterns: [name]thera/therī + apadāna
+APADANA_PATTERN = re.compile(r'^(.+?)(thera|therī|therassa|therassā)(apadāna|apadānaṃ)$')
+
+# Causative/intensive verb patterns for metrical variants
+# These verbs have -ay-/-e- causative infix before -itvā/-etvā
+CAUSATIVE_ABSOLUTIVE_PATTERNS = [
+    # -ayitvā → look up base with -eti (causative)
+    (r'(.+)ayitvā$', r'\1eti'),
+    # -etvā → look up base with -eti
+    (r'(.+)etvā$', r'\1eti'),
+    # -āpetvā → look up base with -āpeti (causative)
+    (r'(.+)āpetvā$', r'\1āpeti'),
 ]
 
 
@@ -111,6 +157,12 @@ class Lemmatizer:
             "internal_metrical": 0,
             "compound_splits": 0,
             "dppn_matches": 0,
+            "known_compounds": 0,
+            "title_matches": 0,
+            "apadana_titles": 0,
+            "causative_forms": 0,
+            "short_pronouns": 0,
+            "sandhi_nca": 0,
             "unknown_words": Counter(),
             "lemma_counts": Counter(),
         }
@@ -207,6 +259,85 @@ class Lemmatizer:
                 if stem_a in self.dppn:
                     return {'lemma': stem_a, 'pos': 'name', 'category': self.dppn[stem_a]}
 
+        return None
+
+    def _try_known_compound(self, word: str) -> Optional[dict]:
+        """Check if word is a known compound (jhāna compounds, etc.)."""
+        if word in KNOWN_COMPOUNDS:
+            parts = KNOWN_COMPOUNDS[word]
+            return {
+                'sandhi': parts,
+                'components': [self._get_headword_info(p) or {'word': p} for p in parts]
+            }
+        return None
+
+    def _try_title_match(self, word: str) -> Optional[dict]:
+        """Check if word is a chapter/story title (vagga, vatthu endings)."""
+        for pattern, base_word in TITLE_PATTERNS:
+            if re.search(pattern, word):
+                # Extract the title name part
+                title_name = re.sub(pattern, '', word)
+                if title_name:
+                    return {
+                        'lemma': word,
+                        'pos': 'title',
+                        'sandhi': [title_name, base_word],
+                        'components': [
+                            {'word': title_name, 'pos': 'name'},
+                            {'lemma': base_word, 'pos': 'masc'}
+                        ]
+                    }
+        return None
+
+    def _try_apadana_title(self, word: str) -> Optional[dict]:
+        """Check if word is an Apadāna title (e.g., koraṇḍapupphiyattheraapadāna)."""
+        match = APADANA_PATTERN.match(word)
+        if match:
+            name_part = match.group(1)
+            thera_part = match.group(2)
+            apadana_part = match.group(3)
+            return {
+                'lemma': word,
+                'pos': 'title',
+                'sandhi': [name_part, thera_part, apadana_part],
+                'components': [
+                    {'word': name_part, 'pos': 'name'},
+                    {'lemma': 'thera' if 'ther' in thera_part else 'therī', 'pos': 'masc' if 'ther' in thera_part else 'fem'},
+                    {'lemma': 'apadāna', 'pos': 'nt'}
+                ]
+            }
+        return None
+
+    def _try_causative_absolutive(self, word: str) -> Optional[str]:
+        """Try to find the base verb for causative absolutive forms (-ayitvā, -etvā, -āpetvā)."""
+        for pattern, replacement in CAUSATIVE_ABSOLUTIVE_PATTERNS:
+            match = re.match(pattern, word)
+            if match:
+                # Try looking up the causative verb form
+                base_verb = re.sub(pattern, replacement, word)
+                if self._is_valid_word(base_verb):
+                    return base_verb
+                # Try without the causative marker
+                stem = match.group(1)
+                if len(stem) > 3:
+                    # Try common verb endings
+                    for ending in ['ati', 'eti', 'oti', 'āti']:
+                        if self._is_valid_word(stem + ending):
+                            return stem + ending
+        return None
+
+    def _try_short_pronoun(self, word: str) -> Optional[dict]:
+        """Check if word is a short pronoun variant (m, man, tan, etc.)."""
+        if word in SHORT_PRONOUN_VARIANTS:
+            return SHORT_PRONOUN_VARIANTS[word]
+        return None
+
+    def _try_sandhi_nca(self, word: str) -> Optional[tuple]:
+        """Check for -ñcā sandhi pattern (word + ṃ + ca with lengthening)."""
+        match = SANDHI_NCA_PATTERN.match(word)
+        if match:
+            base = match.group(1) + 'ṃ'  # Restore the niggahīta
+            return (base, 'ca', {'lemma': 'ca', 'pos': 'ind'})
         return None
 
     def _try_pronoun_verb_split(self, word: str) -> Optional[tuple]:
@@ -405,6 +536,32 @@ class Lemmatizer:
                 except (json.JSONDecodeError, TypeError):
                     pass
 
+        # Check for short pronoun variants (m, man, tan, etc.)
+        if not token.lemma and not token.sandhi:
+            short_pron = self._try_short_pronoun(word)
+            if short_pron:
+                token.lemma = short_pron['lemma']
+                token.pos = short_pron['pos']
+                self.stats["short_pronouns"] += 1
+
+        # Check for -ñcā sandhi pattern (wordṃ + ca)
+        if not token.lemma and not token.sandhi:
+            nca_split = self._try_sandhi_nca(word)
+            if nca_split:
+                base, particle, particle_info = nca_split
+                base_token = self.lookup_word(base)  # Recursive lookup
+                if base_token.lemma or base_token.sandhi:
+                    if base_token.sandhi:
+                        token.sandhi = base_token.sandhi + [particle]
+                        token.components = base_token.components + [particle_info]
+                    else:
+                        token.sandhi = [base, particle]
+                        token.components = [
+                            {'lemma': base_token.lemma, 'pos': base_token.pos},
+                            particle_info
+                        ]
+                    self.stats["sandhi_nca"] += 1
+
         # If not found in DPD, try particle splitting
         if not token.lemma and not token.sandhi:
             split = self._try_particle_split(word)
@@ -495,6 +652,45 @@ class Lemmatizer:
                                 self.stats["internal_metrical"] += 1
                     except (json.JSONDecodeError, TypeError):
                         pass
+
+        # Try known compounds (jhāna compounds, etc.)
+        if not token.lemma and not token.sandhi:
+            known = self._try_known_compound(word)
+            if known:
+                token.sandhi = known['sandhi']
+                token.components = known['components']
+                self.stats["known_compounds"] += 1
+
+        # Try title/chapter matching (vagga, vatthu endings)
+        if not token.lemma and not token.sandhi:
+            title_match = self._try_title_match(word)
+            if title_match:
+                token.lemma = title_match['lemma']
+                token.pos = title_match['pos']
+                token.sandhi = title_match.get('sandhi')
+                token.components = title_match.get('components')
+                self.stats["title_matches"] += 1
+
+        # Try Apadāna title matching
+        if not token.lemma and not token.sandhi:
+            apadana_match = self._try_apadana_title(word)
+            if apadana_match:
+                token.lemma = apadana_match['lemma']
+                token.pos = apadana_match['pos']
+                token.sandhi = apadana_match.get('sandhi')
+                token.components = apadana_match.get('components')
+                self.stats["apadana_titles"] += 1
+
+        # Try causative absolutive forms (-ayitvā, -etvā, -āpetvā)
+        if not token.lemma and not token.sandhi:
+            causative_base = self._try_causative_absolutive(word)
+            if causative_base:
+                hw_info = self._get_headword_info(causative_base)
+                if hw_info:
+                    token.lemma = hw_info.get('lemma')
+                    token.pos = 'abs'  # absolutive
+                    token.root = hw_info.get('root')
+                    self.stats["causative_forms"] += 1
 
         # Try compound splitting for long words (dvandva compounds)
         if not token.lemma and not token.sandhi and len(word) > 15:
@@ -589,6 +785,12 @@ class Lemmatizer:
             "internal_metrical": self.stats["internal_metrical"],
             "compound_splits": self.stats["compound_splits"],
             "dppn_matches": self.stats["dppn_matches"],
+            "known_compounds": self.stats["known_compounds"],
+            "title_matches": self.stats["title_matches"],
+            "apadana_titles": self.stats["apadana_titles"],
+            "causative_forms": self.stats["causative_forms"],
+            "short_pronouns": self.stats["short_pronouns"],
+            "sandhi_nca": self.stats["sandhi_nca"],
             "coverage": f"{self.stats['words_found'] / max(1, len(self.stats['unique_words'])) * 100:.1f}%",
             "top_lemmas": self.stats["lemma_counts"].most_common(100),
             "unknown_words": self.stats["unknown_words"].most_common(500),
@@ -721,6 +923,12 @@ def main():
     print(f"Verb ending norm:    {stats['verb_ending_normalizations']:,}")
     print(f"Compound splits:     {stats['compound_splits']:,}")
     print(f"DPPN matches:        {stats['dppn_matches']:,}")
+    print(f"Known compounds:     {stats['known_compounds']:,}")
+    print(f"Title matches:       {stats['title_matches']:,}")
+    print(f"Apadāna titles:      {stats['apadana_titles']:,}")
+    print(f"Causative forms:     {stats['causative_forms']:,}")
+    print(f"Short pronouns:      {stats['short_pronouns']:,}")
+    print(f"Sandhi -ñcā:         {stats['sandhi_nca']:,}")
     print(f"Coverage:            {stats['coverage']}")
     print(f"\nOutput saved to: {LEMMATIZED_DIR}")
 
