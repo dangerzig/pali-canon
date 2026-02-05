@@ -43,7 +43,7 @@
 
 \abstract{This paper describes the creation of a critical digital edition of the Pāli Canon (Tipiṭaka), the canonical scripture of Theravāda Buddhism, comprising approximately 2.7 million words across the complete canon. Building on earlier computational analyses that demonstrated the feasibility of applying text-mining techniques to Pāli texts \citep{zigmond2021,zigmond2023}, this work addresses key limitations of prior approaches by incorporating full morphological analysis through the Digital Pāli Dictionary (DPD).
 The edition uses the Pali Text Society (PTS) editions as the authoritative base text, with variant readings from the SuttaCentral Mahāsaṅgīti edition and the Chaṭṭha Saṅgāyana (VRI/CST) edition recorded in the apparatus. Where PTS contains errors---confirmed by agreement of SC and VRI against a reading not attested in the DPD---corrections are applied and documented transparently.
-The resulting dataset provides: (1) a unified reference system enabling citation by PTS volume and page, SC segment ID, or VRI section number; (2) a critical apparatus preserving all variant readings between editions; (3) full lemmatization with word-level morphological analysis achieving 97.5\% coverage; and (4) a research-ready format suitable for the computational analyses proposed in earlier work. This infrastructure enables systematic investigation of textual strata, formulaic patterns, and the relative age of canonical texts---questions of longstanding scholarly interest that have remained difficult to address without comprehensive morphological annotation.}
+The resulting dataset provides: (1) a unified reference system enabling citation by PTS volume and page, SC segment ID, or VRI section number; (2) a critical apparatus preserving all variant readings between editions; (3) full lemmatization with word-level morphological analysis achieving 97.7\% coverage; and (4) a research-ready format suitable for the computational analyses proposed in earlier work. This infrastructure enables systematic investigation of textual strata, formulaic patterns, and the relative age of canonical texts---questions of longstanding scholarly interest that have remained difficult to address without comprehensive morphological annotation.}
 
 \keywords{Pāli Canon; Tipiṭaka; critical edition; lemmatization; digital humanities; Buddhist studies; corpus linguistics}
 
@@ -102,7 +102,7 @@ What was needed, we concluded, was ``a more refined corpus'' with proper lemmati
 This paper describes the creation of a fully lemmatized critical edition of the complete Pāli Canon, with the following contributions:
 
 \begin{enumerate}
-\item \textbf{Comprehensive lemmatization} using the Digital Pāli Dictionary (DPD), achieving 97.5\% coverage across the corpus through a combination of direct lookup, sandhi decomposition, and handling of orthographic variants.
+\item \textbf{Comprehensive lemmatization} using the Digital Pāli Dictionary (DPD), achieving 97.7\% coverage across the corpus through a combination of direct lookup, sandhi decomposition, handling of orthographic variants, and specialized patterns for titles, compounds, and metrical forms.
 
 \item \textbf{Three-witness critical apparatus} collating the PTS, SuttaCentral, and VRI editions, with systematic classification of differences as orthographic variants, textual errors, or genuine readings.
 
@@ -336,33 +336,37 @@ The DPD deconstructor provides pre-analyzed sandhi splits for attested compounds
 \toprule
 Metric & Value \\
 \midrule
-Total word tokens & 1,618,486 \\
-Unique word forms & 127,033 \\
-Forms found & 123,859 \\
-Forms not found & 3,758 \\
-Sandhi compounds (DPD) & 42,440 \\
-Particle splits & 101 \\
-Metrical normalizations (final) & 2,045 \\
-Orthographic variants (-n→-ṃ) & 1,546 \\
-Compound splits & 232 \\
+Total word tokens & 1,606,492 \\
+Unique word forms & 127,032 \\
+Forms found & 124,104 \\
+Forms not found & 3,002 \\
+Sandhi compounds (DPD) & 42,441 \\
+Orthographic variants (-n/-m→-ṃ) & 1,553 \\
+Metrical normalizations & 2,133 \\
+Title/chapter matches & 23 \\
+Apadāna title patterns & 144 \\
+Causative absolutive forms & 79 \\
+Compound splits & 208 \\
 DPPN proper nouns & 21 \\
 \midrule
-\textbf{Lemmatization coverage} & \textbf{97.5\%} \\
+\textbf{Lemmatization coverage} & \textbf{97.7\%} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{Analysis of Unknown Words}
 
-The remaining 3,758 word forms (3.0\%) not resolved by the lemmatizer fall into these categories:
+The remaining 3,002 word forms (2.4\%) not resolved by the lemmatizer are genuine candidates for future DPD expansion. Analysis reveals that 96\% originate from the Khuddaka Nikāya---particularly the Jātaka, Apadāna, Milindapañha, Netti, and Cūḷaniddesa/Mahāniddesa. These texts contain:
 
 \begin{enumerate}
-\item \textbf{Hapax legomena}: Rare words occurring only once in the canon
-\item \textbf{Complex compounds}: Multi-word compounds not in the DPD deconstructor
-\item \textbf{Unusual orthographic variants}: Non-standard spellings beyond handled patterns
-\item \textbf{Rare proper nouns}: Names not matched by DPPN inflection patterns
-\item \textbf{OCR/text errors}: Non-Pāli fragments
+\item \textbf{Technical terminology}: Hermeneutical terms from Netti/Peṭakopadesa (e.g., \emph{samāropano}, \emph{otaraṇo}, \emph{vevacano})
+\item \textbf{Rare verse vocabulary}: Archaic or dialectal forms in metrical passages
+\item \textbf{Narrative vocabulary}: Words specific to Jātaka storytelling
+\item \textbf{Proper nouns}: Names not catalogued in available reference works
+\item \textbf{Complex sandhi compounds}: Novel combinations not in the DPD deconstructor
 \end{enumerate}
+
+Only 113 unknown forms appear in the four main nikāyas (DN, MN, SN, AN), indicating that the lemmatizer achieves near-complete coverage for the most frequently studied texts.
 
 \subsection{Most Frequent Lemmas}
 

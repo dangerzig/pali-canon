@@ -94,7 +94,7 @@ We rely on the DPD's deconstructor module, which provides pre-analyzed sandhi sp
 \item Store both the surface form and component analysis
 \end{enumerate}
 
-This approach handles the approximately 42,000 sandhi compounds in the corpus but cannot decompose novel combinations not in the DPD. Such forms are flagged as unresolved.
+This approach handles the approximately 42,400 sandhi compounds in the corpus but cannot decompose novel combinations not in the DPD. Such forms are flagged as unresolved.
 
 \subsection{Ambiguity and the Limits of Automation}
 
@@ -184,16 +184,16 @@ SuttaCentral currently covers only the Sutta Piṭaka (the ``Basket of Discourse
 
 \subsection{Unknown Words}
 
-Despite 97.5\% lemmatization coverage, 3,174 unique word forms (appearing in approximately 40,000 tokens) remain unresolved. These include:
+Despite 97.7\% lemmatization coverage, 3,002 unique word forms remain unresolved. Analysis reveals that 96\% of these originate from the Khuddaka Nikāya---particularly technical texts like Netti, Cūḷaniddesa, and narrative works like the Jātaka. These include:
 
 \begin{itemize}
-\item Hapax legomena (words appearing only once)
-\item Rare proper nouns not in the DPPN
+\item Technical terminology from commentarial texts (e.g., \emph{samāropano}, \emph{vevacano})
+\item Rare verse vocabulary and archaic forms
+\item Proper nouns not catalogued in the DPPN
 \item Complex sandhi compounds not in the DPD deconstructor
-\item Apparent errors in the source transcriptions
 \end{itemize}
 
-A supplementary file lists all unresolved forms for potential manual review or future DPD updates.
+Only 113 unknown forms appear in the four main nikāyas (DN, MN, SN, AN), indicating near-complete coverage for the most studied texts. A supplementary file lists all unresolved forms for potential manual review or future DPD updates.
 
 \subsection{Lack of Gold Standard}
 

@@ -316,13 +316,15 @@ python src/generate_final_summary.py
 
 | Metric | Value |
 |--------|-------|
-| Total Python code | 9,198 lines |
+| Total Python code | 10,084 lines |
 | Python modules | 33 files |
 | GRETIL words | 3,243,906 |
 | VRI words | 2,418,765 |
-| SC words | 1,596,896 |
-| Lemmatization coverage | 97.5% |
-| Unique lemmas identified | 123,859 |
+| SC words | 1,606,492 |
+| Unique word forms | 127,032 |
+| Lemmatization coverage | 97.7% |
+| Words identified | 124,104 |
+| Unknown words | 3,002 (96% from KN) |
 
 ---
 

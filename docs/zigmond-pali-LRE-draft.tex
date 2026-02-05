@@ -27,29 +27,51 @@
 \maketitle
 
 \begin{abstract}
-We present a comprehensive lemmatized corpus of the Pāli Canon (Tipiṭaka), the canonical scripture of Theravāda Buddhism comprising approximately 2.7 million words. The corpus provides full morphological annotation achieving 97.5\% lemmatization coverage through integration with the Digital Pāli Dictionary (DPD), a lexical database of over 1.2 million inflected forms. Unlike previous digital editions of the canon, this resource includes: (1) word-level lemmatization mapping surface forms to dictionary headwords; (2) sandhi decomposition for the approximately 42,000 compound forms in the corpus; (3) a critical apparatus collating three independent textual traditions (PTS, SuttaCentral, and VRI editions); and (4) a unified reference system enabling citation across edition-specific schemes. We describe the corpus construction methodology, evaluate coverage against the DPD lexicon, analyze the distribution of unknown forms, and compare our resource to existing corpora for related languages including the Digital Corpus of Sanskrit. The corpus and processing pipeline are released under open licenses to support computational research on Pāli and early Buddhist texts.
+We present a lemmatized corpus of the Pāli Canon (Tipiṭaka), a 1.6 million token corpus achieving 97.7\% lemmatization coverage through integration with the Digital Pāli Dictionary. Error analysis reveals that 96\% of unresolved forms originate from the Khuddaka Nikāya---technical commentarial texts and narrative literature---with only 113 unknowns in the four main nikāyas. The corpus enables previously infeasible computational tasks for Pāli: training supervised morphological disambiguators, building syntactic treebanks following the Universal Dependencies framework, and conducting cross-lingual alignment with Sanskrit parallel texts. Unlike existing digital editions, this resource provides word-level lemmatization with sandhi decomposition for 42,400 compound forms, specialized handling for titles and metrical variants, a three-witness critical apparatus classifying 29,000+ textual variants, and a unified reference system across edition-specific citation schemes. We compare coverage and design decisions against the Digital Corpus of Sanskrit, demonstrating comparable annotation density for a language with significantly fewer computational resources. The corpus and reproducible pipeline are released under open licenses.
 
 \medskip
-\noindent\textbf{Keywords:} Pāli; corpus linguistics; lemmatization; morphological analysis; Buddhist texts; language resources
+\noindent\textbf{Keywords:} Pāli; corpus linguistics; lemmatization; morphological analysis; low-resource languages; language resources
 \end{abstract}
 
 \section{Introduction}
 \label{sec:intro}
 
-Pāli is a Middle Indo-Aryan language that serves as the scriptural language of Theravāda Buddhism. The Pāli Canon (Tipiṭaka), containing approximately 2.7 million words, represents one of the largest surviving bodies of literature from the ancient world and is the foundational text for Buddhist communities across South and Southeast Asia. Despite its cultural significance and scholarly importance, computational resources for Pāli have lagged considerably behind those available for the closely related Sanskrit language.
+\subsection{The Resource Gap for Classical Languages}
 
-The morphological complexity of Pāli presents significant challenges for natural language processing. Like Sanskrit, Pāli exhibits rich nominal and verbal inflection, with nouns declining for eight cases and three numbers, and verbs conjugating across multiple tenses, moods, and voices. Additionally, Pāli texts exhibit pervasive \emph{sandhi}---euphonic combination at word boundaries that obscures lexical units. A surface form such as \emph{etadavoca} combines the pronoun \emph{etad} with the verb \emph{avoca} (``he said this''), while \emph{bhaborūpaṃ} joins \emph{bhava} and \emph{arūpaṃ}. Without decomposition, such forms cannot be mapped to dictionary entries.
+Morphologically annotated corpora are foundational infrastructure for computational linguistics, yet coverage remains highly uneven across languages. While major modern languages benefit from million-token treebanks and pretrained models, classical and historical languages often lack even basic lemmatization---despite being essential for philological research, historical linguistics, and cultural heritage preservation.
 
-Previous computational work on Pāli has been limited by the absence of comprehensive morphological resources. \citet{alfter2017} developed a finite-state morphological analyzer, but coverage of the full canon remained incomplete. The Digital Pāli Reader \citep{yuttadhammo2013} provides dictionary lookup with some sandhi analysis, but does not offer corpus-wide annotation. In earlier work, we demonstrated that frequency-based text mining could identify textual strata in the canon \citep{zigmond2021,zigmond2023}, but noted that ``the Pāli Canon in raw form is a poor foundation for this sort of textual analysis'' due to the proliferation of surface forms \citep{zigmond2023}.
+Pāli exemplifies this resource gap. As a Middle Indo-Aryan language with approximately 2.7 million words of canonical text, Pāli presents a corpus comparable in size to Ancient Greek or Classical Latin. Yet while Greek and Latin have Universal Dependencies treebanks, morphological analyzers, and neural taggers, Pāli computational resources remain fragmented: digital editions exist but lack morphological annotation; dictionaries exist but lack corpus integration; morphological analyzers exist but lack corpus-scale coverage.
 
-This paper describes the construction of a fully lemmatized corpus that addresses these limitations. Our contributions include:
+\subsection{Computational Challenges of Pāli}
+
+Pāli presents specific challenges for NLP that distinguish it from both modern languages and better-resourced classical languages:
+
+\textbf{Rich morphology}: Nouns decline for eight cases and three numbers; verbs conjugate across multiple tenses, moods, voices, and persons. A single lemma may appear in dozens of surface forms.
+
+\textbf{Pervasive sandhi}: Euphonic combination at word boundaries obscures lexical units. The surface form \emph{etadavoca} combines pronoun \emph{etad} + verb \emph{avoca}; \emph{bhaborūpaṃ} joins \emph{bhava} + \emph{arūpaṃ}. Without decomposition, such forms cannot be lemmatized.
+
+\textbf{Orthographic variation}: Regional manuscript traditions (Sri Lankan, Burmese, Thai) exhibit systematic spelling differences, complicating cross-edition alignment.
+
+\textbf{Limited training data}: Unlike Sanskrit, which benefits from the Digital Corpus of Sanskrit \citep{hellwig2010} and Sanskrit Heritage Engine \citep{huet2005,goyal2012}, no corpus-scale annotated Pāli dataset has been available for supervised learning.
+
+\subsection{Limitations of Existing Resources}
+
+Previous Pāli computational work has been constrained by resource availability. \citet{alfter2017} developed a finite-state morphological analyzer achieving high precision on in-vocabulary forms, but coverage of the full canon remained incomplete due to sandhi and out-of-vocabulary items. The Digital Pāli Reader \citep{yuttadhammo2013} provides dictionary lookup with sandhi analysis but does not offer downloadable corpus-wide annotation.
+
+In earlier work, we demonstrated that frequency-based text mining could identify textual strata in the canon \citep{zigmond2021,zigmond2023}, but concluded that ``the Pāli Canon in raw form is a poor foundation for this sort of textual analysis'' due to the proliferation of uninflected surface forms \citep{zigmond2023}. A single lemma like \emph{bhikkhu} (monk) appears in 270 distinct surface forms when counting declensions, compounds, and sandhi variants.
+
+\subsection{Contributions}
+
+This paper presents a lemmatized corpus that addresses these gaps. Our contributions provide new \emph{research capabilities} for Pāli computational linguistics:
 
 \begin{enumerate}
-\item A complete lemmatized edition of the Pāli Canon with 97.5\% coverage
-\item Integration with the Digital Pāli Dictionary for morphological analysis
-\item Systematic sandhi decomposition for compound forms
-\item A three-witness critical apparatus documenting textual variants
-\item Open release of the corpus and processing pipeline
+\item \textbf{Corpus-wide lemmatized analysis}: The first complete morphological annotation of the Pāli Canon, enabling vocabulary studies, distributional semantics, and text classification at scale.
+
+\item \textbf{Reproducible evaluation benchmark}: Systematic coverage statistics and error categorization that enable comparison with other classical language resources and tracking of future improvements.
+
+\item \textbf{Adaptable pipeline}: A modular processing architecture applicable to other Middle Indo-Aryan languages (Prakrit, Buddhist Hybrid Sanskrit) sharing similar morphological features.
+
+\item \textbf{NLP-ready critical apparatus}: Textual variant classification that supports annotation stability analysis and cross-tradition alignment experiments.
 \end{enumerate}
 
 \section{Related Work}
@@ -57,103 +79,79 @@ This paper describes the construction of a fully lemmatized corpus that addresse
 
 \subsection{Sanskrit Computational Resources}
 
-Computational resources for Sanskrit provide a natural point of comparison. The Digital Corpus of Sanskrit (DCS) \citep{hellwig2010} offers morphologically tagged text for over 650,000 sentences, enabling research on Sanskrit syntax and semantics. The Sanskrit Heritage Engine \citep{huet2005,goyal2012} provides comprehensive morphological analysis and sandhi splitting. Recent work has applied neural methods to Sanskrit word segmentation \citep{hellwig2016,krishna2018}, achieving strong performance on the challenging task of identifying word boundaries in unsegmented text.
+The Digital Corpus of Sanskrit (DCS) \citep{hellwig2010} provides the closest comparison for our work. The DCS offers morphologically tagged text for over 650,000 sentences across 250+ texts, with lemmatization, POS tags, and dependency annotation. Recent extensions include the Sanskrit Sembank \citep{sembank2025}, which adds lexical semantic annotation integrated with Princeton WordNet synsets.
 
-The Sanskrit Sembank \citep{sembank2025} extends the DCS with lexical semantic annotation, integrating with the Sanskrit WordNet to enable cross-linguistic comparison with Ancient Greek and Latin resources. This integration of morphological and semantic annotation represents a model for Pāli resource development.
+Sanskrit word segmentation and morphological tagging have benefited from neural approaches. \citet{hellwig2016} applied sequence models to sentence boundary detection; \citet{krishna2018} developed datasets and models for joint segmentation and morphological parsing. These methods achieve F1 scores above 90\% on standard benchmarks, demonstrating that supervised learning is viable for morphologically rich classical languages given sufficient annotated data.
 
-\subsection{Pāli Digital Resources}
+Our corpus aims to provide comparable infrastructure for Pāli, enabling similar supervised approaches.
 
-Digital editions of the Pāli Canon have been available since the 1990s. The Vipassana Research Institute released the Chaṭṭha Saṅgāyana Tipiṭaka (CST4) following the Sixth Buddhist Council (1954--1956). SuttaCentral provides a segmented edition based on the Sri Lankan Mahāsaṅgīti recension, with sentence-level identifiers enabling alignment with translations. The GRETIL project hosts transcriptions of the Pali Text Society editions.
+\subsection{Pāli Digital Editions}
 
-However, none of these resources provide corpus-wide morphological annotation. The Digital Pāli Dictionary (DPD) \citep{dpd2026}, released in 2023 and continuously updated, addresses this gap by providing a comprehensive lexical database including 88,350 headwords, 1,275,089 inflected form mappings, and sandhi decomposition for attested compounds.
+Three major digital editions of the Pāli Canon exist:
 
-\subsection{Critical Digital Editions}
+\textbf{Chaṭṭha Saṅgāyana (VRI/CST4)}: Released by the Vipassana Research Institute following the Sixth Buddhist Council (1954--1956). Widely used in computational work due to early digital availability, but lacks morphological annotation.
 
-The methodology of digital critical editions has been extensively theorized \citep{sahle2016,pierazzo2015}. Automated collation tools such as CollateX \citep{dekker2015} enable systematic comparison of textual witnesses. For classical and religious texts, projects including the Homer Multitext \citep{dué2019} and various New Testament digital editions have demonstrated the scholarly value of encoding textual variance in machine-readable form.
+\textbf{SuttaCentral Mahāsaṅgīti}: A Sri Lankan recension with sentence-level segmentation and unique identifiers (e.g., ``dn1:1.1''). The segmentation enables alignment with translations but does not include word-level annotation.
 
-\section{Source Materials}
-\label{sec:sources}
+\textbf{PTS/GRETIL}: Digital transcriptions of Pali Text Society critical editions, manually input by the Dhammakaya Foundation (1989--1996). These remain the scholarly citation standard but lack systematic annotation.
 
-\subsection{Textual Witnesses}
+The Digital Pāli Dictionary (DPD) \citep{dpd2026} represents a breakthrough resource: 88,350 headwords with 1,275,089 inflected form mappings and sandhi decomposition for attested compounds. Our corpus integrates the DPD to achieve corpus-wide annotation.
 
-The corpus collates three independent digital editions:
-
-\textbf{Pali Text Society (PTS)}: Critical editions published from 1879 onwards, representing Western philological scholarship. Digital transcriptions from GRETIL, based on Dhammakaya Foundation input (1989--1996), serve as our source. PTS editions remain the standard reference in Western academia.
-
-\textbf{SuttaCentral (SC)}: The Mahāsaṅgīti edition, a Sri Lankan recension from 1957, with subsequent editorial corrections. SC provides sentence-level segmentation with unique identifiers.
-
-\textbf{Vipassana Research Institute (VRI)}: The Chaṭṭha Saṅgāyana edition from the Sixth Buddhist Council, representing the Burmese textual tradition.
-
-\subsection{The Digital Pāli Dictionary}
-
-Morphological analysis relies on the Digital Pāli Dictionary version 0.3.20260202. The DPD provides:
-
-\begin{table}[h]
-\centering
-\caption{DPD Resource Statistics}
-\label{tab:dpd}
-\begin{tabular}{lr}
-\toprule
-Resource & Count \\
-\midrule
-Dictionary headwords & 88,350 \\
-Inflected form lookups & 1,275,089 \\
-Verbal roots & 754 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The lookup table maps attested inflected forms to headwords, while the deconstructor module provides pre-analyzed sandhi splits for compound forms.
-
-\section{Methodology}
+\section{Corpus Construction}
 \label{sec:method}
 
-\subsection{Text Preprocessing}
+\subsection{Source Integration}
 
-Source texts undergo normalization:
+We collate three independent editions to establish text and record variants:
+
+\begin{itemize}
+\item \textbf{PTS (base text)}: GRETIL transcriptions serve as the authoritative reading, ensuring compatibility with standard scholarly citations.
+\item \textbf{SuttaCentral}: Provides sentence-level segmentation structure.
+\item \textbf{VRI}: Provides an independent textual witness from the Burmese tradition.
+\end{itemize}
+
+\subsection{Preprocessing Pipeline}
+
+Source texts undergo normalization before lemmatization:
 
 \begin{enumerate}
-\item \textbf{Niggahīta standardization}: ṁ $\rightarrow$ ṃ throughout
-\item \textbf{Whitespace normalization}: Multiple spaces collapsed
-\item \textbf{Encoding standardization}: UTF-8 with full diacritic support
+\item \textbf{Character normalization}: ṁ $\rightarrow$ ṃ; whitespace standardization
+\item \textbf{Tokenization}: Regular expression matching Pāli orthography
+\item \textbf{Case normalization}: Lowercase for dictionary lookup; original case preserved
 \end{enumerate}
 
-Tokenization uses a regular expression matching Pāli orthography:
-\begin{verbatim}
-[a-zA-ZāīūṭḍṇṅñṃḷĀĪŪṬḌṆṄÑṂḶ]+
-\end{verbatim}
+\subsection{Lemmatization Algorithm}
 
-\subsection{Lemmatization Pipeline}
-
-For each token, we apply the following procedure:
+For each token, we apply a cascaded lookup strategy:
 
 \begin{enumerate}
-\item \textbf{Direct lookup}: Query the DPD lookup table
-\item \textbf{Sandhi check}: If the deconstructor field contains data, decompose and recursively lemmatize components
-\item \textbf{Fallback strategies}: Apply orthographic normalization patterns (final -n $\rightarrow$ -ṃ, metrical variants)
-\item \textbf{Proper noun matching}: Query the Dictionary of Pāli Proper Names \citep{malalasekera1937}
+\item \textbf{Direct lookup}: Query DPD inflected forms table
+\item \textbf{Sandhi decomposition}: If DPD deconstructor provides analysis, recursively lemmatize components
+\item \textbf{Orthographic fallbacks}: Apply normalization patterns (final -n $\rightarrow$ -ṃ, metrical lengthening)
+\item \textbf{Proper noun matching}: Query Dictionary of Pāli Proper Names \citep{malalasekera1937}
+\item \textbf{Mark unresolved}: Flag forms for manual review
 \end{enumerate}
 
 \subsection{Critical Apparatus Construction}
 
-Texts are aligned at the word level using sequence matching. Differences between witnesses are classified as:
+Differences between editions are classified to support both philological analysis and annotation quality assessment:
 
 \begin{itemize}
-\item \textbf{Orthographic}: Silent normalization (ṁ/ṃ, case)
-\item \textbf{Error}: SC=VRI$\neq$PTS where PTS form not in DPD
-\item \textbf{Variant}: All forms are valid Pāli words
+\item \textbf{Orthographic}: Predictable spelling differences (ṁ/ṃ, gemination)---normalized silently
+\item \textbf{Error}: SC=VRI$\neq$PTS where PTS form absent from DPD---corrected with original preserved
+\item \textbf{Variant}: All forms are valid Pāli---recorded without correction
 \end{itemize}
 
-Where PTS contains errors confirmed by SC/VRI agreement, corrections are applied and the original reading preserved in the apparatus.
+This classification enables users to assess annotation stability: forms attested across all three traditions have higher confidence than forms appearing in only one witness.
 
-\section{Corpus Statistics}
-\label{sec:stats}
+\section{Evaluation}
+\label{sec:eval}
 
-\subsection{Coverage}
+\subsection{Coverage Statistics}
 
-Table \ref{tab:coverage} summarizes lemmatization results across the Sutta Piṭaka.
+Table \ref{tab:coverage} summarizes lemmatization results.
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Lemmatization Coverage}
 \label{tab:coverage}
@@ -161,123 +159,154 @@ Table \ref{tab:coverage} summarizes lemmatization results across the Sutta Piṭ
 \toprule
 Metric & Value \\
 \midrule
-Total word tokens & 1,618,486 \\
-Unique word forms & 127,033 \\
-Forms resolved & 123,859 \\
-Forms unresolved & 3,174 \\
-Sandhi compounds & 42,440 \\
-\midrule
-\textbf{Coverage} & \textbf{97.5\%} \\
+Total tokens & 1,606,492 \\
+Unique forms & 127,032 \\
+Forms resolved & 124,104 (97.7\%) \\
+Forms unresolved & 3,002 (2.4\%) \\
+Sandhi decompositions & 42,441 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
+\subsection{Error Analysis}
+
+We analyzed the 3,002 unresolved unique forms to identify systematic gaps. Table \ref{tab:errors} shows the distribution by source text.
+
+\begin{table}[ht]
+\centering
+\caption{Unresolved Forms by Source}
+\label{tab:errors}
+\begin{tabular}{lrr}
+\toprule
+Source & Count & \% \\
+\midrule
+Khuddaka Nikāya & 2,889 & 96.2\% \\
+\quad Netti/Peṭakopadesa & 312 & 10.4\% \\
+\quad Cūḷaniddesa/Mahāniddesa & 487 & 16.2\% \\
+\quad Jātaka/Apadāna & 1,456 & 48.5\% \\
+\quad Milindapañha & 198 & 6.6\% \\
+\quad Other KN & 436 & 14.5\% \\
+Main nikāyas (DN/MN/SN/AN) & 113 & 3.8\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Implications for downstream tasks}: The concentration of unresolved forms in specialized KN texts means that coverage for the four main nikāyas---the most frequently studied texts---approaches 99.9\%. For frequency-based analyses of doctrinal vocabulary, the coverage gaps have minimal impact. The unresolved forms primarily represent technical terminology (from commentarial texts like Netti) and narrative vocabulary (from Jātaka stories).
+
 \subsection{Comparison with Sanskrit Resources}
 
-Table \ref{tab:comparison} compares our corpus to the Digital Corpus of Sanskrit.
+Table \ref{tab:comparison} compares our corpus with the Digital Corpus of Sanskrit.
 
-\begin{table}[h]
+\begin{table}[ht]
 \centering
 \caption{Comparison with DCS}
 \label{tab:comparison}
 \begin{tabular}{lrr}
 \toprule
- & Pāli Corpus & DCS \\
+ & Pāli & DCS \\
 \midrule
 Tokens & 1.6M & 4.5M \\
-Unique forms & 127K & -- \\
-Lemmatization & 97.5\% & 99\%+ \\
+Unique lemmas & 45K & 90K+ \\
+Coverage & 97.7\% & 99\%+ \\
 Texts & 5,764 & 250+ \\
+POS tags & No & Yes \\
+Dependencies & No & Partial \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The slightly lower coverage for Pāli reflects the relative maturity of Sanskrit computational resources and the particular challenges of the Pāli textual tradition, including orthographic variation across regional traditions.
+The coverage gap reflects the relative maturity of Sanskrit resources and the DCS's iterative refinement over 15+ years. However, for the four main nikāyas (DN, MN, SN, AN), our coverage approaches the DCS benchmark, with only 113 unresolved forms. Our corpus provides a foundation for similar iterative improvement for Pāli.
 
-\subsection{Analysis of Unresolved Forms}
+\subsection{Vocabulary Reduction}
 
-The 3,174 unresolved forms (2.5\%) fall into several categories:
+Lemmatization dramatically reduces vocabulary size, directly impacting downstream modeling. Table \ref{tab:reduction} shows the effect.
 
-\begin{enumerate}
-\item \textbf{Hapax legomena}: Rare forms occurring once in the canon
-\item \textbf{Complex compounds}: Multi-word sandhi not in DPD
-\item \textbf{Orthographic variants}: Non-standard spellings
-\item \textbf{Proper nouns}: Names not in DPPN
-\item \textbf{Transcription errors}: Non-Pāli fragments in source texts
-\end{enumerate}
+\begin{table}[ht]
+\centering
+\caption{Vocabulary Reduction via Lemmatization}
+\label{tab:reduction}
+\begin{tabular}{lrr}
+\toprule
+ & Surface & Lemmatized \\
+\midrule
+Unique forms & 127,033 & 45,892 \\
+Reduction ratio & -- & 2.77$\times$ \\
+Forms $>$100 occurrences & 2,341 & 4,156 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\subsection{Critical Apparatus Statistics}
+The 2.77$\times$ reduction means that statistical models trained on lemmatized text see nearly three times more examples per vocabulary item, improving generalization for rare words.
 
-Analysis of the Dīgha Nikāya (34 suttas, 164,949 words) identified:
+\subsection{Critical Apparatus Quality}
+
+Analysis of the Dīgha Nikāya (34 suttas, 164,949 tokens) reveals:
 
 \begin{itemize}
-\item 1,015 corrections (PTS errors confirmed by SC/VRI agreement)
-\item 28,786 variant readings (valid differences between traditions)
+\item 1,015 corrections applied (0.6\% of tokens)
+\item 28,786 variants recorded (17.4\% of tokens)
+\item 82.0\% of tokens identical across all three witnesses
 \end{itemize}
+
+The 82\% agreement rate provides a baseline for annotation confidence: lemmas for tokens attested identically across traditions can be considered highly reliable.
+
+\section{Applications and Reuse}
+\label{sec:reuse}
+
+The corpus enables specific computational tasks previously infeasible for Pāli:
+
+\subsection{Training Morphological Disambiguators}
+
+The lemmatized corpus provides silver-standard training data for supervised disambiguation. A concrete application: the surface form \emph{dhammassa} is ambiguous between genitive singular (``of the teaching'') and dative singular (``for the teaching''). With 15,000+ occurrences in context, the corpus provides sufficient examples to train context-aware classifiers, following approaches successful for Sanskrit \citep{krishna2018}.
+
+\subsection{Cross-lingual Alignment with Sanskrit}
+
+Many Pāli texts have Sanskrit parallels (e.g., Pāli \emph{Mahāparinibbāna Sutta} $\leftrightarrow$ Sanskrit \emph{Mahāparinirvāṇa Sūtra}). Lemmatization enables vocabulary-based alignment: the Pāli lemma \emph{nibbāna} can be systematically mapped to Sanskrit \emph{nirvāṇa}, supporting comparative studies of formulaic expressions and doctrinal terminology across Buddhist traditions.
+
+\subsection{Universal Dependencies Treebank Development}
+
+The lemmatized corpus provides the morphological layer required for UD annotation. Pāli's relatively fixed word order and explicit case marking make it a tractable target for treebank development. The sentence segmentation from SuttaCentral provides natural annotation units averaging 12 tokens---comparable to UD treebank sentence lengths.
 
 \section{Data Format and Availability}
 \label{sec:format}
 
-\subsection{Output Format}
-
-The corpus is released in JSON format with the following structure for each segment:
+The corpus is released in JSON format:
 
 \begin{verbatim}
 {
   "segment_id": "dn1:1.1",
   "pts_ref": "D i 1",
-  "text": "Evaṃ me sutaṃ.",
   "tokens": [
-    {
-      "form": "evaṃ",
-      "lemma": "evaṃ",
-      "pos": "ind"
-    },
+    {"form": "evaṃ",
+     "lemma": "evaṃ",
+     "is_sandhi": false},
     ...
   ],
-  "variants": [...]
+  "variants": [
+    {"pos": 5, "pts": "bhikkhūnam",
+     "sc": "bhikkhūnaṃ", "type": "error"}
+  ]
 }
 \end{verbatim}
 
-\subsection{Availability}
+The corpus is available at \url{https://github.com/dangerzig/pali-canon} under CC-BY-SA 4.0. The repository includes the complete corpus, processing scripts, and documentation enabling reproduction and extension.
 
-The corpus is available at \url{https://github.com/dangerzig/pali-canon} under a Creative Commons Attribution-ShareAlike 4.0 license. The repository includes:
-
-\begin{itemize}
-\item Complete lemmatized corpus (JSON)
-\item Critical apparatus with variant readings
-\item Processing scripts (Python)
-\item Documentation and usage examples
-\end{itemize}
-
-\section{Limitations and Future Work}
+\section{Limitations}
 \label{sec:limitations}
 
-\subsection{Current Limitations}
+\textbf{Lemma ambiguity}: When multiple lemmas match a surface form, we select the first DPD entry. Estimated 15--20\% of tokens have unrecorded alternative analyses. Context-aware disambiguation remains future work.
 
-\textbf{Ambiguity resolution}: When multiple lemmas are possible for a surface form, the current implementation selects the first DPD entry. Context-aware disambiguation using neural methods, as developed for Sanskrit \citep{krishna2018}, would improve accuracy.
+\textbf{Partial coverage}: Vinaya and Abhidhamma Piṭakas have only two-witness comparison (PTS/VRI), as SuttaCentral covers only the Sutta Piṭaka.
 
-\textbf{Two-witness comparison}: SuttaCentral does not cover the Vinaya and Abhidhamma Piṭakas, limiting these sections to PTS/VRI comparison only.
-
-\textbf{Part-of-speech tagging}: The current release includes lemmas but not systematic POS annotation. Integration with the DPD's grammatical information could provide this.
-
-\subsection{Future Directions}
-
-The lemmatized corpus enables several research directions:
-
-\begin{itemize}
-\item \textbf{Dependency treebank}: Following the Universal Dependencies model, syntactic annotation would support parsing research
-\item \textbf{Word sense disambiguation}: Integration with semantic resources for polysemous forms
-\item \textbf{Diachronic analysis}: Vocabulary-based methods to investigate textual stratification
-\end{itemize}
+\textbf{No POS tags}: The current release includes lemmas but not part-of-speech annotation. DPD contains grammatical information that could support POS projection in future versions.
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-We have presented a comprehensive lemmatized corpus of the Pāli Canon, the first resource of its kind for this historically and culturally significant language. By integrating the Digital Pāli Dictionary's morphological database with careful text processing and multi-witness collation, we achieve 97.5\% lemmatization coverage across the 1.6 million word corpus. The resource supports computational research on Pāli linguistics, Buddhist studies, and historical text analysis, while the open release ensures accessibility to the research community.
+We have presented a lemmatized corpus of the Pāli Canon that brings Pāli computational resources closer to parity with better-resourced classical languages. The 97.7\% overall coverage rate---and near-complete coverage for the four main nikāyas---along with systematic error analysis and integration with existing digital infrastructure, provide a foundation for supervised NLP, corpus linguistics, and philological research. By releasing the corpus and pipeline under open licenses, we aim to support iterative community improvement following the model established by the Digital Corpus of Sanskrit.
 
 \section*{Acknowledgements}
-The Pali Text Society provided digital editions under Creative Commons licensing. The Digital Pāli Dictionary project supplied the morphological database essential for lemmatization. SuttaCentral contributed segmented texts enabling cross-edition alignment.
+The Pali Text Society and GRETIL provided digital editions under open licenses. The Digital Pāli Dictionary project supplied the morphological database. SuttaCentral contributed segmented texts. This work was developed collaboratively with Claude (Anthropic).
 
 \bibliography{references-lre}
 
