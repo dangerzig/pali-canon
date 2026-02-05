@@ -30,6 +30,9 @@ from typing import Optional
 
 from .models import Sutta, Segment, Token, SuttaInfo, NikayaInfo
 from .store import Store, NIKAYAS
+from .search import Search, LemmaSearchResult, TextSearchResult
+from .vocab import Vocabulary, VocabularyStats
+from .export import Exporter
 
 __all__ = [
     "Canon",
@@ -38,6 +41,9 @@ __all__ = [
     "Token",
     "SuttaInfo",
     "NikayaInfo",
+    "LemmaSearchResult",
+    "TextSearchResult",
+    "VocabularyStats",
 ]
 
 
@@ -74,6 +80,13 @@ class Canon:
                      subdirectories. Defaults to package data directory.
         """
         self._store = Store(data_dir)
+        self._search: Optional[Search] = None
+
+    def _get_search(self) -> Search:
+        """Get or create search instance (lazy initialization)."""
+        if self._search is None:
+            self._search = Search(self._store.data_dir)
+        return self._search
 
     def list_nikayas(self) -> list[str]:
         """List available nikāya IDs.
@@ -189,3 +202,270 @@ class Canon:
         if sutta:
             return sutta.text
         return None
+
+    # -------------------------------------------------------------------------
+    # Search methods
+    # -------------------------------------------------------------------------
+
+    def search_lemma(
+        self,
+        lemma: str,
+        nikaya: Optional[str] = None,
+        limit: int = 1000,
+    ) -> LemmaSearchResult:
+        """Search for all occurrences of a lemma.
+
+        Searches the lemmatized corpus for all forms of a dictionary headword.
+        On first call, builds a search index (takes a few minutes).
+
+        Args:
+            lemma: The lemma (dictionary form) to search for
+            nikaya: Optional filter by nikaya (dn, mn, sn, an, kn)
+            limit: Maximum occurrences to return (default 1000)
+
+        Returns:
+            LemmaSearchResult with:
+            - total: Total occurrence count
+            - by_nikaya: Dict of counts per nikaya
+            - occurrences: List of LemmaOccurrence objects
+
+        Example:
+            results = canon.search_lemma("dhamma")
+            print(f"Found {results.total} occurrences")
+            print(f"By nikaya: {results.by_nikaya}")
+
+            for occ in results.occurrences[:10]:
+                print(f"  {occ.segment_id}: {occ.word} ({occ.pos})")
+        """
+        return self._get_search().search_lemma(lemma, nikaya, limit)
+
+    def search_text(
+        self,
+        query: str,
+        nikaya: Optional[str] = None,
+        limit: int = 100,
+    ) -> list[TextSearchResult]:
+        """Full-text search on segment text.
+
+        Uses SQLite FTS5 for fast text search. Supports query syntax:
+        - Simple terms: "buddha" finds segments containing "buddha"
+        - Phrases: '"evaṃ me sutaṃ"' finds exact phrase
+        - AND/OR: "buddha OR dhamma"
+        - Prefix: "bodhi*" finds bodhisatta, etc.
+
+        Args:
+            query: Search query
+            nikaya: Optional filter by nikaya
+            limit: Maximum results (default 100)
+
+        Returns:
+            List of TextSearchResult with segment_id, sutta_id, and snippet
+
+        Example:
+            results = canon.search_text("evaṃ me sutaṃ")
+            for r in results[:10]:
+                print(f"{r.segment_id}: {r.snippet}")
+        """
+        return self._get_search().search_text(query, nikaya, limit)
+
+    def get_all_lemmas(self) -> list[str]:
+        """Get all unique lemmas in the corpus.
+
+        Returns:
+            Sorted list of all lemmas (dictionary headwords)
+        """
+        return self._get_search().get_all_lemmas()
+
+    # -------------------------------------------------------------------------
+    # Vocabulary & Analysis methods
+    # -------------------------------------------------------------------------
+
+    def _get_vocab(self) -> Vocabulary:
+        """Get or create vocabulary analyzer (lazy initialization)."""
+        if not hasattr(self, "_vocab") or self._vocab is None:
+            self._vocab = Vocabulary(self._store.data_dir)
+        return self._vocab
+
+    def get_vocabulary(
+        self,
+        sutta_id: Optional[str] = None,
+        nikaya: Optional[str] = None,
+        top_n: int = 100,
+        as_dataframe: bool = False,
+    ):
+        """Get vocabulary statistics for a sutta or nikaya.
+
+        Args:
+            sutta_id: Specific sutta ID (e.g., "dn1")
+            nikaya: Nikaya ID (e.g., "dn") - used if sutta_id not provided
+            top_n: Number of top lemmas to include
+            as_dataframe: If True, return pandas DataFrame
+
+        Returns:
+            VocabularyStats object with:
+            - unique_lemmas: Count of unique lemmas
+            - total_tokens: Total token count
+            - top_lemmas: List of (lemma, count) tuples
+            - lemma_counts: Full dict of lemma counts
+            - pos_distribution: Dict of POS tag counts
+
+        Example:
+            vocab = canon.get_vocabulary("dn1")
+            print(f"Unique lemmas: {vocab.unique_lemmas}")
+            print(f"Top 10: {vocab.top_lemmas[:10]}")
+
+            # As DataFrame (requires pandas)
+            df = canon.get_vocabulary("dn", as_dataframe=True)
+        """
+        return self._get_vocab().get_vocabulary(sutta_id, nikaya, top_n, as_dataframe)
+
+    def document_term_matrix(
+        self,
+        nikaya: str,
+        unit: str = "sutta",
+        terms: str = "lemmas",
+        min_df: int = 1,
+        as_dataframe: bool = False,
+    ):
+        """Generate a document-term matrix for analysis.
+
+        Creates a matrix where rows are documents (suttas or segments)
+        and columns are terms (lemmas or words). Useful for clustering,
+        topic modeling, and other text analysis.
+
+        Args:
+            nikaya: Nikaya ID (dn, mn, sn, an, kn)
+            unit: Document unit - "sutta" or "segment"
+            terms: Term type - "lemmas" or "words"
+            min_df: Minimum document frequency (exclude rare terms)
+            as_dataframe: If True, return pandas DataFrame
+
+        Returns:
+            If as_dataframe=False: (sparse_matrix, doc_ids, term_list)
+            If as_dataframe=True: pandas DataFrame with doc_id index
+
+        Example:
+            # Get sparse matrix (requires scipy)
+            matrix, docs, terms = canon.document_term_matrix("dn")
+            print(f"Shape: {matrix.shape}")  # (34, N) for 34 DN suttas
+
+            # Get DataFrame (requires pandas)
+            df = canon.document_term_matrix("dn", as_dataframe=True)
+        """
+        return self._get_vocab().document_term_matrix(nikaya, unit, terms, min_df, as_dataframe)
+
+    def export_vocabulary(self, nikaya: str, output_path: str) -> None:
+        """Export vocabulary counts to CSV.
+
+        Args:
+            nikaya: Nikaya ID
+            output_path: Output file path (.csv)
+
+        Example:
+            canon.export_vocabulary("dn", "dn_vocab.csv")
+        """
+        self._get_vocab().export_vocabulary(nikaya, output_path)
+
+    def export_dtm(
+        self,
+        nikaya: str,
+        output_path: str,
+        unit: str = "sutta",
+        terms: str = "lemmas",
+        min_df: int = 2,
+    ) -> None:
+        """Export document-term matrix to CSV.
+
+        Args:
+            nikaya: Nikaya ID
+            output_path: Output file path (.csv)
+            unit: Document unit ("sutta" or "segment")
+            terms: Term type ("lemmas" or "words")
+            min_df: Minimum document frequency
+
+        Example:
+            canon.export_dtm("dn", "dn_dtm.csv")
+        """
+        self._get_vocab().export_dtm(nikaya, output_path, unit, terms, min_df)
+
+    # -------------------------------------------------------------------------
+    # LaTeX/PDF Export methods
+    # -------------------------------------------------------------------------
+
+    def _get_exporter(self) -> Exporter:
+        """Get or create exporter (lazy initialization)."""
+        if not hasattr(self, "_exporter") or self._exporter is None:
+            self._exporter = Exporter(self._store.data_dir)
+        return self._exporter
+
+    def to_latex(
+        self,
+        sutta_ids: "str | list[str]",
+        title: Optional[str] = None,
+    ) -> str:
+        """Generate LaTeX for one or more suttas.
+
+        Creates a complete LaTeX document with:
+        - Title page
+        - Table of contents (for multiple suttas)
+        - Properly formatted Pāli text with diacritics
+        - Verse detection and formatting
+        - reledmac package for critical edition features
+
+        Args:
+            sutta_ids: Single sutta ID or list of IDs
+            title: Custom document title
+
+        Returns:
+            Complete LaTeX document as string
+
+        Example:
+            latex = canon.to_latex("dn1")
+            latex = canon.to_latex(["dn1", "dn2"], title="Selected Suttas")
+        """
+        return self._get_exporter().to_latex(sutta_ids, title)
+
+    def export_latex(
+        self,
+        sutta_ids: "str | list[str]",
+        output_path: str,
+        title: Optional[str] = None,
+    ) -> None:
+        """Export sutta(s) to LaTeX file.
+
+        Args:
+            sutta_ids: Single sutta ID or list of IDs
+            output_path: Output file path (.tex)
+            title: Custom document title
+
+        Example:
+            canon.export_latex("dn1", "dn1.tex")
+            canon.export_latex(["dn1", "dn2"], "dn_selection.tex")
+        """
+        self._get_exporter().export_latex(sutta_ids, output_path, title)
+
+    def export_pdf(
+        self,
+        sutta_ids: "str | list[str]",
+        output_path: str,
+        title: Optional[str] = None,
+        keep_tex: bool = False,
+    ) -> bool:
+        """Export sutta(s) to PDF.
+
+        Requires XeLaTeX to be installed (part of TeX Live or MacTeX).
+
+        Args:
+            sutta_ids: Single sutta ID or list of IDs
+            output_path: Output file path (.pdf)
+            title: Custom document title
+            keep_tex: If True, keep the intermediate .tex file
+
+        Returns:
+            True if PDF generation succeeded, False otherwise
+
+        Example:
+            canon.export_pdf("dn1", "dn1.pdf")
+            canon.export_pdf("dn", "digha_nikaya.pdf", title="Dīgha Nikāya")
+        """
+        return self._get_exporter().export_pdf(sutta_ids, output_path, title, keep_tex)
