@@ -469,3 +469,108 @@ class Canon:
             canon.export_pdf("dn", "digha_nikaya.pdf", title="Dīgha Nikāya")
         """
         return self._get_exporter().export_pdf(sutta_ids, output_path, title, keep_tex)
+
+    # -------------------------------------------------------------------------
+    # Tipitaka R package export methods
+    # -------------------------------------------------------------------------
+
+    def export_tipitaka_raw(self, output_path: str, use_lemmas: bool = True) -> None:
+        """Export data in tipitaka_raw format for R package.
+
+        Creates CSV with columns: book, book_name, text
+        One row per nikaya with full concatenated text.
+
+        Args:
+            output_path: Output CSV path
+            use_lemmas: If True, use lemmatized text source
+
+        Example:
+            canon.export_tipitaka_raw("data-raw/tipitaka_raw.csv")
+        """
+        self._get_vocab().export_tipitaka_raw(output_path, use_lemmas)
+
+    def export_tipitaka_long(
+        self,
+        output_path: str,
+        use_lemmas: bool = True,
+        by_sutta: bool = False,
+    ) -> None:
+        """Export data in tipitaka_long format for R package.
+
+        Creates CSV with columns: word, n, total, freq, book
+        Compatible with existing tipitaka R package format.
+
+        Args:
+            output_path: Output CSV path
+            use_lemmas: If True, count lemmas; otherwise surface forms
+            by_sutta: If True, one entry per sutta; otherwise per nikaya
+
+        Example:
+            canon.export_tipitaka_long("data-raw/tipitaka_long.csv")
+            canon.export_tipitaka_long("data-raw/tipitaka_suttas_long.csv", by_sutta=True)
+        """
+        self._get_vocab().export_tipitaka_long(output_path, use_lemmas, by_sutta)
+
+    def export_tipitaka_wide(
+        self,
+        output_path: str,
+        use_lemmas: bool = True,
+        by_sutta: bool = False,
+        min_freq: int = 5,
+    ) -> None:
+        """Export data in tipitaka_wide format for R package.
+
+        Creates CSV with books/suttas as rows and words as columns.
+        Cell values are word frequencies (count / total).
+
+        Args:
+            output_path: Output CSV path
+            use_lemmas: If True, count lemmas; otherwise surface forms
+            by_sutta: If True, one row per sutta; otherwise per nikaya
+            min_freq: Minimum total frequency to include a word
+
+        Example:
+            canon.export_tipitaka_wide("data-raw/tipitaka_wide.csv")
+        """
+        self._get_vocab().export_tipitaka_wide(output_path, use_lemmas, by_sutta, min_freq)
+
+    def export_tipitaka_data(self, output_dir: str) -> None:
+        """Export all data files needed for tipitaka R package.
+
+        Generates the following files in output_dir:
+        - tipitaka_raw.csv: Full text per nikaya
+        - tipitaka_long.csv: Word frequencies by nikaya (lemmas)
+        - tipitaka_long_words.csv: Word frequencies by nikaya (surface forms)
+        - tipitaka_wide.csv: Frequency matrix by nikaya
+        - tipitaka_suttas_long.csv: Word frequencies by sutta
+        - tipitaka_suttas_wide.csv: Frequency matrix by sutta
+
+        Args:
+            output_dir: Directory to write CSV files
+
+        Example:
+            canon.export_tipitaka_data("../tipitaka/data-raw/")
+        """
+        from pathlib import Path
+        out = Path(output_dir)
+        out.mkdir(parents=True, exist_ok=True)
+
+        print("Exporting tipitaka_raw.csv...")
+        self.export_tipitaka_raw(str(out / "tipitaka_raw.csv"))
+
+        print("Exporting tipitaka_long.csv (lemmas by nikaya)...")
+        self.export_tipitaka_long(str(out / "tipitaka_long.csv"), use_lemmas=True)
+
+        print("Exporting tipitaka_long_words.csv (surface forms by nikaya)...")
+        self.export_tipitaka_long(str(out / "tipitaka_long_words.csv"), use_lemmas=False)
+
+        print("Exporting tipitaka_wide.csv...")
+        self.export_tipitaka_wide(str(out / "tipitaka_wide.csv"), use_lemmas=True, min_freq=10)
+
+        print("Exporting tipitaka_suttas_long.csv...")
+        self._get_vocab().export_tipitaka_suttas_long(str(out / "tipitaka_suttas_long.csv"))
+
+        print("Exporting tipitaka_suttas_wide.csv...")
+        self.export_tipitaka_wide(str(out / "tipitaka_suttas_wide.csv"), use_lemmas=True, by_sutta=True, min_freq=10)
+
+        print("Done! Files written to:", output_dir)
