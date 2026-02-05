@@ -6,7 +6,7 @@
 
 % Packages for Pāli diacritics
 \usepackage{fontspec}
-\setmainfont{Linux Libertine O}
+\setmainfont{Linux Libertine}
 \usepackage{polyglossia}
 \setmainlanguage{english}
 
@@ -25,27 +25,25 @@
     backgroundcolor=\color{gray!10}
 }
 
-% Document metadata
-\journaltitle{Digital Scholarship in the Humanities}
-\DOI{10.1093/llc/xxxxx}
-\copyrightyear{2026}
-\pubyear{2026}
-\access{Advance Access Publication Date: Day Month Year}
+% Document metadata (commented out for submission)
+% \journaltitle{Digital Scholarship in the Humanities}
+% \DOI{10.1093/llc/xxxxx}
+% \copyrightyear{2026}
+% \pubyear{2026}
+% \access{Advance Access Publication Date: Day Month Year}
 \appnotes{Original Article}
 
 \begin{document}
 
 \title{A Critical Digital Edition of the Pāli Canon: Lemmatization, Collation, and Computational Analysis}
 
-\author{Dan Zigmond\affmark{1}}
+\author[1]{Rev.\ Dan Zigmond}
 
-\affiliation{\afmark{1}Corresponding author. Email: dan@zigmond.org}
+\address[1]{Independent Scholar, Palo Alto, CA, USA. E-mail: djz@shmonk.com}
 
 \abstract{This paper describes the creation of a critical digital edition of the Pāli Canon (Tipiṭaka), the canonical scripture of Theravāda Buddhism, comprising approximately 2.7 million words across the complete canon. Building on earlier computational analyses that demonstrated the feasibility of applying text-mining techniques to Pāli texts \citep{zigmond2021,zigmond2023}, this work addresses key limitations of prior approaches by incorporating full morphological analysis through the Digital Pāli Dictionary (DPD).
-
-The edition uses the Pali Text Society (PTS) editions as the authoritative base text, with variant readings from the SuttaCentral Mahāsaṅgīti edition and the Chaṭṭha Saṅgāyana (VRI/CST) edition recorded in the apparatus. Where PTS contains errors—confirmed by agreement of SC and VRI against a reading not attested in the DPD—corrections are applied and documented transparently.
-
-The resulting dataset provides: (1) a unified reference system enabling citation by PTS volume and page, SC segment ID, or VRI section number; (2) a critical apparatus preserving all variant readings between editions; (3) full lemmatization with word-level morphological analysis achieving 97.5\% coverage; and (4) a research-ready format suitable for the computational analyses proposed in earlier work. This infrastructure enables systematic investigation of textual strata, formulaic patterns, and the relative age of canonical texts—questions of longstanding scholarly interest that have remained difficult to address without comprehensive morphological annotation.}
+The edition uses the Pali Text Society (PTS) editions as the authoritative base text, with variant readings from the SuttaCentral Mahāsaṅgīti edition and the Chaṭṭha Saṅgāyana (VRI/CST) edition recorded in the apparatus. Where PTS contains errors---confirmed by agreement of SC and VRI against a reading not attested in the DPD---corrections are applied and documented transparently.
+The resulting dataset provides: (1) a unified reference system enabling citation by PTS volume and page, SC segment ID, or VRI section number; (2) a critical apparatus preserving all variant readings between editions; (3) full lemmatization with word-level morphological analysis achieving 97.5\% coverage; and (4) a research-ready format suitable for the computational analyses proposed in earlier work. This infrastructure enables systematic investigation of textual strata, formulaic patterns, and the relative age of canonical texts---questions of longstanding scholarly interest that have remained difficult to address without comprehensive morphological annotation.}
 
 \keywords{Pāli Canon; Tipiṭaka; critical edition; lemmatization; digital humanities; Buddhist studies; corpus linguistics}
 
@@ -375,7 +373,9 @@ The complete corpus is available in JSON format at \url{https://github.com/dange
 
 \section*{Acknowledgments}
 
-This work relies on the contributions of SuttaCentral for the Mahāsaṅgīti digital edition and segmentation, the Digital Pāli Dictionary project for the comprehensive morphological database, and the broader community of Pāli digital humanities scholars.
+This work would not have been possible without the foundational contributions of many individuals and institutions. The Pali Text Society has maintained scholarly editions of the Tipiṭaka for over a century, providing the authoritative base text for this edition. The Vipassana Research Institute created and freely shared the Chaṭṭha Saṅgāyana digital edition \citep{vri}. GRETIL \citep{gretil} has long provided open access to digitized Pāli texts. SuttaCentral contributed the Mahāsaṅgīti digital edition and the segmentation system that enables cross-referencing between editions \citep{suttacentral}. The Digital Pāli Dictionary project provided the comprehensive morphological database essential for lemmatization \citep{dpd2026}, and the \emph{Dictionary of Pāli Proper Names} \citep{malalasekera1937} remains an invaluable resource for identifying persons, places, and texts in the canon.
+
+The computational pipeline for this edition was developed collaboratively with Claude (Anthropic), whose assistance in code development, debugging, and methodological refinement substantially accelerated this work.
 
 \bibliographystyle{dcu}
 \bibliography{references}
