@@ -34,8 +34,8 @@ LATEX_PREAMBLE = r'''%!TEX program = xelatex
 
 % Fonts with Pāli diacritics
 \usepackage{fontspec}
-\setmainfont{Linux Libertine O}
-\setsansfont{Linux Biolinum O}
+\setmainfont{Linux Libertine}
+\setsansfont{Linux Libertine}
 
 % Critical edition package
 \usepackage[series={A},noend,noeledsec,nofamiliar,noledgroup]{reledmac}

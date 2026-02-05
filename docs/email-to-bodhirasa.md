@@ -17,14 +17,15 @@ I've been developing a computational critical edition of the complete Pāli Tipi
 - **VRI** (Chaṭṭha Saṅgāyana CST4)
 - **SuttaCentral** (Mahāsaṅgīti edition)
 
-As part of this work, I used DPD (version 0.3.20260202) to lemmatize the entire SuttaCentral corpus—approximately 1.6 million word tokens representing 127,033 unique word forms.
+As part of this work, I used DPD (version 0.3.20260202) to lemmatize the entire SuttaCentral corpus—approximately 1.6 million word tokens representing 127,032 unique word forms.
 
 ## Lemmatization Results
 
 The results were excellent:
 
-- **Coverage: 97.5%** (123,859 of 127,033 unique words identified)
-- Sandhi decompositions: 42,440
+- **Coverage: 97.5%** (123,869 of 127,032 unique words identified)
+- Sandhi decompositions: 42,441
+- Orthographic variant normalizations (-n/-m → -ṃ): 1,553
 - Metrical variant normalizations: 2,133
 - DPPN proper noun matches: 21
 
@@ -32,27 +33,39 @@ This is a testament to the comprehensiveness of DPD!
 
 ## Unknown Words
 
-I identified **3,758 unique word forms** that weren't found in DPD's lookup table. Interestingly, **97% of these come from the Khuddaka Nikāya**—particularly the Jātaka, Apadāna, Therīgāthā, and other verse texts.
+I identified **3,235 unique word forms** that weren't found in DPD's lookup table. After filtering out English noise from source markup and analyzing the patterns, the breakdown is:
 
-The main categories appear to be:
+| Category | Count | Notes |
+|----------|-------|-------|
+| Potential new headwords | 2,830 | Genuine candidates for DPD |
+| Long compounds (25+ chars) | 192 | Complex dvandva/bahuvrīhi |
+| Metrical variants | 175 | Unusual verbal forms |
+| Story/section titles | 21 | vatthu, vagga endings |
+| Pronoun-verb fusions | 9 | -osmi/-amhi sandhi |
+| Jhāna compounds | 3 | paṭhamajhāna, etc. |
 
-1. **Pronoun-verb fusions** (11 words)
-   Examples: `sakyaputtiyāmhā`, `nibbānādhimuttohama`, `anupādānohama`
+**96% of the potential new headwords (2,733 of 2,830) come from the Khuddaka Nikāya**—particularly the Jātaka, Apadāna, Milindapañha, Netti, and verse texts.
 
-2. **Jhāna compound forms** (3 words)
-   `paṭhamajhāna`, `dutiyajhāna`, `tatiyajhāna`
+### Examples of Potential New Headwords
 
-3. **Metrical variants** (~110 words)
-   Final vowel lengthening in verse: `atāpī`, `kusalāyātikā`, `anvāvisiṭṭhā`
+From **Netti/Peṭakopadesa** (technical terms):
+- `samāropano` (36x) - appears to be a technical term
+- `otaraṇo` (26x) - technical term
+- `vevacano` (23x) - synonym/gloss marker
 
-4. **Long compounds** (~10 words)
-   `sokaparidevadukkhadomanassupāyāsaā`, `ubbhegauttāsabhayāpanūdano`
+From **Milindapañha**:
+- `visajjanā` (16x) - answering/response
+- `khīḷito` (12x) - played/sported
 
-5. **Story titles** from Jātaka/Apadāna (4 words)
-   `kumbaghosakaseṭṭhivatthu`, `patipūjikakumārivatthu`
+From **Jātaka/Apadāna**:
+- `yamalokikā` (11x) - relating to the realm of Yama
+- `nekāsī` (10x) - verb form
+- `haṃcivagga`, `sereyyavagga`, etc. - chapter titles
 
-6. **Potential new headwords** (~157 words)
-   Various forms not matching any normalization strategy
+From **Nikāyas** (rare but interesting):
+- `tipissa` (55x in SN) - appears in specific contexts
+- `abhisamparāyañcā` (27x in AN) - compound form
+- `ayokhilaṃ` (25x across AN/KN) - iron stake
 
 ## How Can I Help?
 
@@ -60,10 +73,10 @@ I'd be happy to contribute this data to DPD if it would be useful. Before prepar
 
 1. **What format would be most helpful?** (CSV, JSON, plain text list?)
 2. **What information should I include?** (word form, suggested lemma, part of speech, location in canon?)
-3. **Should I separate the categories** (sandhi forms vs. potential new headwords)?
-4. **Are there any categories you'd prefer I exclude?** (e.g., obvious OCR errors, English words from markup)
+3. **Should I separate the categories** (technical terms vs. verse forms vs. titles)?
+4. **Are there any categories you'd prefer I exclude?** (e.g., chapter titles, extremely long compounds)
 
-I can provide the words with their locations in the canon (e.g., "found in Jātaka 1.234") and, where determinable, suggested parts of speech.
+I can provide the words with their locations in the canon (e.g., "found in Ja 470") and, where determinable, suggested parts of speech based on morphological analysis.
 
 ## Project Details
 

@@ -139,6 +139,8 @@ class Lemmatizer:
 
     def tokenize(self, text: str) -> list[str]:
         """Tokenize Pāli text into words."""
+        # Strip HTML tags (e.g., <b>, </b>, <i>, </i>)
+        text = re.sub(r'<[^>]+>', ' ', text)
         # Normalize niggahīta
         text = text.replace('ṁ', 'ṃ')
         # Split on non-Pāli characters
@@ -147,8 +149,10 @@ class Lemmatizer:
 
     def _normalize_variant(self, word: str) -> str:
         """Normalize orthographic variants."""
-        # -n is often a variant of -ṃ (niggahīta)
+        # -n and -m are often variants of -ṃ (niggahīta)
         if word.endswith('n'):
+            return word[:-1] + 'ṃ'
+        if word.endswith('m') and len(word) > 1:
             return word[:-1] + 'ṃ'
         return word
 
