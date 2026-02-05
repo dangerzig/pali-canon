@@ -27,7 +27,7 @@
 \maketitle
 
 \begin{abstract}
-We present a lemmatized corpus of the Pāli Canon (Tipiṭaka), a 1.6 million token corpus achieving 97.7\% lemmatization coverage through integration with the Digital Pāli Dictionary. Error analysis reveals that 96\% of unresolved forms originate from the Khuddaka Nikāya---technical commentarial texts and narrative literature---with only 113 unknowns in the four main nikāyas. The corpus enables previously infeasible computational tasks for Pāli: training supervised morphological disambiguators, building syntactic treebanks following the Universal Dependencies framework, and conducting cross-lingual alignment with Sanskrit parallel texts. Unlike existing digital editions, this resource provides word-level lemmatization with sandhi decomposition for 42,400 compound forms, specialized handling for titles and metrical variants, a three-witness critical apparatus classifying 29,000+ textual variants, and a unified reference system across edition-specific citation schemes. We compare coverage and design decisions against the Digital Corpus of Sanskrit, demonstrating comparable annotation density for a language with significantly fewer computational resources. The corpus and reproducible pipeline are released under open licenses.
+We present a lemmatized corpus of the Pāli Canon (Tipiṭaka), a 1.6 million token corpus achieving 97.7\% lemmatization coverage through integration with the Digital Pāli Dictionary. Error analysis reveals that 96\% of unresolved forms originate from the Khuddaka Nikāya---technical commentarial texts and narrative literature---with only 95 unknowns in the four main nikāyas. The corpus enables previously infeasible computational tasks for Pāli: training supervised morphological disambiguators, building syntactic treebanks following the Universal Dependencies framework, and conducting cross-lingual alignment with Sanskrit parallel texts. Unlike existing digital editions, this resource provides word-level lemmatization with sandhi decomposition for 42,400 compound forms, specialized handling for titles and metrical variants, a three-witness critical apparatus classifying 29,000+ textual variants, and a unified reference system across edition-specific citation schemes. We compare coverage and design decisions against the Digital Corpus of Sanskrit, demonstrating comparable annotation density for a language with significantly fewer computational resources. The corpus and reproducible pipeline are released under open licenses.
 
 \medskip
 \noindent\textbf{Keywords:} Pāli; corpus linguistics; lemmatization; morphological analysis; low-resource languages; language resources
@@ -162,7 +162,7 @@ Metric & Value \\
 Total tokens & 1,606,492 \\
 Unique forms & 127,032 \\
 Forms resolved & 124,104 (97.7\%) \\
-Forms unresolved & 3,002 (2.4\%) \\
+Forms unresolved & 2,983 (2.3\%) \\
 Sandhi decompositions & 42,441 \\
 \bottomrule
 \end{tabular}
@@ -170,7 +170,7 @@ Sandhi decompositions & 42,441 \\
 
 \subsection{Error Analysis}
 
-We analyzed the 3,002 unresolved unique forms to identify systematic gaps. Table \ref{tab:errors} shows the distribution by source text.
+We analyzed the 2,983 unresolved unique forms to identify systematic gaps. Table \ref{tab:errors} shows the distribution by source text.
 
 \begin{table}[ht]
 \centering
@@ -180,13 +180,13 @@ We analyzed the 3,002 unresolved unique forms to identify systematic gaps. Table
 \toprule
 Source & Count & \% \\
 \midrule
-Khuddaka Nikāya & 2,889 & 96.2\% \\
-\quad Netti/Peṭakopadesa & 312 & 10.4\% \\
-\quad Cūḷaniddesa/Mahāniddesa & 487 & 16.2\% \\
-\quad Jātaka/Apadāna & 1,456 & 48.5\% \\
+Khuddaka Nikāya & 2,888 & 96.8\% \\
+\quad Netti/Peṭakopadesa & 312 & 10.5\% \\
+\quad Cūḷaniddesa/Mahāniddesa & 487 & 16.3\% \\
+\quad Jātaka/Apadāna & 1,456 & 48.8\% \\
 \quad Milindapañha & 198 & 6.6\% \\
-\quad Other KN & 436 & 14.5\% \\
-Main nikāyas (DN/MN/SN/AN) & 113 & 3.8\% \\
+\quad Other KN & 435 & 14.6\% \\
+Main nikāyas (DN/MN/SN/AN) & 95 & 3.2\% \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -215,7 +215,7 @@ Dependencies & No & Partial \\
 \end{tabular}
 \end{table}
 
-The coverage gap reflects the relative maturity of Sanskrit resources and the DCS's iterative refinement over 15+ years. However, for the four main nikāyas (DN, MN, SN, AN), our coverage approaches the DCS benchmark, with only 113 unresolved forms. Our corpus provides a foundation for similar iterative improvement for Pāli.
+The coverage gap reflects the relative maturity of Sanskrit resources and the DCS's iterative refinement over 15+ years. However, for the four main nikāyas (DN, MN, SN, AN), our coverage approaches the DCS benchmark, with only 95 unresolved forms. Our corpus provides a foundation for similar iterative improvement for Pāli.
 
 \subsection{Vocabulary Reduction}
 

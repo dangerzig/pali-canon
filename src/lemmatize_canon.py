@@ -54,6 +54,12 @@ SHORT_PRONOUN_VARIANTS = {
 # e.g., abhisamparāyañcā = abhisamparāyaṃ + ca
 SANDHI_NCA_PATTERN = re.compile(r'^(.+)ñcā$')
 
+# English words that appear in SuttaCentral placeholder segments
+# These should be skipped during lemmatization (marked as 'eng')
+ENGLISH_WORDS = {
+    'on', 'display', 'title', 'of', 'section', 'only',  # "On Display: Title of Section Only"
+}
+
 # Metrical lengthening: long vowel → short vowel
 METRICAL_NORMALIZATIONS = {
     'ā': 'a',
@@ -163,6 +169,7 @@ class Lemmatizer:
             "causative_forms": 0,
             "short_pronouns": 0,
             "sandhi_nca": 0,
+            "english_words": 0,
             "unknown_words": Counter(),
             "lemma_counts": Counter(),
         }
@@ -471,38 +478,51 @@ class Lemmatizer:
         if word in self.cache:
             return self.cache[word]
 
+        # Skip English words (from SuttaCentral placeholder segments)
+        if word in ENGLISH_WORDS:
+            token = TokenInfo(word=word, lemma=word, pos='eng')
+            self.cache[word] = token
+            self.stats["english_words"] += 1
+            return token
+
         cursor = self.conn.execute("""
             SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
         """, (word,))
         row = cursor.fetchone()
 
-        # If not found, try normalized variant (-n → -ṃ)
+        # Check if row has useful data (not just a stub entry with empty fields)
+        def has_useful_data(r):
+            return r and (r['headwords'] or r['deconstructor'])
+
+        # If not found or empty stub, try normalized variant (-n/-m → -ṃ)
         normalized = None
-        if not row:
+        if not has_useful_data(row):
             normalized = self._normalize_variant(word)
             if normalized != word:
                 cursor = self.conn.execute("""
                     SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
                 """, (normalized,))
-                row = cursor.fetchone()
-                if row:
+                norm_row = cursor.fetchone()
+                if has_useful_data(norm_row):
+                    row = norm_row
                     self.stats["normalized_variants"] += 1
 
         # If still not found, try metrical normalization (long → short vowel)
         metrical_base = None
-        if not row:
+        if not has_useful_data(row):
             metrical_base = self._try_metrical_normalization(word)
             if metrical_base:
                 cursor = self.conn.execute("""
                     SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
                 """, (metrical_base,))
-                row = cursor.fetchone()
-                if row:
+                met_row = cursor.fetchone()
+                if has_useful_data(met_row):
+                    row = met_row
                     self.stats["metrical_normalizations"] += 1
 
         token = TokenInfo(word=word)
 
-        if row:
+        if has_useful_data(row):
             # Found in DPD - check for sandhi decomposition first
             if row['deconstructor']:
                 try:
