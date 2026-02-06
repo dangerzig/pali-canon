@@ -26,16 +26,22 @@ GRETIL_DIR = DATA_DIR / "gretil-pts"
 OUTPUT_DIR = DATA_DIR / "gretil-parsed" / "sn"
 
 # Pre-compiled patterns
-# Volume 1 format: SN_1.1,1.1. Title => division.book,chapter.section
-SUTTA_REF_PATTERN_V1 = re.compile(
+# Volume 1 format A: SN_1.1,1.1. Title => division.book,chapter.section
+SUTTA_REF_PATTERN_V1A = re.compile(
     r'<b>\s*SN_(\d+)\.(\d+),(\d+)\.(\d+)\.\s*([^<]+)</b>',
+    re.IGNORECASE
+)
+# Volume 1 format B (no chapter): SN_1.5.1. Title => division.book.section (used by SN 5, 8-10)
+SUTTA_REF_PATTERN_V1B = re.compile(
+    r'<b>\s*SN_(\d+)\.(\d+)\.(\d+)\.\s*([^<]+)</b>',
     re.IGNORECASE
 )
 # Volume 2+ format: SN_2,12(1).1 (1) Title => division,globalSN(localBook).suttaNum (num) Title
 # Note: Some files have control characters before the reference
 # Note: Volume 5 has extra period: SN_5,45(1).1. vs SN_4,35(1).1
+# Note: The (num) after sutta number is optional for some saṃyuttas
 SUTTA_REF_PATTERN_V2 = re.compile(
-    r'<b>[\s\x00-\x1f]*SN_(\d+),(\d+)\((\d+)\)\.(\d+)\.?\s*\([^)]*\)\s*([^<]+)</b>',
+    r'<b>[\s\x00-\x1f]*SN_(\d+),(\d+)\((\d+)\)\.(\d+)\.?\s*(?:\([^)]*\)\s*)?([^<]+)</b>',
     re.IGNORECASE
 )
 PALI_WORD_PATTERN = re.compile(r'[a-zāīūṭḍṇṅñṃḷ]+', re.IGNORECASE)
@@ -74,32 +80,47 @@ def parse_volume(filepath: Path, division: int, samyutta_offset: int) -> list[di
     """
     text = filepath.read_text(encoding='utf-8')
 
-    # Try volume 1 format first, then volume 2+ format
-    matches_v1 = list(SUTTA_REF_PATTERN_V1.finditer(text))
+    # Collect matches from all patterns
+    matches_v1a = list(SUTTA_REF_PATTERN_V1A.finditer(text))
+    matches_v1b = list(SUTTA_REF_PATTERN_V1B.finditer(text))
     matches_v2 = list(SUTTA_REF_PATTERN_V2.finditer(text))
 
-    use_v1_format = len(matches_v1) > len(matches_v2)
-    matches = matches_v1 if use_v1_format else matches_v2
+    # Combine all matches with their format type, sorted by position
+    all_matches = []
+    for m in matches_v1a:
+        all_matches.append((m.start(), 'v1a', m))
+    for m in matches_v1b:
+        all_matches.append((m.start(), 'v1b', m))
+    for m in matches_v2:
+        all_matches.append((m.start(), 'v2', m))
+    all_matches.sort(key=lambda x: x[0])
 
-    if not matches:
+    if not all_matches:
         print(f"    Warning: No sutta references found in {filepath.name}")
         return []
 
     results = []
     sutta_counts = {}  # Track sutta numbers per global saṃyutta
 
-    for i, match in enumerate(matches):
-        if use_v1_format:
-            # Volume 1: SN_1.1,1.1 => division.localBook,chapter.section
+    for i, (pos, fmt, match) in enumerate(all_matches):
+        if fmt == 'v1a':
+            # Volume 1 format A: SN_1.1,1.1 => division.localBook,chapter.section
             div = int(match.group(1))
             book = int(match.group(2))  # Local saṃyutta number
             chapter = int(match.group(3))
             section = int(match.group(4))
             title = match.group(5).strip()
-            # Convert local book to global
             global_samyutta = book + samyutta_offset
             pts_ref = f"SN_{div}.{book},{chapter}.{section}"
-        else:
+        elif fmt == 'v1b':
+            # Volume 1 format B (no chapter): SN_1.5.1 => division.localBook.section
+            div = int(match.group(1))
+            book = int(match.group(2))  # Local saṃyutta number
+            section = int(match.group(3))
+            title = match.group(4).strip()
+            global_samyutta = book + samyutta_offset
+            pts_ref = f"SN_{div}.{book}.{section}"
+        else:  # v2
             # Volume 2+: SN_2,12(1).1 => division,globalSN(localBook).suttaNum
             div = int(match.group(1))
             global_sn = int(match.group(2))  # Already global!
@@ -124,8 +145,8 @@ def parse_volume(filepath: Path, division: int, samyutta_offset: int) -> list[di
 
         # Find content (from this marker to next marker)
         content_start = match.end()
-        if i + 1 < len(matches):
-            content_end = matches[i + 1].start()
+        if i + 1 < len(all_matches):
+            content_end = all_matches[i + 1][0]
         else:
             content_end = len(text)
 

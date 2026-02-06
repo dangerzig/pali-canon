@@ -160,6 +160,354 @@ class TokenInfo:
         return d
 
 
+# =============================================================================
+# Lookup Strategy Infrastructure
+# =============================================================================
+
+from abc import ABC, abstractmethod
+from typing import Callable, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import Protocol
+
+
+class LookupStrategy(ABC):
+    """Base class for word lookup strategies.
+
+    Each strategy attempts to resolve a word's lemma/sandhi information.
+    Strategies are tried in order until one succeeds.
+    """
+
+    # Name used for stats tracking
+    stat_key: str = ""
+
+    @abstractmethod
+    def try_lookup(self, word: str, token: 'TokenInfo', ctx: 'Lemmatizer') -> bool:
+        """Attempt to look up the word.
+
+        Args:
+            word: The word to look up
+            token: TokenInfo to populate if successful
+            ctx: Lemmatizer instance for database access and helper methods
+
+        Returns:
+            True if lookup succeeded (token was modified), False otherwise
+        """
+        pass
+
+
+class DPDLookupStrategy(LookupStrategy):
+    """Direct DPD database lookup with normalization variants."""
+
+    stat_key = ""  # Stats managed internally (normalized_variants, metrical_normalizations)
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        row = ctx._lookup_dpd(word)
+
+        # Try normalized variant (-n/-m → -ṃ)
+        if not ctx._has_useful_data(row):
+            normalized = ctx._normalize_variant(word)
+            if normalized != word:
+                norm_row = ctx._lookup_dpd(normalized)
+                if ctx._has_useful_data(norm_row):
+                    row = norm_row
+                    ctx.stats["normalized_variants"] += 1
+
+        # Try metrical normalization (long → short vowel)
+        if not ctx._has_useful_data(row):
+            metrical_base = ctx._try_metrical_normalization(word)
+            if metrical_base:
+                met_row = ctx._lookup_dpd(metrical_base)
+                if ctx._has_useful_data(met_row):
+                    row = met_row
+                    ctx.stats["metrical_normalizations"] += 1
+
+        if ctx._has_useful_data(row):
+            ctx._process_dpd_result(token, row)
+            return True
+        return False
+
+
+class ShortPronounStrategy(LookupStrategy):
+    """Handle short pronoun variants (m, man, tan, etc.)."""
+
+    stat_key = "short_pronouns"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        short_pron = ctx._try_short_pronoun(word)
+        if short_pron:
+            token.lemma = short_pron['lemma']
+            token.pos = short_pron['pos']
+            return True
+        return False
+
+
+class SandhiNcaStrategy(LookupStrategy):
+    """Handle -ñcā sandhi pattern (wordṃ + ca)."""
+
+    stat_key = "sandhi_nca"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        nca_split = ctx._try_sandhi_nca(word)
+        if nca_split:
+            base, particle, particle_info = nca_split
+            base_token = ctx.lookup_word(base)
+            if base_token.lemma or base_token.sandhi:
+                if base_token.sandhi:
+                    token.sandhi = base_token.sandhi + [particle]
+                    token.components = base_token.components + [particle_info]
+                else:
+                    token.sandhi = [base, particle]
+                    token.components = [
+                        {'lemma': base_token.lemma, 'pos': base_token.pos},
+                        particle_info
+                    ]
+                return True
+        return False
+
+
+class ParticleSplitStrategy(LookupStrategy):
+    """Split off trailing particles (ca, pi, va, etc.)."""
+
+    stat_key = "particle_splits"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        split = ctx._try_particle_split(word)
+        if split:
+            base, particle, particle_info = split
+            base_token = ctx.lookup_word(base)
+            if base_token.lemma or base_token.sandhi:
+                if base_token.sandhi:
+                    token.sandhi = base_token.sandhi + [particle]
+                    token.components = base_token.components + [particle_info]
+                else:
+                    token.sandhi = [base, particle]
+                    token.components = [
+                        {'lemma': base_token.lemma, 'pos': base_token.pos},
+                        particle_info
+                    ]
+                    if base_token.root:
+                        token.components[0]['root'] = base_token.root
+                return True
+        return False
+
+
+class DPPNStrategy(LookupStrategy):
+    """Match proper nouns from DPPN dictionary."""
+
+    stat_key = "dppn_matches"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        dppn_match = ctx._try_dppn_match(word)
+        if dppn_match:
+            token.lemma = dppn_match['lemma']
+            token.pos = dppn_match['pos']
+            return True
+        return False
+
+
+class PronounVerbSplitStrategy(LookupStrategy):
+    """Split pronoun-verb fusions (ahamanusāsissāmī → ahaṃ + anusāsissāmi)."""
+
+    stat_key = "pronoun_verb_splits"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        pv_split = ctx._try_pronoun_verb_split(word)
+        if pv_split:
+            verb_part, pronoun, pronoun_info = pv_split
+            verb_token = ctx.lookup_word(verb_part)
+            if verb_token.lemma or verb_token.sandhi:
+                if verb_token.sandhi:
+                    token.sandhi = [pronoun] + verb_token.sandhi
+                    token.components = [pronoun_info] + verb_token.components
+                else:
+                    token.sandhi = [pronoun, verb_part]
+                    token.components = [
+                        pronoun_info,
+                        {'lemma': verb_token.lemma, 'pos': verb_token.pos}
+                    ]
+                    if verb_token.root:
+                        token.components[1]['root'] = verb_token.root
+                return True
+        return False
+
+
+class VerbEndingStrategy(LookupStrategy):
+    """Normalize verb endings (-āmā → -āma, -āmī → -āmi)."""
+
+    stat_key = "verb_ending_normalizations"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        verb_norm = ctx._try_verb_ending_normalization(word)
+        if verb_norm:
+            cursor = ctx.conn.execute("""
+                SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
+            """, (verb_norm,))
+            row = cursor.fetchone()
+            if row and row['headwords']:
+                try:
+                    headword_ids = json.loads(row['headwords'])
+                    if headword_ids:
+                        hw_info = ctx._get_headword_by_id(headword_ids[0])
+                        if hw_info:
+                            token.lemma = hw_info.get('lemma')
+                            token.pos = hw_info.get('pos')
+                            token.root = hw_info.get('root')
+                            return True
+                except (json.JSONDecodeError, TypeError):
+                    pass
+        return False
+
+
+class InternalMetricalStrategy(LookupStrategy):
+    """Full internal metrical normalization (all long vowels → short)."""
+
+    stat_key = "internal_metrical"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        internal_norm = ctx._try_internal_metrical_normalization(word)
+        if internal_norm:
+            cursor = ctx.conn.execute("""
+                SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
+            """, (internal_norm,))
+            row = cursor.fetchone()
+            if row and row['headwords']:
+                try:
+                    headword_ids = json.loads(row['headwords'])
+                    if headword_ids:
+                        hw_info = ctx._get_headword_by_id(headword_ids[0])
+                        if hw_info:
+                            token.lemma = hw_info.get('lemma')
+                            token.pos = hw_info.get('pos')
+                            token.root = hw_info.get('root')
+                            return True
+                except (json.JSONDecodeError, TypeError):
+                    pass
+        return False
+
+
+class KnownCompoundStrategy(LookupStrategy):
+    """Match known compound patterns (jhāna compounds, etc.)."""
+
+    stat_key = "known_compounds"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        known = ctx._try_known_compound(word)
+        if known:
+            token.sandhi = known['sandhi']
+            token.components = known['components']
+            return True
+        return False
+
+
+class TitleMatchStrategy(LookupStrategy):
+    """Match title/chapter patterns (vagga, vatthu endings)."""
+
+    stat_key = "title_matches"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        title_match = ctx._try_title_match(word)
+        if title_match:
+            token.lemma = title_match['lemma']
+            token.pos = title_match['pos']
+            token.sandhi = title_match.get('sandhi')
+            token.components = title_match.get('components')
+            return True
+        return False
+
+
+class ApadanaTitleStrategy(LookupStrategy):
+    """Match Apadāna title patterns."""
+
+    stat_key = "apadana_titles"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        apadana_match = ctx._try_apadana_title(word)
+        if apadana_match:
+            token.lemma = apadana_match['lemma']
+            token.pos = apadana_match['pos']
+            token.sandhi = apadana_match.get('sandhi')
+            token.components = apadana_match.get('components')
+            return True
+        return False
+
+
+class CausativeAbsolutiveStrategy(LookupStrategy):
+    """Match causative absolutive forms (-ayitvā, -etvā, -āpetvā)."""
+
+    stat_key = "causative_forms"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        causative_base = ctx._try_causative_absolutive(word)
+        if causative_base:
+            hw_info = ctx._get_headword_info(causative_base)
+            if hw_info:
+                token.lemma = hw_info.get('lemma')
+                token.pos = 'abs'
+                token.root = hw_info.get('root')
+                return True
+        return False
+
+
+class CompoundSplitStrategy(LookupStrategy):
+    """Split long words into compound components."""
+
+    stat_key = "compound_splits"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        if len(word) <= MIN_COMPOUND_LENGTH:
+            return False
+        parts = ctx._try_compound_split(word)
+        if parts and len(parts) > 1:
+            token.sandhi = parts
+            token.components = []
+            for part in parts:
+                comp_info = ctx._get_headword_info(part)
+                if comp_info:
+                    token.components.append(comp_info)
+                else:
+                    token.components.append({"word": part})
+            return True
+        return False
+
+
+class CustomLemmaStrategy(LookupStrategy):
+    """Look up words in custom lemma database."""
+
+    stat_key = "custom_lemmas"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        custom = get_custom_lemma(word)
+        if custom:
+            if "sandhi" in custom:
+                token.sandhi = custom["sandhi"]
+                token.components = custom["components"]
+            else:
+                token.lemma = custom.get("lemma")
+                token.pos = custom.get("pos")
+            return True
+        return False
+
+
+# Default strategy pipeline - order matters!
+DEFAULT_STRATEGIES: list[LookupStrategy] = [
+    DPDLookupStrategy(),
+    ShortPronounStrategy(),
+    SandhiNcaStrategy(),
+    ParticleSplitStrategy(),
+    DPPNStrategy(),
+    PronounVerbSplitStrategy(),
+    VerbEndingStrategy(),
+    InternalMetricalStrategy(),
+    KnownCompoundStrategy(),
+    TitleMatchStrategy(),
+    ApadanaTitleStrategy(),
+    CausativeAbsolutiveStrategy(),
+    CompoundSplitStrategy(),
+    CustomLemmaStrategy(),
+]
+
+
 class Lemmatizer:
     """Lemmatizer using the Digital Pali Dictionary."""
 
@@ -501,22 +849,18 @@ class Lemmatizer:
 
         return None
 
-    def lookup_word(self, word: str) -> TokenInfo:
+    def lookup_word(self, word: str, strategies: list[LookupStrategy] = None) -> TokenInfo:
         """Look up a word and return its lemma info.
 
-        Tries multiple strategies in order:
-        1. Cache lookup
-        2. Direct DPD lookup (with normalization variants)
-        3. Short pronoun variants
-        4. Sandhi pattern splitting (-ñcā, particles)
-        5. DPPN proper noun matching
-        6. Pronoun-verb fusion splitting
-        7. Verb ending normalization
-        8. Internal metrical normalization
-        9. Known compound patterns
-        10. Title/chapter pattern matching
-        11. Compound splitting for long words
-        12. Custom lemma database
+        Uses a pipeline of lookup strategies, trying each in order until
+        one succeeds. Strategies are defined in DEFAULT_STRATEGIES.
+
+        Args:
+            word: The word to look up
+            strategies: Optional custom strategy list (defaults to DEFAULT_STRATEGIES)
+
+        Returns:
+            TokenInfo with lemma/sandhi information
         """
         # Check cache first
         if word in self.cache:
@@ -529,216 +873,23 @@ class Lemmatizer:
             self.stats["english_words"] += 1
             return token
 
-        # Try direct DPD lookup
-        row = self._lookup_dpd(word)
-
-        # If not found or empty stub, try normalized variant (-n/-m → -ṃ)
-        if not self._has_useful_data(row):
-            normalized = self._normalize_variant(word)
-            if normalized != word:
-                norm_row = self._lookup_dpd(normalized)
-                if self._has_useful_data(norm_row):
-                    row = norm_row
-                    self.stats["normalized_variants"] += 1
-
-        # If still not found, try metrical normalization (long → short vowel)
-        if not self._has_useful_data(row):
-            metrical_base = self._try_metrical_normalization(word)
-            if metrical_base:
-                met_row = self._lookup_dpd(metrical_base)
-                if self._has_useful_data(met_row):
-                    row = met_row
-                    self.stats["metrical_normalizations"] += 1
-
         token = TokenInfo(word=word)
 
-        # Process DPD result if found
-        if self._has_useful_data(row):
-            self._process_dpd_result(token, row)
+        # Try each strategy in order until one succeeds
+        if strategies is None:
+            strategies = DEFAULT_STRATEGIES
 
-        # Check for short pronoun variants (m, man, tan, etc.)
-        if not token.lemma and not token.sandhi:
-            short_pron = self._try_short_pronoun(word)
-            if short_pron:
-                token.lemma = short_pron['lemma']
-                token.pos = short_pron['pos']
-                self.stats["short_pronouns"] += 1
+        for strategy in strategies:
+            # Skip if we already have a result
+            if token.lemma or token.sandhi:
+                break
 
-        # Check for -ñcā sandhi pattern (wordṃ + ca)
-        if not token.lemma and not token.sandhi:
-            nca_split = self._try_sandhi_nca(word)
-            if nca_split:
-                base, particle, particle_info = nca_split
-                base_token = self.lookup_word(base)  # Recursive lookup
-                if base_token.lemma or base_token.sandhi:
-                    if base_token.sandhi:
-                        token.sandhi = base_token.sandhi + [particle]
-                        token.components = base_token.components + [particle_info]
-                    else:
-                        token.sandhi = [base, particle]
-                        token.components = [
-                            {'lemma': base_token.lemma, 'pos': base_token.pos},
-                            particle_info
-                        ]
-                    self.stats["sandhi_nca"] += 1
+            if strategy.try_lookup(word, token, self):
+                # Update stats for successful strategy
+                if strategy.stat_key:
+                    self.stats[strategy.stat_key] += 1
 
-        # If not found in DPD, try particle splitting
-        if not token.lemma and not token.sandhi:
-            split = self._try_particle_split(word)
-            if split:
-                base, particle, particle_info = split
-                base_token = self.lookup_word(base)  # Recursive lookup
-                if base_token.lemma or base_token.sandhi:
-                    # Successfully split!
-                    if base_token.sandhi:
-                        token.sandhi = base_token.sandhi + [particle]
-                        token.components = base_token.components + [particle_info]
-                    else:
-                        token.sandhi = [base, particle]
-                        token.components = [
-                            {'lemma': base_token.lemma, 'pos': base_token.pos},
-                            particle_info
-                        ]
-                        if base_token.root:
-                            token.components[0]['root'] = base_token.root
-                    self.stats["particle_splits"] += 1
-
-        # If still not found, try DPPN proper noun matching
-        if not token.lemma and not token.sandhi:
-            dppn_match = self._try_dppn_match(word)
-            if dppn_match:
-                token.lemma = dppn_match['lemma']
-                token.pos = dppn_match['pos']
-                self.stats["dppn_matches"] += 1
-
-        # Try pronoun-verb sandhi splitting (ahamanusāsissāmī → ahaṃ + anusāsissāmi)
-        if not token.lemma and not token.sandhi:
-            pv_split = self._try_pronoun_verb_split(word)
-            if pv_split:
-                verb_part, pronoun, pronoun_info = pv_split
-                verb_token = self.lookup_word(verb_part)  # Recursive lookup
-                if verb_token.lemma or verb_token.sandhi:
-                    if verb_token.sandhi:
-                        token.sandhi = [pronoun] + verb_token.sandhi
-                        token.components = [pronoun_info] + verb_token.components
-                    else:
-                        token.sandhi = [pronoun, verb_part]
-                        token.components = [
-                            pronoun_info,
-                            {'lemma': verb_token.lemma, 'pos': verb_token.pos}
-                        ]
-                        if verb_token.root:
-                            token.components[1]['root'] = verb_token.root
-                    self.stats["pronoun_verb_splits"] += 1
-
-        # Try verb ending normalization (-āmā → -āma, -āmī → -āmi)
-        if not token.lemma and not token.sandhi:
-            verb_norm = self._try_verb_ending_normalization(word)
-            if verb_norm:
-                cursor = self.conn.execute("""
-                    SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
-                """, (verb_norm,))
-                row = cursor.fetchone()
-                if row and row['headwords']:
-                    try:
-                        headword_ids = json.loads(row['headwords'])
-                        if headword_ids:
-                            hw_info = self._get_headword_by_id(headword_ids[0])
-                            if hw_info:
-                                token.lemma = hw_info.get('lemma')
-                                token.pos = hw_info.get('pos')
-                                token.root = hw_info.get('root')
-                                self.stats["verb_ending_normalizations"] += 1
-                    except (json.JSONDecodeError, TypeError):
-                        pass
-
-        # Try full internal metrical normalization (all long vowels → short)
-        if not token.lemma and not token.sandhi:
-            internal_norm = self._try_internal_metrical_normalization(word)
-            if internal_norm:
-                cursor = self.conn.execute("""
-                    SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
-                """, (internal_norm,))
-                row = cursor.fetchone()
-                if row and row['headwords']:
-                    try:
-                        headword_ids = json.loads(row['headwords'])
-                        if headword_ids:
-                            hw_info = self._get_headword_by_id(headword_ids[0])
-                            if hw_info:
-                                token.lemma = hw_info.get('lemma')
-                                token.pos = hw_info.get('pos')
-                                token.root = hw_info.get('root')
-                                self.stats["internal_metrical"] += 1
-                    except (json.JSONDecodeError, TypeError):
-                        pass
-
-        # Try known compounds (jhāna compounds, etc.)
-        if not token.lemma and not token.sandhi:
-            known = self._try_known_compound(word)
-            if known:
-                token.sandhi = known['sandhi']
-                token.components = known['components']
-                self.stats["known_compounds"] += 1
-
-        # Try title/chapter matching (vagga, vatthu endings)
-        if not token.lemma and not token.sandhi:
-            title_match = self._try_title_match(word)
-            if title_match:
-                token.lemma = title_match['lemma']
-                token.pos = title_match['pos']
-                token.sandhi = title_match.get('sandhi')
-                token.components = title_match.get('components')
-                self.stats["title_matches"] += 1
-
-        # Try Apadāna title matching
-        if not token.lemma and not token.sandhi:
-            apadana_match = self._try_apadana_title(word)
-            if apadana_match:
-                token.lemma = apadana_match['lemma']
-                token.pos = apadana_match['pos']
-                token.sandhi = apadana_match.get('sandhi')
-                token.components = apadana_match.get('components')
-                self.stats["apadana_titles"] += 1
-
-        # Try causative absolutive forms (-ayitvā, -etvā, -āpetvā)
-        if not token.lemma and not token.sandhi:
-            causative_base = self._try_causative_absolutive(word)
-            if causative_base:
-                hw_info = self._get_headword_info(causative_base)
-                if hw_info:
-                    token.lemma = hw_info.get('lemma')
-                    token.pos = 'abs'  # absolutive
-                    token.root = hw_info.get('root')
-                    self.stats["causative_forms"] += 1
-
-        # Try compound splitting for long words (dvandva compounds)
-        if not token.lemma and not token.sandhi and len(word) > MIN_COMPOUND_LENGTH:
-            parts = self._try_compound_split(word)
-            if parts and len(parts) > 1:
-                token.sandhi = parts
-                token.components = []
-                for part in parts:
-                    comp_info = self._get_headword_info(part)
-                    if comp_info:
-                        token.components.append(comp_info)
-                    else:
-                        token.components.append({"word": part})
-                self.stats["compound_splits"] += 1
-
-        # Try custom lemmas (words not in DPD)
-        if not token.lemma and not token.sandhi:
-            custom = get_custom_lemma(word)
-            if custom:
-                if "sandhi" in custom:
-                    token.sandhi = custom["sandhi"]
-                    token.components = custom["components"]
-                else:
-                    token.lemma = custom.get("lemma")
-                    token.pos = custom.get("pos")
-                self.stats["custom_lemmas"] += 1
-
-        # Update stats
+        # Update overall stats
         if token.lemma or token.sandhi:
             self.stats["words_found"] += 1
             if token.lemma:
