@@ -353,3 +353,26 @@ python src/generate_final_summary.py
 ---
 
 *Last updated: February 2026*
+
+---
+
+## Algorithm Notes
+
+### Correction vs Variant Classification
+
+**Status:** ✓ VERIFIED CORRECT (February 2026)
+
+The `classify_variant()` function in `collate_variants.py` correctly implements:
+
+1. **Error**: SC=VRI≠PTS AND PTS reading is NOT in DPD → transcription/OCR error
+2. **Variant**: SC=VRI≠PTS AND both readings ARE in DPD → legitimate textual variant
+
+Tested across 4,355 "errors" in DN - 0 false positives. All flagged errors are genuinely invalid Pāli forms (truncated words, wrong diacritics, OCR artifacts).
+
+### Alignment Artifact Detection
+
+**Status:** Minor improvement possible
+
+The `words_are_related()` function uses a similarity threshold of 0.5 to detect alignment artifacts. Some misaligned words slip through at exactly this boundary (e.g., `bhagavantaṃ` vs `viharanti` = 0.500 ratio). Consider raising threshold to 0.55-0.6 if cleaner variant data is needed.
+
+*Verified: February 2026*

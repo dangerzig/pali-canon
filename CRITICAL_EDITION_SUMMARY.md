@@ -65,6 +65,36 @@ The high token-level coverage reflects that high-frequency words are well-covere
 
 ---
 
+## Collation Statistics (DN)
+
+Word-level collation of DN across three witnesses, with automatic classification of differences:
+
+| Category | Count | Description |
+|----------|-------|-------------|
+| **PTS Corrections** | 4,355 | Transcription errors in PTS corrected using SC/VRI |
+| **Textual Variants** | 9,135 | Legitimate variant readings (both valid Pāli) |
+| **Matches** | ~45% | Words identical across all witnesses |
+
+### PTS Error Types
+
+| Type | Count | Example |
+|------|-------|---------|
+| Truncated words | 2,628 | `evam` → `evameva` |
+| Spelling errors | 1,285 | `kevaddha` → `kevaṭṭa` |
+| Niggahīta errors | 442 | `param` → `paraṃ` |
+
+### Methodology
+
+Corrections are applied only when:
+1. SC and VRI agree against PTS, AND
+2. PTS reading is NOT a valid Pāli word (absent from DPD)
+
+If both readings are valid words, they are recorded as **variants**, not corrections.
+
+See `data/collation/pts_corrections_catalog.json` for full catalog.
+
+---
+
 ## Files Created
 
 ### Source Scripts
@@ -78,10 +108,12 @@ The high token-level coverage reflects that high-frequency words are well-covere
 - `data/vri-parsed/` - Parsed VRI texts (Vinaya, 5 Nikāyas, Abhidhamma)
 - `data/critical/` - Critical edition files (all collections)
 - `data/lemmatized/` - Lemmatized SC texts
+- `data/collation/` - Word-level collation with variant classification
 
 ### Summaries
 - `data/_FINAL_PROJECT_SUMMARY.json` - Complete project statistics
 - `data/critical/_complete_tipitaka_summary.json` - Critical edition summary
+- `data/collation/pts_corrections_catalog.json` - Cataloged PTS transcription errors
 
 ---
 
@@ -98,4 +130,4 @@ The high token-level coverage reflects that high-frequency words are well-covere
 
 ---
 
-*Last updated: February 5, 2026*
+*Last updated: February 2026*
