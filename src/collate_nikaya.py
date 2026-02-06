@@ -22,6 +22,7 @@ Classification rules:
 import re
 import sys
 import json
+import warnings
 from pathlib import Path
 from collections import Counter
 from typing import Optional
@@ -802,6 +803,12 @@ def load_text_data_kn(sc_abbrev: str, gretil_name: str, vri_code: str) -> dict:
                         elif sc_abbrev == 'thi-ap':
                             # Therī-Apadāna: use text from Therī section onward
                             full_text = full_text[theri_marker.start():].strip()
+                    else:
+                        warnings.warn(
+                            f"Apadāna split marker 'THERĪAPADĀNA ATHA' not found in GRETIL text. "
+                            f"Using combined text for {sc_abbrev}. Collation may be degraded.",
+                            UserWarning
+                        )
 
                 data['gretil'] = {
                     'text': full_text,

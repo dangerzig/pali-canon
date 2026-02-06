@@ -2,6 +2,12 @@
 """
 Generate beautifully typeset critical editions in LaTeX.
 
+This is a standalone CLI script for generating LaTeX output.
+For programmatic access, use the Canon API with export methods:
+    from pali import Canon
+    canon = Canon("data")
+    canon.export_latex("dn1", "output.tex")
+
 Features:
 - Proper Pāli diacritics with fontspec
 - Critical apparatus with variant readings
@@ -186,10 +192,25 @@ def format_verse(text: str) -> str:
 
 
 def extract_pts_ref(segment_id: str) -> Optional[str]:
-    """Extract PTS reference from segment ID if available."""
+    """Extract PTS reference from segment ID if available.
+
+    Note: This function is not yet implemented. PTS page references would
+    require a separate mapping file correlating SC segment IDs to PTS
+    pagination (e.g., "dn1:1.1" -> "D i 1"). For now, returns None.
+
+    When implemented, this would enable marginal PTS references in the
+    LaTeX output for scholars using the PTS edition.
+
+    Args:
+        segment_id: SuttaCentral segment ID (e.g., "dn1:1.1")
+
+    Returns:
+        PTS reference string (e.g., "D i 1") or None if not available
+    """
     # SC segment IDs sometimes encode PTS refs
     # e.g., dn1:1.1 might correspond to D i 1
-    return None  # TODO: implement PTS mapping
+    # Future: load mapping from data/pts_segment_mapping.json
+    return None
 
 
 def load_sutta(collection: str, sutta_id: str) -> dict:

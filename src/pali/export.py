@@ -1,4 +1,13 @@
-"""Export functionality for LaTeX and PDF generation."""
+"""Export functionality for LaTeX and PDF generation.
+
+This is the library API for LaTeX export, used through the Canon class:
+    from pali import Canon
+    canon = Canon("data")
+    canon.export_latex("dn1", "output.tex")
+
+For standalone CLI usage, see src/typeset_critical.py.
+Both share the same LaTeX preamble for consistency.
+"""
 
 import subprocess
 import re

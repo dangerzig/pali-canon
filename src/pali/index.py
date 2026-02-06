@@ -40,6 +40,9 @@ class SearchIndex:
     def build(self, force: bool = False) -> None:
         """Build the search index from lemmatized data.
 
+        Uses batched inserts and transactions for better performance
+        on large corpora.
+
         Args:
             force: If True, rebuild even if index exists
         """
@@ -87,23 +90,56 @@ class SearchIndex:
             );
         """)
 
-        # Index lemmatized data
-        lemmatized_dir = self.data_dir / "lemmatized"
-        for nikaya_dir in sorted(lemmatized_dir.iterdir()):
-            if not nikaya_dir.is_dir():
-                continue
-            nikaya = nikaya_dir.name
-            self._index_nikaya(conn, nikaya_dir, nikaya)
+        # Initialize batch buffers
+        self._fts_batch = []
+        self._lemma_batch = []
+        self._batch_size = 1000
 
-        # Create indexes
-        conn.executescript("""
-            CREATE INDEX idx_lemma ON lemma_index(lemma);
-            CREATE INDEX idx_lemma_nikaya ON lemma_index(lemma, nikaya);
-            CREATE INDEX idx_segment ON lemma_index(segment_id);
-            CREATE INDEX idx_sutta ON lemma_index(sutta_id);
-        """)
+        # Index lemmatized data within a transaction
+        try:
+            lemmatized_dir = self.data_dir / "lemmatized"
+            for nikaya_dir in sorted(lemmatized_dir.iterdir()):
+                if not nikaya_dir.is_dir():
+                    continue
+                nikaya = nikaya_dir.name
+                self._index_nikaya(conn, nikaya_dir, nikaya)
 
-        conn.commit()
+            # Flush any remaining batched inserts
+            self._flush_batches(conn)
+
+            # Create indexes
+            conn.executescript("""
+                CREATE INDEX idx_lemma ON lemma_index(lemma);
+                CREATE INDEX idx_lemma_nikaya ON lemma_index(lemma, nikaya);
+                CREATE INDEX idx_segment ON lemma_index(segment_id);
+                CREATE INDEX idx_sutta ON lemma_index(sutta_id);
+            """)
+
+            conn.commit()
+        except Exception:
+            conn.rollback()
+            raise
+        finally:
+            # Clean up batch buffers
+            self._fts_batch = []
+            self._lemma_batch = []
+
+    def _flush_batches(self, conn: sqlite3.Connection) -> None:
+        """Flush batched inserts to the database."""
+        if self._fts_batch:
+            conn.executemany(
+                "INSERT INTO segments_fts (segment_id, sutta_id, nikaya, pali) VALUES (?, ?, ?, ?)",
+                self._fts_batch
+            )
+            self._fts_batch = []
+
+        if self._lemma_batch:
+            conn.executemany(
+                """INSERT INTO lemma_index (lemma, word, segment_id, sutta_id, nikaya, pos)
+                   VALUES (?, ?, ?, ?, ?, ?)""",
+                self._lemma_batch
+            )
+            self._lemma_batch = []
 
     def _index_nikaya(self, conn: sqlite3.Connection, nikaya_dir: Path, nikaya: str) -> None:
         """Index all files in a nikaya directory."""
@@ -176,25 +212,24 @@ class SearchIndex:
 
     def _index_segment(self, conn: sqlite3.Connection, segment: dict,
                       sutta_id: str, nikaya: str) -> None:
-        """Index a single segment."""
+        """Index a single segment using batched inserts."""
         segment_id = segment["id"]
         pali = segment.get("pali", "")
 
-        # Full-text index
-        conn.execute(
-            "INSERT INTO segments_fts (segment_id, sutta_id, nikaya, pali) VALUES (?, ?, ?, ?)",
-            (segment_id, sutta_id, nikaya, pali)
-        )
+        # Add to FTS batch
+        self._fts_batch.append((segment_id, sutta_id, nikaya, pali))
 
-        # Lemma index
+        # Add to lemma batch
         for token in segment.get("tokens", []):
             lemma = token.get("lemma")
             if lemma:
-                conn.execute(
-                    """INSERT INTO lemma_index (lemma, word, segment_id, sutta_id, nikaya, pos)
-                       VALUES (?, ?, ?, ?, ?, ?)""",
+                self._lemma_batch.append(
                     (lemma, token["word"], segment_id, sutta_id, nikaya, token.get("pos"))
                 )
+
+        # Flush batches when they reach the threshold
+        if len(self._fts_batch) >= self._batch_size:
+            self._flush_batches(conn)
 
     def search_lemma(self, lemma: str, nikaya: Optional[str] = None,
                     limit: int = 1000) -> list[dict]:
