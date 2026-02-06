@@ -21,10 +21,18 @@ This project creates a digital critical edition of the complete Pāli Tipiṭaka
 ```
 pali/
 ├── src/                    # All Python source code
+│   ├── pali/               # Core library modules
+│   │   ├── __init__.py     # Canon API
+│   │   ├── models.py       # Data models (Token, Segment, Sutta)
+│   │   ├── custom_lemmas.py # Custom lemma database
+│   │   └── normalize.py    # Text normalization utilities
 │   ├── parse_*.py          # Source text parsers
 │   ├── build_*.py          # Pipeline builders
 │   ├── lemmatize_*.py      # Lemmatization tools
 │   └── *.py                # Analysis and utility scripts
+├── scripts/                # Validation and analysis scripts
+│   ├── validate_corpus.py  # Corpus integrity tests
+│   └── measure_*.py        # Coverage measurement
 ├── data/
 │   ├── vri-raw/            # Raw VRI CST files
 │   ├── vri-parsed/         # Parsed VRI JSON
@@ -152,7 +160,7 @@ def main():
 
 ### Lemmatization Layer
 
-#### `lemmatize_canon.py` (727 lines)
+#### `lemmatize_canon.py` (~800 lines)
 The most complex module. Features:
 
 1. **DPD Integration**: SQLite queries against DPD headwords
@@ -165,6 +173,7 @@ The most complex module. Features:
 5. **Pronoun-Verb Fusion**: `ahamanusāsissāmi` → `ahaṃ + anusāsissāmi`
 6. **Compound Decomposition**: Greedy longest-match with backtracking
 7. **DPPN Matching**: Proper noun identification
+8. **Custom Lemmas**: Fallback for words not in DPD
 
 Key class:
 ```python
@@ -173,6 +182,19 @@ class Lemmatizer:
     def tokenize(self, text) -> list[str]
     def lookup_word(self, word) -> TokenInfo
     def lemmatize_segment(self, segment) -> dict
+```
+
+#### `pali/custom_lemmas.py` (~350 lines)
+Custom lemma database for words not in DPD. Organized into:
+
+1. **POTENTIAL_DPD_ADDITIONS** (60 entries): Legitimate words for upstream contribution
+2. **METRICAL_VARIANTS** (12 entries): Vowel length variations for meter
+3. **PROJECT_SPECIFIC** (20 entries): Proper nouns, rare compounds
+4. **SANDHI_DECOMPOSITIONS** (26 entries): Complex sandhi not in DPD
+
+```python
+def get_custom_lemma(word: str) -> Optional[dict]
+def get_potential_dpd_additions() -> dict  # For upstream contribution
 ```
 
 ### Analysis Layer
@@ -316,15 +338,17 @@ python src/generate_final_summary.py
 
 | Metric | Value |
 |--------|-------|
-| Total Python code | 10,084 lines |
-| Python modules | 33 files |
+| Total Python code | ~11,000 lines |
+| Python modules | 35+ files |
 | GRETIL words | 3,243,906 |
 | VRI words | 2,418,765 |
 | SC words | 1,606,492 |
 | Unique word forms | 127,032 |
-| Lemmatization coverage | 97.7% |
-| Words identified | 124,105 |
-| Unknown words | 2,983 (97% from KN) |
+| Unique word coverage | 97.8% |
+| Token-level coverage | 99.77% |
+| Words identified | 124,218 |
+| Custom lemmas | 118 entries |
+| Unknown tokens | 3,628 (0.23% of corpus) |
 
 ---
 

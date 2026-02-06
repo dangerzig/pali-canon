@@ -53,11 +53,15 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 
 ## Lemmatization Statistics
 
-- Total word tokens: 1,618,486
-- Unique word forms: 127,033
-- Words identified: 123,859
-- Coverage: **97.5%**
-- Sandhi decompositions: 42,440
+- Total word tokens: 1,606,492
+- Unique word forms: 127,032
+- Words identified: 124,218
+- Sandhi decompositions: 42,449
+- Custom lemmas: 118 entries
+- **Unique word coverage: 97.8%**
+- **Token-level coverage: 99.77%**
+
+The high token-level coverage reflects that high-frequency words are well-covered, while remaining unknown forms are predominantly rare words (hapax legomena) from verse texts.
 
 ---
 
@@ -94,4 +98,4 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 
 ---
 
-*Generated: February 4, 2026*
+*Last updated: February 5, 2026*

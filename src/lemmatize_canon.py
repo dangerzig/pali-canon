@@ -24,6 +24,15 @@ LEMMATIZED_DIR = DATA_DIR / "lemmatized"
 DPD_DB = DATA_DIR / "dpd/dpd.db"
 DPPN_FILE = DATA_DIR / "dppn/proper_names.json"
 
+# Import custom lemmas for words not in DPD
+try:
+    from pali.custom_lemmas import get_custom_lemma
+except ImportError:
+    # Fallback for running script directly
+    import sys
+    sys.path.insert(0, str(Path(__file__).parent))
+    from custom_lemmas import get_custom_lemma
+
 # Common enclitics/particles that join via sandhi
 SANDHI_PARTICLES = {
     'ca': {'lemma': 'ca', 'pos': 'ind'},      # and
@@ -170,6 +179,7 @@ class Lemmatizer:
             "short_pronouns": 0,
             "sandhi_nca": 0,
             "english_words": 0,
+            "custom_lemmas": 0,
             "unknown_words": Counter(),
             "lemma_counts": Counter(),
         }
@@ -726,6 +736,18 @@ class Lemmatizer:
                         token.components.append({"word": part})
                 self.stats["compound_splits"] += 1
 
+        # Try custom lemmas (words not in DPD)
+        if not token.lemma and not token.sandhi:
+            custom = get_custom_lemma(word)
+            if custom:
+                if "sandhi" in custom:
+                    token.sandhi = custom["sandhi"]
+                    token.components = custom["components"]
+                else:
+                    token.lemma = custom.get("lemma")
+                    token.pos = custom.get("pos")
+                self.stats["custom_lemmas"] += 1
+
         # Update stats
         if token.lemma or token.sandhi:
             self.stats["words_found"] += 1
@@ -811,6 +833,7 @@ class Lemmatizer:
             "causative_forms": self.stats["causative_forms"],
             "short_pronouns": self.stats["short_pronouns"],
             "sandhi_nca": self.stats["sandhi_nca"],
+            "custom_lemmas": self.stats["custom_lemmas"],
             "coverage": f"{self.stats['words_found'] / max(1, len(self.stats['unique_words'])) * 100:.1f}%",
             "top_lemmas": self.stats["lemma_counts"].most_common(100),
             "unknown_words": self.stats["unknown_words"].most_common(500),
@@ -949,6 +972,7 @@ def main():
     print(f"Causative forms:     {stats['causative_forms']:,}")
     print(f"Short pronouns:      {stats['short_pronouns']:,}")
     print(f"Sandhi -ñcā:         {stats['sandhi_nca']:,}")
+    print(f"Custom lemmas:       {stats['custom_lemmas']:,}")
     print(f"Coverage:            {stats['coverage']}")
     print(f"\nOutput saved to: {LEMMATIZED_DIR}")
 
