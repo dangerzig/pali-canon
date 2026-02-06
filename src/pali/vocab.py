@@ -153,6 +153,17 @@ class Vocabulary:
                             lemma_counts[token.lemma] += 1
                             if token.pos:
                                 pos_counts[token.pos] += 1
+                        elif token.sandhi or token.components:
+                            # Sandhi-decomposed tokens are also resolved
+                            token_stats["with_lemma"] += 1
+                            if token.components:
+                                for comp in token.components:
+                                    comp_lemma = comp.get("lemma")
+                                    if comp_lemma:
+                                        lemma_counts[comp_lemma] += 1
+                                        comp_pos = comp.get("pos")
+                                        if comp_pos:
+                                            pos_counts[comp_pos] += 1
 
     def _count_file(self, json_file: Path, nikaya: str,
                    lemma_counts: Counter, pos_counts: Counter,
@@ -186,6 +197,17 @@ class Vocabulary:
                     pos = token.get("pos")
                     if pos:
                         pos_counts[pos] += 1
+                elif token.get("sandhi") or token.get("components"):
+                    # Sandhi-decomposed tokens are also resolved
+                    token_stats["with_lemma"] += 1
+                    # Count lemmas from components
+                    for comp in token.get("components", []):
+                        comp_lemma = comp.get("lemma")
+                        if comp_lemma:
+                            lemma_counts[comp_lemma] += 1
+                            comp_pos = comp.get("pos")
+                            if comp_pos:
+                                pos_counts[comp_pos] += 1
 
     def document_term_matrix(
         self,
