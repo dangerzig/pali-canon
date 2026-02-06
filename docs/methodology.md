@@ -6,7 +6,7 @@ This paper describes the creation of a critical digital edition of the Pāli Can
 
 The edition uses the Pali Text Society (PTS) editions as the authoritative base text, with variant readings from the SuttaCentral Mahāsaṅgīti edition and the Chaṭṭha Saṅgāyana (VRI/CST) edition recorded in the apparatus. Where PTS contains errors—confirmed by agreement of SC and VRI against a reading not attested in the DPD—corrections are applied and documented transparently.
 
-The resulting dataset provides: (1) a unified reference system enabling citation by PTS volume and page, SC segment ID, or VRI section number; (2) a critical apparatus preserving all variant readings between editions; (3) full lemmatization with word-level morphological analysis achieving 99.77% token-level coverage; and (4) a research-ready format suitable for the computational analyses proposed in earlier work. This infrastructure enables systematic investigation of textual strata, formulaic patterns, and the relative age of canonical texts—questions of longstanding scholarly interest that have remained difficult to address without comprehensive morphological annotation.
+The resulting dataset provides: (1) a unified reference system enabling citation by PTS volume and page, SC segment ID, or VRI section number; (2) a critical apparatus preserving all variant readings between editions; (3) full lemmatization with word-level morphological analysis achieving 99.78% token-level coverage; and (4) a research-ready format suitable for the computational analyses proposed in earlier work. This infrastructure enables systematic investigation of textual strata, formulaic patterns, and the relative age of canonical texts—questions of longstanding scholarly interest that have remained difficult to address without comprehensive morphological annotation.
 
 ## 1. Introduction
 
@@ -28,7 +28,7 @@ What was needed, we concluded, was "a more refined corpus" with proper lemmatiza
 
 This paper describes the creation of a fully lemmatized critical edition of the complete Pāli Canon, with the following contributions:
 
-1. **Comprehensive lemmatization** using the Digital Pāli Dictionary (DPD), achieving 99.77% token-level coverage across the corpus through a combination of direct lookup, sandhi decomposition, orthographic normalization, and a custom lemma database for words not in DPD.
+1. **Comprehensive lemmatization** using the Digital Pāli Dictionary (DPD), achieving 99.78% token-level coverage across the corpus through a combination of direct lookup, sandhi decomposition, orthographic normalization, and a custom lemma database for words not in DPD.
 
 2. **Three-witness critical apparatus** collating the PTS, SuttaCentral, and VRI editions, with systematic classification of differences as orthographic variants, textual errors, or genuine readings.
 
@@ -308,27 +308,27 @@ Token fields:
 
 | Metric | Value |
 |--------|-------|
-| Total word tokens | 1,606,492 |
-| Unique word forms | 127,032 |
-| Forms found | 124,218 |
-| Forms not found | 3,379 |
+| Total word tokens | 1,606,474 |
+| Unique word forms | 127,026 |
+| Forms found | 124,270 |
+| Forms not found | 3,327 |
 | Sandhi compounds (DPD) | 42,449 |
-| Particle splits | 94 |
+| Particle splits | 96 |
 | Metrical normalizations (final) | 2,076 |
 | Metrical normalizations (internal) | 78 |
 | Orthographic variants (-n→-ṃ) | 1,555 |
-| Pronoun-verb splits | 23 |
-| Compound splits | 208 |
+| Pronoun-verb splits | 28 |
+| Compound splits | 204 |
 | DPPN proper nouns | 21 |
-| Custom lemmas | 111 |
+| Custom lemmas | 160 |
 | **Unique word coverage** | **97.8%** |
-| **Token-level coverage** | **99.77%** |
+| **Token-level coverage** | **99.78%** |
 
-Note: Token-level coverage (99.77%) measures what percentage of all word occurrences in the corpus are lemmatized. Unique word coverage (97.8%) measures what percentage of distinct word forms are resolved. The difference arises because high-frequency words (particles, pronouns, common verbs) are well-covered by DPD, while the remaining unresolved forms are predominantly rare words (hapax legomena) from verse texts.
+Note: Token-level coverage (99.78%) measures what percentage of all word occurrences in the corpus are lemmatized. Unique word coverage (97.8%) measures what percentage of distinct word forms are resolved. The difference arises because high-frequency words (particles, pronouns, common verbs) are well-covered by DPD, while the remaining unresolved forms are predominantly rare words (hapax legomena) from verse texts.
 
 ### 6.2 Analysis of Unknown Words
 
-The remaining 3,379 unique word forms (2.2%) not resolved by the lemmatizer represent only 3,628 token occurrences (0.23% of the corpus). These fall into several categories:
+The remaining 3,327 unique word forms (2.2%) not resolved by the lemmatizer represent only 3,578 token occurrences (0.22% of the corpus). These fall into several categories:
 
 1. **Hapax legomena**: Rare words occurring only once in the canon, predominantly from verse texts (Apadāna, Jātaka gāthās, Theragāthā/Therīgāthā)
 2. **Complex compounds**: Multi-word compounds not in the DPD deconstructor
@@ -342,14 +342,14 @@ The following categories were successfully handled by the lemmatizer:
 |----------|---------------|--------|
 | Metrical lengthening (final) | 2,076 | Normalize final long vowels (ā→a, ī→i, ū→u) |
 | Orthographic variants | 1,555 | Normalize -n to -ṃ |
-| Compound splitting | 208 | Recursive splitting of long dvandva compounds |
-| Custom lemmas | 111 | Manual mappings for words not in DPD |
-| Particle sandhi | 94 | Split trailing ca, api, ti, va, tu |
+| Compound splitting | 204 | Recursive splitting of long dvandva compounds |
+| Custom lemmas | 160 | Manual mappings for words not in DPD |
+| Particle sandhi | 96 | Split trailing ca, api, ti, va, tu |
 | Internal metrical | 78 | Normalize all long vowels in word |
-| Pronoun-verb sandhi | 23 | Split aham-, -osmi, -omhi patterns |
+| Pronoun-verb sandhi | 28 | Split aham-, -osmi, -omhi patterns |
 | DPPN proper nouns | 21 | Match against DPPN with inflection handling |
 
-The high token-level coverage (99.77%) despite lower unique-word coverage (97.8%) reflects the Zipfian distribution of vocabulary: a small number of high-frequency words account for most tokens, while the "long tail" of rare words contributes minimally to overall coverage.
+The high token-level coverage (99.78%) despite lower unique-word coverage (97.8%) reflects the Zipfian distribution of vocabulary: a small number of high-frequency words account for most tokens, while the "long tail" of rare words contributes minimally to overall coverage.
 
 ### 6.3 Most Frequent Lemmas
 
@@ -395,8 +395,8 @@ data/
 - Three-way alignment pipeline (PTS/GRETIL, SC, VRI)
 - Error detection using DPD validation
 - Variant apparatus with recorded readings
-- Lemmatization at 99.77% token-level coverage across the Sutta Piṭaka
-- Custom lemma database for 118 words not in DPD (organized for potential upstream contribution)
+- Lemmatization at 99.78% token-level coverage across the Sutta Piṭaka
+- Custom lemma database for 187 words not in DPD (organized for potential upstream contribution)
 - Two-witness critical editions for Vinaya and Abhidhamma (GRETIL/VRI)
 
 **Future Work:**

@@ -342,13 +342,13 @@ python src/generate_final_summary.py
 | Python modules | 51 files |
 | GRETIL words | 3,243,906 |
 | VRI words | 2,418,765 |
-| SC words | 1,606,492 |
-| Unique word forms | 127,032 |
+| SC words | 1,606,474 |
+| Unique word forms | 127,026 |
 | Unique word coverage | 97.8% |
-| Token-level coverage | 99.77% |
-| Words identified | 124,218 |
-| Custom lemmas | 115 entries |
-| Unknown tokens | 3,628 (0.23% of corpus) |
+| Token-level coverage | 99.78% |
+| Words identified | 124,270 |
+| Custom lemmas | 160 applied |
+| Unknown tokens | 3,578 (0.22% of corpus) |
 
 ---
 

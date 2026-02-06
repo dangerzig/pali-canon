@@ -109,7 +109,7 @@ pali/
 
 ### Lemmatization
 
-99.77% token-level coverage using the Digital Pāli Dictionary, with custom lemmas for rare forms.
+99.78% token-level coverage using the Digital Pāli Dictionary, with custom lemmas for rare forms.
 
 ```python
 # Get lemmatized tokens

@@ -53,45 +53,48 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 
 ## Lemmatization Statistics
 
-- Total word tokens: 1,606,492
-- Unique word forms: 127,032
-- Words identified: 124,218
+- Total word tokens: 1,606,474
+- Unique word forms: 127,026
+- Words identified: 124,270
 - Sandhi decompositions: 42,449
-- Custom lemmas: 118 entries
+- Custom lemmas: 160 applied (187 entries in database)
 - **Unique word coverage: 97.8%**
-- **Token-level coverage: 99.77%**
+- **Token-level coverage: 99.78%**
 
 The high token-level coverage reflects that high-frequency words are well-covered, while remaining unknown forms are predominantly rare words (hapax legomena) from verse texts.
 
 ---
 
-## Collation Statistics (DN)
+## Collation Statistics
 
-Word-level collation of DN across three witnesses, with automatic classification of differences:
+Word-level collation across witnesses, with automatic classification of differences:
 
-| Category | Count | Description |
-|----------|-------|-------------|
-| **PTS Corrections** | 4,355 | Transcription errors in PTS corrected using SC/VRI |
-| **Textual Variants** | 9,135 | Legitimate variant readings (both valid Pāli) |
-| **Matches** | ~45% | Words identical across all witnesses |
+### Sutta Piṭaka (3 witnesses: SC/GRETIL/VRI)
 
-### PTS Error Types
+| Nikāya | Texts | Errors | Variants |
+|--------|-------|--------|----------|
+| DN | 34 | 4,355 | 9,200 |
+| MN | 150 | 4,555 | 11,534 |
+| SN | 1,564 | 15,617 | 10,411 |
+| AN | 843 | 13 | 44 |
+| KN | 17 | 12,366 | 17,677 |
 
-| Type | Count | Example |
-|------|-------|---------|
-| Truncated words | 2,628 | `evam` → `evameva` |
-| Spelling errors | 1,285 | `kevaddha` → `kevaṭṭa` |
-| Niggahīta errors | 442 | `param` → `paraṃ` |
+### Vinaya & Abhidhamma (2 witnesses: GRETIL/VRI)
 
-### Methodology
+| Piṭaka | Texts | Errors | Variants |
+|--------|-------|--------|----------|
+| Vinaya | 3 | 3,227 | 12,132 |
+| Abhidhamma | 3 | 4,614 | 9,887 |
 
-Corrections are applied only when:
-1. SC and VRI agree against PTS, AND
+### Classification Methodology
+
+**Errors** are applied only when:
+1. SC and VRI agree against PTS (GRETIL), AND
 2. PTS reading is NOT a valid Pāli word (absent from DPD)
 
-If both readings are valid words, they are recorded as **variants**, not corrections.
+**Variants** are recorded when both readings are valid Pāli words.
 
-See `data/collation/pts_corrections_catalog.json` for full catalog.
+See `data/collation/pts_corrections_catalog.json` for DN/MN/SN correction catalog.
 
 ---
 
