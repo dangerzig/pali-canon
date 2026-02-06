@@ -61,7 +61,7 @@ class Store:
         """Check if sutta_id falls within a range like 'dhp1-20'.
 
         Args:
-            sutta_id: The ID to check (e.g., "dhp5")
+            sutta_id: The ID to check (e.g., "dhp5", "sn1.1", "an1.1.1")
             range_id: A range ID (e.g., "dhp1-20")
 
         Returns:
@@ -69,8 +69,10 @@ class Store:
         """
         import re
 
-        # Extract prefix and number from sutta_id (e.g., "dhp5" -> "dhp", 5)
-        match = re.match(r"([a-z]+)(\d+)$", sutta_id)
+        # Extract prefix and number from sutta_id
+        # Handles: "dhp5", "sn1.1", "an1.1.1" etc.
+        # For dotted IDs, use the first number for range comparison
+        match = re.match(r"([a-z]+)(\d+)", sutta_id)
         if not match:
             return False
         prefix, num = match.groups()
@@ -144,6 +146,13 @@ class Store:
 
         Returns:
             Sutta object or None if not found
+
+        Note:
+            For Khuddaka Nikāya (KN) texts that are organized by vagga ranges
+            (e.g., Dhammapada verses "dhp1-20"), requesting a specific verse
+            like "dhp5" will return the containing range item ("dhp1-20").
+            The returned Sutta.id will be the range ID, not the requested ID.
+            This matches the traditional vagga organization of these texts.
         """
         # Parse sutta_id to get nikaya
         # Check KN text prefixes FIRST (they're more specific than "sn", "an", etc.)
@@ -249,6 +258,56 @@ class Store:
         if not data_dir.exists():
             return []
 
+        # Try to use index file for faster loading
+        index_path = data_dir / "_index.json"
+        if index_path.exists():
+            return self._list_suttas_from_index(index_path)
+
+        # Fallback: scan individual files (slower)
+        return self._list_suttas_from_files(data_dir, nikaya)
+
+    def _list_suttas_from_index(self, index_path: Path) -> list[SuttaInfo]:
+        """Load sutta list from pre-built index file (fast path)."""
+        data = self._load_json(index_path)
+        suttas = []
+
+        # Handle different index formats
+        if "suttas" in data:
+            # DN/MN/KN style index
+            for s in data["suttas"]:
+                suttas.append(SuttaInfo(
+                    id=s["id"],
+                    title_pali=s.get("title_pali"),
+                    title_eng=s.get("title_eng"),
+                    vagga=s.get("vagga"),
+                    pts=s.get("pts"),
+                    segment_count=s.get("segments"),
+                ))
+        elif "nipatas" in data:
+            # AN style index
+            for nipata in data["nipatas"]:
+                suttas.append(SuttaInfo(
+                    id=nipata["id"],
+                    title_pali=nipata.get("name_pali"),
+                    title_eng=nipata.get("name_eng"),
+                    pts=nipata.get("pts"),
+                    segment_count=nipata.get("segments"),
+                ))
+        elif "samyuttas" in data:
+            # SN style index
+            for samyutta in data["samyuttas"]:
+                suttas.append(SuttaInfo(
+                    id=samyutta["id"],
+                    title_pali=samyutta.get("name_pali"),
+                    title_eng=samyutta.get("name_eng"),
+                    pts=samyutta.get("pts"),
+                    segment_count=samyutta.get("segments"),
+                ))
+
+        return suttas
+
+    def _list_suttas_from_files(self, data_dir: Path, nikaya: str) -> list[SuttaInfo]:
+        """Load sutta list by scanning individual files (slow fallback)."""
         suttas = []
 
         for path in sorted(data_dir.glob("*.json")):

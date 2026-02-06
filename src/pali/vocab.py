@@ -71,14 +71,11 @@ class Vocabulary:
         """
         lemma_counts: Counter = Counter()
         pos_counts: Counter = Counter()
-        total_tokens = 0
-        tokens_with_lemma = 0
+        token_stats = {"total": 0, "with_lemma": 0}
 
         if sutta_id:
             # Single sutta
-            self._count_sutta(sutta_id, lemma_counts, pos_counts)
-            total_tokens = sum(lemma_counts.values())
-            tokens_with_lemma = total_tokens  # All counted tokens have lemmas
+            self._count_sutta(sutta_id, lemma_counts, pos_counts, token_stats)
         elif nikaya:
             # Entire nikaya
             nikaya_dir = self.lemmatized_dir / nikaya
@@ -86,9 +83,10 @@ class Vocabulary:
                 for json_file in nikaya_dir.glob("*.json"):
                     if json_file.name.startswith("_"):
                         continue
-                    self._count_file(json_file, nikaya, lemma_counts, pos_counts)
-            total_tokens = sum(lemma_counts.values())
-            tokens_with_lemma = total_tokens
+                    self._count_file(json_file, nikaya, lemma_counts, pos_counts, token_stats)
+
+        total_tokens = token_stats["total"]
+        tokens_with_lemma = token_stats["with_lemma"]
 
         # Calculate coverage (proportion with known lemmas)
         coverage = tokens_with_lemma / total_tokens if total_tokens > 0 else 0.0
@@ -122,7 +120,8 @@ class Vocabulary:
         df = df.sort_values("count", ascending=False).reset_index(drop=True)
         return df
 
-    def _count_sutta(self, sutta_id: str, lemma_counts: Counter, pos_counts: Counter) -> None:
+    def _count_sutta(self, sutta_id: str, lemma_counts: Counter, pos_counts: Counter,
+                     token_stats: dict) -> None:
         """Count lemmas in a single sutta."""
         # Import here to avoid circular imports
         from .store import Store, KN_TEXT_PREFIXES, NIKAYAS
@@ -148,35 +147,41 @@ class Vocabulary:
             for segment in sutta.segments:
                 if segment.tokens:
                     for token in segment.tokens:
+                        token_stats["total"] += 1
                         if token.lemma:
+                            token_stats["with_lemma"] += 1
                             lemma_counts[token.lemma] += 1
                             if token.pos:
                                 pos_counts[token.pos] += 1
 
     def _count_file(self, json_file: Path, nikaya: str,
-                   lemma_counts: Counter, pos_counts: Counter) -> None:
+                   lemma_counts: Counter, pos_counts: Counter,
+                   token_stats: dict) -> None:
         """Count lemmas in a JSON file."""
         with open(json_file, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         if nikaya in ("dn", "mn"):
-            self._count_segments(data.get("segments", []), lemma_counts, pos_counts)
+            self._count_segments(data.get("segments", []), lemma_counts, pos_counts, token_stats)
         elif nikaya in ("sn", "an"):
             for sutta_data in data.get("suttas", []):
-                self._count_segments(sutta_data.get("segments", []), lemma_counts, pos_counts)
+                self._count_segments(sutta_data.get("segments", []), lemma_counts, pos_counts, token_stats)
         elif nikaya == "kn":
             if "items" in data:
                 for item in data["items"]:
-                    self._count_segments(item.get("segments", []), lemma_counts, pos_counts)
+                    self._count_segments(item.get("segments", []), lemma_counts, pos_counts, token_stats)
             else:
-                self._count_segments(data.get("segments", []), lemma_counts, pos_counts)
+                self._count_segments(data.get("segments", []), lemma_counts, pos_counts, token_stats)
 
-    def _count_segments(self, segments: list, lemma_counts: Counter, pos_counts: Counter) -> None:
+    def _count_segments(self, segments: list, lemma_counts: Counter, pos_counts: Counter,
+                       token_stats: dict) -> None:
         """Count lemmas in a list of segments."""
         for segment in segments:
             for token in segment.get("tokens", []):
+                token_stats["total"] += 1
                 lemma = token.get("lemma")
                 if lemma:
+                    token_stats["with_lemma"] += 1
                     lemma_counts[lemma] += 1
                     pos = token.get("pos")
                     if pos:
