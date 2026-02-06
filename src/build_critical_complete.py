@@ -16,31 +16,76 @@ Two-witness editions (GRETIL/VRI):
 
 import re
 import json
+import logging
 from pathlib import Path
 from datetime import datetime
 from difflib import SequenceMatcher
+from dataclasses import dataclass
+from typing import Any, Optional
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 LOG_FILE = DATA_DIR / "pipeline_progress.log"
 
+# Pre-compiled regex for Pāli word tokenization
+PALI_WORD_PATTERN = re.compile(r'[a-zāīūṭḍṇṅñṃḷA-ZĀĪŪṬḌṆṄÑṂḶ]+')
 
-def log(msg):
-    """Log message."""
-    timestamp = datetime.now().strftime("%H:%M:%S")
-    line = f"[{timestamp}] {msg}"
-    print(line)
-    with open(LOG_FILE, 'a', encoding='utf-8') as f:
-        f.write(line + "\n")
+# Configure logging
+logger = logging.getLogger(__name__)
 
 
-def tokenize(text):
+def setup_logging() -> None:
+    """Configure logging to both console and file."""
+    logger.setLevel(logging.INFO)
+
+    # Console handler with simple format
+    console = logging.StreamHandler()
+    console.setLevel(logging.INFO)
+    console.setFormatter(logging.Formatter('[%(asctime)s] %(message)s', datefmt='%H:%M:%S'))
+
+    # File handler with timestamp
+    file_handler = logging.FileHandler(LOG_FILE, mode='w', encoding='utf-8')
+    file_handler.setLevel(logging.INFO)
+    file_handler.setFormatter(logging.Formatter('[%(asctime)s] %(message)s', datefmt='%H:%M:%S'))
+
+    logger.addHandler(console)
+    logger.addHandler(file_handler)
+
+
+# ==================== Nikaya Configuration ====================
+
+@dataclass
+class NikayaConfig:
+    """Configuration for a nikaya critical edition build."""
+    code: str              # 'dn', 'mn', 'sn', 'an'
+    name: str              # 'DN', 'MN', etc.
+    gretil_volumes: int    # Number of GRETIL volume files
+    vri_pattern: str       # VRI file pattern prefix (e.g., 's010')
+    sutta_range: Optional[tuple[int, int]] = None  # (start, end) for individual suttas
+    use_glob: bool = False  # Use glob for SC files (SN/AN style)
+
+
+# Configuration for the four main nikayas
+NIKAYA_CONFIGS = {
+    'dn': NikayaConfig('dn', 'DN', 3, 's010', sutta_range=(1, 34)),
+    'mn': NikayaConfig('mn', 'MN', 3, 's020', sutta_range=(1, 152)),
+    'sn': NikayaConfig('sn', 'SN', 5, 's030', use_glob=True),
+    'an': NikayaConfig('an', 'AN', 5, 's040', use_glob=True),
+}
+
+
+def log(msg: str) -> None:
+    """Log message using the logger (legacy wrapper)."""
+    logger.info(msg)
+
+
+def tokenize(text: str) -> list[str]:
     """Tokenize Pāli text into words."""
     if not text:
         return []
-    return re.findall(r'[a-zāīūṭḍṇṅñṃḷA-ZĀĪŪṬḌṆṄÑṂḶ]+', text.lower())
+    return PALI_WORD_PATTERN.findall(text.lower())
 
 
-def normalize_word(word):
+def normalize_word(word: str) -> str:
     """Normalize a word for comparison."""
     if not word:
         return ''
@@ -49,7 +94,7 @@ def normalize_word(word):
     return w
 
 
-def compare_texts(text1, text2):
+def compare_texts(text1: str, text2: str) -> dict[str, Any]:
     """Compare two texts and return match statistics."""
     words1 = tokenize(text1)
     words2 = tokenize(text2)
@@ -69,7 +114,7 @@ def compare_texts(text1, text2):
     return {'matches': matches, 'total': total, 'rate': rate}
 
 
-def load_gretil_text(collection, name):
+def load_gretil_text(collection: str, name: str) -> Optional[str]:
     """Load GRETIL parsed text."""
     fpath = DATA_DIR / f"gretil-parsed/{collection}/{name}.json"
     if not fpath.exists():
@@ -78,7 +123,7 @@ def load_gretil_text(collection, name):
     return data.get('text', '')
 
 
-def load_vri_text(collection, pattern):
+def load_vri_text(collection: str, pattern: str) -> str:
     """Load VRI parsed text matching pattern."""
     vri_dir = DATA_DIR / f"vri-parsed/{collection}"
     if not vri_dir.exists():
@@ -93,7 +138,7 @@ def load_vri_text(collection, pattern):
     return all_text
 
 
-def load_sc_text(collection, text_id):
+def load_sc_text(collection: str, text_id: str) -> Optional[str]:
     """Load SuttaCentral text."""
     fpath = DATA_DIR / f"canonical/{collection}/{text_id}.json"
     if not fpath.exists():
@@ -135,60 +180,69 @@ def load_sc_text(collection, text_id):
     return None
 
 
-# ==================== DN Critical Edition ====================
+# ==================== Generic Nikaya Builders ====================
 
-def build_dn_critical():
-    """Build DN critical edition with 3 witnesses."""
+def build_nikaya_critical(config: NikayaConfig) -> dict[str, Any]:
+    """Build critical edition for a nikaya with individual sutta files (DN/MN style).
+
+    Args:
+        config: Nikaya configuration
+
+    Returns:
+        Summary dictionary with word counts and sutta count
+    """
     log("=" * 60)
-    log("Building DN Critical Edition (3 witnesses)")
+    log(f"Building {config.name} Critical Edition (3 witnesses)")
     log("=" * 60)
 
-    output_dir = DATA_DIR / "critical/dn"
+    output_dir = DATA_DIR / f"critical/{config.code}"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    results = []
+    results: list[dict[str, Any]] = []
     total_words = {'sc': 0, 'gretil': 0, 'vri': 0}
 
-    # Load all GRETIL DN volumes
+    # Load all GRETIL volumes
     gretil_all = ""
-    for vol in range(1, 4):
-        fpath = DATA_DIR / f"gretil-parsed/dn/dn_vol{vol}.json"
+    for vol in range(1, config.gretil_volumes + 1):
+        fpath = DATA_DIR / f"gretil-parsed/{config.code}/{config.code}_vol{vol}.json"
         if fpath.exists():
             data = json.loads(fpath.read_text())
             gretil_all += data.get('text', '') + " "
 
     gretil_words = len(tokenize(gretil_all))
     total_words['gretil'] = gretil_words
-    log(f"GRETIL DN: {gretil_words:,} words")
+    log(f"GRETIL {config.name}: {gretil_words:,} words")
 
-    # Load all VRI DN files
-    vri_all = load_vri_text('dn', 's010')
+    # Load all VRI files
+    vri_all = load_vri_text(config.code, config.vri_pattern)
     vri_words = len(tokenize(vri_all))
     total_words['vri'] = vri_words
-    log(f"VRI DN: {vri_words:,} words")
+    log(f"VRI {config.name}: {vri_words:,} words")
 
     # Process each sutta with SC
-    for sutta_num in range(1, 35):
-        sc_text = load_sc_text('dn', f'dn{sutta_num}')
-        if not sc_text:
-            continue
+    if config.sutta_range:
+        start, end = config.sutta_range
+        for sutta_num in range(start, end + 1):
+            sc_text = load_sc_text(config.code, f'{config.code}{sutta_num}')
+            if not sc_text:
+                continue
 
-        sc_word_count = len(tokenize(sc_text))
-        total_words['sc'] += sc_word_count
+            sc_word_count = len(tokenize(sc_text))
+            total_words['sc'] += sc_word_count
 
-        edition = {
-            'id': f'dn{sutta_num}',
-            'witnesses': ['SC', 'GRETIL', 'VRI'],
-            'word_count': sc_word_count,
-        }
-        results.append(edition)
+            edition = {
+                'id': f'{config.code}{sutta_num}',
+                'witnesses': ['SC', 'GRETIL', 'VRI'],
+                'word_count': sc_word_count,
+            }
+            results.append(edition)
 
-        output_file = output_dir / f"dn{sutta_num}_critical.json"
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(edition, f, indent=2, ensure_ascii=False)
+            output_file = output_dir / f"{config.code}{sutta_num}_critical.json"
+            with open(output_file, 'w', encoding='utf-8') as f:
+                json.dump(edition, f, indent=2, ensure_ascii=False)
 
     summary = {
-        'nikaya': 'DN',
+        'nikaya': config.name,
         'witnesses': 3,
         'suttas': len(results),
         'sc_words': total_words['sc'],
@@ -199,114 +253,51 @@ def build_dn_critical():
     with open(output_dir / "_critical_summary.json", 'w', encoding='utf-8') as f:
         json.dump(summary, f, indent=2, ensure_ascii=False)
 
-    log(f"DN: {len(results)} suttas, {total_words['sc']:,} SC words")
+    log(f"{config.name}: {len(results)} suttas, {total_words['sc']:,} SC words")
     return summary
 
 
-# ==================== MN Critical Edition ====================
+def build_nikaya_critical_glob(config: NikayaConfig) -> dict[str, Any]:
+    """Build critical edition for a nikaya using glob for SC files (SN/AN style).
 
-def build_mn_critical():
-    """Build MN critical edition with 3 witnesses."""
+    Args:
+        config: Nikaya configuration
+
+    Returns:
+        Summary dictionary with word counts and file count
+    """
     log("=" * 60)
-    log("Building MN Critical Edition (3 witnesses)")
+    log(f"Building {config.name} Critical Edition (3 witnesses)")
     log("=" * 60)
 
-    output_dir = DATA_DIR / "critical/mn"
+    output_dir = DATA_DIR / f"critical/{config.code}"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    results = []
-    total_words = {'sc': 0, 'gretil': 0, 'vri': 0}
+    total_words: dict[str, int] = {'sc': 0, 'gretil': 0, 'vri': 0}
 
-    # Load all GRETIL MN volumes
+    # Load all GRETIL volumes
     gretil_all = ""
-    for vol in range(1, 4):
-        fpath = DATA_DIR / f"gretil-parsed/mn/mn_vol{vol}.json"
+    for vol in range(1, config.gretil_volumes + 1):
+        fpath = DATA_DIR / f"gretil-parsed/{config.code}/{config.code}_vol{vol}.json"
         if fpath.exists():
             data = json.loads(fpath.read_text())
             gretil_all += data.get('text', '') + " "
 
     gretil_words = len(tokenize(gretil_all))
     total_words['gretil'] = gretil_words
-    log(f"GRETIL MN: {gretil_words:,} words")
+    log(f"GRETIL {config.name}: {gretil_words:,} words")
 
-    # Load all VRI MN files
-    vri_all = load_vri_text('mn', 's020')
+    # Load all VRI files
+    vri_all = load_vri_text(config.code, config.vri_pattern)
     vri_words = len(tokenize(vri_all))
     total_words['vri'] = vri_words
-    log(f"VRI MN: {vri_words:,} words")
+    log(f"VRI {config.name}: {vri_words:,} words")
 
-    # Process each sutta with SC
-    for sutta_num in range(1, 153):
-        sc_text = load_sc_text('mn', f'mn{sutta_num}')
-        if not sc_text:
-            continue
+    # Process SC files via glob
+    sc_dir = DATA_DIR / f"canonical/{config.code}"
+    results: list[dict[str, Any]] = []
 
-        sc_word_count = len(tokenize(sc_text))
-        total_words['sc'] += sc_word_count
-
-        edition = {
-            'id': f'mn{sutta_num}',
-            'witnesses': ['SC', 'GRETIL', 'VRI'],
-            'word_count': sc_word_count,
-        }
-        results.append(edition)
-
-        output_file = output_dir / f"mn{sutta_num}_critical.json"
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(edition, f, indent=2, ensure_ascii=False)
-
-    summary = {
-        'nikaya': 'MN',
-        'witnesses': 3,
-        'suttas': len(results),
-        'sc_words': total_words['sc'],
-        'gretil_words': total_words['gretil'],
-        'vri_words': total_words['vri'],
-    }
-
-    with open(output_dir / "_critical_summary.json", 'w', encoding='utf-8') as f:
-        json.dump(summary, f, indent=2, ensure_ascii=False)
-
-    log(f"MN: {len(results)} suttas, {total_words['sc']:,} SC words")
-    return summary
-
-
-# ==================== SN Critical Edition ====================
-
-def build_sn_critical():
-    """Build SN critical edition with 3 witnesses."""
-    log("=" * 60)
-    log("Building SN Critical Edition (3 witnesses)")
-    log("=" * 60)
-
-    output_dir = DATA_DIR / "critical/sn"
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    total_words = {'sc': 0, 'gretil': 0, 'vri': 0}
-
-    # Load all GRETIL SN volumes
-    gretil_all = ""
-    for vol in range(1, 6):
-        fpath = DATA_DIR / f"gretil-parsed/sn/sn_vol{vol}.json"
-        if fpath.exists():
-            data = json.loads(fpath.read_text())
-            gretil_all += data.get('text', '') + " "
-
-    gretil_words = len(tokenize(gretil_all))
-    total_words['gretil'] = gretil_words
-    log(f"GRETIL SN: {gretil_words:,} words")
-
-    # Load all VRI SN files
-    vri_all = load_vri_text('sn', 's030')
-    vri_words = len(tokenize(vri_all))
-    total_words['vri'] = vri_words
-    log(f"VRI SN: {vri_words:,} words")
-
-    # Process SC files
-    sc_dir = DATA_DIR / "canonical/sn"
-    results = []
-
-    for fpath in sorted(sc_dir.glob("sn*.json")):
+    for fpath in sorted(sc_dir.glob(f"{config.code}*.json")):
         if fpath.name.startswith('_'):
             continue
 
@@ -314,7 +305,7 @@ def build_sn_critical():
         file_id = data.get('id', fpath.stem)
 
         # Extract text from all formats
-        text_parts = []
+        text_parts: list[str] = []
         if 'suttas' in data:
             for sutta in data['suttas']:
                 for seg in sutta.get('segments', []):
@@ -344,7 +335,7 @@ def build_sn_critical():
                 json.dump(edition, f, indent=2, ensure_ascii=False)
 
     summary = {
-        'nikaya': 'SN',
+        'nikaya': config.name,
         'witnesses': 3,
         'files': len(results),
         'sc_words': total_words['sc'],
@@ -355,96 +346,29 @@ def build_sn_critical():
     with open(output_dir / "_critical_summary.json", 'w', encoding='utf-8') as f:
         json.dump(summary, f, indent=2, ensure_ascii=False)
 
-    log(f"SN: {len(results)} files, {total_words['sc']:,} SC words")
+    log(f"{config.name}: {len(results)} files, {total_words['sc']:,} SC words")
     return summary
 
 
-# ==================== AN Critical Edition ====================
+# Convenience wrappers using the generic builders
+def build_dn_critical() -> dict[str, Any]:
+    """Build DN critical edition."""
+    return build_nikaya_critical(NIKAYA_CONFIGS['dn'])
 
-def build_an_critical():
-    """Build AN critical edition with 3 witnesses."""
-    log("=" * 60)
-    log("Building AN Critical Edition (3 witnesses)")
-    log("=" * 60)
 
-    output_dir = DATA_DIR / "critical/an"
-    output_dir.mkdir(parents=True, exist_ok=True)
+def build_mn_critical() -> dict[str, Any]:
+    """Build MN critical edition."""
+    return build_nikaya_critical(NIKAYA_CONFIGS['mn'])
 
-    total_words = {'sc': 0, 'gretil': 0, 'vri': 0}
 
-    # Load all GRETIL AN volumes
-    gretil_all = ""
-    for vol in range(1, 6):
-        fpath = DATA_DIR / f"gretil-parsed/an/an_vol{vol}.json"
-        if fpath.exists():
-            data = json.loads(fpath.read_text())
-            gretil_all += data.get('text', '') + " "
+def build_sn_critical() -> dict[str, Any]:
+    """Build SN critical edition."""
+    return build_nikaya_critical_glob(NIKAYA_CONFIGS['sn'])
 
-    gretil_words = len(tokenize(gretil_all))
-    total_words['gretil'] = gretil_words
-    log(f"GRETIL AN: {gretil_words:,} words")
 
-    # Load all VRI AN files
-    vri_all = load_vri_text('an', 's040')
-    vri_words = len(tokenize(vri_all))
-    total_words['vri'] = vri_words
-    log(f"VRI AN: {vri_words:,} words")
-
-    # Process SC files
-    sc_dir = DATA_DIR / "canonical/an"
-    results = []
-
-    for fpath in sorted(sc_dir.glob("an*.json")):
-        if fpath.name.startswith('_'):
-            continue
-
-        data = json.loads(fpath.read_text())
-        file_id = data.get('id', fpath.stem)
-
-        # Extract text from all formats
-        text_parts = []
-        if 'suttas' in data:
-            for sutta in data['suttas']:
-                for seg in sutta.get('segments', []):
-                    pali = seg.get('pali', '')
-                    if pali and ':0.' not in seg.get('id', ''):
-                        text_parts.append(pali)
-        elif 'segments' in data:
-            for seg in data['segments']:
-                pali = seg.get('pali', '')
-                if pali and ':0.' not in seg.get('id', ''):
-                    text_parts.append(pali)
-
-        if text_parts:
-            text = ' '.join(text_parts)
-            word_count = len(tokenize(text))
-            total_words['sc'] += word_count
-
-            edition = {
-                'id': file_id,
-                'witnesses': ['SC', 'GRETIL', 'VRI'],
-                'word_count': word_count,
-            }
-            results.append(edition)
-
-            output_file = output_dir / f"{file_id}_critical.json"
-            with open(output_file, 'w', encoding='utf-8') as f:
-                json.dump(edition, f, indent=2, ensure_ascii=False)
-
-    summary = {
-        'nikaya': 'AN',
-        'witnesses': 3,
-        'files': len(results),
-        'sc_words': total_words['sc'],
-        'gretil_words': total_words['gretil'],
-        'vri_words': total_words['vri'],
-    }
-
-    with open(output_dir / "_critical_summary.json", 'w', encoding='utf-8') as f:
-        json.dump(summary, f, indent=2, ensure_ascii=False)
-
-    log(f"AN: {len(results)} files, {total_words['sc']:,} SC words")
-    return summary
+def build_an_critical() -> dict[str, Any]:
+    """Build AN critical edition."""
+    return build_nikaya_critical_glob(NIKAYA_CONFIGS['an'])
 
 
 # ==================== KN Critical Edition ====================
@@ -470,7 +394,7 @@ KN_MAPPING = {
     'cp': 'cariyapitaka',
 }
 
-def build_kn_critical():
+def build_kn_critical() -> dict[str, Any]:
     """Build KN critical edition with 2-3 witnesses."""
     log("=" * 60)
     log("Building KN Critical Edition (2-3 witnesses)")
@@ -607,7 +531,7 @@ VINAYA_TEXTS = [
     'parivara',
 ]
 
-def build_vinaya_critical():
+def build_vinaya_critical() -> dict[str, Any]:
     """Build Vinaya critical edition with 2 witnesses (GRETIL/VRI)."""
     log("=" * 60)
     log("Building Vinaya Critical Edition (2 witnesses)")
@@ -677,7 +601,7 @@ ABHIDHAMMA_TEXTS = [
     'patthana_duka',
 ]
 
-def build_abhidhamma_critical():
+def build_abhidhamma_critical() -> dict[str, Any]:
     """Build Abhidhamma critical edition with 2 witnesses (GRETIL/VRI)."""
     log("=" * 60)
     log("Building Abhidhamma Critical Edition (2 witnesses)")
@@ -733,9 +657,10 @@ def build_abhidhamma_critical():
 
 # ==================== Main ====================
 
-def main():
-    # Clear log
-    LOG_FILE.write_text("")
+def main() -> None:
+    """Build critical editions for the complete Tipiṭaka."""
+    # Setup logging (clears previous log file)
+    setup_logging()
 
     log("=" * 60)
     log("BUILDING COMPLETE TIPIṬAKA CRITICAL EDITIONS")

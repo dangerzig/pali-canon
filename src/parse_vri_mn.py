@@ -3,13 +3,13 @@
 Parse VRI Majjhima Nikāya raw files into individual sutta JSON files.
 
 VRI MN is in 3 volume files:
-- s0201m.mul.txt (Mūlapaṇṇāsa, MN 1-50)
-- s0202m.mul.txt (Majjhimapaṇṇāsa, MN 51-100)
-- s0203m.mul.txt (Uparipaṇṇāsa, MN 101-152)
+- s0201m.mul.txt (Mūlapaṇṇāsa, MN 1-50, vaggas 1-5)
+- s0202m.mul.txt (Majjhimapaṇṇāsa, MN 51-100, vaggas 6-10)
+- s0203m.mul.txt (Uparipaṇṇāsa, MN 101-152, vaggas 11-15)
 
-Each sutta is marked by:
-- Start: "N. Namesuttaṃ" (e.g., "1. Mūlapariyāyasuttaṃ")
-- End: "Namesuttaṃ niṭṭhitaṃ Nth." (e.g., "Mūlapariyāyasuttaṃ niṭṭhitaṃ paṭhamaṃ.")
+Each vagga contains 10 suttas numbered 1-10 locally.
+Sutta markers: "N. Namesuttaṃ" (e.g., "1. Mūlapariyāyasuttaṃ")
+Vagga markers: "N. Namevaggo" (e.g., "1. Mūlapariyāyavaggo")
 """
 
 import re
@@ -20,22 +20,36 @@ DATA_DIR = Path(__file__).parent.parent / "data"
 VRI_RAW_DIR = DATA_DIR / "vri-raw"
 OUTPUT_DIR = DATA_DIR / "vri-parsed" / "mn"
 
-# Volume files and their sutta ranges
+# Volume files with vagga offset (vaggas 1-5, 6-10, 11-15)
 VOLUMES = [
-    ("s0201m.mul.txt", 1, 50),    # Mūlapaṇṇāsa
-    ("s0202m.mul.txt", 51, 100),  # Majjhimapaṇṇāsa
-    ("s0203m.mul.txt", 101, 152), # Uparipaṇṇāsa
+    ("s0201m.mul.txt", 0),   # Mūlapaṇṇāsa: vaggas 1-5 (offset 0)
+    ("s0202m.mul.txt", 5),   # Majjhimapaṇṇāsa: vaggas 6-10 (offset 5)
+    ("s0203m.mul.txt", 10),  # Uparipaṇṇāsa: vaggas 11-15 (offset 10)
 ]
+
+# Pre-compiled patterns
+PALI_WORD_PATTERN = re.compile(r'[a-zA-ZāīūṭḍṇṅñṃḷĀĪŪṬḌṆṄÑṂḶ]+')
+VAGGA_PATTERN = re.compile(r'^(\d+)\.\s+([A-ZĀĪŪṬḌṆṄÑṂḶa-zāīūṭḍṇṅñṃḷ]+vaggo)\s*$', re.MULTILINE | re.IGNORECASE)
+SUTTA_PATTERN = re.compile(r'^(\d+)\.\s+([A-ZĀĪŪṬḌṆṄÑṂḶa-zāīūṭḍṇṅñṃḷ]+sutta[ṃm])\s*$', re.MULTILINE | re.IGNORECASE)
+SUTTA_END_PATTERN = re.compile(r'\n[A-ZĀĪŪṬḌṆṄÑṂḶa-zāīūṭḍṇṅñṃḷ]+sutta[ṃm]\s+niṭṭhita[ṃm].*$', re.IGNORECASE)
+VAGGA_END_PATTERN = re.compile(r'\n[A-ZĀĪŪṬḌṆṄÑṂḶ][a-zāīūṭḍṇṅñṃḷ]+vaggo\s+(niṭṭhito|paṭhamo|dutiyo)', re.IGNORECASE)
 
 
 def count_words(text: str) -> int:
     """Count Pāli words in text."""
-    words = re.findall(r'[a-zA-ZāīūṭḍṇṅñṃḷĀĪŪṬḌṆṄÑṂḶ]+', text)
-    return len(words)
+    return len(PALI_WORD_PATTERN.findall(text))
 
 
-def parse_volume(filename: str, start_sutta: int, end_sutta: int) -> dict:
-    """Parse a VRI volume file into individual suttas."""
+def parse_volume(filename: str, vagga_offset: int) -> dict:
+    """Parse a VRI volume file into individual suttas.
+
+    Args:
+        filename: VRI raw file name
+        vagga_offset: Number of vaggas before this volume (0, 5, or 10)
+
+    Returns:
+        Dict mapping absolute sutta number to sutta data
+    """
     filepath = VRI_RAW_DIR / filename
 
     if not filepath.exists():
@@ -45,67 +59,78 @@ def parse_volume(filename: str, start_sutta: int, end_sutta: int) -> dict:
     with open(filepath, 'r', encoding='utf-8-sig') as f:
         content = f.read()
 
-    suttas = {}
+    # Find all vagga markers to track vagga boundaries
+    vagga_matches = list(VAGGA_PATTERN.finditer(content))
 
-    # Pattern for sutta start: "N. Namesuttaṃ" at start of line
-    # The number resets in each volume, so we track absolute sutta number
-    sutta_start_pattern = re.compile(
-        r'^(\d+)\.\s+([A-ZĀĪŪṬḌṆṄÑṂḶa-zāīūṭḍṇṅñṃḷ]+sutta[ṃm])\s*$',
-        re.MULTILINE | re.IGNORECASE
-    )
+    # Find all sutta markers
+    sutta_matches = list(SUTTA_PATTERN.finditer(content))
 
-    # Find all sutta starts
-    matches = list(sutta_start_pattern.finditer(content))
-
-    if not matches:
+    if not sutta_matches:
         print(f"  Warning: No sutta markers found in {filename}")
         return {}
 
-    print(f"  Found {len(matches)} sutta markers in {filename}")
+    print(f"  Found {len(vagga_matches)} vagga markers, {len(sutta_matches)} sutta markers")
 
-    for i, match in enumerate(matches):
-        local_num = int(match.group(1))
+    # Build vagga position map: position -> vagga_num (1-indexed within volume)
+    vagga_positions = [(m.start(), int(m.group(1))) for m in vagga_matches]
+
+    suttas = {}
+
+    for i, match in enumerate(sutta_matches):
+        local_sutta_num = int(match.group(1))  # 1-10 within vagga
         sutta_name = match.group(2)
+        match_pos = match.start()
+
+        # Find which vagga this sutta belongs to
+        current_vagga = 1  # Default to first vagga
+        for vpos, vnum in vagga_positions:
+            if vpos < match_pos:
+                current_vagga = vnum
+            else:
+                break
 
         # Calculate absolute sutta number
-        # In Mūlapaṇṇāsa, local 1 = MN 1
-        # In Majjhimapaṇṇāsa, local 1 = MN 51
-        # In Uparipaṇṇāsa, local 1 = MN 101
-        if start_sutta == 1:
-            absolute_num = local_num
-        elif start_sutta == 51:
-            absolute_num = 50 + local_num
-        else:  # start_sutta == 101
-            absolute_num = 100 + local_num
+        # vagga_offset: vaggas before this volume (0, 5, 10)
+        # current_vagga: vagga number within volume (1-5)
+        # local_sutta_num: sutta number within vagga (usually 1-10)
+        absolute_vagga = vagga_offset + current_vagga
+        absolute_sutta = (absolute_vagga - 1) * 10 + local_sutta_num
 
-        if absolute_num < start_sutta or absolute_num > end_sutta:
-            continue
+        # Handle Uparipaṇṇāsa special case (MN 101-152 has 52 suttas, not 50)
+        # Vagga 4 (Vibhaṅgavaggo) has 12 suttas instead of 10
+        if vagga_offset == 10:
+            # Uparipaṇṇāsa structure:
+            # Vagga 1-3: 10 suttas each (MN 101-130)
+            # Vagga 4: 12 suttas (MN 131-142)
+            # Vagga 5: 10 suttas (MN 143-152)
+            if current_vagga <= 3:
+                absolute_sutta = 100 + (current_vagga - 1) * 10 + local_sutta_num
+            elif current_vagga == 4:
+                absolute_sutta = 130 + local_sutta_num  # MN 131-142
+            else:  # current_vagga == 5
+                absolute_sutta = 142 + local_sutta_num  # MN 143-152
 
-        # Extract text from this match to the next (or end)
+        # Extract text from this match to the next sutta (or end of file)
         start_pos = match.end()
-        if i + 1 < len(matches):
-            end_pos = matches[i + 1].start()
+        if i + 1 < len(sutta_matches):
+            end_pos = sutta_matches[i + 1].start()
         else:
             end_pos = len(content)
 
         sutta_text = content[start_pos:end_pos].strip()
 
         # Remove the ending marker (e.g., "Namesuttaṃ niṭṭhitaṃ...")
-        end_marker = re.search(
-            r'\n[A-ZĀĪŪṬḌṆṄÑṂḶa-zāīūṭḍṇṅñṃḷ]+sutta[ṃm]\s+niṭṭhita[ṃm].*$',
-            sutta_text,
-            re.IGNORECASE
-        )
+        end_marker = SUTTA_END_PATTERN.search(sutta_text)
         if end_marker:
             sutta_text = sutta_text[:end_marker.start()].strip()
 
-        # Also remove vagga summaries and other trailing metadata
-        vagga_marker = re.search(r'\n[A-ZĀĪŪṬḌṆṄÑṂḶ][a-zāīūṭḍṇṅñṃḷ]+vaggo\s+(niṭṭhito|paṭhamo|dutiyo)', sutta_text, re.IGNORECASE)
+        # Remove vagga summaries and other trailing metadata
+        vagga_marker = VAGGA_END_PATTERN.search(sutta_text)
         if vagga_marker:
             sutta_text = sutta_text[:vagga_marker.start()].strip()
 
-        suttas[absolute_num] = {
-            'id': f'mn{absolute_num}',
+        suttas[absolute_sutta] = {
+            'id': f'mn{absolute_sutta}',
             'title': sutta_name,
             'text': sutta_text,
             'word_count': count_words(sutta_text)
@@ -123,12 +148,19 @@ def main():
 
     all_suttas = {}
 
-    for filename, start, end in VOLUMES:
-        print(f"\nProcessing {filename} (MN {start}-{end})...")
-        suttas = parse_volume(filename, start, end)
+    for filename, vagga_offset in VOLUMES:
+        print(f"\nProcessing {filename}...")
+        suttas = parse_volume(filename, vagga_offset)
         all_suttas.update(suttas)
 
     print(f"\nTotal suttas parsed: {len(all_suttas)}")
+
+    # Check for missing suttas
+    expected = set(range(1, 153))
+    found = set(all_suttas.keys())
+    missing = expected - found
+    if missing:
+        print(f"  Missing suttas: {sorted(missing)}")
 
     # Save individual sutta files
     total_words = 0
@@ -140,7 +172,6 @@ def main():
             json.dump(sutta, f, indent=2, ensure_ascii=False)
 
         total_words += sutta['word_count']
-        print(f"  mn{sutta_num}: {sutta['word_count']:,} words")
 
     # Save summary
     summary = {

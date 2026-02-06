@@ -15,7 +15,7 @@ import re
 import sqlite3
 from pathlib import Path
 from collections import Counter
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 from typing import Optional
 
 DATA_DIR = Path(__file__).parent.parent / "data"
@@ -63,6 +63,11 @@ SHORT_PRONOUN_VARIANTS = {
 # e.g., abhisamparāyañcā = abhisamparāyaṃ + ca
 SANDHI_NCA_PATTERN = re.compile(r'^(.+)ñcā$')
 
+# Pre-compiled regex patterns for tokenization and normalization
+HTML_TAG_PATTERN = re.compile(r'<[^>]+>')
+PALI_TOKEN_PATTERN = re.compile(r'[^a-zA-ZāīūṭḍṇṅñṃḷĀĪŪṬḌṆṄÑṂḶ]+')
+LEMMA_VERSION_PATTERN = re.compile(r'\s+\d+(\.\d+)?$')
+
 # English words that appear in SuttaCentral placeholder segments
 # These should be skipped during lemmatization (marked as 'eng')
 ENGLISH_WORDS = {
@@ -95,6 +100,10 @@ VERB_ENDING_NORMALIZATIONS = [
     ('essāmā', 'essāma'),  # future 1pl
     ('issāmā', 'issāma'),  # future 1pl
 ]
+
+# Minimum word length to attempt compound splitting
+# Shorter words are unlikely to be decomposable compounds
+MIN_COMPOUND_LENGTH = 15
 
 # Known compound decompositions (jhāna compounds, etc.)
 KNOWN_COMPOUNDS = {
@@ -204,16 +213,26 @@ class Lemmatizer:
                         self.dppn_stems[name[:-1]] = (name, category)
 
     def close(self):
+        """Close the database connection."""
         self.conn.close()
+
+    def __enter__(self):
+        """Context manager entry."""
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        """Context manager exit - ensures connection is closed."""
+        self.close()
+        return False
 
     def tokenize(self, text: str) -> list[str]:
         """Tokenize Pāli text into words."""
         # Strip HTML tags (e.g., <b>, </b>, <i>, </i>)
-        text = re.sub(r'<[^>]+>', ' ', text)
+        text = HTML_TAG_PATTERN.sub(' ', text)
         # Normalize niggahīta
         text = text.replace('ṁ', 'ṃ')
         # Split on non-Pāli characters
-        tokens = re.split(r'[^a-zA-ZāīūṭḍṇṅñṃḷĀĪŪṬḌṆṄÑṂḶ]+', text.lower())
+        tokens = PALI_TOKEN_PATTERN.split(text.lower())
         return [t for t in tokens if t]
 
     def _normalize_variant(self, word: str) -> str:
@@ -483,7 +502,22 @@ class Lemmatizer:
         return None
 
     def lookup_word(self, word: str) -> TokenInfo:
-        """Look up a word and return its lemma info."""
+        """Look up a word and return its lemma info.
+
+        Tries multiple strategies in order:
+        1. Cache lookup
+        2. Direct DPD lookup (with normalization variants)
+        3. Short pronoun variants
+        4. Sandhi pattern splitting (-ñcā, particles)
+        5. DPPN proper noun matching
+        6. Pronoun-verb fusion splitting
+        7. Verb ending normalization
+        8. Internal metrical normalization
+        9. Known compound patterns
+        10. Title/chapter pattern matching
+        11. Compound splitting for long words
+        12. Custom lemma database
+        """
         # Check cache first
         if word in self.cache:
             return self.cache[word]
@@ -495,76 +529,32 @@ class Lemmatizer:
             self.stats["english_words"] += 1
             return token
 
-        cursor = self.conn.execute("""
-            SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
-        """, (word,))
-        row = cursor.fetchone()
-
-        # Check if row has useful data (not just a stub entry with empty fields)
-        def has_useful_data(r):
-            return r and (r['headwords'] or r['deconstructor'])
+        # Try direct DPD lookup
+        row = self._lookup_dpd(word)
 
         # If not found or empty stub, try normalized variant (-n/-m → -ṃ)
-        normalized = None
-        if not has_useful_data(row):
+        if not self._has_useful_data(row):
             normalized = self._normalize_variant(word)
             if normalized != word:
-                cursor = self.conn.execute("""
-                    SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
-                """, (normalized,))
-                norm_row = cursor.fetchone()
-                if has_useful_data(norm_row):
+                norm_row = self._lookup_dpd(normalized)
+                if self._has_useful_data(norm_row):
                     row = norm_row
                     self.stats["normalized_variants"] += 1
 
         # If still not found, try metrical normalization (long → short vowel)
-        metrical_base = None
-        if not has_useful_data(row):
+        if not self._has_useful_data(row):
             metrical_base = self._try_metrical_normalization(word)
             if metrical_base:
-                cursor = self.conn.execute("""
-                    SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
-                """, (metrical_base,))
-                met_row = cursor.fetchone()
-                if has_useful_data(met_row):
+                met_row = self._lookup_dpd(metrical_base)
+                if self._has_useful_data(met_row):
                     row = met_row
                     self.stats["metrical_normalizations"] += 1
 
         token = TokenInfo(word=word)
 
-        if has_useful_data(row):
-            # Found in DPD - check for sandhi decomposition first
-            if row['deconstructor']:
-                try:
-                    deconstructions = json.loads(row['deconstructor'])
-                    if deconstructions:
-                        # Use first deconstruction
-                        parts = deconstructions[0].replace(' ', '').split('+')
-                        token.sandhi = parts
-                        token.components = []
-                        for part in parts:
-                            comp_info = self._get_headword_info(part)
-                            if comp_info:
-                                token.components.append(comp_info)
-                            else:
-                                token.components.append({"word": part})
-                        self.stats["sandhi_words"] += 1
-                except (json.JSONDecodeError, TypeError):
-                    pass
-
-            # Get headword info if not a sandhi word
-            if not token.sandhi and row['headwords']:
-                try:
-                    headword_ids = json.loads(row['headwords'])
-                    if headword_ids:
-                        # Get first headword's info
-                        hw_info = self._get_headword_by_id(headword_ids[0])
-                        if hw_info:
-                            token.lemma = hw_info.get('lemma')
-                            token.pos = hw_info.get('pos')
-                            token.root = hw_info.get('root')
-                except (json.JSONDecodeError, TypeError):
-                    pass
+        # Process DPD result if found
+        if self._has_useful_data(row):
+            self._process_dpd_result(token, row)
 
         # Check for short pronoun variants (m, man, tan, etc.)
         if not token.lemma and not token.sandhi:
@@ -723,7 +713,7 @@ class Lemmatizer:
                     self.stats["causative_forms"] += 1
 
         # Try compound splitting for long words (dvandva compounds)
-        if not token.lemma and not token.sandhi and len(word) > 15:
+        if not token.lemma and not token.sandhi and len(word) > MIN_COMPOUND_LENGTH:
             parts = self._try_compound_split(word)
             if parts and len(parts) > 1:
                 token.sandhi = parts
@@ -760,6 +750,62 @@ class Lemmatizer:
         self.cache[word] = token
         return token
 
+    def _has_useful_data(self, row) -> bool:
+        """Check if a DPD lookup row has useful data (not just a stub entry)."""
+        return row and (row['headwords'] or row['deconstructor'])
+
+    def _lookup_dpd(self, word: str):
+        """Look up a word in the DPD lookup table."""
+        cursor = self.conn.execute("""
+            SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
+        """, (word,))
+        return cursor.fetchone()
+
+    def _apply_headword_to_token(self, token: TokenInfo, row) -> bool:
+        """Apply headword info from a DPD row to a token. Returns True if successful."""
+        if not row or not row['headwords']:
+            return False
+        try:
+            headword_ids = json.loads(row['headwords'])
+            if headword_ids:
+                hw_info = self._get_headword_by_id(headword_ids[0])
+                if hw_info:
+                    token.lemma = hw_info.get('lemma')
+                    token.pos = hw_info.get('pos')
+                    token.root = hw_info.get('root')
+                    return True
+        except (json.JSONDecodeError, TypeError):
+            pass
+        return False
+
+    def _process_dpd_result(self, token: TokenInfo, row) -> None:
+        """Process a DPD lookup result and update the token.
+
+        Handles both sandhi decompositions and direct headword lookups.
+        """
+        # Check for sandhi decomposition first
+        if row['deconstructor']:
+            try:
+                deconstructions = json.loads(row['deconstructor'])
+                if deconstructions:
+                    # Use first deconstruction
+                    parts = deconstructions[0].replace(' ', '').split('+')
+                    token.sandhi = parts
+                    token.components = []
+                    for part in parts:
+                        comp_info = self._get_headword_info(part)
+                        if comp_info:
+                            token.components.append(comp_info)
+                        else:
+                            token.components.append({"word": part})
+                    self.stats["sandhi_words"] += 1
+                    return
+            except (json.JSONDecodeError, TypeError):
+                pass
+
+        # Get headword info if not a sandhi word
+        self._apply_headword_to_token(token, row)
+
     def _get_headword_info(self, word: str) -> Optional[dict]:
         """Get headword info for a word (used for sandhi components)."""
         cursor = self.conn.execute("""
@@ -785,7 +831,7 @@ class Lemmatizer:
             # Clean lemma (remove version numbers like "dhamma 1.01" -> "dhamma")
             lemma = row['lemma_1']
             if lemma:
-                lemma = re.sub(r'\s+\d+(\.\d+)?$', '', lemma)
+                lemma = LEMMA_VERSION_PATTERN.sub('', lemma)
 
             result = {"lemma": lemma, "pos": row['pos']}
             if row['root_key']:
