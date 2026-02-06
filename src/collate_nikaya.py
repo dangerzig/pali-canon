@@ -1,16 +1,22 @@
 #!/usr/bin/env python3
 """
-Collate variants across editions for any nikaya.
+Collate variants across editions for any nikaya or pitaka.
 
 Usage:
-    python collate_nikaya.py mn    # Collate MN (Majjhima Nikāya)
-    python collate_nikaya.py dn    # Collate DN (Dīgha Nikāya)
+    python collate_nikaya.py dn           # Collate DN (Dīgha Nikāya)
+    python collate_nikaya.py mn           # Collate MN (Majjhima Nikāya)
+    python collate_nikaya.py sn           # Collate SN (Saṃyutta Nikāya)
+    python collate_nikaya.py an           # Collate AN (Aṅguttara Nikāya)
+    python collate_nikaya.py kn           # Collate KN (Khuddaka Nikāya)
+    python collate_nikaya.py vinaya       # Collate Vinaya Piṭaka
+    python collate_nikaya.py abhidhamma   # Collate Abhidhamma Piṭaka
 
 Classification rules:
 - Orthographic only (ṁ/ṃ, ṅ/ṃ): Normalize silently
 - SC=VRI≠PTS + PTS not in DPD: Error - correct and note
 - SC=VRI≠PTS + all valid words: Variant - record in apparatus
 - All three differ: Uncertain - flag for review
+- Two-way mode (no VRI): SC≠PTS classification based on DPD validation
 """
 
 import re
@@ -782,8 +788,23 @@ def load_text_data_kn(sc_abbrev: str, gretil_name: str, vri_code: str) -> dict:
                 raw_text = gretil.get('text', '')
                 combined_text.append(clean_gretil_text(raw_text))
             if combined_text:
+                full_text = ' '.join(combined_text)
+
+                # Special handling for Apadāna: split into Thera and Therī sections
+                # GRETIL apadana.json contains both sections; split at "THERĪAPADĀNA ATHA"
+                # (hyphen removed by clean_gretil_text)
+                if gretil_name == 'apadana':
+                    theri_marker = re.search(r'THERĪAPADĀNA\s+ATHA', full_text, re.IGNORECASE)
+                    if theri_marker:
+                        if sc_abbrev == 'tha-ap':
+                            # Thera-Apadāna: use text before Therī section
+                            full_text = full_text[:theri_marker.start()].strip()
+                        elif sc_abbrev == 'thi-ap':
+                            # Therī-Apadāna: use text from Therī section onward
+                            full_text = full_text[theri_marker.start():].strip()
+
                 data['gretil'] = {
-                    'text': ' '.join(combined_text),
+                    'text': full_text,
                     'files': [f.name for f in gretil_files]
                 }
 
@@ -1710,56 +1731,142 @@ def collate_sutta_sn(sutta_id: str, max_variants: int = 1000) -> dict:
 
 
 def _process_collation(collation: dict, alignment: list, max_variants: int) -> dict:
-    """Process alignment data and classify variants."""
+    """Process alignment data and classify variants.
+
+    Handles both three-way (GRETIL/SC/VRI) and two-way (GRETIL/SC) collation.
+    When VRI is missing, uses two-way classification similar to Vinaya logic.
+    """
+    has_vri = collation.get('has_vri', True)
 
     for i, pos in enumerate(alignment):
         g = pos.get('gretil')
         s = pos.get('sc')
         v = pos.get('vri')
 
-        if pos.get('sc_match') == 'match' and pos.get('vri_match') == 'match':
-            collation['stats']['match'] += 1
-            continue
-
-        classification = classify_variant(g, s, v)
-        var_type = classification['type']
-
-        if var_type == 'orthographic':
-            collation['stats']['orthographic'] += 1
-        elif var_type == 'error':
-            collation['stats']['errors'] += 1
-            if len(collation['errors']) < max_variants:
-                collation['errors'].append({
-                    'position': i,
-                    'gretil': g,
-                    'sc': s,
-                    'vri': v,
-                    **classification
-                })
-        elif var_type == 'variant':
-            collation['stats']['variants'] += 1
-            if len(collation['variants']) < max_variants:
-                collation['variants'].append({
-                    'position': i,
-                    'gretil': g,
-                    'sc': s,
-                    'vri': v,
-                    **classification
-                })
-        elif var_type in ('uncertain', 'pts_omission', 'pts_addition'):
-            collation['stats']['uncertain'] += 1
-            if len(collation['uncertain']) < max_variants:
-                collation['uncertain'].append({
-                    'position': i,
-                    'gretil': g,
-                    'sc': s,
-                    'vri': v,
-                    **classification
-                })
-        elif var_type in ('alignment_artifact', 'fragment'):
-            collation['stats']['other'] += 1
+        # Check for match
+        if has_vri:
+            if pos.get('sc_match') == 'match' and pos.get('vri_match') == 'match':
+                collation['stats']['match'] += 1
+                continue
         else:
-            collation['stats']['other'] += 1
+            # Two-way: only check SC match
+            if pos.get('sc_match') == 'match':
+                collation['stats']['match'] += 1
+                continue
+
+        if has_vri:
+            # Three-way classification
+            classification = classify_variant(g, s, v)
+            var_type = classification['type']
+
+            if var_type == 'orthographic':
+                collation['stats']['orthographic'] += 1
+            elif var_type == 'error':
+                collation['stats']['errors'] += 1
+                if len(collation['errors']) < max_variants:
+                    collation['errors'].append({
+                        'position': i,
+                        'gretil': g,
+                        'sc': s,
+                        'vri': v,
+                        **classification
+                    })
+            elif var_type == 'variant':
+                collation['stats']['variants'] += 1
+                if len(collation['variants']) < max_variants:
+                    collation['variants'].append({
+                        'position': i,
+                        'gretil': g,
+                        'sc': s,
+                        'vri': v,
+                        **classification
+                    })
+            elif var_type in ('uncertain', 'pts_omission', 'pts_addition'):
+                collation['stats']['uncertain'] += 1
+                if len(collation['uncertain']) < max_variants:
+                    collation['uncertain'].append({
+                        'position': i,
+                        'gretil': g,
+                        'sc': s,
+                        'vri': v,
+                        **classification
+                    })
+            elif var_type in ('alignment_artifact', 'fragment'):
+                collation['stats']['other'] += 1
+            else:
+                collation['stats']['other'] += 1
+        else:
+            # Two-way classification (GRETIL vs SC, no VRI)
+            g_norm = normalize_for_comparison(g) if g else None
+            s_norm = normalize_for_comparison(s) if s else None
+
+            if g_norm == s_norm:
+                collation['stats']['orthographic'] += 1
+            elif g and s:
+                g_valid = is_valid_word(g)
+                s_valid = is_valid_word(s)
+                if s_valid and not g_valid:
+                    # PTS (GRETIL) error, SC is correct
+                    collation['stats']['errors'] += 1
+                    if len(collation['errors']) < max_variants:
+                        collation['errors'].append({
+                            'position': i,
+                            'gretil': g,
+                            'sc': s,
+                            'vri': None,
+                            'type': 'error',
+                            'preferred': s,
+                            'notes': f'PTS "{g}" not in DPD, SC "{s}" is valid'
+                        })
+                elif g_valid and not s_valid:
+                    # SC error, PTS (GRETIL) is correct
+                    collation['stats']['errors'] += 1
+                    if len(collation['errors']) < max_variants:
+                        collation['errors'].append({
+                            'position': i,
+                            'gretil': g,
+                            'sc': s,
+                            'vri': None,
+                            'type': 'sc_error',
+                            'preferred': g,
+                            'notes': f'SC "{s}" not in DPD, PTS "{g}" is valid'
+                        })
+                elif g_valid and s_valid:
+                    # Both valid - textual variant
+                    collation['stats']['variants'] += 1
+                    if len(collation['variants']) < max_variants:
+                        collation['variants'].append({
+                            'position': i,
+                            'gretil': g,
+                            'sc': s,
+                            'vri': None,
+                            'type': 'variant',
+                            'notes': f'Textual variant: PTS "{g}" vs SC "{s}"'
+                        })
+                else:
+                    # Neither valid
+                    collation['stats']['uncertain'] += 1
+                    if len(collation['uncertain']) < max_variants:
+                        collation['uncertain'].append({
+                            'position': i,
+                            'gretil': g,
+                            'sc': s,
+                            'vri': None,
+                            'type': 'uncertain',
+                            'notes': f'Neither reading validated: PTS "{g}" vs SC "{s}"'
+                        })
+            else:
+                # One is missing
+                collation['stats']['uncertain'] += 1
+                if len(collation['uncertain']) < max_variants:
+                    collation['uncertain'].append({
+                        'position': i,
+                        'gretil': g,
+                        'sc': s,
+                        'vri': None,
+                        'type': 'missing',
+                        'notes': 'One reading missing'
+                    })
 
     return collation
 
@@ -1857,8 +1964,9 @@ def main_sn(output_dir: Path):
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python collate_nikaya.py <nikaya>")
-        print("  nikaya: dn, mn, sn, an")
+        print("Usage: python collate_nikaya.py <collection>")
+        print("  Sutta Piṭaka: dn, mn, sn, an, kn")
+        print("  Other: vinaya, abhidhamma")
         sys.exit(1)
 
     nikaya = sys.argv[1].lower()
