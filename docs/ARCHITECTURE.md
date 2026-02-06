@@ -32,6 +32,9 @@ pali/
 │   └── *.py                # Analysis and utility scripts
 ├── scripts/                # Validation and analysis scripts
 │   ├── validate_corpus.py  # Corpus integrity tests
+│   ├── test_lemmatization.py  # Lemmatization quality tests
+│   ├── test_custom_lemmas.py  # Custom lemma validation
+│   ├── test_collation.py   # Collation data validation
 │   └── measure_*.py        # Coverage measurement
 ├── data/
 │   ├── vri-raw/            # Raw VRI CST files
