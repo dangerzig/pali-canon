@@ -81,7 +81,7 @@ POTENTIAL_DPD_ADDITIONS = {
     "abhivādiya": ("abhivādeti", "abs"),  # having greeted
 
     # Past participles
-    "khīḷito": ("khīḷita", "pp"),  # played, sported
+    "khīḷito": ("kīḷita", "pp"),  # played, sported (khīḷ→kīḷ metrical)
     "byamhito": ("vamheti", "pp"),  # reviled (= vamhito)
     "jhāte": ("jhāta", "pp"),  # burnt (locative)
     "sayaṅkatāni": ("sayaṅkata", "pp"),  # self-made (pl)
@@ -110,7 +110,7 @@ POTENTIAL_DPD_ADDITIONS = {
 
 METRICAL_VARIANTS = {
     # Short for long vowels
-    "khīḷitā": ("khīḷita", "pp"),  # ā → a
+    "khīḷitā": ("kīḷita", "pp"),  # khīḷ → kīḷ (aspirated to unaspirated) + ā → a
     "bhumyā": ("bhūmi", "fem"),  # ū → u
     "atāpī": ("ātāpī", "adj"),  # ā → a (initial)
     "varī": ("vārī", "nt"),  # ā → a
