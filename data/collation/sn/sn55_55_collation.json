@@ -2,20 +2,72 @@
   "sutta": "sn55.55",
   "nikaya": "SN",
   "word_counts": {
-    "gretil": 2,
+    "gretil": 25,
     "sc": 24,
     "vri": 24
   },
   "stats": {
-    "total_positions": 2,
+    "total_positions": 25,
     "orthographic": 0,
     "errors": 0,
-    "variants": 0,
-    "uncertain": 0,
-    "match": 1,
-    "other": 1
+    "variants": 3,
+    "uncertain": 2,
+    "match": 20,
+    "other": 0
   },
   "errors": [],
-  "variants": [],
-  "uncertain": []
+  "variants": [
+    {
+      "position": 0,
+      "gretil": "cattāro",
+      "sc": "cattārome",
+      "vri": "cattārome",
+      "type": "variant",
+      "confidence": 0.7,
+      "preferred": "cattāro",
+      "notes": "Textual variant: PTS \"cattāro\" vs SC/VRI \"cattārome\""
+    },
+    {
+      "position": 12,
+      "gretil": "saddhammasavanaṃ",
+      "sc": "saddhammassavanaṃ",
+      "vri": "saddhammassavanaṃ",
+      "type": "variant",
+      "confidence": 0.7,
+      "preferred": "saddhammasavanaṃ",
+      "notes": "Textual variant: PTS \"saddhammasavanaṃ\" vs SC/VRI \"saddhammassavanaṃ\""
+    },
+    {
+      "position": 14,
+      "gretil": "dhammānudhammapaṭipatti",
+      "sc": "dhammānudhammappaṭipatti",
+      "vri": "dhammānudhammappaṭipatti",
+      "type": "variant",
+      "confidence": 0.7,
+      "preferred": "dhammānudhammapaṭipatti",
+      "notes": "Textual variant: PTS \"dhammānudhammapaṭipatti\" vs SC/VRI \"dhammānudhammappaṭipatti\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "me",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "me",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 10,
+      "gretil": "saṃyuttanikāya",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "saṃyuttanikāya",
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ]
 }

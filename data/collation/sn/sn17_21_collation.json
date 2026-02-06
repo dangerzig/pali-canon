@@ -2,20 +2,31 @@
   "sutta": "sn17.21",
   "nikaya": "SN",
   "word_counts": {
-    "gretil": 97,
+    "gretil": 42,
     "sc": 32,
     "vri": 103
   },
   "stats": {
-    "total_positions": 97,
+    "total_positions": 42,
     "orthographic": 0,
-    "errors": 0,
+    "errors": 1,
     "variants": 1,
-    "uncertain": 15,
-    "match": 14,
-    "other": 67
+    "uncertain": 6,
+    "match": 11,
+    "other": 23
   },
-  "errors": [],
+  "errors": [
+    {
+      "position": 35,
+      "gretil": "lābhasakkarāsiloko",
+      "sc": "lābhasakkārasiloko",
+      "vri": "lābhasakkārasiloko",
+      "type": "error",
+      "confidence": 0.9,
+      "preferred": "lābhasakkārasiloko",
+      "notes": "PTS \"lābhasakkarāsiloko\" not in DPD, SC/VRI \"lābhasakkārasiloko\" is valid"
+    }
+  ],
   "variants": [
     {
       "position": 0,
@@ -30,17 +41,27 @@
   ],
   "uncertain": [
     {
-      "position": 17,
-      "gretil": "chetvānahāruṃ",
-      "sc": null,
-      "vri": "chetvā",
+      "position": 4,
+      "gretil": "lābhasakkāra",
+      "sc": "pe",
+      "vri": null,
+      "type": "uncertain",
+      "confidence": 0.3,
+      "preferred": "lābhasakkāra",
+      "notes": "Three-way disagreement: PTS \"lābhasakkāra\", SC \"pe\", VRI \"None\""
+    },
+    {
+      "position": 5,
+      "gretil": "xvii",
+      "sc": "na",
+      "vri": null,
       "type": "uncertain",
       "confidence": 0.5,
-      "preferred": "chetvā",
+      "preferred": "na",
       "notes": "Three-way disagreement, one valid reading"
     },
     {
-      "position": 19,
+      "position": 20,
       "gretil": "nahāruṃ",
       "sc": null,
       "vri": "nhāruṃ",
@@ -50,77 +71,7 @@
       "notes": "Three-way disagreement: PTS \"nahāruṃ\", SC \"None\", VRI \"nhāruṃ\""
     },
     {
-      "position": 25,
-      "gretil": "aṭṭhimiñjam",
-      "sc": null,
-      "vri": "aṭṭhimiñjaṃ",
-      "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "aṭṭhimiñjaṃ",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 33,
-      "gretil": "vālarajjuyā",
-      "sc": null,
-      "vri": "vāḷarajjuyā",
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vālarajjuyā",
-      "notes": "Three-way disagreement: PTS \"vālarajjuyā\", SC \"None\", VRI \"vāḷarajjuyā\""
-    },
-    {
-      "position": 42,
-      "gretil": "cammam",
-      "sc": null,
-      "vri": "cammaṃ",
-      "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "cammaṃ",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 47,
-      "gretil": "nahārum",
-      "sc": null,
-      "vri": "chindeyya",
-      "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "chindeyya",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 53,
-      "gretil": "aṭṭhimiñjam",
-      "sc": null,
-      "vri": "aṭṭhimiñjaṃ",
-      "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "aṭṭhimiñjaṃ",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 56,
-      "gretil": "evam",
-      "sc": null,
-      "vri": "evameva",
-      "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "evameva",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 57,
-      "gretil": "eva",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 73,
+      "position": 22,
       "gretil": "nahāruṃ",
       "sc": null,
       "vri": "nhāruṃ",
@@ -130,47 +81,17 @@
       "notes": "Three-way disagreement: PTS \"nahāruṃ\", SC \"None\", VRI \"nhāruṃ\""
     },
     {
-      "position": 75,
-      "gretil": "nahāruṃ",
-      "sc": null,
-      "vri": "nhāruṃ",
+      "position": 32,
+      "gretil": "dāruno",
+      "sc": "dāruṇo",
+      "vri": "bhikkhave",
       "type": "uncertain",
       "confidence": 0.3,
-      "preferred": "nahāruṃ",
-      "notes": "Three-way disagreement: PTS \"nahāruṃ\", SC \"None\", VRI \"nhāruṃ\""
+      "preferred": "dāruno",
+      "notes": "Three-way disagreement: PTS \"dāruno\", SC \"dāruṇo\", VRI \"bhikkhave\""
     },
     {
-      "position": 80,
-      "gretil": "chindati",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "chindati",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 81,
-      "gretil": "aṭṭhiṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "aṭṭhiṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 83,
-      "gretil": "atthimiñjam",
-      "sc": null,
-      "vri": "aṭṭhiṃmiñjaṃ",
-      "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "aṭṭhiṃmiñjaṃ",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 95,
+      "position": 40,
       "gretil": "sikkhitabbanti",
       "sc": "sikkhitabban",
       "vri": "sikkhitabba",

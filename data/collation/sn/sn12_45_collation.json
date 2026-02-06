@@ -2,22 +2,32 @@
   "sutta": "sn12.45",
   "nikaya": "SN",
   "word_counts": {
-    "gretil": 114,
+    "gretil": 122,
     "sc": 185,
     "vri": 185
   },
   "stats": {
-    "total_positions": 114,
+    "total_positions": 122,
     "orthographic": 0,
-    "errors": 1,
+    "errors": 2,
     "variants": 4,
-    "uncertain": 58,
+    "uncertain": 55,
     "match": 15,
-    "other": 36
+    "other": 46
   },
   "errors": [
     {
-      "position": 78,
+      "position": 80,
+      "gretil": "evam",
+      "sc": "evametassa",
+      "vri": "evametassa",
+      "type": "error",
+      "confidence": 0.9,
+      "preferred": "evametassa",
+      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evametassa\" is valid"
+    },
+    {
+      "position": 92,
       "gretil": "evam",
       "sc": "evametassa",
       "vri": "evametassa",
@@ -29,7 +39,7 @@
   ],
   "variants": [
     {
-      "position": 74,
+      "position": 89,
       "gretil": "saṅkhāranirodho",
       "sc": "upādānanirodho",
       "vri": "upādānanirodho",
@@ -39,7 +49,7 @@
       "notes": "Textual variant: PTS \"saṅkhāranirodho\" vs SC/VRI \"upādānanirodho\""
     },
     {
-      "position": 75,
+      "position": 90,
       "gretil": "saṅkhāranirodhā",
       "sc": "upādānanirodhā",
       "vri": "upādānanirodhā",
@@ -49,17 +59,7 @@
       "notes": "Textual variant: PTS \"saṅkhāranirodhā\" vs SC/VRI \"upādānanirodhā\""
     },
     {
-      "position": 76,
-      "gretil": "viññāṇanirodho",
-      "sc": "bhavanirodho",
-      "vri": "bhavanirodho",
-      "type": "variant",
-      "confidence": 0.7,
-      "preferred": "viññāṇanirodho",
-      "notes": "Textual variant: PTS \"viññāṇanirodho\" vs SC/VRI \"bhavanirodho\""
-    },
-    {
-      "position": 83,
+      "position": 97,
       "gretil": "hotīti",
       "sc": "hoti",
       "vri": "hoti",
@@ -67,17 +67,27 @@
       "confidence": 0.7,
       "preferred": "hotīti",
       "notes": "Textual variant: PTS \"hotīti\" vs SC/VRI \"hoti\""
+    },
+    {
+      "position": 108,
+      "gretil": "abhikkantaṃ",
+      "sc": "bhikkhu",
+      "vri": "bhikkhu",
+      "type": "variant",
+      "confidence": 0.7,
+      "preferred": "abhikkantaṃ",
+      "notes": "Textual variant: PTS \"abhikkantaṃ\" vs SC/VRI \"bhikkhu\""
     }
   ],
   "uncertain": [
     {
       "position": 4,
-      "gretil": "jānussoṇi",
+      "gretil": "aññataro",
       "sc": null,
       "vri": null,
       "type": "pts_addition",
       "confidence": 0.7,
-      "preferred": "jānussoṇi",
+      "preferred": "aññataro",
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
@@ -101,77 +111,7 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 15,
-      "gretil": "antaṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "antaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 16,
-      "gretil": "nisinno",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "nisinno",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 17,
-      "gretil": "kho",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "kho",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 18,
-      "gretil": "jānussoṇi",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "jānussoṇi",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 19,
-      "gretil": "brāhmaṇo",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "brāhmaṇo",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 20,
-      "gretil": "bhagavantam",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "bhagavantam",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 21,
-      "gretil": "etad",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "etad",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 22,
+      "position": 28,
       "gretil": "avoca",
       "sc": null,
       "vri": null,
@@ -181,137 +121,7 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 23,
-      "gretil": "kim",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "kim",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 25,
-      "gretil": "kho",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "kho",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 26,
-      "gretil": "bho",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "bho",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 27,
-      "gretil": "gotama",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "gotama",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 28,
-      "gretil": "sabbaṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "sabbaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
       "position": 29,
-      "gretil": "atthīti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "atthīti",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 30,
-      "gretil": "sabbam",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "sabbam",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 31,
-      "gretil": "atthīti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "atthīti",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 32,
-      "gretil": "kho",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "kho",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 33,
-      "gretil": "brāhmaṇa",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "brāhmaṇa",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 34,
-      "gretil": "ayam",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ayam",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 35,
-      "gretil": "eko",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eko",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 36,
-      "gretil": "anto",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "anto",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 37,
       "gretil": "kiṃ",
       "sc": null,
       "vri": null,
@@ -321,77 +131,7 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 38,
-      "gretil": "pana",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "pana",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 39,
-      "gretil": "bho",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "bho",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 40,
-      "gretil": "gotama",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "gotama",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 41,
-      "gretil": "sabbaṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "sabbaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 42,
-      "gretil": "natthīti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "natthīti",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 43,
-      "gretil": "sabbam",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "sabbam",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 44,
-      "gretil": "natthīti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "natthīti",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 45,
+      "position": 31,
       "gretil": "kho",
       "sc": null,
       "vri": null,
@@ -401,7 +141,107 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 46,
+      "position": 32,
+      "gretil": "bho",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "bho",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 33,
+      "gretil": "gotama",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "gotama",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 34,
+      "gretil": "so",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "so",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 35,
+      "gretil": "karoti",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "karoti",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 36,
+      "gretil": "paṭisaṃvediyatīti",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "paṭisaṃvediyatīti",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 37,
+      "gretil": "so",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "so",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 38,
+      "gretil": "karoti",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "karoti",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 39,
+      "gretil": "so",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "so",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 40,
+      "gretil": "paṭisaṃvediyatītī",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "paṭisaṃvediyatītī",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 41,
+      "gretil": "kho",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "kho",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 42,
       "gretil": "brāhmaṇa",
       "sc": null,
       "vri": null,
@@ -411,27 +251,27 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 47,
-      "gretil": "ayaṃ",
+      "position": 43,
+      "gretil": "ayam",
       "sc": null,
       "vri": null,
       "type": "pts_addition",
       "confidence": 0.7,
-      "preferred": "ayaṃ",
+      "preferred": "ayam",
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 48,
-      "gretil": "dutiyo",
+      "position": 44,
+      "gretil": "eko",
       "sc": null,
       "vri": null,
       "type": "pts_addition",
       "confidence": 0.7,
-      "preferred": "dutiyo",
+      "preferred": "eko",
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 49,
+      "position": 45,
       "gretil": "anto",
       "sc": null,
       "vri": null,
@@ -441,27 +281,157 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 50,
-      "gretil": "ete",
+      "position": 46,
+      "gretil": "nidānasaṃyutta",
       "sc": null,
       "vri": null,
       "type": "pts_addition",
       "confidence": 0.7,
-      "preferred": "ete",
+      "preferred": "nidānasaṃyutta",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 47,
+      "gretil": "xii",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "xii",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 48,
+      "gretil": "kim",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "kim",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 49,
+      "gretil": "pana",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "pana",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 50,
+      "gretil": "bho",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "bho",
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
       "position": 51,
-      "gretil": "te",
+      "gretil": "gotama",
       "sc": null,
       "vri": null,
       "type": "pts_addition",
       "confidence": 0.7,
-      "preferred": "te",
+      "preferred": "gotama",
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
       "position": 52,
+      "gretil": "añño",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "añño",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 53,
+      "gretil": "karoti",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "karoti",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 54,
+      "gretil": "añño",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "añño",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 55,
+      "gretil": "paṭisaṃvediyatīti",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "paṭisaṃvediyatīti",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 56,
+      "gretil": "añño",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "añño",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 57,
+      "gretil": "karoti",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "karoti",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 58,
+      "gretil": "añño",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "añño",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 59,
+      "gretil": "paṭisaṃvediyatīti",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "paṭisaṃvediyatīti",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 60,
+      "gretil": "kho",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "kho",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 61,
       "gretil": "brāhmaṇa",
       "sc": null,
       "vri": null,
@@ -471,7 +441,67 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 53,
+      "position": 62,
+      "gretil": "ayaṃ",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "ayaṃ",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 63,
+      "gretil": "dutiyo",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "dutiyo",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 64,
+      "gretil": "anto",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "anto",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 65,
+      "gretil": "ete",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "ete",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 66,
+      "gretil": "te",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "te",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 67,
+      "gretil": "brāhmaṇa",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "brāhmaṇa",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 68,
       "gretil": "ubho",
       "sc": null,
       "vri": null,
@@ -481,7 +511,7 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 54,
+      "position": 69,
       "gretil": "ante",
       "sc": null,
       "vri": null,
@@ -491,7 +521,7 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 55,
+      "position": 70,
       "gretil": "anupagamma",
       "sc": null,
       "vri": null,
@@ -501,7 +531,7 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 56,
+      "position": 71,
       "gretil": "majjhena",
       "sc": null,
       "vri": null,
@@ -511,7 +541,7 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 57,
+      "position": 72,
       "gretil": "tathāgato",
       "sc": null,
       "vri": null,
@@ -521,7 +551,7 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 58,
+      "position": 73,
       "gretil": "dhammaṃ",
       "sc": null,
       "vri": null,
@@ -531,7 +561,7 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 59,
+      "position": 74,
       "gretil": "deseti",
       "sc": null,
       "vri": null,
@@ -541,7 +571,7 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 60,
+      "position": 75,
       "gretil": "avijjāpaccayā",
       "sc": null,
       "vri": null,
@@ -551,7 +581,7 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 61,
+      "position": 76,
       "gretil": "saṅkhārā",
       "sc": null,
       "vri": null,
@@ -561,7 +591,7 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 62,
+      "position": 77,
       "gretil": "saṅkhārapaccayā",
       "sc": null,
       "vri": null,
@@ -571,7 +601,7 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 63,
+      "position": 78,
       "gretil": "viññāṇaṃ",
       "sc": null,
       "vri": null,
@@ -581,17 +611,7 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 65,
-      "gretil": "evam",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "evam",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 66,
+      "position": 81,
       "gretil": "etassa",
       "sc": null,
       "vri": null,
@@ -601,53 +621,13 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 79,
+      "position": 93,
       "gretil": "etassa",
       "sc": null,
       "vri": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "etassa",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 110,
-      "gretil": "pāṇupetaṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "pāṇupetaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 111,
-      "gretil": "saraṇaṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "saraṇaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 112,
-      "gretil": "gatanti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "gatanti",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 113,
-      "gretil": "sattamam",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "sattamam",
       "notes": "Present in PTS but missing in SC/VRI"
     }
   ]

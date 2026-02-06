@@ -2,20 +2,31 @@
   "sutta": "sn55.47",
   "nikaya": "SN",
   "word_counts": {
-    "gretil": 19,
+    "gretil": 34,
     "sc": 61,
     "vri": 61
   },
   "stats": {
-    "total_positions": 19,
+    "total_positions": 34,
     "orthographic": 0,
-    "errors": 0,
-    "variants": 2,
-    "uncertain": 4,
-    "match": 8,
+    "errors": 1,
+    "variants": 4,
+    "uncertain": 3,
+    "match": 21,
     "other": 5
   },
-  "errors": [],
+  "errors": [
+    {
+      "position": 7,
+      "gretil": "sakkam",
+      "sc": "sakkaṃ",
+      "vri": "sakkaṃ",
+      "type": "error",
+      "confidence": 0.9,
+      "preferred": "sakkaṃ",
+      "notes": "PTS \"sakkam\" not in DPD, SC/VRI \"sakkaṃ\" is valid"
+    }
+  ],
   "variants": [
     {
       "position": 0,
@@ -28,7 +39,17 @@
       "notes": "Textual variant: PTS \"kapilavatthu\" vs SC/VRI \"kapilavatthunidānaṃ\""
     },
     {
-      "position": 15,
+      "position": 9,
+      "gretil": "etad",
+      "sc": "etadavoca",
+      "vri": "etadavoca",
+      "type": "variant",
+      "confidence": 0.7,
+      "preferred": "etad",
+      "notes": "Textual variant: PTS \"etad\" vs SC/VRI \"etadavoca\""
+    },
+    {
+      "position": 29,
       "gretil": "catuhi",
       "sc": "catūhi",
       "vri": "catūhi",
@@ -36,31 +57,21 @@
       "confidence": 0.7,
       "preferred": "catuhi",
       "notes": "Textual variant: PTS \"catuhi\" vs SC/VRI \"catūhi\""
+    },
+    {
+      "position": 32,
+      "gretil": "sambodhiparāyano",
+      "sc": "sambodhiparāyaṇo",
+      "vri": "sambodhiparāyaṇo",
+      "type": "variant",
+      "confidence": 0.7,
+      "preferred": "sambodhiparāyano",
+      "notes": "Textual variant: PTS \"sambodhiparāyano\" vs SC/VRI \"sambodhiparāyaṇo\""
     }
   ],
   "uncertain": [
     {
       "position": 2,
-      "gretil": "upasaṅkamanam",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "upasaṅkamanam",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 3,
-      "gretil": "kātabbaṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "kātabbaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 4,
       "gretil": "ekam",
       "sc": null,
       "vri": null,
@@ -70,13 +81,23 @@
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 5,
-      "gretil": "antam",
+      "position": 3,
+      "gretil": "antaṃ",
       "sc": null,
       "vri": null,
       "type": "pts_addition",
       "confidence": 0.7,
-      "preferred": "antam",
+      "preferred": "antaṃ",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 11,
+      "gretil": "catuhi",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "catuhi",
       "notes": "Present in PTS but missing in SC/VRI"
     }
   ]

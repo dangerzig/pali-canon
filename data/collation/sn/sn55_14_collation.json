@@ -2,20 +2,51 @@
   "sutta": "sn55.14",
   "nikaya": "SN",
   "word_counts": {
-    "gretil": 15,
+    "gretil": 48,
     "sc": 48,
     "vri": 48
   },
   "stats": {
-    "total_positions": 15,
+    "total_positions": 48,
     "orthographic": 0,
-    "errors": 0,
-    "variants": 3,
-    "uncertain": 0,
-    "match": 12,
-    "other": 0
+    "errors": 3,
+    "variants": 6,
+    "uncertain": 2,
+    "match": 34,
+    "other": 3
   },
-  "errors": [],
+  "errors": [
+    {
+      "position": 5,
+      "gretil": "sabbaduggatibhayam",
+      "sc": "sabbaduggatibhayaṃ",
+      "vri": "sabbaduggatibhayaṃ",
+      "type": "error",
+      "confidence": 0.9,
+      "preferred": "sabbaduggatibhayaṃ",
+      "notes": "PTS \"sabbaduggatibhayam\" not in DPD, SC/VRI \"sabbaduggatibhayaṃ\" is valid"
+    },
+    {
+      "position": 23,
+      "gretil": "devamanussānam",
+      "sc": "devamanussānaṃ",
+      "vri": "devamanussānaṃ",
+      "type": "error",
+      "confidence": 0.9,
+      "preferred": "devamanussānaṃ",
+      "notes": "PTS \"devamanussānam\" not in DPD, SC/VRI \"devamanussānaṃ\" is valid"
+    },
+    {
+      "position": 31,
+      "gretil": "samannāgāto",
+      "sc": "samannāgato",
+      "vri": "samannāgato",
+      "type": "error",
+      "confidence": 0.9,
+      "preferred": "samannāgato",
+      "notes": "PTS \"samannāgāto\" not in DPD, SC/VRI \"samannāgato\" is valid"
+    }
+  ],
   "variants": [
     {
       "position": 0,
@@ -28,25 +59,76 @@
       "notes": "Textual variant: PTS \"catuhi\" vs SC/VRI \"catūhi\""
     },
     {
-      "position": 2,
-      "gretil": "sabbaduggativinipātabhayaṃ",
-      "sc": "sabbaduggatibhayaṃ",
-      "vri": "sabbaduggatibhayaṃ",
+      "position": 9,
+      "gretil": "catuhi",
+      "sc": "catūhi",
+      "vri": "catūhi",
       "type": "variant",
       "confidence": 0.7,
-      "preferred": "sabbaduggativinipātabhayaṃ",
-      "notes": "Textual variant: PTS \"sabbaduggativinipātabhayaṃ\" vs SC/VRI \"sabbaduggatibhayaṃ\""
+      "preferred": "catuhi",
+      "notes": "Textual variant: PTS \"catuhi\" vs SC/VRI \"catūhi\""
     },
     {
-      "position": 11,
-      "gretil": "sabbaduggativinipātabhayaṃ",
-      "sc": "sabbaduggatibhayaṃ",
-      "vri": "sabbaduggatibhayaṃ",
+      "position": 17,
+      "gretil": "iti",
+      "sc": "itipi",
+      "vri": "itipi",
       "type": "variant",
       "confidence": 0.7,
-      "preferred": "sabbaduggativinipātabhayaṃ",
-      "notes": "Textual variant: PTS \"sabbaduggativinipātabhayaṃ\" vs SC/VRI \"sabbaduggatibhayaṃ\""
+      "preferred": "iti",
+      "notes": "Textual variant: PTS \"iti\" vs SC/VRI \"itipi\""
+    },
+    {
+      "position": 25,
+      "gretil": "bhagavā",
+      "sc": "bhagavāti",
+      "vri": "bhagavāti",
+      "type": "variant",
+      "confidence": 0.7,
+      "preferred": "bhagavā",
+      "notes": "Textual variant: PTS \"bhagavā\" vs SC/VRI \"bhagavāti\""
+    },
+    {
+      "position": 36,
+      "gretil": "ime",
+      "sc": "imehi",
+      "vri": "imehi",
+      "type": "variant",
+      "confidence": 0.7,
+      "preferred": "ime",
+      "notes": "Textual variant: PTS \"ime\" vs SC/VRI \"imehi\""
+    },
+    {
+      "position": 40,
+      "gretil": "catuhi",
+      "sc": "catūhi",
+      "vri": "catūhi",
+      "type": "variant",
+      "confidence": 0.7,
+      "preferred": "catuhi",
+      "notes": "Textual variant: PTS \"catuhi\" vs SC/VRI \"catūhi\""
     }
   ],
-  "uncertain": []
+  "uncertain": [
+    {
+      "position": 18,
+      "gretil": "pi",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "pi",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 26,
+      "gretil": "ti",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "ti",
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ]
 }

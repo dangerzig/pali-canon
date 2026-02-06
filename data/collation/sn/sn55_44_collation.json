@@ -2,20 +2,41 @@
   "sutta": "sn55.44",
   "nikaya": "SN",
   "word_counts": {
-    "gretil": 41,
+    "gretil": 54,
     "sc": 52,
     "vri": 52
   },
   "stats": {
-    "total_positions": 41,
+    "total_positions": 54,
     "orthographic": 0,
-    "errors": 0,
-    "variants": 3,
-    "uncertain": 2,
-    "match": 27,
-    "other": 9
+    "errors": 2,
+    "variants": 4,
+    "uncertain": 4,
+    "match": 42,
+    "other": 2
   },
-  "errors": [],
+  "errors": [
+    {
+      "position": 12,
+      "gretil": "katuhi",
+      "sc": "catūhi",
+      "vri": "catūhi",
+      "type": "error",
+      "confidence": 0.9,
+      "preferred": "catūhi",
+      "notes": "PTS \"katuhi\" not in DPD, SC/VRI \"catūhi\" is valid"
+    },
+    {
+      "position": 26,
+      "gretil": "devamanussānam",
+      "sc": "devamanussānaṃ",
+      "vri": "devamanussānaṃ",
+      "type": "error",
+      "confidence": 0.9,
+      "preferred": "devamanussānaṃ",
+      "notes": "PTS \"devamanussānam\" not in DPD, SC/VRI \"devamanussānaṃ\" is valid"
+    }
+  ],
   "variants": [
     {
       "position": 0,
@@ -28,17 +49,27 @@
       "notes": "Textual variant: PTS \"catuhi\" vs SC/VRI \"catūhi\""
     },
     {
-      "position": 11,
-      "gretil": "catuhi",
-      "sc": "catūhi",
-      "vri": "catūhi",
+      "position": 20,
+      "gretil": "iti",
+      "sc": "itipi",
+      "vri": "itipi",
       "type": "variant",
       "confidence": 0.7,
-      "preferred": "catuhi",
-      "notes": "Textual variant: PTS \"catuhi\" vs SC/VRI \"catūhi\""
+      "preferred": "iti",
+      "notes": "Textual variant: PTS \"iti\" vs SC/VRI \"itipi\""
     },
     {
-      "position": 31,
+      "position": 28,
+      "gretil": "bhagavā",
+      "sc": "bhagavāti",
+      "vri": "bhagavāti",
+      "type": "variant",
+      "confidence": 0.7,
+      "preferred": "bhagavā",
+      "notes": "Textual variant: PTS \"bhagavā\" vs SC/VRI \"bhagavāti\""
+    },
+    {
+      "position": 43,
       "gretil": "catuhi",
       "sc": "catūhi",
       "vri": "catūhi",
@@ -50,23 +81,43 @@
   ],
   "uncertain": [
     {
-      "position": 38,
-      "gretil": "niyato",
+      "position": 8,
+      "gretil": "mahāyaso",
       "sc": null,
       "vri": null,
       "type": "pts_addition",
       "confidence": 0.7,
-      "preferred": "niyato",
+      "preferred": "mahāyaso",
       "notes": "Present in PTS but missing in SC/VRI"
     },
     {
-      "position": 39,
-      "gretil": "sambodhiparāyano",
+      "position": 21,
+      "gretil": "pi",
       "sc": null,
       "vri": null,
       "type": "pts_addition",
       "confidence": 0.7,
-      "preferred": "sambodhiparāyano",
+      "preferred": "pi",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 29,
+      "gretil": "ti",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "ti",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 50,
+      "gretil": "mahāyaso",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "mahāyaso",
       "notes": "Present in PTS but missing in SC/VRI"
     }
   ]

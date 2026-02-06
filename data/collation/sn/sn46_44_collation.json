@@ -2,22 +2,42 @@
   "sutta": "sn46.44",
   "nikaya": "SN",
   "word_counts": {
-    "gretil": 38,
+    "gretil": 73,
     "sc": 59,
     "vri": 59
   },
   "stats": {
-    "total_positions": 38,
+    "total_positions": 73,
     "orthographic": 0,
     "errors": 5,
-    "variants": 0,
-    "uncertain": 0,
-    "match": 27,
-    "other": 6
+    "variants": 2,
+    "uncertain": 14,
+    "match": 49,
+    "other": 3
   },
   "errors": [
     {
-      "position": 16,
+      "position": 8,
+      "gretil": "ekam",
+      "sc": "ekamantaṃ",
+      "vri": "ekamantaṃ",
+      "type": "error",
+      "confidence": 0.9,
+      "preferred": "ekamantaṃ",
+      "notes": "PTS \"ekam\" not in DPD, SC/VRI \"ekamantaṃ\" is valid"
+    },
+    {
+      "position": 14,
+      "gretil": "bhagavantam",
+      "sc": "bhagavantaṃ",
+      "vri": "bhagavantaṃ",
+      "type": "error",
+      "confidence": 0.9,
+      "preferred": "bhagavantaṃ",
+      "notes": "PTS \"bhagavantam\" not in DPD, SC/VRI \"bhagavantaṃ\" is valid"
+    },
+    {
+      "position": 36,
       "gretil": "bojjhaṅgānam",
       "sc": "bojjhaṅgānaṃ",
       "vri": "bojjhaṅgānaṃ",
@@ -27,46 +47,188 @@
       "notes": "PTS \"bojjhaṅgānam\" not in DPD, SC/VRI \"bojjhaṅgānaṃ\" is valid"
     },
     {
-      "position": 22,
-      "gretil": "katamesam",
-      "sc": "katamesaṃ",
-      "vri": "katamesaṃ",
-      "type": "error",
-      "confidence": 0.9,
-      "preferred": "katamesaṃ",
-      "notes": "PTS \"katamesam\" not in DPD, SC/VRI \"katamesaṃ\" is valid"
-    },
-    {
-      "position": 26,
-      "gretil": "upekhādambojjhāṅgassa",
-      "sc": "upekkhāsambojjhaṅgassa",
-      "vri": "upekkhāsambojjhaṅgassa",
-      "type": "error",
-      "confidence": 0.9,
-      "preferred": "upekkhāsambojjhaṅgassa",
-      "notes": "PTS \"upekhādambojjhāṅgassa\" not in DPD, SC/VRI \"upekkhāsambojjhaṅgassa\" is valid"
-    },
-    {
-      "position": 30,
-      "gretil": "sattannam",
-      "sc": "sattannaṃ",
-      "vri": "sattannaṃ",
-      "type": "error",
-      "confidence": 0.9,
-      "preferred": "sattannaṃ",
-      "notes": "PTS \"sattannam\" not in DPD, SC/VRI \"sattannaṃ\" is valid"
-    },
-    {
-      "position": 31,
-      "gretil": "bojjhaṅgānam",
+      "position": 65,
+      "gretil": "bhojjhaṅgānam",
       "sc": "bojjhaṅgānaṃ",
       "vri": "bojjhaṅgānaṃ",
       "type": "error",
       "confidence": 0.9,
       "preferred": "bojjhaṅgānaṃ",
-      "notes": "PTS \"bojjhaṅgānam\" not in DPD, SC/VRI \"bojjhaṅgānaṃ\" is valid"
+      "notes": "PTS \"bhojjhaṅgānam\" not in DPD, SC/VRI \"bojjhaṅgānaṃ\" is valid"
+    },
+    {
+      "position": 71,
+      "gretil": "vaccatī",
+      "sc": "vuccatī",
+      "vri": "vuccatī",
+      "type": "error",
+      "confidence": 0.9,
+      "preferred": "vuccatī",
+      "notes": "PTS \"vaccatī\" not in DPD, SC/VRI \"vuccatī\" is valid"
     }
   ],
-  "variants": [],
-  "uncertain": []
+  "variants": [
+    {
+      "position": 15,
+      "gretil": "etad",
+      "sc": "etadavoca",
+      "vri": "etadavoca",
+      "type": "variant",
+      "confidence": 0.7,
+      "preferred": "etad",
+      "notes": "Textual variant: PTS \"etad\" vs SC/VRI \"etadavoca\""
+    },
+    {
+      "position": 60,
+      "gretil": "upekhāsambojjhaṅgassa",
+      "sc": "upekkhāsambojjhaṅgassa",
+      "vri": "upekkhāsambojjhaṅgassa",
+      "type": "variant",
+      "confidence": 0.7,
+      "preferred": "upekhāsambojjhaṅgassa",
+      "notes": "Textual variant: PTS \"upekhāsambojjhaṅgassa\" vs SC/VRI \"upekkhāsambojjhaṅgassa\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 9,
+      "gretil": "antaṃ",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "antaṃ",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 16,
+      "gretil": "avoca",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "avoca",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 45,
+      "gretil": "bojjhaṅgasaṃyuttam",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "bojjhaṅgasaṃyuttam",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 46,
+      "gretil": "xlvi",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "xlvi",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 47,
+      "gretil": "content",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "content",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 48,
+      "gretil": "straddling",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "straddling",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 49,
+      "gretil": "page",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "page",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 50,
+      "gretil": "break",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "break",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 51,
+      "gretil": "has",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "has",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 52,
+      "gretil": "been",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "been",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 53,
+      "gretil": "moved",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "moved",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 55,
+      "gretil": "the",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "the",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 56,
+      "gretil": "page",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "page",
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 57,
+      "gretil": "above",
+      "sc": null,
+      "vri": null,
+      "type": "pts_addition",
+      "confidence": 0.7,
+      "preferred": "above",
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ]
 }
