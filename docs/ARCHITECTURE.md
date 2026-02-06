@@ -9,10 +9,10 @@ This project creates a digital critical edition of the complete Pāli Tipiṭaka
 
 ## Codebase Statistics
 
-- **Total Lines**: ~9,200 lines of Python
-- **Files**: 33 Python modules
+- **Total Lines**: ~16,000 lines of Python
+- **Files**: 51 Python modules
 - **Language**: Python 3.10+
-- **Dependencies**: Standard library only (json, re, pathlib, sqlite3, difflib)
+- **Dependencies**: Standard library + PyYAML (json, re, pathlib, sqlite3, difflib, yaml)
 
 ---
 
@@ -184,10 +184,10 @@ class Lemmatizer:
     def lemmatize_segment(self, segment) -> dict
 ```
 
-#### `pali/custom_lemmas.py` (~350 lines)
-Custom lemma database for words not in DPD. Organized into:
+#### `pali/custom_lemmas.py` + `custom_lemmas.yaml`
+Custom lemma database for words not in DPD. Loads from YAML for easy editing. Organized into:
 
-1. **POTENTIAL_DPD_ADDITIONS** (60 entries): Legitimate words for upstream contribution
+1. **POTENTIAL_DPD_ADDITIONS** (57 entries): Legitimate words for upstream contribution
 2. **METRICAL_VARIANTS** (12 entries): Vowel length variations for meter
 3. **PROJECT_SPECIFIC** (20 entries): Proper nouns, rare compounds
 4. **SANDHI_DECOMPOSITIONS** (26 entries): Complex sandhi not in DPD
@@ -338,8 +338,8 @@ python src/generate_final_summary.py
 
 | Metric | Value |
 |--------|-------|
-| Total Python code | ~11,000 lines |
-| Python modules | 35+ files |
+| Total Python code | ~16,000 lines |
+| Python modules | 51 files |
 | GRETIL words | 3,243,906 |
 | VRI words | 2,418,765 |
 | SC words | 1,606,492 |
@@ -347,7 +347,7 @@ python src/generate_final_summary.py
 | Unique word coverage | 97.8% |
 | Token-level coverage | 99.77% |
 | Words identified | 124,218 |
-| Custom lemmas | 118 entries |
+| Custom lemmas | 115 entries |
 | Unknown tokens | 3,628 (0.23% of corpus) |
 
 ---
