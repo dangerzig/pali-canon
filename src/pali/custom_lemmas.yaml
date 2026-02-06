@@ -1,0 +1,927 @@
+# Custom lemma mappings for forms not in DPD.
+#
+# Categories:
+# 1. potential_dpd_additions - Legitimate words that could be submitted to DPD
+# 2. metrical_variants - Vowel length changes for meter (not true lemmas)
+# 3. project_specific - Proper nouns, rare compounds, etc.
+# 4. sandhi_decompositions - Compound forms needing decomposition
+
+# =============================================================================
+# POTENTIAL DPD ADDITIONS
+# =============================================================================
+# Legitimate Pali words/forms that appear to be missing from DPD.
+# They have clear lemmas and could benefit the broader Pali studies community.
+
+potential_dpd_additions:
+  # Technical terms from Netti Pakarana / Petakopadesa
+  samāropano:
+    lemma: samāropana
+    pos: nt
+    note: placing upon, attribution
+  otaraṇo:
+    lemma: otaraṇa
+    pos: nt
+    note: descending, application
+  vevacano:
+    lemma: vevacana
+    pos: nt
+    note: synonym, explanation
+  visajjanā:
+    lemma: visajjana
+    pos: nt
+    note: answering, solution
+  sīhavikkīḷito:
+    lemma: sīhavikkīḷita
+    pos: nt
+    note: lion's play (hermeneutic term)
+  paṭipassaddhiyā:
+    lemma: paṭipassaddhi
+    pos: fem
+    note: tranquillization
+
+  # Nouns missing from DPD
+  ayokhilaṃ:
+    lemma: ayokhīla
+    pos: masc
+    note: iron stake/post
+  vodāno:
+    lemma: vodāna
+    pos: nt
+    note: purity, cleansing
+  sampakopo:
+    lemma: sampakopa
+    pos: masc
+    note: anger, agitation
+  byāpajjanā:
+    lemma: byāpajjana
+    pos: nt
+    note: malevolence
+  ādāye:
+    lemma: ādāya
+    pos: nt
+    note: taking up
+  natthattā:
+    lemma: natthatta
+    pos: nt
+    note: non-existence (abstract noun)
+  āsīsanā:
+    lemma: āsīsana
+    pos: nt
+    note: blessing, wish
+  sampatthanā:
+    lemma: sampatthana
+    pos: nt
+    note: wish, longing
+  pādaloliyena:
+    lemma: pādaloliya
+    pos: nt
+    note: foot-fickleness
+  pādaloliyā:
+    lemma: pādaloliya
+    pos: nt
+
+  # Plant/animal names (from Jatakas)
+  piyālāni:
+    lemma: piyāla
+    pos: masc
+    note: piyala tree (Buchanania latifolia)
+  balajā:
+    lemma: balaja
+    pos: fem
+    note: a type of grass
+  hasulā:
+    lemma: hasula
+    pos: fem
+    note: a plant
+  kaṇḍakavārijaṃ:
+    lemma: kaṇḍakavārija
+    pos: nt
+    note: thorny water-plant
+  kaṇḍakavārijā:
+    lemma: kaṇḍakavārija
+    pos: nt
+  agaḷuṃ:
+    lemma: agaru
+    pos: masc
+    note: aloe wood (variant spelling)
+
+  # Adjectives/compounds
+  muñjarohitā:
+    lemma: muñjarohita
+    pos: adj
+    note: reed-red colored
+  yamalokikā:
+    lemma: yamalokika
+    pos: adj
+    note: pertaining to Yama's world
+  nekāsī:
+    lemma: nekāsī
+    pos: adj
+    note: not living alone
+  saparijjano:
+    lemma: saparijana
+    pos: adj
+    note: with retinue
+  evaṅkaro:
+    lemma: evaṅkara
+    pos: adj
+    note: one who does thus
+  adhigatapaṭisambhido:
+    lemma: adhigatapaṭisambhida
+    pos: adj
+    note: attained analytical knowledge
+  gatadiso:
+    lemma: gatadisa
+    pos: adj
+    note: gone in (that) direction
+  yaṃṭhānappatto:
+    lemma: yaṃṭhānappatta
+    pos: adj
+    note: having reached that place
+
+  # Words from Culaniddesa/Mahaniddesa (archaic)
+  jāgu:
+    lemma: jāgu
+    pos: masc
+    note: being, person (archaic vedic)
+  indagu:
+    lemma: indagu
+    pos: masc
+    note: person (archaic)
+
+  # Verb forms missing from DPD
+  vicintayiṃ:
+    lemma: vicinteti
+    pos: aor
+    note: I considered (1sg aor)
+  vijigucchiṃ:
+    lemma: vijigucchati
+    pos: aor
+    note: I was disgusted (1sg aor)
+  sobhayiṃ:
+    lemma: sobheti
+    pos: aor
+    note: I made shine (1sg aor)
+  parimocayi:
+    lemma: parimoceti
+    pos: aor
+    note: he released (3sg aor)
+  abbhuggamī:
+    lemma: abbhuggacchati
+    pos: aor
+    note: he arose (3sg aor)
+  upasampādayī:
+    lemma: upasampādeti
+    pos: aor
+    note: he ordained (3sg aor caus)
+  upānayī:
+    lemma: upāneti
+    pos: aor
+    note: he brought (3sg aor)
+  nibbattayati:
+    lemma: nibbatteti
+    pos: verb
+    note: he produces (caus pres)
+  niddisiyati:
+    lemma: niddisati
+    pos: verb
+    note: is pointed out (passive)
+  sampamuñcassu:
+    lemma: sampamuñcati
+    pos: imp
+    note: let go! (2sg imp middle)
+  alimpamāno:
+    lemma: alimpati
+    pos: prp
+    note: not smearing (neg prp)
+  anibbattayamāno:
+    lemma: nibbatteti
+    pos: prp
+    note: not producing (neg prp)
+  osāriyamānāni:
+    lemma: osāreti
+    pos: prp
+    note: being handed down (prp pass)
+  dakkhamāno:
+    lemma: dakkhati
+    pos: prp
+    note: seeing (present participle)
+
+  # Absolutives
+  chetva:
+    lemma: chindati
+    pos: abs
+    note: "= chetvā, having cut"
+  abhivādiya:
+    lemma: abhivādeti
+    pos: abs
+    note: having greeted
+
+  # Past participles
+  khīḷito:
+    lemma: kīḷita
+    pos: pp
+    note: played, sported (khil->kil metrical)
+  byamhito:
+    lemma: vamheti
+    pos: pp
+    note: reviled (= vamhito)
+  jhāte:
+    lemma: jhāta
+    pos: pp
+    note: burnt (locative)
+  sayaṅkatāni:
+    lemma: sayaṅkata
+    pos: pp
+    note: self-made (pl)
+
+  # Future passive participles
+  pātabyaṃ:
+    lemma: pātabba
+    pos: fpp
+    note: to be drunk/cast
+
+  # Other nouns
+  abhivadanaṃ:
+    lemma: abhivadana
+    pos: nt
+    note: greeting
+  kaniṭṭhikā:
+    lemma: kaniṭṭhikā
+    pos: fem
+    note: little finger
+  tuṇḍiyā:
+    lemma: tuṇḍī
+    pos: fem
+    note: beak (instr)
+  mandālakehi:
+    lemma: mandālaka
+    pos: masc
+    note: circular ornament (instr pl)
+  varākiyā:
+    lemma: varākī
+    pos: fem
+    note: wretched woman
+  āpāsu:
+    lemma: āpā
+    pos: fem
+    note: water (loc pl, archaic)
+
+  # Indeclinables
+  bahubbidhā:
+    lemma: bahubbidhā
+    pos: ind
+    note: in many ways
+
+  # Compounds with clear derivation
+  tūṇhībhūto:
+    lemma: tūṇhībhūta
+    pos: pp
+    note: become silent (tūṇhī + bhūta)
+  tūṇhībhūtova:
+    lemma: tūṇhībhūta
+    pos: pp
+    note: become silent + eva
+  abhibhuto:
+    lemma: abhibhūta
+    pos: pp
+    note: overwhelmed (variant spelling)
+  pisuṇāvāco:
+    lemma: pisuṇavāca
+    pos: adj
+    note: of slanderous speech
+  pharusāvāco:
+    lemma: pharusavāca
+    pos: adj
+    note: of harsh speech
+  vidhūmito:
+    lemma: vidhūmita
+    pos: pp
+    note: fumigated, cleared of smoke
+  pariruddho:
+    lemma: pariruddha
+    pos: pp
+    note: obstructed, blocked
+  khambhitā:
+    lemma: khambhita
+    pos: pp
+    note: made rigid, stiffened
+  dhikkitā:
+    lemma: dhikkita
+    pos: pp
+    note: despised, reviled
+  sañcuṇṇamathitā:
+    lemma: sañcuṇṇamathita
+    pos: pp
+    note: crushed and pounded
+
+  # Clear verb forms missing from DPD
+  upanayī:
+    lemma: upaneti
+    pos: aor
+    note: he brought near (3sg aor)
+  nidassayi:
+    lemma: nidasseti
+    pos: aor
+    note: he showed (3sg aor)
+  sannipātayi:
+    lemma: sannipāteti
+    pos: aor
+    note: he assembled (3sg aor)
+  pavedhayi:
+    lemma: pavedheti
+    pos: aor
+    note: he trembled (3sg aor)
+  dandhayi:
+    lemma: dandheti
+    pos: aor
+    note: he delayed (3sg aor)
+  abhinādayi:
+    lemma: abhinadati
+    pos: aor
+    note: he resounded (3sg aor)
+
+
+# =============================================================================
+# METRICAL VARIANTS
+# =============================================================================
+# Forms that differ only in vowel length due to metrical requirements.
+# These map to existing DPD lemmas but with vowel changes.
+# Not candidates for DPD addition - just scribal/metrical variants.
+
+metrical_variants:
+  # Short for long vowels
+  khīḷitā:
+    lemma: kīḷita
+    pos: pp
+    note: "khil -> kil (aspirated to unaspirated) + a -> a"
+  bhumyā:
+    lemma: bhūmi
+    pos: fem
+    note: "u -> u"
+  atāpī:
+    lemma: ātāpī
+    pos: adj
+    note: "a -> a (initial)"
+  varī:
+    lemma: vārī
+    pos: nt
+    note: "a -> a"
+  viṇā:
+    lemma: vīṇā
+    pos: fem
+    note: "i -> i"
+  makāsi:
+    lemma: mākāsi
+    pos: aor
+    note: "a -> a"
+  piḷayi:
+    lemma: pīḷeti
+    pos: aor
+    note: "i -> i"
+
+  # Geminated consonants (metrical lengthening)
+  uppādiyati:
+    lemma: upādiyati
+    pos: verb
+    note: pp for p
+  uppari:
+    lemma: upari
+    pos: ind
+    note: pp for p
+  upparito:
+    lemma: uparito
+    pos: ind
+    note: pp for p
+
+  # Long for short
+  uhacca:
+    lemma: ūhacca
+    pos: abs
+    note: "u -> u"
+
+  # Niggahita variants
+  haṃci:
+    lemma: hañci
+    pos: ind
+    note: "m -> ñ before c"
+
+  # Verb forms with lengthened final vowel (metrical)
+  pavāressatī:
+    lemma: pavāreti
+    pos: fut
+    note: "i -> ī (metrical)"
+  paricāressantī:
+    lemma: paricāreti
+    pos: fut
+    note: "i -> ī (metrical)"
+  bodhayī:
+    lemma: bodheti
+    pos: aor
+    note: "i -> ī (metrical)"
+  damayī:
+    lemma: dameti
+    pos: aor
+    note: "i -> ī (metrical)"
+  niyyādayī:
+    lemma: niyyādeti
+    pos: aor
+    note: "i -> ī (metrical)"
+  āyūhanī:
+    lemma: āyūhati
+    pos: adj
+    note: striving (with lengthened final)
+
+  # Absolutives with metrical lengthening
+  tārayitvā:
+    lemma: tāreti
+    pos: abs
+    note: having saved
+  thomayitvā:
+    lemma: thometi
+    pos: abs
+    note: having praised
+  bodhayitvā:
+    lemma: bodheti
+    pos: abs
+    note: having awakened
+  abhināditvā:
+    lemma: abhinadati
+    pos: abs
+    note: having resounded
+  vilāsetvā:
+    lemma: vilāseti
+    pos: abs
+    note: having displayed
+  temayitvā:
+    lemma: temeti
+    pos: abs
+    note: having moistened
+  samussetvā:
+    lemma: samusseti
+    pos: abs
+    note: having raised up
+  santāpayitvā:
+    lemma: santāpeti
+    pos: abs
+    note: having heated
+  paṭipassambhayitvā:
+    lemma: paṭipassambheti
+    pos: abs
+    note: having calmed
+  abhivajjetvā:
+    lemma: abhivajjeti
+    pos: abs
+    note: having avoided
+  sāvayitvā:
+    lemma: sāveti
+    pos: abs
+    note: having announced
+  nisedhayitvā:
+    lemma: nisedheti
+    pos: abs
+    note: having prevented
+  āvejjetvā:
+    lemma: āvajjeti
+    pos: abs
+    note: having turned toward
+  vicintayitvā:
+    lemma: vicinteti
+    pos: abs
+    note: having considered
+  pamilāpetvā:
+    lemma: pamilāpeti
+    pos: abs
+    note: having withered
+  sampaṭipādayitvā:
+    lemma: sampaṭipādeti
+    pos: abs
+    note: having presented
+  vosajjetvā:
+    lemma: vosajjati
+    pos: abs
+    note: having released
+  upalakkhayitvā:
+    lemma: upalakkheti
+    pos: abs
+    note: having observed
+  uppāṭayitvā:
+    lemma: uppāṭeti
+    pos: abs
+    note: having torn out
+  samuppāṭayitvā:
+    lemma: samuppāṭeti
+    pos: abs
+    note: having torn out together
+  parirakkhitvā:
+    lemma: parirakkhati
+    pos: abs
+    note: having protected
+
+  # Nouns/adjectives with metrical vowel changes
+  phaggunī:
+    lemma: phagguna
+    pos: masc
+    note: month name (with lengthened final)
+  rocinī:
+    lemma: rocana
+    pos: adj
+    note: pleasing (fem with lengthened final)
+  udañcanī:
+    lemma: udañcana
+    pos: nt
+    note: drawing water (with lengthened final)
+  āṭhapanā:
+    lemma: āṭhapana
+    pos: nt
+    note: placing, setting up
+  gaddhikatā:
+    lemma: gaddhikata
+    pos: pp
+    note: made greedy
+
+  # Compound + metrical (verb fusions in verse)
+  gihisāmicī:
+    lemma: gihisāmīci
+    pos: fem
+    note: proper conduct of a householder
+  saccavādīmhī:
+    lemma: saccavādī
+    pos: adj
+    note: truth-speaker + asmi (metrical fusion)
+  vedagūsmī:
+    lemma: vedagū
+    pos: adj
+    note: knower of the Vedas + asmi
+  sabbajīsmī:
+    lemma: sabbajī
+    pos: adj
+    note: all-conquering + asmi
+  gahitosī:
+    lemma: gahita
+    pos: pp
+    note: seized + asi (you are seized)
+
+
+# =============================================================================
+# PROJECT-SPECIFIC MAPPINGS
+# =============================================================================
+# Proper nouns, rare compounds, archaic forms specific to this corpus.
+# Not candidates for DPD - too specialized or context-dependent.
+
+project_specific:
+  # Proper nouns
+  rucā:
+    lemma: rucā
+    pos: name
+    note: Princess Ruca
+  aḷārapamhā:
+    lemma: aḷārapamha
+    pos: name
+    note: place name
+
+  # Archaic verse forms with unusual endings
+  masaṃ:
+    lemma: masa
+    pos: masc
+    note: lentil/month (archaic acc)
+  tehaṃ:
+    lemma: ta
+    pos: pron
+    note: to them (archaic dative)
+  athuṇhaṃ:
+    lemma: athuṇha
+    pos: adj
+    note: not hot (hapax?)
+  tīṇānisaṃse:
+    lemma: ānisaṃsa
+    pos: masc
+    note: three benefits (compound)
+
+  # evam- compounds (not in DPD as separate entries)
+  evaṅkamanīyo:
+    lemma: evaṅkamanīya
+    pos: adj
+    note: so lovely
+  evaṃrajanīyo:
+    lemma: evaṃrajanīya
+    pos: adj
+  evaṃmadanīyo:
+    lemma: evaṃmadanīya
+    pos: adj
+  evambandhanīyo:
+    lemma: evambandhanīya
+    pos: adj
+  evaṃmucchanīyo:
+    lemma: evaṃmucchanīya
+    pos: adj
+
+  # Nibbana-related compounds
+  sopādisesā:
+    lemma: sa-upādisesa
+    pos: adj
+    note: with remainder
+
+  # Long compounds
+  thinamiddhapariyuṭṭhitassa:
+    lemma: thinamiddhapariyuṭṭhita
+    pos: pp
+  ticattārīsasahassāni:
+    lemma: cattālīsa
+    pos: card
+    note: "43,000"
+  sokaparidevadukkhadomanassupāyāsaā:
+    lemma: sokaparidevadukkhadomanassupāyāsa
+    pos: masc
+    note: sorrow-lamentation-pain-grief-despair (standard suffering formula, truncated)
+  ubbhegauttāsabhayāpanūdano:
+    lemma: ubbhegauttāsabhayāpanūdana
+    pos: adj
+    note: removing agitation-anxiety-fear
+  cūḷekasāṭakabrāhmaṇavatthu:
+    lemma: cūḷekasāṭakabrāhmaṇavatthu
+    pos: nt
+    note: story of the brahmin with one small cloth
+
+  # Jhāna compounds (ordinal + jhāna)
+  paṭhamajhāna:
+    lemma: paṭhamajhāna
+    pos: nt
+    note: first jhāna (compound without case ending)
+  dutiyajhāna:
+    lemma: dutiyajhāna
+    pos: nt
+    note: second jhāna
+  tatiyajhāna:
+    lemma: tatiyajhāna
+    pos: nt
+    note: third jhāna
+
+  # Story titles (proper nouns)
+  kumbaghosakaseṭṭhivatthu:
+    lemma: kumbaghosakaseṭṭhivatthu
+    pos: nt
+    note: story of the merchant Kumbhaghosaka
+  patipūjikakumārivatthu:
+    lemma: patipūjikakumārivatthu
+    pos: nt
+    note: story of the girl who worshipped her husband
+  lāḷudāyītheravatthu:
+    lemma: lāḷudāyītheravatthu
+    pos: nt
+    note: story of the elder Lāḷudāyī
+  lāḷudāyīvatthu:
+    lemma: lāḷudāyīvatthu
+    pos: nt
+    note: story of Lāḷudāyī
+
+  # -asa compounds (X + asa "desire")
+  gandhāsā:
+    lemma: gandhāsa
+    pos: masc
+    note: scent-desire
+  rasāsā:
+    lemma: rasāsa
+    pos: masc
+    note: taste-desire
+  phoṭṭhabbāsā:
+    lemma: phoṭṭhabbāsa
+    pos: masc
+    note: touch-desire
+  puttāsā:
+    lemma: puttāsa
+    pos: masc
+    note: child-desire
+
+  # Miscellaneous rare forms
+  anācaraṃ:
+    lemma: anācāra
+    pos: masc
+    note: misconduct
+  maṃmivā:
+    lemma: maṃ
+    pos: pron
+    note: emphatic "me"
+
+
+# =============================================================================
+# SANDHI DECOMPOSITIONS
+# =============================================================================
+# Complex sandhi that DPD doesn't decompose.
+
+sandhi_decompositions:
+  # X + iti (quotative marker)
+  akkusaloti:
+    parts: [akusalo, iti]
+    components:
+      - {lemma: akusala, pos: adj}
+      - {lemma: iti, pos: ind}
+  vosajjatīti:
+    parts: [vosajjati, iti]
+    components:
+      - {lemma: vosajjati, pos: verb}
+      - {lemma: iti, pos: ind}
+  pettivisayikoti:
+    parts: [pettivisayiko, iti]
+    components:
+      - {lemma: pettivisayika, pos: adj}
+      - {lemma: iti, pos: ind}
+  otaraṇoti:
+    parts: [otaraṇo, iti]
+    components:
+      - {lemma: otaraṇa, pos: nt}
+      - {lemma: iti, pos: ind}
+
+  # X + assa/asmi (genitive/verb)
+  tipissa:
+    parts: [tipi, assa]
+    components:
+      - {lemma: api, pos: ind}
+      - {lemma: assa, pos: pron}
+  sukhamasmī:
+    parts: [sukhaṃ, asmi]
+    components:
+      - {lemma: sukha, pos: nt}
+      - {lemma: atthi, pos: verb}
+  tumhaṃmhi:
+    parts: [tumhaṃ, amhi]
+    components:
+      - {lemma: tumha, pos: pron}
+      - {lemma: atthi, pos: verb}
+  vaggulissa:
+    parts: [vagguli, assa]
+    components:
+      - {lemma: vagguli, pos: masc}
+      - {lemma: assa, pos: pron}
+  jāgussa:
+    parts: [jāgu, assa]
+    components:
+      - {lemma: jāgu, pos: masc}
+      - {lemma: assa, pos: pron}
+
+  # Elision sandhi
+  m:
+    parts: [me]
+    components:
+      - {lemma: ahaṃ, pos: pron}
+    note: elision of 'me' before vowel (m'idhekacce = me idhekacce)
+
+  # Negation sandhi
+  nosi:
+    parts: [no, asi]
+    components:
+      - {lemma: na, pos: ind}
+      - {lemma: atthi, pos: verb}
+
+  # Particle combinations
+  iccā:
+    parts: [iti, ca]
+    components:
+      - {lemma: iti, pos: ind}
+      - {lemma: ca, pos: ind}
+  yañcāha:
+    parts: [yaṃ, ca, āha]
+    components:
+      - {lemma: ya, pos: pron}
+      - {lemma: ca, pos: ind}
+      - {lemma: āha, pos: verb}
+  cīdha:
+    parts: [ca, idha]
+    components:
+      - {lemma: ca, pos: ind}
+      - {lemma: idha, pos: ind}
+
+  # Pronoun combinations
+  tetaṃ:
+    parts: [te, etaṃ]
+    components:
+      - {lemma: ta, pos: pron}
+      - {lemma: eta, pos: pron}
+  menaṃ:
+    parts: [me, enaṃ]
+    components:
+      - {lemma: ahaṃ, pos: pron}
+      - {lemma: eta, pos: pron}
+  mameta:
+    parts: [mama, eta]
+    components:
+      - {lemma: ahaṃ, pos: pron}
+      - {lemma: eta, pos: pron}
+  tvevahaṃ:
+    parts: [tu, eva, ahaṃ]
+    components:
+      - {lemma: tu, pos: ind}
+      - {lemma: eva, pos: ind}
+      - {lemma: ahaṃ, pos: pron}
+
+  # Pronoun + verb sandhi
+  mabhibhāsasi:
+    parts: [maṃ, abhibhāsasi]
+    components:
+      - {lemma: ahaṃ, pos: pron}
+      - {lemma: abhibhāsati, pos: verb}
+
+  # Prefix compounds (pari-, pa-, abhi-)
+  paridhaṃsati:
+    parts: [pari, dhaṃsati]
+    components:
+      - {lemma: pari, pos: prefix}
+      - {lemma: dhaṃsati, pos: verb}
+  paridameti:
+    parts: [pari, dameti]
+    components:
+      - {lemma: pari, pos: prefix}
+      - {lemma: dameti, pos: verb}
+  paridametvā:
+    parts: [pari, dametvā]
+    components:
+      - {lemma: pari, pos: prefix}
+      - {lemma: dameti, pos: abs}
+  pariyāyitvā:
+    parts: [pari, āyitvā]
+    components:
+      - {lemma: pari, pos: prefix}
+      - {lemma: āyāti, pos: abs}
+  parikeḷanā:
+    parts: [pari, keḷanā]
+    components:
+      - {lemma: pari, pos: prefix}
+      - {lemma: keḷanā, pos: fem}
+  pahitvāna:
+    parts: [pa, hitvāna]
+    components:
+      - {lemma: pa, pos: prefix}
+      - {lemma: jahati, pos: abs}
+  pavārayi:
+    parts: [pa, vārayi]
+    components:
+      - {lemma: pa, pos: prefix}
+      - {lemma: vāreti, pos: aor}
+
+  # Complex compounds
+  svajjekova:
+    parts: [sva, ajja, eko, iva]
+    components:
+      - {lemma: sa, pos: pron}
+      - {lemma: ajja, pos: ind}
+      - {lemma: eka, pos: card}
+      - {lemma: iva, pos: ind}
+
+  # Pronoun-verb fusions (X + ahaṃ + verb)
+  dubbalohamasmi:
+    parts: [dubbalo, ahaṃ, asmi]
+    components:
+      - {lemma: dubbala, pos: adj}
+      - {lemma: ahaṃ, pos: pron}
+      - {lemma: atthi, pos: verb}
+  dubbalohama:
+    parts: [dubbalo, ahaṃ]
+    components:
+      - {lemma: dubbala, pos: adj}
+      - {lemma: ahaṃ, pos: pron}
+  appesakkhohama:
+    parts: [appesakkho, ahaṃ]
+    components:
+      - {lemma: appesakkha, pos: adj}
+      - {lemma: ahaṃ, pos: pron}
+  anupādānohama:
+    parts: [anupādāno, ahaṃ]
+    components:
+      - {lemma: anupādāna, pos: adj}
+      - {lemma: ahaṃ, pos: pron}
+  nibbānādhimuttohama:
+    parts: [nibbānādhimutto, ahaṃ]
+    components:
+      - {lemma: nibbānādhimutta, pos: adj}
+      - {lemma: ahaṃ, pos: pron}
+  aññathādhammohama:
+    parts: [aññathādhammo, ahaṃ]
+    components:
+      - {lemma: aññathādhamma, pos: adj}
+      - {lemma: ahaṃ, pos: pron}
+  sakyaputtiyāmhā:
+    parts: [sakyaputtiyā, amhā]
+    components:
+      - {lemma: sakyaputtiya, pos: adj}
+      - {lemma: atthi, pos: verb}
+  samaṇāmhā:
+    parts: [samaṇā, amhā]
+    components:
+      - {lemma: samaṇa, pos: masc}
+      - {lemma: atthi, pos: verb}
+  yamamavhayāmā:
+    parts: [yaṃ, amaṃ, avhayāma]
+    components:
+      - {lemma: ya, pos: pron}
+      - {lemma: ahaṃ, pos: pron}
+      - {lemma: avhayati, pos: verb}
+  tenupaṅkamissāmā:
+    parts: [tena, upaṅkamissāma]
+    components:
+      - {lemma: ta, pos: pron}
+      - {lemma: upaṅkamati, pos: verb}
+  sādhukamanurakkhissāmī:
+    parts: [sādhukaṃ, anurakkhissāmi]
+    components:
+      - {lemma: sādhuka, pos: adj}
+      - {lemma: anurakkhati, pos: verb}
