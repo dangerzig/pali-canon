@@ -4,70 +4,79 @@
   "word_counts": {
     "gretil": 63,
     "sc": 61,
-    "vri": 0
+    "vri": 0,
+    "bjt": 62
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 64,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 5,
-    "match": 0,
-    "other": 59
+    "orthographic": 2,
+    "errors": 1,
+    "variants": 1,
+    "uncertain": 4,
+    "match": 56,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
+  "errors": [
+    {
+      "position": 58,
+      "gretil": "sāram",
+      "sc": "sāramidheva",
+      "vri": null,
+      "bjt": "sāramidheva",
+      "type": "error",
+      "preferred": "sāramidheva",
+      "notes": "PTS \"sāram\" not in DPD, SC \"sāramidheva\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 57,
+      "gretil": "ādīyati",
+      "sc": "ādīyatī",
+      "vri": null,
+      "bjt": "ādīyati",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ādīyati\" vs SC \"ādīyatī\""
+    }
+  ],
   "uncertain": [
     {
       "position": 0,
       "gretil": "lxiii",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxiii",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 57,
-      "gretil": "ādīyati",
-      "sc": "ādīyatī",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ādīyati",
-      "notes": "Three-way disagreement: PTS \"ādīyati\", SC \"ādīyatī\", VRI \"None\""
-    },
-    {
-      "position": 58,
-      "gretil": "sāram",
-      "sc": "sāramidheva",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "sāramidheva",
-      "notes": "Three-way disagreement, one valid reading"
+      "bjt": "paṭhamavaḍḍhīsuttaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 59,
       "gretil": "idh",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "idh",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 60,
       "gretil": "eva",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 63,
+      "gretil": null,
+      "sc": "tatiyaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

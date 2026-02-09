@@ -4,70 +4,88 @@
   "word_counts": {
     "gretil": 60,
     "sc": 59,
-    "vri": 0
+    "vri": 0,
+    "bjt": 56
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 62,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
+    "orthographic": 12,
+    "errors": 1,
+    "variants": 1,
     "uncertain": 5,
-    "match": 0,
-    "other": 57
+    "match": 43,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "xxxi",
       "sc": "aṭṭhimāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "dāna",
+      "type": "error",
       "preferred": "aṭṭhimāni",
-      "notes": "Three-way disagreement, one valid reading"
-    },
+      "notes": "PTS \"xxxi\" not in DPD, SC \"aṭṭhimāni\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 33,
+      "gretil": "na",
+      "sc": "nārahāmi",
+      "vri": null,
+      "bjt": "na",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"na\" vs SC \"nārahāmi\""
+    }
+  ],
+  "uncertain": [
     {
       "position": 1,
       "gretil": "aṭṭh",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "aṭṭh",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "suttaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 2,
       "gretil": "imāni",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "imāni",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 33,
-      "gretil": "na",
-      "sc": "nārahāmi",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "na",
-      "notes": "Three-way disagreement: PTS \"na\", SC \"nārahāmi\", VRI \"None\""
+      "bjt": "sāvatthinidānaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 34,
       "gretil": "arahāmi",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "arahāmi",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "arahāmi",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 37,
+      "gretil": null,
+      "sc": "dānaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 61,
+      "gretil": null,
+      "sc": "paṭhamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

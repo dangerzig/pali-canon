@@ -4,150 +4,142 @@
   "word_counts": {
     "gretil": 77,
     "sc": 72,
-    "vri": 0
+    "vri": 0,
+    "bjt": 75
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 77,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 13,
-    "match": 0,
-    "other": 64
+    "orthographic": 4,
+    "errors": 1,
+    "variants": 7,
+    "uncertain": 5,
+    "match": 60,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
+    {
+      "position": 76,
+      "gretil": "xcvii",
+      "sc": "chaṭṭhaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "error",
+      "preferred": "chaṭṭhaṃ",
+      "notes": "PTS \"xcvii\" not in DPD, SC \"chaṭṭhaṃ\" is valid"
+    }
+  ],
+  "variants": [
     {
       "position": 5,
       "gretil": "ānāpānasatiṃ",
       "sc": "ānāpānassatiṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ānāpānasatiṃ",
-      "notes": "Three-way disagreement: PTS \"ānāpānasatiṃ\", SC \"ānāpānassatiṃ\", VRI \"None\""
+      "bjt": "ānāpānasatiṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ānāpānasatiṃ\" vs SC \"ānāpānassatiṃ\""
     },
     {
       "position": 7,
       "gretil": "na",
       "sc": "nacirasseva",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "na",
-      "notes": "Three-way disagreement: PTS \"na\", SC \"nacirasseva\", VRI \"None\""
-    },
-    {
-      "position": 8,
-      "gretil": "cirass",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "cirass",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 9,
-      "gretil": "eva",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "na",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"na\" vs SC \"nacirasseva\""
     },
     {
       "position": 39,
       "gretil": "majjhe",
       "sc": "majjhekalyāṇā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "majjhe",
-      "notes": "Three-way disagreement: PTS \"majjhe\", SC \"majjhekalyāṇā\", VRI \"None\""
-    },
-    {
-      "position": 40,
-      "gretil": "kalyāṇā",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "kalyāṇā",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "majjhekalyāṇā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"majjhe\" vs SC \"majjhekalyāṇā\""
     },
     {
       "position": 43,
       "gretil": "savyañjanaṃ",
       "sc": "sabyañjanaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "savyañjanaṃ",
-      "notes": "Three-way disagreement: PTS \"savyañjanaṃ\", SC \"sabyañjanaṃ\", VRI \"None\""
+      "bjt": "savyañjanā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"savyañjanaṃ\" vs SC \"sabyañjanaṃ\""
     },
     {
       "position": 52,
       "gretil": "dhatā",
       "sc": "dhātā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "dhatā",
-      "notes": "Three-way disagreement: PTS \"dhatā\", SC \"dhātā\", VRI \"None\""
+      "bjt": "dhatā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"dhatā\" vs SC \"dhātā\""
     },
     {
       "position": 68,
       "gretil": "ānāpānasatiṃ",
       "sc": "ānāpānassatiṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ānāpānasatiṃ",
-      "notes": "Three-way disagreement: PTS \"ānāpānasatiṃ\", SC \"ānāpānassatiṃ\", VRI \"None\""
+      "bjt": "ānāpānasatiṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ānāpānasatiṃ\" vs SC \"ānāpānassatiṃ\""
     },
     {
       "position": 70,
       "gretil": "na",
       "sc": "nacirasseva",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "na",
-      "notes": "Three-way disagreement: PTS \"na\", SC \"nacirasseva\", VRI \"None\""
+      "bjt": "na",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"na\" vs SC \"nacirasseva\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 8,
+      "gretil": "cirass",
+      "sc": null,
+      "vri": null,
+      "bjt": "cirasseva",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 9,
+      "gretil": "eva",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 40,
+      "gretil": "kalyāṇā",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 71,
       "gretil": "cirass",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "cirass",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "cirasseva",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 72,
       "gretil": "eva",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 76,
-      "gretil": "xcvii",
-      "sc": "chaṭṭhaṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "chaṭṭhaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

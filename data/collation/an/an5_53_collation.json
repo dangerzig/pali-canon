@@ -4,90 +4,106 @@
   "word_counts": {
     "gretil": 79,
     "sc": 78,
-    "vri": 0
+    "vri": 0,
+    "bjt": 79
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 81,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 7,
-    "match": 0,
-    "other": 74
+    "orthographic": 5,
+    "errors": 1,
+    "variants": 3,
+    "uncertain": 5,
+    "match": 67,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "liii",
       "sc": "pañcimāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "padhāniyaṅgasuttaṃ",
+      "type": "error",
       "preferred": "pañcimāni",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 1,
-      "gretil": "pañc",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "pañc",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 2,
-      "gretil": "imāni",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "imāni",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+      "notes": "PTS \"liii\" not in DPD, SC \"pañcimāni\" is valid"
+    }
+  ],
+  "variants": [
     {
       "position": 15,
       "gretil": "iti",
       "sc": "itipi",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "iti",
-      "notes": "Three-way disagreement: PTS \"iti\", SC \"itipi\", VRI \"None\""
-    },
-    {
-      "position": 16,
-      "gretil": "pi",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "pi",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "itipi",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"iti\" vs SC \"itipi\""
     },
     {
       "position": 52,
       "gretil": "āraddhaviriyo",
       "sc": "āraddhavīriyo",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "āraddhaviriyo",
-      "notes": "Three-way disagreement: PTS \"āraddhaviriyo\", SC \"āraddhavīriyo\", VRI \"None\""
+      "bjt": "āraddhaviriyo",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"āraddhaviriyo\" vs SC \"āraddhavīriyo\""
     },
     {
       "position": 72,
       "gretil": "sammādukkhakkhayagāminiyā",
       "sc": "sammā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "sammādukkhakkhayagāminiyā",
-      "notes": "Three-way disagreement: PTS \"sammādukkhakkhayagāminiyā\", SC \"sammā\", VRI \"None\""
+      "bjt": "sammā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"sammādukkhakkhayagāminiyā\" vs SC \"sammā\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "pañc",
+      "sc": null,
+      "vri": null,
+      "bjt": "sāvatthi",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 2,
+      "gretil": "imāni",
+      "sc": null,
+      "vri": null,
+      "bjt": "nidānaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 16,
+      "gretil": "pi",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 73,
+      "gretil": null,
+      "sc": "dukkhakkhayagāminiyā",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 80,
+      "gretil": null,
+      "sc": "tatiyaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

@@ -4,200 +4,287 @@
   "word_counts": {
     "gretil": 65,
     "sc": 64,
-    "vri": 0
+    "vri": 0,
+    "bjt": 67
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 76,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 18,
-    "match": 0,
-    "other": 58
+    "orthographic": 2,
+    "errors": 2,
+    "variants": 4,
+    "uncertain": 23,
+    "match": 45,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "xviii",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "xviii",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 9,
-      "gretil": "rūpena",
-      "sc": "ruṇṇena",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "rūpena",
-      "notes": "Three-way disagreement: PTS \"rūpena\", SC \"ruṇṇena\", VRI \"None\""
-    },
-    {
-      "position": 24,
-      "gretil": "gītena",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "gītena",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 25,
-      "gretil": "bhikkhave",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "bhikkhave",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 26,
-      "gretil": "puriso",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "puriso",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 27,
-      "gretil": "itthiṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "itthiṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 28,
-      "gretil": "bandhati",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "bandhati",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 29,
-      "gretil": "roṇṇena",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "roṇṇena",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 30,
-      "gretil": "bhikkhave",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "bhikkhave",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 31,
-      "gretil": "puriso",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "puriso",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 32,
-      "gretil": "itthiṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "itthiṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 33,
-      "gretil": "bandhati",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "bandhati",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "errors": [
     {
       "position": 58,
       "gretil": "badhati",
       "sc": "bandhati",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "bandhati",
+      "type": "error",
       "preferred": "bandhati",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"badhati\" not in DPD, SC \"bandhati\" is valid"
     },
     {
       "position": 62,
       "gretil": "aṭṭhah",
       "sc": "aṭṭhahākārehi",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "aṭṭhahi",
+      "type": "error",
       "preferred": "aṭṭhahākārehi",
-      "notes": "Three-way disagreement, one valid reading"
-    },
+      "notes": "PTS \"aṭṭhah\" not in DPD, SC \"aṭṭhahākārehi\" is valid"
+    }
+  ],
+  "variants": [
     {
-      "position": 63,
-      "gretil": "ākārehi",
-      "sc": null,
+      "position": 9,
+      "gretil": "rūpena",
+      "sc": "ruṇṇena",
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ākārehi",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "rūpena",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"rūpena\" vs SC \"ruṇṇena\""
     },
     {
       "position": 67,
       "gretil": "tehi",
       "sc": "te",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "tehi",
-      "notes": "Three-way disagreement: PTS \"tehi\", SC \"te\", VRI \"None\""
+      "bjt": "te",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"tehi\" vs SC \"te\""
     },
     {
       "position": 71,
       "gretil": "yeva",
       "sc": "ye",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "yeva",
-      "notes": "Three-way disagreement: PTS \"yeva\", SC \"ye\", VRI \"None\""
+      "bjt": "ye",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"yeva\" vs SC \"ye\""
     },
     {
       "position": 72,
       "gretil": "pāsena",
       "sc": "phassena",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "pāsena",
-      "notes": "Three-way disagreement: PTS \"pāsena\", SC \"phassena\", VRI \"None\""
+      "bjt": "phassena",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"pāsena\" vs SC \"phassena\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "xviii",
+      "sc": null,
+      "vri": null,
+      "bjt": "itthibandhana",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 24,
+      "gretil": "gītena",
+      "sc": null,
+      "vri": null,
+      "bjt": "gītena",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 25,
+      "gretil": "bhikkhave",
+      "sc": null,
+      "vri": null,
+      "bjt": "bhikkhave",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 26,
+      "gretil": "puriso",
+      "sc": null,
+      "vri": null,
+      "bjt": "puriso",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 27,
+      "gretil": "itthiṃ",
+      "sc": null,
+      "vri": null,
+      "bjt": "itthiṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 28,
+      "gretil": "bandhati",
+      "sc": null,
+      "vri": null,
+      "bjt": "bandhati",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 29,
+      "gretil": "roṇṇena",
+      "sc": null,
+      "vri": null,
+      "bjt": "ruṇṇena",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 30,
+      "gretil": "bhikkhave",
+      "sc": null,
+      "vri": null,
+      "bjt": "bhikkhave",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 31,
+      "gretil": "puriso",
+      "sc": null,
+      "vri": null,
+      "bjt": "puriso",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 32,
+      "gretil": "itthiṃ",
+      "sc": null,
+      "vri": null,
+      "bjt": "itthiṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 33,
+      "gretil": "bandhati",
+      "sc": null,
+      "vri": null,
+      "bjt": "bandhati",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 44,
+      "gretil": null,
+      "sc": "gandhena",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 45,
+      "gretil": null,
+      "sc": "bhikkhave",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 46,
+      "gretil": null,
+      "sc": "puriso",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 47,
+      "gretil": null,
+      "sc": "itthiṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 48,
+      "gretil": null,
+      "sc": "bandhati",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 49,
+      "gretil": null,
+      "sc": "rasena",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 50,
+      "gretil": null,
+      "sc": "bhikkhave",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 51,
+      "gretil": null,
+      "sc": "puriso",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 52,
+      "gretil": null,
+      "sc": "itthiṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 53,
+      "gretil": null,
+      "sc": "bandhati",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 63,
+      "gretil": "ākārehi",
+      "sc": null,
+      "vri": null,
+      "bjt": "ākārehi",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 75,
+      "gretil": null,
+      "sc": "aṭṭhamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

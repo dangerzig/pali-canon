@@ -4,90 +4,97 @@
   "word_counts": {
     "gretil": 52,
     "sc": 50,
-    "vri": 0
+    "vri": 0,
+    "bjt": 51
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 53,
     "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 7,
-    "match": 0,
-    "other": 46
+    "errors": 1,
+    "variants": 3,
+    "uncertain": 4,
+    "match": 45,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "lxix",
       "sc": "pañcime",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "nibbidāsuttaṃ",
+      "type": "error",
       "preferred": "pañcime",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 1,
-      "gretil": "pañc",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "pañc",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 2,
-      "gretil": "ime",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ime",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+      "notes": "PTS \"lxix\" not in DPD, SC \"pañcime\" is valid"
+    }
+  ],
+  "variants": [
     {
       "position": 24,
       "gretil": "paṭikkūlasaññī",
       "sc": "paṭikūlasaññī",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "paṭikkūlasaññī",
-      "notes": "Three-way disagreement: PTS \"paṭikkūlasaññī\", SC \"paṭikūlasaññī\", VRI \"None\""
+      "bjt": "paṭikkūlasaññī",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"paṭikkūlasaññī\" vs SC \"paṭikūlasaññī\""
     },
     {
       "position": 31,
       "gretil": "pan",
       "sc": "panassa",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "pan",
-      "notes": "Three-way disagreement: PTS \"pan\", SC \"panassa\", VRI \"None\""
-    },
-    {
-      "position": 32,
-      "gretil": "assa",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "assa",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "panassa",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"pan\" vs SC \"panassa\""
     },
     {
       "position": 34,
       "gretil": "supaṭṭhitā",
       "sc": "sūpaṭṭhitā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "supaṭṭhitā",
-      "notes": "Three-way disagreement: PTS \"supaṭṭhitā\", SC \"sūpaṭṭhitā\", VRI \"None\""
+      "bjt": "sūpaṭṭhitā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"supaṭṭhitā\" vs SC \"sūpaṭṭhitā\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "pañc",
+      "sc": null,
+      "vri": null,
+      "bjt": "sāvatthinidānaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 2,
+      "gretil": "ime",
+      "sc": null,
+      "vri": null,
+      "bjt": "pañcime",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 32,
+      "gretil": "assa",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 52,
+      "gretil": null,
+      "sc": "navamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

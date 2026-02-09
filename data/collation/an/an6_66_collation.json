@@ -4,80 +4,86 @@
   "word_counts": {
     "gretil": 53,
     "sc": 50,
-    "vri": 0
+    "vri": 0,
+    "bjt": 50
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 54,
-    "orthographic": 0,
+    "orthographic": 3,
     "errors": 0,
-    "variants": 0,
-    "uncertain": 6,
-    "match": 0,
-    "other": 48
+    "variants": 2,
+    "uncertain": 5,
+    "match": 44,
+    "other": 0
   },
   "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "lxvi",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxvi",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "variants": [
     {
       "position": 10,
       "gretil": "thīnaṃ",
       "sc": "thinaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "thīnaṃ",
-      "notes": "Three-way disagreement: PTS \"thīnaṃ\", SC \"thinaṃ\", VRI \"None\""
-    },
-    {
-      "position": 25,
-      "gretil": "aṅguttaranikāya",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "aṅguttaranikāya",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 26,
-      "gretil": "lxvi",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxvi",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 27,
-      "gretil": "lxviii",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxviii",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "thinaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"thīnaṃ\" vs SC \"thinaṃ\""
     },
     {
       "position": 37,
       "gretil": "thīnaṃ",
       "sc": "thinaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "thīnaṃ",
-      "notes": "Three-way disagreement: PTS \"thīnaṃ\", SC \"thinaṃ\", VRI \"None\""
+      "bjt": "thinaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"thīnaṃ\" vs SC \"thinaṃ\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "lxvi",
+      "sc": null,
+      "vri": null,
+      "bjt": "arahattaphala",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 25,
+      "gretil": "aṅguttaranikāya",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 26,
+      "gretil": "lxvi",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 27,
+      "gretil": "lxviii",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 53,
+      "gretil": null,
+      "sc": "dutiyaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

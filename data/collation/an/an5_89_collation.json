@@ -4,70 +4,80 @@
   "word_counts": {
     "gretil": 60,
     "sc": 57,
-    "vri": 0
+    "vri": 0,
+    "bjt": 57
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 60,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 5,
-    "match": 0,
-    "other": 55
+    "orthographic": 2,
+    "errors": 2,
+    "variants": 1,
+    "uncertain": 3,
+    "match": 52,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "lxxxix",
       "sc": "pañcime",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "paṭhamasekhasuttaṃ",
+      "type": "error",
       "preferred": "pañcime",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"lxxxix\" not in DPD, SC \"pañcime\" is valid"
     },
+    {
+      "position": 59,
+      "gretil": "xc",
+      "sc": "navamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "error",
+      "preferred": "navamaṃ",
+      "notes": "PTS \"xc\" not in DPD, SC \"navamaṃ\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 28,
+      "gretil": "pañc",
+      "sc": "pañcime",
+      "vri": null,
+      "bjt": "pañcime",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"pañc\" vs SC \"pañcime\""
+    }
+  ],
+  "uncertain": [
     {
       "position": 1,
       "gretil": "pañc",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "pañc",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "sāvatthinidānaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 2,
       "gretil": "ime",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ime",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 28,
-      "gretil": "pañc",
-      "sc": "pañcime",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "pañc",
-      "notes": "Three-way disagreement: PTS \"pañc\", SC \"pañcime\", VRI \"None\""
+      "bjt": "pañcime",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 29,
       "gretil": "ime",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ime",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

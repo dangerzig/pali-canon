@@ -4,80 +4,97 @@
   "word_counts": {
     "gretil": 37,
     "sc": 36,
-    "vri": 0
+    "vri": 0,
+    "bjt": 40
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 39,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 6,
-    "match": 0,
-    "other": 33
+    "orthographic": 4,
+    "errors": 1,
+    "variants": 2,
+    "uncertain": 5,
+    "match": 27,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "xvi",
       "sc": "dasayime",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "āhuneyya",
+      "type": "error",
       "preferred": "dasayime",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 1,
-      "gretil": "dasa",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "dasa",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 2,
-      "gretil": "yime",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "yime",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+      "notes": "PTS \"xvi\" not in DPD, SC \"dasayime\" is valid"
+    }
+  ],
+  "variants": [
     {
       "position": 17,
       "gretil": "paccekasambuddho",
       "sc": "paccekabuddho",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "paccekasambuddho",
-      "notes": "Three-way disagreement: PTS \"paccekasambuddho\", SC \"paccekabuddho\", VRI \"None\""
+      "bjt": "paccekabuddho",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"paccekasambuddho\" vs SC \"paccekabuddho\""
     },
     {
       "position": 20,
       "gretil": "kāyasakkhi",
       "sc": "kāyasakkhī",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "kāyasakkhi",
-      "notes": "Three-way disagreement: PTS \"kāyasakkhi\", SC \"kāyasakkhī\", VRI \"None\""
+      "bjt": "kāyasakkhī",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"kāyasakkhi\" vs SC \"kāyasakkhī\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "dasa",
+      "sc": null,
+      "vri": null,
+      "bjt": "dasa",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 2,
+      "gretil": "yime",
+      "sc": null,
+      "vri": null,
+      "bjt": "ime",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 23,
+      "gretil": null,
+      "sc": "saddhānusārī",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 25,
       "gretil": "saddhānusārī",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "saddhānusārī",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "saddhānusārī",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 38,
+      "gretil": null,
+      "sc": "chaṭṭhaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

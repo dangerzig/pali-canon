@@ -4,80 +4,97 @@
   "word_counts": {
     "gretil": 51,
     "sc": 47,
-    "vri": 0
+    "vri": 0,
+    "bjt": 51
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 52,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
+    "orthographic": 8,
+    "errors": 1,
+    "variants": 1,
     "uncertain": 6,
-    "match": 0,
-    "other": 46
+    "match": 36,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
+  "errors": [
+    {
+      "position": 27,
+      "gretil": "diṭṭh",
+      "sc": "diṭṭheva",
+      "vri": null,
+      "bjt": "diṭṭheva",
+      "type": "error",
+      "preferred": "diṭṭheva",
+      "notes": "PTS \"diṭṭh\" not in DPD, SC \"diṭṭheva\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 18,
+      "gretil": "viriyindriyena",
+      "sc": "vīriyindriyena",
+      "vri": null,
+      "bjt": "viriyindriyena",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"viriyindriyena\" vs SC \"vīriyindriyena\""
+    }
+  ],
   "uncertain": [
     {
       "position": 0,
       "gretil": "iii",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "iii",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "indriyasuttaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 14,
       "gretil": "aṅguttaranikāya",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "aṅguttaranikāya",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 15,
       "gretil": "iii",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "iii",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
-      "position": 18,
-      "gretil": "viriyindriyena",
-      "sc": "vīriyindriyena",
+      "position": 16,
+      "gretil": "v",
+      "sc": null,
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "viriyindriyena",
-      "notes": "Three-way disagreement: PTS \"viriyindriyena\", SC \"vīriyindriyena\", VRI \"None\""
-    },
-    {
-      "position": 27,
-      "gretil": "diṭṭh",
-      "sc": "diṭṭheva",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "diṭṭheva",
-      "notes": "Three-way disagreement, one valid reading"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 28,
       "gretil": "eva",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 51,
+      "gretil": null,
+      "sc": "tatiyaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

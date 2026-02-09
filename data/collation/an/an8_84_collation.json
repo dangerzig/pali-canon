@@ -4,100 +4,107 @@
   "word_counts": {
     "gretil": 96,
     "sc": 92,
-    "vri": 0
+    "vri": 0,
+    "bjt": 95
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 97,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 8,
-    "match": 0,
-    "other": 89
+    "orthographic": 3,
+    "errors": 2,
+    "variants": 1,
+    "uncertain": 6,
+    "match": 85,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "lxxxiv",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxxxiv",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "errors": [
     {
       "position": 35,
       "gretil": "aṭṭhah",
       "sc": "aṭṭhahaṅgehi",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "aṭṭhahaṅgehi",
+      "type": "error",
       "preferred": "aṭṭhahaṅgehi",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 36,
-      "gretil": "aṅgehi",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "aṅgehi",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "notes": "PTS \"aṭṭhah\" not in DPD, SC \"aṭṭhahaṅgehi\" is valid"
     },
     {
       "position": 84,
       "gretil": "aṭṭhah",
       "sc": "aṭṭhahaṅgehi",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "aṭṭhahi",
+      "type": "error",
       "preferred": "aṭṭhahaṅgehi",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"aṭṭhah\" not in DPD, SC \"aṭṭhahaṅgehi\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 94,
+      "gretil": "aṅguttaranikāya",
+      "sc": "catutthaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "variant",
+      "notes": "Textual variant: PTS \"aṅguttaranikāya\" vs SC \"catutthaṃ\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "lxxxiv",
+      "sc": null,
+      "vri": null,
+      "bjt": "mahā",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 36,
+      "gretil": "aṅgehi",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 79,
+      "gretil": null,
+      "sc": "ca",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 85,
       "gretil": "aṅgehi",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "aṅgehi",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 94,
-      "gretil": "aṅguttaranikāya",
-      "sc": "catutthaṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "aṅguttaranikāya",
-      "notes": "Three-way disagreement: PTS \"aṅguttaranikāya\", SC \"catutthaṃ\", VRI \"None\""
+      "bjt": "aṅgehi",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 95,
       "gretil": "lxxxv",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxxxv",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 96,
       "gretil": "lxxxvi",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxxxvi",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

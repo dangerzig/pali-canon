@@ -4,130 +4,135 @@
   "word_counts": {
     "gretil": 134,
     "sc": 129,
-    "vri": 0
+    "vri": 0,
+    "bjt": 122
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 135,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 11,
-    "match": 0,
-    "other": 124
+    "orthographic": 104,
+    "errors": 3,
+    "variants": 2,
+    "uncertain": 7,
+    "match": 19,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "xxv",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "xxv",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "errors": [
     {
       "position": 9,
       "gretil": "tass",
       "sc": "tassetaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "tassetaṃ",
+      "type": "error",
       "preferred": "tassetaṃ",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 10,
-      "gretil": "etaṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "etaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 22,
-      "gretil": "itthattāyā",
-      "sc": "itthattāyāti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "itthattāyā",
-      "notes": "Three-way disagreement: PTS \"itthattāyā\", SC \"itthattāyāti\", VRI \"None\""
-    },
-    {
-      "position": 23,
-      "gretil": "ti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ti",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "notes": "PTS \"tass\" not in DPD, SC \"tassetaṃ\" is valid"
     },
     {
       "position": 26,
       "gretil": "kathañ",
       "sc": "kathañca",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": null,
+      "type": "error",
       "preferred": "kathañca",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 27,
-      "gretil": "ca",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ca",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "notes": "PTS \"kathañ\" not in DPD, SC \"kathañca\" is valid"
     },
     {
       "position": 117,
       "gretil": "tass",
       "sc": "tassetaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": null,
+      "type": "error",
       "preferred": "tassetaṃ",
-      "notes": "Three-way disagreement, one valid reading"
-    },
+      "notes": "PTS \"tass\" not in DPD, SC \"tassetaṃ\" is valid"
+    }
+  ],
+  "variants": [
     {
-      "position": 118,
-      "gretil": "etaṃ",
-      "sc": null,
+      "position": 22,
+      "gretil": "itthattāyā",
+      "sc": "itthattāyāti",
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "etaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "itthattāyā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"itthattāyā\" vs SC \"itthattāyāti\""
     },
     {
       "position": 130,
       "gretil": "itthattāyā",
       "sc": "itthattāyāti",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "itthattāyā",
-      "notes": "Three-way disagreement: PTS \"itthattāyā\", SC \"itthattāyāti\", VRI \"None\""
+      "bjt": null,
+      "type": "variant",
+      "notes": "Textual variant: PTS \"itthattāyā\" vs SC \"itthattāyāti\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "xxv",
+      "sc": null,
+      "vri": null,
+      "bjt": "paññāparicita",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 10,
+      "gretil": "etaṃ",
+      "sc": null,
+      "vri": null,
+      "bjt": "bhikkhave",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 23,
+      "gretil": "ti",
+      "sc": null,
+      "vri": null,
+      "bjt": "ti",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 27,
+      "gretil": "ca",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 118,
+      "gretil": "etaṃ",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 131,
       "gretil": "ti",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ti",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 134,
+      "gretil": null,
+      "sc": "pañcamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

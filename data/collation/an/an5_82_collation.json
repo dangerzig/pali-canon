@@ -4,50 +4,59 @@
   "word_counts": {
     "gretil": 94,
     "sc": 94,
-    "vri": 0
+    "vri": 0,
+    "bjt": 95
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 95,
-    "orthographic": 0,
+    "orthographic": 3,
     "errors": 0,
-    "variants": 0,
-    "uncertain": 3,
-    "match": 0,
-    "other": 92
+    "variants": 2,
+    "uncertain": 2,
+    "match": 88,
+    "other": 0
   },
   "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "lxxxii",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxxxii",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "variants": [
     {
       "position": 27,
       "gretil": "palāsī",
       "sc": "paḷāsī",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "palāsī",
-      "notes": "Three-way disagreement: PTS \"palāsī\", SC \"paḷāsī\", VRI \"None\""
+      "bjt": "paḷāsī",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"palāsī\" vs SC \"paḷāsī\""
     },
     {
       "position": 73,
       "gretil": "apalāsī",
       "sc": "apaḷāsī",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "apalāsī",
-      "notes": "Three-way disagreement: PTS \"apalāsī\", SC \"apaḷāsī\", VRI \"None\""
+      "bjt": "apaḷāsī",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"apalāsī\" vs SC \"apaḷāsī\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "lxxxii",
+      "sc": null,
+      "vri": null,
+      "bjt": "vītarāga",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 94,
+      "gretil": null,
+      "sc": "dutiyaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

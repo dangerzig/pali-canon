@@ -4,60 +4,70 @@
   "word_counts": {
     "gretil": 30,
     "sc": 29,
-    "vri": 0
+    "vri": 0,
+    "bjt": 29
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 31,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 4,
-    "match": 0,
-    "other": 27
+    "orthographic": 5,
+    "errors": 1,
+    "variants": 1,
+    "uncertain": 3,
+    "match": 21,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "xxvii",
       "sc": "aṭṭhimāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "bala",
+      "type": "error",
       "preferred": "aṭṭhimāni",
-      "notes": "Three-way disagreement, one valid reading"
-    },
+      "notes": "PTS \"xxvii\" not in DPD, SC \"aṭṭhimāni\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 7,
+      "gretil": "roṇṇabalā",
+      "sc": "ruṇṇabalā",
+      "vri": null,
+      "bjt": "ruṇṇabalā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"roṇṇabalā\" vs SC \"ruṇṇabalā\""
+    }
+  ],
+  "uncertain": [
     {
       "position": 1,
       "gretil": "aṭṭh",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "aṭṭh",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "suttaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 2,
       "gretil": "imāni",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "imāni",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "sāvatthinidānaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
-      "position": 7,
-      "gretil": "roṇṇabalā",
-      "sc": "ruṇṇabalā",
+      "position": 30,
+      "gretil": null,
+      "sc": "sattamaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "roṇṇabalā",
-      "notes": "Three-way disagreement: PTS \"roṇṇabalā\", SC \"ruṇṇabalā\", VRI \"None\""
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

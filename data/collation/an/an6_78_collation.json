@@ -4,100 +4,127 @@
   "word_counts": {
     "gretil": 55,
     "sc": 51,
-    "vri": 0
+    "vri": 0,
+    "bjt": 92
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 56,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 8,
-    "match": 0,
-    "other": 48
+    "orthographic": 21,
+    "errors": 4,
+    "variants": 1,
+    "uncertain": 6,
+    "match": 24,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "lxxviii",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxxviii",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "errors": [
     {
       "position": 6,
       "gretil": "diṭṭh",
       "sc": "diṭṭheva",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "abhabbo",
+      "type": "error",
       "preferred": "diṭṭheva",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"diṭṭh\" not in DPD, SC \"diṭṭheva\" is valid"
     },
     {
-      "position": 7,
-      "gretil": "eva",
-      "sc": null,
+      "position": 12,
+      "gretil": "c",
+      "sc": "cassa",
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 13,
-      "gretil": "assa",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "assa",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 31,
-      "gretil": "avyāpajjhārāmo",
-      "sc": "abyāpajjhārāmo",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "avyāpajjhārāmo",
-      "notes": "Three-way disagreement: PTS \"avyāpajjhārāmo\", SC \"abyāpajjhārāmo\", VRI \"None\""
+      "bjt": null,
+      "type": "error",
+      "preferred": "cassa",
+      "notes": "PTS \"c\" not in DPD, SC \"cassa\" is valid"
     },
     {
       "position": 42,
       "gretil": "diṭṭh",
       "sc": "diṭṭheva",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "abhabbo",
+      "type": "error",
       "preferred": "diṭṭheva",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"diṭṭh\" not in DPD, SC \"diṭṭheva\" is valid"
+    },
+    {
+      "position": 48,
+      "gretil": "c",
+      "sc": "cassa",
+      "vri": null,
+      "bjt": "machasaṃ",
+      "type": "error",
+      "preferred": "cassa",
+      "notes": "PTS \"c\" not in DPD, SC \"cassa\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 31,
+      "gretil": "avyāpajjhārāmo",
+      "sc": "abyāpajjhārāmo",
+      "vri": null,
+      "bjt": "duppañño",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"avyāpajjhārāmo\" vs SC \"abyāpajjhārāmo\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "lxxviii",
+      "sc": null,
+      "vri": null,
+      "bjt": "aggadhamma",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 7,
+      "gretil": "eva",
+      "sc": null,
+      "vri": null,
+      "bjt": "aggaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 13,
+      "gretil": "assa",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 43,
       "gretil": "eva",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "aggaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 49,
       "gretil": "assa",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "assa",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "chahi",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 55,
+      "gretil": null,
+      "sc": "catutthaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

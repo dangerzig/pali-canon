@@ -4,50 +4,60 @@
   "word_counts": {
     "gretil": 19,
     "sc": 18,
-    "vri": 0
+    "vri": 0,
+    "bjt": 18
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 20,
-    "orthographic": 0,
-    "errors": 0,
+    "orthographic": 3,
+    "errors": 1,
     "variants": 0,
     "uncertain": 3,
-    "match": 0,
-    "other": 17
+    "match": 13,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "viii",
       "sc": "chayimāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "anuttariyasuttaṃ",
+      "type": "error",
       "preferred": "chayimāni",
-      "notes": "Three-way disagreement, one valid reading"
-    },
+      "notes": "PTS \"viii\" not in DPD, SC \"chayimāni\" is valid"
+    }
+  ],
+  "variants": [],
+  "uncertain": [
     {
       "position": 1,
       "gretil": "cha",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "cha",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "sāvatthinidānaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 2,
       "gretil": "yimāni",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "yimāni",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "chayimāni",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 19,
+      "gretil": null,
+      "sc": "aṭṭhamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

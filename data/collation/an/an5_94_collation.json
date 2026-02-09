@@ -4,90 +4,90 @@
   "word_counts": {
     "gretil": 54,
     "sc": 51,
-    "vri": 0
+    "vri": 0,
+    "bjt": 76
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 54,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 7,
-    "match": 0,
-    "other": 47
+    "orthographic": 7,
+    "errors": 3,
+    "variants": 1,
+    "uncertain": 3,
+    "match": 40,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "pañc",
-      "sc": "pañcime",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "pañc",
-      "notes": "Three-way disagreement: PTS \"pañc\", SC \"pañcime\", VRI \"None\""
-    },
-    {
-      "position": 1,
-      "gretil": "ime",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ime",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "errors": [
     {
       "position": 9,
       "gretil": "vivicc",
       "sc": "vivicceva",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "vivicceva",
+      "type": "error",
       "preferred": "vivicceva",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 10,
-      "gretil": "eva",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "notes": "PTS \"vivicc\" not in DPD, SC \"vivicceva\" is valid"
     },
     {
       "position": 39,
       "gretil": "diṭṭh",
       "sc": "diṭṭheva",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "diṭṭheva",
+      "type": "error",
       "preferred": "diṭṭheva",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 40,
-      "gretil": "eva",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "notes": "PTS \"diṭṭh\" not in DPD, SC \"diṭṭheva\" is valid"
     },
     {
       "position": 53,
       "gretil": "xcv",
       "sc": "catutthaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": null,
+      "type": "error",
       "preferred": "catutthaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"xcv\" not in DPD, SC \"catutthaṃ\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 0,
+      "gretil": "pañc",
+      "sc": "pañcime",
+      "vri": null,
+      "bjt": "phāsuvihārasuttaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"pañc\" vs SC \"pañcime\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "ime",
+      "sc": null,
+      "vri": null,
+      "bjt": "sāvatthinidānaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 10,
+      "gretil": "eva",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 40,
+      "gretil": "eva",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

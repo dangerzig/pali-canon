@@ -4,130 +4,161 @@
   "word_counts": {
     "gretil": 39,
     "sc": 40,
-    "vri": 0
+    "vri": 0,
+    "bjt": 41
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 43,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 11,
-    "match": 0,
-    "other": 32
+    "orthographic": 2,
+    "errors": 2,
+    "variants": 6,
+    "uncertain": 7,
+    "match": 26,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "lvii",
       "sc": "dasayimā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "dutiya",
+      "type": "error",
       "preferred": "dasayimā",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 1,
-      "gretil": "dasa",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "dasa",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 2,
-      "gretil": "yimā",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "yimā",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 14,
-      "gretil": "aniccasaññā",
-      "sc": "asubhasaññā",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "aniccasaññā",
-      "notes": "Three-way disagreement: PTS \"aniccasaññā\", SC \"asubhasaññā\", VRI \"None\""
-    },
-    {
-      "position": 15,
-      "gretil": "anattasaññā",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "anattasaññā",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "notes": "PTS \"lvii\" not in DPD, SC \"dasayimā\" is valid"
     },
     {
       "position": 18,
       "gretil": "paṭikkulasaññā",
       "sc": "paṭikūlasaññā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "paṭikkūlasaññā",
+      "type": "error",
       "preferred": "paṭikūlasaññā",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"paṭikkulasaññā\" not in DPD, SC \"paṭikūlasaññā\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 14,
+      "gretil": "aniccasaññā",
+      "sc": "asubhasaññā",
+      "vri": null,
+      "bjt": "aniccasaññā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"aniccasaññā\" vs SC \"asubhasaññā\""
     },
     {
       "position": 21,
       "gretil": "aṭṭhikasaññā",
       "sc": "aniccasaññā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "aṭṭhikasaññā",
-      "notes": "Three-way disagreement: PTS \"aṭṭhikasaññā\", SC \"aniccasaññā\", VRI \"None\""
+      "bjt": "aṭṭhikasaññā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"aṭṭhikasaññā\" vs SC \"aniccasaññā\""
     },
     {
       "position": 22,
       "gretil": "puḷavakasaññā",
       "sc": "anicce",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "puḷavakasaññā",
-      "notes": "Three-way disagreement: PTS \"puḷavakasaññā\", SC \"anicce\", VRI \"None\""
+      "bjt": "pulavakasaññā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"puḷavakasaññā\" vs SC \"anicce\""
     },
     {
       "position": 23,
       "gretil": "vinīlakasaññā",
       "sc": "dukkhasaññā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vinīlakasaññā",
-      "notes": "Three-way disagreement: PTS \"vinīlakasaññā\", SC \"dukkhasaññā\", VRI \"None\""
+      "bjt": "vinīlakasaññā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"vinīlakasaññā\" vs SC \"dukkhasaññā\""
     },
     {
       "position": 24,
       "gretil": "vicchiddakasaññā",
       "sc": "dukkhe",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vicchiddakasaññā",
-      "notes": "Three-way disagreement: PTS \"vicchiddakasaññā\", SC \"dukkhe\", VRI \"None\""
+      "bjt": "vicchiddakasaññā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"vicchiddakasaññā\" vs SC \"dukkhe\""
     },
     {
       "position": 25,
       "gretil": "uddhumātakasaññā",
       "sc": "anattasaññā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "uddhumātakasaññā",
-      "notes": "Three-way disagreement: PTS \"uddhumātakasaññā\", SC \"anattasaññā\", VRI \"None\""
+      "bjt": "uddhumātakasaññā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"uddhumātakasaññā\" vs SC \"anattasaññā\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "dasa",
+      "sc": null,
+      "vri": null,
+      "bjt": "dasa",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 2,
+      "gretil": "yimā",
+      "sc": null,
+      "vri": null,
+      "bjt": "imā",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 15,
+      "gretil": "anattasaññā",
+      "sc": null,
+      "vri": null,
+      "bjt": "anattasaññā",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 26,
+      "gretil": null,
+      "sc": "pahānasaññā",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 27,
+      "gretil": null,
+      "sc": "virāgasaññā",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 28,
+      "gretil": null,
+      "sc": "nirodhasaññā",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 42,
+      "gretil": null,
+      "sc": "chaṭṭhaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

@@ -4,50 +4,50 @@
   "word_counts": {
     "gretil": 30,
     "sc": 29,
-    "vri": 0
+    "vri": 0,
+    "bjt": 31
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 30,
-    "orthographic": 0,
+    "orthographic": 2,
     "errors": 0,
-    "variants": 0,
-    "uncertain": 3,
-    "match": 0,
-    "other": 27
+    "variants": 2,
+    "uncertain": 1,
+    "match": 25,
+    "other": 0
   },
   "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "lix",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lix",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "variants": [
     {
       "position": 28,
       "gretil": "vuḍḍhapabbajito",
       "sc": "vuḍḍhapabbajitoti",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vuḍḍhapabbajito",
-      "notes": "Three-way disagreement: PTS \"vuḍḍhapabbajito\", SC \"vuḍḍhapabbajitoti\", VRI \"None\""
+      "bjt": "buḍḍhapabbajito",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"vuḍḍhapabbajito\" vs SC \"vuḍḍhapabbajitoti\""
     },
     {
       "position": 29,
       "gretil": "ti",
       "sc": "navamaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ti",
-      "notes": "Three-way disagreement: PTS \"ti\", SC \"navamaṃ\", VRI \"None\""
+      "bjt": "ti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ti\" vs SC \"navamaṃ\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "lix",
+      "sc": null,
+      "vri": null,
+      "bjt": "paṭhamabuḍḍhapabbajitasuttaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

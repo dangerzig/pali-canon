@@ -159,11 +159,19 @@ def split_dn():
 # ==================== MN Splitting ====================
 
 def split_mn():
-    """Split MN volumes using paṇṇāsa.vagga.sutta numbering."""
+    """Split MN volumes using paṇṇāsa.vagga.sutta numbering.
+
+    Collects markers from all volumes before assigning MN numbers to handle
+    vaggas with >10 suttas (notably Uparipaṇṇāsa vagga 4 = Vibhaṅgavagga
+    has 12 suttas, which would cause formula-based numbering to collide).
+    Also detects title-only boundaries where N.N.N markers are missing.
+    """
     output_dir = BJT_DIR / "mn"
     print("Splitting MN...")
 
-    all_suttas = []
+    # Collect all markers across volumes: (formula_mn_num, text_pos, vol_num)
+    vol_texts = {}
+    all_markers = []
 
     for vol_num in range(1, 4):
         vol_file = output_dir / f"mn_vol{vol_num}.json"
@@ -172,9 +180,9 @@ def split_mn():
 
         vol_data = json.loads(vol_file.read_text())
         text = vol_data['text']
+        vol_texts[vol_num] = text
 
         # Find sutta boundaries: N.N.N. followed by sutta title on next line
-        # Allow special chars like * in title, and variant endings (sutraya etc.)
         boundaries = list(re.finditer(
             r'(\d+)\.(\d+)\.(\d+)\.?[ \t]*\n+\s*'
             r'[\(\[]?[\wāīūṭḍṇṅñṃḷĀĪŪṬḌṆÑṂḶ\s\*]+(?:sutta[ṃm]|sutra\w*)',
@@ -184,14 +192,13 @@ def split_mn():
         # Also find the 2-number marker for first sutta in a vagga (N.N.)
         first_marker = re.search(r'^(\d+)\.(\d+)\.\s*$', text, re.MULTILINE)
         if first_marker:
-            # Only add if this is actually the first sutta (no N.N.N marker before it)
             if not boundaries or first_marker.start() < boundaries[0].start():
                 boundaries.insert(0, first_marker)
 
-        sutta_positions = []
+        # Compute formula-based MN number for each marker
+        numbered = []
         for b in boundaries:
             if b == first_marker and b.lastindex == 2:
-                # 2-number marker: pannasa.vagga → sutta 1 in that vagga
                 p, v = int(b.group(1)), int(b.group(2))
                 mn_num = (p - 1) * 50 + (v - 1) * 10 + 1
             else:
@@ -199,18 +206,68 @@ def split_mn():
                 v = int(b.group(2))
                 s = int(b.group(3))
                 mn_num = (p - 1) * 50 + (v - 1) * 10 + s
-            sutta_positions.append((mn_num, b.start()))
+            numbered.append((mn_num, b.start(), vol_num))
 
-        # Extract text between boundaries
-        for i, (mn_num, start) in enumerate(sutta_positions):
-            end = sutta_positions[i + 1][1] if i + 1 < len(sutta_positions) else len(text)
-            save_sutta(output_dir, f"mn{mn_num}.json", mn_num, text[start:end])
-            all_suttas.append(mn_num)
+        # Detect title-only boundaries (no N.N.N marker, just "XXX suttaṃ"
+        # on its own line after previous sutta ends). This catches cases
+        # like MN 69 where the BJT source omits the number marker.
+        marker_positions = {b.start() for b in boundaries}
+        title_only = re.finditer(
+            r'^([\wāīūṭḍṇṅñṃḷĀĪŪṬḌṆÑṂḶ]'
+            r'[\wāīūṭḍṇṅñṃḷĀĪŪṬḌṆÑṂḶ\s]*?sutta[ṃm])\s*$',
+            text, re.MULTILINE | re.IGNORECASE
+        )
+        for tm in title_only:
+            # Skip if this title is already part of a numbered marker
+            if any(abs(tm.start() - mp) < 200 for mp in marker_positions):
+                continue
+            # A real sutta start is followed by "Evaṃ me sutaṃ" (nidāna);
+            # a sutta-end summary title (like "Naḷakapāna suttaṃ aṭṭhamaṃ")
+            # is NOT. Check the next 300 chars after the title.
+            post = text[tm.end():tm.end() + 300].lower()
+            if 'evaṃ me sutaṃ' in post:
+                # This is a standalone title — assign MN number 0 (to be fixed)
+                numbered.append((0, tm.start(), vol_num))
 
-        if sutta_positions:
-            print(f"  Vol {vol_num}: {len(sutta_positions)} suttas "
-                  f"(MN {min(s[0] for s in sutta_positions)}-"
-                  f"{max(s[0] for s in sutta_positions)})")
+        all_markers.extend(numbered)
+
+    # Sort all markers by (vol_num, text_position)
+    all_markers.sort(key=lambda x: (x[2], x[1]))
+
+    # Fix MN numbers: enforce strict monotonicity to handle vagga overflow
+    # and assign numbers to title-only markers (mn_num=0)
+    for i in range(len(all_markers)):
+        mn_num, pos, vol = all_markers[i]
+        if i > 0:
+            prev_mn = all_markers[i - 1][0]
+            if mn_num <= prev_mn:
+                mn_num = prev_mn + 1
+                all_markers[i] = (mn_num, pos, vol)
+        elif mn_num == 0:
+            all_markers[i] = (1, pos, vol)
+
+    # Extract text and save files
+    all_suttas = []
+    vol_counts = {}
+
+    for i, (mn_num, start, vol_num) in enumerate(all_markers):
+        text = vol_texts[vol_num]
+
+        # Find end: next marker in same volume, or end of volume text
+        end = len(text)
+        for j in range(i + 1, len(all_markers)):
+            if all_markers[j][2] == vol_num:
+                end = all_markers[j][1]
+                break
+
+        save_sutta(output_dir, f"mn{mn_num}.json", mn_num, text[start:end])
+        all_suttas.append(mn_num)
+        vol_counts.setdefault(vol_num, []).append(mn_num)
+
+    for vol_num in sorted(vol_counts):
+        nums = vol_counts[vol_num]
+        print(f"  Vol {vol_num}: {len(nums)} suttas "
+              f"(MN {min(nums)}-{max(nums)})")
 
     print(f"  Total: {len(all_suttas)} per-sutta files")
     return len(all_suttas)
@@ -241,6 +298,9 @@ def split_sn():
     print("Splitting SN...")
 
     all_suttas = []
+    # Track sutta counter per absolute saṃyutta across ALL volumes
+    # (prevents counter reset when a saṃyutta spans volume boundaries)
+    samyutta_counters = {}
 
     for vol_num in range(1, 6):
         vol_file = output_dir / f"sn_vol{vol_num}.json"
@@ -254,8 +314,9 @@ def split_sn():
 
         # Match sutta markers: 3-level "N. N. N" or 4-level "N. N. N. N"
         # Use [ ]+ (not \s+) between numbers to avoid matching across lines
+        # Allow range markers like "1-12" in sutta number position (peyyāla)
         markers = list(re.finditer(
-            r'^(\d+)\.[ ]+(\d+)\.[ ]+(\d+)(?:\.[ ]+(\d+))?\.?[ ]*$',
+            r'^(\d+)\.[ ]+(\d+)\.[ ]+(\d+)(?:-\d+)?(?:\.[ ]+(\d+)(?:-\d+)?)?\.?[ ]*$',
             text, re.MULTILINE
         ))
 
@@ -265,22 +326,18 @@ def split_sn():
         # Filter: first number must be within expected saṃyutta range
         valid_markers = [m for m in markers if 1 <= int(m.group(1)) <= max_local]
 
-        # Group by saṃyutta (first number) and count sequentially
-        current_samyutta = None
-        sutta_counter = 0
         sutta_positions = []
 
         for m in valid_markers:
             local_samyutta = int(m.group(1))
             abs_samyutta = local_samyutta + offset
 
-            if local_samyutta != current_samyutta:
-                current_samyutta = local_samyutta
-                sutta_counter = 1
+            if abs_samyutta not in samyutta_counters:
+                samyutta_counters[abs_samyutta] = 1
             else:
-                sutta_counter += 1
+                samyutta_counters[abs_samyutta] += 1
 
-            sutta_id = f"sn{abs_samyutta}_{sutta_counter}"
+            sutta_id = f"sn{abs_samyutta}_{samyutta_counters[abs_samyutta]}"
             sutta_positions.append((sutta_id, m.start(), abs_samyutta))
 
         # Extract text between markers
@@ -312,6 +369,9 @@ def split_an():
     print("Splitting AN...")
 
     all_suttas = []
+    # Track sutta counter per nipāta across ALL volumes
+    # (prevents counter reset when a nipāta spans volume boundaries)
+    nipata_counters = {}
 
     for vol_num in range(1, 6):
         vol_file = output_dir / f"an_vol{vol_num}.json"
@@ -334,21 +394,17 @@ def split_an():
         # Filter: first number (nipāta) must be valid (1-11)
         valid_markers = [m for m in markers if 1 <= int(m.group(1)) <= 11]
 
-        # Group by nipāta (first number) and count sequentially
-        current_nipata = None
-        sutta_counter = 0
         sutta_positions = []
 
         for m in valid_markers:
             nipata = int(m.group(1))
 
-            if nipata != current_nipata:
-                current_nipata = nipata
-                sutta_counter = 1
+            if nipata not in nipata_counters:
+                nipata_counters[nipata] = 1
             else:
-                sutta_counter += 1
+                nipata_counters[nipata] += 1
 
-            sutta_id = f"an{nipata}_{sutta_counter}"
+            sutta_id = f"an{nipata}_{nipata_counters[nipata]}"
             sutta_positions.append((sutta_id, m.start(), nipata))
 
         # Extract text between markers

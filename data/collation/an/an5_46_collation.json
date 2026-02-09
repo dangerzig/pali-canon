@@ -4,50 +4,60 @@
   "word_counts": {
     "gretil": 18,
     "sc": 17,
-    "vri": 0
+    "vri": 0,
+    "bjt": 17
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 19,
-    "orthographic": 0,
-    "errors": 0,
+    "orthographic": 2,
+    "errors": 1,
     "variants": 0,
     "uncertain": 3,
-    "match": 0,
-    "other": 16
+    "match": 13,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "xlvi",
       "sc": "pañcimā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "pañcasampadāsuttaṃ",
+      "type": "error",
       "preferred": "pañcimā",
-      "notes": "Three-way disagreement, one valid reading"
-    },
+      "notes": "PTS \"xlvi\" not in DPD, SC \"pañcimā\" is valid"
+    }
+  ],
+  "variants": [],
+  "uncertain": [
     {
       "position": 1,
       "gretil": "pañc",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "pañc",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "sāvatthinidānaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 2,
       "gretil": "imā",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "imā",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "pañcimā",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 18,
+      "gretil": null,
+      "sc": "chaṭṭhaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

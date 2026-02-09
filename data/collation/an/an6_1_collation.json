@@ -4,100 +4,116 @@
   "word_counts": {
     "gretil": 110,
     "sc": 105,
-    "vri": 0
+    "vri": 0,
+    "bjt": 138
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 110,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 8,
-    "match": 0,
-    "other": 102
+    "orthographic": 6,
+    "errors": 2,
+    "variants": 3,
+    "uncertain": 5,
+    "match": 94,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 1,
-      "gretil": "evam",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "evam",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 26,
-      "gretil": "etad",
-      "sc": "etadavoca",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "etad",
-      "notes": "Three-way disagreement: PTS \"etad\", SC \"etadavoca\", VRI \"None\""
-    },
-    {
-      "position": 27,
-      "gretil": "avoca",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "avoca",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "errors": [
     {
       "position": 98,
       "gretil": "idam",
       "sc": "idamavoca",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": null,
+      "type": "error",
       "preferred": "idamavoca",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 99,
-      "gretil": "avoca",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "avoca",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "notes": "PTS \"idam\" not in DPD, SC \"idamavoca\" is valid"
     },
     {
       "position": 106,
       "gretil": "abhinandun",
       "sc": "abhinandunti",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "abhinandunti",
+      "type": "error",
       "preferred": "abhinandunti",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"abhinandun\" not in DPD, SC \"abhinandunti\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 0,
+      "gretil": "i",
+      "sc": "evaṃ",
+      "vri": null,
+      "bjt": "paṭhamāhuneyyasuttaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"i\" vs SC \"evaṃ\""
+    },
+    {
+      "position": 26,
+      "gretil": "etad",
+      "sc": "etadavoca",
+      "vri": null,
+      "bjt": "etadavoca",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"etad\" vs SC \"etadavoca\""
     },
     {
       "position": 107,
       "gretil": "ti",
       "sc": "paṭhamaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ti",
-      "notes": "Three-way disagreement: PTS \"ti\", SC \"paṭhamaṃ\", VRI \"None\""
+      "bjt": null,
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ti\" vs SC \"paṭhamaṃ\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "evam",
+      "sc": null,
+      "vri": null,
+      "bjt": "evaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 27,
+      "gretil": "avoca",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 99,
+      "gretil": "avoca",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 108,
       "gretil": "aṅguttaranikāya",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "aṅguttaranikāya",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 109,
+      "gretil": "ii",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

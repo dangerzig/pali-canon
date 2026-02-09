@@ -4,80 +4,95 @@
   "word_counts": {
     "gretil": 95,
     "sc": 94,
-    "vri": 0
+    "vri": 0,
+    "bjt": 97
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 96,
-    "orthographic": 0,
+    "orthographic": 2,
     "errors": 0,
-    "variants": 0,
-    "uncertain": 6,
-    "match": 0,
-    "other": 90
+    "variants": 5,
+    "uncertain": 3,
+    "match": 86,
+    "other": 0
   },
   "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "lxxxiv",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxxxiv",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "variants": [
     {
       "position": 23,
       "gretil": "anottāpi",
       "sc": "anottappī",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "anottāpi",
-      "notes": "Three-way disagreement: PTS \"anottāpi\", SC \"anottappī\", VRI \"None\""
+      "bjt": "anottappī",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"anottāpi\" vs SC \"anottappī\""
     },
     {
-      "position": 47,
-      "gretil": "ti",
-      "sc": null,
+      "position": 46,
+      "gretil": "cā",
+      "sc": "ca",
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ti",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "cā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"cā\" vs SC \"ca\""
     },
     {
       "position": 68,
       "gretil": "hirimā",
       "sc": "hirīmā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "hirimā",
-      "notes": "Three-way disagreement: PTS \"hirimā\", SC \"hirīmā\", VRI \"None\""
+      "bjt": "hirimā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"hirimā\" vs SC \"hirīmā\""
     },
     {
       "position": 70,
       "gretil": "ottāpi",
       "sc": "ottappī",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ottāpi",
-      "notes": "Three-way disagreement: PTS \"ottāpi\", SC \"ottappī\", VRI \"None\""
+      "bjt": "ottappī",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ottāpi\" vs SC \"ottappī\""
     },
     {
       "position": 72,
       "gretil": "āraddhaviriyo",
       "sc": "āraddhavīriyo",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "āraddhaviriyo",
-      "notes": "Three-way disagreement: PTS \"āraddhaviriyo\", SC \"āraddhavīriyo\", VRI \"None\""
+      "bjt": "āraddhaviriyo",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"āraddhaviriyo\" vs SC \"āraddhavīriyo\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "lxxxiv",
+      "sc": null,
+      "vri": null,
+      "bjt": "assaddhasuttaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 47,
+      "gretil": "ti",
+      "sc": null,
+      "vri": null,
+      "bjt": "ti",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 95,
+      "gretil": null,
+      "sc": "catutthaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

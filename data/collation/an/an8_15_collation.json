@@ -4,100 +4,107 @@
   "word_counts": {
     "gretil": 85,
     "sc": 79,
-    "vri": 0
+    "vri": 0,
+    "bjt": 83
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 85,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 8,
-    "match": 0,
-    "other": 77
+    "orthographic": 6,
+    "errors": 2,
+    "variants": 1,
+    "uncertain": 6,
+    "match": 70,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
-      "position": 1,
-      "gretil": "aṭṭh",
-      "sc": null,
+      "position": 0,
+      "gretil": "xv",
+      "sc": "aṭṭhimāni",
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "aṭṭh",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 2,
-      "gretil": "imāni",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "imāni",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 39,
-      "gretil": "ca",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ca",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "mala",
+      "type": "error",
+      "preferred": "aṭṭhimāni",
+      "notes": "PTS \"xv\" not in DPD, SC \"aṭṭhimāni\" is valid"
     },
     {
       "position": 50,
       "gretil": "malānī",
       "sc": "malānīti",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "malānīti",
+      "type": "error",
       "preferred": "malānīti",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"malānī\" not in DPD, SC \"malānīti\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 82,
+      "gretil": "aṅguttaranikāya",
+      "sc": "pañcamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "variant",
+      "notes": "Textual variant: PTS \"aṅguttaranikāya\" vs SC \"pañcamaṃ\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "aṭṭh",
+      "sc": null,
+      "vri": null,
+      "bjt": "suttaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 2,
+      "gretil": "imāni",
+      "sc": null,
+      "vri": null,
+      "bjt": "sāvatthi",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 39,
+      "gretil": "ca",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 51,
       "gretil": "ti",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ti",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 82,
-      "gretil": "aṅguttaranikāya",
-      "sc": "pañcamaṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "aṅguttaranikāya",
-      "notes": "Three-way disagreement: PTS \"aṅguttaranikāya\", SC \"pañcamaṃ\", VRI \"None\""
+      "bjt": "asajjhāya",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 83,
       "gretil": "xvi",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "xvi",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 84,
       "gretil": "xvii",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "xvii",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

@@ -4,450 +4,772 @@
   "word_counts": {
     "gretil": 54,
     "sc": 72,
-    "vri": 0
+    "vri": 0,
+    "bjt": 54
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 91,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 43,
-    "match": 0,
-    "other": 48
+    "orthographic": 1,
+    "errors": 1,
+    "variants": 26,
+    "uncertain": 56,
+    "match": 7,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
+    {
+      "position": 87,
+      "gretil": "cix",
+      "sc": "pañcamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "error",
+      "preferred": "pañcamaṃ",
+      "notes": "PTS \"cix\" not in DPD, SC \"pañcamaṃ\" is valid"
+    }
+  ],
+  "variants": [
     {
       "position": 0,
       "gretil": "pañcahi",
       "sc": "pañcime",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "pañcahi",
-      "notes": "Three-way disagreement: PTS \"pañcahi\", SC \"pañcime\", VRI \"None\""
+      "bjt": "pañcahi",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"pañcahi\" vs SC \"pañcime\""
     },
     {
       "position": 2,
       "gretil": "dhammehi",
       "sc": "phāsuvihārā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "dhammehi",
-      "notes": "Three-way disagreement: PTS \"dhammehi\", SC \"phāsuvihārā\", VRI \"None\""
+      "bjt": "dhammehi",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"dhammehi\" vs SC \"phāsuvihārā\""
     },
     {
       "position": 3,
       "gretil": "samannāgato",
       "sc": "katame",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "samannāgato",
-      "notes": "Three-way disagreement: PTS \"samannāgato\", SC \"katame\", VRI \"None\""
+      "bjt": "samannāgato",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"samannāgato\" vs SC \"katame\""
     },
     {
       "position": 4,
       "gretil": "bhikkhu",
       "sc": "pañca",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "bhikkhu",
-      "notes": "Three-way disagreement: PTS \"bhikkhu\", SC \"pañca\", VRI \"None\""
-    },
-    {
-      "position": 5,
-      "gretil": "āhuneyyo",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "āhuneyyo",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 6,
-      "gretil": "hoti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "hoti",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 8,
-      "gretil": "anuttaraṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "anuttaraṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 9,
-      "gretil": "puññakkhettaṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "puññakkhettaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 10,
-      "gretil": "lokassa",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lokassa",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 11,
-      "gretil": "katamehi",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "katamehi",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 12,
-      "gretil": "pañcahi",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "pañcahi",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "bhikkhu",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"bhikkhu\" vs SC \"pañca\""
     },
     {
       "position": 15,
       "gretil": "bhikkhu",
       "sc": "bhikkhuno",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "bhikkhu",
-      "notes": "Three-way disagreement: PTS \"bhikkhu\", SC \"bhikkhuno\", VRI \"None\""
+      "bjt": "bhikkhu",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"bhikkhu\" vs SC \"bhikkhuno\""
     },
     {
       "position": 16,
       "gretil": "asekhena",
       "sc": "mettaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "asekhena",
-      "notes": "Three-way disagreement: PTS \"asekhena\", SC \"mettaṃ\", VRI \"None\""
+      "bjt": "asekhena",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"asekhena\" vs SC \"mettaṃ\""
     },
     {
       "position": 17,
       "gretil": "sīlakkhandhena",
       "sc": "kāyakammaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "sīlakkhandhena",
-      "notes": "Three-way disagreement: PTS \"sīlakkhandhena\", SC \"kāyakammaṃ\", VRI \"None\""
+      "bjt": "sīlakkhandhena",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"sīlakkhandhena\" vs SC \"kāyakammaṃ\""
     },
     {
       "position": 18,
       "gretil": "samannāgato",
       "sc": "paccupaṭṭhitaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "samannāgato",
-      "notes": "Three-way disagreement: PTS \"samannāgato\", SC \"paccupaṭṭhitaṃ\", VRI \"None\""
+      "bjt": "samannāgato",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"samannāgato\" vs SC \"paccupaṭṭhitaṃ\""
     },
     {
       "position": 20,
       "gretil": "asekhena",
       "sc": "sabrahmacārīsu",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "asekhena",
-      "notes": "Three-way disagreement: PTS \"asekhena\", SC \"sabrahmacārīsu\", VRI \"None\""
+      "bjt": "asekhena",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"asekhena\" vs SC \"sabrahmacārīsu\""
     },
     {
       "position": 21,
       "gretil": "samādhikkhandhena",
       "sc": "āvi",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "samādhikkhandhena",
-      "notes": "Three-way disagreement: PTS \"samādhikkhandhena\", SC \"āvi\", VRI \"None\""
+      "bjt": "samādhikkhandhena",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"samādhikkhandhena\" vs SC \"āvi\""
     },
     {
       "position": 22,
       "gretil": "samannāgato",
       "sc": "ceva",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "samannāgato",
-      "notes": "Three-way disagreement: PTS \"samannāgato\", SC \"ceva\", VRI \"None\""
+      "bjt": "samannāgato",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"samannāgato\" vs SC \"ceva\""
     },
     {
       "position": 31,
       "gretil": "asekhena",
       "sc": "sabrahmacārīsu",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "asekhena",
-      "notes": "Three-way disagreement: PTS \"asekhena\", SC \"sabrahmacārīsu\", VRI \"None\""
+      "bjt": "asekhena",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"asekhena\" vs SC \"sabrahmacārīsu\""
     },
     {
       "position": 32,
       "gretil": "paññākkhandhena",
       "sc": "āvi",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "paññākkhandhena",
-      "notes": "Three-way disagreement: PTS \"paññākkhandhena\", SC \"āvi\", VRI \"None\""
+      "bjt": "paññākkhandhena",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"paññākkhandhena\" vs SC \"āvi\""
     },
     {
       "position": 33,
       "gretil": "samannāgato",
       "sc": "ceva",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "samannāgato",
-      "notes": "Three-way disagreement: PTS \"samannāgato\", SC \"ceva\", VRI \"None\""
+      "bjt": "samannāgato",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"samannāgato\" vs SC \"ceva\""
     },
     {
       "position": 34,
       "gretil": "hoti",
       "sc": "raho",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "hoti",
-      "notes": "Three-way disagreement: PTS \"hoti\", SC \"raho\", VRI \"None\""
+      "bjt": "hoti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"hoti\" vs SC \"raho\""
     },
     {
       "position": 35,
       "gretil": "asekhena",
       "sc": "ca",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "asekhena",
-      "notes": "Three-way disagreement: PTS \"asekhena\", SC \"ca\", VRI \"None\""
+      "bjt": "asekhena",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"asekhena\" vs SC \"ca\""
     },
     {
       "position": 36,
       "gretil": "vimuttikkhandhena",
       "sc": "yāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vimuttikkhandhena",
-      "notes": "Three-way disagreement: PTS \"vimuttikkhandhena\", SC \"yāni\", VRI \"None\""
+      "bjt": "vimuttikkhandhena",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"vimuttikkhandhena\" vs SC \"yāni\""
     },
     {
       "position": 37,
       "gretil": "samannāgato",
       "sc": "tāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "samannāgato",
-      "notes": "Three-way disagreement: PTS \"samannāgato\", SC \"tāni\", VRI \"None\""
+      "bjt": "samannāgato",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"samannāgato\" vs SC \"tāni\""
     },
     {
       "position": 38,
       "gretil": "hoti",
       "sc": "sīlāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "hoti",
-      "notes": "Three-way disagreement: PTS \"hoti\", SC \"sīlāni\", VRI \"None\""
+      "bjt": "hoti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"hoti\" vs SC \"sīlāni\""
     },
     {
       "position": 39,
       "gretil": "asekhena",
       "sc": "akhaṇḍāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "asekhena",
-      "notes": "Three-way disagreement: PTS \"asekhena\", SC \"akhaṇḍāni\", VRI \"None\""
+      "bjt": "asekhena",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"asekhena\" vs SC \"akhaṇḍāni\""
     },
     {
       "position": 40,
       "gretil": "vimuttiñāṇadassanakkhandhena",
       "sc": "acchiddāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vimuttiñāṇadassanakkhandhena",
-      "notes": "Three-way disagreement: PTS \"vimuttiñāṇadassanakkhandhena\", SC \"acchiddāni\", VRI \"None\""
+      "bjt": "vimuttiñāṇadassanakkhandhena",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"vimuttiñāṇadassanakkhandhena\" vs SC \"acchiddāni\""
     },
     {
       "position": 41,
       "gretil": "samannāgato",
       "sc": "asabalāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "samannāgato",
-      "notes": "Three-way disagreement: PTS \"samannāgato\", SC \"asabalāni\", VRI \"None\""
+      "bjt": "samannāgato",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"samannāgato\" vs SC \"asabalāni\""
     },
     {
       "position": 42,
       "gretil": "hoti",
       "sc": "akammāsāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "hoti",
-      "notes": "Three-way disagreement: PTS \"hoti\", SC \"akammāsāni\", VRI \"None\""
+      "bjt": "hoti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"hoti\" vs SC \"akammāsāni\""
     },
     {
       "position": 43,
       "gretil": "imehi",
       "sc": "bhujissāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "imehi",
-      "notes": "Three-way disagreement: PTS \"imehi\", SC \"bhujissāni\", VRI \"None\""
+      "bjt": "imehi",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"imehi\" vs SC \"bhujissāni\""
     },
     {
       "position": 76,
       "gretil": "pañcahi",
       "sc": "pañca",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "pañcahi",
-      "notes": "Three-way disagreement: PTS \"pañcahi\", SC \"pañca\", VRI \"None\""
+      "bjt": "pañcahi",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"pañcahi\" vs SC \"pañca\""
     },
     {
       "position": 77,
       "gretil": "dhammehi",
       "sc": "phāsuvihārā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "dhammehi",
-      "notes": "Three-way disagreement: PTS \"dhammehi\", SC \"phāsuvihārā\", VRI \"None\""
+      "bjt": "dhammehi",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"dhammehi\" vs SC \"phāsuvihārā\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 5,
+      "gretil": "āhuneyyo",
+      "sc": null,
+      "vri": null,
+      "bjt": "āhuneyyo",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 6,
+      "gretil": "hoti",
+      "sc": null,
+      "vri": null,
+      "bjt": "pāhuneyyo",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 7,
+      "gretil": "pe",
+      "sc": null,
+      "vri": null,
+      "bjt": "dakkhiṇeyyo",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 8,
+      "gretil": "anuttaraṃ",
+      "sc": null,
+      "vri": null,
+      "bjt": "anuttaraṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 9,
+      "gretil": "puññakkhettaṃ",
+      "sc": null,
+      "vri": null,
+      "bjt": "puññakkhettaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 10,
+      "gretil": "lokassa",
+      "sc": null,
+      "vri": null,
+      "bjt": "lokassa",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 11,
+      "gretil": "katamehi",
+      "sc": null,
+      "vri": null,
+      "bjt": "katamehi",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 12,
+      "gretil": "pañcahi",
+      "sc": null,
+      "vri": null,
+      "bjt": "pañcahi",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 23,
+      "gretil": null,
+      "sc": "raho",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 24,
+      "gretil": null,
+      "sc": "ca",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 25,
+      "gretil": null,
+      "sc": "mettaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 26,
+      "gretil": null,
+      "sc": "vacīkammaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 27,
+      "gretil": null,
+      "sc": "mettaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 28,
+      "gretil": null,
+      "sc": "manokammaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 29,
+      "gretil": null,
+      "sc": "paccupaṭṭhitaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 44,
+      "gretil": null,
+      "sc": "viññuppasatthāni",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 45,
+      "gretil": null,
+      "sc": "aparāmaṭṭhāni",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 46,
+      "gretil": null,
+      "sc": "samādhisaṃvattanikāni",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 47,
+      "gretil": null,
+      "sc": "tathārūpehi",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 48,
+      "gretil": null,
+      "sc": "sīlehi",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 49,
+      "gretil": null,
+      "sc": "sīlasāmaññagato",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 50,
+      "gretil": null,
+      "sc": "viharati",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 51,
+      "gretil": null,
+      "sc": "sabrahmacārīhi",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 52,
+      "gretil": null,
+      "sc": "āvi",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 53,
+      "gretil": null,
+      "sc": "ceva",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 54,
+      "gretil": null,
+      "sc": "raho",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 55,
+      "gretil": null,
+      "sc": "ca",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 56,
+      "gretil": null,
+      "sc": "yāyaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 57,
+      "gretil": null,
+      "sc": "diṭṭhi",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 58,
+      "gretil": null,
+      "sc": "ariyā",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 59,
+      "gretil": null,
+      "sc": "niyyānikā",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 60,
+      "gretil": null,
+      "sc": "niyyāti",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 61,
+      "gretil": null,
+      "sc": "takkarassa",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 62,
+      "gretil": null,
+      "sc": "sammā",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 63,
+      "gretil": null,
+      "sc": "dukkhakkhayāya",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 64,
+      "gretil": null,
+      "sc": "tathārūpāya",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 65,
+      "gretil": null,
+      "sc": "diṭṭhiyā",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 66,
+      "gretil": null,
+      "sc": "diṭṭhisāmaññagato",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 67,
+      "gretil": null,
+      "sc": "viharati",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 68,
+      "gretil": null,
+      "sc": "sabrahmacārīhi",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 69,
+      "gretil": null,
+      "sc": "āvi",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 70,
+      "gretil": null,
+      "sc": "ceva",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 71,
+      "gretil": null,
+      "sc": "raho",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 72,
+      "gretil": null,
+      "sc": "ca",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 73,
+      "gretil": null,
+      "sc": "ime",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 78,
       "gretil": "samannāgato",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "samannāgato",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "samannāgato",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 79,
       "gretil": "bhikkhu",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "bhikkhu",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "bhikkhu",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 80,
       "gretil": "āhuneyyo",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "āhuneyyo",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "āhuneyyo",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 81,
       "gretil": "hoti",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "hoti",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "hoti",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 82,
+      "gretil": "pe",
+      "sc": null,
+      "vri": null,
+      "bjt": "pāhuneyyo",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 83,
       "gretil": "anuttaraṃ",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "anuttaraṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "anuttaraṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 84,
       "gretil": "puññakkhettaṃ",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "puññakkhettaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "puññakkhettaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 85,
       "gretil": "lokassā",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lokassā",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "lokassāti",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
-      "position": 87,
-      "gretil": "cix",
-      "sc": "pañcamaṃ",
+      "position": 88,
+      "gretil": "cx",
+      "sc": null,
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "pañcamaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 89,
       "gretil": "phāsuvihāravagga",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "phāsuvihāravagga",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 90,
       "gretil": "cix",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "cix",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

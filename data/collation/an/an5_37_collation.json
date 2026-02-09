@@ -4,90 +4,98 @@
   "word_counts": {
     "gretil": 102,
     "sc": 100,
-    "vri": 0
+    "vri": 0,
+    "bjt": 89
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 103,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 7,
-    "match": 0,
-    "other": 96
+    "orthographic": 19,
+    "errors": 2,
+    "variants": 1,
+    "uncertain": 5,
+    "match": 76,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "xxxvii",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "xxxvii",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "errors": [
     {
       "position": 76,
       "gretil": "detī",
       "sc": "detīti",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "deti",
+      "type": "error",
       "preferred": "detīti",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 77,
-      "gretil": "ti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ti",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "notes": "PTS \"detī\" not in DPD, SC \"detīti\" is valid"
     },
     {
       "position": 93,
       "gretil": "sukhañ",
       "sc": "sukhañca",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "sukhañca",
+      "type": "error",
       "preferred": "sukhañca",
-      "notes": "Three-way disagreement, one valid reading"
-    },
+      "notes": "PTS \"sukhañ\" not in DPD, SC \"sukhañca\" is valid"
+    }
+  ],
+  "variants": [
     {
       "position": 94,
       "gretil": "ca",
       "sc": "paṭibhānakaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ca",
-      "notes": "Three-way disagreement: PTS \"ca\", SC \"paṭibhānakaṃ\", VRI \"None\""
+      "bjt": "paṭibhāṇakaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ca\" vs SC \"paṭibhānakaṃ\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "xxxvii",
+      "sc": null,
+      "vri": null,
+      "bjt": "bhojanasuttaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 77,
+      "gretil": "ti",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 95,
       "gretil": "paṭibhānado",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "paṭibhānado",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "dighāyu",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 100,
       "gretil": "yatthupapajjatī",
       "sc": "yatthūpapajjatī",
       "vri": null,
+      "bjt": "yatthupapajjatīti",
       "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "yatthupapajjatī",
-      "notes": "Three-way disagreement: PTS \"yatthupapajjatī\", SC \"yatthūpapajjatī\", VRI \"None\""
+      "notes": "Neither reading validated: PTS \"yatthupapajjatī\" vs SC \"yatthūpapajjatī\""
+    },
+    {
+      "position": 102,
+      "gretil": null,
+      "sc": "sattamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

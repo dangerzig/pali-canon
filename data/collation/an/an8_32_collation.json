@@ -4,60 +4,79 @@
   "word_counts": {
     "gretil": 19,
     "sc": 17,
-    "vri": 0
+    "vri": 0,
+    "bjt": 18
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 20,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
+    "orthographic": 5,
+    "errors": 1,
+    "variants": 1,
     "uncertain": 4,
-    "match": 0,
-    "other": 16
+    "match": 9,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
+  "errors": [
+    {
+      "position": 3,
+      "gretil": "kusalañ",
+      "sc": "kusalañca",
+      "vri": null,
+      "bjt": "kusalañca",
+      "type": "error",
+      "preferred": "kusalañca",
+      "notes": "PTS \"kusalañ\" not in DPD, SC \"kusalañca\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 9,
+      "gretil": "etaṃ",
+      "sc": "etañhi",
+      "vri": null,
+      "bjt": "etaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"etaṃ\" vs SC \"etañhi\""
+    }
+  ],
   "uncertain": [
     {
       "position": 0,
       "gretil": "xxxii",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "xxxii",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 3,
-      "gretil": "kusalañ",
-      "sc": "kusalañca",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "kusalañca",
-      "notes": "Three-way disagreement, one valid reading"
+      "bjt": "dutiyadāna",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 4,
       "gretil": "ca",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ca",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
-      "position": 9,
-      "gretil": "etaṃ",
-      "sc": "etañhi",
+      "position": 10,
+      "gretil": "hi",
+      "sc": null,
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "etaṃ",
-      "notes": "Three-way disagreement: PTS \"etaṃ\", SC \"etañhi\", VRI \"None\""
+      "bjt": "hi",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 19,
+      "gretil": null,
+      "sc": "dutiyaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

@@ -4,120 +4,124 @@
   "word_counts": {
     "gretil": 51,
     "sc": 45,
-    "vri": 0
+    "vri": 0,
+    "bjt": 94
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 52,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 10,
-    "match": 0,
-    "other": 42
+    "orthographic": 24,
+    "errors": 1,
+    "variants": 2,
+    "uncertain": 8,
+    "match": 17,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "lxxx",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxxx",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 6,
-      "gretil": "na",
-      "sc": "nacirasseva",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "na",
-      "notes": "Three-way disagreement: PTS \"na\", SC \"nacirasseva\", VRI \"None\""
-    },
-    {
-      "position": 7,
-      "gretil": "cirass",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "cirass",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 8,
-      "gretil": "eva",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 23,
-      "gretil": "hoti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "hoti",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 26,
-      "gretil": "hoti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "hoti",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "errors": [
     {
       "position": 33,
       "gretil": "uttariñ",
       "sc": "uttari",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": null,
+      "type": "error",
       "preferred": "uttari",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"uttariñ\" not in DPD, SC \"uttari\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 6,
+      "gretil": "na",
+      "sc": "nacirasseva",
+      "vri": null,
+      "bjt": "saddhammaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"na\" vs SC \"nacirasseva\""
     },
     {
       "position": 43,
       "gretil": "na",
       "sc": "nacirasseva",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "na",
-      "notes": "Three-way disagreement: PTS \"na\", SC \"nacirasseva\", VRI \"None\""
+      "bjt": "na",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"na\" vs SC \"nacirasseva\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "lxxx",
+      "sc": null,
+      "vri": null,
+      "bjt": "āvaraṇa",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 7,
+      "gretil": "cirass",
+      "sc": null,
+      "vri": null,
+      "bjt": "abhabbo",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 8,
+      "gretil": "eva",
+      "sc": null,
+      "vri": null,
+      "bjt": "niyāmaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 23,
+      "gretil": "hoti",
+      "sc": null,
+      "vri": null,
+      "bjt": "duppañño",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 26,
+      "gretil": "hoti",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 44,
       "gretil": "cirass",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "cirass",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "kammāvaraṇatāya",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 45,
       "gretil": "eva",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "samannāgato",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 51,
+      "gretil": null,
+      "sc": "chaṭṭhaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

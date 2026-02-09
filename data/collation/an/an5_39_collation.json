@@ -4,160 +4,173 @@
   "word_counts": {
     "gretil": 105,
     "sc": 99,
-    "vri": 0
+    "vri": 0,
+    "bjt": 97
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 106,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 14,
-    "match": 0,
-    "other": 92
+    "orthographic": 9,
+    "errors": 5,
+    "variants": 3,
+    "uncertain": 8,
+    "match": 81,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "xxxix",
       "sc": "pañcimāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "puttasuttaṃ",
+      "type": "error",
       "preferred": "pañcimāni",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 1,
-      "gretil": "pañc",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "pañc",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 2,
-      "gretil": "imāni",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "imāni",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 30,
-      "gretil": "kālakatānaṃ",
-      "sc": "kālaṅkatānaṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "kālakatānaṃ",
-      "notes": "Three-way disagreement: PTS \"kālakatānaṃ\", SC \"kālaṅkatānaṃ\", VRI \"None\""
+      "notes": "PTS \"xxxix\" not in DPD, SC \"pañcimāni\" is valid"
     },
     {
       "position": 32,
       "gretil": "anuppadassatī",
       "sc": "anuppadassatīti",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "anuppadassatīti",
+      "type": "error",
       "preferred": "anuppadassatīti",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 33,
-      "gretil": "ti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ti",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "notes": "PTS \"anuppadassatī\" not in DPD, SC \"anuppadassatīti\" is valid"
     },
     {
       "position": 44,
       "gretil": "jāyamānan",
       "sc": "jāyamānanti",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "jāyamānanti",
+      "type": "error",
       "preferred": "jāyamānanti",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 45,
-      "gretil": "ti",
-      "sc": "pañca",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ti",
-      "notes": "Three-way disagreement: PTS \"ti\", SC \"pañca\", VRI \"None\""
-    },
-    {
-      "position": 46,
-      "gretil": "pañcaṭṭhānāni",
-      "sc": "ṭhānāni",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "pañcaṭṭhānāni",
-      "notes": "Three-way disagreement: PTS \"pañcaṭṭhānāni\", SC \"ṭhānāni\", VRI \"None\""
+      "notes": "PTS \"jāyamānan\" not in DPD, SC \"jāyamānanti\" is valid"
     },
     {
       "position": 70,
       "gretil": "ṭhānān",
       "sc": "ṭhānānetāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "ṭhānānetāni",
+      "type": "error",
       "preferred": "ṭhānānetāni",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 71,
-      "gretil": "etāni",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "etāni",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "notes": "PTS \"ṭhānān\" not in DPD, SC \"ṭhānānetāni\" is valid"
     },
     {
       "position": 84,
       "gretil": "katam",
       "sc": "katamanussaraṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "katamanussaraṃ",
+      "type": "error",
       "preferred": "katamanussaraṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"katam\" not in DPD, SC \"katamanussaraṃ\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 30,
+      "gretil": "kālakatānaṃ",
+      "sc": "kālaṅkatānaṃ",
+      "vri": null,
+      "bjt": "kālakatānaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"kālakatānaṃ\" vs SC \"kālaṅkatānaṃ\""
+    },
+    {
+      "position": 45,
+      "gretil": "ti",
+      "sc": "pañca",
+      "vri": null,
+      "bjt": "pañca",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ti\" vs SC \"pañca\""
+    },
+    {
+      "position": 46,
+      "gretil": "pañcaṭṭhānāni",
+      "sc": "ṭhānāni",
+      "vri": null,
+      "bjt": "ṭhānāni",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"pañcaṭṭhānāni\" vs SC \"ṭhānāni\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "pañc",
+      "sc": null,
+      "vri": null,
+      "bjt": "pañcimāni",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 2,
+      "gretil": "imāni",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 33,
+      "gretil": "ti",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 71,
+      "gretil": "etāni",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 85,
       "gretil": "anussaraṃ",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "anussaraṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 86,
       "gretil": "aṅguttaranikāya",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "aṅguttaranikāya",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 87,
+      "gretil": "xl",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 105,
+      "gretil": null,
+      "sc": "navamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

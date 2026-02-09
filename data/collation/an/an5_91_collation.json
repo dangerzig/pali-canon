@@ -4,80 +4,79 @@
   "word_counts": {
     "gretil": 21,
     "sc": 17,
-    "vri": 0
+    "vri": 0,
+    "bjt": 35
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 21,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 6,
-    "match": 0,
-    "other": 15
+    "orthographic": 1,
+    "errors": 1,
+    "variants": 1,
+    "uncertain": 4,
+    "match": 14,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "pañc",
-      "sc": "pañcimā",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "pañc",
-      "notes": "Three-way disagreement: PTS \"pañc\", SC \"pañcimā\", VRI \"None\""
-    },
-    {
-      "position": 1,
-      "gretil": "imā",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "imā",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "errors": [
     {
       "position": 17,
       "gretil": "xcii",
       "sc": "paṭhamaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "pañca",
+      "type": "error",
       "preferred": "paṭhamaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"xcii\" not in DPD, SC \"paṭhamaṃ\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 0,
+      "gretil": "pañc",
+      "sc": "pañcimā",
+      "vri": null,
+      "bjt": "paṭhamasampadāsuttaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"pañc\" vs SC \"pañcimā\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "imā",
+      "sc": null,
+      "vri": null,
+      "bjt": "sāvatthinidānaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 18,
       "gretil": "xcv",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "xcv",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "sīlasampadā",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 19,
       "gretil": "kakudhavagga",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "kakudhavagga",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "samādhisampadā",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 20,
       "gretil": "xcii",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "xcii",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "paññāsampadā",
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

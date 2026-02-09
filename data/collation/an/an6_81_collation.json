@@ -4,100 +4,97 @@
   "word_counts": {
     "gretil": 75,
     "sc": 70,
-    "vri": 0
+    "vri": 0,
+    "bjt": 210
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 75,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 8,
+    "orthographic": 67,
+    "errors": 1,
+    "variants": 2,
+    "uncertain": 5,
     "match": 0,
-    "other": 67
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
-      "position": 0,
-      "gretil": "lxxxi",
-      "sc": null,
+      "position": 72,
+      "gretil": "lxxxii",
+      "sc": "sattamaṃ",
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxxxi",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+      "bjt": "jīvitā",
+      "type": "error",
+      "preferred": "sattamaṃ",
+      "notes": "PTS \"lxxxii\" not in DPD, SC \"sattamaṃ\" is valid"
+    }
+  ],
+  "variants": [
     {
       "position": 15,
       "gretil": "kāmesu",
       "sc": "kāmesumicchācārī",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "kāmesu",
-      "notes": "Three-way disagreement: PTS \"kāmesu\", SC \"kāmesumicchācārī\", VRI \"None\""
-    },
-    {
-      "position": 16,
-      "gretil": "micchācārī",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "micchācārī",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "katamehi",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"kāmesu\" vs SC \"kāmesumicchācārī\""
     },
     {
       "position": 50,
       "gretil": "kāmesu",
       "sc": "kāmesumicchācārā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "kāmesu",
-      "notes": "Three-way disagreement: PTS \"kāmesu\", SC \"kāmesumicchācārā\", VRI \"None\""
+      "bjt": "abhabbo",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"kāmesu\" vs SC \"kāmesumicchācārā\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "lxxxi",
+      "sc": null,
+      "vri": null,
+      "bjt": "voropita",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 16,
+      "gretil": "micchācārī",
+      "sc": null,
+      "vri": null,
+      "bjt": "chahi",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 51,
       "gretil": "micchācārā",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "micchācārā",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 72,
-      "gretil": "lxxxii",
-      "sc": "sattamaṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "sattamaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "bjt": "niyāmaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 73,
       "gretil": "lxxxiii",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxxxiii",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "voropitā",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 74,
       "gretil": "arahattavagga",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "arahattavagga",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "hoti",
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

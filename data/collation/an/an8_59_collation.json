@@ -4,80 +4,98 @@
   "word_counts": {
     "gretil": 58,
     "sc": 57,
-    "vri": 0
+    "vri": 0,
+    "bjt": 60
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 60,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 6,
-    "match": 0,
-    "other": 54
+    "orthographic": 9,
+    "errors": 2,
+    "variants": 1,
+    "uncertain": 5,
+    "match": 43,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "lix",
       "sc": "aṭṭhime",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "paṭhama",
+      "type": "error",
       "preferred": "aṭṭhime",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 1,
-      "gretil": "aṭṭh",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "aṭṭh",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 2,
-      "gretil": "ime",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ime",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 35,
-      "gretil": "lokassā",
-      "sc": "lokassāti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "lokassā",
-      "notes": "Three-way disagreement: PTS \"lokassā\", SC \"lokassāti\", VRI \"None\""
-    },
-    {
-      "position": 36,
-      "gretil": "ti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ti",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "notes": "PTS \"lix\" not in DPD, SC \"aṭṭhime\" is valid"
     },
     {
       "position": 50,
       "gretil": "puññapekhānapāṇinaṃ",
       "sc": "puññapekkhāna",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "puññapekkhānapāṇinaṃ",
+      "type": "error",
       "preferred": "puññapekkhāna",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"puññapekhānapāṇinaṃ\" not in DPD, SC \"puññapekkhāna\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 35,
+      "gretil": "lokassā",
+      "sc": "lokassāti",
+      "vri": null,
+      "bjt": "lokassāti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"lokassā\" vs SC \"lokassāti\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "aṭṭh",
+      "sc": null,
+      "vri": null,
+      "bjt": "aṭṭhapuggala",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 2,
+      "gretil": "ime",
+      "sc": null,
+      "vri": null,
+      "bjt": "suttaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 36,
+      "gretil": "ti",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 51,
+      "gretil": null,
+      "sc": "pāṇinaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 59,
+      "gretil": null,
+      "sc": "navamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

@@ -4,1100 +4,1231 @@
   "word_counts": {
     "gretil": 461,
     "sc": 401,
-    "vri": 0
+    "vri": 0,
+    "bjt": 411
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 466,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 108,
-    "match": 0,
-    "other": 358
+    "orthographic": 18,
+    "errors": 19,
+    "variants": 43,
+    "uncertain": 70,
+    "match": 316,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
-      "position": 0,
-      "gretil": "lvi",
-      "sc": null,
+      "position": 19,
+      "gretil": "c",
+      "sc": "ceva",
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lvi",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 8,
-      "gretil": "ten",
-      "sc": "tenupasaṅkami",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ten",
-      "notes": "Three-way disagreement: PTS \"ten\", SC \"tenupasaṅkami\", VRI \"None\""
-    },
-    {
-      "position": 9,
-      "gretil": "upasaṅkami",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "upasaṅkami",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 13,
-      "gretil": "etad",
-      "sc": "etadavoca",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "etad",
-      "notes": "Three-way disagreement: PTS \"etad\", SC \"etadavoca\", VRI \"None\""
-    },
-    {
-      "position": 14,
-      "gretil": "avoca",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "avoca",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 20,
-      "gretil": "eva",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 30,
-      "gretil": "na",
-      "sc": "nappaṭibhanti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "na",
-      "notes": "Three-way disagreement: PTS \"na\", SC \"nappaṭibhanti\", VRI \"None\""
+      "bjt": "ceva",
+      "type": "error",
+      "preferred": "ceva",
+      "notes": "PTS \"c\" not in DPD, SC \"ceva\" is valid"
     },
     {
       "position": 31,
       "gretil": "ppaṭibhanti",
       "sc": "thinamiddhañca",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "thīnamiddhaṃ",
+      "type": "error",
       "preferred": "thinamiddhañca",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 32,
-      "gretil": "thīnamiddhañ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "thīnamiddhañ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 33,
-      "gretil": "ca",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ca",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 58,
-      "gretil": "ten",
-      "sc": "tenupasaṅkami",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ten",
-      "notes": "Three-way disagreement: PTS \"ten\", SC \"tenupasaṅkami\", VRI \"None\""
-    },
-    {
-      "position": 59,
-      "gretil": "upasaṅkami",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "upasaṅkami",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 71,
-      "gretil": "etad",
-      "sc": "etadavoca",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "etad",
-      "notes": "Three-way disagreement: PTS \"etad\", SC \"etadavoca\", VRI \"None\""
-    },
-    {
-      "position": 72,
-      "gretil": "avoca",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "avoca",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "notes": "PTS \"ppaṭibhanti\" not in DPD, SC \"thinamiddhañca\" is valid"
     },
     {
       "position": 76,
       "gretil": "evam",
       "sc": "evamāha",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "evamāha",
+      "type": "error",
       "preferred": "evamāha",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"evam\" not in DPD, SC \"evamāha\" is valid"
     },
     {
-      "position": 77,
-      "gretil": "āha",
-      "sc": null,
+      "position": 82,
+      "gretil": "c",
+      "sc": "ceva",
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "āha",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 83,
-      "gretil": "eva",
-      "sc": "kāyo",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "eva",
-      "notes": "Three-way disagreement: PTS \"eva\", SC \"kāyo\", VRI \"None\""
-    },
-    {
-      "position": 84,
-      "gretil": "kāyo",
-      "sc": "disā",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "kāyo",
-      "notes": "Three-way disagreement: PTS \"kāyo\", SC \"disā\", VRI \"None\""
-    },
-    {
-      "position": 85,
-      "gretil": "disā",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "disā",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 86,
-      "gretil": "ca",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ca",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 87,
-      "gretil": "me",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "me",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 88,
-      "gretil": "na",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "na",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 89,
-      "gretil": "pakkhāyanti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "pakkhāyanti",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 90,
-      "gretil": "dhammā",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "dhammā",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "veca",
+      "type": "error",
+      "preferred": "ceva",
+      "notes": "PTS \"c\" not in DPD, SC \"ceva\" is valid"
     },
     {
       "position": 94,
       "gretil": "ppaṭibhanti",
       "sc": "pakkhāyanti",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "thīnamiddhaṃ",
+      "type": "error",
       "preferred": "pakkhāyanti",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"ppaṭibhanti\" not in DPD, SC \"pakkhāyanti\" is valid"
     },
     {
       "position": 95,
       "gretil": "thīnamiddhañ",
       "sc": "dhammā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": null,
+      "type": "error",
       "preferred": "dhammā",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"thīnamiddhañ\" not in DPD, SC \"dhammā\" is valid"
     },
     {
-      "position": 114,
-      "gretil": "aṅguttaranikāya",
-      "sc": "evañhetaṃ",
+      "position": 138,
+      "gretil": "c",
+      "sc": "ceva",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "aṅguttaranikāya",
-      "notes": "Three-way disagreement: PTS \"aṅguttaranikāya\", SC \"evañhetaṃ\", VRI \"None\""
-    },
-    {
-      "position": 115,
-      "gretil": "lvi",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lvi",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 116,
-      "gretil": "evaṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "evaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 118,
-      "gretil": "etaṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "etaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 131,
-      "gretil": "bodhipakkhikānaṃ",
-      "sc": "bodhipakkhiyānaṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "bodhipakkhikānaṃ",
-      "notes": "Three-way disagreement: PTS \"bodhipakkhikānaṃ\", SC \"bodhipakkhiyānaṃ\", VRI \"None\""
-    },
-    {
-      "position": 139,
-      "gretil": "eva",
-      "sc": "kāyo",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "eva",
-      "notes": "Three-way disagreement: PTS \"eva\", SC \"kāyo\", VRI \"None\""
-    },
-    {
-      "position": 140,
-      "gretil": "kāyo",
-      "sc": "hoti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "kāyo",
-      "notes": "Three-way disagreement: PTS \"kāyo\", SC \"hoti\", VRI \"None\""
-    },
-    {
-      "position": 141,
-      "gretil": "hoti",
-      "sc": "disā",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "hoti",
-      "notes": "Three-way disagreement: PTS \"hoti\", SC \"disā\", VRI \"None\""
-    },
-    {
-      "position": 142,
-      "gretil": "disā",
-      "sc": "cassa",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "disā",
-      "notes": "Three-way disagreement: PTS \"disā\", SC \"cassa\", VRI \"None\""
-    },
-    {
-      "position": 144,
-      "gretil": "assa",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "assa",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 150,
-      "gretil": "na",
-      "sc": "nappaṭibhanti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "na",
-      "notes": "Three-way disagreement: PTS \"na\", SC \"nappaṭibhanti\", VRI \"None\""
+      "bjt": "ceva",
+      "type": "error",
+      "preferred": "ceva",
+      "notes": "PTS \"c\" not in DPD, SC \"ceva\" is valid"
     },
     {
       "position": 151,
       "gretil": "ppaṭibhanti",
       "sc": "thinamiddhañcassa",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "thīnamiddhaṃ",
+      "type": "error",
       "preferred": "thinamiddhañcassa",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"ppaṭibhanti\" not in DPD, SC \"thinamiddhañcassa\" is valid"
     },
     {
-      "position": 152,
-      "gretil": "thīnamiddhañ",
-      "sc": null,
+      "position": 163,
+      "gretil": "c",
+      "sc": "cassa",
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "thīnamiddhañ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 154,
-      "gretil": "assa",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "assa",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 164,
-      "gretil": "assa",
-      "sc": "dhammesu",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "assa",
-      "notes": "Three-way disagreement: PTS \"assa\", SC \"dhammesu\", VRI \"None\""
-    },
-    {
-      "position": 165,
-      "gretil": "dhammesu",
-      "sc": "vicikicchā",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "dhammesu",
-      "notes": "Three-way disagreement: PTS \"dhammesu\", SC \"vicikicchā\", VRI \"None\""
-    },
-    {
-      "position": 166,
-      "gretil": "vicikicchā",
-      "sc": "tasmātiha",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vicikicchā",
-      "notes": "Three-way disagreement: PTS \"vicikicchā\", SC \"tasmātiha\", VRI \"None\""
-    },
-    {
-      "position": 167,
-      "gretil": "tasmā",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "tasmā",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 168,
-      "gretil": "ti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ti",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "cassa",
+      "type": "error",
+      "preferred": "cassa",
+      "notes": "PTS \"c\" not in DPD, SC \"cassa\" is valid"
     },
     {
       "position": 176,
       "gretil": "bhāvissāmi",
       "sc": "bhavissāmi",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "bhavissāmi",
+      "type": "error",
       "preferred": "bhavissāmi",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 185,
-      "gretil": "bodhipakkhikānaṃ",
-      "sc": "bodhipakkhiyānaṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "bodhipakkhikānaṃ",
-      "notes": "Three-way disagreement: PTS \"bodhipakkhikānaṃ\", SC \"bodhipakkhiyānaṃ\", VRI \"None\""
-    },
-    {
-      "position": 191,
-      "gretil": "evaṃ",
-      "sc": "evañhi",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "evaṃ",
-      "notes": "Three-way disagreement: PTS \"evaṃ\", SC \"evañhi\", VRI \"None\""
-    },
-    {
-      "position": 201,
-      "gretil": "bhagavato",
-      "sc": "bhagavatā",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "bhagavato",
-      "notes": "Three-way disagreement: PTS \"bhagavato\", SC \"bhagavatā\", VRI \"None\""
-    },
-    {
-      "position": 221,
-      "gretil": "na",
-      "sc": "nacirasseva",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "na",
-      "notes": "Three-way disagreement: PTS \"na\", SC \"nacirasseva\", VRI \"None\""
-    },
-    {
-      "position": 222,
-      "gretil": "cirass",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "cirass",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 223,
-      "gretil": "eva",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 230,
-      "gretil": "tad",
-      "sc": "tadanuttaraṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "tad",
-      "notes": "Three-way disagreement: PTS \"tad\", SC \"tadanuttaraṃ\", VRI \"None\""
-    },
-    {
-      "position": 231,
-      "gretil": "anuttaraṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "anuttaraṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "notes": "PTS \"bhāvissāmi\" not in DPD, SC \"bhavissāmi\" is valid"
     },
     {
       "position": 233,
       "gretil": "diṭṭh",
       "sc": "diṭṭheva",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "diṭṭheva",
+      "type": "error",
       "preferred": "diṭṭheva",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"diṭṭh\" not in DPD, SC \"diṭṭheva\" is valid"
     },
     {
-      "position": 234,
-      "gretil": "eva",
-      "sc": null,
+      "position": 278,
+      "gretil": "c",
+      "sc": "ceva",
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 252,
-      "gretil": "ca",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ca",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 262,
-      "gretil": "arahattappatto",
-      "sc": "arahattaṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "arahattappatto",
-      "notes": "Three-way disagreement: PTS \"arahattappatto\", SC \"arahattaṃ\", VRI \"None\""
-    },
-    {
-      "position": 267,
-      "gretil": "ten",
-      "sc": "tenupasaṅkami",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ten",
-      "notes": "Three-way disagreement: PTS \"ten\", SC \"tenupasaṅkami\", VRI \"None\""
-    },
-    {
-      "position": 268,
-      "gretil": "upasaṅkami",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "upasaṅkami",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 272,
-      "gretil": "etad",
-      "sc": "etadavoca",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "etad",
-      "notes": "Three-way disagreement: PTS \"etad\", SC \"etadavoca\", VRI \"None\""
-    },
-    {
-      "position": 273,
-      "gretil": "avoca",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "avoca",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 279,
-      "gretil": "eva",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "error",
+      "preferred": "ceva",
+      "notes": "PTS \"c\" not in DPD, SC \"ceva\" is valid"
     },
     {
       "position": 290,
       "gretil": "thīnamiddhañ",
       "sc": "thinamiddhañca",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "thīnamiddhaṃ",
+      "type": "error",
       "preferred": "thinamiddhañca",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 291,
-      "gretil": "ca",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ca",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 317,
-      "gretil": "ten",
-      "sc": "tenupasaṅkami",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ten",
-      "notes": "Three-way disagreement: PTS \"ten\", SC \"tenupasaṅkami\", VRI \"None\""
-    },
-    {
-      "position": 318,
-      "gretil": "upasaṅkami",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "upasaṅkami",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 324,
-      "gretil": "lvi",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lvi",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 325,
-      "gretil": "lvii",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lvii",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 326,
-      "gretil": "nīvaraṇavagga",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "nīvaraṇavagga",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 327,
-      "gretil": "content",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "content",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 328,
-      "gretil": "straddling",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "straddling",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 329,
-      "gretil": "page",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "page",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 330,
-      "gretil": "break",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "break",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 331,
-      "gretil": "has",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "has",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 332,
-      "gretil": "been",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "been",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 333,
-      "gretil": "moved",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "moved",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 335,
-      "gretil": "the",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "the",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 336,
-      "gretil": "page",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "page",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 337,
-      "gretil": "above",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "above",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 344,
-      "gretil": "etad",
-      "sc": "etadavoca",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "etad",
-      "notes": "Three-way disagreement: PTS \"etad\", SC \"etadavoca\", VRI \"None\""
-    },
-    {
-      "position": 345,
-      "gretil": "avoca",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "avoca",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "notes": "PTS \"thīnamiddhañ\" not in DPD, SC \"thinamiddhañca\" is valid"
     },
     {
       "position": 349,
       "gretil": "evam",
       "sc": "evamāha",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "evamāha",
+      "type": "error",
       "preferred": "evamāha",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"evam\" not in DPD, SC \"evamāha\" is valid"
     },
     {
-      "position": 350,
-      "gretil": "āha",
-      "sc": null,
+      "position": 355,
+      "gretil": "c",
+      "sc": "ceva",
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "āha",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 356,
-      "gretil": "eva",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "error",
+      "preferred": "ceva",
+      "notes": "PTS \"c\" not in DPD, SC \"ceva\" is valid"
     },
     {
       "position": 367,
       "gretil": "thīnamiddhañ",
       "sc": "thinamiddhañca",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "thīnamiddhaṃ",
+      "type": "error",
       "preferred": "thinamiddhañca",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"thīnamiddhañ\" not in DPD, SC \"thinamiddhañca\" is valid"
     },
     {
-      "position": 368,
-      "gretil": "ca",
-      "sc": "me",
+      "position": 405,
+      "gretil": "c",
+      "sc": "ceva",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ca",
-      "notes": "Three-way disagreement: PTS \"ca\", SC \"me\", VRI \"None\""
-    },
-    {
-      "position": 369,
-      "gretil": "me",
-      "sc": "cittaṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "me",
-      "notes": "Three-way disagreement: PTS \"me\", SC \"cittaṃ\", VRI \"None\""
-    },
-    {
-      "position": 370,
-      "gretil": "cittaṃ",
-      "sc": "na",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "cittaṃ",
-      "notes": "Three-way disagreement: PTS \"cittaṃ\", SC \"na\", VRI \"None\""
-    },
-    {
-      "position": 383,
-      "gretil": "evaṃ",
-      "sc": "evañhetaṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "evaṃ",
-      "notes": "Three-way disagreement: PTS \"evaṃ\", SC \"evañhetaṃ\", VRI \"None\""
-    },
-    {
-      "position": 385,
-      "gretil": "etaṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "etaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 398,
-      "gretil": "bodhipakkhikānaṃ",
-      "sc": "bodhipakkhiyānaṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "bodhipakkhikānaṃ",
-      "notes": "Three-way disagreement: PTS \"bodhipakkhikānaṃ\", SC \"bodhipakkhiyānaṃ\", VRI \"None\""
-    },
-    {
-      "position": 406,
-      "gretil": "eva",
-      "sc": "madhurakajāto",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "eva",
-      "notes": "Three-way disagreement: PTS \"eva\", SC \"madhurakajāto\", VRI \"None\""
-    },
-    {
-      "position": 407,
-      "gretil": "madhurakajāto",
-      "sc": "kāyo",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "madhurakajāto",
-      "notes": "Three-way disagreement: PTS \"madhurakajāto\", SC \"kāyo\", VRI \"None\""
-    },
-    {
-      "position": 408,
-      "gretil": "kāyo",
-      "sc": "hoti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "kāyo",
-      "notes": "Three-way disagreement: PTS \"kāyo\", SC \"hoti\", VRI \"None\""
-    },
-    {
-      "position": 409,
-      "gretil": "hoti",
-      "sc": "disā",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "hoti",
-      "notes": "Three-way disagreement: PTS \"hoti\", SC \"disā\", VRI \"None\""
-    },
-    {
-      "position": 410,
-      "gretil": "disā",
-      "sc": "cassa",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "disā",
-      "notes": "Three-way disagreement: PTS \"disā\", SC \"cassa\", VRI \"None\""
-    },
-    {
-      "position": 412,
-      "gretil": "assa",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "assa",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "ceva",
+      "type": "error",
+      "preferred": "ceva",
+      "notes": "PTS \"c\" not in DPD, SC \"ceva\" is valid"
     },
     {
       "position": 418,
       "gretil": "thīnamiddhañ",
       "sc": "thinamiddhañcassa",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "thīnamiddhaṃ",
+      "type": "error",
       "preferred": "thinamiddhañcassa",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"thīnamiddhañ\" not in DPD, SC \"thinamiddhañcassa\" is valid"
     },
     {
-      "position": 420,
-      "gretil": "assa",
-      "sc": null,
+      "position": 430,
+      "gretil": "c",
+      "sc": "cassa",
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "assa",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "cassa",
+      "type": "error",
+      "preferred": "cassa",
+      "notes": "PTS \"c\" not in DPD, SC \"cassa\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 8,
+      "gretil": "ten",
+      "sc": "tenupasaṅkami",
+      "vri": null,
+      "bjt": "tenupasaṅkami",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ten\" vs SC \"tenupasaṅkami\""
+    },
+    {
+      "position": 13,
+      "gretil": "etad",
+      "sc": "etadavoca",
+      "vri": null,
+      "bjt": "etadavoca",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"etad\" vs SC \"etadavoca\""
+    },
+    {
+      "position": 30,
+      "gretil": "na",
+      "sc": "nappaṭibhanti",
+      "vri": null,
+      "bjt": "nappaṭibhanti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"na\" vs SC \"nappaṭibhanti\""
+    },
+    {
+      "position": 58,
+      "gretil": "ten",
+      "sc": "tenupasaṅkami",
+      "vri": null,
+      "bjt": "tenupasaṅkami",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ten\" vs SC \"tenupasaṅkami\""
+    },
+    {
+      "position": 71,
+      "gretil": "etad",
+      "sc": "etadavoca",
+      "vri": null,
+      "bjt": "etadavoca",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"etad\" vs SC \"etadavoca\""
+    },
+    {
+      "position": 83,
+      "gretil": "eva",
+      "sc": "kāyo",
+      "vri": null,
+      "bjt": "kāyo",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"eva\" vs SC \"kāyo\""
+    },
+    {
+      "position": 84,
+      "gretil": "kāyo",
+      "sc": "disā",
+      "vri": null,
+      "bjt": "disā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"kāyo\" vs SC \"disā\""
+    },
+    {
+      "position": 114,
+      "gretil": "aṅguttaranikāya",
+      "sc": "evañhetaṃ",
+      "vri": null,
+      "bjt": "evaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"aṅguttaranikāya\" vs SC \"evañhetaṃ\""
+    },
+    {
+      "position": 131,
+      "gretil": "bodhipakkhikānaṃ",
+      "sc": "bodhipakkhiyānaṃ",
+      "vri": null,
+      "bjt": "bodhipakkhiyānaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"bodhipakkhikānaṃ\" vs SC \"bodhipakkhiyānaṃ\""
+    },
+    {
+      "position": 139,
+      "gretil": "eva",
+      "sc": "kāyo",
+      "vri": null,
+      "bjt": "kāyo",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"eva\" vs SC \"kāyo\""
+    },
+    {
+      "position": 140,
+      "gretil": "kāyo",
+      "sc": "hoti",
+      "vri": null,
+      "bjt": "hoti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"kāyo\" vs SC \"hoti\""
+    },
+    {
+      "position": 141,
+      "gretil": "hoti",
+      "sc": "disā",
+      "vri": null,
+      "bjt": "disā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"hoti\" vs SC \"disā\""
+    },
+    {
+      "position": 142,
+      "gretil": "disā",
+      "sc": "cassa",
+      "vri": null,
+      "bjt": "cassa",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"disā\" vs SC \"cassa\""
+    },
+    {
+      "position": 150,
+      "gretil": "na",
+      "sc": "nappaṭibhanti",
+      "vri": null,
+      "bjt": "nappaṭibhanti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"na\" vs SC \"nappaṭibhanti\""
+    },
+    {
+      "position": 164,
+      "gretil": "assa",
+      "sc": "dhammesu",
+      "vri": null,
+      "bjt": "dhammesu",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"assa\" vs SC \"dhammesu\""
+    },
+    {
+      "position": 165,
+      "gretil": "dhammesu",
+      "sc": "vicikicchā",
+      "vri": null,
+      "bjt": "vicikicchā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"dhammesu\" vs SC \"vicikicchā\""
+    },
+    {
+      "position": 166,
+      "gretil": "vicikicchā",
+      "sc": "tasmātiha",
+      "vri": null,
+      "bjt": "tasmātiha",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"vicikicchā\" vs SC \"tasmātiha\""
+    },
+    {
+      "position": 185,
+      "gretil": "bodhipakkhikānaṃ",
+      "sc": "bodhipakkhiyānaṃ",
+      "vri": null,
+      "bjt": "bodhipakkhiyānaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"bodhipakkhikānaṃ\" vs SC \"bodhipakkhiyānaṃ\""
+    },
+    {
+      "position": 191,
+      "gretil": "evaṃ",
+      "sc": "evañhi",
+      "vri": null,
+      "bjt": "evaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"evaṃ\" vs SC \"evañhi\""
+    },
+    {
+      "position": 201,
+      "gretil": "bhagavato",
+      "sc": "bhagavatā",
+      "vri": null,
+      "bjt": null,
+      "type": "variant",
+      "notes": "Textual variant: PTS \"bhagavato\" vs SC \"bhagavatā\""
+    },
+    {
+      "position": 221,
+      "gretil": "na",
+      "sc": "nacirasseva",
+      "vri": null,
+      "bjt": "na",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"na\" vs SC \"nacirasseva\""
+    },
+    {
+      "position": 230,
+      "gretil": "tad",
+      "sc": "tadanuttaraṃ",
+      "vri": null,
+      "bjt": "tadanuttaraṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"tad\" vs SC \"tadanuttaraṃ\""
+    },
+    {
+      "position": 262,
+      "gretil": "arahattappatto",
+      "sc": "arahattaṃ",
+      "vri": null,
+      "bjt": "arahattappatto",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"arahattappatto\" vs SC \"arahattaṃ\""
+    },
+    {
+      "position": 267,
+      "gretil": "ten",
+      "sc": "tenupasaṅkami",
+      "vri": null,
+      "bjt": "tenupasaṅkami",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ten\" vs SC \"tenupasaṅkami\""
+    },
+    {
+      "position": 272,
+      "gretil": "etad",
+      "sc": "etadavoca",
+      "vri": null,
+      "bjt": "etadavoca",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"etad\" vs SC \"etadavoca\""
+    },
+    {
+      "position": 317,
+      "gretil": "ten",
+      "sc": "tenupasaṅkami",
+      "vri": null,
+      "bjt": "tenupasaṅkami",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ten\" vs SC \"tenupasaṅkami\""
+    },
+    {
+      "position": 344,
+      "gretil": "etad",
+      "sc": "etadavoca",
+      "vri": null,
+      "bjt": "etadavoca",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"etad\" vs SC \"etadavoca\""
+    },
+    {
+      "position": 368,
+      "gretil": "ca",
+      "sc": "me",
+      "vri": null,
+      "bjt": "ca",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ca\" vs SC \"me\""
+    },
+    {
+      "position": 369,
+      "gretil": "me",
+      "sc": "cittaṃ",
+      "vri": null,
+      "bjt": "me",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"me\" vs SC \"cittaṃ\""
+    },
+    {
+      "position": 370,
+      "gretil": "cittaṃ",
+      "sc": "na",
+      "vri": null,
+      "bjt": "cittaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"cittaṃ\" vs SC \"na\""
+    },
+    {
+      "position": 383,
+      "gretil": "evaṃ",
+      "sc": "evañhetaṃ",
+      "vri": null,
+      "bjt": "evaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"evaṃ\" vs SC \"evañhetaṃ\""
+    },
+    {
+      "position": 398,
+      "gretil": "bodhipakkhikānaṃ",
+      "sc": "bodhipakkhiyānaṃ",
+      "vri": null,
+      "bjt": "bodhipakkhiyānaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"bodhipakkhikānaṃ\" vs SC \"bodhipakkhiyānaṃ\""
+    },
+    {
+      "position": 406,
+      "gretil": "eva",
+      "sc": "madhurakajāto",
+      "vri": null,
+      "bjt": "madhurakajāto",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"eva\" vs SC \"madhurakajāto\""
+    },
+    {
+      "position": 407,
+      "gretil": "madhurakajāto",
+      "sc": "kāyo",
+      "vri": null,
+      "bjt": "kāyo",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"madhurakajāto\" vs SC \"kāyo\""
+    },
+    {
+      "position": 408,
+      "gretil": "kāyo",
+      "sc": "hoti",
+      "vri": null,
+      "bjt": "hoti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"kāyo\" vs SC \"hoti\""
+    },
+    {
+      "position": 409,
+      "gretil": "hoti",
+      "sc": "disā",
+      "vri": null,
+      "bjt": "disā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"hoti\" vs SC \"disā\""
+    },
+    {
+      "position": 410,
+      "gretil": "disā",
+      "sc": "cassa",
+      "vri": null,
+      "bjt": "cassa",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"disā\" vs SC \"cassa\""
     },
     {
       "position": 431,
       "gretil": "assa",
       "sc": "hoti",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "assa",
-      "notes": "Three-way disagreement: PTS \"assa\", SC \"hoti\", VRI \"None\""
+      "bjt": "hoti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"assa\" vs SC \"hoti\""
     },
     {
       "position": 432,
       "gretil": "hoti",
       "sc": "dhammesu",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "hoti",
-      "notes": "Three-way disagreement: PTS \"hoti\", SC \"dhammesu\", VRI \"None\""
+      "bjt": "dhammesu",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"hoti\" vs SC \"dhammesu\""
     },
     {
       "position": 433,
       "gretil": "dhammesu",
       "sc": "vicikicchā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "dhammesu",
-      "notes": "Three-way disagreement: PTS \"dhammesu\", SC \"vicikicchā\", VRI \"None\""
+      "bjt": "vicikicchā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"dhammesu\" vs SC \"vicikicchā\""
     },
     {
       "position": 434,
       "gretil": "vicikicchā",
       "sc": "tasmātiha",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vicikicchā",
-      "notes": "Three-way disagreement: PTS \"vicikicchā\", SC \"tasmātiha\", VRI \"None\""
-    },
-    {
-      "position": 435,
-      "gretil": "tasmā",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "tasmā",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 436,
-      "gretil": "ti",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ti",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "tasmātiha",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"vicikicchā\" vs SC \"tasmātiha\""
     },
     {
       "position": 453,
       "gretil": "bodhipakkhikānaṃ",
       "sc": "bodhipakkhiyānaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "bodhipakkhikānaṃ",
-      "notes": "Three-way disagreement: PTS \"bodhipakkhikānaṃ\", SC \"bodhipakkhiyānaṃ\", VRI \"None\""
+      "bjt": "bodhipakkhiyānaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"bodhipakkhikānaṃ\" vs SC \"bodhipakkhiyānaṃ\""
     },
     {
       "position": 459,
       "gretil": "evaṃ",
       "sc": "evañhi",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "evaṃ",
-      "notes": "Three-way disagreement: PTS \"evaṃ\", SC \"evañhi\", VRI \"None\""
+      "bjt": "evaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"evaṃ\" vs SC \"evañhi\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "lvi",
+      "sc": null,
+      "vri": null,
+      "bjt": "upajjhāyasuttaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 9,
+      "gretil": "upasaṅkami",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 14,
+      "gretil": "avoca",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 20,
+      "gretil": "eva",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 32,
+      "gretil": "thīnamiddhañ",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 33,
+      "gretil": "ca",
+      "sc": null,
+      "vri": null,
+      "bjt": "ca",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 59,
+      "gretil": "upasaṅkami",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 72,
+      "gretil": "avoca",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 77,
+      "gretil": "āha",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 85,
+      "gretil": "disā",
+      "sc": null,
+      "vri": null,
+      "bjt": "ca",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 86,
+      "gretil": "ca",
+      "sc": null,
+      "vri": null,
+      "bjt": "me",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 87,
+      "gretil": "me",
+      "sc": null,
+      "vri": null,
+      "bjt": "napakkhāyanti",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 88,
+      "gretil": "na",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 89,
+      "gretil": "pakkhāyanti",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 90,
+      "gretil": "dhammā",
+      "sc": null,
+      "vri": null,
+      "bjt": "dhammā",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 97,
+      "gretil": null,
+      "sc": "me",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 98,
+      "gretil": null,
+      "sc": "nappaṭibhanti",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 99,
+      "gretil": null,
+      "sc": "thinamiddhañca",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 115,
+      "gretil": "lvi",
+      "sc": null,
+      "vri": null,
+      "bjt": "hetaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 116,
+      "gretil": "evaṃ",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 117,
+      "gretil": "h",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 118,
+      "gretil": "etaṃ",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 143,
+      "gretil": "c",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 144,
+      "gretil": "assa",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 152,
+      "gretil": "thīnamiddhañ",
+      "sc": null,
+      "vri": null,
+      "bjt": "cassa",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 153,
+      "gretil": "c",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 154,
+      "gretil": "assa",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 167,
+      "gretil": "tasmā",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 168,
+      "gretil": "ti",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 169,
+      "gretil": "ha",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 192,
+      "gretil": "hi",
+      "sc": null,
+      "vri": null,
+      "bjt": "hi",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 222,
+      "gretil": "cirass",
+      "sc": null,
+      "vri": null,
+      "bjt": "cirasseca",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 223,
+      "gretil": "eva",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 231,
+      "gretil": "anuttaraṃ",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 234,
+      "gretil": "eva",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 252,
+      "gretil": "ca",
+      "sc": null,
+      "vri": null,
+      "bjt": "ca",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 263,
+      "gretil": null,
+      "sc": "patto",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 268,
+      "gretil": "upasaṅkami",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 273,
+      "gretil": "avoca",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 279,
+      "gretil": "eva",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 291,
+      "gretil": "ca",
+      "sc": null,
+      "vri": null,
+      "bjt": "ca",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 318,
+      "gretil": "upasaṅkami",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 324,
+      "gretil": "lvi",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 325,
+      "gretil": "lvii",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 326,
+      "gretil": "nīvaraṇavagga",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 327,
+      "gretil": "content",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 328,
+      "gretil": "straddling",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 329,
+      "gretil": "page",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 330,
+      "gretil": "break",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 331,
+      "gretil": "has",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 332,
+      "gretil": "been",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 333,
+      "gretil": "moved",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 334,
+      "gretil": "to",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 335,
+      "gretil": "the",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 336,
+      "gretil": "page",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 337,
+      "gretil": "above",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 345,
+      "gretil": "avoca",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 350,
+      "gretil": "āha",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 356,
+      "gretil": "eva",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 384,
+      "gretil": "h",
+      "sc": null,
+      "vri": null,
+      "bjt": "hi",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 385,
+      "gretil": "etaṃ",
+      "sc": null,
+      "vri": null,
+      "bjt": "taṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 411,
+      "gretil": "c",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 412,
+      "gretil": "assa",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 419,
+      "gretil": "c",
+      "sc": null,
+      "vri": null,
+      "bjt": "cassa",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 420,
+      "gretil": "assa",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 435,
+      "gretil": "tasmā",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 436,
+      "gretil": "ti",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 437,
+      "gretil": "ha",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 460,
+      "gretil": "hi",
+      "sc": null,
+      "vri": null,
+      "bjt": "hi",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 465,
+      "gretil": null,
+      "sc": "chaṭṭhaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

@@ -4,110 +4,143 @@
   "word_counts": {
     "gretil": 56,
     "sc": 52,
-    "vri": 0
+    "vri": 0,
+    "bjt": 56
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 57,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 9,
-    "match": 0,
-    "other": 48
+    "orthographic": 11,
+    "errors": 2,
+    "variants": 5,
+    "uncertain": 6,
+    "match": 33,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
-      "position": 1,
-      "gretil": "nava",
-      "sc": null,
+      "position": 41,
+      "gretil": "tatr",
+      "sc": "tassuddānaṃ",
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "nava",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "tatruddānaṃ",
+      "type": "error",
+      "preferred": "tassuddānaṃ",
+      "notes": "PTS \"tatr\" not in DPD, SC \"tassuddānaṃ\" is valid"
     },
     {
-      "position": 2,
-      "gretil": "yime",
-      "sc": null,
+      "position": 45,
+      "gretil": "c",
+      "sc": "ceva",
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "yime",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "error",
+      "preferred": "ceva",
+      "notes": "PTS \"c\" not in DPD, SC \"ceva\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 0,
+      "gretil": "x",
+      "sc": "navayime",
+      "vri": null,
+      "bjt": "āhuneyyapuggala",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"x\" vs SC \"navayime\""
     },
     {
       "position": 38,
       "gretil": "sambodhavaggo",
       "sc": "dasamaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "sambodhavaggo",
-      "notes": "Three-way disagreement: PTS \"sambodhavaggo\", SC \"dasamaṃ\", VRI \"None\""
-    },
-    {
-      "position": 41,
-      "gretil": "tatr",
-      "sc": "tassuddānaṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "tassuddānaṃ",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 42,
-      "gretil": "uddānaṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "uddānaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "variant",
+      "notes": "Textual variant: PTS \"sambodhavaggo\" vs SC \"dasamaṃ\""
     },
     {
       "position": 46,
       "gretil": "eva",
       "sc": "meghiya",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "eva",
-      "notes": "Three-way disagreement: PTS \"eva\", SC \"meghiya\", VRI \"None\""
-    },
-    {
-      "position": 47,
-      "gretil": "meghiyaṃ",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "meghiyaṃ",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "variant",
+      "notes": "Textual variant: PTS \"eva\" vs SC \"meghiya\""
     },
     {
       "position": 54,
       "gretil": "āhuneyyo",
       "sc": "āhuneyyena",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "āhuneyyo",
-      "notes": "Three-way disagreement: PTS \"āhuneyyo\", SC \"āhuneyyena\", VRI \"None\""
+      "bjt": "āhuneyyo",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"āhuneyyo\" vs SC \"āhuneyyena\""
+    },
+    {
+      "position": 55,
+      "gretil": "cā",
+      "sc": "cāti",
+      "vri": null,
+      "bjt": "cāti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"cā\" vs SC \"cāti\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "nava",
+      "sc": null,
+      "vri": null,
+      "bjt": "nava",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 2,
+      "gretil": "yime",
+      "sc": null,
+      "vri": null,
+      "bjt": "ime",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 39,
+      "gretil": null,
+      "sc": "sambodhivaggo",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 42,
+      "gretil": "uddānaṃ",
+      "sc": null,
+      "vri": null,
+      "bjt": "sambodhinissayo",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 47,
+      "gretil": "meghiyaṃ",
+      "sc": null,
+      "vri": null,
+      "bjt": "meghiyaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 56,
       "gretil": "ti",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ti",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "sīhanādavaggo",
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

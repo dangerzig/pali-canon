@@ -188,6 +188,53 @@ def clean_bjt_text(text: str) -> str:
     return text
 
 
+# ==================== BJT Alignment Mapping ====================
+
+_bjt_mappings = {}  # cache: nikaya → {gretil_id: {bjt_files: [...]}}
+
+
+def load_bjt_mapping(nikaya: str) -> dict:
+    """Load GRETIL→BJT sutta mapping for SN or AN.
+
+    Returns dict: gretil_sutta_id → {'bjt_files': [...], 'confidence': float}
+    """
+    if nikaya not in _bjt_mappings:
+        mapping_file = DATA_DIR / f"alignment/{nikaya}_bjt_mapping.json"
+        if mapping_file.exists():
+            data = json.loads(mapping_file.read_text())
+            _bjt_mappings[nikaya] = data.get('mappings', {})
+        else:
+            _bjt_mappings[nikaya] = {}
+    return _bjt_mappings[nikaya]
+
+
+def load_bjt_via_mapping(nikaya: str, sutta_id: str) -> dict | None:
+    """Load BJT text for a GRETIL sutta using the alignment mapping.
+
+    Returns {'text': cleaned_text, 'raw_text': raw_text} or None.
+    """
+    mapping = load_bjt_mapping(nikaya)
+    entry = mapping.get(sutta_id)
+    if not entry:
+        return None
+
+    bjt_dir = DATA_DIR / f"bjt-parsed/{nikaya}"
+    bjt_texts = []
+    for bf in entry.get('bjt_files', []):
+        bjt_file = bjt_dir / f"{bf}.json"
+        if bjt_file.exists():
+            bjt = json.loads(bjt_file.read_text())
+            bjt_texts.append(bjt.get('text', ''))
+
+    if bjt_texts:
+        combined = ' '.join(bjt_texts)
+        return {
+            'text': clean_bjt_text(combined),
+            'raw_text': combined,
+        }
+    return None
+
+
 def clean_sc_segments(segments: list) -> str:
     """Extract and clean SC text from segments."""
     text_parts = []
@@ -531,15 +578,10 @@ def load_sutta_data_an(sutta_id: str) -> dict:
                 'raw_text': raw_text,
             }
 
-    # BJT - file named like an1_1.json
-    bjt_file = bjt_dir / f"an{nipata}_{sutta_num}.json"
-    if bjt_file.exists():
-        bjt = json.loads(bjt_file.read_text())
-        raw_text = bjt.get('text', '')
-        data['bjt'] = {
-            'text': clean_bjt_text(raw_text),
-            'raw_text': raw_text,
-        }
+    # BJT - use alignment mapping (BJT has more files due to peyyāla expansion)
+    bjt_data = load_bjt_via_mapping('an', sutta_id)
+    if bjt_data:
+        data['bjt'] = bjt_data
 
     # SC - file named like an{nipata}.json, suttas nested within
     # SC AN uses range IDs like "an1.1-10" while GRETIL uses individual IDs
@@ -1677,15 +1719,10 @@ def load_sutta_data_sn(sutta_id: str) -> dict:
             'raw_text': raw_text,
         }
 
-    # BJT - file named like sn1_1.json
-    bjt_file = bjt_dir / f"sn{samyutta}_{sutta_num}.json"
-    if bjt_file.exists():
-        bjt = json.loads(bjt_file.read_text())
-        raw_text = bjt.get('text', '')
-        data['bjt'] = {
-            'text': clean_bjt_text(raw_text),
-            'raw_text': raw_text,
-        }
+    # BJT - use alignment mapping (BJT file numbering differs from GRETIL)
+    bjt_data = load_bjt_via_mapping('sn', sutta_id)
+    if bjt_data:
+        data['bjt'] = bjt_data
 
     # SC - file named like sn{samyutta}.json, suttas nested within
     sc_file = sc_dir / f"sn{samyutta}.json"

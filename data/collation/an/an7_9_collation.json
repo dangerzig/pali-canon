@@ -4,260 +4,286 @@
   "word_counts": {
     "gretil": 77,
     "sc": 75,
-    "vri": 0
+    "vri": 0,
+    "bjt": 161
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 79,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 24,
-    "match": 0,
-    "other": 55
+    "orthographic": 5,
+    "errors": 1,
+    "variants": 22,
+    "uncertain": 6,
+    "match": 45,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
+    {
+      "position": 74,
+      "gretil": "antam",
+      "sc": "mānābhisamayā",
+      "vri": null,
+      "bjt": "mānābhi",
+      "type": "error",
+      "preferred": "mānābhisamayā",
+      "notes": "PTS \"antam\" not in DPD, SC \"mānābhisamayā\" is valid"
+    }
+  ],
+  "variants": [
     {
       "position": 3,
       "gretil": "saññojanānaṃ",
       "sc": "saṃyojanānaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "saññojanānaṃ",
-      "notes": "Three-way disagreement: PTS \"saññojanānaṃ\", SC \"saṃyojanānaṃ\", VRI \"None\""
+      "bjt": "saññojanānaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"saññojanānaṃ\" vs SC \"saṃyojanānaṃ\""
     },
     {
       "position": 10,
       "gretil": "aṅguttaranikāya",
       "sc": "anunayasaṃyojanassa",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "aṅguttaranikāya",
-      "notes": "Three-way disagreement: PTS \"aṅguttaranikāya\", SC \"anunayasaṃyojanassa\", VRI \"None\""
-    },
-    {
-      "position": 13,
-      "gretil": "anunayasaññojanassa",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "anunayasaññojanassa",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "variant",
+      "notes": "Textual variant: PTS \"aṅguttaranikāya\" vs SC \"anunayasaṃyojanassa\""
     },
     {
       "position": 18,
       "gretil": "paṭighasaññojanassa",
       "sc": "paṭighasaṃyojanassa",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "paṭighasaññojanassa",
-      "notes": "Three-way disagreement: PTS \"paṭighasaññojanassa\", SC \"paṭighasaṃyojanassa\", VRI \"None\""
+      "bjt": "paṭighasaññojanassa",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"paṭighasaññojanassa\" vs SC \"paṭighasaṃyojanassa\""
     },
     {
       "position": 20,
       "gretil": "diṭṭhisaññojanassa",
       "sc": "diṭṭhisaṃyojanassa",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "diṭṭhisaññojanassa",
-      "notes": "Three-way disagreement: PTS \"diṭṭhisaññojanassa\", SC \"diṭṭhisaṃyojanassa\", VRI \"None\""
+      "bjt": "diṭṭhisaññojanassa",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"diṭṭhisaññojanassa\" vs SC \"diṭṭhisaṃyojanassa\""
     },
     {
       "position": 21,
       "gretil": "vicikicchāsaññojanassa",
       "sc": "vicikicchāsaṃyojanassa",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vicikicchāsaññojanassa",
-      "notes": "Three-way disagreement: PTS \"vicikicchāsaññojanassa\", SC \"vicikicchāsaṃyojanassa\", VRI \"None\""
+      "bjt": "vicikicchāsaññojanassa",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"vicikicchāsaññojanassa\" vs SC \"vicikicchāsaṃyojanassa\""
     },
     {
       "position": 22,
       "gretil": "mānasaññojanassa",
       "sc": "mānasaṃyojanassa",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "mānasaññojanassa",
-      "notes": "Three-way disagreement: PTS \"mānasaññojanassa\", SC \"mānasaṃyojanassa\", VRI \"None\""
+      "bjt": "mānasaññojanassa",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"mānasaññojanassa\" vs SC \"mānasaṃyojanassa\""
     },
     {
       "position": 23,
       "gretil": "bhavarāgasaññojanassa",
       "sc": "bhavarāgasaṃyojanassa",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "bhavarāgasaññojanassa",
-      "notes": "Three-way disagreement: PTS \"bhavarāgasaññojanassa\", SC \"bhavarāgasaṃyojanassa\", VRI \"None\""
+      "bjt": "bhavarāgasaññojanassa",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"bhavarāgasaññojanassa\" vs SC \"bhavarāgasaṃyojanassa\""
     },
     {
       "position": 24,
       "gretil": "avijjāsaññojanassa",
       "sc": "avijjāsaṃyojanassa",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "avijjāsaññojanassa",
-      "notes": "Three-way disagreement: PTS \"avijjāsaññojanassa\", SC \"avijjāsaṃyojanassa\", VRI \"None\""
+      "bjt": "avijjāsaññojanassa",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"avijjāsaññojanassa\" vs SC \"avijjāsaṃyojanassa\""
     },
     {
       "position": 33,
       "gretil": "saññojanānaṃ",
       "sc": "saṃyojanānaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "saññojanānaṃ",
-      "notes": "Three-way disagreement: PTS \"saññojanānaṃ\", SC \"saṃyojanānaṃ\", VRI \"None\""
+      "bjt": "saññojanānaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"saññojanānaṃ\" vs SC \"saṃyojanānaṃ\""
     },
     {
       "position": 43,
       "gretil": "anunayasaññojanaṃ",
       "sc": "anunayasaṃyojanaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "anunayasaññojanaṃ",
-      "notes": "Three-way disagreement: PTS \"anunayasaññojanaṃ\", SC \"anunayasaṃyojanaṃ\", VRI \"None\""
+      "bjt": "anunayasaññojanaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"anunayasaññojanaṃ\" vs SC \"anunayasaṃyojanaṃ\""
     },
     {
       "position": 48,
       "gretil": "anabhāvakataṃ",
       "sc": "anabhāvaṅkataṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "anabhāvakataṃ",
-      "notes": "Three-way disagreement: PTS \"anabhāvakataṃ\", SC \"anabhāvaṅkataṃ\", VRI \"None\""
+      "bjt": "anabhāvakataṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"anabhāvakataṃ\" vs SC \"anabhāvaṅkataṃ\""
     },
     {
       "position": 51,
       "gretil": "paṭighasaññojanaṃ",
       "sc": "paṭighasaṃyojanaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "paṭighasaññojanaṃ",
-      "notes": "Three-way disagreement: PTS \"paṭighasaññojanaṃ\", SC \"paṭighasaṃyojanaṃ\", VRI \"None\""
+      "bjt": "yato",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"paṭighasaññojanaṃ\" vs SC \"paṭighasaṃyojanaṃ\""
     },
     {
       "position": 53,
       "gretil": "diṭṭhisaññojanaṃ",
       "sc": "diṭṭhisaṃyojanaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "diṭṭhisaññojanaṃ",
-      "notes": "Three-way disagreement: PTS \"diṭṭhisaññojanaṃ\", SC \"diṭṭhisaṃyojanaṃ\", VRI \"None\""
+      "bjt": "kho",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"diṭṭhisaññojanaṃ\" vs SC \"diṭṭhisaṃyojanaṃ\""
     },
     {
       "position": 54,
       "gretil": "vicikicchāsaññojanaṃ",
       "sc": "vicikicchāsaṃyojanaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vicikicchāsaññojanaṃ",
-      "notes": "Three-way disagreement: PTS \"vicikicchāsaññojanaṃ\", SC \"vicikicchāsaṃyojanaṃ\", VRI \"None\""
+      "bjt": "bhikkhave",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"vicikicchāsaññojanaṃ\" vs SC \"vicikicchāsaṃyojanaṃ\""
     },
     {
       "position": 55,
       "gretil": "mānasaññojanaṃ",
       "sc": "mānasaṃyojanaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "mānasaññojanaṃ",
-      "notes": "Three-way disagreement: PTS \"mānasaññojanaṃ\", SC \"mānasaṃyojanaṃ\", VRI \"None\""
+      "bjt": "bhikkhuno",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"mānasaññojanaṃ\" vs SC \"mānasaṃyojanaṃ\""
     },
     {
       "position": 56,
       "gretil": "bhavarāgasaññojanaṃ",
       "sc": "bhavarāgasaṃyojanaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "bhavarāgasaññojanaṃ",
-      "notes": "Three-way disagreement: PTS \"bhavarāgasaññojanaṃ\", SC \"bhavarāgasaṃyojanaṃ\", VRI \"None\""
+      "bjt": "anunayapaṭighasaññojanaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"bhavarāgasaññojanaṃ\" vs SC \"bhavarāgasaṃyojanaṃ\""
     },
     {
       "position": 57,
       "gretil": "avijjāsaññojanaṃ",
       "sc": "avijjāsaṃyojanaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "avijjāsaññojanaṃ",
-      "notes": "Three-way disagreement: PTS \"avijjāsaññojanaṃ\", SC \"avijjāsaṃyojanaṃ\", VRI \"None\""
+      "bjt": null,
+      "type": "variant",
+      "notes": "Textual variant: PTS \"avijjāsaññojanaṃ\" vs SC \"avijjāsaṃyojanaṃ\""
     },
     {
       "position": 62,
       "gretil": "anabhāvakataṃ",
       "sc": "anabhāvaṅkataṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "anabhāvakataṃ",
-      "notes": "Three-way disagreement: PTS \"anabhāvakataṃ\", SC \"anabhāvaṅkataṃ\", VRI \"None\""
+      "bjt": "anabhāvakataṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"anabhāvakataṃ\" vs SC \"anabhāvaṅkataṃ\""
     },
     {
       "position": 69,
       "gretil": "acchejji",
       "sc": "acchecchi",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "acchejji",
-      "notes": "Three-way disagreement: PTS \"acchejji\", SC \"acchecchi\", VRI \"None\""
+      "bjt": "acchecchi",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"acchejji\" vs SC \"acchecchi\""
     },
     {
       "position": 72,
       "gretil": "saññojanaṃ",
       "sc": "saṃyojanaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "saññojanaṃ",
-      "notes": "Three-way disagreement: PTS \"saññojanaṃ\", SC \"saṃyojanaṃ\", VRI \"None\""
+      "bjt": "saññojanaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"saññojanaṃ\" vs SC \"saṃyojanaṃ\""
     },
     {
       "position": 73,
       "gretil": "sammāmānābhisamayā",
       "sc": "sammā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "sammāmānābhisamayā",
-      "notes": "Three-way disagreement: PTS \"sammāmānābhisamayā\", SC \"sammā\", VRI \"None\""
-    },
-    {
-      "position": 74,
-      "gretil": "antam",
-      "sc": "mānābhisamayā",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "mānābhisamayā",
-      "notes": "Three-way disagreement, one valid reading"
+      "bjt": "sammā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"sammāmānābhisamayā\" vs SC \"sammā\""
     },
     {
       "position": 75,
       "gretil": "akāsi",
       "sc": "antamakāsi",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "akāsi",
-      "notes": "Three-way disagreement: PTS \"akāsi\", SC \"antamakāsi\", VRI \"None\""
+      "bjt": "samayā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"akāsi\" vs SC \"antamakāsi\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "ix",
+      "sc": null,
+      "vri": null,
+      "bjt": "saññojanappahāna",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 11,
+      "gretil": "ix",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 12,
+      "gretil": "x",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 13,
+      "gretil": "anunayasaññojanassa",
+      "sc": null,
+      "vri": null,
+      "bjt": "anunayasaññojanassa",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 39,
+      "gretil": null,
+      "sc": "ca",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 78,
+      "gretil": null,
+      "sc": "navamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

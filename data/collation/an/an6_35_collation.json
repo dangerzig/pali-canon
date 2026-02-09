@@ -4,50 +4,60 @@
   "word_counts": {
     "gretil": 23,
     "sc": 22,
-    "vri": 0
+    "vri": 0,
+    "bjt": 24
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 24,
-    "orthographic": 0,
-    "errors": 0,
+    "orthographic": 2,
+    "errors": 1,
     "variants": 0,
     "uncertain": 3,
-    "match": 0,
-    "other": 21
+    "match": 18,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "xxxv",
       "sc": "chayime",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "vijjābhāgiya",
+      "type": "error",
       "preferred": "chayime",
-      "notes": "Three-way disagreement, one valid reading"
-    },
+      "notes": "PTS \"xxxv\" not in DPD, SC \"chayime\" is valid"
+    }
+  ],
+  "variants": [],
+  "uncertain": [
     {
       "position": 1,
       "gretil": "cha",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "cha",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "suttaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 2,
       "gretil": "yime",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "yime",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "sāvatthinidānaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 23,
+      "gretil": null,
+      "sc": "pañcamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

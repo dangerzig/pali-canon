@@ -4,120 +4,116 @@
   "word_counts": {
     "gretil": 31,
     "sc": 30,
-    "vri": 0
+    "vri": 0,
+    "bjt": 30
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 31,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 10,
-    "match": 0,
-    "other": 21
+    "orthographic": 3,
+    "errors": 2,
+    "variants": 6,
+    "uncertain": 2,
+    "match": 18,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "pañc",
-      "sc": "pañcimāni",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "pañc",
-      "notes": "Three-way disagreement: PTS \"pañc\", SC \"pañcimāni\", VRI \"None\""
-    },
-    {
-      "position": 1,
-      "gretil": "imāni",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "imāni",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "errors": [
     {
       "position": 3,
       "gretil": "aññāvyākaraṇāni",
       "sc": "aññābyākaraṇāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "aññabyākaraṇāni",
+      "type": "error",
       "preferred": "aññābyākaraṇāni",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 9,
-      "gretil": "vyākaroti",
-      "sc": "byākaroti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vyākaroti",
-      "notes": "Three-way disagreement: PTS \"vyākaroti\", SC \"byākaroti\", VRI \"None\""
-    },
-    {
-      "position": 13,
-      "gretil": "vyākaroti",
-      "sc": "byākaroti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vyākaroti",
-      "notes": "Three-way disagreement: PTS \"vyākaroti\", SC \"byākaroti\", VRI \"None\""
-    },
-    {
-      "position": 17,
-      "gretil": "vyākaroti",
-      "sc": "byākaroti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vyākaroti",
-      "notes": "Three-way disagreement: PTS \"vyākaroti\", SC \"byākaroti\", VRI \"None\""
-    },
-    {
-      "position": 20,
-      "gretil": "vyākaroti",
-      "sc": "byākaroti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vyākaroti",
-      "notes": "Three-way disagreement: PTS \"vyākaroti\", SC \"byākaroti\", VRI \"None\""
-    },
-    {
-      "position": 23,
-      "gretil": "vyākaroti",
-      "sc": "byākaroti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "vyākaroti",
-      "notes": "Three-way disagreement: PTS \"vyākaroti\", SC \"byākaroti\", VRI \"None\""
-    },
-    {
-      "position": 28,
-      "gretil": "aññāvyākaraṇānī",
-      "sc": "aññābyākaraṇānī",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "aññāvyākaraṇānī",
-      "notes": "Three-way disagreement: PTS \"aññāvyākaraṇānī\", SC \"aññābyākaraṇānī\", VRI \"None\""
+      "notes": "PTS \"aññāvyākaraṇāni\" not in DPD, SC \"aññābyākaraṇāni\" is valid"
     },
     {
       "position": 30,
       "gretil": "xciv",
       "sc": "tatiyaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": null,
+      "type": "error",
       "preferred": "tatiyaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"xciv\" not in DPD, SC \"tatiyaṃ\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 0,
+      "gretil": "pañc",
+      "sc": "pañcimāni",
+      "vri": null,
+      "bjt": "aññabyākaraṇasuttaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"pañc\" vs SC \"pañcimāni\""
+    },
+    {
+      "position": 9,
+      "gretil": "vyākaroti",
+      "sc": "byākaroti",
+      "vri": null,
+      "bjt": "byākaroti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"vyākaroti\" vs SC \"byākaroti\""
+    },
+    {
+      "position": 13,
+      "gretil": "vyākaroti",
+      "sc": "byākaroti",
+      "vri": null,
+      "bjt": "byākaroti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"vyākaroti\" vs SC \"byākaroti\""
+    },
+    {
+      "position": 17,
+      "gretil": "vyākaroti",
+      "sc": "byākaroti",
+      "vri": null,
+      "bjt": "byākaroti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"vyākaroti\" vs SC \"byākaroti\""
+    },
+    {
+      "position": 20,
+      "gretil": "vyākaroti",
+      "sc": "byākaroti",
+      "vri": null,
+      "bjt": "byākaroti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"vyākaroti\" vs SC \"byākaroti\""
+    },
+    {
+      "position": 23,
+      "gretil": "vyākaroti",
+      "sc": "byākaroti",
+      "vri": null,
+      "bjt": "byākaroti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"vyākaroti\" vs SC \"byākaroti\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "imāni",
+      "sc": null,
+      "vri": null,
+      "bjt": "sāvatthinidānaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 28,
+      "gretil": "aññāvyākaraṇānī",
+      "sc": "aññābyākaraṇānī",
+      "vri": null,
+      "bjt": "aññabyākaraṇānīti",
+      "type": "uncertain",
+      "notes": "Neither reading validated: PTS \"aññāvyākaraṇānī\" vs SC \"aññābyākaraṇānī\""
     }
   ]
 }

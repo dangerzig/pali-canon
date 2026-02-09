@@ -4,70 +4,72 @@
   "word_counts": {
     "gretil": 8,
     "sc": 7,
-    "vri": 0
+    "vri": 0,
+    "bjt": 18
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 8,
     "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 5,
-    "match": 0,
-    "other": 3
+    "errors": 3,
+    "variants": 1,
+    "uncertain": 1,
+    "match": 3,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "lviii",
       "sc": "nibbānaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "anupubbapassaddhi",
+      "type": "error",
       "preferred": "nibbānaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"lviii\" not in DPD, SC \"nibbānaṃ\" is valid"
     },
     {
       "position": 1,
       "gretil": "passaddhi",
       "sc": "nibbānan",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "suttaṃ",
+      "type": "sc_error",
       "preferred": "passaddhi",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 2,
-      "gretil": "passaddhī",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "passaddhī",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 6,
-      "gretil": "aṅguttaranikāya",
-      "sc": "pe",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "aṅguttaranikāya",
-      "notes": "Three-way disagreement: PTS \"aṅguttaranikāya\", SC \"pe\", VRI \"None\""
+      "notes": "SC \"nibbānan\" not in DPD, PTS \"passaddhi\" is valid"
     },
     {
       "position": 7,
       "gretil": "lixlxii",
       "sc": "sattamaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "nirodha",
+      "type": "error",
       "preferred": "sattamaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"lixlxii\" not in DPD, SC \"sattamaṃ\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 6,
+      "gretil": "aṅguttaranikāya",
+      "sc": "pe",
+      "vri": null,
+      "bjt": "pe",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"aṅguttaranikāya\" vs SC \"pe\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 2,
+      "gretil": "passaddhī",
+      "sc": null,
+      "vri": null,
+      "bjt": "kosambinidānaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

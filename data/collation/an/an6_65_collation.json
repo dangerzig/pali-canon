@@ -4,50 +4,59 @@
   "word_counts": {
     "gretil": 50,
     "sc": 50,
-    "vri": 0
+    "vri": 0,
+    "bjt": 51
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 51,
-    "orthographic": 0,
+    "orthographic": 3,
     "errors": 0,
-    "variants": 0,
-    "uncertain": 3,
-    "match": 0,
-    "other": 48
+    "variants": 2,
+    "uncertain": 2,
+    "match": 44,
+    "other": 0
   },
   "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "lxv",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxv",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "variants": [
     {
       "position": 14,
       "gretil": "muṭṭhasaccaṃ",
       "sc": "muṭṭhassaccaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "muṭṭhasaccaṃ",
-      "notes": "Three-way disagreement: PTS \"muṭṭhasaccaṃ\", SC \"muṭṭhassaccaṃ\", VRI \"None\""
+      "bjt": "muṭṭhasaccaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"muṭṭhasaccaṃ\" vs SC \"muṭṭhassaccaṃ\""
     },
     {
       "position": 38,
       "gretil": "muṭṭhasaccaṃ",
       "sc": "muṭṭhassaccaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "muṭṭhasaccaṃ",
-      "notes": "Three-way disagreement: PTS \"muṭṭhasaccaṃ\", SC \"muṭṭhassaccaṃ\", VRI \"None\""
+      "bjt": "muṭṭhasaccaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"muṭṭhasaccaṃ\" vs SC \"muṭṭhassaccaṃ\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "lxv",
+      "sc": null,
+      "vri": null,
+      "bjt": "anāgāmiphala",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 50,
+      "gretil": null,
+      "sc": "paṭhamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

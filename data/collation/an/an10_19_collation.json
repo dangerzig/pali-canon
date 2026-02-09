@@ -4,80 +4,88 @@
   "word_counts": {
     "gretil": 43,
     "sc": 42,
-    "vri": 0
+    "vri": 0,
+    "bjt": 43
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 44,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 6,
-    "match": 0,
-    "other": 38
+    "orthographic": 5,
+    "errors": 1,
+    "variants": 3,
+    "uncertain": 3,
+    "match": 32,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "xix",
       "sc": "dasayime",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "paṭhamāriyavāsa",
+      "type": "error",
       "preferred": "dasayime",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 1,
-      "gretil": "dasa",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "dasa",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 2,
-      "gretil": "yime",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "yime",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+      "notes": "PTS \"xix\" not in DPD, SC \"dasayime\" is valid"
+    }
+  ],
+  "variants": [
     {
       "position": 4,
       "gretil": "ariyavāsā",
       "sc": "ariyāvāsā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ariyavāsā",
-      "notes": "Three-way disagreement: PTS \"ariyavāsā\", SC \"ariyāvāsā\", VRI \"None\""
+      "bjt": "ariyavāsā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ariyavāsā\" vs SC \"ariyāvāsā\""
     },
     {
       "position": 23,
       "gretil": "panuṇṇapaccekasacco",
       "sc": "paṇunnapaccekasacco",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "panuṇṇapaccekasacco",
-      "notes": "Three-way disagreement: PTS \"panuṇṇapaccekasacco\", SC \"paṇunnapaccekasacco\", VRI \"None\""
+      "bjt": "panuṇṇapaccekasacco",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"panuṇṇapaccekasacco\" vs SC \"paṇunnapaccekasacco\""
     },
     {
       "position": 33,
       "gretil": "ariyavāsā",
       "sc": "ariyāvāsā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "ariyavāsā",
-      "notes": "Three-way disagreement: PTS \"ariyavāsā\", SC \"ariyāvāsā\", VRI \"None\""
+      "bjt": "ariyavāsā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"ariyavāsā\" vs SC \"ariyāvāsā\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "dasa",
+      "sc": null,
+      "vri": null,
+      "bjt": "dasa",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 2,
+      "gretil": "yime",
+      "sc": null,
+      "vri": null,
+      "bjt": "ime",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 43,
+      "gretil": null,
+      "sc": "navamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

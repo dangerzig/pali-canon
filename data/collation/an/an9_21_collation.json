@@ -4,150 +4,152 @@
   "word_counts": {
     "gretil": 101,
     "sc": 100,
-    "vri": 0
+    "vri": 0,
+    "bjt": 101
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 102,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 13,
-    "match": 0,
-    "other": 89
+    "orthographic": 7,
+    "errors": 2,
+    "variants": 9,
+    "uncertain": 3,
+    "match": 81,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "xxi",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "xxi",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 9,
-      "gretil": "adhigaṇhanti",
-      "sc": "adhiggaṇhanti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "adhigaṇhanti",
-      "notes": "Three-way disagreement: PTS \"adhigaṇhanti\", SC \"adhiggaṇhanti\", VRI \"None\""
-    },
-    {
-      "position": 18,
-      "gretil": "visesabhuno",
-      "sc": "visesaguṇā",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "visesabhuno",
-      "notes": "Three-way disagreement: PTS \"visesabhuno\", SC \"visesaguṇā\", VRI \"None\""
-    },
-    {
-      "position": 29,
-      "gretil": "adhigaṇhanti",
-      "sc": "adhiggaṇhanti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "adhigaṇhanti",
-      "notes": "Three-way disagreement: PTS \"adhigaṇhanti\", SC \"adhiggaṇhanti\", VRI \"None\""
-    },
-    {
-      "position": 41,
-      "gretil": "adhigaṇhanti",
-      "sc": "adhiggaṇhanti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "adhigaṇhanti",
-      "notes": "Three-way disagreement: PTS \"adhigaṇhanti\", SC \"adhiggaṇhanti\", VRI \"None\""
-    },
-    {
-      "position": 63,
-      "gretil": "adhigaṇhanti",
-      "sc": "adhiggaṇhanti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "adhigaṇhanti",
-      "notes": "Three-way disagreement: PTS \"adhigaṇhanti\", SC \"adhiggaṇhanti\", VRI \"None\""
-    },
-    {
-      "position": 70,
-      "gretil": "jambudīpake",
-      "sc": "jambudīpakā",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "jambudīpake",
-      "notes": "Three-way disagreement: PTS \"jambudīpake\", SC \"jambudīpakā\", VRI \"None\""
-    },
-    {
-      "position": 75,
-      "gretil": "adhigaṇhanti",
-      "sc": "adhiggaṇhanti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "adhigaṇhanti",
-      "notes": "Three-way disagreement: PTS \"adhigaṇhanti\", SC \"adhiggaṇhanti\", VRI \"None\""
-    },
-    {
-      "position": 81,
-      "gretil": "surā",
-      "sc": "sūrā",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "surā",
-      "notes": "Three-way disagreement: PTS \"surā\", SC \"sūrā\", VRI \"None\""
-    },
+  "errors": [
     {
       "position": 83,
       "gretil": "idhabrahmacariyavāso",
       "sc": "idha",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "idha",
+      "type": "error",
       "preferred": "idha",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 95,
-      "gretil": "adhigaṇhanti",
-      "sc": "adhiggaṇhanti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "adhigaṇhanti",
-      "notes": "Three-way disagreement: PTS \"adhigaṇhanti\", SC \"adhiggaṇhanti\", VRI \"None\""
+      "notes": "PTS \"idhabrahmacariyavāso\" not in DPD, SC \"idha\" is valid"
     },
     {
       "position": 100,
       "gretil": "xxii",
       "sc": "paṭhamaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": null,
+      "type": "error",
       "preferred": "paṭhamaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"xxii\" not in DPD, SC \"paṭhamaṃ\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 9,
+      "gretil": "adhigaṇhanti",
+      "sc": "adhiggaṇhanti",
+      "vri": null,
+      "bjt": "adhigaṇhanti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"adhigaṇhanti\" vs SC \"adhiggaṇhanti\""
+    },
+    {
+      "position": 18,
+      "gretil": "visesabhuno",
+      "sc": "visesaguṇā",
+      "vri": null,
+      "bjt": "visesabhuno",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"visesabhuno\" vs SC \"visesaguṇā\""
+    },
+    {
+      "position": 29,
+      "gretil": "adhigaṇhanti",
+      "sc": "adhiggaṇhanti",
+      "vri": null,
+      "bjt": "adhigaṇhanti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"adhigaṇhanti\" vs SC \"adhiggaṇhanti\""
+    },
+    {
+      "position": 41,
+      "gretil": "adhigaṇhanti",
+      "sc": "adhiggaṇhanti",
+      "vri": null,
+      "bjt": "adhigaṇhanti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"adhigaṇhanti\" vs SC \"adhiggaṇhanti\""
+    },
+    {
+      "position": 63,
+      "gretil": "adhigaṇhanti",
+      "sc": "adhiggaṇhanti",
+      "vri": null,
+      "bjt": "adhigaṇhanti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"adhigaṇhanti\" vs SC \"adhiggaṇhanti\""
+    },
+    {
+      "position": 70,
+      "gretil": "jambudīpake",
+      "sc": "jambudīpakā",
+      "vri": null,
+      "bjt": "jambudīpikā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"jambudīpake\" vs SC \"jambudīpakā\""
+    },
+    {
+      "position": 75,
+      "gretil": "adhigaṇhanti",
+      "sc": "adhiggaṇhanti",
+      "vri": null,
+      "bjt": "adhigaṇhanti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"adhigaṇhanti\" vs SC \"adhiggaṇhanti\""
+    },
+    {
+      "position": 81,
+      "gretil": "surā",
+      "sc": "sūrā",
+      "vri": null,
+      "bjt": "sūrā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"surā\" vs SC \"sūrā\""
+    },
+    {
+      "position": 95,
+      "gretil": "adhigaṇhanti",
+      "sc": "adhiggaṇhanti",
+      "vri": null,
+      "bjt": "adhigaṇhanti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"adhigaṇhanti\" vs SC \"adhiggaṇhanti\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "xxi",
+      "sc": null,
+      "vri": null,
+      "bjt": "ṭhāna",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 84,
+      "gretil": null,
+      "sc": "brahmacariyavāso",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 101,
       "gretil": "sattāvāsavagga",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "sattāvāsavagga",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

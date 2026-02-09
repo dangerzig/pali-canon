@@ -4,60 +4,70 @@
   "word_counts": {
     "gretil": 130,
     "sc": 130,
-    "vri": 0
+    "vri": 0,
+    "bjt": 210
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 131,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 4,
-    "match": 0,
-    "other": 127
+    "orthographic": 124,
+    "errors": 1,
+    "variants": 2,
+    "uncertain": 2,
+    "match": 2,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "lxxxv",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "lxxxv",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 41,
-      "gretil": "sampahaṃsati",
-      "sc": "sampahaṃseti",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "sampahaṃsati",
-      "notes": "Three-way disagreement: PTS \"sampahaṃsati\", SC \"sampahaṃseti\", VRI \"None\""
-    },
+  "errors": [
     {
       "position": 48,
       "gretil": "cittam",
       "sc": "cittaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": null,
+      "type": "error",
       "preferred": "cittaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"cittam\" not in DPD, SC \"cittaṃ\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 41,
+      "gretil": "sampahaṃsati",
+      "sc": "sampahaṃseti",
+      "vri": null,
+      "bjt": "okkamituṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"sampahaṃsati\" vs SC \"sampahaṃseti\""
     },
     {
       "position": 104,
       "gretil": "sampahaṃsati",
       "sc": "sampahaṃseti",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "sampahaṃsati",
-      "notes": "Three-way disagreement: PTS \"sampahaṃsati\", SC \"sampahaṃseti\", VRI \"None\""
+      "bjt": null,
+      "type": "variant",
+      "notes": "Textual variant: PTS \"sampahaṃsati\" vs SC \"sampahaṃseti\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "lxxxv",
+      "sc": null,
+      "vri": null,
+      "bjt": "voropita",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 130,
+      "gretil": null,
+      "sc": "paṭhamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

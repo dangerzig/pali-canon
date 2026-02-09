@@ -4,50 +4,52 @@
   "word_counts": {
     "gretil": 18,
     "sc": 17,
-    "vri": 0
+    "vri": 0,
+    "bjt": 35
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 18,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 3,
-    "match": 0,
-    "other": 15
+    "orthographic": 2,
+    "errors": 1,
+    "variants": 1,
+    "uncertain": 1,
+    "match": 13,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 0,
-      "gretil": "pañc",
-      "sc": "pañcimā",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "pañc",
-      "notes": "Three-way disagreement: PTS \"pañc\", SC \"pañcimā\", VRI \"None\""
-    },
-    {
-      "position": 1,
-      "gretil": "imā",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "imā",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "errors": [
     {
       "position": 17,
       "gretil": "xciii",
       "sc": "dutiyaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": null,
+      "type": "error",
       "preferred": "dutiyaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"xciii\" not in DPD, SC \"dutiyaṃ\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 0,
+      "gretil": "pañc",
+      "sc": "pañcimā",
+      "vri": null,
+      "bjt": "paṭhamasampadāsuttaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"pañc\" vs SC \"pañcimā\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "imā",
+      "sc": null,
+      "vri": null,
+      "bjt": "imā",
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

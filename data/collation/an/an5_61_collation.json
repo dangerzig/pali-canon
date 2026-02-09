@@ -4,60 +4,70 @@
   "word_counts": {
     "gretil": 34,
     "sc": 33,
-    "vri": 0
+    "vri": 0,
+    "bjt": 34
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 35,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 4,
-    "match": 0,
-    "other": 31
+    "orthographic": 1,
+    "errors": 1,
+    "variants": 1,
+    "uncertain": 3,
+    "match": 29,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "lxi",
       "sc": "pañcimā",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "paṭhamasaññāsuttaṃ",
+      "type": "error",
       "preferred": "pañcimā",
-      "notes": "Three-way disagreement, one valid reading"
-    },
+      "notes": "PTS \"lxi\" not in DPD, SC \"pañcimā\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 18,
+      "gretil": "paṭikkūlasaññā",
+      "sc": "paṭikūlasaññā",
+      "vri": null,
+      "bjt": "paṭikkūlasaññā",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"paṭikkūlasaññā\" vs SC \"paṭikūlasaññā\""
+    }
+  ],
+  "uncertain": [
     {
       "position": 1,
       "gretil": "pañc",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "pañc",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "sāvatthinidānaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 2,
       "gretil": "imā",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "imā",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "pañcimā",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
-      "position": 18,
-      "gretil": "paṭikkūlasaññā",
-      "sc": "paṭikūlasaññā",
+      "position": 34,
+      "gretil": null,
+      "sc": "paṭhamaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "paṭikkūlasaññā",
-      "notes": "Three-way disagreement: PTS \"paṭikkūlasaññā\", SC \"paṭikūlasaññā\", VRI \"None\""
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

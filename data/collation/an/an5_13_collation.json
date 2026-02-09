@@ -4,60 +4,70 @@
   "word_counts": {
     "gretil": 18,
     "sc": 17,
-    "vri": 0
+    "vri": 0,
+    "bjt": 15
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 19,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 4,
-    "match": 0,
-    "other": 15
+    "orthographic": 3,
+    "errors": 1,
+    "variants": 1,
+    "uncertain": 3,
+    "match": 11,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "xiii",
       "sc": "pañcimāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "balasaṅkhittasuttaṃ",
+      "type": "error",
       "preferred": "pañcimāni",
-      "notes": "Three-way disagreement, one valid reading"
-    },
+      "notes": "PTS \"xiii\" not in DPD, SC \"pañcimāni\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 8,
+      "gretil": "viriyabalaṃ",
+      "sc": "vīriyabalaṃ",
+      "vri": null,
+      "bjt": "viriyabalaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"viriyabalaṃ\" vs SC \"vīriyabalaṃ\""
+    }
+  ],
+  "uncertain": [
     {
       "position": 1,
       "gretil": "pañc",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "pañc",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "pañcimāni",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 2,
       "gretil": "imāni",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "imāni",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
-      "position": 8,
-      "gretil": "viriyabalaṃ",
-      "sc": "vīriyabalaṃ",
+      "position": 18,
+      "gretil": null,
+      "sc": "tatiyaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "viriyabalaṃ",
-      "notes": "Three-way disagreement: PTS \"viriyabalaṃ\", SC \"vīriyabalaṃ\", VRI \"None\""
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

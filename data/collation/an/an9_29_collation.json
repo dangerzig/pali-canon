@@ -4,90 +4,169 @@
   "word_counts": {
     "gretil": 55,
     "sc": 62,
-    "vri": 0
+    "vri": 0,
+    "bjt": 71
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 64,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 7,
-    "match": 0,
-    "other": 57
+    "orthographic": 12,
+    "errors": 1,
+    "variants": 4,
+    "uncertain": 11,
+    "match": 36,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
+  "errors": [
     {
       "position": 0,
       "gretil": "xxix",
       "sc": "navayimāni",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "āghātavatthu",
+      "type": "error",
       "preferred": "navayimāni",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 1,
-      "gretil": "nava",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "nava",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
-    {
-      "position": 2,
-      "gretil": "yimāni",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "yimāni",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+      "notes": "PTS \"xxix\" not in DPD, SC \"navayimāni\" is valid"
+    }
+  ],
+  "variants": [
     {
       "position": 29,
       "gretil": "acari",
       "sc": "acarī",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "acari",
-      "notes": "Three-way disagreement: PTS \"acari\", SC \"acarī\", VRI \"None\""
+      "bjt": "acarīti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"acari\" vs SC \"acarī\""
     },
     {
       "position": 33,
       "gretil": "carati",
       "sc": "caratī",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "carati",
-      "notes": "Three-way disagreement: PTS \"carati\", SC \"caratī\", VRI \"None\""
+      "bjt": "caratīti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"carati\" vs SC \"caratī\""
     },
     {
       "position": 45,
       "gretil": "acari",
       "sc": "acarī",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "acari",
-      "notes": "Three-way disagreement: PTS \"acari\", SC \"acarī\", VRI \"None\""
+      "bjt": "acarīti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"acari\" vs SC \"acarī\""
     },
     {
       "position": 49,
       "gretil": "carati",
       "sc": "caratī",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "carati",
-      "notes": "Three-way disagreement: PTS \"carati\", SC \"caratī\", VRI \"None\""
+      "bjt": "caratīti",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"carati\" vs SC \"caratī\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 1,
+      "gretil": "nava",
+      "sc": null,
+      "vri": null,
+      "bjt": "nava",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 2,
+      "gretil": "yimāni",
+      "sc": null,
+      "vri": null,
+      "bjt": "imāni",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 30,
+      "gretil": null,
+      "sc": "ti",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 31,
+      "gretil": null,
+      "sc": "pe",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 34,
+      "gretil": null,
+      "sc": "ti",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 35,
+      "gretil": null,
+      "sc": "pe",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 46,
+      "gretil": null,
+      "sc": "ti",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 47,
+      "gretil": null,
+      "sc": "pe",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 50,
+      "gretil": null,
+      "sc": "ti",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 51,
+      "gretil": null,
+      "sc": "pe",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 63,
+      "gretil": null,
+      "sc": "navamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

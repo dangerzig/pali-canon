@@ -4,110 +4,134 @@
   "word_counts": {
     "gretil": 51,
     "sc": 49,
-    "vri": 0
+    "vri": 0,
+    "bjt": 50
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 53,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
-    "uncertain": 9,
-    "match": 0,
-    "other": 44
+    "orthographic": 4,
+    "errors": 2,
+    "variants": 4,
+    "uncertain": 6,
+    "match": 37,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 7,
-      "gretil": "pañc",
-      "sc": "pañcimāni",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "pañc",
-      "notes": "Three-way disagreement: PTS \"pañc\", SC \"pañcimāni\", VRI \"None\""
-    },
-    {
-      "position": 8,
-      "gretil": "imāni",
-      "sc": null,
-      "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "imāni",
-      "notes": "Present in PTS but missing in SC/VRI"
-    },
+  "errors": [
     {
       "position": 16,
       "gretil": "āsabhaṇṭhānaṃ",
       "sc": "āsabhaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "āsabhaṃ",
+      "type": "error",
       "preferred": "āsabhaṃ",
-      "notes": "Three-way disagreement, one valid reading"
-    },
-    {
-      "position": 27,
-      "gretil": "hiribalaṃ",
-      "sc": "hirībalaṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "hiribalaṃ",
-      "notes": "Three-way disagreement: PTS \"hiribalaṃ\", SC \"hirībalaṃ\", VRI \"None\""
-    },
-    {
-      "position": 29,
-      "gretil": "viriyabalaṃ",
-      "sc": "vīriyabalaṃ",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "viriyabalaṃ",
-      "notes": "Three-way disagreement: PTS \"viriyabalaṃ\", SC \"vīriyabalaṃ\", VRI \"None\""
+      "notes": "PTS \"āsabhaṇṭhānaṃ\" not in DPD, SC \"āsabhaṃ\" is valid"
     },
     {
       "position": 41,
       "gretil": "āsabhaṇṭhānaṃ",
       "sc": "āsabhaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "āsabhaṃ",
+      "type": "error",
       "preferred": "āsabhaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"āsabhaṇṭhānaṃ\" not in DPD, SC \"āsabhaṃ\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 7,
+      "gretil": "pañc",
+      "sc": "pañcimāni",
+      "vri": null,
+      "bjt": "pañcimāni",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"pañc\" vs SC \"pañcimāni\""
+    },
+    {
+      "position": 27,
+      "gretil": "hiribalaṃ",
+      "sc": "hirībalaṃ",
+      "vri": null,
+      "bjt": "hiribalaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"hiribalaṃ\" vs SC \"hirībalaṃ\""
+    },
+    {
+      "position": 29,
+      "gretil": "viriyabalaṃ",
+      "sc": "vīriyabalaṃ",
+      "vri": null,
+      "bjt": "viriyabalaṃ",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"viriyabalaṃ\" vs SC \"vīriyabalaṃ\""
     },
     {
       "position": 50,
       "gretil": "aṅguttaranikāya",
       "sc": "paṭhamaṃ",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "aṅguttaranikāya",
-      "notes": "Three-way disagreement: PTS \"aṅguttaranikāya\", SC \"paṭhamaṃ\", VRI \"None\""
+      "bjt": null,
+      "type": "variant",
+      "notes": "Textual variant: PTS \"aṅguttaranikāya\" vs SC \"paṭhamaṃ\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "xi",
+      "sc": null,
+      "vri": null,
+      "bjt": "tathāgatabalasuttaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 8,
+      "gretil": "imāni",
+      "sc": null,
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 17,
+      "gretil": null,
+      "sc": "ṭhānaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 42,
+      "gretil": null,
+      "sc": "ṭhānaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 51,
       "gretil": "xii",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "xii",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 52,
       "gretil": "xiv",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "xiv",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

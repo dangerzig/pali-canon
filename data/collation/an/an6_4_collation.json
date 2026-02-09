@@ -4,50 +4,70 @@
   "word_counts": {
     "gretil": 46,
     "sc": 45,
-    "vri": 0
+    "vri": 0,
+    "bjt": 49
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 47,
-    "orthographic": 0,
-    "errors": 0,
-    "variants": 0,
+    "orthographic": 5,
+    "errors": 1,
+    "variants": 1,
     "uncertain": 3,
-    "match": 0,
-    "other": 44
+    "match": 37,
+    "other": 0
   },
-  "errors": [],
-  "variants": [],
-  "uncertain": [
-    {
-      "position": 15,
-      "gretil": "viriyabalena",
-      "sc": "vīriyabalena",
-      "vri": null,
-      "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "viriyabalena",
-      "notes": "Three-way disagreement: PTS \"viriyabalena\", SC \"vīriyabalena\", VRI \"None\""
-    },
+  "errors": [
     {
       "position": 24,
       "gretil": "diṭṭh",
       "sc": "diṭṭheva",
       "vri": null,
-      "type": "uncertain",
-      "confidence": 0.5,
+      "bjt": "diṭṭheva",
+      "type": "error",
       "preferred": "diṭṭheva",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS \"diṭṭh\" not in DPD, SC \"diṭṭheva\" is valid"
+    }
+  ],
+  "variants": [
+    {
+      "position": 15,
+      "gretil": "viriyabalena",
+      "sc": "vīriyabalena",
+      "vri": null,
+      "bjt": "viriyabalena",
+      "type": "variant",
+      "notes": "Textual variant: PTS \"viriyabalena\" vs SC \"vīriyabalena\""
+    }
+  ],
+  "uncertain": [
+    {
+      "position": 0,
+      "gretil": "iv",
+      "sc": null,
+      "vri": null,
+      "bjt": "balasuttaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 25,
       "gretil": "eva",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "eva",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 46,
+      "gretil": null,
+      "sc": "catutthaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }

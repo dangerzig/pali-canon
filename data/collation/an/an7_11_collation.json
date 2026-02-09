@@ -4,19 +4,32 @@
   "word_counts": {
     "gretil": 20,
     "sc": 19,
-    "vri": 0
+    "vri": 0,
+    "bjt": 20
   },
   "has_vri": false,
+  "has_bjt": true,
   "stats": {
     "total_positions": 21,
-    "orthographic": 0,
-    "errors": 0,
+    "orthographic": 3,
+    "errors": 1,
     "variants": 0,
-    "uncertain": 2,
-    "match": 0,
-    "other": 19
+    "uncertain": 3,
+    "match": 14,
+    "other": 0
   },
-  "errors": [],
+  "errors": [
+    {
+      "position": 0,
+      "gretil": "xi",
+      "sc": "sattime",
+      "vri": null,
+      "bjt": "anusaya",
+      "type": "error",
+      "preferred": "sattime",
+      "notes": "PTS \"xi\" not in DPD, SC \"sattime\" is valid"
+    }
+  ],
   "variants": [],
   "uncertain": [
     {
@@ -24,20 +37,27 @@
       "gretil": "satt",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "satt",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "suttaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
     },
     {
       "position": 2,
       "gretil": "ime",
       "sc": null,
       "vri": null,
-      "type": "pts_addition",
-      "confidence": 0.7,
-      "preferred": "ime",
-      "notes": "Present in PTS but missing in SC/VRI"
+      "bjt": "sāvatthinidānaṃ",
+      "type": "missing",
+      "notes": "One reading missing"
+    },
+    {
+      "position": 20,
+      "gretil": null,
+      "sc": "paṭhamaṃ",
+      "vri": null,
+      "bjt": null,
+      "type": "missing",
+      "notes": "One reading missing"
     }
   ]
 }
