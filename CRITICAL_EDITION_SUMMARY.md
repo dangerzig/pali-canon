@@ -13,6 +13,7 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 | GRETIL | PTS (Pali Text Society) | 3,243,906 |
 | VRI | Chaṭṭha Saṅgāyana (CST4) | 2,418,765 |
 | SuttaCentral | Mahāsaṅgīti | 1,596,896 |
+| BJT | Buddha Jayanti Tipitaka | 2,205,510 |
 
 ---
 
@@ -23,16 +24,16 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 - GRETIL: 376,093 words
 - VRI: 218,936 words
 
-### Sutta Piṭaka (3 witnesses: SC/GRETIL/VRI)
+### Sutta Piṭaka (4 witnesses: SC/GRETIL/VRI/BJT)
 
-| Nikāya | Units | SC Words | GRETIL Words | VRI Words |
-|--------|-------|----------|--------------|-----------|
-| Dīgha (DN) | 34 suttas | 143,999 | 175,065 | 144,180 |
-| Majjhima (MN) | 152 suttas | 247,338 | 249,813 | 248,810 |
-| Saṃyutta (SN) | 56 files | 265,024 | 279,549 | 267,747 |
-| Aṅguttara (AN) | 11 files | 300,638 | 334,147 | 302,871 |
-| Khuddaka (KN) | 20 texts | 639,897 | 1,090,590 | 523,567 |
-| **TOTAL** | | **1,596,896** | **2,129,164** | **1,487,175** |
+| Nikāya | Units | SC Words | GRETIL Words | VRI Words | BJT Words |
+|--------|-------|----------|--------------|-----------|-----------|
+| Dīgha (DN) | 34 suttas | 143,999 | 175,065 | 144,180 | 213,516 |
+| Majjhima (MN) | 152 suttas | 247,338 | 249,813 | 248,810 | 292,314 |
+| Saṃyutta (SN) | 56 files | 265,024 | 279,549 | 267,747 | 559,486 |
+| Aṅguttara (AN) | 11 files | 300,638 | 334,147 | 302,871 | 466,422 |
+| Khuddaka (KN) | 20 texts | 639,897 | 1,090,590 | 523,567 | 673,772 |
+| **TOTAL** | | **1,596,896** | **2,129,164** | **1,487,175** | **2,205,510** |
 
 ### Abhidhamma Piṭaka (2 witnesses: GRETIL/VRI)
 - **11 texts** (Dhammasaṅgaṇī, Vibhaṅga, Dhātukathā, Puggalapaññatti, Kathāvatthu, Yamaka 1-2, Paṭṭhāna 1-3 + Duka)
@@ -45,7 +46,7 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 
 | Metric | Value |
 |--------|-------|
-| 3-witness editions (SC/GRETIL/VRI) | 1,596,896 words |
+| 4-witness editions (SC/GRETIL/VRI/BJT) | 1,596,896 words |
 | 2-witness editions (GRETIL/VRI) | 930,516 words |
 | **Total Critical Edition** | **2,527,412 words** |
 
@@ -69,7 +70,7 @@ The high token-level coverage reflects that high-frequency words are well-covere
 
 Word-level collation across witnesses, with automatic classification of differences:
 
-### Sutta Piṭaka (3 witnesses: SC/GRETIL/VRI)
+### Sutta Piṭaka (4 witnesses: SC/GRETIL/VRI/BJT)
 
 | Nikāya | Texts | Errors | Variants |
 |--------|-------|--------|----------|
@@ -103,12 +104,15 @@ See `data/collation/pts_corrections_catalog.json` for DN/MN/SN correction catalo
 ### Source Scripts
 - `src/parse_gretil_complete.py` - Parse all GRETIL PTS texts
 - `src/parse_vri_complete.py` - Parse all VRI CST texts
+- `src/parse_bjt.py` - Parse all BJT texts
+- `src/split_bjt.py` - Split BJT volumes into per-sutta files
 - `src/build_critical_complete.py` - Build critical editions
 - `src/generate_final_summary.py` - Generate statistics
 
 ### Data Directories
 - `data/gretil-parsed/` - Parsed GRETIL texts (Vinaya, 5 Nikāyas, Abhidhamma)
 - `data/vri-parsed/` - Parsed VRI texts (Vinaya, 5 Nikāyas, Abhidhamma)
+- `data/bjt-parsed/` - Parsed BJT texts (Sutta Piṭaka: volumes + per-sutta files)
 - `data/critical/` - Critical edition files (all collections)
 - `data/lemmatized/` - Lemmatized SC texts
 - `data/collation/` - Word-level collation with variant classification

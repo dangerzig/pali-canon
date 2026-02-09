@@ -2,7 +2,7 @@
 """
 Build complete critical editions for the entire Tipiṭaka.
 
-Three-witness editions (GRETIL/SC/VRI):
+Four-witness editions (GRETIL/SC/VRI/BJT):
 - Dīgha Nikāya (DN)
 - Majjhima Nikāya (MN)
 - Saṃyutta Nikāya (SN)
@@ -180,6 +180,22 @@ def load_sc_text(collection: str, text_id: str) -> Optional[str]:
     return None
 
 
+def load_bjt_text(collection: str, pattern: str = None) -> str:
+    """Load BJT parsed text. If pattern given, glob for matching files; otherwise load all."""
+    bjt_dir = DATA_DIR / f"bjt-parsed/{collection}"
+    if not bjt_dir.exists():
+        return ""
+
+    all_text = ""
+    glob_pattern = f"{pattern}*.json" if pattern else "*.json"
+    for fpath in sorted(bjt_dir.glob(glob_pattern)):
+        if fpath.name.startswith('_'):
+            continue
+        data = json.loads(fpath.read_text())
+        all_text += data.get('text', '') + " "
+    return all_text
+
+
 # ==================== Generic Nikaya Builders ====================
 
 def build_nikaya_critical(config: NikayaConfig) -> dict[str, Any]:
@@ -192,14 +208,14 @@ def build_nikaya_critical(config: NikayaConfig) -> dict[str, Any]:
         Summary dictionary with word counts and sutta count
     """
     log("=" * 60)
-    log(f"Building {config.name} Critical Edition (3 witnesses)")
+    log(f"Building {config.name} Critical Edition (4 witnesses)")
     log("=" * 60)
 
     output_dir = DATA_DIR / f"critical/{config.code}"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     results: list[dict[str, Any]] = []
-    total_words = {'sc': 0, 'gretil': 0, 'vri': 0}
+    total_words = {'sc': 0, 'gretil': 0, 'vri': 0, 'bjt': 0}
 
     # Load all GRETIL volumes
     gretil_all = ""
@@ -219,6 +235,12 @@ def build_nikaya_critical(config: NikayaConfig) -> dict[str, Any]:
     total_words['vri'] = vri_words
     log(f"VRI {config.name}: {vri_words:,} words")
 
+    # Load all BJT volumes
+    bjt_all = load_bjt_text(config.code, f"{config.code}_vol")
+    bjt_words = len(tokenize(bjt_all))
+    total_words['bjt'] = bjt_words
+    log(f"BJT {config.name}: {bjt_words:,} words")
+
     # Process each sutta with SC
     if config.sutta_range:
         start, end = config.sutta_range
@@ -232,7 +254,7 @@ def build_nikaya_critical(config: NikayaConfig) -> dict[str, Any]:
 
             edition = {
                 'id': f'{config.code}{sutta_num}',
-                'witnesses': ['SC', 'GRETIL', 'VRI'],
+                'witnesses': ['SC', 'GRETIL', 'VRI', 'BJT'],
                 'word_count': sc_word_count,
             }
             results.append(edition)
@@ -243,11 +265,12 @@ def build_nikaya_critical(config: NikayaConfig) -> dict[str, Any]:
 
     summary = {
         'nikaya': config.name,
-        'witnesses': 3,
+        'witnesses': 4,
         'suttas': len(results),
         'sc_words': total_words['sc'],
         'gretil_words': total_words['gretil'],
         'vri_words': total_words['vri'],
+        'bjt_words': total_words['bjt'],
     }
 
     with open(output_dir / "_critical_summary.json", 'w', encoding='utf-8') as f:
@@ -267,13 +290,13 @@ def build_nikaya_critical_glob(config: NikayaConfig) -> dict[str, Any]:
         Summary dictionary with word counts and file count
     """
     log("=" * 60)
-    log(f"Building {config.name} Critical Edition (3 witnesses)")
+    log(f"Building {config.name} Critical Edition (4 witnesses)")
     log("=" * 60)
 
     output_dir = DATA_DIR / f"critical/{config.code}"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    total_words: dict[str, int] = {'sc': 0, 'gretil': 0, 'vri': 0}
+    total_words: dict[str, int] = {'sc': 0, 'gretil': 0, 'vri': 0, 'bjt': 0}
 
     # Load all GRETIL volumes
     gretil_all = ""
@@ -292,6 +315,12 @@ def build_nikaya_critical_glob(config: NikayaConfig) -> dict[str, Any]:
     vri_words = len(tokenize(vri_all))
     total_words['vri'] = vri_words
     log(f"VRI {config.name}: {vri_words:,} words")
+
+    # Load all BJT volumes
+    bjt_all = load_bjt_text(config.code, f"{config.code}_vol")
+    bjt_words = len(tokenize(bjt_all))
+    total_words['bjt'] = bjt_words
+    log(f"BJT {config.name}: {bjt_words:,} words")
 
     # Process SC files via glob
     sc_dir = DATA_DIR / f"canonical/{config.code}"
@@ -325,7 +354,7 @@ def build_nikaya_critical_glob(config: NikayaConfig) -> dict[str, Any]:
 
             edition = {
                 'id': file_id,
-                'witnesses': ['SC', 'GRETIL', 'VRI'],
+                'witnesses': ['SC', 'GRETIL', 'VRI', 'BJT'],
                 'word_count': word_count,
             }
             results.append(edition)
@@ -336,11 +365,12 @@ def build_nikaya_critical_glob(config: NikayaConfig) -> dict[str, Any]:
 
     summary = {
         'nikaya': config.name,
-        'witnesses': 3,
+        'witnesses': 4,
         'files': len(results),
         'sc_words': total_words['sc'],
         'gretil_words': total_words['gretil'],
         'vri_words': total_words['vri'],
+        'bjt_words': total_words['bjt'],
     }
 
     with open(output_dir / "_critical_summary.json", 'w', encoding='utf-8') as f:
@@ -395,15 +425,15 @@ KN_MAPPING = {
 }
 
 def build_kn_critical() -> dict[str, Any]:
-    """Build KN critical edition with 2-3 witnesses."""
+    """Build KN critical edition with 2-4 witnesses."""
     log("=" * 60)
-    log("Building KN Critical Edition (2-3 witnesses)")
+    log("Building KN Critical Edition (2-4 witnesses)")
     log("=" * 60)
 
     output_dir = DATA_DIR / "critical/kn"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    total_words = {'sc': 0, 'gretil': 0, 'vri': 0}
+    total_words = {'sc': 0, 'gretil': 0, 'vri': 0, 'bjt': 0}
     results = []
 
     # Load all GRETIL KN texts
@@ -424,6 +454,12 @@ def build_kn_critical() -> dict[str, Any]:
     vri_words = len(tokenize(vri_all))
     total_words['vri'] = vri_words
     log(f"VRI KN: {vri_words:,} words")
+
+    # Load all BJT KN files
+    bjt_all = load_bjt_text('kn')
+    bjt_words = len(tokenize(bjt_all))
+    total_words['bjt'] = bjt_words
+    log(f"BJT KN: {bjt_words:,} words")
 
     # Process SC KN files
     sc_dir = DATA_DIR / "canonical/kn"
@@ -507,11 +543,12 @@ def build_kn_critical() -> dict[str, Any]:
 
     summary = {
         'nikaya': 'KN',
-        'witnesses': '2-3 (SC coverage partial)',
+        'witnesses': '2-4 (SC coverage partial)',
         'texts': len(results),
         'sc_words': total_words['sc'],
         'gretil_words': total_words['gretil'],
         'vri_words': total_words['vri'],
+        'bjt_words': total_words['bjt'],
     }
 
     with open(output_dir / "_critical_summary.json", 'w', encoding='utf-8') as f:
@@ -697,6 +734,7 @@ def main() -> None:
     sutta_gretil = sum(results[n].get('gretil_words', 0) for n in ['dn', 'mn', 'sn', 'an', 'kn'])
     sutta_vri = sum(results[n].get('vri_words', 0) for n in ['dn', 'mn', 'sn', 'an', 'kn'])
     sutta_sc = sum(results[n].get('sc_words', 0) for n in ['dn', 'mn', 'sn', 'an', 'kn'])
+    sutta_bjt = sum(results[n].get('bjt_words', 0) for n in ['dn', 'mn', 'sn', 'an', 'kn'])
 
     log("")
     log("VINAYA PIṬAKA (2 witnesses: GRETIL, VRI)")
@@ -705,7 +743,7 @@ def main() -> None:
     log(f"  VRI: {results['vinaya'].get('vri_words', 0):,} words")
     log("")
 
-    log("SUTTA PIṬAKA (3 witnesses: SC, GRETIL, VRI)")
+    log("SUTTA PIṬAKA (4 witnesses: SC, GRETIL, VRI, BJT)")
     log(f"  DN: {results['dn'].get('suttas', 0)} suttas")
     log(f"  MN: {results['mn'].get('suttas', 0)} suttas")
     log(f"  SN: {results['sn'].get('files', 0)} files")
@@ -714,6 +752,7 @@ def main() -> None:
     log(f"  SC Total: {sutta_sc:,} words")
     log(f"  GRETIL Total: {sutta_gretil:,} words")
     log(f"  VRI Total: {sutta_vri:,} words")
+    log(f"  BJT Total: {sutta_bjt:,} words")
     log("")
 
     log("ABHIDHAMMA PIṬAKA (2 witnesses: GRETIL, VRI)")
@@ -731,6 +770,7 @@ def main() -> None:
     log(f"  SC (Sutta only): {sutta_sc:,} words")
     log(f"  GRETIL (all): {total_gretil:,} words")
     log(f"  VRI (all): {total_vri:,} words")
+    log(f"  BJT (Sutta only): {sutta_bjt:,} words")
 
     # Save master summary
     overall = {
@@ -746,6 +786,7 @@ def main() -> None:
                 'sc_words': sutta_sc,
                 'gretil_words': sutta_gretil,
                 'vri_words': sutta_vri,
+                'bjt_words': sutta_bjt,
             }
         },
         'abhidhamma_pitaka': results['abhidhamma'],
@@ -753,6 +794,7 @@ def main() -> None:
             'sc_words': sutta_sc,
             'gretil_words': total_gretil,
             'vri_words': total_vri,
+            'bjt_words': sutta_bjt,
         }
     }
 

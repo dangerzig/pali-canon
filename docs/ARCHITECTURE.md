@@ -2,10 +2,11 @@
 
 ## Overview
 
-This project creates a digital critical edition of the complete Pāli Tipiṭaka by collating three independent textual witnesses:
+This project creates a digital critical edition of the complete Pāli Tipiṭaka by collating four independent textual witnesses:
 - **GRETIL**: PTS (Pali Text Society) edition transcriptions
 - **VRI**: Vipassana Research Institute Chaṭṭha Saṅgāyana (CST4)
 - **SuttaCentral**: Mahāsaṅgīti edition with modern segmentation
+- **BJT**: Buddha Jayanti Tipitaka (Sri Lankan edition)
 
 ## Codebase Statistics
 
@@ -41,6 +42,8 @@ pali/
 │   ├── vri-parsed/         # Parsed VRI JSON
 │   ├── gretil-pts/         # Raw GRETIL HTML files
 │   ├── gretil-parsed/      # Parsed GRETIL JSON
+│   ├── bjt-raw/            # Raw BJT HTML files
+│   ├── bjt-parsed/         # Parsed BJT JSON (volumes + per-sutta)
 │   ├── canonical/          # SuttaCentral source files
 │   ├── critical/           # Output: critical edition files
 │   ├── lemmatized/         # Output: lemmatized texts
@@ -63,6 +66,8 @@ Raw Sources → Parsers → Normalized JSON
 |--------|-------|--------|-------------|
 | `parse_gretil_complete.py` | `*.htm` | `gretil-parsed/*.json` | Parse GRETIL PTS HTML files |
 | `parse_vri_complete.py` | `*.mul.txt` | `vri-parsed/*.json` | Parse VRI CST text files |
+| `parse_bjt.py` | `*.html` | `bjt-parsed/*.json` | Parse BJT HTML files |
+| `split_bjt.py` | `bjt-parsed/*_vol*.json` | `bjt-parsed/*/*.json` | Split BJT volumes into per-sutta files |
 | `build_canonical_*.py` | SC bilara | `canonical/*.json` | Process SuttaCentral data |
 
 **Output JSON format:**
@@ -82,13 +87,13 @@ Parsed JSON → Critical Builder → Critical Edition JSON
 
 | Builder | Witnesses | Coverage |
 |---------|-----------|----------|
-| `build_critical_complete.py` | 2-3 | Full Tipiṭaka |
+| `build_critical_complete.py` | 2-4 | Full Tipiṭaka |
 
 **Critical edition output format:**
 ```json
 {
   "id": "mn1",
-  "witnesses": ["SC", "GRETIL", "VRI"],
+  "witnesses": ["SC", "GRETIL", "VRI", "BJT"],
   "word_count": 5432
 }
 ```
@@ -153,11 +158,11 @@ Master builder for entire Tipiṭaka:
 ```python
 def main():
     results['vinaya'] = build_vinaya_critical()    # 2 witnesses
-    results['dn'] = build_dn_critical()            # 3 witnesses
-    results['mn'] = build_mn_critical()            # 3 witnesses
-    results['sn'] = build_sn_critical()            # 3 witnesses
-    results['an'] = build_an_critical()            # 3 witnesses
-    results['kn'] = build_kn_critical()            # 2-3 witnesses
+    results['dn'] = build_dn_critical()            # 4 witnesses
+    results['mn'] = build_mn_critical()            # 4 witnesses
+    results['sn'] = build_sn_critical()            # 4 witnesses
+    results['an'] = build_an_critical()            # 4 witnesses
+    results['kn'] = build_kn_critical()            # 2-4 witnesses
     results['abhidhamma'] = build_abhidhamma_critical()  # 2 witnesses
 ```
 
@@ -346,6 +351,7 @@ python src/generate_final_summary.py
 | GRETIL words | 3,243,906 |
 | VRI words | 2,418,765 |
 | SC words | 1,606,474 |
+| BJT words | 2,205,510 |
 | Unique word forms | 127,026 |
 | Unique word coverage | 97.8% |
 | Token-level coverage | 99.78% |
