@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """
-Parse BJT (Buddha Jayanti Tripitaka) SLTP editions for the Sutta Pitaka.
+Parse BJT (Buddha Jayanti Tripitaka) SLTP editions.
 
 Reads HTML files downloaded from Access to Insight's SLTP collection
-and outputs cleaned JSON files matching the GRETIL parsed format.
+(Sutta Pitaka) and agamarama.com (Vinaya, Abhidhamma) and outputs
+cleaned JSON files matching the GRETIL parsed format.
 
 Covers:
+- Vinaya Pitaka: 5 volumes (Suttavibhanga I/II, Mahavagga, Cullavagga, Parivara)
 - Sutta Pitaka: DN (3 vols), MN (3 vols), SN (5 vols), AN (5 vols)
 - Khuddaka Nikaya: 23 texts (single and multi-volume)
-
-No Vinaya or Abhidhamma (not available from SLTP/Access to Insight).
+- Abhidhamma Pitaka: 9 texts (Dhs, Vibh, Dhatuk, Kv I/II, Yam I/II, Patth I/II)
 """
 
 import re
@@ -423,6 +424,112 @@ def parse_kn() -> dict:
     return summary
 
 
+# ==================== Vinaya Parser ====================
+
+# BJT Vinaya volumes -> GRETIL text names
+VINAYA_VOLUMES = [
+    ('I', 'suttavibhanga1', 'Suttavibhaṅga I (Pārājika)'),
+    ('II', 'suttavibhanga2', 'Suttavibhaṅga II (Pācittiya)'),
+    ('III', 'parivara', 'Parivāra'),
+    ('IV', 'mahavagga', 'Mahāvagga'),
+    ('V', 'cullavagga', 'Cūḷavagga'),
+]
+
+
+def parse_vinaya() -> dict:
+    """Parse Vinaya Pitaka BJT files."""
+    print("\n" + "=" * 60)
+    print("VINAYA PITAKA")
+    print("=" * 60)
+
+    output_dir = OUTPUT_DIR / "vinaya"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    results = []
+    total_words = 0
+
+    for roman, name, title in VINAYA_VOLUMES:
+        filepath = BJT_DIR / f"vinaya/Vin_{roman}_utf8.html"
+        data = parse_file(filepath, 'vinaya', name)
+        if data:
+            data['title'] = title
+            output_file = output_dir / f"{name}.json"
+            with open(output_file, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            print(f"  {title}: {data['word_count']:,} words")
+            results.append(data)
+            total_words += data['word_count']
+        else:
+            print(f"  {title}: FILE NOT FOUND")
+
+    summary = {
+        'pitaka': 'Vinaya',
+        'source': 'BJT',
+        'texts': len(results),
+        'total_words': total_words,
+    }
+    with open(output_dir / "_summary.json", 'w', encoding='utf-8') as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
+
+    print(f"  TOTAL: {total_words:,} words")
+    return summary
+
+
+# ==================== Abhidhamma Parser ====================
+
+# BJT Abhidhamma files -> GRETIL text names
+ABHIDHAMMA_FILES = [
+    ('Dhs', 'dhammasangani', 'Dhammasaṅgaṇī'),
+    ('Vibh', 'vibhanga', 'Vibhaṅga'),
+    ('Dhatuk', 'dhatukatha', 'Dhātukathā'),
+    ('Kv_I', 'kathavatthu1', 'Kathāvatthu I'),
+    ('Kv_II', 'kathavatthu2', 'Kathāvatthu II'),
+    ('Yam_I', 'yamaka1', 'Yamaka I'),
+    ('Yam_II', 'yamaka2', 'Yamaka II'),
+    ('Patth_I', 'patthana1', 'Paṭṭhāna I'),
+    ('Patth_II', 'patthana2', 'Paṭṭhāna II'),
+]
+
+
+def parse_abhidhamma() -> dict:
+    """Parse Abhidhamma Pitaka BJT files."""
+    print("\n" + "=" * 60)
+    print("ABHIDHAMMA PITAKA")
+    print("=" * 60)
+
+    output_dir = OUTPUT_DIR / "abhidhamma"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    results = []
+    total_words = 0
+
+    for bjt_name, output_name, title in ABHIDHAMMA_FILES:
+        filepath = BJT_DIR / f"abhidhamma/{bjt_name}_utf8.html"
+        data = parse_file(filepath, 'abhidhamma', output_name)
+        if data:
+            data['title'] = title
+            output_file = output_dir / f"{output_name}.json"
+            with open(output_file, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+            print(f"  {title}: {data['word_count']:,} words")
+            results.append(data)
+            total_words += data['word_count']
+        else:
+            print(f"  {title}: FILE NOT FOUND")
+
+    summary = {
+        'pitaka': 'Abhidhamma',
+        'source': 'BJT',
+        'texts': len(results),
+        'total_words': total_words,
+    }
+    with open(output_dir / "_summary.json", 'w', encoding='utf-8') as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
+
+    print(f"  TOTAL: {total_words:,} words")
+    return summary
+
+
 # ==================== Main ====================
 
 def main():
@@ -432,54 +539,45 @@ def main():
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
+    import sys
     results = {}
 
-    # Sutta Pitaka
-    print("\n" + "=" * 60)
-    print("SUTTA PITAKA")
-    print("=" * 60)
+    # Determine which piṭakas to parse
+    targets = set(sys.argv[1:]) if len(sys.argv) > 1 else {'vinaya', 'sutta', 'abhidhamma'}
 
-    results['dn'] = parse_volumes('dn', 'Dīgha Nikāya', 3)
-    results['mn'] = parse_volumes('mn', 'Majjhima Nikāya', 3)
-    results['sn'] = parse_volumes('sn', 'Saṃyutta Nikāya', 5)
-    results['an'] = parse_volumes('an', 'Aṅguttara Nikāya', 5)
-    results['kn'] = parse_kn()
+    # Vinaya Pitaka
+    if 'vinaya' in targets:
+        results['vinaya'] = parse_vinaya()
+
+    # Sutta Pitaka
+    if 'sutta' in targets:
+        print("\n" + "=" * 60)
+        print("SUTTA PITAKA")
+        print("=" * 60)
+
+        results['dn'] = parse_volumes('dn', 'Dīgha Nikāya', 3)
+        results['mn'] = parse_volumes('mn', 'Majjhima Nikāya', 3)
+        results['sn'] = parse_volumes('sn', 'Saṃyutta Nikāya', 5)
+        results['an'] = parse_volumes('an', 'Aṅguttara Nikāya', 5)
+        results['kn'] = parse_kn()
+
+    # Abhidhamma Pitaka
+    if 'abhidhamma' in targets:
+        results['abhidhamma'] = parse_abhidhamma()
 
     # Calculate totals
     total_words = sum(r.get('total_words', 0) for r in results.values())
 
-    # Save overall summary
-    summary = {
-        'source': 'BJT (Buddha Jayanti Tipitaka)',
-        'source_url': 'https://www.accesstoinsight.org/tipitaka/sltp/',
-        'sutta_pitaka': {
-            'dn': results['dn'],
-            'mn': results['mn'],
-            'sn': results['sn'],
-            'an': results['an'],
-            'kn': results['kn'],
-            'total_words': total_words,
-        },
-        'total_words': total_words,
-    }
-
-    with open(OUTPUT_DIR / "_bjt_summary.json", 'w', encoding='utf-8') as f:
-        json.dump(summary, f, indent=2, ensure_ascii=False)
-
     print("\n" + "=" * 60)
-    print("BJT SUTTA PITAKA SUMMARY")
+    print("BJT PARSING SUMMARY")
     print("=" * 60)
-    print(f"  DN:  {results['dn'].get('total_words', 0):>10,} words")
-    print(f"  MN:  {results['mn'].get('total_words', 0):>10,} words")
-    print(f"  SN:  {results['sn'].get('total_words', 0):>10,} words")
-    print(f"  AN:  {results['an'].get('total_words', 0):>10,} words")
-    print(f"  KN:  {results['kn'].get('total_words', 0):>10,} words")
+    for key, r in results.items():
+        label = key.upper()
+        print(f"  {label:15s}: {r.get('total_words', 0):>10,} words")
     print(f"{'─' * 35}")
     print(f"  TOTAL: {total_words:>8,} words")
-    print()
-    print(f"Summary saved to: {OUTPUT_DIR / '_bjt_summary.json'}")
 
-    return summary
+    return results
 
 
 if __name__ == "__main__":

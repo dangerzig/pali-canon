@@ -2,10 +2,11 @@
 """
 Build critical editions for all nikāyas (MN, SN, AN).
 
-Uses three witnesses where available:
+Uses four witnesses:
 - GRETIL (PTS transcription)
 - SuttaCentral (SC)
 - VRI (Chaṭṭha Saṅgāyana)
+- BJT (Buddha Jayanti Tripitaka)
 """
 
 import re

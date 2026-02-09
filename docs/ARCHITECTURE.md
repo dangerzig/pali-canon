@@ -87,7 +87,7 @@ Parsed JSON → Critical Builder → Critical Edition JSON
 
 | Builder | Witnesses | Coverage |
 |---------|-----------|----------|
-| `build_critical_complete.py` | 2-4 | Full Tipiṭaka |
+| `build_critical_complete.py` | 4 | Full Tipiṭaka |
 
 **Critical edition output format:**
 ```json
@@ -157,13 +157,13 @@ Master builder for entire Tipiṭaka:
 
 ```python
 def main():
-    results['vinaya'] = build_vinaya_critical()    # 2 witnesses
+    results['vinaya'] = build_vinaya_critical()    # 4 witnesses
     results['dn'] = build_dn_critical()            # 4 witnesses
     results['mn'] = build_mn_critical()            # 4 witnesses
     results['sn'] = build_sn_critical()            # 4 witnesses
     results['an'] = build_an_critical()            # 4 witnesses
-    results['kn'] = build_kn_critical()            # 2-4 witnesses
-    results['abhidhamma'] = build_abhidhamma_critical()  # 2 witnesses
+    results['kn'] = build_kn_critical()            # 4 witnesses
+    results['abhidhamma'] = build_abhidhamma_critical()  # 4 witnesses
 ```
 
 ### Lemmatization Layer
@@ -273,7 +273,8 @@ KN (nested items):
   "grand_totals": {
     "sc_words": 1596896,
     "gretil_words": 3059680,
-    "vri_words": 2418765
+    "vri_words": 2418765,
+    "bjt_words": 2205510
   }
 }
 ```
@@ -329,6 +330,8 @@ Word-level alignment between witnesses for detailed apparatus.
 # Parse all sources
 python src/parse_gretil_complete.py
 python src/parse_vri_complete.py
+python src/parse_bjt.py
+python src/split_bjt.py
 
 # Build critical editions
 python src/build_critical_complete.py
@@ -371,12 +374,14 @@ python src/generate_final_summary.py
 
 **Status:** ✓ VERIFIED CORRECT (February 2026)
 
-The `classify_variant()` function in `collate_variants.py` correctly implements:
+The `classify_variant()` function in `collate_nikaya.py` correctly implements four-witness classification:
 
-1. **Error**: SC=VRI≠PTS AND PTS reading is NOT in DPD → transcription/OCR error
-2. **Variant**: SC=VRI≠PTS AND both readings ARE in DPD → legitimate textual variant
+1. **Error** (high confidence): SC=VRI=BJT≠PTS AND PTS reading is NOT in DPD → transcription/OCR error
+2. **Error** (standard): SC=VRI≠PTS AND PTS reading is NOT in DPD → transcription/OCR error
+3. **Variant**: Multiple witnesses differ AND all readings ARE in DPD → legitimate textual variant
+4. **Split**: SC=VRI≠PTS, BJT=PTS (2 vs 2 split) → variant with reduced confidence
 
-Tested across 4,355 "errors" in DN - 0 false positives. All flagged errors are genuinely invalid Pāli forms (truncated words, wrong diacritics, OCR artifacts).
+BJT participation raises confidence when it agrees with the SC/VRI majority (3 vs 1) and notes splits when it agrees with PTS instead (2 vs 2).
 
 ### Alignment Artifact Detection
 

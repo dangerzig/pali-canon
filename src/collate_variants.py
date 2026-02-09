@@ -231,14 +231,14 @@ def classify_variant(gretil: str, sc: str, vri: str) -> dict:
                 'type': 'uncertain',
                 'confidence': 0.5,
                 'preferred': preferred,
-                'notes': 'Three-way disagreement, one valid reading'
+                'notes': 'Multi-way disagreement, one valid reading'
             }
         else:
             return {
                 'type': 'uncertain',
                 'confidence': 0.3,
                 'preferred': g,  # Default to PTS
-                'notes': f'Three-way disagreement: PTS "{g}", SC "{s}", VRI "{v}"'
+                'notes': f'Multi-way disagreement: PTS "{g}", SC "{s}", VRI "{v}"'
             }
 
     # PTS agrees with one but not other

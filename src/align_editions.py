@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
-Three-way alignment of Pāli text editions.
+Multi-witness alignment of Pāli text editions.
 
 Aligns:
 - GRETIL (PTS primary)
 - SC (SuttaCentral)
 - VRI (Vipassana Research Institute)
+- BJT (Buddha Jayanti Tipitaka)
 
 Strategy:
 1. Normalize texts (lowercase, consistent diacritics)
@@ -217,8 +218,8 @@ def align_word_sequences(words1: list, words2: list) -> list:
     return alignments
 
 
-def align_three_way(gretil_words: list, sc_words: list, vri_words: list) -> list:
-    """Perform three-way alignment."""
+def align_witnesses(gretil_words: list, sc_words: list, vri_words: list) -> list:
+    """Perform multi-witness alignment."""
     # First align GRETIL (primary) with SC
     gretil_sc = align_word_sequences(gretil_words, sc_words)
 
@@ -278,7 +279,7 @@ def compute_alignment_stats(alignment: list) -> dict:
     sc_matches = sum(1 for a in alignment if a['sc_match'] == 'match')
     vri_matches = sum(1 for a in alignment if a['vri_match'] == 'match')
 
-    # Three-way agreement
+    # Full agreement (all witnesses)
     three_way = sum(1 for a in alignment
                     if a['sc_match'] == 'match' and a['vri_match'] == 'match')
 
@@ -355,8 +356,8 @@ def align_sutta(sutta_num: int) -> dict:
     sc_words = tokenize(data['sc']['text'])
     vri_words = tokenize(data['vri']['text'])
 
-    # Perform three-way alignment
-    alignment = align_three_way(gretil_words, sc_words, vri_words)
+    # Perform multi-witness alignment
+    alignment = align_witnesses(gretil_words, sc_words, vri_words)
 
     # Compute statistics
     stats = compute_alignment_stats(alignment)
@@ -376,7 +377,7 @@ def align_sutta(sutta_num: int) -> dict:
 
 def main():
     print("=" * 70)
-    print("Three-Way Edition Alignment")
+    print("Multi-Witness Edition Alignment")
     print("=" * 70)
     print()
 
@@ -397,7 +398,7 @@ def main():
         stats = result['stats']
         print(f"  Words: GRETIL={result['word_counts']['gretil']:,}, "
               f"SC={result['word_counts']['sc']:,}, VRI={result['word_counts']['vri']:,}")
-        print(f"  Three-way match: {stats['three_way_pct']}%")
+        print(f"  All-witness match: {stats['three_way_pct']}%")
         print(f"  GRETIL outliers: {stats['gretil_outlier']} ({stats['gretil_outlier_pct']}%)")
 
         # Save alignment
@@ -441,7 +442,7 @@ def main():
     print("Summary:")
     if results:
         avg_match = sum(r['stats']['three_way_pct'] for r in results) / len(results)
-        print(f"  Average three-way match: {avg_match:.1f}%")
+        print(f"  Average all-witness match: {avg_match:.1f}%")
     print(f"  Output saved to: {OUTPUT_DIR}")
 
 

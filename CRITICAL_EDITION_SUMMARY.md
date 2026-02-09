@@ -19,10 +19,12 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 
 ## Critical Edition Coverage
 
-### Vinaya Piṭaka (2 witnesses: GRETIL/VRI)
+### Vinaya Piṭaka (4 witnesses: SC/GRETIL/VRI/BJT)
 - **5 texts** (Suttavibhaṅga 1-2, Mahāvagga, Cullavagga, Parivāra)
+- SC: see `data/sc-parsed/vinaya/`
 - GRETIL: 376,093 words
 - VRI: 218,936 words
+- BJT: see `data/bjt-parsed/vinaya/`
 
 ### Sutta Piṭaka (4 witnesses: SC/GRETIL/VRI/BJT)
 
@@ -35,10 +37,12 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 | Khuddaka (KN) | 20 texts | 639,897 | 1,090,590 | 523,567 | 673,772 |
 | **TOTAL** | | **1,596,896** | **2,129,164** | **1,487,175** | **2,205,510** |
 
-### Abhidhamma Piṭaka (2 witnesses: GRETIL/VRI)
+### Abhidhamma Piṭaka (4 witnesses: SC/GRETIL/VRI/BJT)
 - **11 texts** (Dhammasaṅgaṇī, Vibhaṅga, Dhātukathā, Puggalapaññatti, Kathāvatthu, Yamaka 1-2, Paṭṭhāna 1-3 + Duka)
+- SC: see `data/sc-parsed/abhidhamma/`
 - GRETIL: 554,423 words
 - VRI: 712,654 words
+- BJT: see `data/bjt-parsed/abhidhamma/`
 
 ---
 
@@ -46,9 +50,8 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 
 | Metric | Value |
 |--------|-------|
-| 4-witness editions (SC/GRETIL/VRI/BJT) | 1,596,896 words |
-| 2-witness editions (GRETIL/VRI) | 930,516 words |
-| **Total Critical Edition** | **2,527,412 words** |
+| **4-witness editions (SC/GRETIL/VRI/BJT)** | **All piṭakas** |
+| **Total Critical Edition** | **~2.5M+ words** |
 
 ---
 
@@ -80,7 +83,7 @@ Word-level collation across witnesses, with automatic classification of differen
 | AN | 843 | 13 | 44 |
 | KN | 17 | 12,366 | 17,677 |
 
-### Vinaya & Abhidhamma (2 witnesses: GRETIL/VRI)
+### Vinaya & Abhidhamma (4 witnesses: SC/GRETIL/VRI/BJT)
 
 | Piṭaka | Texts | Errors | Variants |
 |--------|-------|--------|----------|
@@ -90,7 +93,7 @@ Word-level collation across witnesses, with automatic classification of differen
 ### Classification Methodology
 
 **Errors** are applied only when:
-1. SC and VRI agree against PTS (GRETIL), AND
+1. Multiple witnesses (SC, VRI, BJT) agree against PTS (GRETIL), AND
 2. PTS reading is NOT a valid Pāli word (absent from DPD)
 
 **Variants** are recorded when both readings are valid Pāli words.

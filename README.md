@@ -5,8 +5,7 @@ A digital critical edition of the complete Pāli Tipiṭaka with multi-witness c
 ## Overview
 
 This project provides:
-- **Three-witness collation** of the Sutta Piṭaka (SuttaCentral, GRETIL PTS, VRI CST)
-- **Two-witness collation** of the Vinaya and Abhidhamma Piṭakas (GRETIL, VRI)
+- **Four-witness collation** of the complete Tipiṭaka (SuttaCentral, GRETIL PTS, VRI CST, BJT)
 - **Lemmatization** using the Digital Pāli Dictionary (DPD)
 - **Vocabulary analysis** and document-term matrices for computational analysis
 - **PTS correction catalog** documenting transcription errors in the PTS edition
@@ -42,19 +41,19 @@ print(f"Found in {len(results)} segments")
 
 | Piṭaka | Texts | Witnesses | Words |
 |--------|-------|-----------|-------|
-| **Vinaya** | 5 | GRETIL, VRI | ~595K |
-| **Sutta** | 273 units | SC, GRETIL, VRI | ~5.2M |
-| **Abhidhamma** | 11 | GRETIL, VRI | ~1.3M |
+| **Vinaya** | 5 | SC, GRETIL, VRI, BJT | ~595K |
+| **Sutta** | 273 units | SC, GRETIL, VRI, BJT | ~5.2M |
+| **Abhidhamma** | 11 | SC, GRETIL, VRI, BJT | ~1.3M |
 
 ### Sutta Piṭaka Detail
 
-| Nikāya | Suttas | SC | GRETIL | VRI |
-|--------|--------|-----|--------|-----|
-| DN | 34 | 144K | 175K | 144K |
-| MN | 152 | 247K | 250K | 249K |
-| SN | 56 files | 265K | 280K | 268K |
-| AN | 11 files | 301K | 334K | 303K |
-| KN | 20 texts | 640K | 1.1M | 524K |
+| Nikāya | Suttas | SC | GRETIL | VRI | BJT |
+|--------|--------|-----|--------|-----|-----|
+| DN | 34 | 144K | 175K | 144K | 214K |
+| MN | 152 | 247K | 250K | 249K | 292K |
+| SN | 56 files | 265K | 280K | 268K | 559K |
+| AN | 11 files | 301K | 334K | 303K | 466K |
+| KN | 20 texts | 640K | 1.1M | 524K | 674K |
 
 ## Installation
 
@@ -147,6 +146,7 @@ canon.vocab.export_dtm("dn", "dn_dtm.csv")
 - **SuttaCentral (SC)**: Mahāsaṅgīti edition with segment IDs
 - **GRETIL**: PTS (Pali Text Society) edition digitized by Göttingen
 - **VRI**: Chaṭṭha Saṅgāyana Tipiṭaka (CST4) from Vipassana Research Institute
+- **BJT**: Buddha Jayanti Tipitaka, Sri Lankan government edition (1957–1989)
 
 ## License
 
@@ -158,3 +158,4 @@ Data sources retain their original licenses. Code is available under MIT license
 - Digital Pāli Dictionary (DPD) for lemmatization
 - GRETIL for PTS digitization
 - VRI for the Chaṭṭha Saṅgāyana edition
+- Buddha Jayanti Tipitaka for the Sri Lankan edition

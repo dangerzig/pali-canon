@@ -30,7 +30,7 @@ This paper describes the creation of a fully lemmatized critical edition of the 
 
 1. **Comprehensive lemmatization** using the Digital Pāli Dictionary (DPD), achieving 99.78% token-level coverage across the corpus through a combination of direct lookup, sandhi decomposition, orthographic normalization, and a custom lemma database for words not in DPD.
 
-2. **Three-witness critical apparatus** collating the PTS, SuttaCentral, and VRI editions, with systematic classification of differences as orthographic variants, textual errors, or genuine readings.
+2. **Four-witness critical apparatus** collating the PTS, SuttaCentral, VRI, and BJT editions, with systematic classification of differences as orthographic variants, textual errors, or genuine readings.
 
 3. **Unified reference system** enabling scholars to locate any passage by PTS citation, SC segment ID, or VRI section number.
 
@@ -42,13 +42,15 @@ The remainder of this paper describes the source materials (§2), the critical e
 
 ### 2.1 Digital Editions of the Pāli Canon
 
-Several digital editions of the Pāli Canon now exist, each with distinct characteristics relevant to computational analysis. This project draws on three primary sources:
+Several digital editions of the Pāli Canon now exist, each with distinct characteristics relevant to computational analysis. This project draws on four primary sources:
 
 **Pali Text Society Editions (PTS).** The PTS has published critical editions of the Pāli Canon since the late nineteenth century, beginning with the Vinaya Piṭaka edited by Oldenberg (1879–1883) and continuing through most of the twentieth century. These editions remain the standard scholarly reference in Western academia, and the convention of citing by PTS volume and page number (e.g., "D i 1" for Dīgha Nikāya volume i, page 1) is nearly universal in English-language Buddhist studies. Digital versions of the PTS editions are available through the Göttingen Register of Electronic Texts in Indian Languages (GRETIL), based on manual transcriptions by the Dhammakaya Foundation (1989–1996).
 
 **Chaṭṭha Saṅgāyana Tipiṭaka (VRI/CST).** This edition originated at the Sixth Buddhist Council held in Burma from 1954 to 1956. The Vipassana Research Institute (VRI) subsequently published this edition in multiple scripts, including romanized form, and released it electronically as the Chaṭṭha Saṅgāyana Tipiṭaka version 4.0 (CST4). This edition has been widely used in computational work due to its early digital availability.
 
 **SuttaCentral Mahāsaṅgīti Edition (SC).** SuttaCentral provides a digital version of the Mahāsaṅgīti Tipiṭaka, a recension originally prepared in Sri Lanka in 1957 to mark the 2500th anniversary of the Buddha's *parinibbāna* (the "Mahāsaṅgīti" or "Great Recitation" from which the edition takes its name). This Sri Lankan edition drew on multiple manuscript traditions and has since been further refined by SuttaCentral with editorial corrections. Crucially for computational work, SuttaCentral has segmented the text at the sentence or verse level with unique identifiers, enabling alignment with translations and providing a natural unit for analysis. The texts are available under Creative Commons licensing.
+
+**Buddha Jayanti Tipitaka (BJT).** Published by the Sri Lankan government between 1957 and 1989 to commemorate the 2500th anniversary of the Buddha, the Buddha Jayanti Tipitaka represents the Sinhalese textual tradition. Digital versions are available from multiple sources including the SLTP (Sri Lanka Tripitaka Project) transcriptions. This edition provides an independent witness from the Sri Lankan manuscript tradition, complementing the Burmese (VRI), European critical (PTS), and Mahāsaṅgīti (SC) traditions.
 
 ### 2.2 Editorial Policy
 
@@ -88,7 +90,7 @@ The Sutta Piṭaka is further divided into five *nikāyas* (collections), of whi
 
 ### 3.2 Corpus Statistics
 
-The complete Tipiṭaka comprises approximately 2.7 million words. The current project covers the Sutta Piṭaka in full, with Vinaya and Abhidhamma processed using two-witness comparison (PTS and VRI only, as SC does not cover these collections).
+The complete Tipiṭaka comprises approximately 2.7 million words. The current project covers the entire Tipiṭaka with four-witness collation (PTS, SC, VRI, and BJT) across all three piṭakas.
 
 **Sutta Piṭaka:**
 
@@ -107,23 +109,24 @@ By way of comparison, the King James Bible contains approximately 855,000 words�
 
 ## 4. Critical Edition Methodology
 
-### 4.1 Three Witnesses
+### 4.1 Four Witnesses
 
-The critical edition collates three independent textual traditions:
+The critical edition collates four independent textual traditions:
 
 | Witness | Abbreviation | Tradition | Base |
 |---------|--------------|-----------|------|
 | PTS (GRETIL) | pts | Western critical editions | 19th–early 20th c. European scholarship |
 | SuttaCentral | sc | Mahāsaṅgīti | Based on VRI with editorial corrections |
 | VRI/CST | vri | Chaṭṭha Saṅgāyana | Burmese 6th Council (1954–1956) |
+| BJT | bjt | Buddha Jayanti Tipitaka | Sri Lankan government edition (1957–1989) |
 
 **PTS as authoritative**: The Pali Text Society editions serve as the base text. PTS readings are retained unless identified as errors.
 
-**SC and VRI as witnesses**: Where these editions differ from PTS, the variants are recorded. Where SC and VRI agree against PTS and the PTS reading is not a valid Pāli word (per DPD), the PTS is corrected.
+**SC, VRI, and BJT as witnesses**: Where these editions differ from PTS, the variants are recorded. Where multiple witnesses agree against PTS and the PTS reading is not a valid Pāli word (per DPD), the PTS is corrected. When BJT joins SC and VRI against PTS, the confidence in error classification increases (three independent traditions vs one).
 
 ### 4.2 Alignment Process
 
-The three editions are aligned using a multi-stage process:
+The four editions are aligned using a multi-stage process:
 
 1. **Text normalization**: Standardize orthography (ṁ→ṃ, remove hyphens, normalize case)
 2. **Section alignment**: Match major structural divisions (vaggas, suttas, sections)
@@ -137,10 +140,11 @@ Differences between editions are classified as follows:
 | Condition | Classification | Action |
 |-----------|----------------|--------|
 | Orthographic only (ṁ/ṃ, ṅ/ṃ, case) | Normalize | Silent normalization |
-| SC=VRI≠PTS, PTS not in DPD | **Error** | Correct PTS, record original |
+| SC=VRI=BJT≠PTS, PTS not in DPD | **Error** (high confidence) | Correct PTS, record original |
+| SC=VRI≠PTS, BJT=PTS | **Variant** (split) | Keep PTS, record variant with split noted |
 | SC=VRI≠PTS, all valid words | **Variant** | Keep PTS, record variant |
-| All three differ | **Uncertain** | Flag for review |
-| PTS agrees with one witness | **Variant** | Keep PTS, record differing witness |
+| All four differ | **Uncertain** | Flag for review |
+| PTS agrees with one+ witnesses | **Variant** | Keep PTS, record differing witness(es) |
 
 ### 4.4 Correction Types Identified
 
@@ -391,13 +395,12 @@ data/
 ### 8.1 Current Status
 
 **Completed:**
-- Full Sutta Piṭaka critical edition (DN, MN, SN, AN, KN)
-- Three-way alignment pipeline (PTS/GRETIL, SC, VRI)
-- Error detection using DPD validation
-- Variant apparatus with recorded readings
+- Full Tipiṭaka critical edition (Vinaya, Sutta, Abhidhamma)
+- Four-way alignment pipeline (PTS/GRETIL, SC, VRI, BJT)
+- Error detection using DPD validation with BJT-enhanced confidence scoring
+- Variant apparatus with recorded readings from all four witnesses
 - Lemmatization at 99.78% token-level coverage across the Sutta Piṭaka
 - Custom lemma database for 187 words not in DPD (organized for potential upstream contribution)
-- Two-witness critical editions for Vinaya and Abhidhamma (GRETIL/VRI)
 
 **Future Work:**
 - Context-aware disambiguation for polysemous forms
@@ -410,7 +413,7 @@ data/
 
 2. **Alignment artifacts**: Some spurious variants arise from structural differences between editions (e.g., different section breaks, paragraph divisions). Manual review is required to distinguish genuine textual variants from alignment errors.
 
-3. **Two-witness comparison for Vinaya/Abhidhamma**: SuttaCentral does not cover the Vinaya and Abhidhamma Piṭakas, limiting these sections to two-way comparison (PTS vs VRI) rather than the three-way collation available for the Sutta Piṭaka.
+3. **Vinaya/Abhidhamma witness coverage**: While all four witnesses are now available for Vinaya and Abhidhamma, the SC and BJT texts for these piṭakas have been less thoroughly verified than for the Sutta Piṭaka.
 
 4. **Proper noun coverage**: Despite integrating the DPPN, many proper nouns remain unlemmatized due to complex compound formations and names not catalogued in available reference works.
 

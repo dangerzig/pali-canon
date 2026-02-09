@@ -71,29 +71,37 @@ KN_TEXTS = [
     ('mil', None, None, None),  # Milindapañha - not in GRETIL, VRI, or BJT
 ]
 
-# Vinaya text mappings: (name, GRETIL name, VRI code or None)
+# Vinaya text mappings: (name, GRETIL name, VRI codes, SC name, BJT name)
 # VRI CST codes: vin01m.mul = Pārājika (Suttavibhaṅga 1)
-#                vin02m1.mul = Mahāvagga
-#                vin02m4.mul = ? (possibly Cūlavagga or Parivāra)
+#                vin02m1.mul = Pācittiya (Suttavibhaṅga 2)
+#                vin02m2.mul = Mahāvagga
+#                vin02m3.mul = Cūḷavagga
+#                vin02m4.mul = Parivāra
 VINAYA_TEXTS = [
-    ('suttavibhanga1', 'suttavibhanga1', 'vin01m.mul'),  # Pārājika
-    ('suttavibhanga2', 'suttavibhanga2', None),  # Pācittiya etc.
-    ('mahavagga', 'mahavagga', 'vin02m1.mul'),
-    ('cullavagga', 'cullavagga', 'vin02m4.mul'),  # Approximate mapping
-    ('parivara', 'parivara', None),
+    ('suttavibhanga1', 'suttavibhanga1', ['vin01m.mul'], 'suttavibhanga1', 'suttavibhanga1'),
+    ('suttavibhanga2', 'suttavibhanga2', ['vin02m1.mul'], 'suttavibhanga2', 'suttavibhanga2'),
+    ('mahavagga', 'mahavagga', ['vin02m2.mul'], 'mahavagga', 'mahavagga'),
+    ('cullavagga', 'cullavagga', ['vin02m3.mul'], 'cullavagga', 'cullavagga'),
+    ('parivara', 'parivara', ['vin02m4.mul'], 'parivara', 'parivara'),
 ]
 
-# Abhidhamma text mappings: (name, GRETIL name, VRI code or None)
+# Abhidhamma text mappings: (name, GRETIL name, VRI codes, SC name, BJT name)
 # VRI codes: abh01m.mul = Dhammasaṅgaṇī, abh02m.mul = Vibhaṅga
-#            abh03m1-11.mul = possibly Kathāvatthu volumes
+#            abh03m1 = Dhātukathā, abh03m2 = Puggalapaññatti
+#            abh03m3 = Kathāvatthu, abh03m4-6 = Yamaka, abh03m7-11 = Paṭṭhāna
 ABHIDHAMMA_TEXTS = [
-    ('dhammasangani', 'dhammasangani', 'abh01m.mul'),
-    ('vibhanga', 'vibhanga', 'abh02m.mul'),
-    ('dhatukatha', 'dhatukatha', None),
-    ('puggalapannatti', 'puggalapannatti', None),
-    ('kathavatthu', 'kathavatthu', 'abh03m1.mul'),  # First volume
-    ('yamaka', 'yamaka', None),  # GRETIL has yamaka1, yamaka2
-    ('patthana', 'patthana', None),  # GRETIL has patthana1, patthana2, patthana3, patthana_duka
+    # (name, gretil_name, vri_codes, sc_name, bjt_name)
+    # gretil_name: if no exact .json match, globs {name}*.json and combines
+    # sc_name/bjt_name: str for single file, list for multiple files, None if unavailable
+    ('dhammasangani', 'dhammasangani', ['abh01m.mul'], 'dhammasangani', 'dhammasangani'),
+    ('vibhanga', 'vibhanga', ['abh02m.mul'], 'vibhanga', 'vibhanga'),
+    ('dhatukatha', 'dhatukatha', ['abh03m1.mul'], 'dhatukatha', 'dhatukatha'),
+    ('puggalapannatti', 'puggalapannatti', ['abh03m2.mul'], 'puggalapannatti', 'puggalapannatti'),
+    ('kathavatthu', 'kathavatthu', ['abh03m3.mul'], 'kathavatthu', ['kathavatthu1', 'kathavatthu2']),
+    # Yamaka: combined (split points differ across witnesses — GRETIL/BJT at 7/8, SC at 5/6, VRI 3 vols)
+    ('yamaka', 'yamaka', ['abh03m4.mul', 'abh03m5.mul', 'abh03m6.mul'], 'yamaka', ['yamaka1', 'yamaka2']),
+    # Patthana: combined (GRETIL has 4 files: patthana1-3 + patthana_duka)
+    ('patthana', 'patthana', ['abh03m7.mul', 'abh03m8.mul', 'abh03m10.mul', 'abh03m11.mul'], 'patthana', ['patthana1', 'patthana2']),
 ]
 
 # Pre-compiled patterns
@@ -297,9 +305,9 @@ def align_word_sequences(words1: list, words2: list) -> list:
     return alignments
 
 
-def align_three_way(gretil_words: list, sc_words: list, vri_words: list,
+def align_witnesses(gretil_words: list, sc_words: list, vri_words: list,
                     bjt_words: list = None) -> list:
-    """Perform multi-way alignment (3-way or 4-way with optional BJT)."""
+    """Perform multi-way alignment across up to 4 witnesses (GRETIL/SC/VRI/BJT)."""
     gretil_sc = align_word_sequences(gretil_words, sc_words)
     gretil_vri = align_word_sequences(gretil_words, vri_words)
 
@@ -378,11 +386,12 @@ def words_are_related(word1: str, word2: str) -> bool:
     return similarity >= 0.5
 
 
-def classify_variant(gretil: str, sc: str, vri: str) -> dict:
-    """Classify a variant reading."""
+def classify_variant(gretil: str, sc: str, vri: str, bjt: str = None) -> dict:
+    """Classify a variant reading across up to 4 witnesses."""
     g = gretil.lower() if gretil else None
     s = sc.lower() if sc else None
     v = vri.lower() if vri else None
+    b = bjt.lower() if bjt else None
 
     if g and s and v:
         if not words_are_related(g, s) and not words_are_related(g, v):
@@ -423,8 +432,13 @@ def classify_variant(gretil: str, sc: str, vri: str) -> dict:
     g_norm = normalize_for_comparison(g)
     s_norm = normalize_for_comparison(s) if s else None
     v_norm = normalize_for_comparison(v) if v else None
+    b_norm = normalize_for_comparison(b) if b else None
 
-    if g_norm == s_norm == v_norm:
+    # Check if all available witnesses agree after normalization
+    all_agree = (g_norm == s_norm == v_norm)
+    if all_agree and b_norm is not None and b_norm != g_norm:
+        all_agree = False
+    if all_agree:
         return {
             'type': 'orthographic',
             'confidence': 1.0,
@@ -432,23 +446,36 @@ def classify_variant(gretil: str, sc: str, vri: str) -> dict:
             'notes': 'All editions agree (orthographic normalization)'
         }
 
+    # SC=VRI agree but differ from PTS
     if s_norm and v_norm and s_norm == v_norm and g_norm != s_norm:
         pts_valid = is_valid_word(g)
         sc_valid = is_valid_word(s)
 
+        # Check if BJT sides with majority (SC/VRI) or minority (PTS)
+        bjt_with_majority = b_norm is not None and b_norm == s_norm
+        bjt_with_pts = b_norm is not None and b_norm == g_norm
+
         if not pts_valid and sc_valid:
+            conf = 0.95 if bjt_with_majority else (0.85 if bjt_with_pts else 0.9)
+            others = 'SC/VRI/BJT' if bjt_with_majority else 'SC/VRI'
+            bjt_note = f', BJT agrees with PTS' if bjt_with_pts else (
+                f', BJT has "{b}"' if b and not bjt_with_majority else '')
             return {
                 'type': 'error',
-                'confidence': 0.9,
+                'confidence': conf,
                 'preferred': s,
-                'notes': f'PTS "{g}" not in DPD, SC/VRI "{s}" is valid'
+                'notes': f'PTS "{g}" not in DPD, {others} "{s}" is valid{bjt_note}'
             }
         elif pts_valid and sc_valid:
+            conf = 0.8 if bjt_with_majority else (0.6 if bjt_with_pts else 0.7)
+            others = 'SC/VRI/BJT' if bjt_with_majority else 'SC/VRI'
+            bjt_note = f', BJT agrees with PTS' if bjt_with_pts else (
+                f', BJT has "{b}"' if b and not bjt_with_majority else '')
             return {
                 'type': 'variant',
-                'confidence': 0.7,
+                'confidence': conf,
                 'preferred': g,
-                'notes': f'Textual variant: PTS "{g}" vs SC/VRI "{s}"'
+                'notes': f'Textual variant: PTS "{g}" vs {others} "{s}"{bjt_note}'
             }
         else:
             return {
@@ -458,10 +485,41 @@ def classify_variant(gretil: str, sc: str, vri: str) -> dict:
                 'notes': f'Neither reading validated: PTS "{g}" vs SC/VRI "{s}"'
             }
 
+    # All three (G/S/V) disagree -- check if BJT creates a majority
     if g_norm != s_norm and g_norm != v_norm and s_norm != v_norm:
         g_valid = is_valid_word(g)
         s_valid = is_valid_word(s) if s else False
         v_valid = is_valid_word(v) if v else False
+
+        # BJT may create a 2-witness majority
+        if b_norm is not None:
+            if b_norm == g_norm:
+                # PTS+BJT vs SC vs VRI
+                conf = 0.6 if g_valid else 0.4
+                return {
+                    'type': 'uncertain',
+                    'confidence': conf,
+                    'preferred': g,
+                    'notes': f'PTS/BJT "{g}" vs SC "{s}" vs VRI "{v}"'
+                }
+            elif b_norm == s_norm:
+                # SC+BJT vs PTS vs VRI
+                conf = 0.6 if s_valid else 0.4
+                return {
+                    'type': 'uncertain',
+                    'confidence': conf,
+                    'preferred': s,
+                    'notes': f'SC/BJT "{s}" vs PTS "{g}" vs VRI "{v}"'
+                }
+            elif b_norm == v_norm:
+                # VRI+BJT vs PTS vs SC
+                conf = 0.6 if v_valid else 0.4
+                return {
+                    'type': 'uncertain',
+                    'confidence': conf,
+                    'preferred': v,
+                    'notes': f'VRI/BJT "{v}" vs PTS "{g}" vs SC "{s}"'
+                }
 
         valid_count = sum([g_valid, s_valid, v_valid])
 
@@ -476,30 +534,37 @@ def classify_variant(gretil: str, sc: str, vri: str) -> dict:
                 'type': 'uncertain',
                 'confidence': 0.5,
                 'preferred': preferred,
-                'notes': 'Three-way disagreement, one valid reading'
+                'notes': 'Multi-way disagreement, one valid reading'
             }
         else:
+            bjt_note = f', BJT "{b}"' if b else ''
             return {
                 'type': 'uncertain',
                 'confidence': 0.3,
                 'preferred': g,
-                'notes': f'Three-way disagreement: PTS "{g}", SC "{s}", VRI "{v}"'
+                'notes': f'Multi-way disagreement: PTS "{g}", SC "{s}", VRI "{v}"{bjt_note}'
             }
 
     if g_norm == s_norm and g_norm != v_norm:
+        bjt_confirms = b_norm is not None and b_norm == g_norm
+        conf = 0.7 if bjt_confirms else 0.6
+        majority = 'PTS/SC/BJT' if bjt_confirms else 'PTS/SC'
         return {
             'type': 'vri_variant',
-            'confidence': 0.6,
+            'confidence': conf,
             'preferred': g,
-            'notes': f'VRI differs: "{v}" vs PTS/SC "{g}"'
+            'notes': f'VRI differs: "{v}" vs {majority} "{g}"'
         }
 
     if g_norm == v_norm and g_norm != s_norm:
+        bjt_confirms = b_norm is not None and b_norm == g_norm
+        conf = 0.7 if bjt_confirms else 0.6
+        majority = 'PTS/VRI/BJT' if bjt_confirms else 'PTS/VRI'
         return {
             'type': 'sc_variant',
-            'confidence': 0.6,
+            'confidence': conf,
             'preferred': g,
-            'notes': f'SC differs: "{s}" vs PTS/VRI "{g}"'
+            'notes': f'SC differs: "{s}" vs {majority} "{g}"'
         }
 
     return {
@@ -634,7 +699,7 @@ def align_sutta_an(sutta_id: str) -> dict:
     Args:
         sutta_id: Full sutta ID like "an1.1"
 
-    For nipātas 1-4: three-way alignment (GRETIL, SC, VRI) + optional BJT
+    For nipātas 1-4: four-way alignment (GRETIL, SC, VRI, BJT)
     For nipātas 5-11: two-way alignment (GRETIL, SC only) + optional BJT
     """
     data = load_sutta_data_an(sutta_id)
@@ -645,7 +710,7 @@ def align_sutta_an(sutta_id: str) -> dict:
 
     # Determine required sources
     if nipata <= 4:
-        # Full three-way collation
+        # Full four-way collation
         missing = [k for k in ['gretil', 'sc', 'vri'] if k not in data]
     else:
         # Two-way only (no VRI for nipātas 5-11)
@@ -660,7 +725,7 @@ def align_sutta_an(sutta_id: str) -> dict:
 
     if nipata <= 4 and 'vri' in data:
         vri_words = tokenize(data['vri']['text'])
-        alignment = align_three_way(gretil_words, sc_words, vri_words, bjt_words=bjt_words)
+        alignment = align_witnesses(gretil_words, sc_words, vri_words, bjt_words=bjt_words)
     else:
         # Two-way alignment only
         alignment = align_word_sequences(gretil_words, sc_words)
@@ -996,7 +1061,7 @@ def collate_text_kn(sc_abbrev: str, gretil_name: str, vri_code: str,
 
     if has_vri:
         vri_words = tokenize(data['vri']['text'])
-        alignment = align_three_way(gretil_words, sc_words, vri_words, bjt_words=bjt_words)
+        alignment = align_witnesses(gretil_words, sc_words, vri_words, bjt_words=bjt_words)
     else:
         # Two-way alignment only
         alignment = align_word_sequences(gretil_words, sc_words)
@@ -1170,12 +1235,15 @@ def main_kn(output_dir: Path):
     print(f"\nOutput: {output_dir}")
 
 
-def load_text_data_vinaya(name: str, gretil_name: str, vri_code: str) -> dict:
-    """Load Vinaya text data from VRI and GRETIL (no SC available)."""
+def load_text_data_vinaya(name: str, gretil_name: str, vri_codes: list,
+                         sc_name: str = None, bjt_name: str = None) -> dict:
+    """Load Vinaya text data from all available sources."""
     data = {}
 
     gretil_dir = DATA_DIR / "gretil-parsed/vinaya"
     vri_dir = DATA_DIR / "vri-parsed/vinaya"
+    sc_dir = DATA_DIR / "sc-parsed/vinaya"
+    bjt_dir = DATA_DIR / "bjt-parsed/vinaya"
 
     # GRETIL
     if gretil_name:
@@ -1188,62 +1256,119 @@ def load_text_data_vinaya(name: str, gretil_name: str, vri_code: str) -> dict:
                 'raw_text': raw_text,
             }
 
-    # VRI
-    if vri_code:
-        vri_file = vri_dir / f"{vri_code}.json"
-        if vri_file.exists():
-            vri = json.loads(vri_file.read_text())
-            raw_text = vri.get('text', '')
+    # VRI (may be multiple files to concatenate)
+    if vri_codes:
+        vri_texts = []
+        for vc in vri_codes:
+            vri_file = vri_dir / f"{vc}.json"
+            if vri_file.exists():
+                vri = json.loads(vri_file.read_text())
+                vri_texts.append(vri.get('text', ''))
+        if vri_texts:
+            raw_text = ' '.join(vri_texts)
             data['vri'] = {
                 'text': clean_vri_text(raw_text),
+                'raw_text': raw_text,
+            }
+
+    # SC
+    if sc_name:
+        sc_file = sc_dir / f"{sc_name}.json"
+        if sc_file.exists():
+            sc = json.loads(sc_file.read_text())
+            raw_text = sc.get('text', '')
+            data['sc'] = {
+                'text': raw_text.strip(),
+                'raw_text': raw_text,
+            }
+
+    # BJT (may be a single name or list of names)
+    bjt_names = [bjt_name] if isinstance(bjt_name, str) else (bjt_name or [])
+    if bjt_names:
+        bjt_texts = []
+        for bn in bjt_names:
+            bjt_file = bjt_dir / f"{bn}.json"
+            if bjt_file.exists():
+                bjt = json.loads(bjt_file.read_text())
+                bjt_texts.append(bjt.get('text', ''))
+        if bjt_texts:
+            raw_text = ' '.join(bjt_texts)
+            data['bjt'] = {
+                'text': clean_bjt_text(raw_text),
                 'raw_text': raw_text,
             }
 
     return data
 
 
-def collate_text_vinaya(name: str, gretil_name: str, vri_code: str, max_variants: int = 1000) -> dict:
-    """Collate a Vinaya text between VRI and GRETIL (no SC)."""
-    data = load_text_data_vinaya(name, gretil_name, vri_code)
+def collate_text_vinaya(name: str, gretil_name: str, vri_codes: list,
+                        sc_name: str = None, bjt_name: str = None,
+                        max_variants: int = 1000) -> dict:
+    """Collate a Vinaya text across all available witnesses (up to 4)."""
+    data = load_text_data_vinaya(name, gretil_name, vri_codes, sc_name,
+                                 bjt_name)
 
     if 'gretil' not in data:
         return {'error': 'Missing GRETIL source'}
 
-    has_vri = vri_code is not None and 'vri' in data
+    has_vri = bool(vri_codes) and 'vri' in data
+    has_sc = 'sc' in data
+    has_bjt = 'bjt' in data
 
     gretil_words = tokenize(data['gretil']['text'])
+    sc_words = tokenize(data['sc']['text']) if has_sc else None
+    vri_words = tokenize(data['vri']['text']) if has_vri else None
+    bjt_words = tokenize(data['bjt']['text']) if has_bjt else None
 
-    if has_vri:
-        vri_words = tokenize(data['vri']['text'])
-        # Two-way alignment (no SC)
-        alignment = align_word_sequences(gretil_words, vri_words)
+    # Use full multi-way alignment when SC is available
+    if has_sc and has_vri:
+        alignment = align_witnesses(gretil_words, sc_words, vri_words,
+                                    bjt_words=bjt_words)
+    elif has_vri:
+        # Fallback: GRETIL-VRI pairwise, add BJT if available
+        raw_align = align_word_sequences(gretil_words, vri_words)
         alignment = [
             {
                 'gretil': a.get('word1'),
                 'gretil_idx': a.get('idx1'),
                 'vri': a.get('word2'),
                 'vri_idx': a.get('idx2'),
-                'sc': None,
-                'sc_idx': None,
+                'sc': None, 'sc_idx': None,
+                'bjt': None, 'bjt_idx': None,
                 'vri_match': a.get('type'),
-                'sc_match': None
+                'sc_match': None, 'bjt_match': None
             }
-            for a in alignment
+            for a in raw_align
         ]
+        # Add BJT via pairwise alignment if available
+        if bjt_words:
+            bjt_align = align_word_sequences(gretil_words, bjt_words)
+            bjt_map = {}
+            for a in bjt_align:
+                idx = a.get('idx1')
+                if idx is not None:
+                    bjt_map[idx] = a
+            for pos in alignment:
+                idx = pos.get('gretil_idx')
+                if idx in bjt_map:
+                    pos['bjt'] = bjt_map[idx]['word2']
+                    pos['bjt_idx'] = bjt_map[idx].get('idx2')
+                    pos['bjt_match'] = bjt_map[idx]['type']
     else:
-        # No alignment possible without VRI
-        return {'error': 'Missing VRI source for two-way comparison'}
+        return {'error': 'Missing VRI source'}
 
     collation = {
         'text': name,
         'pitaka': 'Vinaya',
         'word_counts': {
             'gretil': len(gretil_words),
-            'vri': len(vri_words) if has_vri else 0,
-            'sc': 0
+            'vri': len(vri_words) if vri_words else 0,
+            'sc': len(sc_words) if sc_words else 0,
+            'bjt': len(bjt_words) if bjt_words else 0,
         },
         'has_vri': has_vri,
-        'has_sc': False,
+        'has_sc': has_sc,
+        'has_bjt': has_bjt,
         'stats': {
             'total_positions': len(alignment),
             'orthographic': 0,
@@ -1258,75 +1383,19 @@ def collate_text_vinaya(name: str, gretil_name: str, vri_code: str, max_variants
         'uncertain': []
     }
 
-    # Custom processing for two-way (VRI vs GRETIL, no SC)
-    for i, pos in enumerate(alignment):
-        g = pos.get('gretil')
-        v = pos.get('vri')
-
-        if pos.get('vri_match') == 'match':
-            collation['stats']['match'] += 1
-            continue
-
-        # Two-way classification
-        g_norm = normalize_for_comparison(g) if g else None
-        v_norm = normalize_for_comparison(v) if v else None
-
-        if g_norm == v_norm:
-            collation['stats']['orthographic'] += 1
-        elif g and v:
-            g_valid = is_valid_word(g)
-            v_valid = is_valid_word(v)
-            if g_valid and not v_valid:
-                collation['stats']['errors'] += 1
-                if len(collation['errors']) < max_variants:
-                    collation['errors'].append({
-                        'position': i,
-                        'gretil': g,
-                        'vri': v,
-                        'type': 'vri_error',
-                        'preferred': g
-                    })
-            elif v_valid and not g_valid:
-                collation['stats']['errors'] += 1
-                if len(collation['errors']) < max_variants:
-                    collation['errors'].append({
-                        'position': i,
-                        'gretil': g,
-                        'vri': v,
-                        'type': 'gretil_error',
-                        'preferred': v
-                    })
-            else:
-                collation['stats']['variants'] += 1
-                if len(collation['variants']) < max_variants:
-                    collation['variants'].append({
-                        'position': i,
-                        'gretil': g,
-                        'vri': v,
-                        'type': 'variant'
-                    })
-        else:
-            collation['stats']['uncertain'] += 1
-            if len(collation['uncertain']) < max_variants:
-                collation['uncertain'].append({
-                    'position': i,
-                    'gretil': g,
-                    'vri': v,
-                    'type': 'missing' if not g or not v else 'uncertain'
-                })
-
-    return collation
+    return _process_collation(collation, alignment, max_variants)
 
 
 def main_vinaya(output_dir: Path):
     """Main function for collating Vinaya Piṭaka."""
-    # Filter to texts with at least GRETIL source
-    available_texts = [(n, gr, vri) for n, gr, vri in VINAYA_TEXTS if gr is not None]
+    available_texts = [(n, gr, vri, sc, bjt)
+                       for n, gr, vri, sc, bjt in VINAYA_TEXTS
+                       if gr is not None]
     total_texts = len(available_texts)
 
     print("=" * 70)
     print(f"Collating Variants: Vinaya ({total_texts} texts)")
-    print("Note: No SC canonical data available; comparing VRI vs GRETIL only")
+    print("Witnesses: GRETIL (PTS), VRI (CST), SC (Mahāsaṅgīti), BJT")
     print("=" * 70)
     print()
 
@@ -1341,10 +1410,11 @@ def main_vinaya(output_dir: Path):
     with_vri = 0
     without_vri = 0
 
-    for name, gretil_name, vri_code in available_texts:
+    for name, gretil_name, vri_codes, sc_name, bjt_name in available_texts:
         print(f"Collating {name.upper()} ({gretil_name})...", end=" ")
 
-        collation = collate_text_vinaya(name, gretil_name, vri_code)
+        collation = collate_text_vinaya(name, gretil_name, vri_codes,
+                                         sc_name, bjt_name)
 
         if 'error' in collation:
             print(f"SKIPPED: {collation['error']}")
@@ -1398,8 +1468,7 @@ def main_vinaya(output_dir: Path):
             'pitaka': 'Vinaya',
             'editions': {
                 'primary': 'PTS (GRETIL)',
-                'witnesses': ['VRI (CST)'],
-                'note': 'No SC canonical data available'
+                'witnesses': ['VRI (CST)', 'SC (Mahāsaṅgīti)', 'BJT'],
             },
             'dpd_words': len(dpd),
             'texts_processed': len(results),
@@ -1416,84 +1485,173 @@ def main_vinaya(output_dir: Path):
     print(f"\nOutput: {output_dir}")
 
 
-def load_text_data_abhidhamma(name: str, gretil_name: str, vri_code: str) -> dict:
-    """Load Abhidhamma text data from VRI and GRETIL (no SC available)."""
+def load_text_data_abhidhamma(name: str, gretil_name: str, vri_codes: list,
+                              sc_name: str = None, bjt_name=None) -> dict:
+    """Load Abhidhamma text data from all available sources."""
     data = {}
 
     gretil_dir = DATA_DIR / "gretil-parsed/abhidhamma"
     vri_dir = DATA_DIR / "vri-parsed/abhidhamma"
+    sc_dir = DATA_DIR / "sc-parsed/abhidhamma"
+    bjt_dir = DATA_DIR / "bjt-parsed/abhidhamma"
 
     # GRETIL - handle multi-file texts (yamaka1-2, patthana1-3)
     if gretil_name:
-        gretil_files = list(gretil_dir.glob(f"{gretil_name}*.json"))
-        if gretil_files:
-            combined_text = []
-            for gf in sorted(gretil_files):
-                if gf.name == '_summary.json':
-                    continue
-                gretil = json.loads(gf.read_text())
-                raw_text = gretil.get('text', '')
-                combined_text.append(clean_gretil_text(raw_text))
-            if combined_text:
+        gretil_file = gretil_dir / f"{gretil_name}.json"
+        if gretil_file.exists():
+            gretil = json.loads(gretil_file.read_text())
+            raw_text = gretil.get('text', '')
+            data['gretil'] = {
+                'text': clean_gretil_text(raw_text),
+                'raw_text': raw_text,
+            }
+        else:
+            # Try glob for multi-file texts
+            gretil_files = sorted(f for f in gretil_dir.glob(f"{gretil_name}*.json")
+                                  if f.name != '_summary.json')
+            if gretil_files:
+                combined_text = []
+                for gf in gretil_files:
+                    g = json.loads(gf.read_text())
+                    combined_text.append(clean_gretil_text(g.get('text', '')))
                 data['gretil'] = {
                     'text': ' '.join(combined_text),
                     'files': [f.name for f in gretil_files]
                 }
 
-    # VRI
-    if vri_code:
-        vri_file = vri_dir / f"{vri_code}.json"
-        if vri_file.exists():
-            vri = json.loads(vri_file.read_text())
-            raw_text = vri.get('text', '')
+    # VRI (may be multiple files)
+    if vri_codes:
+        vri_texts = []
+        for vc in vri_codes:
+            vri_file = vri_dir / f"{vc}.json"
+            if vri_file.exists():
+                vri = json.loads(vri_file.read_text())
+                vri_texts.append(vri.get('text', ''))
+        if vri_texts:
+            raw_text = ' '.join(vri_texts)
             data['vri'] = {
                 'text': clean_vri_text(raw_text),
+                'raw_text': raw_text,
+            }
+
+    # SC (may be single file or multi-file via glob)
+    if sc_name:
+        sc_names = [sc_name] if isinstance(sc_name, str) else sc_name
+        sc_file = sc_dir / f"{sc_names[0]}.json"
+        if len(sc_names) == 1 and sc_file.exists():
+            sc = json.loads(sc_file.read_text())
+            raw_text = sc.get('text', '')
+            data['sc'] = {
+                'text': raw_text.strip(),
+                'raw_text': raw_text,
+            }
+        else:
+            # Try glob for multi-file texts (e.g. yamaka -> yamaka1.json, yamaka2.json)
+            sc_texts = []
+            if len(sc_names) > 1:
+                # Explicit list of filenames
+                for sn in sc_names:
+                    sf = sc_dir / f"{sn}.json"
+                    if sf.exists():
+                        s = json.loads(sf.read_text())
+                        sc_texts.append(s.get('text', '').strip())
+            else:
+                sc_files = sorted(
+                    f for f in sc_dir.glob(f"{sc_names[0]}*.json")
+                    if f.name != '_summary.json')
+                for sf in sc_files:
+                    s = json.loads(sf.read_text())
+                    sc_texts.append(s.get('text', '').strip())
+            if sc_texts:
+                raw_text = ' '.join(sc_texts)
+                data['sc'] = {'text': raw_text, 'raw_text': raw_text}
+
+    # BJT (may be single name or list)
+    bjt_names = [bjt_name] if isinstance(bjt_name, str) else (bjt_name or [])
+    if bjt_names:
+        bjt_texts = []
+        for bn in bjt_names:
+            bjt_file = bjt_dir / f"{bn}.json"
+            if bjt_file.exists():
+                bjt = json.loads(bjt_file.read_text())
+                bjt_texts.append(bjt.get('text', ''))
+        if bjt_texts:
+            raw_text = ' '.join(bjt_texts)
+            data['bjt'] = {
+                'text': clean_bjt_text(raw_text),
                 'raw_text': raw_text,
             }
 
     return data
 
 
-def collate_text_abhidhamma(name: str, gretil_name: str, vri_code: str, max_variants: int = 1000) -> dict:
-    """Collate an Abhidhamma text between VRI and GRETIL (no SC)."""
-    data = load_text_data_abhidhamma(name, gretil_name, vri_code)
+def collate_text_abhidhamma(name: str, gretil_name: str, vri_codes: list,
+                            sc_name: str = None, bjt_name=None,
+                            max_variants: int = 1000) -> dict:
+    """Collate an Abhidhamma text across all available witnesses (up to 4)."""
+    data = load_text_data_abhidhamma(name, gretil_name, vri_codes, sc_name,
+                                      bjt_name)
 
     if 'gretil' not in data:
         return {'error': 'Missing GRETIL source'}
 
-    has_vri = vri_code is not None and 'vri' in data
+    has_vri = bool(vri_codes) and 'vri' in data
+    has_sc = 'sc' in data
+    has_bjt = 'bjt' in data
 
     gretil_words = tokenize(data['gretil']['text'])
+    sc_words = tokenize(data['sc']['text']) if has_sc else None
+    vri_words = tokenize(data['vri']['text']) if has_vri else None
+    bjt_words = tokenize(data['bjt']['text']) if has_bjt else None
 
-    if has_vri:
-        vri_words = tokenize(data['vri']['text'])
-        alignment = align_word_sequences(gretil_words, vri_words)
+    # Use full multi-way alignment when SC is available
+    if has_sc and has_vri:
+        alignment = align_witnesses(gretil_words, sc_words, vri_words,
+                                    bjt_words=bjt_words)
+    elif has_vri:
+        # Fallback: GRETIL-VRI pairwise, add BJT if available
+        raw_align = align_word_sequences(gretil_words, vri_words)
         alignment = [
             {
                 'gretil': a.get('word1'),
                 'gretil_idx': a.get('idx1'),
                 'vri': a.get('word2'),
                 'vri_idx': a.get('idx2'),
-                'sc': None,
-                'sc_idx': None,
+                'sc': None, 'sc_idx': None,
+                'bjt': None, 'bjt_idx': None,
                 'vri_match': a.get('type'),
-                'sc_match': None
+                'sc_match': None, 'bjt_match': None
             }
-            for a in alignment
+            for a in raw_align
         ]
+        if bjt_words:
+            bjt_align = align_word_sequences(gretil_words, bjt_words)
+            bjt_map = {}
+            for a in bjt_align:
+                idx = a.get('idx1')
+                if idx is not None:
+                    bjt_map[idx] = a
+            for pos in alignment:
+                idx = pos.get('gretil_idx')
+                if idx in bjt_map:
+                    pos['bjt'] = bjt_map[idx]['word2']
+                    pos['bjt_idx'] = bjt_map[idx].get('idx2')
+                    pos['bjt_match'] = bjt_map[idx]['type']
     else:
-        return {'error': 'Missing VRI source for two-way comparison'}
+        return {'error': 'Missing VRI source'}
 
     collation = {
         'text': name,
         'pitaka': 'Abhidhamma',
         'word_counts': {
             'gretil': len(gretil_words),
-            'vri': len(vri_words) if has_vri else 0,
-            'sc': 0
+            'vri': len(vri_words) if vri_words else 0,
+            'sc': len(sc_words) if sc_words else 0,
+            'bjt': len(bjt_words) if bjt_words else 0,
         },
         'has_vri': has_vri,
-        'has_sc': False,
+        'has_sc': has_sc,
+        'has_bjt': has_bjt,
         'stats': {
             'total_positions': len(alignment),
             'orthographic': 0,
@@ -1508,73 +1666,19 @@ def collate_text_abhidhamma(name: str, gretil_name: str, vri_code: str, max_vari
         'uncertain': []
     }
 
-    # Two-way processing
-    for i, pos in enumerate(alignment):
-        g = pos.get('gretil')
-        v = pos.get('vri')
-
-        if pos.get('vri_match') == 'match':
-            collation['stats']['match'] += 1
-            continue
-
-        g_norm = normalize_for_comparison(g) if g else None
-        v_norm = normalize_for_comparison(v) if v else None
-
-        if g_norm == v_norm:
-            collation['stats']['orthographic'] += 1
-        elif g and v:
-            g_valid = is_valid_word(g)
-            v_valid = is_valid_word(v)
-            if g_valid and not v_valid:
-                collation['stats']['errors'] += 1
-                if len(collation['errors']) < max_variants:
-                    collation['errors'].append({
-                        'position': i,
-                        'gretil': g,
-                        'vri': v,
-                        'type': 'vri_error',
-                        'preferred': g
-                    })
-            elif v_valid and not g_valid:
-                collation['stats']['errors'] += 1
-                if len(collation['errors']) < max_variants:
-                    collation['errors'].append({
-                        'position': i,
-                        'gretil': g,
-                        'vri': v,
-                        'type': 'gretil_error',
-                        'preferred': v
-                    })
-            else:
-                collation['stats']['variants'] += 1
-                if len(collation['variants']) < max_variants:
-                    collation['variants'].append({
-                        'position': i,
-                        'gretil': g,
-                        'vri': v,
-                        'type': 'variant'
-                    })
-        else:
-            collation['stats']['uncertain'] += 1
-            if len(collation['uncertain']) < max_variants:
-                collation['uncertain'].append({
-                    'position': i,
-                    'gretil': g,
-                    'vri': v,
-                    'type': 'missing' if not g or not v else 'uncertain'
-                })
-
-    return collation
+    return _process_collation(collation, alignment, max_variants)
 
 
 def main_abhidhamma(output_dir: Path):
     """Main function for collating Abhidhamma Piṭaka."""
-    available_texts = [(n, gr, vri) for n, gr, vri in ABHIDHAMMA_TEXTS if gr is not None]
+    available_texts = [(n, gr, vri, sc, bjt)
+                       for n, gr, vri, sc, bjt in ABHIDHAMMA_TEXTS
+                       if gr is not None]
     total_texts = len(available_texts)
 
     print("=" * 70)
     print(f"Collating Variants: Abhidhamma ({total_texts} texts)")
-    print("Note: No SC canonical data available; comparing VRI vs GRETIL only")
+    print("Witnesses: GRETIL (PTS), VRI (CST), SC (Mahāsaṅgīti), BJT")
     print("=" * 70)
     print()
 
@@ -1588,10 +1692,11 @@ def main_abhidhamma(output_dir: Path):
     skipped = []
     with_vri = 0
 
-    for name, gretil_name, vri_code in available_texts:
+    for name, gretil_name, vri_codes, sc_name, bjt_name in available_texts:
         print(f"Collating {name.upper()} ({gretil_name})...", end=" ")
 
-        collation = collate_text_abhidhamma(name, gretil_name, vri_code)
+        collation = collate_text_abhidhamma(name, gretil_name, vri_codes,
+                                             sc_name, bjt_name)
 
         if 'error' in collation:
             print(f"SKIPPED: {collation['error']}")
@@ -1641,8 +1746,7 @@ def main_abhidhamma(output_dir: Path):
             'pitaka': 'Abhidhamma',
             'editions': {
                 'primary': 'PTS (GRETIL)',
-                'witnesses': ['VRI (CST)'],
-                'note': 'No SC canonical data available'
+                'witnesses': ['VRI (CST)', 'SC (Mahāsaṅgīti)', 'BJT'],
             },
             'dpd_words': len(dpd),
             'texts_processed': len(results),
@@ -1806,7 +1910,7 @@ def align_sutta(nikaya: str, sutta_num: int) -> dict:
     vri_words = tokenize(data['vri']['text'])
     bjt_words = tokenize(data['bjt']['text']) if 'bjt' in data else None
 
-    alignment = align_three_way(gretil_words, sc_words, vri_words, bjt_words=bjt_words)
+    alignment = align_witnesses(gretil_words, sc_words, vri_words, bjt_words=bjt_words)
 
     return {
         'sutta': sutta_num,
@@ -1838,7 +1942,7 @@ def align_sutta_sn(sutta_id: str) -> dict:
     vri_words = tokenize(data['vri']['text'])
     bjt_words = tokenize(data['bjt']['text']) if 'bjt' in data else None
 
-    alignment = align_three_way(gretil_words, sc_words, vri_words, bjt_words=bjt_words)
+    alignment = align_witnesses(gretil_words, sc_words, vri_words, bjt_words=bjt_words)
 
     return {
         'sutta': sutta_id,
@@ -1918,9 +2022,9 @@ def collate_sutta_sn(sutta_id: str, max_variants: int = 1000) -> dict:
 def _process_collation(collation: dict, alignment: list, max_variants: int) -> dict:
     """Process alignment data and classify variants.
 
-    Handles both three-way (GRETIL/SC/VRI) and two-way (GRETIL/SC) collation.
-    When VRI is missing, uses two-way classification similar to Vinaya logic.
-    BJT is included as additional evidence in variant records when available.
+    Handles four-way (GRETIL/SC/VRI/BJT), three-way (GRETIL/SC/VRI), and
+    two-way (GRETIL/SC) collation. BJT is used in classification decisions
+    to refine confidence scores and identify majority readings.
     """
     has_vri = collation.get('has_vri', True)
     has_bjt = collation.get('has_bjt', False)
@@ -1942,8 +2046,8 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
             continue
 
         if has_vri:
-            # Three-way classification
-            classification = classify_variant(g, s, v)
+            # Three/four-way classification
+            classification = classify_variant(g, s, v, b)
             var_type = classification['type']
 
             if var_type == 'orthographic':
@@ -1989,14 +2093,20 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
             # Two-way classification (GRETIL vs SC, no VRI)
             g_norm = normalize_for_comparison(g) if g else None
             s_norm = normalize_for_comparison(s) if s else None
+            b_norm = normalize_for_comparison(b) if b else None
 
             if g_norm == s_norm:
                 collation['stats']['orthographic'] += 1
             elif g and s:
                 g_valid = is_valid_word(g)
                 s_valid = is_valid_word(s)
+                bjt_with_sc = b_norm is not None and b_norm == s_norm
+                bjt_with_pts = b_norm is not None and b_norm == g_norm
                 if s_valid and not g_valid:
                     # PTS (GRETIL) error, SC is correct
+                    conf = 0.95 if bjt_with_sc else 0.9
+                    others = 'SC/BJT' if bjt_with_sc else 'SC'
+                    bjt_note = ', BJT agrees with PTS' if bjt_with_pts else ''
                     collation['stats']['errors'] += 1
                     if len(collation['errors']) < max_variants:
                         collation['errors'].append({
@@ -2006,11 +2116,15 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
                             'vri': None,
                             'bjt': b,
                             'type': 'error',
+                            'confidence': conf,
                             'preferred': s,
-                            'notes': f'PTS "{g}" not in DPD, SC "{s}" is valid'
+                            'notes': f'PTS "{g}" not in DPD, {others} "{s}" is valid{bjt_note}'
                         })
                 elif g_valid and not s_valid:
                     # SC error, PTS (GRETIL) is correct
+                    conf = 0.95 if bjt_with_pts else 0.9
+                    others = 'PTS/BJT' if bjt_with_pts else 'PTS'
+                    bjt_note = ', BJT agrees with SC' if bjt_with_sc else ''
                     collation['stats']['errors'] += 1
                     if len(collation['errors']) < max_variants:
                         collation['errors'].append({
@@ -2020,11 +2134,17 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
                             'vri': None,
                             'bjt': b,
                             'type': 'sc_error',
+                            'confidence': conf,
                             'preferred': g,
-                            'notes': f'SC "{s}" not in DPD, PTS "{g}" is valid'
+                            'notes': f'SC "{s}" not in DPD, {others} "{g}" is valid{bjt_note}'
                         })
                 elif g_valid and s_valid:
                     # Both valid - textual variant
+                    bjt_note = ''
+                    if bjt_with_sc:
+                        bjt_note = f' (BJT agrees with SC)'
+                    elif bjt_with_pts:
+                        bjt_note = f' (BJT agrees with PTS)'
                     collation['stats']['variants'] += 1
                     if len(collation['variants']) < max_variants:
                         collation['variants'].append({
@@ -2034,7 +2154,7 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
                             'vri': None,
                             'bjt': b,
                             'type': 'variant',
-                            'notes': f'Textual variant: PTS "{g}" vs SC "{s}"'
+                            'notes': f'Textual variant: PTS "{g}" vs SC "{s}"{bjt_note}'
                         })
                 else:
                     # Neither valid

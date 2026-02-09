@@ -37,6 +37,10 @@ def main():
     print("   Source: Mahāsaṅgīti edition with segmentation")
     print(f"   Total words: {critical_summary['grand_totals']['sc_words']:,}")
     print()
+    print("4. BJT (Buddha Jayanti Tripitaka)")
+    print("   Source: Sri Lankan government edition (1957-1989)")
+    print(f"   Total words: {critical_summary['grand_totals']['bjt_words']:,}")
+    print()
 
     # ===== CRITICAL EDITION COVERAGE =====
     print("=" * 70)
@@ -46,15 +50,17 @@ def main():
 
     # Vinaya
     vin = critical_summary['vinaya_pitaka']
-    print("VINAYA PIṬAKA (2 witnesses: GRETIL, VRI)")
+    print("VINAYA PIṬAKA (4 witnesses: SC, GRETIL, VRI, BJT)")
     print(f"  Texts:           {vin['texts']}")
+    print(f"  SC:              {vin.get('sc_words', 0):,} words")
     print(f"  GRETIL (PTS):    {vin['gretil_words']:,} words")
     print(f"  VRI (CST):       {vin['vri_words']:,} words")
+    print(f"  BJT:             {vin.get('bjt_words', 0):,} words")
     print()
 
     # Sutta Piṭaka
     sutta = critical_summary['sutta_pitaka']
-    print("SUTTA PIṬAKA (3 witnesses: SC, GRETIL, VRI)")
+    print("SUTTA PIṬAKA (4 witnesses: SC, GRETIL, VRI, BJT)")
     print()
 
     # DN
@@ -112,10 +118,12 @@ def main():
 
     # Abhidhamma
     abh = critical_summary['abhidhamma_pitaka']
-    print("ABHIDHAMMA PIṬAKA (2 witnesses: GRETIL, VRI)")
+    print("ABHIDHAMMA PIṬAKA (4 witnesses: SC, GRETIL, VRI, BJT)")
     print(f"  Texts:           {abh['texts']}")
+    print(f"  SC:              {abh.get('sc_words', 0):,} words")
     print(f"  GRETIL (PTS):    {abh['gretil_words']:,} words")
     print(f"  VRI (CST):       {abh['vri_words']:,} words")
+    print(f"  BJT:             {abh.get('bjt_words', 0):,} words")
     print()
 
     # ===== GRAND TOTALS =====
@@ -123,9 +131,10 @@ def main():
     print("GRAND TOTALS")
     print("=" * 70)
     gt = critical_summary['grand_totals']
-    print(f"  SC (Sutta Piṭaka):     {gt['sc_words']:,} words")
+    print(f"  SC (all):              {gt['sc_words']:,} words")
     print(f"  GRETIL (all):          {gt['gretil_words']:,} words")
     print(f"  VRI (all):             {gt['vri_words']:,} words")
+    print(f"  BJT (all):             {gt['bjt_words']:,} words")
     print()
 
     # ===== LEMMATIZATION =====
@@ -147,16 +156,14 @@ def main():
     print()
 
     # Calculate witness coverage
-    three_witness_words = st['sc_words']  # All main nikāyas have 3 witnesses
-    two_witness_words = vin['gretil_words'] + abh['gretil_words']
+    four_witness_words = st['sc_words'] + vin['gretil_words'] + abh['gretil_words']
 
     print("Witness Coverage:")
-    print(f"  3-witness editions (SC/GRETIL/VRI):  {three_witness_words:,} words")
-    print(f"  2-witness editions (GRETIL/VRI):     {two_witness_words:,} words")
+    print(f"  4-witness editions (SC/GRETIL/VRI/BJT): {four_witness_words:,} words")
     print()
 
-    total_critical_words = three_witness_words + two_witness_words
-    print(f"Total Critical Edition Coverage:       {total_critical_words:,} words")
+    total_critical_words = four_witness_words
+    print(f"Total Critical Edition Coverage:          {total_critical_words:,} words")
     print()
 
     print("This represents the COMPLETE Tipiṭaka:")
@@ -189,6 +196,11 @@ def main():
                 "name": "SuttaCentral",
                 "edition": "Mahāsaṅgīti with segmentation",
                 "total_words": critical_summary['grand_totals']['sc_words']
+            },
+            "bjt": {
+                "name": "BJT (Buddha Jayanti Tripitaka)",
+                "edition": "Sri Lankan government edition (1957-1989)",
+                "total_words": critical_summary['grand_totals']['bjt_words']
             }
         },
         "critical_edition": {
@@ -213,8 +225,7 @@ def main():
             "coverage": lemmatized_stats['coverage']
         },
         "coverage": {
-            "three_witness_words": three_witness_words,
-            "two_witness_words": two_witness_words,
+            "four_witness_words": four_witness_words,
             "total_critical_words": total_critical_words
         }
     }

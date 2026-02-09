@@ -8,8 +8,6 @@ Four-witness editions (GRETIL/SC/VRI/BJT):
 - Saṃyutta Nikāya (SN)
 - Aṅguttara Nikāya (AN)
 - Khuddaka Nikāya (KN) - partial SC coverage
-
-Two-witness editions (GRETIL/VRI):
 - Vinaya Piṭaka
 - Abhidhamma Piṭaka
 """
@@ -569,15 +567,15 @@ VINAYA_TEXTS = [
 ]
 
 def build_vinaya_critical() -> dict[str, Any]:
-    """Build Vinaya critical edition with 2 witnesses (GRETIL/VRI)."""
+    """Build Vinaya critical edition with 4 witnesses (GRETIL/SC/VRI/BJT)."""
     log("=" * 60)
-    log("Building Vinaya Critical Edition (2 witnesses)")
+    log("Building Vinaya Critical Edition (4 witnesses)")
     log("=" * 60)
 
     output_dir = DATA_DIR / "critical/vinaya"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    total_words = {'gretil': 0, 'vri': 0}
+    total_words = {'gretil': 0, 'vri': 0, 'sc': 0, 'bjt': 0}
     results = []
 
     # Load all VRI Vinaya files
@@ -585,6 +583,19 @@ def build_vinaya_critical() -> dict[str, Any]:
     vri_words = len(tokenize(vri_all))
     total_words['vri'] = vri_words
     log(f"VRI Vinaya: {vri_words:,} words")
+
+    # Count SC and BJT words
+    for text_name in VINAYA_TEXTS:
+        sc_file = DATA_DIR / f"sc-parsed/vinaya/{text_name}.json"
+        if sc_file.exists():
+            sc_data = json.loads(sc_file.read_text())
+            total_words['sc'] += sc_data.get('word_count', 0)
+        bjt_file = DATA_DIR / f"bjt-parsed/vinaya/{text_name}.json"
+        if bjt_file.exists():
+            bjt_data = json.loads(bjt_file.read_text())
+            total_words['bjt'] += bjt_data.get('word_count', 0)
+    log(f"SC Vinaya: {total_words['sc']:,} words")
+    log(f"BJT Vinaya: {total_words['bjt']:,} words")
 
     # Process each GRETIL Vinaya text
     for text_name in VINAYA_TEXTS:
@@ -598,7 +609,7 @@ def build_vinaya_critical() -> dict[str, Any]:
 
         edition = {
             'id': text_name,
-            'witnesses': ['GRETIL', 'VRI'],
+            'witnesses': ['GRETIL', 'VRI', 'SC', 'BJT'],
             'word_count': word_count,
         }
         results.append(edition)
@@ -609,10 +620,12 @@ def build_vinaya_critical() -> dict[str, Any]:
 
     summary = {
         'pitaka': 'Vinaya',
-        'witnesses': 2,
+        'witnesses': 4,
         'texts': len(results),
         'gretil_words': total_words['gretil'],
         'vri_words': total_words['vri'],
+        'sc_words': total_words['sc'],
+        'bjt_words': total_words['bjt'],
     }
 
     with open(output_dir / "_critical_summary.json", 'w', encoding='utf-8') as f:
@@ -639,15 +652,15 @@ ABHIDHAMMA_TEXTS = [
 ]
 
 def build_abhidhamma_critical() -> dict[str, Any]:
-    """Build Abhidhamma critical edition with 2 witnesses (GRETIL/VRI)."""
+    """Build Abhidhamma critical edition with 4 witnesses (GRETIL/SC/VRI/BJT)."""
     log("=" * 60)
-    log("Building Abhidhamma Critical Edition (2 witnesses)")
+    log("Building Abhidhamma Critical Edition (4 witnesses)")
     log("=" * 60)
 
     output_dir = DATA_DIR / "critical/abhidhamma"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    total_words = {'gretil': 0, 'vri': 0}
+    total_words = {'gretil': 0, 'vri': 0, 'sc': 0, 'bjt': 0}
     results = []
 
     # Load all VRI Abhidhamma files
@@ -655,6 +668,23 @@ def build_abhidhamma_critical() -> dict[str, Any]:
     vri_words = len(tokenize(vri_all))
     total_words['vri'] = vri_words
     log(f"VRI Abhidhamma: {vri_words:,} words")
+
+    # Count SC and BJT words
+    for sc_name in ['dhammasangani', 'vibhanga', 'dhatukatha', 'puggalapannatti',
+                     'kathavatthu', 'yamaka1', 'yamaka2', 'patthana']:
+        sc_file = DATA_DIR / f"sc-parsed/abhidhamma/{sc_name}.json"
+        if sc_file.exists():
+            sc_data = json.loads(sc_file.read_text())
+            total_words['sc'] += sc_data.get('word_count', 0)
+    for bjt_name in ['dhammasangani', 'vibhanga', 'dhatukatha', 'puggalapannatti',
+                      'kathavatthu1', 'kathavatthu2', 'yamaka1', 'yamaka2',
+                      'patthana1', 'patthana2']:
+        bjt_file = DATA_DIR / f"bjt-parsed/abhidhamma/{bjt_name}.json"
+        if bjt_file.exists():
+            bjt_data = json.loads(bjt_file.read_text())
+            total_words['bjt'] += bjt_data.get('word_count', 0)
+    log(f"SC Abhidhamma: {total_words['sc']:,} words")
+    log(f"BJT Abhidhamma: {total_words['bjt']:,} words")
 
     # Process each GRETIL Abhidhamma text
     for text_name in ABHIDHAMMA_TEXTS:
@@ -668,7 +698,7 @@ def build_abhidhamma_critical() -> dict[str, Any]:
 
         edition = {
             'id': text_name,
-            'witnesses': ['GRETIL', 'VRI'],
+            'witnesses': ['GRETIL', 'VRI', 'SC', 'BJT'],
             'word_count': word_count,
         }
         results.append(edition)
@@ -679,10 +709,12 @@ def build_abhidhamma_critical() -> dict[str, Any]:
 
     summary = {
         'pitaka': 'Abhidhamma',
-        'witnesses': 2,
+        'witnesses': 4,
         'texts': len(results),
         'gretil_words': total_words['gretil'],
         'vri_words': total_words['vri'],
+        'sc_words': total_words['sc'],
+        'bjt_words': total_words['bjt'],
     }
 
     with open(output_dir / "_critical_summary.json", 'w', encoding='utf-8') as f:
@@ -706,11 +738,11 @@ def main() -> None:
 
     results = {}
 
-    # Vinaya Piṭaka (2 witnesses)
+    # Vinaya Piṭaka (4 witnesses)
     results['vinaya'] = build_vinaya_critical()
     log("")
 
-    # Sutta Piṭaka (3 witnesses for main nikāyas)
+    # Sutta Piṭaka (4 witnesses)
     results['dn'] = build_dn_critical()
     log("")
     results['mn'] = build_mn_critical()
@@ -722,7 +754,7 @@ def main() -> None:
     results['kn'] = build_kn_critical()
     log("")
 
-    # Abhidhamma Piṭaka (2 witnesses)
+    # Abhidhamma Piṭaka (4 witnesses)
     results['abhidhamma'] = build_abhidhamma_critical()
     log("")
 
@@ -737,10 +769,12 @@ def main() -> None:
     sutta_bjt = sum(results[n].get('bjt_words', 0) for n in ['dn', 'mn', 'sn', 'an', 'kn'])
 
     log("")
-    log("VINAYA PIṬAKA (2 witnesses: GRETIL, VRI)")
+    log("VINAYA PIṬAKA (4 witnesses: SC, GRETIL, VRI, BJT)")
     log(f"  Texts: {results['vinaya'].get('texts', 0)}")
+    log(f"  SC: {results['vinaya'].get('sc_words', 0):,} words")
     log(f"  GRETIL: {results['vinaya'].get('gretil_words', 0):,} words")
     log(f"  VRI: {results['vinaya'].get('vri_words', 0):,} words")
+    log(f"  BJT: {results['vinaya'].get('bjt_words', 0):,} words")
     log("")
 
     log("SUTTA PIṬAKA (4 witnesses: SC, GRETIL, VRI, BJT)")
@@ -755,22 +789,26 @@ def main() -> None:
     log(f"  BJT Total: {sutta_bjt:,} words")
     log("")
 
-    log("ABHIDHAMMA PIṬAKA (2 witnesses: GRETIL, VRI)")
+    log("ABHIDHAMMA PIṬAKA (4 witnesses: SC, GRETIL, VRI, BJT)")
     log(f"  Texts: {results['abhidhamma'].get('texts', 0)}")
+    log(f"  SC: {results['abhidhamma'].get('sc_words', 0):,} words")
     log(f"  GRETIL: {results['abhidhamma'].get('gretil_words', 0):,} words")
     log(f"  VRI: {results['abhidhamma'].get('vri_words', 0):,} words")
+    log(f"  BJT: {results['abhidhamma'].get('bjt_words', 0):,} words")
     log("")
 
     # Grand totals
+    total_sc = results['vinaya'].get('sc_words', 0) + sutta_sc + results['abhidhamma'].get('sc_words', 0)
     total_gretil = results['vinaya'].get('gretil_words', 0) + sutta_gretil + results['abhidhamma'].get('gretil_words', 0)
     total_vri = results['vinaya'].get('vri_words', 0) + sutta_vri + results['abhidhamma'].get('vri_words', 0)
+    total_bjt = results['vinaya'].get('bjt_words', 0) + sutta_bjt + results['abhidhamma'].get('bjt_words', 0)
 
     log("─" * 40)
     log("GRAND TOTALS")
-    log(f"  SC (Sutta only): {sutta_sc:,} words")
+    log(f"  SC (all): {total_sc:,} words")
     log(f"  GRETIL (all): {total_gretil:,} words")
     log(f"  VRI (all): {total_vri:,} words")
-    log(f"  BJT (Sutta only): {sutta_bjt:,} words")
+    log(f"  BJT (all): {total_bjt:,} words")
 
     # Save master summary
     overall = {
@@ -791,10 +829,10 @@ def main() -> None:
         },
         'abhidhamma_pitaka': results['abhidhamma'],
         'grand_totals': {
-            'sc_words': sutta_sc,
+            'sc_words': total_sc,
             'gretil_words': total_gretil,
             'vri_words': total_vri,
-            'bjt_words': sutta_bjt,
+            'bjt_words': total_bjt,
         }
     }
 

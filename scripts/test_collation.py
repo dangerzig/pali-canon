@@ -4,9 +4,11 @@ Tests for collation data integrity and classification correctness.
 
 Validates:
 - Collation JSON structure
-- Two-way vs three-way classification is applied correctly
+- Four-way classification with BJT witness
+- Two-way fallback for AN nipātas 5-11 (no VRI)
 - Apadāna split is correct (tha-ap vs thi-ap)
-- Error classifications (SC=VRI≠PTS, PTS not in DPD)
+- Error classifications (SC=VRI=BJT≠PTS, PTS not in DPD)
+- Vinaya/Abhidhamma four-witness collation
 - No alignment artifacts in reported variants
 """
 
@@ -476,6 +478,99 @@ def test_word_count_sanity():
     return errors
 
 
+def test_classify_variant_with_bjt():
+    """Test that classify_variant() works with BJT as 4th witness."""
+    print("TEST: classify_variant() with BJT parameter")
+    errors = []
+
+    try:
+        from collate_nikaya import classify_variant
+    except ImportError:
+        print("  SKIP: Could not import classify_variant from collate_nikaya")
+        return []
+
+    # Test 1: SC=VRI=BJT != PTS (3 vs 1) should have high confidence
+    result = classify_variant('bhikkhūnam', 'bhikkhūnaṃ', 'bhikkhūnaṃ', bjt='bhikkhūnaṃ')
+    if result['type'] not in ('pts_error', 'error'):
+        errors.append(f"SC=VRI=BJT≠PTS: expected error type, got '{result['type']}'")
+    if result.get('confidence', 0) < 0.9:
+        errors.append(f"SC=VRI=BJT≠PTS: confidence {result.get('confidence')} should be >= 0.9")
+
+    # Test 2: SC=VRI != PTS, BJT=PTS (2 vs 2 split) - lower confidence
+    result2 = classify_variant('dhammo', 'dhamma', 'dhamma', bjt='dhammo')
+    if result2.get('confidence', 0) > 0.7:
+        errors.append(f"2-2 split: confidence {result2.get('confidence')} should be <= 0.7")
+
+    # Test 3: Backward compatible (no BJT) — should work the same as before
+    result3 = classify_variant('bhikkhūnam', 'bhikkhūnaṃ', 'bhikkhūnaṃ')
+    if result3['type'] not in ('pts_error', 'error'):
+        errors.append(f"No-BJT fallback: expected error type, got '{result3['type']}'")
+
+    # Test 4: All four agree after normalization — classify_variant returns 'orthographic'
+    # (this function is only called on positions with detected differences; identical
+    # normalized forms mean the difference was purely orthographic)
+    result4 = classify_variant('dhamma', 'dhamma', 'dhamma', bjt='dhamma')
+    if result4['type'] != 'orthographic':
+        errors.append(f"All-agree: expected 'orthographic', got '{result4['type']}'")
+
+    if errors:
+        for e in errors:
+            print(f"  ERROR: {e}")
+    else:
+        print("  classify_variant() handles BJT correctly ✓")
+
+    return errors
+
+
+def test_vinaya_abhidhamma_four_way():
+    """Verify Vinaya and Abhidhamma collation files include SC and BJT data."""
+    print("TEST: Vinaya/Abhidhamma four-witness collation")
+    errors = []
+
+    for collection in ['vinaya', 'abhidhamma']:
+        col_dir = COLLATION_DIR / collection
+        if not col_dir.exists():
+            errors.append(f"{collection}: collation directory not found")
+            continue
+
+        json_files = [f for f in col_dir.glob("*_collation.json") if not f.name.startswith('_')]
+        if not json_files:
+            errors.append(f"{collection}: no collation files found")
+            continue
+
+        has_sc_count = 0
+        has_bjt_count = 0
+
+        for jf in json_files:
+            data = json.loads(jf.read_text())
+
+            # Check for SC and BJT flags/word counts
+            word_counts = data.get('word_counts', {})
+            has_sc = data.get('has_sc', word_counts.get('sc', 0) > 0)
+            has_bjt = data.get('has_bjt', word_counts.get('bjt', 0) > 0)
+
+            if has_sc:
+                has_sc_count += 1
+            if has_bjt:
+                has_bjt_count += 1
+
+        total = len(json_files)
+        print(f"  {collection}: {total} files, {has_sc_count} with SC, {has_bjt_count} with BJT")
+
+        if has_sc_count == 0:
+            errors.append(f"{collection}: no files have SC data")
+        if has_bjt_count == 0:
+            errors.append(f"{collection}: no files have BJT data")
+
+    if not errors:
+        print("  Vinaya/Abhidhamma have four-witness data ✓")
+    else:
+        for e in errors:
+            print(f"  ERROR: {e}")
+
+    return errors
+
+
 def main():
     print("=" * 60)
     print("COLLATION DATA VALIDATION")
@@ -490,6 +585,10 @@ def main():
     all_errors.extend(test_apadana_split())
     print()
     all_errors.extend(test_has_vri_flag())
+    print()
+    all_errors.extend(test_classify_variant_with_bjt())
+    print()
+    all_errors.extend(test_vinaya_abhidhamma_four_way())
     print()
     all_errors.extend(test_error_classification_accuracy())
     print()
