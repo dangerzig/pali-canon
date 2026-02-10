@@ -52,16 +52,6 @@ def parse_vinaya():
     output_dir = OUTPUT_DIR / "vinaya"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # VRI Vinaya files
-    files = {
-        'patimokkha': 'vin01m.mul.txt',
-        'suttavibhanga1': 'vin02m1.mul.txt',
-        'suttavibhanga2': 'vin02m4.mul.txt',  # vin02m2 and vin02m3 are empty
-        'mahavagga': None,  # Need to find correct file
-        'cullavagga': None,
-        'parivara': None,
-    }
-
     # Find all vinaya mūla files
     vin_files = sorted(VRI_DIR.glob("vin*.mul.txt"))
 

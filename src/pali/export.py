@@ -16,6 +16,7 @@ from datetime import datetime
 from typing import Optional, Union
 
 from .store import Store
+from .text import parse_sutta_id
 
 
 # LaTeX preamble for critical editions
@@ -85,24 +86,17 @@ LATEX_PREAMBLE = r'''%!TEX program = xelatex
   \edtext{#1}{\Afootnote{#2 \textit{#3}}}%
 }
 
-% Start critical apparatus
-\beginnumbering
-
 '''
 
 LATEX_POSTAMBLE = r'''
 \endnumbering
-\end{document}
-'''
+\end{document}'''
 
-# Nikāya names
-NIKAYA_NAMES = {
-    'dn': ('Dīgha Nikāya', 'Long Discourses'),
-    'mn': ('Majjhima Nikāya', 'Middle Length Discourses'),
-    'sn': ('Saṃyutta Nikāya', 'Connected Discourses'),
-    'an': ('Aṅguttara Nikāya', 'Numerical Discourses'),
-    'kn': ('Khuddaka Nikāya', 'Minor Collection'),
-}
+# Nikāya names — derived from Store.NIKAYAS to avoid duplication
+def _get_nikaya_names() -> dict:
+    from .store import NIKAYAS
+    return {k: (v["name_pali"], v["name_eng"]) for k, v in NIKAYAS.items()}
+NIKAYA_NAMES = _get_nikaya_names()
 
 
 def escape_latex(text: str) -> str:
@@ -207,6 +201,7 @@ class Exporter:
         doc_lines.append(r'\vspace{0.25in}')
         doc_lines.append(f'{{\\small Generated: {datetime.now().strftime("%Y-%m-%d")}}}')
         doc_lines.append(r'\end{titlepage}')
+        doc_lines.append(r'\beginnumbering')
         doc_lines.append('')
 
         # Table of contents for multi-sutta documents
@@ -227,17 +222,7 @@ class Exporter:
 
     def _get_collection(self, sutta_id: str) -> str:
         """Get collection (nikaya) from sutta ID."""
-        from .store import KN_TEXT_PREFIXES, NIKAYAS
-
-        for prefix in KN_TEXT_PREFIXES:
-            if sutta_id.startswith(prefix):
-                return "kn"
-
-        for n in NIKAYAS:
-            if sutta_id.startswith(n):
-                return n
-
-        return "unknown"
+        return parse_sutta_id(sutta_id) or "unknown"
 
     def _generate_sutta_latex(self, sutta_id: str) -> Optional[str]:
         """Generate LaTeX for a single sutta."""
@@ -378,7 +363,11 @@ class Exporter:
 
         except FileNotFoundError:
             print("XeLaTeX not found. Please install a TeX distribution.")
+            if not keep_tex and tex_path.exists():
+                tex_path.unlink()
             return False
         except subprocess.TimeoutExpired:
             print("XeLaTeX compilation timed out.")
+            if not keep_tex and tex_path.exists():
+                tex_path.unlink()
             return False

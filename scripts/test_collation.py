@@ -13,13 +13,13 @@ Validates:
 """
 
 import sys
-sys.path.insert(0, 'src')
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'src'))
 
 import json
-from pathlib import Path
 from collections import Counter
 
-DATA_DIR = Path("data")
+DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 COLLATION_DIR = DATA_DIR / "collation"
 
 

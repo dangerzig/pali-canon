@@ -82,6 +82,18 @@ class Canon:
         self._store = Store(data_dir)
         self._search: Optional[Search] = None
 
+    def close(self) -> None:
+        """Close any open resources (SQLite connections in Search)."""
+        if self._search is not None:
+            self._search.close()
+            self._search = None
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        self.close()
+
     def _get_search(self) -> Search:
         """Get or create search instance (lazy initialization)."""
         if self._search is None:

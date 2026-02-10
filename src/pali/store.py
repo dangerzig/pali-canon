@@ -1,11 +1,15 @@
 """JSON file store for accessing Pāli Canon data."""
 
 import json
-from functools import lru_cache
+import re
 from pathlib import Path
 from typing import Optional
 
 from .models import Sutta, Segment, SuttaInfo, NikayaInfo
+from .text import (
+    KN_TEXT_PREFIXES, NESTED_COLLECTIONS, ITEMS_COLLECTIONS,
+    parse_sutta_id, iter_file_segments,
+)
 
 # Default data directory (relative to package)
 _DEFAULT_DATA_DIR = Path(__file__).parent.parent.parent / "data"
@@ -17,19 +21,6 @@ NIKAYAS = {
     "sn": {"name_pali": "Saṃyutta Nikāya", "name_eng": "Connected Discourses"},
     "an": {"name_pali": "Aṅguttara Nikāya", "name_eng": "Numerical Discourses"},
     "kn": {"name_pali": "Khuddaka Nikāya", "name_eng": "Minor Collection"},
-}
-
-# Collections with nested sutta structure
-NESTED_COLLECTIONS = {"sn", "an"}
-
-# Collections with items structure (KN)
-ITEMS_COLLECTIONS = {"kn"}
-
-# KN text prefixes (texts in Khuddaka Nikāya have their own ID prefixes)
-KN_TEXT_PREFIXES = {
-    "kp", "dhp", "ud", "iti", "snp", "vv", "pv", "thag", "thig",
-    "tha-ap", "thi-ap", "bv", "cp", "ja", "mnd", "cnd", "ps",
-    "ne", "pe", "mil",
 }
 
 
@@ -46,16 +37,24 @@ class Store:
         self.canonical_dir = self.data_dir / "canonical"
         self.lemmatized_dir = self.data_dir / "lemmatized"
         self._index_cache = {}
+        self._json_cache = {}
 
     def _get_data_dir(self, lemmatized: bool) -> Path:
         """Get appropriate data directory."""
         return self.lemmatized_dir if lemmatized else self.canonical_dir
 
-    @lru_cache(maxsize=100)
     def _load_json(self, path: Path) -> dict:
         """Load and cache JSON file."""
+        path_str = str(path)
+        if path_str in self._json_cache:
+            return self._json_cache[path_str]
         with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
+            data = json.load(f)
+        if len(self._json_cache) >= 100:
+            # Evict oldest entry
+            self._json_cache.pop(next(iter(self._json_cache)))
+        self._json_cache[path_str] = data
+        return data
 
     def _id_in_range(self, sutta_id: str, range_id: str) -> bool:
         """Check if sutta_id falls within a range like 'dhp1-20'.
@@ -67,8 +66,6 @@ class Store:
         Returns:
             True if sutta_id is within the range
         """
-        import re
-
         # Extract prefix and number from sutta_id
         # Handles: "dhp5", "sn1.1", "an1.1.1" etc.
         # For dotted IDs, use the first number for range comparison
@@ -112,21 +109,26 @@ class Store:
                 sutta_id = f"{nikaya}{sutta_id}"
             # Extract samyutta/nipata number (e.g., "sn1.1" -> "sn1")
             parts = sutta_id.split(".")
-            if len(parts) >= 1:
-                collection_file = parts[0]  # "sn1" or "an1"
-                path = data_dir / f"{collection_file}.json"
-                if path.exists():
-                    return path
+            collection_file = parts[0]  # "sn1" or "an1"
+            path = data_dir / f"{collection_file}.json"
+            if path.exists():
+                return path
 
         # For KN: each text has its own file (dhp.json, snp.json, etc.)
         # KN texts have their own prefixes, not "kn" prefix
         elif nikaya == "kn":
-            # Don't normalize - KN texts use their own prefixes (dhp, snp, etc.)
-            for f in data_dir.glob("*.json"):
-                if f.name.startswith("_"):
-                    continue  # Skip index files
-                # Check if sutta_id starts with the file's text ID
-                if sutta_id.startswith(f.stem):
+            # Build/use cached stem index for O(1) lookup
+            cache_key = str(data_dir)
+            if cache_key not in self._index_cache:
+                stems = []
+                for f in data_dir.glob("*.json"):
+                    if not f.name.startswith("_"):
+                        stems.append((f.stem, f))
+                # Sort by stem length descending so longer prefixes match first
+                stems.sort(key=lambda x: len(x[0]), reverse=True)
+                self._index_cache[cache_key] = stems
+            for stem, f in self._index_cache[cache_key]:
+                if sutta_id.startswith(stem):
                     return f
 
         return None
@@ -154,21 +156,7 @@ class Store:
             The returned Sutta.id will be the range ID, not the requested ID.
             This matches the traditional vagga organization of these texts.
         """
-        # Parse sutta_id to get nikaya
-        # Check KN text prefixes FIRST (they're more specific than "sn", "an", etc.)
-        nikaya = None
-        for prefix in KN_TEXT_PREFIXES:
-            if sutta_id.startswith(prefix):
-                nikaya = "kn"
-                break
-
-        # Then check standard nikaya prefixes
-        if not nikaya:
-            for n in NIKAYAS:
-                if sutta_id.startswith(n):
-                    nikaya = n
-                    break
-
+        nikaya = parse_sutta_id(sutta_id)
         if not nikaya:
             return None
 

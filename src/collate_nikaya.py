@@ -25,7 +25,6 @@ import json
 import warnings
 from pathlib import Path
 from collections import Counter
-from typing import Optional
 from difflib import SequenceMatcher
 
 DATA_DIR = Path(__file__).parent.parent / "data"
@@ -104,8 +103,15 @@ ABHIDHAMMA_TEXTS = [
     ('patthana', 'patthana', ['abh03m7.mul', 'abh03m8.mul', 'abh03m10.mul', 'abh03m11.mul'], 'patthana', ['patthana1', 'patthana2'], 'patthana'),
 ]
 
-# Pre-compiled patterns
-PALI_WORD_PATTERN = re.compile(r'[a-zāīūṭḍṇṅñṃḷ]+', re.IGNORECASE)
+# Import canonical tokenization pattern from shared module
+try:
+    from pali.text import PALI_WORD_PATTERN
+except ImportError:
+    PALI_WORD_PATTERN = re.compile(r'[a-zāīūṭḍṇṅñṃḷ]+', re.IGNORECASE)
+
+# Cache for SC JSON files (avoids re-reading per sutta)
+_sc_file_cache = {}
+
 
 # Load DPD headwords for validation
 _dpd_words = None
@@ -582,8 +588,7 @@ def classify_variant(gretil: str, sc: str, vri: str, bjt: str = None,
             witness_norms['Thai'] = t_norm
 
         # Find largest coalition
-        from collections import Counter as _Counter
-        norm_counts = _Counter(witness_norms.values())
+        norm_counts = Counter(witness_norms.values())
         most_common_norm, most_common_count = norm_counts.most_common(1)[0]
 
         if most_common_count >= 3:
@@ -774,7 +779,10 @@ def load_sutta_data_an(sutta_id: str) -> dict:
     # SC AN uses range IDs like "an1.1-10" while GRETIL uses individual IDs
     sc_file = sc_dir / f"an{nipata}.json"
     if sc_file.exists():
-        sc_data = json.loads(sc_file.read_text())
+        sc_key = str(sc_file)
+        if sc_key not in _sc_file_cache:
+            _sc_file_cache[sc_key] = json.loads(sc_file.read_text())
+        sc_data = _sc_file_cache[sc_key]
         # Find the sutta - could be exact match or within a range
         for sutta in sc_data.get('suttas', []):
             sc_id = sutta.get('id', '')
@@ -2136,7 +2144,10 @@ def load_sutta_data_sn(sutta_id: str) -> dict:
     # SC - file named like sn{samyutta}.json, suttas nested within
     sc_file = sc_dir / f"sn{samyutta}.json"
     if sc_file.exists():
-        sc_data = json.loads(sc_file.read_text())
+        sc_key = str(sc_file)
+        if sc_key not in _sc_file_cache:
+            _sc_file_cache[sc_key] = json.loads(sc_file.read_text())
+        sc_data = _sc_file_cache[sc_key]
         # Find the specific sutta by ID
         for sutta in sc_data.get('suttas', []):
             if sutta.get('id') == sutta_id:

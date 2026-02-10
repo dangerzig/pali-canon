@@ -54,7 +54,7 @@ def extract_text_from_html(html_content):
     parser = TextExtractor()
     try:
         parser.feed(html_content)
-    except:
+    except Exception:
         # Fallback: simple regex-based extraction
         text = re.sub(r'<[^>]+>', ' ', html_content)
         return re.sub(r'\s+', ' ', text).strip()
@@ -77,7 +77,7 @@ def parse_file(filepath, collection, name):
         'name': name,
         'source_file': filepath.name,
         'text': text,
-        'word_count': len(text.split()),
+        'word_count': len(re.findall(r'[a-zāīūṭḍṇṅñṃḷ]+', text, re.IGNORECASE)),
     }
 
 

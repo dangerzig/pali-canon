@@ -15,7 +15,6 @@ matching the naming conventions used by the collation pipeline.
 """
 
 import json
-import os
 import re
 import sys
 from difflib import SequenceMatcher
@@ -24,11 +23,18 @@ from pathlib import Path
 DATA_DIR = Path(__file__).parent.parent / "data"
 THAI_DIR = DATA_DIR / "thai-parsed"
 
-PALI_WORD_PATTERN = re.compile(r'[a-zāīūṭḍṇṅñṃḷ]+', re.IGNORECASE)
-
-
-def tokenize(text: str) -> list:
-    return PALI_WORD_PATTERN.findall(text)
+try:
+    from pali.text import PALI_WORD_PATTERN, tokenize, normalize_title
+except ImportError:
+    PALI_WORD_PATTERN = re.compile(r'[a-zāīūṭḍṇṅñṃḷ]+', re.IGNORECASE)
+    def tokenize(text: str) -> list:
+        return PALI_WORD_PATTERN.findall(text.lower())
+    def normalize_title(title: str) -> str:
+        t = title.lower().strip()
+        t = re.sub(r'\s*sutta[ṃm]?\.?\s*$', '', t)
+        t = re.sub(r'^(paṭhama|dutiya|tatiya|catuttha|pañcama)\s*', '', t)
+        t = re.sub(r'\s+', '', t)
+        return t
 
 
 def save_text(output_dir: Path, filename: str, text_id: str, text: str,
@@ -45,7 +51,7 @@ def save_text(output_dir: Path, filename: str, text_id: str, text: str,
     if extra:
         data.update(extra)
     with open(output_dir / filename, 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False)
+        json.dump(data, f, indent=2, ensure_ascii=False)
 
 
 def load_thai_json(filepath: Path) -> str:
@@ -77,15 +83,6 @@ def text_similarity(words1: list, words2: list, skip: int = 0,
     if not w1 or not w2:
         return 0.0
     return SequenceMatcher(None, w1, w2).ratio()
-
-
-def normalize_title(title: str) -> str:
-    """Normalize a sutta title for fuzzy comparison."""
-    t = title.lower().strip()
-    t = re.sub(r'\s*sutta[ṃm]?\.?\s*$', '', t)
-    t = re.sub(r'^(paṭhama|dutiya|tatiya|catuttha|pañcama)\s*', '', t)
-    t = re.sub(r'\s+', '', t)
-    return t
 
 
 def load_gretil_suttas(nikaya: str, group_num: int) -> list[dict]:
@@ -733,7 +730,7 @@ SN_SAMYUTTA_NAMES = {
     'asaṅkhata': 43, 'abyākata': 44,
     'magga': 45, 'bojjhaṅga': 46, 'satipaṭṭhāna': 47, 'indriya': 48,
     'sammappadhāna': 49, 'bala': 50, 'iddhipāda': 51,
-    'anuruddha': 52, 'ānāpāna': 54,
+    'anuruddha': 52, 'jhāna': 53, 'ānāpāna': 54,
     'sotāpatti': 55, 'sacca': 56,
 }
 
@@ -745,10 +742,6 @@ SN_VOL_SAMYUTTAS = [
     (35, 44),  # Vol 4: Saḷāyatanavagga
     (45, 56),  # Vol 5: Mahāvagga
 ]
-
-# Ordinal words used as sutta-ending markers in SN vols 2/4
-SN_ORDINALS = ('paṭhamaṃ', 'dutiyaṃ', 'tatiyaṃ', 'catutthaṃ', 'pañcamaṃ',
-               'chaṭṭhaṃ', 'sattamaṃ', 'aṭṭhamaṃ', 'navamaṃ', 'dasamaṃ')
 
 
 def _find_samyutta_regions(text, sam_start, sam_end):
@@ -763,7 +756,7 @@ def _find_samyutta_regions(text, sam_start, sam_end):
     starts = {}  # sam_num → position
     ends = {}    # sam_num → position
 
-    for m in re.finditer(r'(\w+)saṃyuttaṃ', text, re.IGNORECASE):
+    for m in re.finditer(r'([a-zāīūṭḍṇṅñṃḷ]+)saṃyuttaṃ', text, re.IGNORECASE):
         name = m.group(1).lower()
         if 'vagga' in name or 'nikāya' in name or 'mahāvāra' in name:
             continue
@@ -827,63 +820,6 @@ def _find_samyutta_regions(text, sam_start, sam_end):
             regions[sam] = (s, e)
 
     return regions
-
-
-def _find_sutta_starts_by_title(text):
-    """Find sutta boundaries using {name}suttaṃ [{page}] pattern (vol1)."""
-    positions = []
-    for m in re.finditer(
-        r'\w+suttaṃ\s*\[\d+\]',
-        text, re.IGNORECASE
-    ):
-        # Skip colophon endings (niṭṭhit before)
-        before = text[max(0, m.start() - 50):m.start()]
-        if 'niṭṭhit' in before or 'samatt' in before:
-            continue
-        positions.append(m.start())
-    return sorted(set(positions))
-
-
-def _find_sutta_starts_by_ordinal(text):
-    """Find sutta starts using '. {ordinal} .' ending pattern (vol2/4).
-
-    Ordinal endings mark where each sutta ENDS. The next sutta starts
-    after the ending marker. Returns list of sutta start positions.
-    """
-    ord_pattern = '|'.join(SN_ORDINALS)
-    positions = [0]  # First sutta starts at beginning
-    for m in re.finditer(
-        rf'\.\s*\d*\s*({ord_pattern})\s*\.',
-        text, re.IGNORECASE
-    ):
-        positions.append(m.end())
-    return positions
-
-
-def _find_sutta_starts_by_nidana(text):
-    """Find sutta starts using sāvatthī nidāna pattern (vol3/5)."""
-    positions = []
-
-    # sāvatthī(yaṃ) followed by period or viharati
-    for m in re.finditer(
-        r'sāvatthī(?:yaṃ)?\s*(?:\.|viharati)',
-        text, re.IGNORECASE
-    ):
-        positions.append(m.start())
-
-    # sāvatthīnidānaṃ (abbreviated nidāna, common in Mahāvagga)
-    for m in re.finditer(r'sāvatthīnidānaṃ', text, re.IGNORECASE):
-        pos = m.start()
-        if not any(abs(pos - p) < 30 for p in positions):
-            positions.append(pos)
-
-    # evamme sutaṃ (full nidāna formula, add if not near existing)
-    for m in re.finditer(r'evamme sutaṃ', text, re.IGNORECASE):
-        pos = m.start()
-        if not any(abs(pos - p) < 50 for p in positions):
-            positions.append(pos)
-
-    return sorted(positions)
 
 
 def split_sn():

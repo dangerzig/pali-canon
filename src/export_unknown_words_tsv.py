@@ -20,63 +20,19 @@ import re
 from pathlib import Path
 from collections import defaultdict
 
+from export_unknown_words_detailed import POS_RULES, infer_pos
+
 DATA_DIR = Path(__file__).parent.parent / "data"
 LEMMATIZED_DIR = DATA_DIR / "lemmatized"
 OUTPUT_DIR = DATA_DIR / "unknown_words_report"
 
 COLLECTIONS = ['dn', 'mn', 'sn', 'an', 'kn']
 
-# POS inference rules (from export_unknown_words_detailed.py)
-POS_RULES = [
-    (r'(ati|eti|oti)$', 'verb (present 3sg)'),
-    (r'(āmi|emi|omi)$', 'verb (present 1sg)'),
-    (r'(āma|ema|oma)$', 'verb (present 1pl)'),
-    (r'(anti|enti|onti)$', 'verb (present 3pl)'),
-    (r'(issati|essati)$', 'verb (future 3sg)'),
-    (r'(issāmi|essāmi)$', 'verb (future 1sg)'),
-    (r'(ittha|ettha)$', 'verb (aorist 3sg)'),
-    (r'(iṃsu|uṃ)$', 'verb (aorist 3pl)'),
-    (r'(eyya|eyyaṃ)$', 'verb (optative)'),
-    (r'(atu|antu|etu)$', 'verb (imperative)'),
-    (r'(māna|āna)$', 'verb (present participle)'),
-    (r'(ita|ina|ta)$', 'pp (past participle)'),
-    (r'tabba$', 'fpp (future passive participle)'),
-    (r'(tuṃ|tave)$', 'infinitive'),
-    (r'assa$', 'noun (gen sg)'),
-    (r'ānaṃ$', 'noun (gen pl)'),
-    (r'ehi$', 'noun (inst pl)'),
-    (r'esu$', 'noun (loc pl)'),
-    (r'ena$', 'noun (inst sg)'),
-    (r'āya$', 'noun (dat sg)'),
-    (r'asmiṃ$', 'noun (loc sg)'),
-    (r'amhi$', 'noun (loc sg)'),
-    (r'āsu$', 'noun (loc pl, fem)'),
-    (r'āhi$', 'noun (inst pl, fem)'),
-    (r'tara$', 'adj (comparative)'),
-    (r'tama$', 'adj (superlative)'),
-    (r'ika$', 'adj (-ika suffix)'),
-    (r'iya$', 'adj (-iya suffix)'),
-    (r'vantu$', 'adj (possessive -vantu)'),
-    (r'mantu$', 'adj (possessive -mantu)'),
-    (r'vatthu$', 'noun (story title)'),
-    (r'vaggo$', 'noun (chapter title)'),
-    (r'sutta$', 'noun (sutta title)'),
-    (r'jhāna', 'noun (jhāna compound)'),
-    (r'(pi|pī|ca|vā|tu|va)$', 'particle (possible sandhi)'),
-]
-
 # Pronoun-verb fusion patterns
 PRONOUN_VERB_PATTERNS = [
     r'ohama$', r'ohaṃ$', r'āmhā$', r'amhā$',
     r'āmī$', r'āmā$', r'osmi$', r'asmi$', r'amhi$',
 ]
-
-
-def infer_pos(word):
-    for pattern, pos in POS_RULES:
-        if re.search(pattern, word):
-            return pos
-    return ''
 
 
 def categorize_word(word):

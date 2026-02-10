@@ -22,11 +22,12 @@ from pathlib import Path
 DATA_DIR = Path(__file__).parent.parent / "data"
 BJT_DIR = DATA_DIR / "bjt-parsed"
 
-PALI_WORD_PATTERN = re.compile(r'[a-zāīūṭḍṇṅñṃḷ]+', re.IGNORECASE)
-
-
-def tokenize(text: str) -> list:
-    return PALI_WORD_PATTERN.findall(text)
+try:
+    from pali.text import PALI_WORD_PATTERN, tokenize
+except ImportError:
+    PALI_WORD_PATTERN = re.compile(r'[a-zāīūṭḍṇṅñṃḷ]+', re.IGNORECASE)
+    def tokenize(text: str) -> list:
+        return PALI_WORD_PATTERN.findall(text.lower())
 
 
 def save_sutta(output_dir: Path, filename: str, sutta_id, text: str):

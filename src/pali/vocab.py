@@ -1,10 +1,14 @@
 """Vocabulary statistics and document-term matrices."""
 
+import csv
 from dataclasses import dataclass, field
 from typing import Optional, Any
 from pathlib import Path
 from collections import Counter
 import json
+
+from .text import parse_sutta_id, iter_file_segments
+from .store import Store, NIKAYAS
 
 # Optional imports for data science functionality
 try:
@@ -123,26 +127,13 @@ class Vocabulary:
     def _count_sutta(self, sutta_id: str, lemma_counts: Counter, pos_counts: Counter,
                      token_stats: dict) -> None:
         """Count lemmas in a single sutta."""
-        # Import here to avoid circular imports
-        from .store import Store, KN_TEXT_PREFIXES, NIKAYAS
-
-        # Determine nikaya
-        nikaya = None
-        for prefix in KN_TEXT_PREFIXES:
-            if sutta_id.startswith(prefix):
-                nikaya = "kn"
-                break
-        if not nikaya:
-            for n in NIKAYAS:
-                if sutta_id.startswith(n):
-                    nikaya = n
-                    break
-
+        nikaya = parse_sutta_id(sutta_id)
         if not nikaya:
             return
 
-        store = Store(self.data_dir)
-        sutta = store.get_sutta(sutta_id, lemmatized=True, include_tokens=True)
+        if not hasattr(self, '_store'):
+            self._store = Store(self.data_dir)
+        sutta = self._store.get_sutta(sutta_id, lemmatized=True, include_tokens=True)
         if sutta:
             for segment in sutta.segments:
                 if segment.tokens:
@@ -172,17 +163,8 @@ class Vocabulary:
         with open(json_file, "r", encoding="utf-8") as f:
             data = json.load(f)
 
-        if nikaya in ("dn", "mn"):
-            self._count_segments(data.get("segments", []), lemma_counts, pos_counts, token_stats)
-        elif nikaya in ("sn", "an"):
-            for sutta_data in data.get("suttas", []):
-                self._count_segments(sutta_data.get("segments", []), lemma_counts, pos_counts, token_stats)
-        elif nikaya == "kn":
-            if "items" in data:
-                for item in data["items"]:
-                    self._count_segments(item.get("segments", []), lemma_counts, pos_counts, token_stats)
-            else:
-                self._count_segments(data.get("segments", []), lemma_counts, pos_counts, token_stats)
+        for _doc_id, segments in iter_file_segments(data, nikaya):
+            self._count_segments(segments, lemma_counts, pos_counts, token_stats)
 
     def _count_segments(self, segments: list, lemma_counts: Counter, pos_counts: Counter,
                        token_stats: dict) -> None:
@@ -311,47 +293,14 @@ class Vocabulary:
         with open(json_file, "r", encoding="utf-8") as f:
             data = json.load(f)
 
-        if nikaya in ("dn", "mn"):
-            sutta_id = data["id"]
+        for doc_id, segments in iter_file_segments(data, nikaya):
             if unit == "sutta":
-                self._count_doc_terms(data.get("segments", []), sutta_id, terms,
+                self._count_doc_terms(segments, doc_id, terms,
                                      doc_term_counts, term_doc_counts)
             else:  # segment
-                for segment in data.get("segments", []):
+                for segment in segments:
                     self._count_doc_terms([segment], segment["id"], terms,
                                          doc_term_counts, term_doc_counts)
-
-        elif nikaya in ("sn", "an"):
-            for sutta_data in data.get("suttas", []):
-                sutta_id = sutta_data["id"]
-                if unit == "sutta":
-                    self._count_doc_terms(sutta_data.get("segments", []), sutta_id, terms,
-                                         doc_term_counts, term_doc_counts)
-                else:
-                    for segment in sutta_data.get("segments", []):
-                        self._count_doc_terms([segment], segment["id"], terms,
-                                             doc_term_counts, term_doc_counts)
-
-        elif nikaya == "kn":
-            if "items" in data:
-                for item in data["items"]:
-                    item_id = item["id"]
-                    if unit == "sutta":
-                        self._count_doc_terms(item.get("segments", []), item_id, terms,
-                                             doc_term_counts, term_doc_counts)
-                    else:
-                        for segment in item.get("segments", []):
-                            self._count_doc_terms([segment], segment["id"], terms,
-                                                 doc_term_counts, term_doc_counts)
-            else:
-                sutta_id = data["id"]
-                if unit == "sutta":
-                    self._count_doc_terms(data.get("segments", []), sutta_id, terms,
-                                         doc_term_counts, term_doc_counts)
-                else:
-                    for segment in data.get("segments", []):
-                        self._count_doc_terms([segment], segment["id"], terms,
-                                             doc_term_counts, term_doc_counts)
 
     def _count_doc_terms(
         self,
@@ -390,14 +339,12 @@ class Vocabulary:
         """
         stats = self.get_vocabulary(nikaya=nikaya, top_n=999999)
 
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write("lemma,count\n")
+        with open(output_path, "w", encoding="utf-8", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["lemma", "count"])
             for lemma, count in sorted(stats.lemma_counts.items(),
                                       key=lambda x: -x[1]):
-                # Escape commas in lemmas
-                if "," in lemma:
-                    lemma = f'"{lemma}"'
-                f.write(f"{lemma},{count}\n")
+                writer.writerow([lemma, count])
 
     def export_dtm(
         self,
@@ -436,8 +383,6 @@ class Vocabulary:
             output_path: Output CSV path
             use_lemmas: If True, use lemmatized text
         """
-        from .store import Store, NIKAYAS
-
         store = Store(self.data_dir)
         rows = []
 
@@ -463,12 +408,11 @@ class Vocabulary:
                 "text": full_text,
             })
 
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write("book,book_name,text\n")
+        with open(output_path, "w", encoding="utf-8", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["book", "book_name", "text"])
             for row in rows:
-                # Escape text for CSV (quotes and newlines)
-                text = row["text"].replace('"', '""').replace("\n", "\\n")
-                f.write(f'{row["book"]},{row["book_name"]},"{text}"\n')
+                writer.writerow([row["book"], row["book_name"], row["text"]])
 
     def export_tipitaka_long(
         self,
@@ -533,13 +477,12 @@ class Vocabulary:
                         "book": nikaya,
                     })
 
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write("word,n,total,freq,book\n")
+        with open(output_path, "w", encoding="utf-8", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["word", "n", "total", "freq", "book"])
             for row in rows:
-                word = row["word"]
-                if "," in word or '"' in word:
-                    word = '"' + word.replace('"', '""') + '"'
-                f.write(f'{word},{row["n"]},{row["total"]},{row["freq"]:.10f},{row["book"]}\n')
+                writer.writerow([row["word"], row["n"], row["total"],
+                                f'{row["freq"]:.10f}', row["book"]])
 
     def export_tipitaka_wide(
         self,
@@ -593,12 +536,10 @@ class Vocabulary:
         vocab = sorted([w for w, c in all_word_counts.items() if c >= min_freq])
 
         # Write wide format
-        with open(output_path, "w", encoding="utf-8") as f:
-            # Header
-            header = ["book"] + vocab
-            f.write(",".join(header) + "\n")
+        with open(output_path, "w", encoding="utf-8", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["book"] + vocab)
 
-            # Rows
             for doc_id in sorted(doc_counts.keys()):
                 total = doc_totals[doc_id]
                 row = [doc_id]
@@ -606,7 +547,7 @@ class Vocabulary:
                     count = doc_counts[doc_id].get(word, 0)
                     freq = count / total if total > 0 else 0
                     row.append(f"{freq:.10f}")
-                f.write(",".join(row) + "\n")
+                writer.writerow(row)
 
     def export_tipitaka_suttas_long(self, output_path: str, use_lemmas: bool = True) -> None:
         """Export sutta-level word frequencies (new format for critical edition).
@@ -642,13 +583,12 @@ class Vocabulary:
                         "nikaya": nikaya,
                     })
 
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write("word,n,total,freq,sutta,nikaya\n")
+        with open(output_path, "w", encoding="utf-8", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["word", "n", "total", "freq", "sutta", "nikaya"])
             for row in rows:
-                word = row["word"]
-                if "," in word or '"' in word:
-                    word = '"' + word.replace('"', '""') + '"'
-                f.write(f'{word},{row["n"]},{row["total"]},{row["freq"]:.10f},{row["sutta"]},{row["nikaya"]}\n')
+                writer.writerow([row["word"], row["n"], row["total"],
+                                f'{row["freq"]:.10f}', row["sutta"], row["nikaya"]])
 
     def _collect_tipitaka_counts(
         self,
@@ -665,52 +605,15 @@ class Vocabulary:
         def count_segments(segments: list, target_counter: Counter) -> None:
             for segment in segments:
                 for token in segment.get("tokens", []):
-                    if use_lemmas:
-                        term = token.get("lemma")
-                    else:
-                        term = token.get("word")
+                    term = token.get("lemma") if use_lemmas else token.get("word")
                     if term:
                         target_counter[term] += 1
 
-        if nikaya in ("dn", "mn"):
-            sutta_id = data["id"]
+        for doc_id, segments in iter_file_segments(data, nikaya):
             if by_sutta:
-                if sutta_id not in doc_counts:
-                    doc_counts[sutta_id] = Counter()
-                count_segments(data.get("segments", []), doc_counts[sutta_id])
+                if doc_id not in doc_counts:
+                    doc_counts[doc_id] = Counter()
+                count_segments(segments, doc_counts[doc_id])
             else:
-                # Use first key in doc_counts (the nikaya)
                 target = list(doc_counts.values())[0]
-                count_segments(data.get("segments", []), target)
-
-        elif nikaya in ("sn", "an"):
-            for sutta_data in data.get("suttas", []):
-                sutta_id = sutta_data["id"]
-                if by_sutta:
-                    if sutta_id not in doc_counts:
-                        doc_counts[sutta_id] = Counter()
-                    count_segments(sutta_data.get("segments", []), doc_counts[sutta_id])
-                else:
-                    target = list(doc_counts.values())[0]
-                    count_segments(sutta_data.get("segments", []), target)
-
-        elif nikaya == "kn":
-            if "items" in data:
-                for item in data["items"]:
-                    item_id = item["id"]
-                    if by_sutta:
-                        if item_id not in doc_counts:
-                            doc_counts[item_id] = Counter()
-                        count_segments(item.get("segments", []), doc_counts[item_id])
-                    else:
-                        target = list(doc_counts.values())[0]
-                        count_segments(item.get("segments", []), target)
-            else:
-                sutta_id = data["id"]
-                if by_sutta:
-                    if sutta_id not in doc_counts:
-                        doc_counts[sutta_id] = Counter()
-                    count_segments(data.get("segments", []), doc_counts[sutta_id])
-                else:
-                    target = list(doc_counts.values())[0]
-                    count_segments(data.get("segments", []), target)
+                count_segments(segments, target)

@@ -24,8 +24,11 @@ from typing import Any, Optional
 DATA_DIR = Path(__file__).parent.parent / "data"
 LOG_FILE = DATA_DIR / "pipeline_progress.log"
 
-# Pre-compiled regex for Pāli word tokenization
-PALI_WORD_PATTERN = re.compile(r'[a-zāīūṭḍṇṅñṃḷA-ZĀĪŪṬḌṆṄÑṂḶ]+')
+# Import canonical tokenization from shared module
+try:
+    from pali.text import PALI_WORD_PATTERN
+except ImportError:
+    PALI_WORD_PATTERN = re.compile(r'[a-zāīūṭḍṇṅñṃḷ]+', re.IGNORECASE)
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -194,6 +197,22 @@ def load_bjt_text(collection: str, pattern: str = None) -> str:
     return all_text
 
 
+def load_thai_text(collection: str, pattern: str = None) -> str:
+    """Load Thai parsed text. If pattern given, glob for matching files; otherwise load all."""
+    thai_dir = DATA_DIR / f"thai-parsed/{collection}"
+    if not thai_dir.exists():
+        return ""
+
+    all_text = ""
+    glob_pattern = f"{pattern}*.json" if pattern else "*.json"
+    for fpath in sorted(thai_dir.glob(glob_pattern)):
+        if fpath.name.startswith('_'):
+            continue
+        data = json.loads(fpath.read_text())
+        all_text += data.get('text', '') + " "
+    return all_text
+
+
 # ==================== Generic Nikaya Builders ====================
 
 def build_nikaya_critical(config: NikayaConfig) -> dict[str, Any]:
@@ -213,7 +232,7 @@ def build_nikaya_critical(config: NikayaConfig) -> dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     results: list[dict[str, Any]] = []
-    total_words = {'sc': 0, 'gretil': 0, 'vri': 0, 'bjt': 0}
+    total_words = {'sc': 0, 'gretil': 0, 'vri': 0, 'bjt': 0, 'thai': 0}
 
     # Load all GRETIL volumes
     gretil_all = ""
@@ -238,6 +257,12 @@ def build_nikaya_critical(config: NikayaConfig) -> dict[str, Any]:
     bjt_words = len(tokenize(bjt_all))
     total_words['bjt'] = bjt_words
     log(f"BJT {config.name}: {bjt_words:,} words")
+
+    # Load all Thai files
+    thai_all = load_thai_text(config.code)
+    thai_words = len(tokenize(thai_all))
+    total_words['thai'] = thai_words
+    log(f"Thai {config.name}: {thai_words:,} words")
 
     # Process each sutta with SC
     if config.sutta_range:
@@ -269,6 +294,7 @@ def build_nikaya_critical(config: NikayaConfig) -> dict[str, Any]:
         'gretil_words': total_words['gretil'],
         'vri_words': total_words['vri'],
         'bjt_words': total_words['bjt'],
+        'thai_words': total_words['thai'],
     }
 
     with open(output_dir / "_critical_summary.json", 'w', encoding='utf-8') as f:
@@ -294,7 +320,7 @@ def build_nikaya_critical_glob(config: NikayaConfig) -> dict[str, Any]:
     output_dir = DATA_DIR / f"critical/{config.code}"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    total_words: dict[str, int] = {'sc': 0, 'gretil': 0, 'vri': 0, 'bjt': 0}
+    total_words: dict[str, int] = {'sc': 0, 'gretil': 0, 'vri': 0, 'bjt': 0, 'thai': 0}
 
     # Load all GRETIL volumes
     gretil_all = ""
@@ -319,6 +345,12 @@ def build_nikaya_critical_glob(config: NikayaConfig) -> dict[str, Any]:
     bjt_words = len(tokenize(bjt_all))
     total_words['bjt'] = bjt_words
     log(f"BJT {config.name}: {bjt_words:,} words")
+
+    # Load all Thai files
+    thai_all = load_thai_text(config.code)
+    thai_words = len(tokenize(thai_all))
+    total_words['thai'] = thai_words
+    log(f"Thai {config.name}: {thai_words:,} words")
 
     # Process SC files via glob
     sc_dir = DATA_DIR / f"canonical/{config.code}"
@@ -369,6 +401,7 @@ def build_nikaya_critical_glob(config: NikayaConfig) -> dict[str, Any]:
         'gretil_words': total_words['gretil'],
         'vri_words': total_words['vri'],
         'bjt_words': total_words['bjt'],
+        'thai_words': total_words['thai'],
     }
 
     with open(output_dir / "_critical_summary.json", 'w', encoding='utf-8') as f:
@@ -431,7 +464,7 @@ def build_kn_critical() -> dict[str, Any]:
     output_dir = DATA_DIR / "critical/kn"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    total_words = {'sc': 0, 'gretil': 0, 'vri': 0, 'bjt': 0}
+    total_words = {'sc': 0, 'gretil': 0, 'vri': 0, 'bjt': 0, 'thai': 0}
     results = []
 
     # Load all GRETIL KN texts
@@ -458,6 +491,12 @@ def build_kn_critical() -> dict[str, Any]:
     bjt_words = len(tokenize(bjt_all))
     total_words['bjt'] = bjt_words
     log(f"BJT KN: {bjt_words:,} words")
+
+    # Load all Thai KN files
+    thai_all = load_thai_text('kn')
+    thai_words = len(tokenize(thai_all))
+    total_words['thai'] = thai_words
+    log(f"Thai KN: {thai_words:,} words")
 
     # Process SC KN files
     sc_dir = DATA_DIR / "canonical/kn"
@@ -547,6 +586,7 @@ def build_kn_critical() -> dict[str, Any]:
         'gretil_words': total_words['gretil'],
         'vri_words': total_words['vri'],
         'bjt_words': total_words['bjt'],
+        'thai_words': total_words['thai'],
     }
 
     with open(output_dir / "_critical_summary.json", 'w', encoding='utf-8') as f:
@@ -575,7 +615,7 @@ def build_vinaya_critical() -> dict[str, Any]:
     output_dir = DATA_DIR / "critical/vinaya"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    total_words = {'gretil': 0, 'vri': 0, 'sc': 0, 'bjt': 0}
+    total_words = {'gretil': 0, 'vri': 0, 'sc': 0, 'bjt': 0, 'thai': 0}
     results = []
 
     # Load all VRI Vinaya files
@@ -583,6 +623,12 @@ def build_vinaya_critical() -> dict[str, Any]:
     vri_words = len(tokenize(vri_all))
     total_words['vri'] = vri_words
     log(f"VRI Vinaya: {vri_words:,} words")
+
+    # Load all Thai Vinaya files
+    thai_all = load_thai_text('vinaya')
+    thai_words = len(tokenize(thai_all))
+    total_words['thai'] = thai_words
+    log(f"Thai Vinaya: {thai_words:,} words")
 
     # Count SC and BJT words
     for text_name in VINAYA_TEXTS:
@@ -626,6 +672,7 @@ def build_vinaya_critical() -> dict[str, Any]:
         'vri_words': total_words['vri'],
         'sc_words': total_words['sc'],
         'bjt_words': total_words['bjt'],
+        'thai_words': total_words['thai'],
     }
 
     with open(output_dir / "_critical_summary.json", 'w', encoding='utf-8') as f:
@@ -660,8 +707,14 @@ def build_abhidhamma_critical() -> dict[str, Any]:
     output_dir = DATA_DIR / "critical/abhidhamma"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    total_words = {'gretil': 0, 'vri': 0, 'sc': 0, 'bjt': 0}
+    total_words = {'gretil': 0, 'vri': 0, 'sc': 0, 'bjt': 0, 'thai': 0}
     results = []
+
+    # Load all Thai Abhidhamma files
+    thai_all = load_thai_text('abhidhamma')
+    thai_words = len(tokenize(thai_all))
+    total_words['thai'] = thai_words
+    log(f"Thai Abhidhamma: {thai_words:,} words")
 
     # Load all VRI Abhidhamma files
     vri_all = load_vri_text('abhidhamma', 'abh')
@@ -715,6 +768,7 @@ def build_abhidhamma_critical() -> dict[str, Any]:
         'vri_words': total_words['vri'],
         'sc_words': total_words['sc'],
         'bjt_words': total_words['bjt'],
+        'thai_words': total_words['thai'],
     }
 
     with open(output_dir / "_critical_summary.json", 'w', encoding='utf-8') as f:

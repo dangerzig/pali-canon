@@ -101,15 +101,11 @@ LATEX_PREAMBLE = r'''%!TEX program = xelatex
   \edtext{#1}{\Afootnote{#2 \textit{#3}}}%
 }
 
-% Start critical apparatus
-\beginnumbering
-
 '''
 
 LATEX_POSTAMBLE = r'''
 \endnumbering
-\end{document}
-'''
+\end{document}'''
 
 # Nikāya names
 NIKAYA_NAMES = {
@@ -341,6 +337,7 @@ def generate_document(collection: str, sutta_ids: list,
     doc_lines.append(r'\vspace{0.25in}')
     doc_lines.append(f'{{\\small Generated: {datetime.now().strftime("%Y-%m-%d")}}}')
     doc_lines.append(r'\end{titlepage}')
+    doc_lines.append(r'\beginnumbering')
     doc_lines.append('')
 
     # Table of contents for multi-sutta documents

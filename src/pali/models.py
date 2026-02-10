@@ -18,6 +18,20 @@ class Token:
     sandhi: Optional[list[str]] = None
     components: Optional[list[dict]] = None
 
+    def to_dict(self):
+        """Convert to dict, excluding None values."""
+        d = {"word": self.word}
+        if self.lemma is not None:
+            d["lemma"] = self.lemma
+        if self.pos is not None:
+            d["pos"] = self.pos
+        if self.root is not None:
+            d["root"] = self.root
+        if self.sandhi is not None:
+            d["sandhi"] = self.sandhi
+            d["components"] = self.components
+        return d
+
 
 @dataclass(slots=True)
 class Segment:

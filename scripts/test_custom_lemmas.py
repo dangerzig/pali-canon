@@ -4,7 +4,8 @@ Tests for custom_lemmas.py to catch errors and inconsistencies.
 """
 
 import sys
-sys.path.insert(0, 'src')
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'src'))
 
 from pali.custom_lemmas import (
     POTENTIAL_DPD_ADDITIONS,
@@ -14,8 +15,8 @@ from pali.custom_lemmas import (
     get_custom_lemma,
     get_all_custom_words,
 )
+import re
 import sqlite3
-from pathlib import Path
 
 
 def test_no_duplicates():
@@ -110,7 +111,6 @@ def test_lemma_format():
             errors.append(f"Uppercase lemma '{lemma}' for '{word}' (not a name)")
 
         # Check word matches expected pattern (Pāli characters only)
-        import re
         pali_pattern = r'^[a-zA-ZāīūṭḍṇṅñṃḷĀĪŪṬḌṆṄÑṂḶ\-]+$'
         if not re.match(pali_pattern, word):
             errors.append(f"Non-Pāli characters in word '{word}'")
@@ -158,7 +158,7 @@ def test_dpd_overlap():
     """Check if any custom lemmas are actually in DPD (shouldn't be)."""
     print("TEST: Check for DPD overlap (custom lemmas not needed)")
 
-    db_path = Path("data/dpd/dpd.db")
+    db_path = Path(__file__).resolve().parent.parent / "data/dpd/dpd.db"
     if not db_path.exists():
         print("  SKIP: DPD database not found")
         return []
@@ -228,7 +228,7 @@ def test_metrical_variants_map_to_known_lemmas():
     """Check that metrical variants map to lemmas that exist."""
     print("TEST: Metrical variants map to known lemmas")
 
-    db_path = Path("data/dpd/dpd.db")
+    db_path = Path(__file__).resolve().parent.parent / "data/dpd/dpd.db"
     if not db_path.exists():
         print("  SKIP: DPD database not found")
         return []

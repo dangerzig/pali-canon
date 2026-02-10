@@ -10,7 +10,8 @@ This script:
 """
 
 import sys
-sys.path.insert(0, 'src')
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'src'))
 
 from collections import Counter
 from pali import Canon

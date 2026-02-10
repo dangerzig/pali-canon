@@ -324,7 +324,10 @@ def extract_text_from_volumes(db_path, volumes):
             "SELECT content FROM main WHERE volume = ? ORDER BY CAST(page AS INTEGER)",
             (vol_str,)
         )
-        for row in cursor:
+        rows = cursor.fetchall()
+        if not rows:
+            print(f"WARNING: No data found for volume {vol_str}")
+        for row in rows:
             content = row[0]
             if content:
                 # Clean formatting artifacts

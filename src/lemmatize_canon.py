@@ -13,6 +13,7 @@ Processes all canonical files and creates lemmatized versions with:
 import json
 import re
 import sqlite3
+from abc import ABC, abstractmethod
 from pathlib import Path
 from collections import Counter
 from dataclasses import dataclass
@@ -83,14 +84,6 @@ METRICAL_NORMALIZATIONS = {
 
 # Pronoun patterns that fuse with verbs
 # Pattern: (prefix_to_remove, replacement_for_word, pronoun_info)
-PRONOUN_VERB_PATTERNS = [
-    # ahaṃ/aham at start: ahamanusāsissāmī → ahaṃ + anusāsissāmi
-    (r'^aham', 'ahaṃ', {'lemma': 'ahaṃ', 'pos': 'pron'}),
-    # asmi/mhi at end: brāhmaṇosmī → brāhmaṇo + asmi
-    (r"[oa]smi[ī]?$", None, {'lemma': 'attā', 'pos': 'pron'}),  # treated specially
-    (r"[oa]mhi[ī]?$", None, {'lemma': 'attā', 'pos': 'pron'}),  # treated specially
-]
-
 # First person verb ending normalizations (metrical lengthening)
 VERB_ENDING_NORMALIZATIONS = [
     ('āmā', 'āma'),   # 1st person plural -āmā → -āma
@@ -135,41 +128,38 @@ CAUSATIVE_ABSOLUTIVE_PATTERNS = [
 ]
 
 
-@dataclass
-class TokenInfo:
-    """Information about a lemmatized token."""
-    word: str
-    lemma: Optional[str] = None
-    pos: Optional[str] = None
-    root: Optional[str] = None
-    sandhi: Optional[list] = None
-    components: Optional[list] = None
+# Import Token from shared models (canonical data model with to_dict())
+try:
+    from pali.models import Token as TokenInfo
+except ImportError:
+    @dataclass
+    class TokenInfo:
+        """Information about a lemmatized token."""
+        word: str
+        lemma: Optional[str] = None
+        pos: Optional[str] = None
+        root: Optional[str] = None
+        sandhi: Optional[list] = None
+        components: Optional[list] = None
 
-    def to_dict(self):
-        """Convert to dict, excluding None values."""
-        d = {"word": self.word}
-        if self.lemma:
-            d["lemma"] = self.lemma
-        if self.pos:
-            d["pos"] = self.pos
-        if self.root:
-            d["root"] = self.root
-        if self.sandhi:
-            d["sandhi"] = self.sandhi
-            d["components"] = self.components
-        return d
+        def to_dict(self):
+            """Convert to dict, excluding None values."""
+            d = {"word": self.word}
+            if self.lemma is not None:
+                d["lemma"] = self.lemma
+            if self.pos is not None:
+                d["pos"] = self.pos
+            if self.root is not None:
+                d["root"] = self.root
+            if self.sandhi is not None:
+                d["sandhi"] = self.sandhi
+                d["components"] = self.components
+            return d
 
 
 # =============================================================================
 # Lookup Strategy Infrastructure
 # =============================================================================
-
-from abc import ABC, abstractmethod
-from typing import Callable, TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from typing import Protocol
-
 
 class LookupStrategy(ABC):
     """Base class for word lookup strategies.
@@ -600,8 +590,6 @@ class Lemmatizer:
                 # Handle sandhi: ñca → ṃ + ca, etc.
                 if base.endswith('ñ') and particle == 'ca':
                     base = base[:-1] + 'ṃ'
-                elif base.endswith('ñ') and particle in ('ci', 'ce'):
-                    base = base[:-1] + 'ṃ'
                 return (base, particle, particle_info)
         return None
 
@@ -625,7 +613,7 @@ class Lemmatizer:
             ('ena', 2),   # instrumental -ena
             ('ehi', 2),   # instrumental plural
             ('ānaṃ', 2),  # genitive plural
-            (' āsu', 2),  # locative plural
+            ('āsu', 2),   # locative plural
             ('aṃ', 1),    # accusative -aṃ
             ('ā', 1),     # nominative plural / vocative
             ('e', 1),     # locative / vocative
@@ -686,7 +674,7 @@ class Lemmatizer:
                 'sandhi': [name_part, thera_part, apadana_part],
                 'components': [
                     {'word': name_part, 'pos': 'name'},
-                    {'lemma': 'thera' if 'ther' in thera_part else 'therī', 'pos': 'masc' if 'ther' in thera_part else 'fem'},
+                    {'lemma': 'therī' if 'therī' in thera_part else 'thera', 'pos': 'fem' if 'therī' in thera_part else 'masc'},
                     {'lemma': 'apadāna', 'pos': 'nt'}
                 ]
             }
@@ -1132,48 +1120,45 @@ def main():
     print("Lemmatizing the Pāli Canon")
     print("=" * 60)
 
-    lemmatizer = Lemmatizer()
+    with Lemmatizer() as lemmatizer:
+        collections = ["dn", "mn", "sn", "an", "kn"]
 
-    collections = ["dn", "mn", "sn", "an", "kn"]
+        for collection in collections:
+            print(f"\nProcessing {collection.upper()}...")
+            process_collection(collection, lemmatizer)
 
-    for collection in collections:
-        print(f"\nProcessing {collection.upper()}...")
-        process_collection(collection, lemmatizer)
+        # Generate and save statistics
+        stats = lemmatizer.get_stats()
 
-    # Generate and save statistics
-    stats = lemmatizer.get_stats()
+        LEMMATIZED_DIR.mkdir(parents=True, exist_ok=True)
+        with open(LEMMATIZED_DIR / "_stats.json", 'w', encoding='utf-8') as f:
+            json.dump(stats, f, indent=2, ensure_ascii=False)
 
-    LEMMATIZED_DIR.mkdir(parents=True, exist_ok=True)
-    with open(LEMMATIZED_DIR / "_stats.json", 'w', encoding='utf-8') as f:
-        json.dump(stats, f, indent=2, ensure_ascii=False)
-
-    print(f"\n{'=' * 60}")
-    print("COMPLETE")
-    print(f"{'=' * 60}")
-    print(f"Total words:         {stats['total_words']:,}")
-    print(f"Unique words:        {stats['unique_words']:,}")
-    print(f"Words found:         {stats['words_found']:,}")
-    print(f"Words not found:     {stats['words_not_found']:,}")
-    print(f"Sandhi words:        {stats['sandhi_words']:,}")
-    print(f"Normalized (-n→-ṃ):  {stats['normalized_variants']:,}")
-    print(f"Particle splits:     {stats['particle_splits']:,}")
-    print(f"Metrical (final):    {stats['metrical_normalizations']:,}")
-    print(f"Metrical (internal): {stats['internal_metrical']:,}")
-    print(f"Pronoun-verb splits: {stats['pronoun_verb_splits']:,}")
-    print(f"Verb ending norm:    {stats['verb_ending_normalizations']:,}")
-    print(f"Compound splits:     {stats['compound_splits']:,}")
-    print(f"DPPN matches:        {stats['dppn_matches']:,}")
-    print(f"Known compounds:     {stats['known_compounds']:,}")
-    print(f"Title matches:       {stats['title_matches']:,}")
-    print(f"Apadāna titles:      {stats['apadana_titles']:,}")
-    print(f"Causative forms:     {stats['causative_forms']:,}")
-    print(f"Short pronouns:      {stats['short_pronouns']:,}")
-    print(f"Sandhi -ñcā:         {stats['sandhi_nca']:,}")
-    print(f"Custom lemmas:       {stats['custom_lemmas']:,}")
-    print(f"Coverage:            {stats['coverage']}")
-    print(f"\nOutput saved to: {LEMMATIZED_DIR}")
-
-    lemmatizer.close()
+        print(f"\n{'=' * 60}")
+        print("COMPLETE")
+        print(f"{'=' * 60}")
+        print(f"Total words:         {stats['total_words']:,}")
+        print(f"Unique words:        {stats['unique_words']:,}")
+        print(f"Words found:         {stats['words_found']:,}")
+        print(f"Words not found:     {stats['words_not_found']:,}")
+        print(f"Sandhi words:        {stats['sandhi_words']:,}")
+        print(f"Normalized (-n→-ṃ):  {stats['normalized_variants']:,}")
+        print(f"Particle splits:     {stats['particle_splits']:,}")
+        print(f"Metrical (final):    {stats['metrical_normalizations']:,}")
+        print(f"Metrical (internal): {stats['internal_metrical']:,}")
+        print(f"Pronoun-verb splits: {stats['pronoun_verb_splits']:,}")
+        print(f"Verb ending norm:    {stats['verb_ending_normalizations']:,}")
+        print(f"Compound splits:     {stats['compound_splits']:,}")
+        print(f"DPPN matches:        {stats['dppn_matches']:,}")
+        print(f"Known compounds:     {stats['known_compounds']:,}")
+        print(f"Title matches:       {stats['title_matches']:,}")
+        print(f"Apadāna titles:      {stats['apadana_titles']:,}")
+        print(f"Causative forms:     {stats['causative_forms']:,}")
+        print(f"Short pronouns:      {stats['short_pronouns']:,}")
+        print(f"Sandhi -ñcā:         {stats['sandhi_nca']:,}")
+        print(f"Custom lemmas:       {stats['custom_lemmas']:,}")
+        print(f"Coverage:            {stats['coverage']}")
+        print(f"\nOutput saved to: {LEMMATIZED_DIR}")
 
 
 if __name__ == "__main__":

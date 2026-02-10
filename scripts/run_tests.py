@@ -35,8 +35,8 @@ def run_test(script_name: str, description: str) -> tuple[bool, float]:
     script_path = SCRIPTS_DIR / script_name
 
     if not script_path.exists():
-        print(f"  SKIP: {script_name} not found")
-        return True, 0.0
+        print(f"  FAIL: {script_name} not found")
+        return False, 0.0
 
     start = time.time()
     try:

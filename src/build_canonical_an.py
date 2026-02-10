@@ -10,6 +10,13 @@ import json
 import re
 from pathlib import Path
 
+try:
+    from pali.text import normalize_pali
+except ImportError:
+    def normalize_pali(text):
+        text = text.replace('ṁ', 'ṃ')
+        return re.sub(r'\s+', ' ', text).strip()
+
 DATA_DIR = Path(__file__).parent.parent / "data"
 SC_AN_DIR = DATA_DIR / "suttacentral-ms/root/pli/ms/sutta/an"
 OUTPUT_DIR = DATA_DIR / "canonical/an"
@@ -43,12 +50,6 @@ PTS_REFS = {
     10: "A v 1–310",
     11: "A v 311–362",
 }
-
-def normalize_pali(text):
-    """Normalize Pāli text."""
-    text = text.replace('ṁ', 'ṃ')
-    text = re.sub(r'\s+', ' ', text).strip()
-    return text
 
 def get_sutta_info(filename):
     """Extract sutta info from filename.

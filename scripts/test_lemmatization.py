@@ -4,12 +4,13 @@ Tests for lemmatization quality and consistency.
 """
 
 import sys
-sys.path.insert(0, 'src')
-
-from pali import Canon
-from collections import Counter
-import json
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'src'))
+
+import re
+import json
+from collections import Counter
+from pali import Canon
 
 
 def test_high_frequency_words_lemmatized():
@@ -207,7 +208,6 @@ def test_token_word_matches_text():
             token_text = ' '.join(token_words).lower()
 
             # Normalize original text
-            import re
             orig_text = re.sub(r'[^\w\s]', ' ', seg.pali.lower())
             orig_text = ' '.join(orig_text.split())
 
@@ -238,7 +238,7 @@ def test_stats_file_accuracy():
     print("TEST: Stats file accuracy")
     errors = []
 
-    stats_path = Path("data/lemmatized/_stats.json")
+    stats_path = Path(__file__).resolve().parent.parent / "data/lemmatized/_stats.json"
     if not stats_path.exists():
         errors.append("Stats file not found")
         return errors

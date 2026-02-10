@@ -10,6 +10,13 @@ import json
 import re
 from pathlib import Path
 
+try:
+    from pali.text import normalize_pali
+except ImportError:
+    def normalize_pali(text):
+        text = text.replace('ṁ', 'ṃ')
+        return re.sub(r'\s+', ' ', text).strip()
+
 DATA_DIR = Path(__file__).parent.parent / "data"
 SC_DN_DIR = DATA_DIR / "suttacentral-ms/root/pli/ms/sutta/dn"
 OUTPUT_DIR = DATA_DIR / "canonical/dn"
@@ -79,14 +86,6 @@ VAGGAS = {
     28: "Pāthikavagga", 29: "Pāthikavagga", 30: "Pāthikavagga", 31: "Pāthikavagga",
     32: "Pāthikavagga", 33: "Pāthikavagga", 34: "Pāthikavagga"
 }
-
-def normalize_pali(text):
-    """Normalize Pāli text."""
-    # Standardize niggahīta to ṃ
-    text = text.replace('ṁ', 'ṃ')
-    # Clean up whitespace
-    text = re.sub(r'\s+', ' ', text).strip()
-    return text
 
 def build_sutta(n):
     """Build canonical sutta file."""

@@ -75,7 +75,7 @@ def load_bilara_tree(dirpath: Path) -> str:
 def save_text(output_dir: Path, name: str, title: str, text: str,
               collection: str) -> dict:
     """Save parsed text to JSON file."""
-    word_count = len(text.split())
+    word_count = len(re.findall(r'[a-zāīūṭḍṇṅñṃḷ]+', text, re.IGNORECASE))
     data = {
         'collection': collection,
         'name': name,

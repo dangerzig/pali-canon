@@ -12,7 +12,6 @@ import re
 import json
 from pathlib import Path
 from typing import Optional
-from collate_variants import load_dpd_words, normalize_for_comparison
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 GRETIL_DIR = DATA_DIR / "gretil-parsed/dn"

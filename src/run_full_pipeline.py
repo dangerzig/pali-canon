@@ -11,7 +11,6 @@ This script:
 Progress is logged to data/pipeline_progress.log
 """
 
-import sys
 import json
 import urllib.request
 from pathlib import Path
@@ -99,7 +98,7 @@ def process_mn():
             for seg in segments:
                 pali = seg.get('pali', '')
                 total_words += len(pali.split())
-        except:
+        except Exception:
             pass
 
     log(f"MN: {len(mn_files)} suttas, ~{total_words:,} words")
@@ -125,7 +124,7 @@ def process_sn():
             for seg in segments:
                 pali = seg.get('pali', '')
                 total_words += len(pali.split())
-        except:
+        except Exception:
             pass
 
     log(f"SN: {len(sn_files)} suttas, ~{total_words:,} words")
@@ -151,7 +150,7 @@ def process_an():
             for seg in segments:
                 pali = seg.get('pali', '')
                 total_words += len(pali.split())
-        except:
+        except Exception:
             pass
 
     log(f"AN: {len(an_files)} suttas, ~{total_words:,} words")
@@ -177,7 +176,7 @@ def process_kn():
             for seg in segments:
                 pali = seg.get('pali', '')
                 total_words += len(pali.split())
-        except:
+        except Exception:
             pass
 
     log(f"KN: {len(kn_files)} texts, ~{total_words:,} words")

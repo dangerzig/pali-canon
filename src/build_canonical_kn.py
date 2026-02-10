@@ -9,6 +9,13 @@ import json
 import re
 from pathlib import Path
 
+try:
+    from pali.text import normalize_pali
+except ImportError:
+    def normalize_pali(text):
+        text = text.replace('ṁ', 'ṃ')
+        return re.sub(r'\s+', ' ', text).strip()
+
 DATA_DIR = Path(__file__).parent.parent / "data"
 SC_KN_DIR = DATA_DIR / "suttacentral-ms/root/pli/ms/sutta/kn"
 OUTPUT_DIR = DATA_DIR / "canonical/kn"
@@ -36,12 +43,6 @@ KN_TEXTS = {
     "pe": ("Peṭakopadesa", "Instruction on the Piṭaka"),
     "mil": ("Milindapañha", "The Questions of King Milinda"),
 }
-
-def normalize_pali(text):
-    """Normalize Pāli text."""
-    text = text.replace('ṁ', 'ṃ')
-    text = re.sub(r'\s+', ' ', text).strip()
-    return text
 
 def get_sort_key(filename, prefix):
     """Extract sort key from filename for proper ordering."""

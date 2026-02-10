@@ -15,6 +15,7 @@ Covers:
 
 import re
 import json
+import sys
 import html as html_module
 from pathlib import Path
 
@@ -281,7 +282,7 @@ def parse_file(filepath: Path, collection: str, name: str) -> dict | None:
         'name': name,
         'source_file': filepath.name,
         'text': text,
-        'word_count': len(text.split()),
+        'word_count': len(re.findall(r'[a-zāīūṭḍṇṅñṃḷ]+', text, re.IGNORECASE)),
     }
 
 
@@ -539,7 +540,6 @@ def main():
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    import sys
     results = {}
 
     # Determine which piṭakas to parse

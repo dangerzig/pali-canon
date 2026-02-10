@@ -41,26 +41,37 @@ GRETIL_DIR = DATA_DIR / "gretil-parsed"
 BJT_DIR = DATA_DIR / "bjt-parsed"
 ALIGN_DIR = DATA_DIR / "alignment"
 
-PALI_WORD = re.compile(r'[a-zāīūṭḍṇṅñṃḷ]+', re.IGNORECASE)
+try:
+    from pali.text import PALI_WORD_PATTERN, tokenize, normalize_title
+except ImportError:
+    PALI_WORD_PATTERN = re.compile(r'[a-zāīūṭḍṇṅñṃḷ]+', re.IGNORECASE)
+    def tokenize(text: str) -> list[str]:
+        return PALI_WORD_PATTERN.findall(text.lower())
+    def normalize_title(title: str) -> str:
+        t = title.lower().strip()
+        t = re.sub(r'\s*sutta[ṃm]?\.?\s*$', '', t)
+        t = re.sub(r'^(paṭhama|dutiya|tatiya|catuttha|pañcama)\s*', '', t)
+        t = re.sub(r'\s+', '', t)
+        return t
 
 
-def tokenize(text: str) -> list[str]:
-    return PALI_WORD.findall(text.lower())
-
-
-def text_similarity(text1: str, text2: str, skip: int = 0,
+def text_similarity(text1, text2, skip: int = 0,
                     n_words: int = 50) -> float:
     """Compare texts using SequenceMatcher on tokenized words.
 
     Args:
+        text1: Text string or pre-tokenized word list
+        text2: Text string or pre-tokenized word list
         skip: number of initial words to skip (to avoid identical nidāna)
         n_words: number of words to compare after skipping
     """
-    words1 = tokenize(text1)[skip:skip + n_words]
-    words2 = tokenize(text2)[skip:skip + n_words]
-    if not words1 or not words2:
+    words1 = text1 if isinstance(text1, list) else tokenize(text1)
+    words2 = text2 if isinstance(text2, list) else tokenize(text2)
+    w1 = words1[skip:skip + n_words]
+    w2 = words2[skip:skip + n_words]
+    if not w1 or not w2:
         return 0.0
-    return SequenceMatcher(None, words1, words2).ratio()
+    return SequenceMatcher(None, w1, w2).ratio()
 
 
 def extract_bjt_title(text: str) -> str | None:
@@ -74,15 +85,6 @@ def extract_bjt_title(text: str) -> str | None:
     if m:
         return m.group(1).strip()
     return None
-
-
-def normalize_title(title: str) -> str:
-    """Normalize a sutta title for fuzzy comparison."""
-    t = title.lower().strip()
-    t = re.sub(r'\s*sutta[ṃm]?\.?\s*$', '', t)
-    t = re.sub(r'^(paṭhama|dutiya|tatiya|catuttha|pañcama)\s*', '', t)
-    t = re.sub(r'\s+', '', t)
-    return t
 
 
 # ==================== File Loading ====================
@@ -488,7 +490,6 @@ def _align_within_group(gretil_files: list[dict], bjt_files: list[dict],
     sorted_anchors = sorted(anchors.items(), key=lambda x: x[0])
 
     mapping = {}
-    unmatched_gretil = []
 
     for i, (g_idx, bjt_start) in enumerate(sorted_anchors):
         g_id = gretil_files[g_idx]['id']
@@ -528,14 +529,16 @@ def _align_within_group(gretil_files: list[dict], bjt_files: list[dict],
             continue
         g_id = gretil_files[g_idx]['id']
 
-        # Find nearest matched g_idx (prefer earlier, then later)
+        # Find nearest matched g_idx (prefer closest in either direction)
         nearest = None
         for dist in range(1, max(n_gretil, n_bjt) + 1):
-            if g_idx - dist >= 0 and g_idx - dist in anchors:
-                nearest = g_idx - dist
+            earlier = g_idx - dist if g_idx - dist >= 0 else None
+            later = g_idx + dist if g_idx + dist < n_gretil else None
+            if earlier is not None and earlier in anchors:
+                nearest = earlier
                 break
-            if g_idx + dist < n_gretil and g_idx + dist in anchors:
-                nearest = g_idx + dist
+            if later is not None and later in anchors:
+                nearest = later
                 break
         if nearest is None:
             continue
