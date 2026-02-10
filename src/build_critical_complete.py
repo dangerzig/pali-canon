@@ -270,6 +270,7 @@ def build_nikaya_critical(config: NikayaConfig) -> dict[str, Any]:
         for sutta_num in range(start, end + 1):
             sc_text = load_sc_text(config.code, f'{config.code}{sutta_num}')
             if not sc_text:
+                log(f"  Warning: No SC text for {config.code}{sutta_num}, skipping")
                 continue
 
             sc_word_count = len(tokenize(sc_text))

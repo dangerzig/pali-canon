@@ -26,7 +26,7 @@ Usage:
 """
 
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Union
 
 from .models import Sutta, Segment, Token, SuttaInfo, NikayaInfo
 from .store import Store, NIKAYAS
@@ -81,12 +81,16 @@ class Canon:
         """
         self._store = Store(data_dir)
         self._search: Optional[Search] = None
+        self._vocab: Optional[Vocabulary] = None
+        self._exporter: Optional[Exporter] = None
 
     def close(self) -> None:
-        """Close any open resources (SQLite connections in Search)."""
+        """Close any open resources."""
         if self._search is not None:
             self._search.close()
             self._search = None
+        self._vocab = None
+        self._exporter = None
 
     def __enter__(self):
         return self
@@ -294,7 +298,7 @@ class Canon:
 
     def _get_vocab(self) -> Vocabulary:
         """Get or create vocabulary analyzer (lazy initialization)."""
-        if not hasattr(self, "_vocab") or self._vocab is None:
+        if self._vocab is None:
             self._vocab = Vocabulary(self._store.data_dir)
         return self._vocab
 
@@ -406,13 +410,13 @@ class Canon:
 
     def _get_exporter(self) -> Exporter:
         """Get or create exporter (lazy initialization)."""
-        if not hasattr(self, "_exporter") or self._exporter is None:
+        if self._exporter is None:
             self._exporter = Exporter(self._store.data_dir)
         return self._exporter
 
     def to_latex(
         self,
-        sutta_ids: "str | list[str]",
+        sutta_ids: Union[str, list[str]],
         title: Optional[str] = None,
     ) -> str:
         """Generate LaTeX for one or more suttas.
@@ -439,7 +443,7 @@ class Canon:
 
     def export_latex(
         self,
-        sutta_ids: "str | list[str]",
+        sutta_ids: Union[str, list[str]],
         output_path: str,
         title: Optional[str] = None,
     ) -> None:
@@ -458,7 +462,7 @@ class Canon:
 
     def export_pdf(
         self,
-        sutta_ids: "str | list[str]",
+        sutta_ids: Union[str, list[str]],
         output_path: str,
         title: Optional[str] = None,
         keep_tex: bool = False,
@@ -563,7 +567,6 @@ class Canon:
         Example:
             canon.export_tipitaka_data("../tipitaka/data-raw/")
         """
-        from pathlib import Path
         out = Path(output_dir)
         out.mkdir(parents=True, exist_ok=True)
 

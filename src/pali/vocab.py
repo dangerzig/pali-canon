@@ -49,6 +49,7 @@ class Vocabulary:
         """
         self.data_dir = data_dir
         self.lemmatized_dir = data_dir / "lemmatized"
+        self._store = Store(data_dir)
 
     def get_vocabulary(
         self,
@@ -131,8 +132,6 @@ class Vocabulary:
         if not nikaya:
             return
 
-        if not hasattr(self, '_store'):
-            self._store = Store(self.data_dir)
         sutta = self._store.get_sutta(sutta_id, lemmatized=True, include_tokens=True)
         if sutta:
             for segment in sutta.segments:
@@ -222,11 +221,7 @@ class Vocabulary:
 
         nikaya_dir = self.lemmatized_dir / nikaya
         if not nikaya_dir.exists():
-            if as_dataframe:
-                if not HAS_PANDAS:
-                    raise ImportError("pandas required")
-                return pd.DataFrame()
-            return (None, [], [])
+            raise ValueError(f"Lemmatized data not found for nikaya '{nikaya}' at {nikaya_dir}")
 
         for json_file in sorted(nikaya_dir.glob("*.json")):
             if json_file.name.startswith("_"):

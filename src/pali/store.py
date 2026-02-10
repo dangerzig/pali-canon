@@ -2,6 +2,7 @@
 
 import json
 import re
+from collections import OrderedDict
 from pathlib import Path
 from typing import Optional
 
@@ -27,6 +28,8 @@ NIKAYAS = {
 class Store:
     """Access layer for JSON data files."""
 
+    _CACHE_SIZE = 100
+
     def __init__(self, data_dir: Optional[Path] = None):
         """Initialize store with data directory.
 
@@ -37,22 +40,22 @@ class Store:
         self.canonical_dir = self.data_dir / "canonical"
         self.lemmatized_dir = self.data_dir / "lemmatized"
         self._index_cache = {}
-        self._json_cache = {}
+        self._json_cache: OrderedDict[str, dict] = OrderedDict()
 
     def _get_data_dir(self, lemmatized: bool) -> Path:
         """Get appropriate data directory."""
         return self.lemmatized_dir if lemmatized else self.canonical_dir
 
     def _load_json(self, path: Path) -> dict:
-        """Load and cache JSON file."""
+        """Load and cache JSON file (LRU eviction)."""
         path_str = str(path)
         if path_str in self._json_cache:
+            self._json_cache.move_to_end(path_str)
             return self._json_cache[path_str]
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
-        if len(self._json_cache) >= 100:
-            # Evict oldest entry
-            self._json_cache.pop(next(iter(self._json_cache)))
+        if len(self._json_cache) >= self._CACHE_SIZE:
+            self._json_cache.popitem(last=False)  # Evict least recently used
         self._json_cache[path_str] = data
         return data
 

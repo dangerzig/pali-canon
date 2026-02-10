@@ -98,8 +98,8 @@ def process_mn():
             for seg in segments:
                 pali = seg.get('pali', '')
                 total_words += len(pali.split())
-        except Exception:
-            pass
+        except Exception as e:
+            log(f"MN: Warning: {f.name}: {e}")
 
     log(f"MN: {len(mn_files)} suttas, ~{total_words:,} words")
     return True
@@ -124,8 +124,8 @@ def process_sn():
             for seg in segments:
                 pali = seg.get('pali', '')
                 total_words += len(pali.split())
-        except Exception:
-            pass
+        except Exception as e:
+            log(f"SN: Warning: {f.name}: {e}")
 
     log(f"SN: {len(sn_files)} suttas, ~{total_words:,} words")
     return True
@@ -150,8 +150,8 @@ def process_an():
             for seg in segments:
                 pali = seg.get('pali', '')
                 total_words += len(pali.split())
-        except Exception:
-            pass
+        except Exception as e:
+            log(f"AN: Warning: {f.name}: {e}")
 
     log(f"AN: {len(an_files)} suttas, ~{total_words:,} words")
     return True
@@ -176,8 +176,8 @@ def process_kn():
             for seg in segments:
                 pali = seg.get('pali', '')
                 total_words += len(pali.split())
-        except Exception:
-            pass
+        except Exception as e:
+            log(f"KN: Warning: {f.name}: {e}")
 
     log(f"KN: {len(kn_files)} texts, ~{total_words:,} words")
     return True

@@ -337,6 +337,7 @@ class Exporter:
         tex_path.write_text(latex, encoding='utf-8')
 
         # Compile with XeLaTeX (run twice for ToC)
+        success = False
         try:
             for _ in range(2):
                 result = subprocess.run(
@@ -350,24 +351,20 @@ class Exporter:
                     print(f"XeLaTeX error: {result.stderr[-500:]}")
                     return False
 
+            success = output_path.exists()
+            return success
+
+        except FileNotFoundError:
+            print("XeLaTeX not found. Please install a TeX distribution.")
+            return False
+        except subprocess.TimeoutExpired:
+            print("XeLaTeX compilation timed out.")
+            return False
+        finally:
             # Clean up auxiliary files
             for ext in ['.aux', '.log', '.out', '.toc']:
                 aux_file = output_path.with_suffix(ext)
                 if aux_file.exists():
                     aux_file.unlink()
-
-            if not keep_tex:
-                tex_path.unlink()
-
-            return output_path.exists()
-
-        except FileNotFoundError:
-            print("XeLaTeX not found. Please install a TeX distribution.")
             if not keep_tex and tex_path.exists():
                 tex_path.unlink()
-            return False
-        except subprocess.TimeoutExpired:
-            print("XeLaTeX compilation timed out.")
-            if not keep_tex and tex_path.exists():
-                tex_path.unlink()
-            return False
