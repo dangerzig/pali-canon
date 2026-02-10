@@ -41,19 +41,19 @@ print(f"Found in {len(results)} segments")
 
 | Piṭaka | Texts | Witnesses | Words |
 |--------|-------|-----------|-------|
-| **Vinaya** | 5 | SC, GRETIL, VRI, BJT | ~595K |
-| **Sutta** | 273 units | SC, GRETIL, VRI, BJT | ~5.2M |
-| **Abhidhamma** | 11 | SC, GRETIL, VRI, BJT | ~1.3M |
+| **Vinaya** | 5 | SC, GRETIL, VRI, BJT, Thai | ~595K |
+| **Sutta** | 273 units | SC, GRETIL, VRI, BJT, Thai | ~5.2M |
+| **Abhidhamma** | 11 | SC, GRETIL, VRI, BJT, Thai | ~1.3M |
 
 ### Sutta Piṭaka Detail
 
-| Nikāya | Suttas | SC | GRETIL | VRI | BJT |
-|--------|--------|-----|--------|-----|-----|
-| DN | 34 | 144K | 175K | 144K | 214K |
-| MN | 152 | 247K | 250K | 249K | 292K |
-| SN | 56 files | 265K | 280K | 268K | 559K |
-| AN | 11 files | 301K | 334K | 303K | 466K |
-| KN | 20 texts | 640K | 1.1M | 524K | 674K |
+| Nikāya | Suttas | SC | GRETIL | VRI | BJT | Thai |
+|--------|--------|-----|--------|-----|-----|------|
+| DN | 34 | 144K | 175K | 144K | 214K | 145K |
+| MN | 152 | 247K | 250K | 249K | 292K | 249K |
+| SN | 56 files | 265K | 280K | 268K | 559K | 265K |
+| AN | 11 files | 301K | 334K | 303K | 466K | 300K |
+| KN | 20 texts | 640K | 1.1M | 524K | 674K | 523K |
 
 ## Installation
 
@@ -91,6 +91,8 @@ pali/
 │   ├── lemmatized/        # Lemmatized SC texts
 │   ├── gretil-parsed/     # Parsed GRETIL PTS texts
 │   ├── vri-parsed/        # Parsed VRI CST texts
+│   ├── bjt-parsed/        # Parsed BJT texts
+│   ├── thai-parsed/       # Parsed Thai Royal Edition texts
 │   ├── critical/          # Critical edition output
 │   └── collation/         # Collation results
 └── docs/
@@ -147,6 +149,7 @@ canon.vocab.export_dtm("dn", "dn_dtm.csv")
 - **GRETIL**: PTS (Pali Text Society) edition digitized by Göttingen
 - **VRI**: Chaṭṭha Saṅgāyana Tipiṭaka (CST4) from Vipassana Research Institute
 - **BJT**: Buddha Jayanti Tipitaka, Sri Lankan government edition (1957–1989)
+- **Thai**: Syām Raṭṭha (Royal Thai Edition), from E-Tipitaka
 
 ## License
 

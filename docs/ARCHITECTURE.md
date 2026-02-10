@@ -11,8 +11,8 @@ This project creates a digital critical edition of the complete Pāli Tipiṭaka
 
 ## Codebase Statistics
 
-- **Total Lines**: ~16,000 lines of Python
-- **Files**: 51 Python modules
+- **Total Lines**: ~23,000 lines of Python
+- **Files**: 56 Python modules (50 in `src/`, 6 in `scripts/`)
 - **Language**: Python 3.10+
 - **Dependencies**: Standard library + PyYAML (json, re, pathlib, sqlite3, difflib, yaml)
 
@@ -45,6 +45,7 @@ pali/
 │   ├── gretil-parsed/      # Parsed GRETIL JSON
 │   ├── bjt-raw/            # Raw BJT HTML files
 │   ├── bjt-parsed/         # Parsed BJT JSON (volumes + per-sutta)
+│   ├── thai-parsed/        # Parsed Thai Royal Edition
 │   ├── canonical/          # SuttaCentral source files
 │   ├── critical/           # Output: critical edition files
 │   ├── lemmatized/         # Output: lemmatized texts
@@ -69,6 +70,8 @@ Raw Sources → Parsers → Normalized JSON
 | `parse_vri_complete.py` | `*.mul.txt` | `vri-parsed/*.json` | Parse VRI CST text files |
 | `parse_bjt.py` | `*.html` | `bjt-parsed/*.json` | Parse BJT HTML files |
 | `split_bjt.py` | `bjt-parsed/*_vol*.json` | `bjt-parsed/*/*.json` | Split BJT volumes into per-sutta files |
+| `parse_thai.py` | E-Tipitaka SQLite | `thai-parsed/*_vol*.json` | Parse Thai Royal Edition |
+| `split_thai.py` | `thai-parsed/*_vol*.json` | `thai-parsed/*/*.json` | Split Thai volumes into per-text/per-sutta files |
 | `build_canonical_*.py` | SC bilara | `canonical/*.json` | Process SuttaCentral data |
 
 **Output JSON format:**
@@ -196,10 +199,10 @@ class Lemmatizer:
 #### `pali/custom_lemmas.py` + `custom_lemmas.yaml`
 Custom lemma database for words not in DPD. Loads from YAML for easy editing. Organized into:
 
-1. **POTENTIAL_DPD_ADDITIONS** (57 entries): Legitimate words for upstream contribution
-2. **METRICAL_VARIANTS** (12 entries): Vowel length variations for meter
-3. **PROJECT_SPECIFIC** (20 entries): Proper nouns, rare compounds
-4. **SANDHI_DECOMPOSITIONS** (26 entries): Complex sandhi not in DPD
+1. **POTENTIAL_DPD_ADDITIONS** (83 entries): Legitimate words for upstream contribution
+2. **METRICAL_VARIANTS** (42 entries): Vowel length variations for meter
+3. **PROJECT_SPECIFIC** (30 entries): Proper nouns, rare compounds
+4. **SANDHI_DECOMPOSITIONS** (38 entries): Complex sandhi not in DPD
 
 ```python
 def get_custom_lemma(word: str) -> Optional[dict]
@@ -275,7 +278,8 @@ KN (nested items):
     "sc_words": 1596896,
     "gretil_words": 3059680,
     "vri_words": 2418765,
-    "bjt_words": 2205510
+    "bjt_words": 2205510,
+    "thai_words": 2642000
   }
 }
 ```
@@ -333,6 +337,8 @@ python src/parse_gretil_complete.py
 python src/parse_vri_complete.py
 python src/parse_bjt.py
 python src/split_bjt.py
+python src/parse_thai.py
+python src/split_thai.py
 
 # Build critical editions
 python src/build_critical_complete.py
@@ -350,12 +356,13 @@ python src/generate_final_summary.py
 
 | Metric | Value |
 |--------|-------|
-| Total Python code | ~16,000 lines |
-| Python modules | 51 files |
+| Total Python code | ~23,000 lines |
+| Python modules | 56 files |
 | GRETIL words | 3,243,906 |
 | VRI words | 2,418,765 |
 | SC words | 1,606,474 |
 | BJT words | 2,205,510 |
+| Thai words | ~2,642,000 |
 | Unique word forms | 127,026 |
 | Unique word coverage | 97.8% |
 | Token-level coverage | 99.78% |
