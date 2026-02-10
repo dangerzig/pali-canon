@@ -88,13 +88,13 @@ Parsed JSON → Critical Builder → Critical Edition JSON
 
 | Builder | Witnesses | Coverage |
 |---------|-----------|----------|
-| `build_critical_complete.py` | 4 | Full Tipiṭaka |
+| `build_critical_complete.py` | 5 | Full Tipiṭaka |
 
 **Critical edition output format:**
 ```json
 {
   "id": "mn1",
-  "witnesses": ["SC", "GRETIL", "VRI", "BJT"],
+  "witnesses": ["SC", "GRETIL", "VRI", "BJT", "Thai"],
   "word_count": 5432
 }
 ```

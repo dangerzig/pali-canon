@@ -479,7 +479,7 @@ def test_word_count_sanity():
 
 
 def test_classify_variant_with_bjt():
-    """Test that classify_variant() works with BJT as 4th witness."""
+    """Test that classify_variant() works with BJT and Thai witnesses."""
     print("TEST: classify_variant() with BJT parameter")
     errors = []
 

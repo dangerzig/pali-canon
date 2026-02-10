@@ -252,7 +252,7 @@ def build_nikaya_critical(config: NikayaConfig) -> dict[str, Any]:
 
             edition = {
                 'id': f'{config.code}{sutta_num}',
-                'witnesses': ['SC', 'GRETIL', 'VRI', 'BJT'],
+                'witnesses': ['SC', 'GRETIL', 'VRI', 'BJT', 'Thai'],
                 'word_count': sc_word_count,
             }
             results.append(edition)
@@ -263,7 +263,7 @@ def build_nikaya_critical(config: NikayaConfig) -> dict[str, Any]:
 
     summary = {
         'nikaya': config.name,
-        'witnesses': 4,
+        'witnesses': 5,
         'suttas': len(results),
         'sc_words': total_words['sc'],
         'gretil_words': total_words['gretil'],
@@ -352,7 +352,7 @@ def build_nikaya_critical_glob(config: NikayaConfig) -> dict[str, Any]:
 
             edition = {
                 'id': file_id,
-                'witnesses': ['SC', 'GRETIL', 'VRI', 'BJT'],
+                'witnesses': ['SC', 'GRETIL', 'VRI', 'BJT', 'Thai'],
                 'word_count': word_count,
             }
             results.append(edition)
@@ -363,7 +363,7 @@ def build_nikaya_critical_glob(config: NikayaConfig) -> dict[str, Any]:
 
     summary = {
         'nikaya': config.name,
-        'witnesses': 4,
+        'witnesses': 5,
         'files': len(results),
         'sc_words': total_words['sc'],
         'gretil_words': total_words['gretil'],
@@ -489,7 +489,7 @@ def build_kn_critical() -> dict[str, Any]:
             total_words['sc'] += word_count
 
             # Determine witnesses
-            witnesses = ['SC', 'VRI']
+            witnesses = ['SC', 'VRI', 'BJT', 'Thai']
             gretil_name = KN_MAPPING.get(sc_id)
             if gretil_name:
                 witnesses.insert(1, 'GRETIL')
@@ -530,7 +530,7 @@ def build_kn_critical() -> dict[str, Any]:
 
             edition = {
                 'id': gretil_name,
-                'witnesses': ['GRETIL', 'VRI'],
+                'witnesses': ['GRETIL', 'VRI', 'BJT', 'Thai'],
                 'word_count': word_count,
             }
             results.append(edition)
@@ -541,7 +541,7 @@ def build_kn_critical() -> dict[str, Any]:
 
     summary = {
         'nikaya': 'KN',
-        'witnesses': '2-4 (SC coverage partial)',
+        'witnesses': '2-5 (SC coverage partial)',
         'texts': len(results),
         'sc_words': total_words['sc'],
         'gretil_words': total_words['gretil'],
@@ -609,7 +609,7 @@ def build_vinaya_critical() -> dict[str, Any]:
 
         edition = {
             'id': text_name,
-            'witnesses': ['GRETIL', 'VRI', 'SC', 'BJT'],
+            'witnesses': ['GRETIL', 'VRI', 'SC', 'BJT', 'Thai'],
             'word_count': word_count,
         }
         results.append(edition)
@@ -620,7 +620,7 @@ def build_vinaya_critical() -> dict[str, Any]:
 
     summary = {
         'pitaka': 'Vinaya',
-        'witnesses': 4,
+        'witnesses': 5,
         'texts': len(results),
         'gretil_words': total_words['gretil'],
         'vri_words': total_words['vri'],
@@ -698,7 +698,7 @@ def build_abhidhamma_critical() -> dict[str, Any]:
 
         edition = {
             'id': text_name,
-            'witnesses': ['GRETIL', 'VRI', 'SC', 'BJT'],
+            'witnesses': ['GRETIL', 'VRI', 'SC', 'BJT', 'Thai'],
             'word_count': word_count,
         }
         results.append(edition)
@@ -709,7 +709,7 @@ def build_abhidhamma_critical() -> dict[str, Any]:
 
     summary = {
         'pitaka': 'Abhidhamma',
-        'witnesses': 4,
+        'witnesses': 5,
         'texts': len(results),
         'gretil_words': total_words['gretil'],
         'vri_words': total_words['vri'],
