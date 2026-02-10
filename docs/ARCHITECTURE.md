@@ -2,11 +2,12 @@
 
 ## Overview
 
-This project creates a digital critical edition of the complete Pāli Tipiṭaka by collating four independent textual witnesses:
+This project creates a digital critical edition of the complete Pāli Tipiṭaka by collating five independent textual witnesses:
 - **GRETIL**: PTS (Pali Text Society) edition transcriptions
 - **VRI**: Vipassana Research Institute Chaṭṭha Saṅgāyana (CST4)
 - **SuttaCentral**: Mahāsaṅgīti edition with modern segmentation
 - **BJT**: Buddha Jayanti Tipitaka (Sri Lankan edition)
+- **Thai**: Syām Raṭṭha (Royal Thai Edition, from E-Tipitaka)
 
 ## Codebase Statistics
 
