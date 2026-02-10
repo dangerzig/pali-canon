@@ -5,17 +5,19 @@
     "gretil": 22,
     "sc": 21,
     "vri": 22,
-    "bjt": 21
+    "bjt": 21,
+    "thai": 632
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 22,
-    "orthographic": 2,
+    "orthographic": 0,
     "errors": 1,
     "variants": 1,
     "uncertain": 2,
-    "match": 14,
-    "other": 2
+    "match": 3,
+    "other": 15
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "pisuṇāya",
       "vri": "pisuṇāya",
       "bjt": "pisunāya",
+      "thai": "etadavocuṃ",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.85,
       "preferred": "pisuṇāya",
-      "notes": "PTS \"pisunāya\" not in DPD, SC/VRI \"pisuṇāya\" is valid"
+      "notes": "PTS \"pisunāya\" not in DPD, SC/VRI \"pisuṇāya\" is valid, BJT agrees with PTS, Thai has \"etadavocuṃ\""
     }
   ],
   "variants": [
@@ -37,10 +40,11 @@
       "sc": "eteva",
       "vri": "eteva",
       "bjt": "eteva",
+      "thai": "sambahulā",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "ete",
-      "notes": "Textual variant: PTS \"ete\" vs SC/VRI \"eteva\""
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"sambahulā\""
     }
   ],
   "uncertain": [
@@ -50,10 +54,11 @@
       "sc": "evameva",
       "vri": "pe",
       "bjt": "pisuṇavācāsuttaṃ",
+      "thai": "samaye",
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "evam",
-      "notes": "Three-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\""
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\", BJT \"pisuṇavācāsuttaṃ\", Thai \"samaye\""
     },
     {
       "position": 1,
@@ -61,10 +66,11 @@
       "sc": null,
       "vri": "evameva",
       "bjt": "evameva",
+      "thai": "bhikkhuno",
       "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "eva",
-      "notes": "Three-way disagreement: PTS \"eva\", SC \"None\", VRI \"evameva\""
+      "confidence": 0.6,
+      "preferred": "evameva",
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", Thai \"bhikkhuno\""
     }
   ]
 }

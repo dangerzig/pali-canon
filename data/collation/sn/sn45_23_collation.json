@@ -5,17 +5,19 @@
     "gretil": 36,
     "sc": 34,
     "vri": 34,
-    "bjt": 43
+    "bjt": 43,
+    "thai": 46
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 36,
-    "orthographic": 2,
+    "orthographic": 10,
     "errors": 1,
     "variants": 3,
     "uncertain": 1,
-    "match": 25,
-    "other": 4
+    "match": 16,
+    "other": 5
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "seyyathidaṃ",
       "vri": "seyyathidaṃ",
       "bjt": "seyyathīdaṃ",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "seyyathidaṃ",
-      "notes": "PTS \"seyyathīdam\" not in DPD, SC/VRI \"seyyathidaṃ\" is valid"
+      "notes": "PTS \"seyyathīdam\" not in DPD, SC/VRI \"seyyathidaṃ\" is valid, BJT has \"seyyathīdaṃ\""
     }
   ],
   "variants": [
@@ -37,10 +40,11 @@
       "sc": "sāvatthinidānaṃ",
       "vri": "sāvatthinidānaṃ",
       "bjt": "paṭipadāsuttaṃ",
+      "thai": "bhikkhave",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"paṭipadāsuttaṃ\", Thai has \"bhikkhave\""
     },
     {
       "position": 5,
@@ -48,10 +52,11 @@
       "sc": "desessāmi",
       "vri": "desessāmi",
       "bjt": "desissāmi",
+      "thai": "desessāmi",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "desissāmi",
-      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI \"desessāmi\""
+      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI/Thai \"desessāmi\", BJT agrees with PTS"
     },
     {
       "position": 13,
@@ -59,10 +64,11 @@
       "sc": "seyyathidaṃ",
       "vri": "seyyathidaṃ",
       "bjt": "seyyathīdaṃ",
+      "thai": "seyyathīdaṃ",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "seyyathīdaṃ",
-      "notes": "Textual variant: PTS \"seyyathīdaṃ\" vs SC/VRI \"seyyathidaṃ\""
+      "notes": "Textual variant: PTS \"seyyathīdaṃ\" vs SC/VRI \"seyyathidaṃ\", BJT agrees with PTS, Thai agrees with PTS"
     }
   ],
   "uncertain": [
@@ -72,6 +78,7 @@
       "sc": null,
       "vri": null,
       "bjt": "sāvatthiyaṃ",
+      "thai": "akusalā",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "tatravoca",

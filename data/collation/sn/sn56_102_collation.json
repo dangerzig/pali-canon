@@ -5,17 +5,19 @@
     "gretil": 27,
     "sc": 79,
     "vri": 30,
-    "bjt": 23
+    "bjt": 23,
+    "thai": 632
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 27,
-    "orthographic": 2,
+    "orthographic": 0,
     "errors": 1,
     "variants": 1,
     "uncertain": 3,
-    "match": 14,
-    "other": 6
+    "match": 2,
+    "other": 20
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "paccājāyanti",
       "vri": "paccājāyanti",
       "bjt": "paccājāyanti",
+      "thai": "samaṇā",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "paccājāyanti",
-      "notes": "PTS \"paccājayanti\" not in DPD, SC/VRI \"paccājāyanti\" is valid"
+      "notes": "PTS \"paccājayanti\" not in DPD, SC/VRI/BJT \"paccājāyanti\" is valid, Thai has \"samaṇā\""
     }
   ],
   "variants": [
@@ -37,10 +40,11 @@
       "sc": "eteva",
       "vri": "eteva",
       "bjt": "eteva",
+      "thai": "vā",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "ete",
-      "notes": "Textual variant: PTS \"ete\" vs SC/VRI \"eteva\""
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"vā\""
     }
   ],
   "uncertain": [
@@ -50,10 +54,11 @@
       "sc": "kho",
       "vri": "evameva",
       "bjt": "evameva",
+      "thai": "yaṃ",
       "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "eva",
-      "notes": "Three-way disagreement: PTS \"eva\", SC \"kho\", VRI \"evameva\""
+      "confidence": 0.6,
+      "preferred": "evameva",
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", SC \"kho\", Thai \"yaṃ\""
     },
     {
       "position": 24,
@@ -61,10 +66,11 @@
       "sc": "paṭhamaṃ",
       "vri": null,
       "bjt": null,
+      "thai": "vā",
       "type": "uncertain",
       "confidence": 0.5,
       "preferred": "paṭhamaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "Multi-way disagreement, one valid reading"
     },
     {
       "position": 25,
@@ -72,6 +78,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": "brāhmaṇā",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "pittivisaye",

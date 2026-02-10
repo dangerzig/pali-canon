@@ -5,17 +5,19 @@
     "gretil": 30,
     "sc": 58,
     "vri": 58,
-    "bjt": 79
+    "bjt": 79,
+    "thai": 51
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 30,
-    "orthographic": 0,
+    "orthographic": 18,
     "errors": 1,
     "variants": 2,
     "uncertain": 1,
-    "match": 22,
-    "other": 4
+    "match": 1,
+    "other": 7
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "sātaccakārī",
       "vri": "sātaccakārī",
       "bjt": "sātaccakārī",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "sātaccakārī",
-      "notes": "PTS \"sākaccakārī\" not in DPD, SC/VRI \"sātaccakārī\" is valid"
+      "notes": "PTS \"sākaccakārī\" not in DPD, SC/VRI/BJT \"sātaccakārī\" is valid"
     }
   ],
   "variants": [
@@ -37,10 +40,11 @@
       "sc": "sāvatthinidānaṃ",
       "vri": "sāvatthinidānaṃ",
       "bjt": "samāpatti",
+      "thai": "aparantānudiṭṭhiyo",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"samāpatti\", Thai has \"aparantānudiṭṭhiyo\""
     },
     {
       "position": 1,
@@ -48,10 +52,11 @@
       "sc": "cattārome",
       "vri": "cattārome",
       "bjt": "sātaccakārī",
+      "thai": "na",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "cattāro",
-      "notes": "Textual variant: PTS \"cattāro\" vs SC/VRI \"cattārome\""
+      "notes": "Textual variant: PTS \"cattāro\" vs SC/VRI \"cattārome\", BJT has \"sātaccakārī\", Thai has \"na\""
     }
   ],
   "uncertain": [
@@ -61,6 +66,7 @@
       "sc": null,
       "vri": null,
       "bjt": "suttaṃ",
+      "thai": "honti",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "me",

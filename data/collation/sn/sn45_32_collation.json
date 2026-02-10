@@ -5,17 +5,19 @@
     "gretil": 42,
     "sc": 40,
     "vri": 40,
-    "bjt": 49
+    "bjt": 49,
+    "thai": 61
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 42,
-    "orthographic": 2,
+    "orthographic": 1,
     "errors": 2,
     "variants": 2,
     "uncertain": 3,
     "match": 29,
-    "other": 4
+    "other": 5
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "sammāpaṭipannañca",
       "vri": "sammāpaṭipannañca",
       "bjt": "sammāpaṭipannañca",
+      "thai": "sammāpaṭipannañca",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.98,
       "preferred": "sammāpaṭipannañca",
-      "notes": "PTS \"sammāpaṭipannañ\" not in DPD, SC/VRI \"sammāpaṭipannañca\" is valid"
+      "notes": "PTS \"sammāpaṭipannañ\" not in DPD, SC/VRI/BJT/Thai \"sammāpaṭipannañca\" is valid"
     },
     {
       "position": 23,
@@ -35,10 +38,11 @@
       "sc": "ayaṃ",
       "vri": "ayaṃ",
       "bjt": "ayaṃ",
+      "thai": "ayaṃ",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.98,
       "preferred": "ayaṃ",
-      "notes": "PTS \"ayam\" not in DPD, SC/VRI \"ayaṃ\" is valid"
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT/Thai \"ayaṃ\" is valid"
     }
   ],
   "variants": [
@@ -48,10 +52,11 @@
       "sc": "sāvatthinidānaṃ",
       "vri": "sāvatthinidānaṃ",
       "bjt": "paṭipannasuttaṃ",
+      "thai": null,
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"paṭipannasuttaṃ\""
     },
     {
       "position": 6,
@@ -59,10 +64,11 @@
       "sc": "desessāmi",
       "vri": "desessāmi",
       "bjt": "desissāmi",
+      "thai": "desissāmi",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "desissāmi",
-      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI \"desessāmi\""
+      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI \"desessāmi\", BJT agrees with PTS, Thai agrees with PTS"
     }
   ],
   "uncertain": [
@@ -72,6 +78,7 @@
       "sc": null,
       "vri": null,
       "bjt": "micchāpaṭipannañca",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "micchāpaṭipannañ",
@@ -83,6 +90,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": "ca",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ca",
@@ -94,6 +102,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ca",

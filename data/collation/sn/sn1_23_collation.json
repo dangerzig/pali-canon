@@ -5,17 +5,19 @@
     "gretil": 57,
     "sc": 53,
     "vri": 55,
-    "bjt": 64
+    "bjt": 64,
+    "thai": 53
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 57,
     "orthographic": 1,
     "errors": 2,
     "variants": 2,
     "uncertain": 1,
-    "match": 43,
-    "other": 8
+    "match": 41,
+    "other": 10
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "jaṭaṃ",
       "vri": "jaṭaṃ",
       "bjt": "jaṭanti",
+      "thai": "jaṭaṃ",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "jaṭaṃ",
-      "notes": "PTS \"jaṭan\" not in DPD, SC/VRI \"jaṭaṃ\" is valid"
+      "notes": "PTS \"jaṭan\" not in DPD, SC/VRI/Thai \"jaṭaṃ\" is valid, BJT has \"jaṭanti\""
     },
     {
       "position": 45,
@@ -35,10 +38,11 @@
       "sc": "asesaṃ",
       "vri": "asesaṃ",
       "bjt": "asesaṃ",
+      "thai": "asesaṃ",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.98,
       "preferred": "asesaṃ",
-      "notes": "PTS \"asesam\" not in DPD, SC/VRI \"asesaṃ\" is valid"
+      "notes": "PTS \"asesam\" not in DPD, SC/VRI/BJT/Thai \"asesaṃ\" is valid"
     }
   ],
   "variants": [
@@ -48,10 +52,11 @@
       "sc": "etthesā",
       "vri": "etthesā",
       "bjt": "etthesā",
+      "thai": "ettha",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "ettha",
-      "notes": "Textual variant: PTS \"ettha\" vs SC/VRI \"etthesā\""
+      "notes": "Textual variant: PTS \"ettha\" vs SC/VRI/BJT \"etthesā\", Thai agrees with PTS"
     },
     {
       "position": 53,
@@ -59,10 +64,11 @@
       "sc": "jaṭā",
       "vri": "jaṭā",
       "bjt": "jaṭāti",
+      "thai": "jaṭāti",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "jaṭāti",
-      "notes": "Textual variant: PTS \"jaṭāti\" vs SC/VRI \"jaṭā\""
+      "notes": "Textual variant: PTS \"jaṭāti\" vs SC/VRI \"jaṭā\", BJT agrees with PTS, Thai agrees with PTS"
     }
   ],
   "uncertain": [
@@ -72,6 +78,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ti",

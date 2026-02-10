@@ -5,17 +5,19 @@
     "gretil": 85,
     "sc": 77,
     "vri": 76,
-    "bjt": 79
+    "bjt": 79,
+    "thai": 62
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 85,
-    "orthographic": 15,
+    "orthographic": 25,
     "errors": 2,
     "variants": 3,
     "uncertain": 8,
-    "match": 49,
-    "other": 8
+    "match": 2,
+    "other": 45
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "yādha",
       "vri": "yādha",
       "bjt": "yādha",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "yādha",
-      "notes": "PTS \"yīdha\" not in DPD, SC/VRI \"yādha\" is valid"
+      "notes": "PTS \"yīdha\" not in DPD, SC/VRI/BJT \"yādha\" is valid"
     },
     {
       "position": 57,
@@ -35,10 +38,11 @@
       "sc": "sāramidheva",
       "vri": "sāramidheva",
       "bjt": "sāraṃ",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "sāramidheva",
-      "notes": "PTS \"sāram\" not in DPD, SC/VRI \"sāramidheva\" is valid"
+      "notes": "PTS \"sāram\" not in DPD, SC/VRI \"sāramidheva\" is valid, BJT has \"sāraṃ\""
     }
   ],
   "variants": [
@@ -48,10 +52,11 @@
       "sc": "ādīyati",
       "vri": "ādīyati",
       "bjt": "ādiyati",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "ādiyati",
-      "notes": "Textual variant: PTS \"ādiyati\" vs SC/VRI \"ādīyati\""
+      "notes": "Textual variant: PTS \"ādiyati\" vs SC/VRI \"ādīyati\", BJT agrees with PTS"
     },
     {
       "position": 70,
@@ -59,6 +64,7 @@
       "sc": "ekaṃ",
       "vri": "ekaṃ",
       "bjt": null,
+      "thai": null,
       "type": "variant",
       "confidence": 0.7,
       "preferred": "eka",
@@ -70,6 +76,7 @@
       "sc": "ṭhānañca",
       "vri": "ṭhānañca",
       "bjt": null,
+      "thai": null,
       "type": "variant",
       "confidence": 0.7,
       "preferred": "ṭhānaṃ",
@@ -83,6 +90,7 @@
       "sc": null,
       "vri": null,
       "bjt": "idheva",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "idheva",
@@ -94,10 +102,11 @@
       "sc": "balavaggo",
       "vri": null,
       "bjt": "tatruddānaṃ",
+      "thai": null,
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "jambukhādakasaṃyuttaṃ",
-      "notes": "Three-way disagreement: PTS \"jambukhādakasaṃyuttaṃ\", SC \"balavaggo\", VRI \"None\""
+      "notes": "Multi-way disagreement: PTS \"jambukhādakasaṃyuttaṃ\", SC \"balavaggo\", VRI \"None\", BJT \"tatruddānaṃ\""
     },
     {
       "position": 63,
@@ -105,10 +114,11 @@
       "sc": "tatiyo",
       "vri": null,
       "bjt": "suddhā",
+      "thai": null,
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "mātugāmasaṃyuttaṃ",
-      "notes": "Three-way disagreement: PTS \"mātugāmasaṃyuttaṃ\", SC \"tatiyo\", VRI \"None\""
+      "notes": "Multi-way disagreement: PTS \"mātugāmasaṃyuttaṃ\", SC \"tatiyo\", VRI \"None\", BJT \"suddhā\""
     },
     {
       "position": 64,
@@ -116,6 +126,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "vaggā",
@@ -127,6 +138,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "tiṇi",
@@ -138,6 +150,7 @@
       "sc": null,
       "vri": null,
       "bjt": "visāradā",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "visāradā",
@@ -149,6 +162,7 @@
       "sc": null,
       "vri": null,
       "bjt": "samattaṃ",
+      "thai": "ānando",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "book",
@@ -160,6 +174,7 @@
       "sc": null,
       "vri": null,
       "bjt": "saṃyuttaṃ",
+      "thai": "upasaṅkamitvā",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "jambukhādakasaṃyuttaṃ",

@@ -5,17 +5,19 @@
     "gretil": 36,
     "sc": 38,
     "vri": 39,
-    "bjt": 1741
+    "bjt": 1741,
+    "thai": 7
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 36,
-    "orthographic": 5,
+    "orthographic": 16,
     "errors": 6,
     "variants": 1,
     "uncertain": 1,
-    "match": 20,
-    "other": 3
+    "match": 0,
+    "other": 12
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "imesaṃ",
       "vri": "imesaṃ",
       "bjt": "bhikkhu",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "imesaṃ",
-      "notes": "PTS \"imesam\" not in DPD, SC/VRI \"imesaṃ\" is valid"
+      "notes": "PTS \"imesam\" not in DPD, SC/VRI \"imesaṃ\" is valid, BJT has \"bhikkhu\""
     },
     {
       "position": 13,
@@ -35,10 +38,11 @@
       "sc": "pañcannaṃ",
       "vri": "pañcannaṃ",
       "bjt": "imesaṃ",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "pañcannaṃ",
-      "notes": "PTS \"pañcannam\" not in DPD, SC/VRI \"pañcannaṃ\" is valid"
+      "notes": "PTS \"pañcannam\" not in DPD, SC/VRI \"pañcannaṃ\" is valid, BJT has \"imesaṃ\""
     },
     {
       "position": 14,
@@ -46,10 +50,11 @@
       "sc": "indriyānaṃ",
       "vri": "indriyānaṃ",
       "bjt": "pañcannaṃ",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "indriyānaṃ",
-      "notes": "PTS \"indriyānam\" not in DPD, SC/VRI \"indriyānaṃ\" is valid"
+      "notes": "PTS \"indriyānam\" not in DPD, SC/VRI \"indriyānaṃ\" is valid, BJT has \"pañcannaṃ\""
     },
     {
       "position": 18,
@@ -57,10 +62,11 @@
       "sc": "yathābhūtaṃ",
       "vri": "yathābhūtaṃ",
       "bjt": "yathābhūtaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "yathābhūtaṃ",
-      "notes": "PTS \"yathābhūtam\" not in DPD, SC/VRI \"yathābhūtaṃ\" is valid"
+      "notes": "PTS \"yathābhūtam\" not in DPD, SC/VRI/BJT \"yathābhūtaṃ\" is valid"
     },
     {
       "position": 23,
@@ -68,10 +74,11 @@
       "sc": "ayaṃ",
       "vri": "ayaṃ",
       "bjt": "ayaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "ayaṃ",
-      "notes": "PTS \"ayam\" not in DPD, SC/VRI \"ayaṃ\" is valid"
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT \"ayaṃ\" is valid"
     },
     {
       "position": 30,
@@ -79,10 +86,11 @@
       "sc": "ohitabhāro",
       "vri": "ohitabhāro",
       "bjt": "ohitabhāro",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "ohitabhāro",
-      "notes": "PTS \"ohītabhāro\" not in DPD, SC/VRI \"ohitabhāro\" is valid"
+      "notes": "PTS \"ohītabhāro\" not in DPD, SC/VRI/BJT \"ohitabhāro\" is valid"
     }
   ],
   "variants": [
@@ -92,10 +100,11 @@
       "sc": "anupādāvimutto",
       "vri": "anupādāvimutto",
       "bjt": "anupādā",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "anupādā",
-      "notes": "Textual variant: PTS \"anupādā\" vs SC/VRI \"anupādāvimutto\""
+      "notes": "Textual variant: PTS \"anupādā\" vs SC/VRI \"anupādāvimutto\", BJT agrees with PTS"
     }
   ],
   "uncertain": [
@@ -105,6 +114,7 @@
       "sc": null,
       "vri": null,
       "bjt": "vimutto",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "vimutto",

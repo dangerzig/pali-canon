@@ -5,17 +5,19 @@
     "gretil": 64,
     "sc": 63,
     "vri": 63,
-    "bjt": 88
+    "bjt": 88,
+    "thai": 1
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 64,
-    "orthographic": 6,
+    "orthographic": 38,
     "errors": 1,
     "variants": 6,
     "uncertain": 13,
-    "match": 36,
-    "other": 2
+    "match": 0,
+    "other": 6
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "rūpaṃ",
       "vri": "rūpaṃ",
       "bjt": "rūpaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "rūpaṃ",
-      "notes": "PTS \"rūpam\" not in DPD, SC/VRI \"rūpaṃ\" is valid"
+      "notes": "PTS \"rūpam\" not in DPD, SC/VRI/BJT \"rūpaṃ\" is valid"
     }
   ],
   "variants": [
@@ -37,10 +40,11 @@
       "sc": "sāvatthinidānaṃ",
       "vri": "sāvatthinidānaṃ",
       "bjt": "dutiya",
+      "thai": "suṇāhi",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"dutiya\", Thai has \"suṇāhi\""
     },
     {
       "position": 7,
@@ -48,10 +52,11 @@
       "sc": "taṃ",
       "vri": "taṃ",
       "bjt": "taṃ",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "tam",
-      "notes": "Textual variant: PTS \"tam\" vs SC/VRI \"taṃ\""
+      "notes": "Textual variant: PTS \"tam\" vs SC/VRI/BJT \"taṃ\""
     },
     {
       "position": 23,
@@ -59,10 +64,11 @@
       "sc": "taṃ",
       "vri": "taṃ",
       "bjt": "taṃ",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "tam",
-      "notes": "Textual variant: PTS \"tam\" vs SC/VRI \"taṃ\""
+      "notes": "Textual variant: PTS \"tam\" vs SC/VRI/BJT \"taṃ\""
     },
     {
       "position": 25,
@@ -70,10 +76,11 @@
       "sc": "taṃ",
       "vri": "taṃ",
       "bjt": "taṃ",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "tam",
-      "notes": "Textual variant: PTS \"tam\" vs SC/VRI \"taṃ\""
+      "notes": "Textual variant: PTS \"tam\" vs SC/VRI/BJT \"taṃ\""
     },
     {
       "position": 44,
@@ -81,6 +88,7 @@
       "sc": "taṃ",
       "vri": "taṃ",
       "bjt": null,
+      "thai": null,
       "type": "variant",
       "confidence": 0.7,
       "preferred": "tam",
@@ -92,10 +100,11 @@
       "sc": "bhavissati",
       "vri": "bhavissati",
       "bjt": "bhavissatīti",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "bhavissatīti",
-      "notes": "Textual variant: PTS \"bhavissatīti\" vs SC/VRI \"bhavissati\""
+      "notes": "Textual variant: PTS \"bhavissatīti\" vs SC/VRI \"bhavissati\", BJT agrees with PTS"
     }
   ],
   "uncertain": [
@@ -105,6 +114,7 @@
       "sc": null,
       "vri": null,
       "bjt": "natumhāka",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "tatra",
@@ -116,6 +126,7 @@
       "sc": null,
       "vri": null,
       "bjt": "suttaṃ",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "voca",
@@ -127,6 +138,7 @@
       "sc": null,
       "vri": null,
       "bjt": "pajahatha",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "pajahatha",
@@ -138,6 +150,7 @@
       "sc": null,
       "vri": null,
       "bjt": "taṃ",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "tam",
@@ -149,6 +162,7 @@
       "sc": null,
       "vri": null,
       "bjt": "pahīnaṃ",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "pahīnaṃ",
@@ -160,6 +174,7 @@
       "sc": null,
       "vri": null,
       "bjt": "hitāya",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "hitāya",
@@ -171,6 +186,7 @@
       "sc": null,
       "vri": null,
       "bjt": "sukhāya",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "sukhāya",
@@ -182,6 +198,7 @@
       "sc": null,
       "vri": null,
       "bjt": "bhavissati",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "bhavissati",
@@ -193,6 +210,7 @@
       "sc": null,
       "vri": null,
       "bjt": "saṃkhārā",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "yam",
@@ -204,6 +222,7 @@
       "sc": null,
       "vri": null,
       "bjt": "bhikkhave",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "bhikkhave",
@@ -215,6 +234,7 @@
       "sc": null,
       "vri": null,
       "bjt": "na",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "na",
@@ -226,6 +246,7 @@
       "sc": null,
       "vri": null,
       "bjt": "tumhākaṃ",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "tumhākam",
@@ -237,6 +258,7 @@
       "sc": null,
       "vri": null,
       "bjt": "taṃ",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "tam",

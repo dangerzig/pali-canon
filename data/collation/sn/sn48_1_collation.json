@@ -5,17 +5,19 @@
     "gretil": 21,
     "sc": 21,
     "vri": 17,
-    "bjt": 18
+    "bjt": 18,
+    "thai": 7
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 21,
-    "orthographic": 2,
+    "orthographic": 10,
     "errors": 1,
     "variants": 2,
     "uncertain": 2,
-    "match": 11,
-    "other": 3
+    "match": 0,
+    "other": 6
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "paññindriyaṃ",
       "vri": "paññindriyaṃ",
       "bjt": "paññindriyaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "paññindriyaṃ",
-      "notes": "PTS \"paññindriyam\" not in DPD, SC/VRI \"paññindriyaṃ\" is valid"
+      "notes": "PTS \"paññindriyam\" not in DPD, SC/VRI/BJT \"paññindriyaṃ\" is valid"
     }
   ],
   "variants": [
@@ -37,10 +40,11 @@
       "sc": "sāvatthinidānaṃ",
       "vri": "sāvatthinidānaṃ",
       "bjt": "suddha",
+      "thai": "samuddato",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"suddha\", Thai has \"samuddato\""
     },
     {
       "position": 12,
@@ -48,10 +52,11 @@
       "sc": "vīriyindriyaṃ",
       "vri": "vīriyindriyaṃ",
       "bjt": "viriyindriyaṃ",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "viriyindriyaṃ",
-      "notes": "Textual variant: PTS \"viriyindriyaṃ\" vs SC/VRI \"vīriyindriyaṃ\""
+      "notes": "Textual variant: PTS \"viriyindriyaṃ\" vs SC/VRI \"vīriyindriyaṃ\", BJT agrees with PTS"
     }
   ],
   "uncertain": [
@@ -61,10 +66,11 @@
       "sc": "etadavoca",
       "vri": null,
       "bjt": null,
+      "thai": "dvādasa",
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "etad",
-      "notes": "Three-way disagreement: PTS \"etad\", SC \"etadavoca\", VRI \"None\""
+      "notes": "Multi-way disagreement: PTS \"etad\", SC \"etadavoca\", VRI \"None\", Thai \"dvādasa\""
     },
     {
       "position": 5,
@@ -72,6 +78,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": "honti",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "avoca",

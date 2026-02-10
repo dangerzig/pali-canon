@@ -5,17 +5,19 @@
     "gretil": 35,
     "sc": 34,
     "vri": 34,
-    "bjt": 75
+    "bjt": 75,
+    "thai": 62
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 35,
-    "orthographic": 0,
+    "orthographic": 16,
     "errors": 1,
     "variants": 4,
     "uncertain": 2,
-    "match": 26,
-    "other": 2
+    "match": 0,
+    "other": 12
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "ayaṃ",
       "vri": "ayaṃ",
       "bjt": "ayaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "ayaṃ",
-      "notes": "PTS \"ayam\" not in DPD, SC/VRI \"ayaṃ\" is valid"
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT \"ayaṃ\" is valid"
     }
   ],
   "variants": [
@@ -37,10 +40,11 @@
       "sc": "asaṅkhatañca",
       "vri": "asaṅkhatañca",
       "bjt": "samathavipassanāsuttaṃ",
+      "thai": "jivhāviññeyyā",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "asaṅkhataṃ",
-      "notes": "Textual variant: PTS \"asaṅkhataṃ\" vs SC/VRI \"asaṅkhatañca\""
+      "notes": "Textual variant: PTS \"asaṅkhataṃ\" vs SC/VRI \"asaṅkhatañca\", BJT has \"samathavipassanāsuttaṃ\", Thai has \"jivhāviññeyyā\""
     },
     {
       "position": 4,
@@ -48,10 +52,11 @@
       "sc": "desessāmi",
       "vri": "desessāmi",
       "bjt": "desissāmi",
+      "thai": "cakkhuviññeyyā",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "desissāmi",
-      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI \"desessāmi\""
+      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI \"desessāmi\", BJT agrees with PTS, Thai has \"cakkhuviññeyyā\""
     },
     {
       "position": 24,
@@ -59,10 +64,11 @@
       "sc": "asaṅkhatagāmimaggo",
       "vri": "asaṅkhatagāmimaggo",
       "bjt": "asaṅkhatagāmī",
+      "thai": null,
       "type": "variant",
       "confidence": 0.7,
       "preferred": "asaṅkhatagāmi",
-      "notes": "Textual variant: PTS \"asaṅkhatagāmi\" vs SC/VRI \"asaṅkhatagāmimaggo\""
+      "notes": "Textual variant: PTS \"asaṅkhatagāmi\" vs SC/VRI \"asaṅkhatagāmimaggo\", BJT has \"asaṅkhatagāmī\""
     },
     {
       "position": 32,
@@ -70,10 +76,11 @@
       "sc": "asaṅkhatagāmimaggo",
       "vri": "asaṅkhatagāmimaggo",
       "bjt": "asaṅkhatagāmī",
+      "thai": null,
       "type": "variant",
       "confidence": 0.7,
       "preferred": "asaṅkhatagāmi",
-      "notes": "Textual variant: PTS \"asaṅkhatagāmi\" vs SC/VRI \"asaṅkhatagāmimaggo\""
+      "notes": "Textual variant: PTS \"asaṅkhatagāmi\" vs SC/VRI \"asaṅkhatagāmimaggo\", BJT has \"asaṅkhatagāmī\""
     }
   ],
   "uncertain": [
@@ -83,6 +90,7 @@
       "sc": null,
       "vri": null,
       "bjt": "asaṅkhatañca",
+      "thai": "ca",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ca",
@@ -94,6 +102,7 @@
       "sc": null,
       "vri": null,
       "bjt": "maggo",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "maggo",

@@ -5,17 +5,19 @@
     "gretil": 37,
     "sc": 39,
     "vri": 39,
-    "bjt": 64
+    "bjt": 64,
+    "thai": 16
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 37,
-    "orthographic": 1,
+    "orthographic": 13,
     "errors": 5,
     "variants": 4,
     "uncertain": 3,
-    "match": 23,
-    "other": 1
+    "match": 0,
+    "other": 12
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "ekamantaṃ",
       "vri": "ekamantaṃ",
       "bjt": "suttaṃ",
+      "thai": "bhikkhavoti",
       "type": "error",
       "confidence": 0.9,
       "preferred": "ekamantaṃ",
-      "notes": "PTS \"ekam\" not in DPD, SC/VRI \"ekamantaṃ\" is valid"
+      "notes": "PTS \"ekam\" not in DPD, SC/VRI \"ekamantaṃ\" is valid, BJT has \"suttaṃ\", Thai has \"bhikkhavoti\""
     },
     {
       "position": 7,
@@ -35,10 +38,11 @@
       "sc": "bhagavantaṃ",
       "vri": "bhagavantaṃ",
       "bjt": "bhagavantaṃ",
+      "thai": "bhagavā",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "bhagavantaṃ",
-      "notes": "PTS \"bhagavantam\" not in DPD, SC/VRI \"bhagavantaṃ\" is valid"
+      "notes": "PTS \"bhagavantam\" not in DPD, SC/VRI/BJT \"bhagavantaṃ\" is valid, Thai has \"bhagavā\""
     },
     {
       "position": 29,
@@ -46,10 +50,11 @@
       "sc": "viññāṇaṃ",
       "vri": "viññāṇaṃ",
       "bjt": "saṃkhārā",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "viññāṇaṃ",
-      "notes": "PTS \"viññāṇam\" not in DPD, SC/VRI \"viññāṇaṃ\" is valid"
+      "notes": "PTS \"viññāṇam\" not in DPD, SC/VRI \"viññāṇaṃ\" is valid, BJT has \"saṃkhārā\""
     },
     {
       "position": 31,
@@ -57,10 +62,11 @@
       "sc": "evaṃ",
       "vri": "evaṃ",
       "bjt": "viññāṇaṃ",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "evaṃ",
-      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evaṃ\" is valid"
+      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evaṃ\" is valid, BJT has \"viññāṇaṃ\""
     },
     {
       "position": 34,
@@ -68,10 +74,11 @@
       "sc": "nāparaṃ",
       "vri": "nāparaṃ",
       "bjt": "sutavā",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "nāparaṃ",
-      "notes": "PTS \"nāparam\" not in DPD, SC/VRI \"nāparaṃ\" is valid"
+      "notes": "PTS \"nāparam\" not in DPD, SC/VRI \"nāparaṃ\" is valid, BJT has \"sutavā\""
     }
   ],
   "variants": [
@@ -81,10 +88,11 @@
       "sc": "sāvatthinidānaṃ",
       "vri": "sāvatthinidānaṃ",
       "bjt": "anatta",
+      "thai": "āmantesi",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"anatta\", Thai has \"āmantesi\""
     },
     {
       "position": 8,
@@ -92,10 +100,11 @@
       "sc": "etadavoca",
       "vri": "etadavoca",
       "bjt": "etadavoca",
+      "thai": "etadavoca",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.9,
       "preferred": "etad",
-      "notes": "Textual variant: PTS \"etad\" vs SC/VRI \"etadavoca\""
+      "notes": "Textual variant: PTS \"etad\" vs SC/VRI/BJT/Thai \"etadavoca\""
     },
     {
       "position": 19,
@@ -103,10 +112,11 @@
       "sc": "anattā",
       "vri": "anattā",
       "bjt": "anattāti",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "anattāti",
-      "notes": "Textual variant: PTS \"anattāti\" vs SC/VRI \"anattā\""
+      "notes": "Textual variant: PTS \"anattāti\" vs SC/VRI \"anattā\", BJT agrees with PTS"
     },
     {
       "position": 30,
@@ -114,10 +124,11 @@
       "sc": "anattā",
       "vri": "anattā",
       "bjt": "anattā",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "anattāti",
-      "notes": "Textual variant: PTS \"anattāti\" vs SC/VRI \"anattā\""
+      "notes": "Textual variant: PTS \"anattāti\" vs SC/VRI/BJT \"anattā\""
     }
   ],
   "uncertain": [
@@ -127,6 +138,7 @@
       "sc": null,
       "vri": null,
       "bjt": "sāvatthiyaṃ",
+      "thai": "bhadanteti",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "antaṃ",
@@ -138,6 +150,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": "samādhiṃ",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "avoca",
@@ -149,6 +162,7 @@
       "sc": "pajānātī",
       "vri": "pajānātī",
       "bjt": "pajānātīti",
+      "thai": null,
       "type": "uncertain",
       "confidence": 0.4,
       "preferred": "pajānātī",

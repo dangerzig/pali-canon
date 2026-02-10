@@ -19,14 +19,14 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 
 ## Critical Edition Coverage
 
-### Vinaya Piṭaka (4 witnesses: SC/GRETIL/VRI/BJT)
+### Vinaya Piṭaka (5 witnesses: SC/GRETIL/VRI/BJT/Thai)
 - **5 texts** (Suttavibhaṅga 1-2, Mahāvagga, Cullavagga, Parivāra)
 - SC: see `data/sc-parsed/vinaya/`
 - GRETIL: 376,093 words
 - VRI: 218,936 words
 - BJT: see `data/bjt-parsed/vinaya/`
 
-### Sutta Piṭaka (4 witnesses: SC/GRETIL/VRI/BJT)
+### Sutta Piṭaka (5 witnesses: SC/GRETIL/VRI/BJT/Thai)
 
 | Nikāya | Units | SC Words | GRETIL Words | VRI Words | BJT Words |
 |--------|-------|----------|--------------|-----------|-----------|
@@ -37,7 +37,7 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 | Khuddaka (KN) | 20 texts | 639,897 | 1,090,590 | 523,567 | 673,772 |
 | **TOTAL** | | **1,596,896** | **2,129,164** | **1,487,175** | **2,205,510** |
 
-### Abhidhamma Piṭaka (4 witnesses: SC/GRETIL/VRI/BJT)
+### Abhidhamma Piṭaka (5 witnesses: SC/GRETIL/VRI/BJT/Thai)
 - **11 texts** (Dhammasaṅgaṇī, Vibhaṅga, Dhātukathā, Puggalapaññatti, Kathāvatthu, Yamaka 1-2, Paṭṭhāna 1-3 + Duka)
 - SC: see `data/sc-parsed/abhidhamma/`
 - GRETIL: 554,423 words
@@ -50,7 +50,7 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 
 | Metric | Value |
 |--------|-------|
-| **4-witness editions (SC/GRETIL/VRI/BJT)** | **All piṭakas** |
+| **5-witness editions (SC/GRETIL/VRI/BJT/Thai)** | **All piṭakas** |
 | **Total Critical Edition** | **~2.5M+ words** |
 
 ---
@@ -73,7 +73,7 @@ The high token-level coverage reflects that high-frequency words are well-covere
 
 Word-level collation across witnesses, with automatic classification of differences:
 
-### Sutta Piṭaka (4 witnesses: SC/GRETIL/VRI/BJT)
+### Sutta Piṭaka (5 witnesses: SC/GRETIL/VRI/BJT/Thai)
 
 | Nikāya | Texts | Errors | Variants |
 |--------|-------|--------|----------|
@@ -83,7 +83,7 @@ Word-level collation across witnesses, with automatic classification of differen
 | AN | 843 | 13 | 44 |
 | KN | 17 | 12,366 | 17,677 |
 
-### Vinaya & Abhidhamma (4 witnesses: SC/GRETIL/VRI/BJT)
+### Vinaya & Abhidhamma (5 witnesses: SC/GRETIL/VRI/BJT/Thai)
 
 | Piṭaka | Texts | Errors | Variants |
 |--------|-------|--------|----------|

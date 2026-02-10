@@ -44,64 +44,64 @@ NIKAYAS = {
     'abhidhamma': ('abhidhamma', 'abhidhamma'),  # Abhidhamma Piṭaka
 }
 
-# KN text mappings: (SC abbrev, GRETIL name, VRI CST code, BJT name)
+# KN text mappings: (SC abbrev, GRETIL name, VRI CST code, BJT name, Thai name)
 # VRI CST code is None if not available in VRI
-# BJT name is None if not available in BJT
+# BJT/Thai name is None if not available
 KN_TEXTS = [
-    ('kp', 'khuddakapatha', 's0501m.mul', 'khuddakapatha'),
-    ('dhp', 'dhammapada', 's0502m.mul', 'dhammapada'),
-    ('ud', 'udana', 's0503m.mul', 'udana'),
-    ('iti', 'itivuttaka', 's0504m.mul', 'itivuttaka'),
-    ('snp', 'suttanipata', 's0505m.mul', 'suttanipata'),
-    ('vv', 'vimanavatthu', 's0506m.mul', 'vimanavatthu'),
-    ('pv', 'petavatthu', 's0507m.mul', 'petavatthu'),
-    ('thag', 'theragatha', 's0508m.mul', 'theragatha'),
-    ('thig', 'therigatha', 's0509m.mul', 'therigatha'),
-    ('tha-ap', 'apadana', 's0510m1.mul', 'apadana1'),  # Thera-apadāna (part 1)
-    ('thi-ap', 'apadana', 's0510m2.mul', 'apadana2'),  # Therī-apadāna (part 2), same GRETIL file
-    ('bv', 'buddhavamsa', 's0511m.mul', 'buddhavamsa'),
-    ('cp', 'cariyapitaka', 's0512m.mul', 'cariyapitaka'),
-    ('ja', 'jataka', 's0513m.mul', 'jataka'),  # Jātaka vol 1 (GRETIL has jataka1-6, BJT has jataka1-6)
-    ('mnd', 'mahaniddesa', 's0515m.mul', 'mahaniddesa'),
-    ('cnd', 'cullaniddesa', 's0516m.mul', 'cullaniddesa'),
-    ('ps', 'patisambhidamagga', 's0517m.mul', 'patisambhidamagga'),  # GRETIL/BJT have 1-2
+    ('kp', 'khuddakapatha', 's0501m.mul', 'khuddakapatha', 'kp'),
+    ('dhp', 'dhammapada', 's0502m.mul', 'dhammapada', 'dhp'),
+    ('ud', 'udana', 's0503m.mul', 'udana', 'ud'),
+    ('iti', 'itivuttaka', 's0504m.mul', 'itivuttaka', 'iti'),
+    ('snp', 'suttanipata', 's0505m.mul', 'suttanipata', 'snp'),
+    ('vv', 'vimanavatthu', 's0506m.mul', 'vimanavatthu', 'vv'),
+    ('pv', 'petavatthu', 's0507m.mul', 'petavatthu', 'pv'),
+    ('thag', 'theragatha', 's0508m.mul', 'theragatha', 'thag'),
+    ('thig', 'therigatha', 's0509m.mul', 'therigatha', 'thig'),
+    ('tha-ap', 'apadana', 's0510m1.mul', 'apadana1', 'tha-ap'),  # Thera-apadāna (part 1)
+    ('thi-ap', 'apadana', 's0510m2.mul', 'apadana2', 'thi-ap'),  # Therī-apadāna (part 2), same GRETIL file
+    ('bv', 'buddhavamsa', 's0511m.mul', 'buddhavamsa', 'bv'),
+    ('cp', 'cariyapitaka', 's0512m.mul', 'cariyapitaka', 'cp'),
+    ('ja', 'jataka', 's0513m.mul', 'jataka', 'ja'),  # Jātaka vol 1 (GRETIL has jataka1-6, BJT has jataka1-6)
+    ('mnd', 'mahaniddesa', 's0515m.mul', 'mahaniddesa', 'mnd'),
+    ('cnd', 'cullaniddesa', 's0516m.mul', 'cullaniddesa', 'cnd'),
+    ('ps', 'patisambhidamagga', 's0517m.mul', 'patisambhidamagga', 'ps'),  # GRETIL/BJT have 1-2
     # Not in VRI:
-    ('ne', None, None, None),  # Netti - not in GRETIL, VRI, or BJT
-    ('pe', None, None, None),  # Peṭakopadesa - not in GRETIL, VRI, or BJT
-    ('mil', None, None, None),  # Milindapañha - not in GRETIL, VRI, or BJT
+    ('ne', None, None, None, None),  # Netti - not in GRETIL, VRI, BJT, or Thai
+    ('pe', None, None, None, None),  # Peṭakopadesa - not in GRETIL, VRI, BJT, or Thai
+    ('mil', None, None, None, None),  # Milindapañha - not in GRETIL, VRI, BJT, or Thai
 ]
 
-# Vinaya text mappings: (name, GRETIL name, VRI codes, SC name, BJT name)
+# Vinaya text mappings: (name, GRETIL name, VRI codes, SC name, BJT name, Thai name)
 # VRI CST codes: vin01m.mul = Pārājika (Suttavibhaṅga 1)
 #                vin02m1.mul = Pācittiya (Suttavibhaṅga 2)
 #                vin02m2.mul = Mahāvagga
 #                vin02m3.mul = Cūḷavagga
 #                vin02m4.mul = Parivāra
 VINAYA_TEXTS = [
-    ('suttavibhanga1', 'suttavibhanga1', ['vin01m.mul'], 'suttavibhanga1', 'suttavibhanga1'),
-    ('suttavibhanga2', 'suttavibhanga2', ['vin02m1.mul'], 'suttavibhanga2', 'suttavibhanga2'),
-    ('mahavagga', 'mahavagga', ['vin02m2.mul'], 'mahavagga', 'mahavagga'),
-    ('cullavagga', 'cullavagga', ['vin02m3.mul'], 'cullavagga', 'cullavagga'),
-    ('parivara', 'parivara', ['vin02m4.mul'], 'parivara', 'parivara'),
+    ('suttavibhanga1', 'suttavibhanga1', ['vin01m.mul'], 'suttavibhanga1', 'suttavibhanga1', 'suttavibhanga1'),
+    ('suttavibhanga2', 'suttavibhanga2', ['vin02m1.mul'], 'suttavibhanga2', 'suttavibhanga2', 'suttavibhanga2'),
+    ('mahavagga', 'mahavagga', ['vin02m2.mul'], 'mahavagga', 'mahavagga', 'mahavagga'),
+    ('cullavagga', 'cullavagga', ['vin02m3.mul'], 'cullavagga', 'cullavagga', 'cullavagga'),
+    ('parivara', 'parivara', ['vin02m4.mul'], 'parivara', 'parivara', 'parivara'),
 ]
 
-# Abhidhamma text mappings: (name, GRETIL name, VRI codes, SC name, BJT name)
+# Abhidhamma text mappings: (name, GRETIL name, VRI codes, SC name, BJT name, Thai name)
 # VRI codes: abh01m.mul = Dhammasaṅgaṇī, abh02m.mul = Vibhaṅga
 #            abh03m1 = Dhātukathā, abh03m2 = Puggalapaññatti
 #            abh03m3 = Kathāvatthu, abh03m4-6 = Yamaka, abh03m7-11 = Paṭṭhāna
 ABHIDHAMMA_TEXTS = [
-    # (name, gretil_name, vri_codes, sc_name, bjt_name)
+    # (name, gretil_name, vri_codes, sc_name, bjt_name, thai_name)
     # gretil_name: if no exact .json match, globs {name}*.json and combines
-    # sc_name/bjt_name: str for single file, list for multiple files, None if unavailable
-    ('dhammasangani', 'dhammasangani', ['abh01m.mul'], 'dhammasangani', 'dhammasangani'),
-    ('vibhanga', 'vibhanga', ['abh02m.mul'], 'vibhanga', 'vibhanga'),
-    ('dhatukatha', 'dhatukatha', ['abh03m1.mul'], 'dhatukatha', 'dhatukatha'),
-    ('puggalapannatti', 'puggalapannatti', ['abh03m2.mul'], 'puggalapannatti', 'puggalapannatti'),
-    ('kathavatthu', 'kathavatthu', ['abh03m3.mul'], 'kathavatthu', ['kathavatthu1', 'kathavatthu2']),
+    # sc_name/bjt_name/thai_name: str for single file, list for multiple files, None if unavailable
+    ('dhammasangani', 'dhammasangani', ['abh01m.mul'], 'dhammasangani', 'dhammasangani', 'dhammasangani'),
+    ('vibhanga', 'vibhanga', ['abh02m.mul'], 'vibhanga', 'vibhanga', 'vibhanga'),
+    ('dhatukatha', 'dhatukatha', ['abh03m1.mul'], 'dhatukatha', 'dhatukatha', 'dhatukatha'),
+    ('puggalapannatti', 'puggalapannatti', ['abh03m2.mul'], 'puggalapannatti', 'puggalapannatti', 'puggalapannatti'),
+    ('kathavatthu', 'kathavatthu', ['abh03m3.mul'], 'kathavatthu', ['kathavatthu1', 'kathavatthu2'], 'kathavatthu'),
     # Yamaka: combined (split points differ across witnesses — GRETIL/BJT at 7/8, SC at 5/6, VRI 3 vols)
-    ('yamaka', 'yamaka', ['abh03m4.mul', 'abh03m5.mul', 'abh03m6.mul'], 'yamaka', ['yamaka1', 'yamaka2']),
+    ('yamaka', 'yamaka', ['abh03m4.mul', 'abh03m5.mul', 'abh03m6.mul'], 'yamaka', ['yamaka1', 'yamaka2'], 'yamaka'),
     # Patthana: combined (GRETIL has 4 files: patthana1-3 + patthana_duka)
-    ('patthana', 'patthana', ['abh03m7.mul', 'abh03m8.mul', 'abh03m10.mul', 'abh03m11.mul'], 'patthana', ['patthana1', 'patthana2']),
+    ('patthana', 'patthana', ['abh03m7.mul', 'abh03m8.mul', 'abh03m10.mul', 'abh03m11.mul'], 'patthana', ['patthana1', 'patthana2'], 'patthana'),
 ]
 
 # Pre-compiled patterns
@@ -193,6 +193,17 @@ def clean_bjt_text(text: str) -> str:
     """Remove BJT-specific markers (section/sutta numbers)."""
     text = re.sub(r'^\s*\d+\.\s*$', '', text, flags=re.MULTILINE)
     text = re.sub(r'^\d+\.[ ]+\d+\.[ ]+\d+(?:\.[ ]+\d+)?\.?\s*$', '', text, flags=re.MULTILINE)
+    return text
+
+
+def clean_thai_text(text: str) -> str:
+    """Remove Thai Royal Edition-specific markers."""
+    # Strip bracketed page numbers [N]
+    text = re.sub(r'\[\d+\]', '', text)
+    # Strip editorial variant annotations (#sī., #ma., #yu., #a., etc.)
+    text = re.sub(r'#\w+\.', '', text)
+    # Strip underscore separators
+    text = text.replace('___', '')
     return text
 
 
@@ -306,8 +317,8 @@ def align_word_sequences(words1: list, words2: list) -> list:
 
 
 def align_witnesses(gretil_words: list, sc_words: list, vri_words: list,
-                    bjt_words: list = None) -> list:
-    """Perform multi-way alignment across up to 4 witnesses (GRETIL/SC/VRI/BJT)."""
+                    bjt_words: list = None, thai_words: list = None) -> list:
+    """Perform multi-way alignment across up to 5 witnesses (GRETIL/SC/VRI/BJT/Thai)."""
     gretil_sc = align_word_sequences(gretil_words, sc_words)
     gretil_vri = align_word_sequences(gretil_words, vri_words)
 
@@ -321,7 +332,9 @@ def align_witnesses(gretil_words: list, sc_words: list, vri_words: list,
                 'sc': None, 'sc_idx': None,
                 'vri': None, 'vri_idx': None,
                 'bjt': None, 'bjt_idx': None,
-                'sc_match': None, 'vri_match': None, 'bjt_match': None
+                'thai': None, 'thai_idx': None,
+                'sc_match': None, 'vri_match': None, 'bjt_match': None,
+                'thai_match': None
             }
 
     for align in gretil_sc:
@@ -349,6 +362,16 @@ def align_witnesses(gretil_words: list, sc_words: list, vri_words: list,
                 combined[idx]['bjt'] = align['word2']
                 combined[idx]['bjt_idx'] = align.get('idx2')
                 combined[idx]['bjt_match'] = align['type']
+
+    if thai_words is not None:
+        gretil_thai = align_word_sequences(gretil_words, thai_words)
+        for align in gretil_thai:
+            idx = align.get('idx1')
+            if idx is not None:
+                _ensure_entry(idx, align['word1'])
+                combined[idx]['thai'] = align['word2']
+                combined[idx]['thai_idx'] = align.get('idx2')
+                combined[idx]['thai_match'] = align['type']
 
     return [combined[i] for i in sorted(combined.keys())]
 
@@ -386,12 +409,14 @@ def words_are_related(word1: str, word2: str) -> bool:
     return similarity >= 0.5
 
 
-def classify_variant(gretil: str, sc: str, vri: str, bjt: str = None) -> dict:
-    """Classify a variant reading across up to 4 witnesses."""
+def classify_variant(gretil: str, sc: str, vri: str, bjt: str = None,
+                     thai: str = None) -> dict:
+    """Classify a variant reading across up to 5 witnesses."""
     g = gretil.lower() if gretil else None
     s = sc.lower() if sc else None
     v = vri.lower() if vri else None
     b = bjt.lower() if bjt else None
+    t = thai.lower() if thai else None
 
     if g and s and v:
         if not words_are_related(g, s) and not words_are_related(g, v):
@@ -433,10 +458,13 @@ def classify_variant(gretil: str, sc: str, vri: str, bjt: str = None) -> dict:
     s_norm = normalize_for_comparison(s) if s else None
     v_norm = normalize_for_comparison(v) if v else None
     b_norm = normalize_for_comparison(b) if b else None
+    t_norm = normalize_for_comparison(t) if t else None
 
     # Check if all available witnesses agree after normalization
     all_agree = (g_norm == s_norm == v_norm)
     if all_agree and b_norm is not None and b_norm != g_norm:
+        all_agree = False
+    if all_agree and t_norm is not None and t_norm != g_norm:
         all_agree = False
     if all_agree:
         return {
@@ -451,31 +479,82 @@ def classify_variant(gretil: str, sc: str, vri: str, bjt: str = None) -> dict:
         pts_valid = is_valid_word(g)
         sc_valid = is_valid_word(s)
 
-        # Check if BJT sides with majority (SC/VRI) or minority (PTS)
+        # Check if BJT/Thai side with majority (SC/VRI) or minority (PTS)
         bjt_with_majority = b_norm is not None and b_norm == s_norm
         bjt_with_pts = b_norm is not None and b_norm == g_norm
+        thai_with_majority = t_norm is not None and t_norm == s_norm
+        thai_with_pts = t_norm is not None and t_norm == g_norm
+
+        # Count witnesses in majority coalition
+        majority_count = 2  # SC + VRI
+        if bjt_with_majority:
+            majority_count += 1
+        if thai_with_majority:
+            majority_count += 1
 
         if not pts_valid and sc_valid:
-            conf = 0.95 if bjt_with_majority else (0.85 if bjt_with_pts else 0.9)
-            others = 'SC/VRI/BJT' if bjt_with_majority else 'SC/VRI'
-            bjt_note = f', BJT agrees with PTS' if bjt_with_pts else (
-                f', BJT has "{b}"' if b and not bjt_with_majority else '')
+            if majority_count >= 4:
+                conf = 0.98
+            elif majority_count == 3:
+                conf = 0.95
+            elif bjt_with_pts or thai_with_pts:
+                conf = 0.85
+            else:
+                conf = 0.9
+            # Build majority label
+            majority_parts = ['SC', 'VRI']
+            if bjt_with_majority:
+                majority_parts.append('BJT')
+            if thai_with_majority:
+                majority_parts.append('Thai')
+            others = '/'.join(majority_parts)
+            # Build minority notes
+            extra_notes = []
+            if bjt_with_pts:
+                extra_notes.append('BJT agrees with PTS')
+            elif b and not bjt_with_majority:
+                extra_notes.append(f'BJT has "{b}"')
+            if thai_with_pts:
+                extra_notes.append('Thai agrees with PTS')
+            elif t and not thai_with_majority:
+                extra_notes.append(f'Thai has "{t}"')
+            note_suffix = ', ' + ', '.join(extra_notes) if extra_notes else ''
             return {
                 'type': 'error',
                 'confidence': conf,
                 'preferred': s,
-                'notes': f'PTS "{g}" not in DPD, {others} "{s}" is valid{bjt_note}'
+                'notes': f'PTS "{g}" not in DPD, {others} "{s}" is valid{note_suffix}'
             }
         elif pts_valid and sc_valid:
-            conf = 0.8 if bjt_with_majority else (0.6 if bjt_with_pts else 0.7)
-            others = 'SC/VRI/BJT' if bjt_with_majority else 'SC/VRI'
-            bjt_note = f', BJT agrees with PTS' if bjt_with_pts else (
-                f', BJT has "{b}"' if b and not bjt_with_majority else '')
+            if majority_count >= 4:
+                conf = 0.9
+            elif majority_count == 3:
+                conf = 0.8
+            elif bjt_with_pts or thai_with_pts:
+                conf = 0.6
+            else:
+                conf = 0.7
+            majority_parts = ['SC', 'VRI']
+            if bjt_with_majority:
+                majority_parts.append('BJT')
+            if thai_with_majority:
+                majority_parts.append('Thai')
+            others = '/'.join(majority_parts)
+            extra_notes = []
+            if bjt_with_pts:
+                extra_notes.append('BJT agrees with PTS')
+            elif b and not bjt_with_majority:
+                extra_notes.append(f'BJT has "{b}"')
+            if thai_with_pts:
+                extra_notes.append('Thai agrees with PTS')
+            elif t and not thai_with_majority:
+                extra_notes.append(f'Thai has "{t}"')
+            note_suffix = ', ' + ', '.join(extra_notes) if extra_notes else ''
             return {
                 'type': 'variant',
                 'confidence': conf,
                 'preferred': g,
-                'notes': f'Textual variant: PTS "{g}" vs {others} "{s}"{bjt_note}'
+                'notes': f'Textual variant: PTS "{g}" vs {others} "{s}"{note_suffix}'
             }
         else:
             return {
@@ -485,41 +564,54 @@ def classify_variant(gretil: str, sc: str, vri: str, bjt: str = None) -> dict:
                 'notes': f'Neither reading validated: PTS "{g}" vs SC/VRI "{s}"'
             }
 
-    # All three (G/S/V) disagree -- check if BJT creates a majority
+    # All three (G/S/V) disagree -- check if BJT/Thai create a majority
     if g_norm != s_norm and g_norm != v_norm and s_norm != v_norm:
         g_valid = is_valid_word(g)
         s_valid = is_valid_word(s) if s else False
         v_valid = is_valid_word(v) if v else False
 
-        # BJT may create a 2-witness majority
-        if b_norm is not None:
-            if b_norm == g_norm:
-                # PTS+BJT vs SC vs VRI
-                conf = 0.6 if g_valid else 0.4
-                return {
-                    'type': 'uncertain',
-                    'confidence': conf,
-                    'preferred': g,
-                    'notes': f'PTS/BJT "{g}" vs SC "{s}" vs VRI "{v}"'
-                }
-            elif b_norm == s_norm:
-                # SC+BJT vs PTS vs VRI
-                conf = 0.6 if s_valid else 0.4
-                return {
-                    'type': 'uncertain',
-                    'confidence': conf,
-                    'preferred': s,
-                    'notes': f'SC/BJT "{s}" vs PTS "{g}" vs VRI "{v}"'
-                }
-            elif b_norm == v_norm:
-                # VRI+BJT vs PTS vs SC
-                conf = 0.6 if v_valid else 0.4
-                return {
-                    'type': 'uncertain',
-                    'confidence': conf,
-                    'preferred': v,
-                    'notes': f'VRI/BJT "{v}" vs PTS "{g}" vs SC "{s}"'
-                }
+        # Collect all witness norms for coalition detection
+        witness_norms = {'PTS': g_norm}
+        if s_norm:
+            witness_norms['SC'] = s_norm
+        if v_norm:
+            witness_norms['VRI'] = v_norm
+        if b_norm:
+            witness_norms['BJT'] = b_norm
+        if t_norm:
+            witness_norms['Thai'] = t_norm
+
+        # Find largest coalition
+        from collections import Counter as _Counter
+        norm_counts = _Counter(witness_norms.values())
+        most_common_norm, most_common_count = norm_counts.most_common(1)[0]
+
+        if most_common_count >= 3:
+            # 3+ witnesses agree — strong majority
+            coalition = [k for k, vn in witness_norms.items() if vn == most_common_norm]
+            # Find the actual reading text for the majority norm
+            norm_to_reading = {'PTS': g, 'SC': s, 'VRI': v, 'BJT': b, 'Thai': t}
+            preferred_reading = next((norm_to_reading[k] for k in coalition if norm_to_reading.get(k)), g)
+            others = [f'{k} "{witness_norms[k]}"' for k in witness_norms if witness_norms[k] != most_common_norm]
+            return {
+                'type': 'uncertain',
+                'confidence': 0.7,
+                'preferred': preferred_reading,
+                'notes': f'{"/".join(coalition)} "{preferred_reading}" vs {", ".join(others)}'
+            }
+        elif most_common_count == 2:
+            # 2 witnesses agree
+            coalition = [k for k, vn in witness_norms.items() if vn == most_common_norm]
+            norm_to_reading = {'PTS': g, 'SC': s, 'VRI': v, 'BJT': b, 'Thai': t}
+            preferred_reading = next((norm_to_reading[k] for k in coalition if norm_to_reading.get(k)), g)
+            conf = 0.6 if (preferred_reading and is_valid_word(preferred_reading)) else 0.4
+            others = [f'{k} "{witness_norms[k]}"' for k in witness_norms if witness_norms[k] != most_common_norm]
+            return {
+                'type': 'uncertain',
+                'confidence': conf,
+                'preferred': preferred_reading,
+                'notes': f'{"/".join(coalition)} "{preferred_reading}" vs {", ".join(others)}'
+            }
 
         valid_count = sum([g_valid, s_valid, v_valid])
 
@@ -537,18 +629,30 @@ def classify_variant(gretil: str, sc: str, vri: str, bjt: str = None) -> dict:
                 'notes': 'Multi-way disagreement, one valid reading'
             }
         else:
-            bjt_note = f', BJT "{b}"' if b else ''
+            extra = []
+            if b:
+                extra.append(f'BJT "{b}"')
+            if t:
+                extra.append(f'Thai "{t}"')
+            extra_note = ', ' + ', '.join(extra) if extra else ''
             return {
                 'type': 'uncertain',
                 'confidence': 0.3,
                 'preferred': g,
-                'notes': f'Multi-way disagreement: PTS "{g}", SC "{s}", VRI "{v}"{bjt_note}'
+                'notes': f'Multi-way disagreement: PTS "{g}", SC "{s}", VRI "{v}"{extra_note}'
             }
 
     if g_norm == s_norm and g_norm != v_norm:
         bjt_confirms = b_norm is not None and b_norm == g_norm
-        conf = 0.7 if bjt_confirms else 0.6
-        majority = 'PTS/SC/BJT' if bjt_confirms else 'PTS/SC'
+        thai_confirms = t_norm is not None and t_norm == g_norm
+        confirm_count = 2 + int(bjt_confirms) + int(thai_confirms)
+        conf = min(0.9, 0.5 + confirm_count * 0.1)
+        majority_parts = ['PTS', 'SC']
+        if bjt_confirms:
+            majority_parts.append('BJT')
+        if thai_confirms:
+            majority_parts.append('Thai')
+        majority = '/'.join(majority_parts)
         return {
             'type': 'vri_variant',
             'confidence': conf,
@@ -558,8 +662,15 @@ def classify_variant(gretil: str, sc: str, vri: str, bjt: str = None) -> dict:
 
     if g_norm == v_norm and g_norm != s_norm:
         bjt_confirms = b_norm is not None and b_norm == g_norm
-        conf = 0.7 if bjt_confirms else 0.6
-        majority = 'PTS/VRI/BJT' if bjt_confirms else 'PTS/VRI'
+        thai_confirms = t_norm is not None and t_norm == g_norm
+        confirm_count = 2 + int(bjt_confirms) + int(thai_confirms)
+        conf = min(0.9, 0.5 + confirm_count * 0.1)
+        majority_parts = ['PTS', 'VRI']
+        if bjt_confirms:
+            majority_parts.append('BJT')
+        if thai_confirms:
+            majority_parts.append('Thai')
+        majority = '/'.join(majority_parts)
         return {
             'type': 'sc_variant',
             'confidence': conf,
@@ -621,6 +732,7 @@ def load_sutta_data_an(sutta_id: str) -> dict:
     vri_dir = DATA_DIR / "vri-parsed/an"
     sc_dir = DATA_DIR / "canonical/an"
     bjt_dir = DATA_DIR / "bjt-parsed/an"
+    thai_dir = DATA_DIR / "thai-parsed/an"
 
     # GRETIL - file named like an1_1.json
     gretil_file = gretil_dir / f"an{nipata}_{sutta_num}.json"
@@ -647,6 +759,16 @@ def load_sutta_data_an(sutta_id: str) -> dict:
     bjt_data = load_bjt_via_mapping('an', sutta_id)
     if bjt_data:
         data['bjt'] = bjt_data
+
+    # Thai - file named like an1_1.json
+    thai_file = thai_dir / f"an{nipata}_{sutta_num}.json"
+    if thai_file.exists():
+        thai = json.loads(thai_file.read_text())
+        raw_text = thai.get('text', '')
+        data['thai'] = {
+            'text': clean_thai_text(raw_text),
+            'raw_text': raw_text,
+        }
 
     # SC - file named like an{nipata}.json, suttas nested within
     # SC AN uses range IDs like "an1.1-10" while GRETIL uses individual IDs
@@ -722,10 +844,12 @@ def align_sutta_an(sutta_id: str) -> dict:
     gretil_words = tokenize(data['gretil']['text'])
     sc_words = tokenize(data['sc']['text'])
     bjt_words = tokenize(data['bjt']['text']) if 'bjt' in data else None
+    thai_words = tokenize(data['thai']['text']) if 'thai' in data else None
 
     if nipata <= 4 and 'vri' in data:
         vri_words = tokenize(data['vri']['text'])
-        alignment = align_witnesses(gretil_words, sc_words, vri_words, bjt_words=bjt_words)
+        alignment = align_witnesses(gretil_words, sc_words, vri_words,
+                                    bjt_words=bjt_words, thai_words=thai_words)
     else:
         # Two-way alignment only
         alignment = align_word_sequences(gretil_words, sc_words)
@@ -742,7 +866,10 @@ def align_sutta_an(sutta_id: str) -> dict:
                 'vri_match': None,
                 'bjt': None,
                 'bjt_idx': None,
-                'bjt_match': None
+                'bjt_match': None,
+                'thai': None,
+                'thai_idx': None,
+                'thai_match': None
             }
             for a in alignment
         ]
@@ -757,6 +884,17 @@ def align_sutta_an(sutta_id: str) -> dict:
                     pos['bjt'] = bm.get('word2')
                     pos['bjt_idx'] = bm.get('idx2')
                     pos['bjt_match'] = bm.get('type')
+        # If Thai available but no VRI, add Thai via pairwise alignment
+        if thai_words:
+            gretil_thai = align_word_sequences(gretil_words, thai_words)
+            thai_map = {a['idx1']: a for a in gretil_thai if a.get('idx1') is not None}
+            for pos in alignment:
+                gi = pos.get('gretil_idx')
+                if gi is not None and gi in thai_map:
+                    tm = thai_map[gi]
+                    pos['thai'] = tm.get('word2')
+                    pos['thai_idx'] = tm.get('idx2')
+                    pos['thai_match'] = tm.get('type')
 
     return {
         'sutta': sutta_id,
@@ -764,11 +902,13 @@ def align_sutta_an(sutta_id: str) -> dict:
             'gretil': len(gretil_words),
             'sc': len(sc_words),
             'vri': len(tokenize(data['vri']['text'])) if 'vri' in data else 0,
-            'bjt': len(bjt_words) if bjt_words else 0
+            'bjt': len(bjt_words) if bjt_words else 0,
+            'thai': len(thai_words) if thai_words else 0
         },
         'alignment': alignment,
         'has_vri': 'vri' in data,
-        'has_bjt': 'bjt' in data
+        'has_bjt': 'bjt' in data,
+        'has_thai': 'thai' in data
     }
 
 
@@ -781,6 +921,7 @@ def collate_sutta_an(sutta_id: str, max_variants: int = 1000) -> dict:
     alignment = alignment_data.get('alignment', [])
     has_vri = alignment_data.get('has_vri', False)
     has_bjt = alignment_data.get('has_bjt', False)
+    has_thai = alignment_data.get('has_thai', False)
 
     collation = {
         'sutta': sutta_id,
@@ -788,6 +929,7 @@ def collate_sutta_an(sutta_id: str, max_variants: int = 1000) -> dict:
         'word_counts': alignment_data.get('word_counts'),
         'has_vri': has_vri,
         'has_bjt': has_bjt,
+        'has_thai': has_thai,
         'stats': {
             'total_positions': len(alignment),
             'orthographic': 0,
@@ -829,6 +971,8 @@ def main_an(output_dir: Path):
     without_vri = 0
     with_bjt = 0
     without_bjt = 0
+    with_thai = 0
+    without_thai = 0
 
     for sutta_id in sutta_ids:
         processed += 1
@@ -851,6 +995,10 @@ def main_an(output_dir: Path):
             with_bjt += 1
         else:
             without_bjt += 1
+        if collation.get('has_thai'):
+            with_thai += 1
+        else:
+            without_thai += 1
 
         stats = collation['stats']
         total = stats['total_positions']
@@ -862,6 +1010,8 @@ def main_an(output_dir: Path):
                 markers += " [+VRI]"
             if collation.get('has_bjt'):
                 markers += " [+BJT]"
+            if collation.get('has_thai'):
+                markers += " [+Thai]"
             print(f"Match: {match_pct:.1f}%, Errors: {stats['errors']}, Variants: {stats['variants']}{markers}")
 
         # Save collation - convert an1.1 to an1_1 for filename
@@ -874,6 +1024,7 @@ def main_an(output_dir: Path):
             'sutta': sutta_id,
             'has_vri': collation.get('has_vri', False),
             'has_bjt': collation.get('has_bjt', False),
+            'has_thai': collation.get('has_thai', False),
             'stats': stats
         })
 
@@ -891,6 +1042,8 @@ def main_an(output_dir: Path):
     print(f"    Without VRI (nipātas 5-11): {without_vri}")
     print(f"    With BJT: {with_bjt}")
     print(f"    Without BJT: {without_bjt}")
+    print(f"    With Thai: {with_thai}")
+    print(f"    Without Thai: {without_thai}")
     if skipped:
         print(f"  Skipped (missing data): {len(skipped)} suttas")
     print(f"  Total errors found: {total_errors}")
@@ -904,7 +1057,8 @@ def main_an(output_dir: Path):
             'nikaya': 'AN',
             'editions': {
                 'primary': 'PTS (GRETIL)',
-                'witnesses': ['SC (Mahāsaṅgīti)', 'VRI (CST, nipātas 1-4 only)', 'BJT (Buddha Jayanti)']
+                'witnesses': ['SC (Mahāsaṅgīti)', 'VRI (CST, nipātas 1-4 only)',
+                              'BJT (Buddha Jayanti)', 'Thai (Syām Raṭṭha)']
             },
             'dpd_words': len(dpd),
             'suttas_processed': len(results),
@@ -912,6 +1066,8 @@ def main_an(output_dir: Path):
             'suttas_without_vri': without_vri,
             'suttas_with_bjt': with_bjt,
             'suttas_without_bjt': without_bjt,
+            'suttas_with_thai': with_thai,
+            'suttas_without_thai': without_thai,
             'suttas_skipped': len(skipped),
             'skipped_ids': skipped[:100],
             'suttas': results,
@@ -925,7 +1081,8 @@ def main_an(output_dir: Path):
     print(f"\nOutput: {output_dir}")
 
 
-def load_text_data_kn(sc_abbrev: str, gretil_name: str, vri_code: str, bjt_name: str = None) -> dict:
+def load_text_data_kn(sc_abbrev: str, gretil_name: str, vri_code: str,
+                      bjt_name: str = None, thai_name: str = None) -> dict:
     """Load KN text data from all available sources.
 
     Args:
@@ -933,6 +1090,7 @@ def load_text_data_kn(sc_abbrev: str, gretil_name: str, vri_code: str, bjt_name:
         gretil_name: GRETIL name like "dhammapada", "suttanipata"
         vri_code: VRI CST code like "s0502m.mul" or None if not available
         bjt_name: BJT file name like "dhammapada" or None if not available
+        thai_name: Thai file name like "dhp" or None if not available
     """
     data = {}
 
@@ -940,6 +1098,7 @@ def load_text_data_kn(sc_abbrev: str, gretil_name: str, vri_code: str, bjt_name:
     vri_dir = DATA_DIR / "vri-parsed/kn"
     sc_dir = DATA_DIR / "canonical/kn"
     bjt_dir = DATA_DIR / "bjt-parsed/kn"
+    thai_dir = DATA_DIR / "thai-parsed/kn"
 
     # GRETIL
     if gretil_name:
@@ -1037,18 +1196,32 @@ def load_text_data_kn(sc_abbrev: str, gretil_name: str, vri_code: str, bjt_name:
                     'files': [f.name for f in sorted(bjt_files)]
                 }
 
+    # Thai
+    if thai_name:
+        thai_file = thai_dir / f"{thai_name}.json"
+        if thai_file.exists():
+            thai = json.loads(thai_file.read_text())
+            raw_text = thai.get('text', '')
+            data['thai'] = {
+                'text': clean_thai_text(raw_text),
+                'raw_text': raw_text,
+            }
+
     return data
 
 
 def collate_text_kn(sc_abbrev: str, gretil_name: str, vri_code: str,
-                    bjt_name: str = None, max_variants: int = 1000) -> dict:
+                    bjt_name: str = None, thai_name: str = None,
+                    max_variants: int = 1000) -> dict:
     """Collate a single KN text across editions."""
-    data = load_text_data_kn(sc_abbrev, gretil_name, vri_code, bjt_name=bjt_name)
+    data = load_text_data_kn(sc_abbrev, gretil_name, vri_code, bjt_name=bjt_name,
+                             thai_name=thai_name)
 
     # Determine required sources
     has_vri = vri_code is not None and 'vri' in data
     has_gretil = gretil_name is not None and 'gretil' in data
     has_bjt = bjt_name is not None and 'bjt' in data
+    has_thai = thai_name is not None and 'thai' in data
 
     if not has_gretil:
         return {'error': 'Missing GRETIL source'}
@@ -1058,10 +1231,12 @@ def collate_text_kn(sc_abbrev: str, gretil_name: str, vri_code: str,
     gretil_words = tokenize(data['gretil']['text'])
     sc_words = tokenize(data['sc']['text'])
     bjt_words = tokenize(data['bjt']['text']) if has_bjt else None
+    thai_words = tokenize(data['thai']['text']) if has_thai else None
 
     if has_vri:
         vri_words = tokenize(data['vri']['text'])
-        alignment = align_witnesses(gretil_words, sc_words, vri_words, bjt_words=bjt_words)
+        alignment = align_witnesses(gretil_words, sc_words, vri_words,
+                                    bjt_words=bjt_words, thai_words=thai_words)
     else:
         # Two-way alignment only
         alignment = align_word_sequences(gretil_words, sc_words)
@@ -1077,7 +1252,10 @@ def collate_text_kn(sc_abbrev: str, gretil_name: str, vri_code: str,
                 'vri_match': None,
                 'bjt': None,
                 'bjt_idx': None,
-                'bjt_match': None
+                'bjt_match': None,
+                'thai': None,
+                'thai_idx': None,
+                'thai_match': None
             }
             for a in alignment
         ]
@@ -1092,6 +1270,17 @@ def collate_text_kn(sc_abbrev: str, gretil_name: str, vri_code: str,
                     pos['bjt'] = bm.get('word2')
                     pos['bjt_idx'] = bm.get('idx2')
                     pos['bjt_match'] = bm.get('type')
+        # If Thai available but no VRI, add Thai via pairwise alignment
+        if thai_words:
+            gretil_thai = align_word_sequences(gretil_words, thai_words)
+            thai_map = {a['idx1']: a for a in gretil_thai if a.get('idx1') is not None}
+            for pos in alignment:
+                gi = pos.get('gretil_idx')
+                if gi is not None and gi in thai_map:
+                    tm = thai_map[gi]
+                    pos['thai'] = tm.get('word2')
+                    pos['thai_idx'] = tm.get('idx2')
+                    pos['thai_match'] = tm.get('type')
 
     collation = {
         'text': sc_abbrev,
@@ -1100,10 +1289,12 @@ def collate_text_kn(sc_abbrev: str, gretil_name: str, vri_code: str,
             'gretil': len(gretil_words),
             'sc': len(sc_words),
             'vri': len(tokenize(data['vri']['text'])) if has_vri else 0,
-            'bjt': len(bjt_words) if bjt_words else 0
+            'bjt': len(bjt_words) if bjt_words else 0,
+            'thai': len(thai_words) if thai_words else 0
         },
         'has_vri': has_vri,
         'has_bjt': has_bjt,
+        'has_thai': has_thai,
         'stats': {
             'total_positions': len(alignment),
             'orthographic': 0,
@@ -1124,7 +1315,7 @@ def collate_text_kn(sc_abbrev: str, gretil_name: str, vri_code: str,
 def main_kn(output_dir: Path):
     """Main function for collating KN (Khuddaka Nikāya)."""
     # Filter to texts with at least GRETIL source
-    available_texts = [(sc, gr, vri, bjt) for sc, gr, vri, bjt in KN_TEXTS if gr is not None]
+    available_texts = [(sc, gr, vri, bjt, thai) for sc, gr, vri, bjt, thai in KN_TEXTS if gr is not None]
     total_texts = len(available_texts)
 
     print("=" * 70)
@@ -1144,11 +1335,14 @@ def main_kn(output_dir: Path):
     without_vri = 0
     with_bjt = 0
     without_bjt = 0
+    with_thai = 0
+    without_thai = 0
 
-    for sc_abbrev, gretil_name, vri_code, bjt_name in available_texts:
+    for sc_abbrev, gretil_name, vri_code, bjt_name, thai_name in available_texts:
         print(f"Collating {sc_abbrev.upper()} ({gretil_name})...", end=" ")
 
-        collation = collate_text_kn(sc_abbrev, gretil_name, vri_code, bjt_name=bjt_name)
+        collation = collate_text_kn(sc_abbrev, gretil_name, vri_code,
+                                    bjt_name=bjt_name, thai_name=thai_name)
 
         if 'error' in collation:
             print(f"SKIPPED: {collation['error']}")
@@ -1163,6 +1357,10 @@ def main_kn(output_dir: Path):
             with_bjt += 1
         else:
             without_bjt += 1
+        if collation.get('has_thai'):
+            with_thai += 1
+        else:
+            without_thai += 1
 
         stats = collation['stats']
         total = stats['total_positions']
@@ -1173,6 +1371,8 @@ def main_kn(output_dir: Path):
             markers += " [+VRI]"
         if collation.get('has_bjt'):
             markers += " [+BJT]"
+        if collation.get('has_thai'):
+            markers += " [+Thai]"
         print(f"Match: {match_pct:.1f}%, Errors: {stats['errors']}, Variants: {stats['variants']}{markers}")
 
         # Save collation
@@ -1185,6 +1385,7 @@ def main_kn(output_dir: Path):
             'gretil_name': gretil_name,
             'has_vri': collation.get('has_vri', False),
             'has_bjt': collation.get('has_bjt', False),
+            'has_thai': collation.get('has_thai', False),
             'stats': stats
         })
 
@@ -1202,6 +1403,8 @@ def main_kn(output_dir: Path):
     print(f"    Without VRI: {without_vri}")
     print(f"    With BJT: {with_bjt}")
     print(f"    Without BJT: {without_bjt}")
+    print(f"    With Thai: {with_thai}")
+    print(f"    Without Thai: {without_thai}")
     if skipped:
         print(f"  Skipped (missing data): {skipped}")
     print(f"  Total errors found: {total_errors}")
@@ -1215,7 +1418,8 @@ def main_kn(output_dir: Path):
             'nikaya': 'KN',
             'editions': {
                 'primary': 'PTS (GRETIL)',
-                'witnesses': ['SC (Mahāsaṅgīti)', 'VRI (CST)', 'BJT (Buddha Jayanti)']
+                'witnesses': ['SC (Mahāsaṅgīti)', 'VRI (CST)',
+                              'BJT (Buddha Jayanti)', 'Thai (Syām Raṭṭha)']
             },
             'dpd_words': len(dpd),
             'texts_processed': len(results),
@@ -1223,6 +1427,8 @@ def main_kn(output_dir: Path):
             'texts_without_vri': without_vri,
             'texts_with_bjt': with_bjt,
             'texts_without_bjt': without_bjt,
+            'texts_with_thai': with_thai,
+            'texts_without_thai': without_thai,
             'texts_skipped': skipped,
             'texts': results,
             'totals': {
@@ -1236,7 +1442,8 @@ def main_kn(output_dir: Path):
 
 
 def load_text_data_vinaya(name: str, gretil_name: str, vri_codes: list,
-                         sc_name: str = None, bjt_name: str = None) -> dict:
+                         sc_name: str = None, bjt_name: str = None,
+                         thai_name: str = None) -> dict:
     """Load Vinaya text data from all available sources."""
     data = {}
 
@@ -1244,6 +1451,7 @@ def load_text_data_vinaya(name: str, gretil_name: str, vri_codes: list,
     vri_dir = DATA_DIR / "vri-parsed/vinaya"
     sc_dir = DATA_DIR / "sc-parsed/vinaya"
     bjt_dir = DATA_DIR / "bjt-parsed/vinaya"
+    thai_dir = DATA_DIR / "thai-parsed/vinaya"
 
     # GRETIL
     if gretil_name:
@@ -1298,15 +1506,27 @@ def load_text_data_vinaya(name: str, gretil_name: str, vri_codes: list,
                 'raw_text': raw_text,
             }
 
+    # Thai
+    if thai_name:
+        thai_file = thai_dir / f"{thai_name}.json"
+        if thai_file.exists():
+            thai = json.loads(thai_file.read_text())
+            raw_text = thai.get('text', '')
+            data['thai'] = {
+                'text': clean_thai_text(raw_text),
+                'raw_text': raw_text,
+            }
+
     return data
 
 
 def collate_text_vinaya(name: str, gretil_name: str, vri_codes: list,
                         sc_name: str = None, bjt_name: str = None,
+                        thai_name: str = None,
                         max_variants: int = 1000) -> dict:
-    """Collate a Vinaya text across all available witnesses (up to 4)."""
+    """Collate a Vinaya text across all available witnesses (up to 5)."""
     data = load_text_data_vinaya(name, gretil_name, vri_codes, sc_name,
-                                 bjt_name)
+                                 bjt_name, thai_name)
 
     if 'gretil' not in data:
         return {'error': 'Missing GRETIL source'}
@@ -1314,18 +1534,20 @@ def collate_text_vinaya(name: str, gretil_name: str, vri_codes: list,
     has_vri = bool(vri_codes) and 'vri' in data
     has_sc = 'sc' in data
     has_bjt = 'bjt' in data
+    has_thai = 'thai' in data
 
     gretil_words = tokenize(data['gretil']['text'])
     sc_words = tokenize(data['sc']['text']) if has_sc else None
     vri_words = tokenize(data['vri']['text']) if has_vri else None
     bjt_words = tokenize(data['bjt']['text']) if has_bjt else None
+    thai_words = tokenize(data['thai']['text']) if has_thai else None
 
     # Use full multi-way alignment when SC is available
     if has_sc and has_vri:
         alignment = align_witnesses(gretil_words, sc_words, vri_words,
-                                    bjt_words=bjt_words)
+                                    bjt_words=bjt_words, thai_words=thai_words)
     elif has_vri:
-        # Fallback: GRETIL-VRI pairwise, add BJT if available
+        # Fallback: GRETIL-VRI pairwise, add BJT/Thai if available
         raw_align = align_word_sequences(gretil_words, vri_words)
         alignment = [
             {
@@ -1335,8 +1557,9 @@ def collate_text_vinaya(name: str, gretil_name: str, vri_codes: list,
                 'vri_idx': a.get('idx2'),
                 'sc': None, 'sc_idx': None,
                 'bjt': None, 'bjt_idx': None,
+                'thai': None, 'thai_idx': None,
                 'vri_match': a.get('type'),
-                'sc_match': None, 'bjt_match': None
+                'sc_match': None, 'bjt_match': None, 'thai_match': None
             }
             for a in raw_align
         ]
@@ -1354,6 +1577,20 @@ def collate_text_vinaya(name: str, gretil_name: str, vri_codes: list,
                     pos['bjt'] = bjt_map[idx]['word2']
                     pos['bjt_idx'] = bjt_map[idx].get('idx2')
                     pos['bjt_match'] = bjt_map[idx]['type']
+        # Add Thai via pairwise alignment if available
+        if thai_words:
+            thai_align = align_word_sequences(gretil_words, thai_words)
+            thai_map = {}
+            for a in thai_align:
+                idx = a.get('idx1')
+                if idx is not None:
+                    thai_map[idx] = a
+            for pos in alignment:
+                idx = pos.get('gretil_idx')
+                if idx in thai_map:
+                    pos['thai'] = thai_map[idx]['word2']
+                    pos['thai_idx'] = thai_map[idx].get('idx2')
+                    pos['thai_match'] = thai_map[idx]['type']
     else:
         return {'error': 'Missing VRI source'}
 
@@ -1365,10 +1602,12 @@ def collate_text_vinaya(name: str, gretil_name: str, vri_codes: list,
             'vri': len(vri_words) if vri_words else 0,
             'sc': len(sc_words) if sc_words else 0,
             'bjt': len(bjt_words) if bjt_words else 0,
+            'thai': len(thai_words) if thai_words else 0,
         },
         'has_vri': has_vri,
         'has_sc': has_sc,
         'has_bjt': has_bjt,
+        'has_thai': has_thai,
         'stats': {
             'total_positions': len(alignment),
             'orthographic': 0,
@@ -1388,14 +1627,14 @@ def collate_text_vinaya(name: str, gretil_name: str, vri_codes: list,
 
 def main_vinaya(output_dir: Path):
     """Main function for collating Vinaya Piṭaka."""
-    available_texts = [(n, gr, vri, sc, bjt)
-                       for n, gr, vri, sc, bjt in VINAYA_TEXTS
+    available_texts = [(n, gr, vri, sc, bjt, thai)
+                       for n, gr, vri, sc, bjt, thai in VINAYA_TEXTS
                        if gr is not None]
     total_texts = len(available_texts)
 
     print("=" * 70)
     print(f"Collating Variants: Vinaya ({total_texts} texts)")
-    print("Witnesses: GRETIL (PTS), VRI (CST), SC (Mahāsaṅgīti), BJT")
+    print("Witnesses: GRETIL (PTS), VRI (CST), SC (Mahāsaṅgīti), BJT, Thai")
     print("=" * 70)
     print()
 
@@ -1409,12 +1648,14 @@ def main_vinaya(output_dir: Path):
     skipped = []
     with_vri = 0
     without_vri = 0
+    with_thai = 0
+    without_thai = 0
 
-    for name, gretil_name, vri_codes, sc_name, bjt_name in available_texts:
+    for name, gretil_name, vri_codes, sc_name, bjt_name, thai_name in available_texts:
         print(f"Collating {name.upper()} ({gretil_name})...", end=" ")
 
         collation = collate_text_vinaya(name, gretil_name, vri_codes,
-                                         sc_name, bjt_name)
+                                         sc_name, bjt_name, thai_name)
 
         if 'error' in collation:
             print(f"SKIPPED: {collation['error']}")
@@ -1425,12 +1666,19 @@ def main_vinaya(output_dir: Path):
             with_vri += 1
         else:
             without_vri += 1
+        if collation.get('has_thai'):
+            with_thai += 1
+        else:
+            without_thai += 1
 
         stats = collation['stats']
         total = stats['total_positions']
         match_pct = stats['match'] / total * 100 if total > 0 else 0
 
-        print(f"Match: {match_pct:.1f}%, Errors: {stats['errors']}, Variants: {stats['variants']}")
+        markers = ""
+        if collation.get('has_thai'):
+            markers += " [+Thai]"
+        print(f"Match: {match_pct:.1f}%, Errors: {stats['errors']}, Variants: {stats['variants']}{markers}")
 
         # Save collation
         output_file = output_dir / f"{name}_collation.json"
@@ -1441,6 +1689,7 @@ def main_vinaya(output_dir: Path):
             'text': name,
             'gretil_name': gretil_name,
             'has_vri': collation.get('has_vri', False),
+            'has_thai': collation.get('has_thai', False),
             'stats': stats
         })
 
@@ -1455,6 +1704,7 @@ def main_vinaya(output_dir: Path):
 
     print(f"  Texts processed: {len(results)}/{total_texts}")
     print(f"    With VRI: {with_vri}")
+    print(f"    With Thai: {with_thai}")
     if skipped:
         print(f"  Skipped (missing VRI): {skipped}")
     print(f"  Total errors found: {total_errors}")
@@ -1468,11 +1718,13 @@ def main_vinaya(output_dir: Path):
             'pitaka': 'Vinaya',
             'editions': {
                 'primary': 'PTS (GRETIL)',
-                'witnesses': ['VRI (CST)', 'SC (Mahāsaṅgīti)', 'BJT'],
+                'witnesses': ['VRI (CST)', 'SC (Mahāsaṅgīti)', 'BJT',
+                              'Thai (Syām Raṭṭha)'],
             },
             'dpd_words': len(dpd),
             'texts_processed': len(results),
             'texts_with_vri': with_vri,
+            'texts_with_thai': with_thai,
             'texts_skipped': skipped,
             'texts': results,
             'totals': {
@@ -1486,7 +1738,8 @@ def main_vinaya(output_dir: Path):
 
 
 def load_text_data_abhidhamma(name: str, gretil_name: str, vri_codes: list,
-                              sc_name: str = None, bjt_name=None) -> dict:
+                              sc_name: str = None, bjt_name=None,
+                              thai_name=None) -> dict:
     """Load Abhidhamma text data from all available sources."""
     data = {}
 
@@ -1494,6 +1747,7 @@ def load_text_data_abhidhamma(name: str, gretil_name: str, vri_codes: list,
     vri_dir = DATA_DIR / "vri-parsed/abhidhamma"
     sc_dir = DATA_DIR / "sc-parsed/abhidhamma"
     bjt_dir = DATA_DIR / "bjt-parsed/abhidhamma"
+    thai_dir = DATA_DIR / "thai-parsed/abhidhamma"
 
     # GRETIL - handle multi-file texts (yamaka1-2, patthana1-3)
     if gretil_name:
@@ -1582,15 +1836,27 @@ def load_text_data_abhidhamma(name: str, gretil_name: str, vri_codes: list,
                 'raw_text': raw_text,
             }
 
+    # Thai
+    if thai_name:
+        thai_file = thai_dir / f"{thai_name}.json"
+        if thai_file.exists():
+            thai = json.loads(thai_file.read_text())
+            raw_text = thai.get('text', '')
+            data['thai'] = {
+                'text': clean_thai_text(raw_text),
+                'raw_text': raw_text,
+            }
+
     return data
 
 
 def collate_text_abhidhamma(name: str, gretil_name: str, vri_codes: list,
                             sc_name: str = None, bjt_name=None,
+                            thai_name=None,
                             max_variants: int = 1000) -> dict:
-    """Collate an Abhidhamma text across all available witnesses (up to 4)."""
+    """Collate an Abhidhamma text across all available witnesses (up to 5)."""
     data = load_text_data_abhidhamma(name, gretil_name, vri_codes, sc_name,
-                                      bjt_name)
+                                      bjt_name, thai_name)
 
     if 'gretil' not in data:
         return {'error': 'Missing GRETIL source'}
@@ -1598,18 +1864,20 @@ def collate_text_abhidhamma(name: str, gretil_name: str, vri_codes: list,
     has_vri = bool(vri_codes) and 'vri' in data
     has_sc = 'sc' in data
     has_bjt = 'bjt' in data
+    has_thai = 'thai' in data
 
     gretil_words = tokenize(data['gretil']['text'])
     sc_words = tokenize(data['sc']['text']) if has_sc else None
     vri_words = tokenize(data['vri']['text']) if has_vri else None
     bjt_words = tokenize(data['bjt']['text']) if has_bjt else None
+    thai_words = tokenize(data['thai']['text']) if has_thai else None
 
     # Use full multi-way alignment when SC is available
     if has_sc and has_vri:
         alignment = align_witnesses(gretil_words, sc_words, vri_words,
-                                    bjt_words=bjt_words)
+                                    bjt_words=bjt_words, thai_words=thai_words)
     elif has_vri:
-        # Fallback: GRETIL-VRI pairwise, add BJT if available
+        # Fallback: GRETIL-VRI pairwise, add BJT/Thai if available
         raw_align = align_word_sequences(gretil_words, vri_words)
         alignment = [
             {
@@ -1619,8 +1887,9 @@ def collate_text_abhidhamma(name: str, gretil_name: str, vri_codes: list,
                 'vri_idx': a.get('idx2'),
                 'sc': None, 'sc_idx': None,
                 'bjt': None, 'bjt_idx': None,
+                'thai': None, 'thai_idx': None,
                 'vri_match': a.get('type'),
-                'sc_match': None, 'bjt_match': None
+                'sc_match': None, 'bjt_match': None, 'thai_match': None
             }
             for a in raw_align
         ]
@@ -1637,6 +1906,19 @@ def collate_text_abhidhamma(name: str, gretil_name: str, vri_codes: list,
                     pos['bjt'] = bjt_map[idx]['word2']
                     pos['bjt_idx'] = bjt_map[idx].get('idx2')
                     pos['bjt_match'] = bjt_map[idx]['type']
+        if thai_words:
+            thai_align = align_word_sequences(gretil_words, thai_words)
+            thai_map = {}
+            for a in thai_align:
+                idx = a.get('idx1')
+                if idx is not None:
+                    thai_map[idx] = a
+            for pos in alignment:
+                idx = pos.get('gretil_idx')
+                if idx in thai_map:
+                    pos['thai'] = thai_map[idx]['word2']
+                    pos['thai_idx'] = thai_map[idx].get('idx2')
+                    pos['thai_match'] = thai_map[idx]['type']
     else:
         return {'error': 'Missing VRI source'}
 
@@ -1648,10 +1930,12 @@ def collate_text_abhidhamma(name: str, gretil_name: str, vri_codes: list,
             'vri': len(vri_words) if vri_words else 0,
             'sc': len(sc_words) if sc_words else 0,
             'bjt': len(bjt_words) if bjt_words else 0,
+            'thai': len(thai_words) if thai_words else 0,
         },
         'has_vri': has_vri,
         'has_sc': has_sc,
         'has_bjt': has_bjt,
+        'has_thai': has_thai,
         'stats': {
             'total_positions': len(alignment),
             'orthographic': 0,
@@ -1671,14 +1955,14 @@ def collate_text_abhidhamma(name: str, gretil_name: str, vri_codes: list,
 
 def main_abhidhamma(output_dir: Path):
     """Main function for collating Abhidhamma Piṭaka."""
-    available_texts = [(n, gr, vri, sc, bjt)
-                       for n, gr, vri, sc, bjt in ABHIDHAMMA_TEXTS
+    available_texts = [(n, gr, vri, sc, bjt, thai)
+                       for n, gr, vri, sc, bjt, thai in ABHIDHAMMA_TEXTS
                        if gr is not None]
     total_texts = len(available_texts)
 
     print("=" * 70)
     print(f"Collating Variants: Abhidhamma ({total_texts} texts)")
-    print("Witnesses: GRETIL (PTS), VRI (CST), SC (Mahāsaṅgīti), BJT")
+    print("Witnesses: GRETIL (PTS), VRI (CST), SC (Mahāsaṅgīti), BJT, Thai")
     print("=" * 70)
     print()
 
@@ -1691,12 +1975,13 @@ def main_abhidhamma(output_dir: Path):
     results = []
     skipped = []
     with_vri = 0
+    with_thai = 0
 
-    for name, gretil_name, vri_codes, sc_name, bjt_name in available_texts:
+    for name, gretil_name, vri_codes, sc_name, bjt_name, thai_name in available_texts:
         print(f"Collating {name.upper()} ({gretil_name})...", end=" ")
 
         collation = collate_text_abhidhamma(name, gretil_name, vri_codes,
-                                             sc_name, bjt_name)
+                                             sc_name, bjt_name, thai_name)
 
         if 'error' in collation:
             print(f"SKIPPED: {collation['error']}")
@@ -1705,12 +1990,17 @@ def main_abhidhamma(output_dir: Path):
 
         if collation.get('has_vri'):
             with_vri += 1
+        if collation.get('has_thai'):
+            with_thai += 1
 
         stats = collation['stats']
         total = stats['total_positions']
         match_pct = stats['match'] / total * 100 if total > 0 else 0
 
-        print(f"Match: {match_pct:.1f}%, Errors: {stats['errors']}, Variants: {stats['variants']}")
+        markers = ""
+        if collation.get('has_thai'):
+            markers += " [+Thai]"
+        print(f"Match: {match_pct:.1f}%, Errors: {stats['errors']}, Variants: {stats['variants']}{markers}")
 
         output_file = output_dir / f"{name}_collation.json"
         with open(output_file, 'w', encoding='utf-8') as f:
@@ -1720,6 +2010,7 @@ def main_abhidhamma(output_dir: Path):
             'text': name,
             'gretil_name': gretil_name,
             'has_vri': collation.get('has_vri', False),
+            'has_thai': collation.get('has_thai', False),
             'stats': stats
         })
 
@@ -1734,6 +2025,7 @@ def main_abhidhamma(output_dir: Path):
 
     print(f"  Texts processed: {len(results)}/{total_texts}")
     print(f"    With VRI: {with_vri}")
+    print(f"    With Thai: {with_thai}")
     if skipped:
         print(f"  Skipped (missing VRI): {skipped}")
     print(f"  Total errors found: {total_errors}")
@@ -1746,11 +2038,13 @@ def main_abhidhamma(output_dir: Path):
             'pitaka': 'Abhidhamma',
             'editions': {
                 'primary': 'PTS (GRETIL)',
-                'witnesses': ['VRI (CST)', 'SC (Mahāsaṅgīti)', 'BJT'],
+                'witnesses': ['VRI (CST)', 'SC (Mahāsaṅgīti)', 'BJT',
+                              'Thai (Syām Raṭṭha)'],
             },
             'dpd_words': len(dpd),
             'texts_processed': len(results),
             'texts_with_vri': with_vri,
+            'texts_with_thai': with_thai,
             'texts_skipped': skipped,
             'texts': results,
             'totals': {
@@ -1802,6 +2096,7 @@ def load_sutta_data_sn(sutta_id: str) -> dict:
     vri_dir = DATA_DIR / "vri-parsed/sn"
     sc_dir = DATA_DIR / "canonical/sn"
     bjt_dir = DATA_DIR / "bjt-parsed/sn"
+    thai_dir = DATA_DIR / "thai-parsed/sn"
 
     # GRETIL - file named like sn1_1.json
     gretil_file = gretil_dir / f"sn{samyutta}_{sutta_num}.json"
@@ -1828,6 +2123,16 @@ def load_sutta_data_sn(sutta_id: str) -> dict:
     if bjt_data:
         data['bjt'] = bjt_data
 
+    # Thai - file named like sn1_1.json
+    thai_file = thai_dir / f"sn{samyutta}_{sutta_num}.json"
+    if thai_file.exists():
+        thai = json.loads(thai_file.read_text())
+        raw_text = thai.get('text', '')
+        data['thai'] = {
+            'text': clean_thai_text(raw_text),
+            'raw_text': raw_text,
+        }
+
     # SC - file named like sn{samyutta}.json, suttas nested within
     sc_file = sc_dir / f"sn{samyutta}.json"
     if sc_file.exists():
@@ -1853,6 +2158,7 @@ def load_sutta_data(nikaya: str, sutta_num: int) -> dict:
     vri_dir = DATA_DIR / f"vri-parsed/{nikaya}"
     sc_dir = DATA_DIR / f"canonical/{nikaya}"
     bjt_dir = DATA_DIR / f"bjt-parsed/{nikaya}"
+    thai_dir = DATA_DIR / f"thai-parsed/{nikaya}"
 
     # GRETIL
     gretil_file = gretil_dir / f"{nikaya}{sutta_num}.json"
@@ -1884,6 +2190,16 @@ def load_sutta_data(nikaya: str, sutta_num: int) -> dict:
             'raw_text': raw_text,
         }
 
+    # Thai
+    thai_file = thai_dir / f"{nikaya}{sutta_num}.json"
+    if thai_file.exists():
+        thai = json.loads(thai_file.read_text())
+        raw_text = thai.get('text', '')
+        data['thai'] = {
+            'text': clean_thai_text(raw_text),
+            'raw_text': raw_text,
+        }
+
     # SC
     sc_file = sc_dir / f"{nikaya}{sutta_num}.json"
     if sc_file.exists():
@@ -1909,8 +2225,10 @@ def align_sutta(nikaya: str, sutta_num: int) -> dict:
     sc_words = tokenize(data['sc']['text'])
     vri_words = tokenize(data['vri']['text'])
     bjt_words = tokenize(data['bjt']['text']) if 'bjt' in data else None
+    thai_words = tokenize(data['thai']['text']) if 'thai' in data else None
 
-    alignment = align_witnesses(gretil_words, sc_words, vri_words, bjt_words=bjt_words)
+    alignment = align_witnesses(gretil_words, sc_words, vri_words,
+                                bjt_words=bjt_words, thai_words=thai_words)
 
     return {
         'sutta': sutta_num,
@@ -1918,10 +2236,12 @@ def align_sutta(nikaya: str, sutta_num: int) -> dict:
             'gretil': len(gretil_words),
             'sc': len(sc_words),
             'vri': len(vri_words),
-            'bjt': len(bjt_words) if bjt_words else 0
+            'bjt': len(bjt_words) if bjt_words else 0,
+            'thai': len(thai_words) if thai_words else 0
         },
         'alignment': alignment,
-        'has_bjt': 'bjt' in data
+        'has_bjt': 'bjt' in data,
+        'has_thai': 'thai' in data
     }
 
 
@@ -1941,8 +2261,10 @@ def align_sutta_sn(sutta_id: str) -> dict:
     sc_words = tokenize(data['sc']['text'])
     vri_words = tokenize(data['vri']['text'])
     bjt_words = tokenize(data['bjt']['text']) if 'bjt' in data else None
+    thai_words = tokenize(data['thai']['text']) if 'thai' in data else None
 
-    alignment = align_witnesses(gretil_words, sc_words, vri_words, bjt_words=bjt_words)
+    alignment = align_witnesses(gretil_words, sc_words, vri_words,
+                                bjt_words=bjt_words, thai_words=thai_words)
 
     return {
         'sutta': sutta_id,
@@ -1950,10 +2272,12 @@ def align_sutta_sn(sutta_id: str) -> dict:
             'gretil': len(gretil_words),
             'sc': len(sc_words),
             'vri': len(vri_words),
-            'bjt': len(bjt_words) if bjt_words else 0
+            'bjt': len(bjt_words) if bjt_words else 0,
+            'thai': len(thai_words) if thai_words else 0
         },
         'alignment': alignment,
-        'has_bjt': 'bjt' in data
+        'has_bjt': 'bjt' in data,
+        'has_thai': 'thai' in data
     }
 
 
@@ -1965,12 +2289,14 @@ def collate_sutta(nikaya: str, sutta_num: int, max_variants: int = 1000) -> dict
 
     alignment = alignment_data.get('alignment', [])
     has_bjt = alignment_data.get('has_bjt', False)
+    has_thai = alignment_data.get('has_thai', False)
 
     collation = {
         'sutta': sutta_num,
         'nikaya': nikaya.upper(),
         'word_counts': alignment_data.get('word_counts'),
         'has_bjt': has_bjt,
+        'has_thai': has_thai,
         'stats': {
             'total_positions': len(alignment),
             'orthographic': 0,
@@ -1996,12 +2322,14 @@ def collate_sutta_sn(sutta_id: str, max_variants: int = 1000) -> dict:
 
     alignment = alignment_data.get('alignment', [])
     has_bjt = alignment_data.get('has_bjt', False)
+    has_thai = alignment_data.get('has_thai', False)
 
     collation = {
         'sutta': sutta_id,
         'nikaya': 'SN',
         'word_counts': alignment_data.get('word_counts'),
         'has_bjt': has_bjt,
+        'has_thai': has_thai,
         'stats': {
             'total_positions': len(alignment),
             'orthographic': 0,
@@ -2022,18 +2350,20 @@ def collate_sutta_sn(sutta_id: str, max_variants: int = 1000) -> dict:
 def _process_collation(collation: dict, alignment: list, max_variants: int) -> dict:
     """Process alignment data and classify variants.
 
-    Handles four-way (GRETIL/SC/VRI/BJT), three-way (GRETIL/SC/VRI), and
-    two-way (GRETIL/SC) collation. BJT is used in classification decisions
-    to refine confidence scores and identify majority readings.
+    Handles five-way (GRETIL/SC/VRI/BJT/Thai), three-way (GRETIL/SC/VRI), and
+    two-way (GRETIL/SC) collation. BJT and Thai are used in classification
+    decisions to refine confidence scores and identify majority readings.
     """
     has_vri = collation.get('has_vri', True)
     has_bjt = collation.get('has_bjt', False)
+    has_thai = collation.get('has_thai', False)
 
     for i, pos in enumerate(alignment):
         g = pos.get('gretil')
         s = pos.get('sc')
         v = pos.get('vri')
         b = pos.get('bjt')
+        t = pos.get('thai')
 
         # Check for match - all available witnesses must agree
         all_match = pos.get('sc_match') == 'match'
@@ -2041,13 +2371,15 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
             all_match = all_match and pos.get('vri_match') == 'match'
         if has_bjt:
             all_match = all_match and pos.get('bjt_match') == 'match'
+        if has_thai:
+            all_match = all_match and pos.get('thai_match') == 'match'
         if all_match:
             collation['stats']['match'] += 1
             continue
 
         if has_vri:
-            # Three/four-way classification
-            classification = classify_variant(g, s, v, b)
+            # Three/four/five-way classification
+            classification = classify_variant(g, s, v, b, t)
             var_type = classification['type']
 
             if var_type == 'orthographic':
@@ -2061,6 +2393,7 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
                         'sc': s,
                         'vri': v,
                         'bjt': b,
+                        'thai': t,
                         **classification
                     })
             elif var_type == 'variant':
@@ -2072,6 +2405,7 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
                         'sc': s,
                         'vri': v,
                         'bjt': b,
+                        'thai': t,
                         **classification
                     })
             elif var_type in ('uncertain', 'pts_omission', 'pts_addition'):
@@ -2083,6 +2417,7 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
                         'sc': s,
                         'vri': v,
                         'bjt': b,
+                        'thai': t,
                         **classification
                     })
             elif var_type in ('alignment_artifact', 'fragment'):
@@ -2094,6 +2429,7 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
             g_norm = normalize_for_comparison(g) if g else None
             s_norm = normalize_for_comparison(s) if s else None
             b_norm = normalize_for_comparison(b) if b else None
+            t_norm = normalize_for_comparison(t) if t else None
 
             if g_norm == s_norm:
                 collation['stats']['orthographic'] += 1
@@ -2102,11 +2438,23 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
                 s_valid = is_valid_word(s)
                 bjt_with_sc = b_norm is not None and b_norm == s_norm
                 bjt_with_pts = b_norm is not None and b_norm == g_norm
+                thai_with_sc = t_norm is not None and t_norm == s_norm
+                thai_with_pts = t_norm is not None and t_norm == g_norm
                 if s_valid and not g_valid:
                     # PTS (GRETIL) error, SC is correct
-                    conf = 0.95 if bjt_with_sc else 0.9
-                    others = 'SC/BJT' if bjt_with_sc else 'SC'
-                    bjt_note = ', BJT agrees with PTS' if bjt_with_pts else ''
+                    sc_supporters = ['SC']
+                    if bjt_with_sc:
+                        sc_supporters.append('BJT')
+                    if thai_with_sc:
+                        sc_supporters.append('Thai')
+                    conf = min(0.98, 0.85 + 0.05 * len(sc_supporters))
+                    others = '/'.join(sc_supporters)
+                    extra_notes = []
+                    if bjt_with_pts:
+                        extra_notes.append('BJT agrees with PTS')
+                    if thai_with_pts:
+                        extra_notes.append('Thai agrees with PTS')
+                    note_suffix = ', ' + ', '.join(extra_notes) if extra_notes else ''
                     collation['stats']['errors'] += 1
                     if len(collation['errors']) < max_variants:
                         collation['errors'].append({
@@ -2115,16 +2463,27 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
                             'sc': s,
                             'vri': None,
                             'bjt': b,
+                            'thai': t,
                             'type': 'error',
                             'confidence': conf,
                             'preferred': s,
-                            'notes': f'PTS "{g}" not in DPD, {others} "{s}" is valid{bjt_note}'
+                            'notes': f'PTS "{g}" not in DPD, {others} "{s}" is valid{note_suffix}'
                         })
                 elif g_valid and not s_valid:
                     # SC error, PTS (GRETIL) is correct
-                    conf = 0.95 if bjt_with_pts else 0.9
-                    others = 'PTS/BJT' if bjt_with_pts else 'PTS'
-                    bjt_note = ', BJT agrees with SC' if bjt_with_sc else ''
+                    pts_supporters = ['PTS']
+                    if bjt_with_pts:
+                        pts_supporters.append('BJT')
+                    if thai_with_pts:
+                        pts_supporters.append('Thai')
+                    conf = min(0.98, 0.85 + 0.05 * len(pts_supporters))
+                    others = '/'.join(pts_supporters)
+                    extra_notes = []
+                    if bjt_with_sc:
+                        extra_notes.append('BJT agrees with SC')
+                    if thai_with_sc:
+                        extra_notes.append('Thai agrees with SC')
+                    note_suffix = ', ' + ', '.join(extra_notes) if extra_notes else ''
                     collation['stats']['errors'] += 1
                     if len(collation['errors']) < max_variants:
                         collation['errors'].append({
@@ -2133,18 +2492,24 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
                             'sc': s,
                             'vri': None,
                             'bjt': b,
+                            'thai': t,
                             'type': 'sc_error',
                             'confidence': conf,
                             'preferred': g,
-                            'notes': f'SC "{s}" not in DPD, {others} "{g}" is valid{bjt_note}'
+                            'notes': f'SC "{s}" not in DPD, {others} "{g}" is valid{note_suffix}'
                         })
                 elif g_valid and s_valid:
                     # Both valid - textual variant
-                    bjt_note = ''
+                    extra = []
                     if bjt_with_sc:
-                        bjt_note = f' (BJT agrees with SC)'
+                        extra.append('BJT agrees with SC')
                     elif bjt_with_pts:
-                        bjt_note = f' (BJT agrees with PTS)'
+                        extra.append('BJT agrees with PTS')
+                    if thai_with_sc:
+                        extra.append('Thai agrees with SC')
+                    elif thai_with_pts:
+                        extra.append('Thai agrees with PTS')
+                    note_suffix = ' (' + ', '.join(extra) + ')' if extra else ''
                     collation['stats']['variants'] += 1
                     if len(collation['variants']) < max_variants:
                         collation['variants'].append({
@@ -2153,8 +2518,9 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
                             'sc': s,
                             'vri': None,
                             'bjt': b,
+                            'thai': t,
                             'type': 'variant',
-                            'notes': f'Textual variant: PTS "{g}" vs SC "{s}"{bjt_note}'
+                            'notes': f'Textual variant: PTS "{g}" vs SC "{s}"{note_suffix}'
                         })
                 else:
                     # Neither valid
@@ -2166,6 +2532,7 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
                             'sc': s,
                             'vri': None,
                             'bjt': b,
+                            'thai': t,
                             'type': 'uncertain',
                             'notes': f'Neither reading validated: PTS "{g}" vs SC "{s}"'
                         })
@@ -2179,6 +2546,7 @@ def _process_collation(collation: dict, alignment: list, max_variants: int) -> d
                         'sc': s,
                         'vri': None,
                         'bjt': b,
+                        'thai': t,
                         'type': 'missing',
                         'notes': 'One reading missing'
                     })
@@ -2207,6 +2575,8 @@ def main_sn(output_dir: Path):
     processed = 0
     with_bjt = 0
     without_bjt = 0
+    with_thai = 0
+    without_thai = 0
 
     for sutta_id in sutta_ids:
         processed += 1
@@ -2225,14 +2595,22 @@ def main_sn(output_dir: Path):
             with_bjt += 1
         else:
             without_bjt += 1
+        if collation.get('has_thai'):
+            with_thai += 1
+        else:
+            without_thai += 1
 
         stats = collation['stats']
         total = stats['total_positions']
         match_pct = stats['match'] / total * 100 if total > 0 else 0
 
         if processed % 100 == 0 or processed <= 10:
-            bjt_marker = " [+BJT]" if collation.get('has_bjt') else ""
-            print(f"Match: {match_pct:.1f}%, Errors: {stats['errors']}, Variants: {stats['variants']}{bjt_marker}")
+            markers = ""
+            if collation.get('has_bjt'):
+                markers += " [+BJT]"
+            if collation.get('has_thai'):
+                markers += " [+Thai]"
+            print(f"Match: {match_pct:.1f}%, Errors: {stats['errors']}, Variants: {stats['variants']}{markers}")
 
         # Save collation - convert sn1.1 to sn1_1 for filename
         safe_id = sutta_id.replace('.', '_')
@@ -2243,6 +2621,7 @@ def main_sn(output_dir: Path):
         results.append({
             'sutta': sutta_id,
             'has_bjt': collation.get('has_bjt', False),
+            'has_thai': collation.get('has_thai', False),
             'stats': stats
         })
 
@@ -2258,6 +2637,8 @@ def main_sn(output_dir: Path):
     print(f"  Suttas processed: {len(results)}/{total_suttas}")
     print(f"    With BJT: {with_bjt}")
     print(f"    Without BJT: {without_bjt}")
+    print(f"    With Thai: {with_thai}")
+    print(f"    Without Thai: {without_thai}")
     if skipped:
         print(f"  Skipped (missing data): {len(skipped)} suttas")
     print(f"  Total errors found: {total_errors}")
@@ -2271,12 +2652,15 @@ def main_sn(output_dir: Path):
             'nikaya': 'SN',
             'editions': {
                 'primary': 'PTS (GRETIL)',
-                'witnesses': ['SC (Mahāsaṅgīti)', 'VRI (CST)', 'BJT (Buddha Jayanti)']
+                'witnesses': ['SC (Mahāsaṅgīti)', 'VRI (CST)',
+                              'BJT (Buddha Jayanti)', 'Thai (Syām Raṭṭha)']
             },
             'dpd_words': len(dpd),
             'suttas_processed': len(results),
             'suttas_with_bjt': with_bjt,
             'suttas_without_bjt': without_bjt,
+            'suttas_with_thai': with_thai,
+            'suttas_without_thai': without_thai,
             'suttas_skipped': len(skipped),
             'skipped_ids': skipped[:100],
             'suttas': results,
@@ -2340,6 +2724,8 @@ def main():
     skipped = []
     with_bjt = 0
     without_bjt = 0
+    with_thai = 0
+    without_thai = 0
 
     for sutta_num in range(1, num_suttas + 1):
         print(f"Collating {nikaya.upper()} {sutta_num}...", end=" ")
@@ -2355,13 +2741,21 @@ def main():
             with_bjt += 1
         else:
             without_bjt += 1
+        if collation.get('has_thai'):
+            with_thai += 1
+        else:
+            without_thai += 1
 
         stats = collation['stats']
         total = stats['total_positions']
         match_pct = stats['match'] / total * 100 if total > 0 else 0
 
-        bjt_marker = " [+BJT]" if collation.get('has_bjt') else ""
-        print(f"Match: {match_pct:.1f}%, Errors: {stats['errors']}, Variants: {stats['variants']}{bjt_marker}")
+        markers = ""
+        if collation.get('has_bjt'):
+            markers += " [+BJT]"
+        if collation.get('has_thai'):
+            markers += " [+Thai]"
+        print(f"Match: {match_pct:.1f}%, Errors: {stats['errors']}, Variants: {stats['variants']}{markers}")
 
         # Save collation
         output_file = output_dir / f"{nikaya}{sutta_num}_collation.json"
@@ -2371,6 +2765,7 @@ def main():
         results.append({
             'sutta': sutta_num,
             'has_bjt': collation.get('has_bjt', False),
+            'has_thai': collation.get('has_thai', False),
             'stats': stats
         })
 
@@ -2386,6 +2781,8 @@ def main():
     print(f"  Suttas processed: {len(results)}/{num_suttas}")
     print(f"    With BJT: {with_bjt}")
     print(f"    Without BJT: {without_bjt}")
+    print(f"    With Thai: {with_thai}")
+    print(f"    Without Thai: {without_thai}")
     if skipped:
         print(f"  Skipped (missing data): {skipped}")
     print(f"  Total errors found: {total_errors}")
@@ -2399,12 +2796,15 @@ def main():
             'nikaya': nikaya.upper(),
             'editions': {
                 'primary': 'PTS (GRETIL)',
-                'witnesses': ['SC (Mahāsaṅgīti)', 'VRI (CST)', 'BJT (Buddha Jayanti)']
+                'witnesses': ['SC (Mahāsaṅgīti)', 'VRI (CST)',
+                              'BJT (Buddha Jayanti)', 'Thai (Syām Raṭṭha)']
             },
             'dpd_words': len(dpd),
             'suttas_processed': len(results),
             'suttas_with_bjt': with_bjt,
             'suttas_without_bjt': without_bjt,
+            'suttas_with_thai': with_thai,
+            'suttas_without_thai': without_thai,
             'suttas_skipped': skipped,
             'suttas': results,
             'totals': {

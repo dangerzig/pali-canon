@@ -5,7 +5,7 @@ A digital critical edition of the complete Pāli Tipiṭaka with multi-witness c
 ## Overview
 
 This project provides:
-- **Four-witness collation** of the complete Tipiṭaka (SuttaCentral, GRETIL PTS, VRI CST, BJT)
+- **Five-witness collation** of the complete Tipiṭaka (SuttaCentral, GRETIL PTS, VRI CST, BJT, Thai Syām Raṭṭha)
 - **Lemmatization** using the Digital Pāli Dictionary (DPD)
 - **Vocabulary analysis** and document-term matrices for computational analysis
 - **PTS correction catalog** documenting transcription errors in the PTS edition

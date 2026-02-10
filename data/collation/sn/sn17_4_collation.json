@@ -5,17 +5,19 @@
     "gretil": 69,
     "sc": 70,
     "vri": 71,
-    "bjt": 95
+    "bjt": 95,
+    "thai": 15
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 69,
-    "orthographic": 4,
+    "orthographic": 40,
     "errors": 4,
     "variants": 3,
     "uncertain": 3,
-    "match": 51,
-    "other": 4
+    "match": 1,
+    "other": 18
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "kaṇṭakagahanaṃ",
       "vri": "kaṇṭakagahanaṃ",
       "bjt": "kaṇṭakāgahaṇaṃ",
+      "thai": "paccayā",
       "type": "error",
       "confidence": 0.9,
       "preferred": "kaṇṭakagahanaṃ",
-      "notes": "PTS \"kaṇṭakagahanam\" not in DPD, SC/VRI \"kaṇṭakagahanaṃ\" is valid"
+      "notes": "PTS \"kaṇṭakagahanam\" not in DPD, SC/VRI \"kaṇṭakagahanaṃ\" is valid, BJT has \"kaṇṭakāgahaṇaṃ\", Thai has \"paccayā\""
     },
     {
       "position": 26,
@@ -35,10 +38,11 @@
       "sc": "evameva",
       "vri": "evameva",
       "bjt": "evameva",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "evameva",
-      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evameva\" is valid"
+      "notes": "PTS \"evam\" not in DPD, SC/VRI/BJT \"evameva\" is valid"
     },
     {
       "position": 36,
@@ -46,10 +50,11 @@
       "sc": "pattacīvaramādāya",
       "vri": "pattacīvaramādāya",
       "bjt": "pattacīvaramādāya",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "pattacīvaramādāya",
-      "notes": "PTS \"pattacīvaram\" not in DPD, SC/VRI \"pattacīvaramādāya\" is valid"
+      "notes": "PTS \"pattacīvaram\" not in DPD, SC/VRI/BJT \"pattacīvaramādāya\" is valid"
     },
     {
       "position": 56,
@@ -57,10 +62,11 @@
       "sc": "anayabyasanaṃ",
       "vri": "anayabyasanaṃ",
       "bjt": "anayavyasanaṃ",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "anayabyasanaṃ",
-      "notes": "PTS \"anayavyasanam\" not in DPD, SC/VRI \"anayabyasanaṃ\" is valid"
+      "notes": "PTS \"anayavyasanam\" not in DPD, SC/VRI \"anayabyasanaṃ\" is valid, BJT has \"anayavyasanaṃ\""
     }
   ],
   "variants": [
@@ -70,10 +76,11 @@
       "sc": "sāvatthiyaṃ",
       "vri": "sāvatthiyaṃ",
       "bjt": "dīghalomieḷakasuttaṃ",
+      "thai": "evañcāhaṃ",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthiyaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthiyaṃ\", BJT has \"dīghalomieḷakasuttaṃ\", Thai has \"evañcāhaṃ\""
     },
     {
       "position": 18,
@@ -81,10 +88,11 @@
       "sc": "gayheyya",
       "vri": "gayheyya",
       "bjt": "gayheyya",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "gaṇheyya",
-      "notes": "Textual variant: PTS \"gaṇheyya\" vs SC/VRI \"gayheyya\""
+      "notes": "Textual variant: PTS \"gaṇheyya\" vs SC/VRI/BJT \"gayheyya\""
     },
     {
       "position": 24,
@@ -92,10 +100,11 @@
       "sc": "anayabyasanaṃ",
       "vri": "anayabyasanaṃ",
       "bjt": "anayavyasanaṃ",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "anayavyasanaṃ",
-      "notes": "Textual variant: PTS \"anayavyasanaṃ\" vs SC/VRI \"anayabyasanaṃ\""
+      "notes": "Textual variant: PTS \"anayavyasanaṃ\" vs SC/VRI \"anayabyasanaṃ\", BJT agrees with PTS"
     }
   ],
   "uncertain": [
@@ -105,6 +114,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "eva",
@@ -116,6 +126,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ādāya",
@@ -127,10 +138,11 @@
       "sc": "sikkhitabban",
       "vri": "sikkhitabba",
       "bjt": "sikkhitabbanti",
+      "thai": null,
       "type": "uncertain",
-      "confidence": 0.3,
+      "confidence": 0.6,
       "preferred": "sikkhitabbanti",
-      "notes": "Three-way disagreement: PTS \"sikkhitabbanti\", SC \"sikkhitabban\", VRI \"sikkhitabba\""
+      "notes": "PTS/BJT \"sikkhitabbanti\" vs SC \"sikkhitabban\", VRI \"sikkhitabba\""
     }
   ]
 }

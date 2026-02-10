@@ -2,7 +2,7 @@
 """
 Build complete critical editions for the entire Tipiṭaka.
 
-Four-witness editions (GRETIL/SC/VRI/BJT):
+Five-witness editions (GRETIL/SC/VRI/BJT/Thai):
 - Dīgha Nikāya (DN)
 - Majjhima Nikāya (MN)
 - Saṃyutta Nikāya (SN)
@@ -206,7 +206,7 @@ def build_nikaya_critical(config: NikayaConfig) -> dict[str, Any]:
         Summary dictionary with word counts and sutta count
     """
     log("=" * 60)
-    log(f"Building {config.name} Critical Edition (4 witnesses)")
+    log(f"Building {config.name} Critical Edition (5 witnesses)")
     log("=" * 60)
 
     output_dir = DATA_DIR / f"critical/{config.code}"
@@ -288,7 +288,7 @@ def build_nikaya_critical_glob(config: NikayaConfig) -> dict[str, Any]:
         Summary dictionary with word counts and file count
     """
     log("=" * 60)
-    log(f"Building {config.name} Critical Edition (4 witnesses)")
+    log(f"Building {config.name} Critical Edition (5 witnesses)")
     log("=" * 60)
 
     output_dir = DATA_DIR / f"critical/{config.code}"
@@ -423,9 +423,9 @@ KN_MAPPING = {
 }
 
 def build_kn_critical() -> dict[str, Any]:
-    """Build KN critical edition with 2-4 witnesses."""
+    """Build KN critical edition with 2-5 witnesses."""
     log("=" * 60)
-    log("Building KN Critical Edition (2-4 witnesses)")
+    log("Building KN Critical Edition (2-5 witnesses)")
     log("=" * 60)
 
     output_dir = DATA_DIR / "critical/kn"
@@ -567,9 +567,9 @@ VINAYA_TEXTS = [
 ]
 
 def build_vinaya_critical() -> dict[str, Any]:
-    """Build Vinaya critical edition with 4 witnesses (GRETIL/SC/VRI/BJT)."""
+    """Build Vinaya critical edition with 5 witnesses (GRETIL/SC/VRI/BJT/Thai)."""
     log("=" * 60)
-    log("Building Vinaya Critical Edition (4 witnesses)")
+    log("Building Vinaya Critical Edition (5 witnesses)")
     log("=" * 60)
 
     output_dir = DATA_DIR / "critical/vinaya"
@@ -652,9 +652,9 @@ ABHIDHAMMA_TEXTS = [
 ]
 
 def build_abhidhamma_critical() -> dict[str, Any]:
-    """Build Abhidhamma critical edition with 4 witnesses (GRETIL/SC/VRI/BJT)."""
+    """Build Abhidhamma critical edition with 5 witnesses (GRETIL/SC/VRI/BJT/Thai)."""
     log("=" * 60)
-    log("Building Abhidhamma Critical Edition (4 witnesses)")
+    log("Building Abhidhamma Critical Edition (5 witnesses)")
     log("=" * 60)
 
     output_dir = DATA_DIR / "critical/abhidhamma"
@@ -738,11 +738,11 @@ def main() -> None:
 
     results = {}
 
-    # Vinaya Piṭaka (4 witnesses)
+    # Vinaya Piṭaka (5 witnesses)
     results['vinaya'] = build_vinaya_critical()
     log("")
 
-    # Sutta Piṭaka (4 witnesses)
+    # Sutta Piṭaka (5 witnesses)
     results['dn'] = build_dn_critical()
     log("")
     results['mn'] = build_mn_critical()
@@ -754,7 +754,7 @@ def main() -> None:
     results['kn'] = build_kn_critical()
     log("")
 
-    # Abhidhamma Piṭaka (4 witnesses)
+    # Abhidhamma Piṭaka (5 witnesses)
     results['abhidhamma'] = build_abhidhamma_critical()
     log("")
 
@@ -769,7 +769,7 @@ def main() -> None:
     sutta_bjt = sum(results[n].get('bjt_words', 0) for n in ['dn', 'mn', 'sn', 'an', 'kn'])
 
     log("")
-    log("VINAYA PIṬAKA (4 witnesses: SC, GRETIL, VRI, BJT)")
+    log("VINAYA PIṬAKA (5 witnesses: SC, GRETIL, VRI, BJT, Thai)")
     log(f"  Texts: {results['vinaya'].get('texts', 0)}")
     log(f"  SC: {results['vinaya'].get('sc_words', 0):,} words")
     log(f"  GRETIL: {results['vinaya'].get('gretil_words', 0):,} words")
@@ -777,7 +777,7 @@ def main() -> None:
     log(f"  BJT: {results['vinaya'].get('bjt_words', 0):,} words")
     log("")
 
-    log("SUTTA PIṬAKA (4 witnesses: SC, GRETIL, VRI, BJT)")
+    log("SUTTA PIṬAKA (5 witnesses: SC, GRETIL, VRI, BJT, Thai)")
     log(f"  DN: {results['dn'].get('suttas', 0)} suttas")
     log(f"  MN: {results['mn'].get('suttas', 0)} suttas")
     log(f"  SN: {results['sn'].get('files', 0)} files")
@@ -789,7 +789,7 @@ def main() -> None:
     log(f"  BJT Total: {sutta_bjt:,} words")
     log("")
 
-    log("ABHIDHAMMA PIṬAKA (4 witnesses: SC, GRETIL, VRI, BJT)")
+    log("ABHIDHAMMA PIṬAKA (5 witnesses: SC, GRETIL, VRI, BJT, Thai)")
     log(f"  Texts: {results['abhidhamma'].get('texts', 0)}")
     log(f"  SC: {results['abhidhamma'].get('sc_words', 0):,} words")
     log(f"  GRETIL: {results['abhidhamma'].get('gretil_words', 0):,} words")

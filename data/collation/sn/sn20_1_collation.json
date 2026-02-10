@@ -5,17 +5,19 @@
     "gretil": 57,
     "sc": 60,
     "vri": 70,
-    "bjt": 70
+    "bjt": 70,
+    "thai": 235
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 57,
-    "orthographic": 3,
+    "orthographic": 5,
     "errors": 2,
     "variants": 1,
     "uncertain": 3,
-    "match": 43,
-    "other": 5
+    "match": 5,
+    "other": 41
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "evaṃ",
       "vri": "evaṃ",
       "bjt": "kūṭasuttaṃ",
+      "thai": "ca",
       "type": "error",
       "confidence": 0.9,
       "preferred": "evaṃ",
-      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evaṃ\" is valid"
+      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evaṃ\" is valid, BJT has \"kūṭasuttaṃ\", Thai has \"ca\""
     },
     {
       "position": 33,
@@ -35,10 +38,11 @@
       "sc": "evameva",
       "vri": "evameva",
       "bjt": "evameva",
+      "thai": "iti",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "evameva",
-      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evameva\" is valid"
+      "notes": "PTS \"evam\" not in DPD, SC/VRI/BJT \"evameva\" is valid, Thai has \"iti\""
     }
   ],
   "variants": [
@@ -48,10 +52,11 @@
       "sc": "tasmātiha",
       "vri": "tasmātiha",
       "bjt": "tasmātiha",
+      "thai": "deseti",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "tasmāti",
-      "notes": "Textual variant: PTS \"tasmāti\" vs SC/VRI \"tasmātiha\""
+      "notes": "Textual variant: PTS \"tasmāti\" vs SC/VRI/BJT \"tasmātiha\", Thai has \"deseti\""
     }
   ],
   "uncertain": [
@@ -61,6 +66,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "opammasaṃyutta",
@@ -72,10 +78,11 @@
       "sc": "etadavoca",
       "vri": "āmantesi",
       "bjt": "āmantesi",
+      "thai": "bhikkhave",
       "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "avoca",
-      "notes": "Three-way disagreement: PTS \"avoca\", SC \"etadavoca\", VRI \"āmantesi\""
+      "confidence": 0.6,
+      "preferred": "āmantesi",
+      "notes": "VRI/BJT \"āmantesi\" vs PTS \"avoca\", SC \"etadavoca\", Thai \"bhikkhave\""
     },
     {
       "position": 55,
@@ -83,6 +90,7 @@
       "sc": "viharissāmā",
       "vri": "viharissāmā",
       "bjt": "viharissāmā",
+      "thai": null,
       "type": "uncertain",
       "confidence": 0.4,
       "preferred": "viharissāmā",

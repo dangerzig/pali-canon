@@ -5,17 +5,19 @@
     "gretil": 38,
     "sc": 38,
     "vri": 38,
-    "bjt": 41
+    "bjt": 41,
+    "thai": 36
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 38,
-    "orthographic": 2,
+    "orthographic": 21,
     "errors": 3,
     "variants": 3,
     "uncertain": 1,
-    "match": 28,
-    "other": 1
+    "match": 8,
+    "other": 2
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "ayameva",
       "vri": "ayameva",
       "bjt": "ayameva",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "ayameva",
-      "notes": "PTS \"ayam\" not in DPD, SC/VRI \"ayameva\" is valid"
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT \"ayameva\" is valid"
     },
     {
       "position": 30,
@@ -35,10 +38,11 @@
       "sc": "sakadāgāmiphalaṃ",
       "vri": "sakadāgāmiphalaṃ",
       "bjt": "sakadāgāmiphalaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "sakadāgāmiphalaṃ",
-      "notes": "PTS \"sakadāgāmiphalam\" not in DPD, SC/VRI \"sakadāgāmiphalaṃ\" is valid"
+      "notes": "PTS \"sakadāgāmiphalam\" not in DPD, SC/VRI/BJT \"sakadāgāmiphalaṃ\" is valid"
     },
     {
       "position": 31,
@@ -46,10 +50,11 @@
       "sc": "anāgāmiphalaṃ",
       "vri": "anāgāmiphalaṃ",
       "bjt": "anāgāmiphalaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "anāgāmiphalaṃ",
-      "notes": "PTS \"anāgāmiphalam\" not in DPD, SC/VRI \"anāgāmiphalaṃ\" is valid"
+      "notes": "PTS \"anāgāmiphalam\" not in DPD, SC/VRI/BJT \"anāgāmiphalaṃ\" is valid"
     }
   ],
   "variants": [
@@ -59,10 +64,11 @@
       "sc": "sāvatthinidānaṃ",
       "vri": "sāvatthinidānaṃ",
       "bjt": "sāmaññasuttaṃ",
+      "thai": "pariyodapeyya",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"sāmaññasuttaṃ\", Thai has \"pariyodapeyya\""
     },
     {
       "position": 4,
@@ -70,10 +76,11 @@
       "sc": "desessāmi",
       "vri": "desessāmi",
       "bjt": "desissāmi",
+      "thai": "desessāmi",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "desissāmi",
-      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI \"desessāmi\""
+      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI/Thai \"desessāmi\", BJT agrees with PTS"
     },
     {
       "position": 17,
@@ -81,10 +88,11 @@
       "sc": "seyyathidaṃ",
       "vri": "seyyathidaṃ",
       "bjt": "seyyathīdaṃ",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "seyyathīdaṃ",
-      "notes": "Textual variant: PTS \"seyyathīdaṃ\" vs SC/VRI \"seyyathidaṃ\""
+      "notes": "Textual variant: PTS \"seyyathīdaṃ\" vs SC/VRI \"seyyathidaṃ\", BJT agrees with PTS"
     }
   ],
   "uncertain": [
@@ -94,6 +102,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "eva",

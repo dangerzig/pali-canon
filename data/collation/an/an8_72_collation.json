@@ -5,17 +5,19 @@
     "gretil": 218,
     "sc": 223,
     "vri": 0,
-    "bjt": 524
+    "bjt": 524,
+    "thai": 157
   },
   "has_vri": false,
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 230,
-    "orthographic": 55,
+    "orthographic": 167,
     "errors": 6,
     "variants": 36,
     "uncertain": 19,
-    "match": 114,
+    "match": 2,
     "other": 0
   },
   "errors": [
@@ -25,7 +27,9 @@
       "sc": "saddho",
       "vri": null,
       "bjt": "dutiya",
+      "thai": "aṭṭhimāni",
       "type": "error",
+      "confidence": 0.9,
       "preferred": "saddho",
       "notes": "PTS \"lxxii\" not in DPD, SC \"saddho\" is valid"
     },
@@ -35,9 +39,11 @@
       "sc": "vimokkhā",
       "vri": null,
       "bjt": "vimokkhā",
+      "thai": null,
       "type": "error",
+      "confidence": 0.95,
       "preferred": "vimokkhā",
-      "notes": "PTS \"vimokhā\" not in DPD, SC \"vimokkhā\" is valid"
+      "notes": "PTS \"vimokhā\" not in DPD, SC/BJT \"vimokkhā\" is valid"
     },
     {
       "position": 96,
@@ -45,7 +51,9 @@
       "sc": "santā",
       "vri": null,
       "bjt": "vimokkhā",
+      "thai": null,
       "type": "error",
+      "confidence": 0.9,
       "preferred": "santā",
       "notes": "PTS \"vimokhā\" not in DPD, SC \"santā\" is valid"
     },
@@ -55,9 +63,11 @@
       "sc": "diṭṭheva",
       "vri": null,
       "bjt": "diṭṭheva",
+      "thai": null,
       "type": "error",
+      "confidence": 0.95,
       "preferred": "diṭṭheva",
-      "notes": "PTS \"diṭṭh\" not in DPD, SC \"diṭṭheva\" is valid"
+      "notes": "PTS \"diṭṭh\" not in DPD, SC/BJT \"diṭṭheva\" is valid"
     },
     {
       "position": 150,
@@ -65,9 +75,11 @@
       "sc": "vimokkhā",
       "vri": null,
       "bjt": "vimokkhā",
+      "thai": null,
       "type": "error",
+      "confidence": 0.95,
       "preferred": "vimokkhā",
-      "notes": "PTS \"vimokhā\" not in DPD, SC \"vimokkhā\" is valid"
+      "notes": "PTS \"vimokhā\" not in DPD, SC/BJT \"vimokkhā\" is valid"
     },
     {
       "position": 195,
@@ -75,9 +87,11 @@
       "sc": "vimokkhā",
       "vri": null,
       "bjt": "vimokkhā",
+      "thai": null,
       "type": "error",
+      "confidence": 0.95,
       "preferred": "vimokkhā",
-      "notes": "PTS \"vimokhā\" not in DPD, SC \"vimokkhā\" is valid"
+      "notes": "PTS \"vimokhā\" not in DPD, SC/BJT \"vimokkhā\" is valid"
     }
   ],
   "variants": [
@@ -87,6 +101,7 @@
       "sc": "ca",
       "vri": null,
       "bjt": "samantapāsādika",
+      "thai": null,
       "type": "variant",
       "notes": "Textual variant: PTS \"saddho\" vs SC \"ca\""
     },
@@ -96,6 +111,7 @@
       "sc": "bhikkhave",
       "vri": null,
       "bjt": "suttaṃ",
+      "thai": null,
       "type": "variant",
       "notes": "Textual variant: PTS \"ca\" vs SC \"bhikkhave\""
     },
@@ -105,8 +121,9 @@
       "sc": "bhikkhu",
       "vri": null,
       "bjt": "sāvatthinidānaṃ",
+      "thai": "bhikkhave",
       "type": "variant",
-      "notes": "Textual variant: PTS \"bhikkhave\" vs SC \"bhikkhu\""
+      "notes": "Textual variant: PTS \"bhikkhave\" vs SC \"bhikkhu\" (Thai agrees with PTS)"
     },
     {
       "position": 4,
@@ -114,6 +131,7 @@
       "sc": "hoti",
       "vri": null,
       "bjt": "saddho",
+      "thai": "abhibhāyatanāni",
       "type": "variant",
       "notes": "Textual variant: PTS \"bhikkhu\" vs SC \"hoti\""
     },
@@ -123,8 +141,9 @@
       "sc": "no",
       "vri": null,
       "bjt": "ca",
+      "thai": "hoti",
       "type": "variant",
-      "notes": "Textual variant: PTS \"hoti\" vs SC \"no\""
+      "notes": "Textual variant: PTS \"hoti\" vs SC \"no\" (Thai agrees with PTS)"
     },
     {
       "position": 6,
@@ -132,6 +151,7 @@
       "sc": "ca",
       "vri": null,
       "bjt": "bhikkhave",
+      "thai": "idaṃ",
       "type": "variant",
       "notes": "Textual variant: PTS \"no\" vs SC \"ca\""
     },
@@ -141,6 +161,7 @@
       "sc": "sīlavā",
       "vri": null,
       "bjt": "bhikkhu",
+      "thai": "paṭhamaṃ",
       "type": "variant",
       "notes": "Textual variant: PTS \"ca\" vs SC \"sīlavā\""
     },
@@ -150,6 +171,7 @@
       "sc": "evaṃ",
       "vri": null,
       "bjt": "hoti",
+      "thai": "abhibhāyatanaṃ",
       "type": "variant",
       "notes": "Textual variant: PTS \"sīlavā\" vs SC \"evaṃ\""
     },
@@ -159,6 +181,7 @@
       "sc": "so",
       "vri": null,
       "bjt": "no",
+      "thai": "ajjhattaṃ",
       "type": "variant",
       "notes": "Textual variant: PTS \"evaṃ\" vs SC \"so\""
     },
@@ -168,6 +191,7 @@
       "sc": "tenaṅgena",
       "vri": null,
       "bjt": "ca",
+      "thai": "rūpasaññī",
       "type": "variant",
       "notes": "Textual variant: PTS \"so\" vs SC \"tenaṅgena\""
     },
@@ -177,6 +201,7 @@
       "sc": "tenaṅgena",
       "vri": null,
       "bjt": "evaṃ",
+      "thai": null,
       "type": "variant",
       "notes": "Textual variant: PTS \"ten\" vs SC \"tenaṅgena\""
     },
@@ -186,6 +211,7 @@
       "sc": "pe",
       "vri": null,
       "bjt": "visārado",
+      "thai": null,
       "type": "variant",
       "notes": "Textual variant: PTS \"dhammakathiko\" vs SC \"pe\""
     },
@@ -195,8 +221,9 @@
       "sc": "dhammakathiko",
       "vri": null,
       "bjt": "ca",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"ca\" vs SC \"dhammakathiko\""
+      "notes": "Textual variant: PTS \"ca\" vs SC \"dhammakathiko\" (BJT agrees with PTS)"
     },
     {
       "position": 60,
@@ -204,6 +231,7 @@
       "sc": "ca",
       "vri": null,
       "bjt": "parisāya",
+      "thai": null,
       "type": "variant",
       "notes": "Textual variant: PTS \"no\" vs SC \"ca\""
     },
@@ -213,6 +241,7 @@
       "sc": "no",
       "vri": null,
       "bjt": "dhammaṃ",
+      "thai": null,
       "type": "variant",
       "notes": "Textual variant: PTS \"ca\" vs SC \"no\""
     },
@@ -222,6 +251,7 @@
       "sc": "ca",
       "vri": null,
       "bjt": "deseyyanti",
+      "thai": null,
       "type": "variant",
       "notes": "Textual variant: PTS \"parisāvacaro\" vs SC \"ca\""
     },
@@ -231,6 +261,7 @@
       "sc": "pe",
       "vri": null,
       "bjt": "evaṃ",
+      "thai": null,
       "type": "variant",
       "notes": "Textual variant: PTS \"aṅguttaranikāya\" vs SC \"pe\""
     },
@@ -240,8 +271,9 @@
       "sc": "pe",
       "vri": null,
       "bjt": "ye",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"ye\" vs SC \"pe\""
+      "notes": "Textual variant: PTS \"ye\" vs SC \"pe\" (BJT agrees with PTS)"
     },
     {
       "position": 94,
@@ -249,8 +281,9 @@
       "sc": "ye",
       "vri": null,
       "bjt": "te",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"te\" vs SC \"ye\""
+      "notes": "Textual variant: PTS \"te\" vs SC \"ye\" (BJT agrees with PTS)"
     },
     {
       "position": 95,
@@ -258,8 +291,9 @@
       "sc": "te",
       "vri": null,
       "bjt": "santā",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"santā\" vs SC \"te\""
+      "notes": "Textual variant: PTS \"santā\" vs SC \"te\" (BJT agrees with PTS)"
     },
     {
       "position": 97,
@@ -267,8 +301,9 @@
       "sc": "vimokkhā",
       "vri": null,
       "bjt": "atikkamma",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"atikkamma\" vs SC \"vimokkhā\""
+      "notes": "Textual variant: PTS \"atikkamma\" vs SC \"vimokkhā\" (BJT agrees with PTS)"
     },
     {
       "position": 98,
@@ -276,8 +311,9 @@
       "sc": "atikkamma",
       "vri": null,
       "bjt": "rūpe",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"rūpe\" vs SC \"atikkamma\""
+      "notes": "Textual variant: PTS \"rūpe\" vs SC \"atikkamma\" (BJT agrees with PTS)"
     },
     {
       "position": 99,
@@ -285,8 +321,9 @@
       "sc": "rūpe",
       "vri": null,
       "bjt": "āruppā",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"āruppā\" vs SC \"rūpe\""
+      "notes": "Textual variant: PTS \"āruppā\" vs SC \"rūpe\" (BJT agrees with PTS)"
     },
     {
       "position": 100,
@@ -294,8 +331,9 @@
       "sc": "āruppā",
       "vri": null,
       "bjt": "te",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"te\" vs SC \"āruppā\""
+      "notes": "Textual variant: PTS \"te\" vs SC \"āruppā\" (BJT agrees with PTS)"
     },
     {
       "position": 101,
@@ -303,8 +341,9 @@
       "sc": "te",
       "vri": null,
       "bjt": "kāyena",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"kāyena\" vs SC \"te\""
+      "notes": "Textual variant: PTS \"kāyena\" vs SC \"te\" (BJT agrees with PTS)"
     },
     {
       "position": 102,
@@ -312,8 +351,9 @@
       "sc": "kāyena",
       "vri": null,
       "bjt": "phusitvā",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"phusitvā\" vs SC \"kāyena\""
+      "notes": "Textual variant: PTS \"phusitvā\" vs SC \"kāyena\" (BJT agrees with PTS)"
     },
     {
       "position": 103,
@@ -321,8 +361,9 @@
       "sc": "phusitvā",
       "vri": null,
       "bjt": "viharati",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"viharati\" vs SC \"phusitvā\""
+      "notes": "Textual variant: PTS \"viharati\" vs SC \"phusitvā\" (BJT agrees with PTS)"
     },
     {
       "position": 104,
@@ -330,6 +371,7 @@
       "sc": "viharati",
       "vri": null,
       "bjt": "so",
+      "thai": null,
       "type": "variant",
       "notes": "Textual variant: PTS \"no\" vs SC \"viharati\""
     },
@@ -339,8 +381,9 @@
       "sc": "tenaṅgena",
       "vri": null,
       "bjt": "tenaṅgena",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"ten\" vs SC \"tenaṅgena\""
+      "notes": "Textual variant: PTS \"ten\" vs SC \"tenaṅgena\" (BJT agrees with SC)"
     },
     {
       "position": 158,
@@ -348,8 +391,9 @@
       "sc": "āsavānañca",
       "vri": null,
       "bjt": "āsavānaṃ",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"āsavānaṃ\" vs SC \"āsavānañca\""
+      "notes": "Textual variant: PTS \"āsavānaṃ\" vs SC \"āsavānañca\" (BJT agrees with PTS)"
     },
     {
       "position": 160,
@@ -357,8 +401,9 @@
       "sc": "anāsavaṃ",
       "vri": null,
       "bjt": "anāsavaṃ",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"pe\" vs SC \"anāsavaṃ\""
+      "notes": "Textual variant: PTS \"pe\" vs SC \"anāsavaṃ\" (BJT agrees with SC)"
     },
     {
       "position": 200,
@@ -366,8 +411,9 @@
       "sc": "ca",
       "vri": null,
       "bjt": "kāyena",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"kāyena\" vs SC \"ca\""
+      "notes": "Textual variant: PTS \"kāyena\" vs SC \"ca\" (BJT agrees with PTS)"
     },
     {
       "position": 201,
@@ -375,8 +421,9 @@
       "sc": "kāyena",
       "vri": null,
       "bjt": "phusitvā",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"phusitvā\" vs SC \"kāyena\""
+      "notes": "Textual variant: PTS \"phusitvā\" vs SC \"kāyena\" (BJT agrees with PTS)"
     },
     {
       "position": 202,
@@ -384,8 +431,9 @@
       "sc": "phusitvā",
       "vri": null,
       "bjt": "viharati",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"viharati\" vs SC \"phusitvā\""
+      "notes": "Textual variant: PTS \"viharati\" vs SC \"phusitvā\" (BJT agrees with PTS)"
     },
     {
       "position": 203,
@@ -393,8 +441,9 @@
       "sc": "viharati",
       "vri": null,
       "bjt": "āsavānaṃ",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"āsavānaṃ\" vs SC \"viharati\""
+      "notes": "Textual variant: PTS \"āsavānaṃ\" vs SC \"viharati\" (BJT agrees with PTS)"
     },
     {
       "position": 212,
@@ -402,8 +451,9 @@
       "sc": "tenaṅgena",
       "vri": null,
       "bjt": "tenaṅgena",
+      "thai": null,
       "type": "variant",
-      "notes": "Textual variant: PTS \"ten\" vs SC \"tenaṅgena\""
+      "notes": "Textual variant: PTS \"ten\" vs SC \"tenaṅgena\" (BJT agrees with SC)"
     }
   ],
   "uncertain": [
@@ -413,6 +463,7 @@
       "sc": null,
       "vri": null,
       "bjt": "sīlavā",
+      "thai": "eko",
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -422,6 +473,7 @@
       "sc": null,
       "vri": null,
       "bjt": "evaṃ",
+      "thai": "bahiddhā",
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -431,6 +483,7 @@
       "sc": null,
       "vri": null,
       "bjt": "aṅgena",
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -440,6 +493,7 @@
       "sc": "parisāvacaro",
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -449,6 +503,7 @@
       "sc": "pe",
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -458,6 +513,7 @@
       "sc": null,
       "vri": null,
       "bjt": "so",
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -467,6 +523,7 @@
       "sc": "no",
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -476,6 +533,7 @@
       "sc": "ca",
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -485,6 +543,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -494,6 +553,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -503,6 +563,7 @@
       "sc": "cetovimuttiṃ",
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -512,6 +573,7 @@
       "sc": "paññāvimuttiṃ",
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -521,6 +583,7 @@
       "sc": "diṭṭheva",
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -530,6 +593,7 @@
       "sc": "dhamme",
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -539,6 +603,7 @@
       "sc": "sayaṃ",
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -548,6 +613,7 @@
       "sc": "abhiññā",
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -557,6 +623,7 @@
       "sc": "āsavānañca",
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -566,6 +633,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     },
@@ -575,6 +643,7 @@
       "sc": "dutiyaṃ",
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     }

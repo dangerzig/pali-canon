@@ -5,17 +5,19 @@
     "gretil": 29,
     "sc": 30,
     "vri": 30,
-    "bjt": 116
+    "bjt": 116,
+    "thai": 10
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 29,
-    "orthographic": 1,
+    "orthographic": 12,
     "errors": 2,
     "variants": 2,
     "uncertain": 1,
-    "match": 14,
-    "other": 9
+    "match": 0,
+    "other": 12
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "imesañca",
       "vri": "imesañca",
       "bjt": "cetopariyasuttaṃ",
+      "thai": "na",
       "type": "error",
       "confidence": 0.9,
       "preferred": "imesañca",
-      "notes": "PTS \"imesañ\" not in DPD, SC/VRI \"imesañca\" is valid"
+      "notes": "PTS \"imesañ\" not in DPD, SC/VRI \"imesañca\" is valid, BJT has \"cetopariyasuttaṃ\", Thai has \"na\""
     },
     {
       "position": 7,
@@ -35,10 +38,11 @@
       "sc": "bahulīkatattā",
       "vri": "bahulīkatattā",
       "bjt": "bahulīkatattā",
+      "thai": "deva",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "bahulīkatattā",
-      "notes": "PTS \"bahuparasattānam\" not in DPD, SC/VRI \"bahulīkatattā\" is valid"
+      "notes": "PTS \"bahuparasattānam\" not in DPD, SC/VRI/BJT \"bahulīkatattā\" is valid, Thai has \"deva\""
     }
   ],
   "variants": [
@@ -48,10 +52,11 @@
       "sc": "avimuttaṃ",
       "vri": "avimuttaṃ",
       "bjt": "vā",
+      "thai": null,
       "type": "variant",
       "confidence": 0.7,
       "preferred": "vimuttaṃ",
-      "notes": "Textual variant: PTS \"vimuttaṃ\" vs SC/VRI \"avimuttaṃ\""
+      "notes": "Textual variant: PTS \"vimuttaṃ\" vs SC/VRI \"avimuttaṃ\", BJT has \"vā\""
     },
     {
       "position": 24,
@@ -59,10 +64,11 @@
       "sc": "avimuttaṃ",
       "vri": "avimuttaṃ",
       "bjt": "vimuttaṃ",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "vimuttaṃ",
-      "notes": "Textual variant: PTS \"vimuttaṃ\" vs SC/VRI \"avimuttaṃ\""
+      "notes": "Textual variant: PTS \"vimuttaṃ\" vs SC/VRI \"avimuttaṃ\", BJT agrees with PTS"
     }
   ],
   "uncertain": [
@@ -72,6 +78,7 @@
       "sc": null,
       "vri": null,
       "bjt": "haṃ",
+      "thai": "kātuṃ",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "avuso",

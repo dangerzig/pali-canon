@@ -5,17 +5,19 @@
     "gretil": 35,
     "sc": 36,
     "vri": 36,
-    "bjt": 40
+    "bjt": 40,
+    "thai": 50
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 35,
-    "orthographic": 1,
+    "orthographic": 0,
     "errors": 1,
     "variants": 2,
     "uncertain": 2,
-    "match": 29,
-    "other": 0
+    "match": 0,
+    "other": 30
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "sītavalāhakā",
       "vri": "sītavalāhakā",
       "bjt": "sītavalāhakā",
+      "thai": "byākareyyāsīti",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "sītavalāhakā",
-      "notes": "PTS \"sītavalāhakādevā\" not in DPD, SC/VRI \"sītavalāhakā\" is valid"
+      "notes": "PTS \"sītavalāhakādevā\" not in DPD, SC/VRI/BJT \"sītavalāhakā\" is valid, Thai has \"byākareyyāsīti\""
     }
   ],
   "variants": [
@@ -37,10 +40,11 @@
       "sc": "sāvatthinidānaṃ",
       "vri": "sāvatthinidānaṃ",
       "bjt": "suddhika",
+      "thai": "katamesaṃ",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"suddhika\", Thai has \"katamesaṃ\""
     },
     {
       "position": 6,
@@ -48,10 +52,11 @@
       "sc": "desessāmi",
       "vri": "desessāmi",
       "bjt": "desissāmi",
+      "thai": "vayo",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "desissāmi",
-      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI \"desessāmi\""
+      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI \"desessāmi\", BJT agrees with PTS, Thai has \"vayo\""
     }
   ],
   "uncertain": [
@@ -61,6 +66,7 @@
       "sc": null,
       "vri": null,
       "bjt": "suttaṃ",
+      "thai": "āvuso",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "tatra",
@@ -72,6 +78,7 @@
       "sc": null,
       "vri": null,
       "bjt": "sāvatthiyaṃ",
+      "thai": "ānanda",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "voca",

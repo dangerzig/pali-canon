@@ -5,17 +5,19 @@
     "gretil": 99,
     "sc": 102,
     "vri": 102,
-    "bjt": 564
+    "bjt": 564,
+    "thai": 14
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 99,
-    "orthographic": 31,
+    "orthographic": 11,
     "errors": 3,
     "variants": 3,
     "uncertain": 25,
-    "match": 16,
-    "other": 21
+    "match": 0,
+    "other": 57
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "saddhiṃ",
       "vri": "saddhiṃ",
       "bjt": "saddhiṃ",
+      "thai": "kissa",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "saddhiṃ",
-      "notes": "PTS \"saddhim\" not in DPD, SC/VRI \"saddhiṃ\" is valid"
+      "notes": "PTS \"saddhim\" not in DPD, SC/VRI/BJT \"saddhiṃ\" is valid, Thai has \"kissa\""
     },
     {
       "position": 73,
@@ -35,10 +38,11 @@
       "sc": "muṭṭhassatino",
       "vri": "muṭṭhassatino",
       "bjt": "samiṃsu",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "muṭṭhassatino",
-      "notes": "PTS \"muṭṭhasatino\" not in DPD, SC/VRI \"muṭṭhassatino\" is valid"
+      "notes": "PTS \"muṭṭhasatino\" not in DPD, SC/VRI \"muṭṭhassatino\" is valid, BJT has \"samiṃsu\""
     },
     {
       "position": 74,
@@ -46,10 +50,11 @@
       "sc": "muṭṭhassatīhi",
       "vri": "muṭṭhassatīhi",
       "bjt": "kusītā",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "muṭṭhassatīhi",
-      "notes": "PTS \"muṭṭhasatīhi\" not in DPD, SC/VRI \"muṭṭhassatīhi\" is valid"
+      "notes": "PTS \"muṭṭhasatīhi\" not in DPD, SC/VRI \"muṭṭhassatīhi\" is valid, BJT has \"kusītā\""
     }
   ],
   "variants": [
@@ -59,10 +64,11 @@
       "sc": "sāvatthiyaṃ",
       "vri": "sāvatthiyaṃ",
       "bjt": "ahirikamūlakatikacatukkasuttaṃ",
+      "thai": "vipassissa",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthiyaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthiyaṃ\", BJT has \"ahirikamūlakatikacatukkasuttaṃ\", Thai has \"vipassissa\""
     },
     {
       "position": 8,
@@ -70,10 +76,11 @@
       "sc": "anottappino",
       "vri": "anottappino",
       "bjt": "anottāpino",
+      "thai": "na",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "anottāpino",
-      "notes": "Textual variant: PTS \"anottāpino\" vs SC/VRI \"anottappino\""
+      "notes": "Textual variant: PTS \"anottāpino\" vs SC/VRI \"anottappino\", BJT agrees with PTS, Thai has \"na\""
     },
     {
       "position": 9,
@@ -81,10 +88,11 @@
       "sc": "anottappīhi",
       "vri": "anottappīhi",
       "bjt": "anottāpīhi",
+      "thai": "hoti",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "anottāpīhi",
-      "notes": "Textual variant: PTS \"anottāpīhi\" vs SC/VRI \"anottappīhi\""
+      "notes": "Textual variant: PTS \"anottāpīhi\" vs SC/VRI \"anottappīhi\", BJT agrees with PTS, Thai has \"hoti\""
     }
   ],
   "uncertain": [
@@ -94,10 +102,11 @@
       "sc": null,
       "vri": "dhātusova",
       "bjt": "bhikkhave",
+      "thai": "kimhi",
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "dhātuso",
-      "notes": "Three-way disagreement: PTS \"dhātuso\", SC \"None\", VRI \"dhātusova\""
+      "notes": "Multi-way disagreement: PTS \"dhātuso\", SC \"None\", VRI \"dhātusova\", BJT \"bhikkhave\", Thai \"kimhi\""
     },
     {
       "position": 31,
@@ -105,6 +114,7 @@
       "sc": null,
       "vri": null,
       "bjt": "bhikkhave",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "anāgatam",
@@ -116,6 +126,7 @@
       "sc": null,
       "vri": null,
       "bjt": "addhānaṃ",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "pi",
@@ -127,6 +138,7 @@
       "sc": null,
       "vri": null,
       "bjt": "dhātusova",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "etarahi",
@@ -138,6 +150,7 @@
       "sc": null,
       "vri": null,
       "bjt": "sattā",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "paccuppannam",
@@ -149,6 +162,7 @@
       "sc": null,
       "vri": null,
       "bjt": "saṃsandiṃsu",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "addhānaṃ",
@@ -160,6 +174,7 @@
       "sc": null,
       "vri": null,
       "bjt": "samiṃsu",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "samentīti",
@@ -171,6 +186,7 @@
       "sc": null,
       "vri": null,
       "bjt": "ahirikā",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ekaṃ",
@@ -182,6 +198,7 @@
       "sc": null,
       "vri": null,
       "bjt": "ahirikehi",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "anottāpino",
@@ -193,6 +210,7 @@
       "sc": null,
       "vri": null,
       "bjt": "saddhiṃ",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "anottāpīhi",
@@ -204,6 +222,7 @@
       "sc": null,
       "vri": null,
       "bjt": "bhikkhave",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "pi",
@@ -215,6 +234,7 @@
       "sc": null,
       "vri": null,
       "bjt": "addhānaṃ",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "etarahi",
@@ -226,6 +246,7 @@
       "sc": null,
       "vri": null,
       "bjt": "dhātusova",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "paccuppannam",
@@ -237,6 +258,7 @@
       "sc": null,
       "vri": null,
       "bjt": "sattā",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "addhanaṃ",
@@ -248,6 +270,7 @@
       "sc": null,
       "vri": null,
       "bjt": "saṃsandiṃsu",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "dve",
@@ -259,6 +282,7 @@
       "sc": null,
       "vri": null,
       "bjt": "samiṃsu",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "anottāpino",
@@ -270,6 +294,7 @@
       "sc": null,
       "vri": null,
       "bjt": "ahirikā",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "anottāpīhi",
@@ -281,6 +306,7 @@
       "sc": null,
       "vri": null,
       "bjt": "upaṭṭhitasatīhi",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "upaṭṭhitasatīhi",
@@ -292,10 +318,11 @@
       "sc": "pe",
       "vri": null,
       "bjt": "samenti",
+      "thai": null,
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "pi",
-      "notes": "Three-way disagreement: PTS \"pi\", SC \"pe\", VRI \"None\""
+      "notes": "Multi-way disagreement: PTS \"pi\", SC \"pe\", VRI \"None\", BJT \"samenti\""
     },
     {
       "position": 92,
@@ -303,6 +330,7 @@
       "sc": null,
       "vri": null,
       "bjt": "atītampi",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "anāgatam",
@@ -314,6 +342,7 @@
       "sc": null,
       "vri": null,
       "bjt": "bhikkhave",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "pi",
@@ -325,6 +354,7 @@
       "sc": null,
       "vri": null,
       "bjt": "addhānaṃ",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "paccuppannam",
@@ -336,6 +366,7 @@
       "sc": null,
       "vri": null,
       "bjt": "dhātusova",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "addhānamo",
@@ -347,6 +378,7 @@
       "sc": null,
       "vri": null,
       "bjt": "sattā",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "samentīti",
@@ -358,6 +390,7 @@
       "sc": null,
       "vri": null,
       "bjt": "saṃsandiṃsu",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "tīṇi",

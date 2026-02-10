@@ -5,17 +5,19 @@
     "gretil": 50,
     "sc": 55,
     "vri": 55,
-    "bjt": 62
+    "bjt": 62,
+    "thai": 17
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 50,
-    "orthographic": 2,
+    "orthographic": 25,
     "errors": 4,
     "variants": 2,
     "uncertain": 4,
-    "match": 37,
-    "other": 1
+    "match": 1,
+    "other": 14
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "nekkhammaninnañcassa",
       "vri": "nekkhammaninnañcassa",
       "bjt": "nekkhammaninnaṃ",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "nekkhammaninnañcassa",
-      "notes": "PTS \"nekkhammaninnam\" not in DPD, SC/VRI \"nekkhammaninnañcassa\" is valid"
+      "notes": "PTS \"nekkhammaninnam\" not in DPD, SC/VRI \"nekkhammaninnañcassa\" is valid, BJT has \"nekkhammaninnaṃ\""
     },
     {
       "position": 44,
@@ -35,10 +38,11 @@
       "sc": "cittaṃ",
       "vri": "cittaṃ",
       "bjt": "cittaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "cittaṃ",
-      "notes": "PTS \"cittam\" not in DPD, SC/VRI \"cittaṃ\" is valid"
+      "notes": "PTS \"cittam\" not in DPD, SC/VRI/BJT \"cittaṃ\" is valid"
     },
     {
       "position": 45,
@@ -46,10 +50,11 @@
       "sc": "kammaniyaṃ",
       "vri": "kammaniyaṃ",
       "bjt": "kammaniyaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "kammaniyaṃ",
-      "notes": "PTS \"kammaniyam\" not in DPD, SC/VRI \"kammaniyaṃ\" is valid"
+      "notes": "PTS \"kammaniyam\" not in DPD, SC/VRI/BJT \"kammaniyaṃ\" is valid"
     },
     {
       "position": 48,
@@ -57,10 +62,11 @@
       "sc": "sacchikaraṇīyesu",
       "vri": "sacchikaraṇīyesu",
       "bjt": "sacchikaraṇiyesu",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.85,
       "preferred": "sacchikaraṇīyesu",
-      "notes": "PTS \"sacchikaraṇiyesu\" not in DPD, SC/VRI \"sacchikaraṇīyesu\" is valid"
+      "notes": "PTS \"sacchikaraṇiyesu\" not in DPD, SC/VRI \"sacchikaraṇīyesu\" is valid, BJT agrees with PTS"
     }
   ],
   "variants": [
@@ -70,10 +76,11 @@
       "sc": "sāvatthinidānaṃ",
       "vri": "sāvatthinidānaṃ",
       "bjt": "cakkhu",
+      "thai": "karaṇīyaṃ",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"cakkhu\", Thai has \"karaṇīyaṃ\""
     },
     {
       "position": 49,
@@ -81,10 +88,11 @@
       "sc": "dhammesū",
       "vri": "dhammesū",
       "bjt": "dhammesūti",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "dhammesūti",
-      "notes": "Textual variant: PTS \"dhammesūti\" vs SC/VRI \"dhammesū\""
+      "notes": "Textual variant: PTS \"dhammesūti\" vs SC/VRI \"dhammesū\", BJT agrees with PTS"
     }
   ],
   "uncertain": [
@@ -94,6 +102,7 @@
       "sc": null,
       "vri": null,
       "bjt": "suttaṃ",
+      "thai": "tatra",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "tatra",
@@ -105,6 +114,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": "rūpaṃ",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "etad",
@@ -116,6 +126,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "avoca",
@@ -127,6 +138,7 @@
       "sc": null,
       "vri": null,
       "bjt": "cassa",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "cassa",

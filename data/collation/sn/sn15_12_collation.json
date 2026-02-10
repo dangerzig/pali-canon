@@ -5,17 +5,19 @@
     "gretil": 48,
     "sc": 35,
     "vri": 36,
-    "bjt": 52
+    "bjt": 52,
+    "thai": 15
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 48,
-    "orthographic": 2,
+    "orthographic": 13,
     "errors": 3,
     "variants": 5,
     "uncertain": 16,
-    "match": 16,
-    "other": 6
+    "match": 2,
+    "other": 9
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "niṭṭhamettha",
       "vri": "niṭṭhamettha",
       "bjt": "niṭṭhamettha",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "niṭṭhamettha",
-      "notes": "PTS \"niṭṭham\" not in DPD, SC/VRI \"niṭṭhamettha\" is valid"
+      "notes": "PTS \"niṭṭham\" not in DPD, SC/VRI/BJT \"niṭṭhamettha\" is valid"
     },
     {
       "position": 38,
@@ -35,10 +38,11 @@
       "sc": "anamataggoyaṃ",
       "vri": "anamataggoyaṃ",
       "bjt": "anamataggoyaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "anamataggoyaṃ",
-      "notes": "PTS \"anamataggāyam\" not in DPD, SC/VRI \"anamataggoyaṃ\" is valid"
+      "notes": "PTS \"anamataggāyam\" not in DPD, SC/VRI/BJT \"anamataggoyaṃ\" is valid"
     },
     {
       "position": 45,
@@ -46,10 +50,11 @@
       "sc": "alaṃ",
       "vri": "alaṃ",
       "bjt": "sattānaṃ",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "alaṃ",
-      "notes": "PTS \"alām\" not in DPD, SC/VRI \"alaṃ\" is valid"
+      "notes": "PTS \"alām\" not in DPD, SC/VRI \"alaṃ\" is valid, BJT has \"sattānaṃ\""
     }
   ],
   "variants": [
@@ -59,10 +64,11 @@
       "sc": "yaṃ",
       "vri": "yaṃ",
       "bjt": "koṭi",
+      "thai": "bhūtānaṃ",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "yam",
-      "notes": "Textual variant: PTS \"yam\" vs SC/VRI \"yaṃ\""
+      "notes": "Textual variant: PTS \"yam\" vs SC/VRI \"yaṃ\", BJT has \"koṭi\", Thai has \"bhūtānaṃ\""
     },
     {
       "position": 10,
@@ -70,10 +76,11 @@
       "sc": "susajjitaṃ",
       "vri": "susajjitaṃ",
       "bjt": "sajjitaṃ",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "sajjitaṃ",
-      "notes": "Textual variant: PTS \"sajjitaṃ\" vs SC/VRI \"susajjitaṃ\""
+      "notes": "Textual variant: PTS \"sajjitaṃ\" vs SC/VRI \"susajjitaṃ\", BJT agrees with PTS"
     },
     {
       "position": 14,
@@ -81,10 +88,11 @@
       "sc": "amhehipi",
       "vri": "amhehipi",
       "bjt": "amhehipi",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "amhehi",
-      "notes": "Textual variant: PTS \"amhehi\" vs SC/VRI \"amhehipi\""
+      "notes": "Textual variant: PTS \"amhehi\" vs SC/VRI/BJT \"amhehipi\""
     },
     {
       "position": 20,
@@ -92,10 +100,11 @@
       "sc": "addhunā",
       "vri": "addhunā",
       "bjt": "addhunā",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "addhunāti",
-      "notes": "Textual variant: PTS \"addhunāti\" vs SC/VRI \"addhunā\""
+      "notes": "Textual variant: PTS \"addhunāti\" vs SC/VRI/BJT \"addhunā\""
     },
     {
       "position": 41,
@@ -103,10 +112,11 @@
       "sc": "pubbā",
       "vri": "pubbā",
       "bjt": "pubbā",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "pubbākoṭi",
-      "notes": "Textual variant: PTS \"pubbākoṭi\" vs SC/VRI \"pubbā\""
+      "notes": "Textual variant: PTS \"pubbākoṭi\" vs SC/VRI/BJT \"pubbā\""
     }
   ],
   "uncertain": [
@@ -116,10 +126,11 @@
       "sc": "anamataggoyaṃ",
       "vri": "pe",
       "bjt": null,
+      "thai": null,
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "anamataggāyam",
-      "notes": "Three-way disagreement: PTS \"anamataggāyam\", SC \"anamataggoyaṃ\", VRI \"pe\""
+      "notes": "Multi-way disagreement: PTS \"anamataggāyam\", SC \"anamataggoyaṃ\", VRI \"pe\""
     },
     {
       "position": 12,
@@ -127,6 +138,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ettha",
@@ -138,6 +150,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "evarūpam",
@@ -149,6 +162,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "vaggo",
@@ -160,6 +174,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "content",
@@ -171,6 +186,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "straddling",
@@ -182,6 +198,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "page",
@@ -193,6 +210,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "break",
@@ -204,6 +222,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "has",
@@ -215,6 +234,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "been",
@@ -226,6 +246,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "moved",
@@ -237,6 +258,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "the",
@@ -248,6 +270,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "page",
@@ -259,6 +282,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "above",
@@ -270,6 +294,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "tam",
@@ -281,10 +306,11 @@
       "sc": "vimuccitun",
       "vri": "vimuccitu",
       "bjt": "vimuccitunti",
+      "thai": null,
       "type": "uncertain",
-      "confidence": 0.5,
+      "confidence": 0.6,
       "preferred": "vimuccitunti",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "PTS/BJT \"vimuccitunti\" vs SC \"vimuccitun\", VRI \"vimuccitu\""
     }
   ]
 }

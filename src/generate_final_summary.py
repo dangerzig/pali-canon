@@ -50,7 +50,7 @@ def main():
 
     # Vinaya
     vin = critical_summary['vinaya_pitaka']
-    print("VINAYA PIṬAKA (4 witnesses: SC, GRETIL, VRI, BJT)")
+    print("VINAYA PIṬAKA (5 witnesses: SC, GRETIL, VRI, BJT, Thai)")
     print(f"  Texts:           {vin['texts']}")
     print(f"  SC:              {vin.get('sc_words', 0):,} words")
     print(f"  GRETIL (PTS):    {vin['gretil_words']:,} words")
@@ -60,7 +60,7 @@ def main():
 
     # Sutta Piṭaka
     sutta = critical_summary['sutta_pitaka']
-    print("SUTTA PIṬAKA (4 witnesses: SC, GRETIL, VRI, BJT)")
+    print("SUTTA PIṬAKA (5 witnesses: SC, GRETIL, VRI, BJT, Thai)")
     print()
 
     # DN
@@ -118,7 +118,7 @@ def main():
 
     # Abhidhamma
     abh = critical_summary['abhidhamma_pitaka']
-    print("ABHIDHAMMA PIṬAKA (4 witnesses: SC, GRETIL, VRI, BJT)")
+    print("ABHIDHAMMA PIṬAKA (5 witnesses: SC, GRETIL, VRI, BJT, Thai)")
     print(f"  Texts:           {abh['texts']}")
     print(f"  SC:              {abh.get('sc_words', 0):,} words")
     print(f"  GRETIL (PTS):    {abh['gretil_words']:,} words")
@@ -156,13 +156,13 @@ def main():
     print()
 
     # Calculate witness coverage
-    four_witness_words = st['sc_words'] + vin['gretil_words'] + abh['gretil_words']
+    five_witness_words = st['sc_words'] + vin['gretil_words'] + abh['gretil_words']
 
     print("Witness Coverage:")
-    print(f"  4-witness editions (SC/GRETIL/VRI/BJT): {four_witness_words:,} words")
+    print(f"  5-witness editions (SC/GRETIL/VRI/BJT/Thai): {five_witness_words:,} words")
     print()
 
-    total_critical_words = four_witness_words
+    total_critical_words = five_witness_words
     print(f"Total Critical Edition Coverage:          {total_critical_words:,} words")
     print()
 
@@ -225,7 +225,7 @@ def main():
             "coverage": lemmatized_stats['coverage']
         },
         "coverage": {
-            "four_witness_words": four_witness_words,
+            "five_witness_words": five_witness_words,
             "total_critical_words": total_critical_words
         }
     }

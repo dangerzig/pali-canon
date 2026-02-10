@@ -5,17 +5,19 @@
     "gretil": 36,
     "sc": 32,
     "vri": 32,
-    "bjt": 34
+    "bjt": 34,
+    "thai": 632
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 36,
-    "orthographic": 5,
+    "orthographic": 0,
     "errors": 3,
     "variants": 3,
     "uncertain": 6,
-    "match": 14,
-    "other": 5
+    "match": 2,
+    "other": 22
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "samphappalāpaṃ",
       "vri": "samphappalāpaṃ",
       "bjt": "āmakadhaññapeyyālavaggo",
+      "thai": "dhammādāso",
       "type": "error",
       "confidence": 0.9,
       "preferred": "samphappalāpaṃ",
-      "notes": "PTS \"samphappalāpam\" not in DPD, SC/VRI \"samphappalāpaṃ\" is valid"
+      "notes": "PTS \"samphappalāpam\" not in DPD, SC/VRI \"samphappalāpaṃ\" is valid, BJT has \"āmakadhaññapeyyālavaggo\", Thai has \"dhammādāso\""
     },
     {
       "position": 29,
@@ -35,10 +38,11 @@
       "sc": "bījañca",
       "vri": "bījañca",
       "bjt": null,
+      "thai": "dhammapariyāyo",
       "type": "error",
       "confidence": 0.9,
       "preferred": "bījañca",
-      "notes": "PTS \"bījam\" not in DPD, SC/VRI \"bījañca\" is valid"
+      "notes": "PTS \"bījam\" not in DPD, SC/VRI \"bījañca\" is valid, Thai has \"dhammapariyāyo\""
     },
     {
       "position": 31,
@@ -46,10 +50,11 @@
       "sc": "gandhanti",
       "vri": "gandhanti",
       "bjt": null,
+      "thai": "samannāgato",
       "type": "error",
       "confidence": 0.9,
       "preferred": "gandhanti",
-      "notes": "PTS \"gandhavilepanan\" not in DPD, SC/VRI \"gandhanti\" is valid"
+      "notes": "PTS \"gandhavilepanan\" not in DPD, SC/VRI \"gandhanti\" is valid, Thai has \"samannāgato\""
     }
   ],
   "variants": [
@@ -59,10 +64,11 @@
       "sc": "eteva",
       "vri": "eteva",
       "bjt": "eteva",
+      "thai": "āyasmā",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "ete",
-      "notes": "Textual variant: PTS \"ete\" vs SC/VRI \"eteva\""
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"āyasmā\""
     },
     {
       "position": 24,
@@ -70,10 +76,11 @@
       "sc": "musāvādañca",
       "vri": "musāvādañca",
       "bjt": "musāpesuñña",
+      "thai": "abhivādetvā",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "musāvādaṃ",
-      "notes": "Textual variant: PTS \"musāvādaṃ\" vs SC/VRI \"musāvādañca\""
+      "notes": "Textual variant: PTS \"musāvādaṃ\" vs SC/VRI \"musāvādañca\", BJT has \"musāpesuñña\", Thai has \"abhivādetvā\""
     },
     {
       "position": 30,
@@ -81,10 +88,11 @@
       "sc": "vikālaṃ",
       "vri": "vikālaṃ",
       "bjt": null,
+      "thai": "yena",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "vikāle",
-      "notes": "Textual variant: PTS \"vikāle\" vs SC/VRI \"vikālaṃ\""
+      "notes": "Textual variant: PTS \"vikāle\" vs SC/VRI \"vikālaṃ\", Thai has \"yena\""
     }
   ],
   "uncertain": [
@@ -94,10 +102,11 @@
       "sc": "evameva",
       "vri": "pe",
       "bjt": "vilepanasuttaṃ",
+      "thai": "so",
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "evam",
-      "notes": "Three-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\""
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\", BJT \"vilepanasuttaṃ\", Thai \"so\""
     },
     {
       "position": 1,
@@ -105,10 +114,11 @@
       "sc": null,
       "vri": "evameva",
       "bjt": "evameva",
+      "thai": "buddhe",
       "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "eva",
-      "notes": "Three-way disagreement: PTS \"eva\", SC \"None\", VRI \"evameva\""
+      "confidence": 0.6,
+      "preferred": "evameva",
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", Thai \"buddhe\""
     },
     {
       "position": 25,
@@ -116,6 +126,7 @@
       "sc": null,
       "vri": null,
       "bjt": "ca",
+      "thai": "ca",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ca",
@@ -127,10 +138,11 @@
       "sc": null,
       "vri": "tatiyaāmakadhaññapeyyālavaggo",
       "bjt": null,
+      "thai": "ariyasāvako",
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "ti",
-      "notes": "Three-way disagreement: PTS \"ti\", SC \"None\", VRI \"tatiyaāmakadhaññapeyyālavaggo\""
+      "notes": "Multi-way disagreement: PTS \"ti\", SC \"None\", VRI \"tatiyaāmakadhaññapeyyālavaggo\", Thai \"ariyasāvako\""
     },
     {
       "position": 33,
@@ -138,6 +150,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": "ākaṅkhamāno",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "chapter",
@@ -149,6 +162,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": "attānaṃ",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "āmakadhaññapeyyālam",

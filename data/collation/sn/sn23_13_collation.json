@@ -5,17 +5,19 @@
     "gretil": 26,
     "sc": 39,
     "vri": 39,
-    "bjt": 868
+    "bjt": 868,
+    "thai": 16
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 26,
-    "orthographic": 3,
+    "orthographic": 4,
     "errors": 3,
     "variants": 2,
     "uncertain": 2,
-    "match": 12,
-    "other": 4
+    "match": 0,
+    "other": 15
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "viññāṇaṃ",
       "vri": "viññāṇaṃ",
       "bjt": "viññāṇaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "viññāṇaṃ",
-      "notes": "PTS \"viññāṇam\" not in DPD, SC/VRI \"viññāṇaṃ\" is valid"
+      "notes": "PTS \"viññāṇam\" not in DPD, SC/VRI/BJT \"viññāṇaṃ\" is valid"
     },
     {
       "position": 20,
@@ -35,10 +38,11 @@
       "sc": "evaṃ",
       "vri": "evaṃ",
       "bjt": "evaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "evaṃ",
-      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evaṃ\" is valid"
+      "notes": "PTS \"evam\" not in DPD, SC/VRI/BJT \"evaṃ\" is valid"
     },
     {
       "position": 23,
@@ -46,10 +50,11 @@
       "sc": "nāparaṃ",
       "vri": "nāparaṃ",
       "bjt": "sutavā",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "nāparaṃ",
-      "notes": "PTS \"nāparam\" not in DPD, SC/VRI \"nāparaṃ\" is valid"
+      "notes": "PTS \"nāparam\" not in DPD, SC/VRI \"nāparaṃ\" is valid, BJT has \"sutavā\""
     }
   ],
   "variants": [
@@ -59,10 +64,11 @@
       "sc": "katamaṃ",
       "vri": "katamaṃ",
       "bjt": "katamannu",
+      "thai": "rāgo",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "katamannu",
-      "notes": "Textual variant: PTS \"katamannu\" vs SC/VRI \"katamaṃ\""
+      "notes": "Textual variant: PTS \"katamannu\" vs SC/VRI \"katamaṃ\", BJT agrees with PTS, Thai has \"rāgo\""
     },
     {
       "position": 14,
@@ -70,10 +76,11 @@
       "sc": "saññā",
       "vri": "saññā",
       "bjt": "saññā",
+      "thai": "khayā",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "sañña",
-      "notes": "Textual variant: PTS \"sañña\" vs SC/VRI \"saññā\""
+      "notes": "Textual variant: PTS \"sañña\" vs SC/VRI/BJT \"saññā\", Thai has \"khayā\""
     }
   ],
   "uncertain": [
@@ -83,10 +90,11 @@
       "sc": "aniccan",
       "vri": "anicca",
       "bjt": "aniccantī",
+      "thai": "yā",
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "aniccanti",
-      "notes": "Three-way disagreement: PTS \"aniccanti\", SC \"aniccan\", VRI \"anicca\""
+      "notes": "Multi-way disagreement: PTS \"aniccanti\", SC \"aniccan\", VRI \"anicca\", BJT \"aniccantī\", Thai \"yā\""
     },
     {
       "position": 25,
@@ -94,6 +102,7 @@
       "sc": "pajānātī",
       "vri": "pajānātī",
       "bjt": "rūpasmimpi",
+      "thai": null,
       "type": "uncertain",
       "confidence": 0.4,
       "preferred": "pajānātī",

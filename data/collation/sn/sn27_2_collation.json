@@ -5,17 +5,19 @@
     "gretil": 43,
     "sc": 43,
     "vri": 43,
-    "bjt": 62
+    "bjt": 62,
+    "thai": 17
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 43,
-    "orthographic": 6,
+    "orthographic": 23,
     "errors": 2,
     "variants": 2,
     "uncertain": 1,
-    "match": 32,
-    "other": 0
+    "match": 1,
+    "other": 14
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "phoṭṭhabbesu",
       "vri": "phoṭṭhabbesu",
       "bjt": "phoṭṭhabbesu",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "phoṭṭhabbesu",
-      "notes": "PTS \"poṭṭhabbesu\" not in DPD, SC/VRI \"phoṭṭhabbesu\" is valid"
+      "notes": "PTS \"poṭṭhabbesu\" not in DPD, SC/VRI/BJT \"phoṭṭhabbesu\" is valid"
     },
     {
       "position": 36,
@@ -35,10 +38,11 @@
       "sc": "cittaṃ",
       "vri": "cittaṃ",
       "bjt": "cittaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "cittaṃ",
-      "notes": "PTS \"cittam\" not in DPD, SC/VRI \"cittaṃ\" is valid"
+      "notes": "PTS \"cittam\" not in DPD, SC/VRI/BJT \"cittaṃ\" is valid"
     }
   ],
   "variants": [
@@ -48,10 +52,11 @@
       "sc": "sāvatthinidānaṃ",
       "vri": "sāvatthinidānaṃ",
       "bjt": "rūpa",
+      "thai": "dukkhaṃ",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"rūpa\", Thai has \"dukkhaṃ\""
     },
     {
       "position": 31,
@@ -59,10 +64,11 @@
       "sc": "nekkhammaninnañcassa",
       "vri": "nekkhammaninnañcassa",
       "bjt": "nekkhammaninnaṃ",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "nekkhammaninnaṃ",
-      "notes": "Textual variant: PTS \"nekkhammaninnaṃ\" vs SC/VRI \"nekkhammaninnañcassa\""
+      "notes": "Textual variant: PTS \"nekkhammaninnaṃ\" vs SC/VRI \"nekkhammaninnañcassa\", BJT agrees with PTS"
     }
   ],
   "uncertain": [
@@ -72,6 +78,7 @@
       "sc": null,
       "vri": null,
       "bjt": "cassa",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "cassa",

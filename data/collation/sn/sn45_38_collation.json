@@ -5,17 +5,19 @@
     "gretil": 42,
     "sc": 39,
     "vri": 39,
-    "bjt": 43
+    "bjt": 43,
+    "thai": 41
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 42,
-    "orthographic": 2,
+    "orthographic": 5,
     "errors": 4,
     "variants": 4,
     "uncertain": 4,
-    "match": 27,
-    "other": 1
+    "match": 13,
+    "other": 12
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "brahmaññañca",
       "vri": "brahmaññañca",
       "bjt": "brahmaññasuttaṃ",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "brahmaññañca",
-      "notes": "PTS \"brahmaññañ\" not in DPD, SC/VRI \"brahmaññañca\" is valid"
+      "notes": "PTS \"brahmaññañ\" not in DPD, SC/VRI \"brahmaññañca\" is valid, BJT has \"brahmaññasuttaṃ\""
     },
     {
       "position": 6,
@@ -35,10 +38,11 @@
       "sc": "brahmaññatthañca",
       "vri": "brahmaññatthañca",
       "bjt": "brahmaññatthañca",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "brahmaññatthañca",
-      "notes": "PTS \"brahmāññatthañ\" not in DPD, SC/VRI \"brahmaññatthañca\" is valid"
+      "notes": "PTS \"brahmāññatthañ\" not in DPD, SC/VRI/BJT \"brahmaññatthañca\" is valid"
     },
     {
       "position": 10,
@@ -46,10 +50,11 @@
       "sc": "katamañca",
       "vri": "katamañca",
       "bjt": "katamañca",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "katamañca",
-      "notes": "PTS \"katamañ\" not in DPD, SC/VRI \"katamañca\" is valid"
+      "notes": "PTS \"katamañ\" not in DPD, SC/VRI/BJT \"katamañca\" is valid"
     },
     {
       "position": 14,
@@ -57,10 +62,11 @@
       "sc": "ayameva",
       "vri": "ayameva",
       "bjt": "ayameva",
+      "thai": "ayamevāriyo",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "ayameva",
-      "notes": "PTS \"ayam\" not in DPD, SC/VRI \"ayameva\" is valid"
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT \"ayameva\" is valid, Thai has \"ayamevāriyo\""
     }
   ],
   "variants": [
@@ -70,10 +76,11 @@
       "sc": "sāvatthinidānaṃ",
       "vri": "sāvatthinidānaṃ",
       "bjt": "dutiya",
+      "thai": "katamañca",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"dutiya\", Thai has \"katamañca\""
     },
     {
       "position": 5,
@@ -81,10 +88,11 @@
       "sc": "desessāmi",
       "vri": "desessāmi",
       "bjt": "desissāmi",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "desissāmi",
-      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI \"desessāmi\""
+      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI \"desessāmi\", BJT agrees with PTS"
     },
     {
       "position": 19,
@@ -92,10 +100,11 @@
       "sc": "seyyathidaṃ",
       "vri": "seyyathidaṃ",
       "bjt": "seyyathīdaṃ",
+      "thai": "seyyathīdaṃ",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "seyyathīdaṃ",
-      "notes": "Textual variant: PTS \"seyyathīdaṃ\" vs SC/VRI \"seyyathidaṃ\""
+      "notes": "Textual variant: PTS \"seyyathīdaṃ\" vs SC/VRI \"seyyathidaṃ\", BJT agrees with PTS, Thai agrees with PTS"
     },
     {
       "position": 20,
@@ -103,10 +112,11 @@
       "sc": "sammādiṭṭhi",
       "vri": "sammādiṭṭhi",
       "bjt": "sammādiṭṭhi",
+      "thai": "sammādiṭṭhi",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.9,
       "preferred": "sammāsamādhi",
-      "notes": "Textual variant: PTS \"sammāsamādhi\" vs SC/VRI \"sammādiṭṭhi\""
+      "notes": "Textual variant: PTS \"sammāsamādhi\" vs SC/VRI/BJT/Thai \"sammādiṭṭhi\""
     }
   ],
   "uncertain": [
@@ -116,6 +126,7 @@
       "sc": null,
       "vri": null,
       "bjt": "brahmaññañca",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ca",
@@ -127,6 +138,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ca",
@@ -138,6 +150,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ca",
@@ -149,6 +162,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "eva",

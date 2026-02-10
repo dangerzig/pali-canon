@@ -5,17 +5,19 @@
     "gretil": 35,
     "sc": 30,
     "vri": 30,
-    "bjt": 18
+    "bjt": 18,
+    "thai": 40
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 35,
-    "orthographic": 9,
+    "orthographic": 7,
     "errors": 5,
     "variants": 3,
     "uncertain": 5,
-    "match": 8,
-    "other": 5
+    "match": 6,
+    "other": 9
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "sukhamāvahati",
       "vri": "sukhamāvahati",
       "bjt": "sukhamāvahāti",
+      "thai": "sukhamāvahāti",
       "type": "error",
       "confidence": 0.9,
       "preferred": "sukhamāvahati",
-      "notes": "PTS \"sukham\" not in DPD, SC/VRI \"sukhamāvahati\" is valid"
+      "notes": "PTS \"sukham\" not in DPD, SC/VRI \"sukhamāvahati\" is valid, BJT has \"sukhamāvahāti\", Thai has \"sukhamāvahāti\""
     },
     {
       "position": 21,
@@ -35,10 +38,11 @@
       "sc": "seṭṭhaṃ",
       "vri": "seṭṭhaṃ",
       "bjt": null,
+      "thai": "seṭṭhaṃ",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "seṭṭhaṃ",
-      "notes": "PTS \"seṭṭham\" not in DPD, SC/VRI \"seṭṭhaṃ\" is valid"
+      "notes": "PTS \"seṭṭham\" not in DPD, SC/VRI/Thai \"seṭṭhaṃ\" is valid"
     },
     {
       "position": 24,
@@ -46,10 +50,11 @@
       "sc": "sukhamāvahati",
       "vri": "sukhamāvahati",
       "bjt": null,
+      "thai": "sukhamāvahāti",
       "type": "error",
       "confidence": 0.9,
       "preferred": "sukhamāvahati",
-      "notes": "PTS \"sukham\" not in DPD, SC/VRI \"sukhamāvahati\" is valid"
+      "notes": "PTS \"sukham\" not in DPD, SC/VRI \"sukhamāvahati\" is valid, Thai has \"sukhamāvahāti\""
     },
     {
       "position": 28,
@@ -57,10 +62,11 @@
       "sc": "sādutaraṃ",
       "vri": "sādutaraṃ",
       "bjt": null,
+      "thai": "sādhutaraṃ",
       "type": "error",
       "confidence": 0.9,
       "preferred": "sādutaraṃ",
-      "notes": "PTS \"sādutaram\" not in DPD, SC/VRI \"sādutaraṃ\" is valid"
+      "notes": "PTS \"sādutaram\" not in DPD, SC/VRI \"sādutaraṃ\" is valid, Thai has \"sādhutaraṃ\""
     },
     {
       "position": 29,
@@ -68,10 +74,11 @@
       "sc": "rasānaṃ",
       "vri": "rasānaṃ",
       "bjt": null,
+      "thai": "rasānaṃ",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "rasānaṃ",
-      "notes": "PTS \"rasānam\" not in DPD, SC/VRI \"rasānaṃ\" is valid"
+      "notes": "PTS \"rasānam\" not in DPD, SC/VRI/Thai \"rasānaṃ\" is valid"
     }
   ],
   "variants": [
@@ -81,10 +88,11 @@
       "sc": "kathaṃjīviṃ",
       "vri": "kathaṃjīviṃ",
       "bjt": null,
+      "thai": "kathaṃjīvī",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "kathaṃ",
-      "notes": "Textual variant: PTS \"kathaṃ\" vs SC/VRI \"kathaṃjīviṃ\""
+      "notes": "Textual variant: PTS \"kathaṃ\" vs SC/VRI \"kathaṃjīviṃ\", Thai has \"kathaṃjīvī\""
     },
     {
       "position": 13,
@@ -92,10 +100,11 @@
       "sc": "jīvitamāhu",
       "vri": "jīvitamāhu",
       "bjt": null,
+      "thai": "jīvitamāhu",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "jīviṃ",
-      "notes": "Textual variant: PTS \"jīviṃ\" vs SC/VRI \"jīvitamāhu\""
+      "notes": "Textual variant: PTS \"jīviṃ\" vs SC/VRI/Thai \"jīvitamāhu\""
     },
     {
       "position": 31,
@@ -103,10 +112,11 @@
       "sc": "jīvitamāhu",
       "vri": "jīvitamāhu",
       "bjt": "jīvitamāhu",
+      "thai": "jīvitamāhu",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.9,
       "preferred": "jīvitaṃ",
-      "notes": "Textual variant: PTS \"jīvitaṃ\" vs SC/VRI \"jīvitamāhu\""
+      "notes": "Textual variant: PTS \"jīvitaṃ\" vs SC/VRI/BJT/Thai \"jīvitamāhu\""
     }
   ],
   "uncertain": [
@@ -116,6 +126,7 @@
       "sc": null,
       "vri": null,
       "bjt": "saccaṃ",
+      "thai": "ma",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "āvahāti",
@@ -127,10 +138,11 @@
       "sc": null,
       "vri": "seṭṭha",
       "bjt": null,
+      "thai": "seṭṭhanti",
       "type": "uncertain",
       "confidence": 0.5,
       "preferred": "seṭṭha",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "Multi-way disagreement, one valid reading"
     },
     {
       "position": 15,
@@ -138,10 +150,11 @@
       "sc": null,
       "vri": "nti",
       "bjt": null,
+      "thai": null,
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "āhu",
-      "notes": "Three-way disagreement: PTS \"āhu\", SC \"None\", VRI \"nti\""
+      "notes": "Multi-way disagreement: PTS \"āhu\", SC \"None\", VRI \"nti\""
     },
     {
       "position": 26,
@@ -149,6 +162,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "saccam",
@@ -160,10 +174,11 @@
       "sc": null,
       "vri": "nti",
       "bjt": null,
+      "thai": "catutthaṃ",
       "type": "uncertain",
       "confidence": 0.5,
       "preferred": "nti",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "Multi-way disagreement, one valid reading"
     }
   ]
 }

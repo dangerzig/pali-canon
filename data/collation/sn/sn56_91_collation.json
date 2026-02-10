@@ -5,17 +5,19 @@
     "gretil": 20,
     "sc": 19,
     "vri": 20,
-    "bjt": 38
+    "bjt": 38,
+    "thai": 632
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 20,
-    "orthographic": 1,
+    "orthographic": 0,
     "errors": 1,
     "variants": 1,
     "uncertain": 2,
-    "match": 13,
-    "other": 2
+    "match": 2,
+    "other": 14
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "khettavatthupaṭiggahaṇā",
       "vri": "khettavatthupaṭiggahaṇā",
       "bjt": "khettavatthupaṭiggahaṇā",
+      "thai": "seyyathāpi",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "khettavatthupaṭiggahaṇā",
-      "notes": "PTS \"khettavatthupaṭiggahanā\" not in DPD, SC/VRI \"khettavatthupaṭiggahaṇā\" is valid"
+      "notes": "PTS \"khettavatthupaṭiggahanā\" not in DPD, SC/VRI/BJT \"khettavatthupaṭiggahaṇā\" is valid, Thai has \"seyyathāpi\""
     }
   ],
   "variants": [
@@ -37,10 +40,11 @@
       "sc": "eteva",
       "vri": "eteva",
       "bjt": "eteva",
+      "thai": "asaṅkheyyo",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "ete",
-      "notes": "Textual variant: PTS \"ete\" vs SC/VRI \"eteva\""
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"asaṅkheyyo\""
     }
   ],
   "uncertain": [
@@ -50,10 +54,11 @@
       "sc": "evameva",
       "vri": "pe",
       "bjt": "khettavatthusuttaṃ",
+      "thai": "dhamme",
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "evam",
-      "notes": "Three-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\""
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\", BJT \"khettavatthusuttaṃ\", Thai \"dhamme\""
     },
     {
       "position": 1,
@@ -61,10 +66,11 @@
       "sc": null,
       "vri": "evameva",
       "bjt": "evameva",
+      "thai": "saṃghe",
       "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "eva",
-      "notes": "Three-way disagreement: PTS \"eva\", SC \"None\", VRI \"evameva\""
+      "confidence": 0.6,
+      "preferred": "evameva",
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", Thai \"saṃghe\""
     }
   ]
 }

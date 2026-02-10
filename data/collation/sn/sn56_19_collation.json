@@ -5,17 +5,19 @@
     "gretil": 60,
     "sc": 60,
     "vri": 60,
-    "bjt": 785
+    "bjt": 785,
+    "thai": 632
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 60,
-    "orthographic": 15,
+    "orthographic": 3,
     "errors": 5,
     "variants": 3,
     "uncertain": 2,
-    "match": 21,
-    "other": 14
+    "match": 1,
+    "other": 46
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "dukkhaṃ",
       "vri": "dukkhaṃ",
       "bjt": "idaṃ",
+      "thai": "bahulīkatā",
       "type": "error",
       "confidence": 0.9,
       "preferred": "dukkhaṃ",
-      "notes": "PTS \"dukkham\" not in DPD, SC/VRI \"dukkhaṃ\" is valid"
+      "notes": "PTS \"dukkham\" not in DPD, SC/VRI \"dukkhaṃ\" is valid, BJT has \"idaṃ\", Thai has \"bahulīkatā\""
     },
     {
       "position": 14,
@@ -35,10 +38,11 @@
       "sc": "itipidaṃ",
       "vri": "itipidaṃ",
       "bjt": "itipidaṃ",
+      "thai": "dhammānaṃ",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "itipidaṃ",
-      "notes": "PTS \"itipidam\" not in DPD, SC/VRI \"itipidaṃ\" is valid"
+      "notes": "PTS \"itipidam\" not in DPD, SC/VRI/BJT \"itipidaṃ\" is valid, Thai has \"dhammānaṃ\""
     },
     {
       "position": 15,
@@ -46,10 +50,11 @@
       "sc": "dukkhaṃ",
       "vri": "dukkhaṃ",
       "bjt": "dukkhaṃ",
+      "thai": "pahānāya",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "dukkhaṃ",
-      "notes": "PTS \"dukkham\" not in DPD, SC/VRI \"dukkhaṃ\" is valid"
+      "notes": "PTS \"dukkham\" not in DPD, SC/VRI/BJT \"dukkhaṃ\" is valid, Thai has \"pahānāya\""
     },
     {
       "position": 22,
@@ -57,10 +62,11 @@
       "sc": "dukkhanirodhaṃ",
       "vri": "dukkhanirodhaṃ",
       "bjt": null,
+      "thai": "satta",
       "type": "error",
       "confidence": 0.9,
       "preferred": "dukkhanirodhaṃ",
-      "notes": "PTS \"dukkhanirodham\" not in DPD, SC/VRI \"dukkhanirodhaṃ\" is valid"
+      "notes": "PTS \"dukkhanirodham\" not in DPD, SC/VRI \"dukkhanirodhaṃ\" is valid, Thai has \"satta\""
     },
     {
       "position": 58,
@@ -68,10 +74,11 @@
       "sc": "karaṇīyo",
       "vri": "karaṇīyo",
       "bjt": "bhikkhave",
+      "thai": "dhammo",
       "type": "error",
       "confidence": 0.9,
       "preferred": "karaṇīyo",
-      "notes": "PTS \"karanīyo\" not in DPD, SC/VRI \"karaṇīyo\" is valid"
+      "notes": "PTS \"karanīyo\" not in DPD, SC/VRI \"karaṇīyo\" is valid, BJT has \"bhikkhave\", Thai has \"dhammo\""
     }
   ],
   "variants": [
@@ -81,10 +88,11 @@
       "sc": "byañjanā",
       "vri": "byañjanā",
       "bjt": "vyañjanā",
+      "thai": "bhāvito",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "vyañjanā",
-      "notes": "Textual variant: PTS \"vyañjanā\" vs SC/VRI \"byañjanā\""
+      "notes": "Textual variant: PTS \"vyañjanā\" vs SC/VRI \"byañjanā\", BJT agrees with PTS, Thai has \"bhāvito\""
     },
     {
       "position": 36,
@@ -92,10 +100,11 @@
       "sc": "byañjanā",
       "vri": "byañjanā",
       "bjt": "vyañjanā",
+      "thai": "pahānāya",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "vyañjanā",
-      "notes": "Textual variant: PTS \"vyañjanā\" vs SC/VRI \"byañjanā\""
+      "notes": "Textual variant: PTS \"vyañjanā\" vs SC/VRI \"byañjanā\", BJT agrees with PTS, Thai has \"pahānāya\""
     },
     {
       "position": 44,
@@ -103,10 +112,11 @@
       "sc": "tasmātiha",
       "vri": "tasmātiha",
       "bjt": "mayā",
+      "thai": null,
       "type": "variant",
       "confidence": 0.7,
       "preferred": "tasmā",
-      "notes": "Textual variant: PTS \"tasmā\" vs SC/VRI \"tasmātiha\""
+      "notes": "Textual variant: PTS \"tasmā\" vs SC/VRI \"tasmātiha\", BJT has \"mayā\""
     }
   ],
   "uncertain": [
@@ -116,6 +126,7 @@
       "sc": null,
       "vri": null,
       "bjt": "aparimāṇā",
+      "thai": "bhikkhu",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "bhikkhu",
@@ -127,10 +138,11 @@
       "sc": null,
       "vri": "dukkha",
       "bjt": "aparimāṇā",
+      "thai": "dukkhanti",
       "type": "uncertain",
-      "confidence": 0.3,
+      "confidence": 0.6,
       "preferred": "dukkhanti",
-      "notes": "Three-way disagreement: PTS \"dukkhanti\", SC \"None\", VRI \"dukkha\""
+      "notes": "PTS/Thai \"dukkhanti\" vs VRI \"dukkha\", BJT \"aparimāṇā\""
     }
   ]
 }

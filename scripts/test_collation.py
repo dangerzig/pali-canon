@@ -4,11 +4,11 @@ Tests for collation data integrity and classification correctness.
 
 Validates:
 - Collation JSON structure
-- Four-way classification with BJT witness
+- Five-way classification with BJT and Thai witnesses
 - Two-way fallback for AN nipātas 5-11 (no VRI)
 - Apadāna split is correct (tha-ap vs thi-ap)
 - Error classifications (SC=VRI=BJT≠PTS, PTS not in DPD)
-- Vinaya/Abhidhamma four-witness collation
+- Vinaya/Abhidhamma five-witness collation
 - No alignment artifacts in reported variants
 """
 
@@ -524,7 +524,7 @@ def test_classify_variant_with_bjt():
 
 def test_vinaya_abhidhamma_four_way():
     """Verify Vinaya and Abhidhamma collation files include SC and BJT data."""
-    print("TEST: Vinaya/Abhidhamma four-witness collation")
+    print("TEST: Vinaya/Abhidhamma five-witness collation")
     errors = []
 
     for collection in ['vinaya', 'abhidhamma']:
@@ -563,7 +563,7 @@ def test_vinaya_abhidhamma_four_way():
             errors.append(f"{collection}: no files have BJT data")
 
     if not errors:
-        print("  Vinaya/Abhidhamma have four-witness data ✓")
+        print("  Vinaya/Abhidhamma have five-witness data ✓")
     else:
         for e in errors:
             print(f"  ERROR: {e}")

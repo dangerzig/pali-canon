@@ -5,17 +5,19 @@
     "gretil": 45,
     "sc": 42,
     "vri": 42,
-    "bjt": 98
+    "bjt": 98,
+    "thai": 40
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 45,
-    "orthographic": 0,
+    "orthographic": 1,
     "errors": 3,
     "variants": 1,
     "uncertain": 2,
-    "match": 33,
-    "other": 6
+    "match": 31,
+    "other": 7
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "gāthaṃ",
       "vri": "gāthaṃ",
       "bjt": "gāthaṃ",
+      "thai": "gāthaṃ",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.98,
       "preferred": "gāthaṃ",
-      "notes": "PTS \"gātham\" not in DPD, SC/VRI \"gāthaṃ\" is valid"
+      "notes": "PTS \"gātham\" not in DPD, SC/VRI/BJT/Thai \"gāthaṃ\" is valid"
     },
     {
       "position": 16,
@@ -35,10 +38,11 @@
       "sc": "monamatthi",
       "vri": "monamatthi",
       "bjt": "monamatthi",
+      "thai": "monamatthi",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.98,
       "preferred": "monamatthi",
-      "notes": "PTS \"monam\" not in DPD, SC/VRI \"monamatthi\" is valid"
+      "notes": "PTS \"monam\" not in DPD, SC/VRI/BJT/Thai \"monamatthi\" is valid"
     },
     {
       "position": 28,
@@ -46,10 +50,11 @@
       "sc": "mānaṃ",
       "vri": "mānaṃ",
       "bjt": "mānaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "mānaṃ",
-      "notes": "PTS \"mānam\" not in DPD, SC/VRI \"mānaṃ\" is valid"
+      "notes": "PTS \"mānam\" not in DPD, SC/VRI/BJT \"mānaṃ\" is valid"
     }
   ],
   "variants": [
@@ -59,10 +64,11 @@
       "sc": "ekamantaṃ",
       "vri": "ekamantaṃ",
       "bjt": "sāvatthiyaṃ",
+      "thai": "ekamantaṃ",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "antaṃ",
-      "notes": "Textual variant: PTS \"antaṃ\" vs SC/VRI \"ekamantaṃ\""
+      "notes": "Textual variant: PTS \"antaṃ\" vs SC/VRI/Thai \"ekamantaṃ\", BJT has \"sāvatthiyaṃ\""
     }
   ],
   "uncertain": [
@@ -72,6 +78,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "atthi",
@@ -83,6 +90,7 @@
       "sc": null,
       "vri": null,
       "bjt": "ekamantaṃ",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "nandanavagga",

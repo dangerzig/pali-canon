@@ -5,17 +5,19 @@
     "gretil": 88,
     "sc": 109,
     "vri": 108,
-    "bjt": 222
+    "bjt": 222,
+    "thai": 16
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 88,
-    "orthographic": 7,
+    "orthographic": 29,
     "errors": 5,
     "variants": 3,
     "uncertain": 16,
-    "match": 36,
-    "other": 21
+    "match": 0,
+    "other": 35
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "kiṃ",
       "vri": "kiṃ",
       "bjt": "kiṃ",
+      "thai": "saṅkhāre",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "kiṃ",
-      "notes": "PTS \"kim\" not in DPD, SC/VRI \"kiṃ\" is valid"
+      "notes": "PTS \"kim\" not in DPD, SC/VRI/BJT \"kiṃ\" is valid, Thai has \"saṅkhāre\""
     },
     {
       "position": 8,
@@ -35,10 +38,11 @@
       "sc": "kiṃ",
       "vri": "kiṃ",
       "bjt": "kiṃ",
+      "thai": "samanupassati",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "kiṃ",
-      "notes": "PTS \"kim\" not in DPD, SC/VRI \"kiṃ\" is valid"
+      "notes": "PTS \"kim\" not in DPD, SC/VRI/BJT \"kiṃ\" is valid, Thai has \"samanupassati\""
     },
     {
       "position": 26,
@@ -46,10 +50,11 @@
       "sc": "niccaṃ",
       "vri": "niccaṃ",
       "bjt": "upādāya",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "niccaṃ",
-      "notes": "PTS \"niccam\" not in DPD, SC/VRI \"niccaṃ\" is valid"
+      "notes": "PTS \"niccam\" not in DPD, SC/VRI \"niccaṃ\" is valid, BJT has \"upādāya\""
     },
     {
       "position": 30,
@@ -57,10 +62,11 @@
       "sc": "aniccaṃ",
       "vri": "aniccaṃ",
       "bjt": "diṭṭhi",
+      "thai": "attani",
       "type": "error",
       "confidence": 0.9,
       "preferred": "aniccaṃ",
-      "notes": "PTS \"aniccam\" not in DPD, SC/VRI \"aniccaṃ\" is valid"
+      "notes": "PTS \"aniccam\" not in DPD, SC/VRI \"aniccaṃ\" is valid, BJT has \"diṭṭhi\", Thai has \"attani\""
     },
     {
       "position": 44,
@@ -68,10 +74,11 @@
       "sc": "hetaṃ",
       "vri": "hetaṃ",
       "bjt": "hetaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "hetaṃ",
-      "notes": "PTS \"hetam\" not in DPD, SC/VRI \"hetaṃ\" is valid"
+      "notes": "PTS \"hetam\" not in DPD, SC/VRI/BJT \"hetaṃ\" is valid"
     }
   ],
   "variants": [
@@ -81,10 +88,11 @@
       "sc": "sāvatthinidānaṃ",
       "vri": "sāvatthinidānaṃ",
       "bjt": "asassatalokasuttaṃ",
+      "thai": "ca",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"asassatalokasuttaṃ\", Thai has \"ca\""
     },
     {
       "position": 16,
@@ -92,10 +100,11 @@
       "sc": "bhagavaṃmūlakā",
       "vri": "bhagavaṃmūlakā",
       "bjt": "bhagavammūlakā",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "bhagavammūlakā",
-      "notes": "Textual variant: PTS \"bhagavammūlakā\" vs SC/VRI \"bhagavaṃmūlakā\""
+      "notes": "Textual variant: PTS \"bhagavammūlakā\" vs SC/VRI \"bhagavaṃmūlakā\", BJT agrees with PTS"
     },
     {
       "position": 35,
@@ -103,10 +112,11 @@
       "sc": "taṃ",
       "vri": "taṃ",
       "bjt": "taṃ",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "tam",
-      "notes": "Textual variant: PTS \"tam\" vs SC/VRI \"taṃ\""
+      "notes": "Textual variant: PTS \"tam\" vs SC/VRI/BJT \"taṃ\""
     }
   ],
   "uncertain": [
@@ -116,10 +126,11 @@
       "sc": "yampidaṃ",
       "vri": null,
       "bjt": "vedanā",
+      "thai": null,
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "yam",
-      "notes": "Three-way disagreement: PTS \"yam\", SC \"yampidaṃ\", VRI \"None\""
+      "notes": "Multi-way disagreement: PTS \"yam\", SC \"yampidaṃ\", VRI \"None\", BJT \"vedanā\""
     },
     {
       "position": 47,
@@ -127,6 +138,7 @@
       "sc": null,
       "vri": null,
       "bjt": "niccaṃ",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "pi",
@@ -138,10 +150,11 @@
       "sc": "sutaṃ",
       "vri": null,
       "bjt": "sutaṃ",
+      "thai": null,
       "type": "uncertain",
-      "confidence": 0.5,
+      "confidence": 0.6,
       "preferred": "sutaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "SC/BJT \"sutaṃ\" vs PTS \"sutam\""
     },
     {
       "position": 51,
@@ -149,10 +162,11 @@
       "sc": "viññātaṃ",
       "vri": null,
       "bjt": "viññātaṃ",
+      "thai": null,
       "type": "uncertain",
-      "confidence": 0.5,
+      "confidence": 0.6,
       "preferred": "viññātaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "SC/BJT \"viññātaṃ\" vs PTS \"viññātam\""
     },
     {
       "position": 52,
@@ -160,10 +174,11 @@
       "sc": "pattaṃ",
       "vri": null,
       "bjt": "pattaṃ",
+      "thai": null,
       "type": "uncertain",
-      "confidence": 0.5,
+      "confidence": 0.6,
       "preferred": "pattaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "SC/BJT \"pattaṃ\" vs PTS \"pattam\""
     },
     {
       "position": 53,
@@ -171,10 +186,11 @@
       "sc": "pariyesitaṃ",
       "vri": null,
       "bjt": "pariyesitaṃ",
+      "thai": null,
       "type": "uncertain",
-      "confidence": 0.5,
+      "confidence": 0.6,
       "preferred": "pariyesitaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "SC/BJT \"pariyesitaṃ\" vs PTS \"pariyesitam\""
     },
     {
       "position": 54,
@@ -182,10 +198,11 @@
       "sc": "anuvicaritaṃ",
       "vri": null,
       "bjt": "anuvicaritaṃ",
+      "thai": null,
       "type": "uncertain",
-      "confidence": 0.5,
+      "confidence": 0.6,
       "preferred": "anuvicaritaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "SC/BJT \"anuvicaritaṃ\" vs PTS \"anuvicaritam\""
     },
     {
       "position": 56,
@@ -193,10 +210,11 @@
       "sc": "tampi",
       "vri": null,
       "bjt": "tampi",
+      "thai": null,
       "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "tam",
-      "notes": "Three-way disagreement: PTS \"tam\", SC \"tampi\", VRI \"None\""
+      "confidence": 0.6,
+      "preferred": "tampi",
+      "notes": "SC/BJT \"tampi\" vs PTS \"tam\""
     },
     {
       "position": 57,
@@ -204,6 +222,7 @@
       "sc": null,
       "vri": null,
       "bjt": "niccaṃ",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "pi",
@@ -215,10 +234,11 @@
       "sc": "vā",
       "vri": null,
       "bjt": "ti",
+      "thai": null,
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "vāti",
-      "notes": "Three-way disagreement: PTS \"vāti\", SC \"vā\", VRI \"None\""
+      "notes": "Multi-way disagreement: PTS \"vāti\", SC \"vā\", VRI \"None\", BJT \"ti\""
     },
     {
       "position": 62,
@@ -226,10 +246,11 @@
       "sc": "ti",
       "vri": null,
       "bjt": "aniccaṃ",
+      "thai": null,
       "type": "uncertain",
       "confidence": 0.5,
       "preferred": "ti",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "Multi-way disagreement, one valid reading"
     },
     {
       "position": 64,
@@ -237,10 +258,11 @@
       "sc": "pe",
       "vri": null,
       "bjt": "yaṃ",
+      "thai": null,
       "type": "uncertain",
       "confidence": 0.5,
       "preferred": "pe",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "Multi-way disagreement, one valid reading"
     },
     {
       "position": 65,
@@ -248,6 +270,7 @@
       "sc": null,
       "vri": null,
       "bjt": "panāniccaṃ",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "vipariṇāmadhammam",
@@ -259,10 +282,11 @@
       "sc": "taṃ",
       "vri": null,
       "bjt": "taṃ",
+      "thai": null,
       "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "tam",
-      "notes": "Three-way disagreement: PTS \"tam\", SC \"taṃ\", VRI \"None\""
+      "confidence": 0.6,
+      "preferred": "taṃ",
+      "notes": "SC/BJT \"taṃ\" vs PTS \"tam\""
     },
     {
       "position": 77,
@@ -270,10 +294,11 @@
       "sc": "hetaṃ",
       "vri": null,
       "bjt": "hetaṃ",
+      "thai": null,
       "type": "uncertain",
-      "confidence": 0.5,
+      "confidence": 0.6,
       "preferred": "hetaṃ",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "SC/BJT \"hetaṃ\" vs PTS \"hetam\""
     },
     {
       "position": 80,
@@ -281,6 +306,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ca",

@@ -5,17 +5,19 @@
     "gretil": 54,
     "sc": 105,
     "vri": 105,
-    "bjt": 1886
+    "bjt": 1886,
+    "thai": 8
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 54,
-    "orthographic": 6,
+    "orthographic": 39,
     "errors": 2,
     "variants": 3,
     "uncertain": 1,
-    "match": 39,
-    "other": 3
+    "match": 0,
+    "other": 9
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "channaṃ",
       "vri": "channaṃ",
       "bjt": "pañcannaṃ",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "channaṃ",
-      "notes": "PTS \"channam\" not in DPD, SC/VRI \"channaṃ\" is valid"
+      "notes": "PTS \"channam\" not in DPD, SC/VRI \"channaṃ\" is valid, BJT has \"pañcannaṃ\""
     },
     {
       "position": 49,
@@ -35,10 +38,11 @@
       "sc": "samaṇā",
       "vri": "samaṇā",
       "bjt": "samaṇā",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "samaṇā",
-      "notes": "PTS \"sayam\" not in DPD, SC/VRI \"samaṇā\" is valid"
+      "notes": "PTS \"sayam\" not in DPD, SC/VRI/BJT \"samaṇā\" is valid"
     }
   ],
   "variants": [
@@ -48,10 +52,11 @@
       "sc": "chayimāni",
       "vri": "chayimāni",
       "bjt": "samaṇasuttaṃ",
+      "thai": "mohavinayapariyosānaṃ",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "cha",
-      "notes": "Textual variant: PTS \"cha\" vs SC/VRI \"chayimāni\""
+      "notes": "Textual variant: PTS \"cha\" vs SC/VRI \"chayimāni\", BJT has \"samaṇasuttaṃ\", Thai has \"mohavinayapariyosānaṃ\""
     },
     {
       "position": 21,
@@ -59,10 +64,11 @@
       "sc": "atthaṅgamañca",
       "vri": "atthaṅgamañca",
       "bjt": "atthagamañca",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "atthagamañca",
-      "notes": "Textual variant: PTS \"atthagamañca\" vs SC/VRI \"atthaṅgamañca\""
+      "notes": "Textual variant: PTS \"atthagamañca\" vs SC/VRI \"atthaṅgamañca\", BJT agrees with PTS"
     },
     {
       "position": 53,
@@ -70,10 +76,11 @@
       "sc": "viharantī",
       "vri": "viharantī",
       "bjt": "viharantīti",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "viharantīti",
-      "notes": "Textual variant: PTS \"viharantīti\" vs SC/VRI \"viharantī\""
+      "notes": "Textual variant: PTS \"viharantīti\" vs SC/VRI \"viharantī\", BJT agrees with PTS"
     }
   ],
   "uncertain": [
@@ -83,6 +90,7 @@
       "sc": null,
       "vri": null,
       "bjt": "pañcimāni",
+      "thai": "evaṃ",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "yimāni",

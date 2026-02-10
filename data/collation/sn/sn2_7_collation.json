@@ -5,17 +5,19 @@
     "gretil": 38,
     "sc": 36,
     "vri": 36,
-    "bjt": 36
+    "bjt": 36,
+    "thai": 35
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 38,
-    "orthographic": 5,
+    "orthographic": 0,
     "errors": 2,
     "variants": 3,
     "uncertain": 2,
-    "match": 24,
-    "other": 2
+    "match": 21,
+    "other": 10
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "gāthaṃ",
       "vri": "gāthaṃ",
       "bjt": "gāthaṃ",
+      "thai": "gāthaṃ",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.98,
       "preferred": "gāthaṃ",
-      "notes": "PTS \"gātham\" not in DPD, SC/VRI \"gāthaṃ\" is valid"
+      "notes": "PTS \"gātham\" not in DPD, SC/VRI/BJT/Thai \"gāthaṃ\" is valid"
     },
     {
       "position": 17,
@@ -35,10 +38,11 @@
       "sc": "jhānamabujjhi",
       "vri": "jhānamabujjhi",
       "bjt": "jhānambudhā",
+      "thai": "jhānamabuddhi",
       "type": "error",
       "confidence": 0.9,
       "preferred": "jhānamabujjhi",
-      "notes": "PTS \"jhānam\" not in DPD, SC/VRI \"jhānamabujjhi\" is valid"
+      "notes": "PTS \"jhānam\" not in DPD, SC/VRI \"jhānamabujjhi\" is valid, BJT has \"jhānambudhā\", Thai has \"jhānamabuddhi\""
     }
   ],
   "variants": [
@@ -48,10 +52,11 @@
       "sc": "ekamantaṃ",
       "vri": "ekamantaṃ",
       "bjt": "sāvatthiyaṃ",
+      "thai": "ekamantaṃ",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "antaṃ",
-      "notes": "Textual variant: PTS \"antaṃ\" vs SC/VRI \"ekamantaṃ\""
+      "notes": "Textual variant: PTS \"antaṃ\" vs SC/VRI/Thai \"ekamantaṃ\", BJT has \"sāvatthiyaṃ\""
     },
     {
       "position": 20,
@@ -59,10 +64,11 @@
       "sc": "paṭilīnanisabho",
       "vri": "paṭilīnanisabho",
       "bjt": "patilīnanisabho",
+      "thai": "paṭilīnanisabho",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "patilīnanisabho",
-      "notes": "Textual variant: PTS \"patilīnanisabho\" vs SC/VRI \"paṭilīnanisabho\""
+      "notes": "Textual variant: PTS \"patilīnanisabho\" vs SC/VRI/Thai \"paṭilīnanisabho\", BJT agrees with PTS"
     },
     {
       "position": 21,
@@ -70,10 +76,11 @@
       "sc": "munī",
       "vri": "munī",
       "bjt": "munīti",
+      "thai": "munīti",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "munīti",
-      "notes": "Textual variant: PTS \"munīti\" vs SC/VRI \"munī\""
+      "notes": "Textual variant: PTS \"munīti\" vs SC/VRI \"munī\", BJT agrees with PTS, Thai agrees with PTS"
     }
   ],
   "uncertain": [
@@ -83,6 +90,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "abuddhi",
@@ -94,6 +102,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "paṭhamavagga",

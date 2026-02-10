@@ -5,17 +5,19 @@
     "gretil": 74,
     "sc": 70,
     "vri": 70,
-    "bjt": 103
+    "bjt": 103,
+    "thai": 66
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 74,
     "orthographic": 2,
     "errors": 3,
     "variants": 1,
     "uncertain": 36,
-    "match": 22,
-    "other": 10
+    "match": 20,
+    "other": 12
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "brahmacariyaṃ",
       "vri": "brahmacariyaṃ",
       "bjt": "pāṭaliputte",
+      "thai": "pe",
       "type": "error",
       "confidence": 0.9,
       "preferred": "brahmacariyaṃ",
-      "notes": "PTS \"brahmacariyam\" not in DPD, SC/VRI \"brahmacariyaṃ\" is valid"
+      "notes": "PTS \"brahmacariyam\" not in DPD, SC/VRI \"brahmacariyaṃ\" is valid, BJT has \"pāṭaliputte\", Thai has \"pe\""
     },
     {
       "position": 47,
@@ -35,10 +38,11 @@
       "sc": "katamaṃ",
       "vri": "katamaṃ",
       "bjt": "katamo",
+      "thai": "katamaṃ",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "katamaṃ",
-      "notes": "PTS \"katamam\" not in DPD, SC/VRI \"katamaṃ\" is valid"
+      "notes": "PTS \"katamam\" not in DPD, SC/VRI/Thai \"katamaṃ\" is valid, BJT has \"katamo\""
     },
     {
       "position": 71,
@@ -46,10 +50,11 @@
       "sc": "idaṃ",
       "vri": "idaṃ",
       "bjt": "idaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "idaṃ",
-      "notes": "PTS \"imam\" not in DPD, SC/VRI \"idaṃ\" is valid"
+      "notes": "PTS \"imam\" not in DPD, SC/VRI/BJT \"idaṃ\" is valid"
     }
   ],
   "variants": [
@@ -59,10 +64,11 @@
       "sc": "seyyathidaṃ",
       "vri": "seyyathidaṃ",
       "bjt": "seyyathīdaṃ",
+      "thai": "seyyathīdaṃ",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "seyyathīdaṃ",
-      "notes": "Textual variant: PTS \"seyyathīdaṃ\" vs SC/VRI \"seyyathidaṃ\""
+      "notes": "Textual variant: PTS \"seyyathīdaṃ\" vs SC/VRI \"seyyathidaṃ\", BJT agrees with PTS, Thai agrees with PTS"
     }
   ],
   "uncertain": [
@@ -72,10 +78,11 @@
       "sc": null,
       "vri": "brahmacariya",
       "bjt": "brahmacariyaṃ",
+      "thai": "brahmacariyaṃ",
       "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "brahmacariya",
-      "notes": "Three-way disagreement, one valid reading"
+      "confidence": 0.6,
+      "preferred": "brahmacariyaṃ",
+      "notes": "BJT/Thai \"brahmacariyaṃ\" vs PTS \"brahmacariyan\", VRI \"brahmacariya\""
     },
     {
       "position": 3,
@@ -83,10 +90,11 @@
       "sc": null,
       "vri": "nti",
       "bjt": "brahmacariya",
+      "thai": "brahmacariyanti",
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "ti",
-      "notes": "Three-way disagreement: PTS \"ti\", SC \"None\", VRI \"nti\""
+      "notes": "Multi-way disagreement: PTS \"ti\", SC \"None\", VRI \"nti\", BJT \"brahmacariya\", Thai \"brahmacariyanti\""
     },
     {
       "position": 4,
@@ -94,6 +102,7 @@
       "sc": null,
       "vri": null,
       "bjt": "nti",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "āvuso",
@@ -105,6 +114,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ānanda",
@@ -116,6 +126,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "vuccati",
@@ -127,6 +138,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "katamaṃ",
@@ -138,6 +150,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "kho",
@@ -149,6 +162,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "āvuso",
@@ -160,6 +174,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "brahmacariyam",
@@ -171,6 +186,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "katamam",
@@ -182,6 +198,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "brahmacariyapariyosānan",
@@ -193,6 +210,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ti",
@@ -204,6 +222,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "sādhu",
@@ -215,6 +234,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "sādhu",
@@ -226,6 +246,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "kho",
@@ -237,6 +258,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "āvuso",
@@ -248,6 +270,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "bhadda",
@@ -259,6 +282,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "bhaddako",
@@ -270,6 +294,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "kho",
@@ -281,6 +306,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ti",
@@ -292,6 +318,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "āvuso",
@@ -303,6 +330,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "bhadda",
@@ -314,6 +342,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ummaggo",
@@ -325,6 +354,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "bhaddakam",
@@ -336,6 +366,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "paṭibhānam",
@@ -347,6 +378,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "kalyāṇī",
@@ -358,6 +390,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "paripucchā",
@@ -369,6 +402,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "evaṃ",
@@ -380,6 +414,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "tvam",
@@ -391,6 +426,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "āvuso",
@@ -402,6 +438,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "bhadda",
@@ -413,6 +450,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "pucchasi",
@@ -424,6 +462,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "brahmacariyam",
@@ -435,10 +474,11 @@
       "sc": "sādhu",
       "vri": "ayameva",
       "bjt": "brahmacariyapariyosānanti",
+      "thai": "sādhu",
       "type": "uncertain",
-      "confidence": 0.3,
-      "preferred": "evam",
-      "notes": "Three-way disagreement: PTS \"evam\", SC \"sādhu\", VRI \"ayameva\""
+      "confidence": 0.6,
+      "preferred": "sādhu",
+      "notes": "SC/Thai \"sādhu\" vs PTS \"evam\", VRI \"ayameva\", BJT \"brahmacariyapariyosānanti\""
     },
     {
       "position": 53,
@@ -446,10 +486,11 @@
       "sc": "evamāvuso",
       "vri": null,
       "bjt": "bhaddako",
+      "thai": "bhaddako",
       "type": "uncertain",
-      "confidence": 0.5,
-      "preferred": "evamāvuso",
-      "notes": "Three-way disagreement, one valid reading"
+      "confidence": 0.6,
+      "preferred": "bhaddako",
+      "notes": "BJT/Thai \"bhaddako\" vs PTS \"ayam\", SC \"evamāvuso\""
     },
     {
       "position": 54,
@@ -457,10 +498,11 @@
       "sc": "ti",
       "vri": null,
       "bjt": "te",
+      "thai": "kho",
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "eva",
-      "notes": "Three-way disagreement: PTS \"eva\", SC \"ti\", VRI \"None\""
+      "notes": "Multi-way disagreement: PTS \"eva\", SC \"ti\", VRI \"None\", BJT \"te\", Thai \"kho\""
     }
   ]
 }

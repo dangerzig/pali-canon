@@ -5,17 +5,19 @@
     "gretil": 8,
     "sc": 7,
     "vri": 0,
-    "bjt": 18
+    "bjt": 18,
+    "thai": 5
   },
   "has_vri": false,
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 8,
-    "orthographic": 0,
+    "orthographic": 1,
     "errors": 3,
     "variants": 1,
     "uncertain": 1,
-    "match": 3,
+    "match": 2,
     "other": 0
   },
   "errors": [
@@ -25,9 +27,11 @@
       "sc": "nibbānaṃ",
       "vri": null,
       "bjt": "anupubbapassaddhi",
+      "thai": "nibbānaṃ",
       "type": "error",
+      "confidence": 0.95,
       "preferred": "nibbānaṃ",
-      "notes": "PTS \"lviii\" not in DPD, SC \"nibbānaṃ\" is valid"
+      "notes": "PTS \"lviii\" not in DPD, SC/Thai \"nibbānaṃ\" is valid"
     },
     {
       "position": 1,
@@ -35,7 +39,9 @@
       "sc": "nibbānan",
       "vri": null,
       "bjt": "suttaṃ",
+      "thai": "nibbānanti",
       "type": "sc_error",
+      "confidence": 0.9,
       "preferred": "passaddhi",
       "notes": "SC \"nibbānan\" not in DPD, PTS \"passaddhi\" is valid"
     },
@@ -45,7 +51,9 @@
       "sc": "sattamaṃ",
       "vri": null,
       "bjt": "nirodha",
+      "thai": null,
       "type": "error",
+      "confidence": 0.9,
       "preferred": "sattamaṃ",
       "notes": "PTS \"lixlxii\" not in DPD, SC \"sattamaṃ\" is valid"
     }
@@ -57,8 +65,9 @@
       "sc": "pe",
       "vri": null,
       "bjt": "pe",
+      "thai": "pe",
       "type": "variant",
-      "notes": "Textual variant: PTS \"aṅguttaranikāya\" vs SC \"pe\""
+      "notes": "Textual variant: PTS \"aṅguttaranikāya\" vs SC \"pe\" (BJT agrees with SC, Thai agrees with SC)"
     }
   ],
   "uncertain": [
@@ -68,6 +77,7 @@
       "sc": null,
       "vri": null,
       "bjt": "kosambinidānaṃ",
+      "thai": null,
       "type": "missing",
       "notes": "One reading missing"
     }

@@ -5,17 +5,19 @@
     "gretil": 50,
     "sc": 45,
     "vri": 44,
-    "bjt": 235
+    "bjt": 235,
+    "thai": 129
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 50,
-    "orthographic": 15,
+    "orthographic": 1,
     "errors": 4,
     "variants": 5,
     "uncertain": 10,
-    "match": 11,
-    "other": 5
+    "match": 2,
+    "other": 28
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "ekamantaṃ",
       "vri": "ekamantaṃ",
       "bjt": "suta",
+      "thai": "yaṃ",
       "type": "error",
       "confidence": 0.9,
       "preferred": "ekamantaṃ",
-      "notes": "PTS \"ekam\" not in DPD, SC/VRI \"ekamantaṃ\" is valid"
+      "notes": "PTS \"ekam\" not in DPD, SC/VRI \"ekamantaṃ\" is valid, BJT has \"suta\", Thai has \"yaṃ\""
     },
     {
       "position": 7,
@@ -35,10 +38,11 @@
       "sc": "bhagavantaṃ",
       "vri": "bhagavantaṃ",
       "bjt": "bhagavantaṃ",
+      "thai": "rūpassāhaṃ",
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "bhagavantaṃ",
-      "notes": "PTS \"bhagavantam\" not in DPD, SC/VRI \"bhagavantaṃ\" is valid"
+      "notes": "PTS \"bhagavantam\" not in DPD, SC/VRI/BJT \"bhagavantaṃ\" is valid, Thai has \"rūpassāhaṃ\""
     },
     {
       "position": 21,
@@ -46,10 +50,11 @@
       "sc": "paraṃ",
       "vri": "paraṃ",
       "bjt": "jalābujānaṃ",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "paraṃ",
-      "notes": "PTS \"param\" not in DPD, SC/VRI \"paraṃ\" is valid"
+      "notes": "PTS \"param\" not in DPD, SC/VRI \"paraṃ\" is valid, BJT has \"jalābujānaṃ\""
     },
     {
       "position": 41,
@@ -57,10 +62,11 @@
       "sc": "ayaṃ",
       "vri": "ayaṃ",
       "bjt": "nāgā",
+      "thai": "tadajjhagamaṃ",
       "type": "error",
       "confidence": 0.9,
       "preferred": "ayaṃ",
-      "notes": "PTS \"ayam\" not in DPD, SC/VRI \"ayaṃ\" is valid"
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI \"ayaṃ\" is valid, BJT has \"nāgā\", Thai has \"tadajjhagamaṃ\""
     }
   ],
   "variants": [
@@ -70,10 +76,11 @@
       "sc": "sāvatthinidānaṃ",
       "vri": "sāvatthinidānaṃ",
       "bjt": "dutiya",
+      "thai": "ma",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sāvatthi",
-      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\""
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"dutiya\", Thai has \"ma\""
     },
     {
       "position": 8,
@@ -81,10 +88,11 @@
       "sc": "etadavoca",
       "vri": "etadavoca",
       "bjt": "etadavoca",
+      "thai": "bhikkhave",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "etad",
-      "notes": "Textual variant: PTS \"etad\" vs SC/VRI \"etadavoca\""
+      "notes": "Textual variant: PTS \"etad\" vs SC/VRI/BJT \"etadavoca\", Thai has \"bhikkhave\""
     },
     {
       "position": 25,
@@ -92,6 +100,7 @@
       "sc": "sahabyataṃ",
       "vri": "sahabyataṃ",
       "bjt": null,
+      "thai": null,
       "type": "variant",
       "confidence": 0.7,
       "preferred": "sahavyataṃ",
@@ -103,10 +112,11 @@
       "sc": "upapajjatī",
       "vri": "upapajjatī",
       "bjt": "upapajjatīti",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "upapajjatīti",
-      "notes": "Textual variant: PTS \"upapajjatīti\" vs SC/VRI \"upapajjatī\""
+      "notes": "Textual variant: PTS \"upapajjatīti\" vs SC/VRI \"upapajjatī\", BJT agrees with PTS"
     },
     {
       "position": 46,
@@ -114,10 +124,11 @@
       "sc": "paraṃ",
       "vri": "paraṃ",
       "bjt": "tassa",
+      "thai": "me",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "parammaraṇā",
-      "notes": "Textual variant: PTS \"parammaraṇā\" vs SC/VRI \"paraṃ\""
+      "notes": "Textual variant: PTS \"parammaraṇā\" vs SC/VRI \"paraṃ\", BJT has \"tassa\", Thai has \"me\""
     }
   ],
   "uncertain": [
@@ -127,6 +138,7 @@
       "sc": null,
       "vri": null,
       "bjt": "suttaṃ",
+      "thai": "ma",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "antaṃ",
@@ -138,6 +150,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": "ādīnavapariyesanaṃ",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "avoca",
@@ -149,6 +162,7 @@
       "sc": null,
       "vri": null,
       "bjt": "ekacco",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ekacco",
@@ -160,6 +174,7 @@
       "sc": null,
       "vri": null,
       "bjt": "kāyena",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "kāyena",
@@ -171,6 +186,7 @@
       "sc": null,
       "vri": null,
       "bjt": "dvayakārī",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "dvayakārī",
@@ -182,6 +198,7 @@
       "sc": null,
       "vri": null,
       "bjt": "hoti",
+      "thai": "so",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "so",
@@ -193,6 +210,7 @@
       "sc": null,
       "vri": null,
       "bjt": "vācāya",
+      "thai": "sudiṭṭho",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "yeva",
@@ -204,6 +222,7 @@
       "sc": null,
       "vri": null,
       "bjt": "dvayakāri",
+      "thai": "rūpassāhaṃ",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "peyyalo",
@@ -215,6 +234,7 @@
       "sc": null,
       "vri": null,
       "bjt": "manasā",
+      "thai": "bhikkhave",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "nāgasaṃyutta",
@@ -226,6 +246,7 @@
       "sc": null,
       "vri": null,
       "bjt": "dvayakāri",
+      "thai": "nissaraṇapariyesanaṃ",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "xxix",

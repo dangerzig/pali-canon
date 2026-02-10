@@ -5,17 +5,19 @@
     "gretil": 78,
     "sc": 62,
     "vri": 62,
-    "bjt": 121
+    "bjt": 121,
+    "thai": 14
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 78,
-    "orthographic": 12,
+    "orthographic": 24,
     "errors": 2,
     "variants": 4,
     "uncertain": 17,
-    "match": 35,
-    "other": 8
+    "match": 0,
+    "other": 31
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "devamanussānaṃ",
       "vri": "devamanussānaṃ",
       "bjt": "devamanussānaṃ",
+      "thai": null,
       "type": "error",
-      "confidence": 0.9,
+      "confidence": 0.95,
       "preferred": "devamanussānaṃ",
-      "notes": "PTS \"devamanussānam\" not in DPD, SC/VRI \"devamanussānaṃ\" is valid"
+      "notes": "PTS \"devamanussānam\" not in DPD, SC/VRI/BJT \"devamanussānaṃ\" is valid"
     },
     {
       "position": 58,
@@ -35,10 +38,11 @@
       "sc": "agāraṃ",
       "vri": "agāraṃ",
       "bjt": "samannāgato",
+      "thai": null,
       "type": "error",
       "confidence": 0.9,
       "preferred": "agāraṃ",
-      "notes": "PTS \"agāram\" not in DPD, SC/VRI \"agāraṃ\" is valid"
+      "notes": "PTS \"agāram\" not in DPD, SC/VRI \"agāraṃ\" is valid, BJT has \"samannāgato\""
     }
   ],
   "variants": [
@@ -48,10 +52,11 @@
       "sc": "cattārome",
       "vri": "cattārome",
       "bjt": "tatiyābhisandasuttaṃ",
+      "thai": "tattha",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "cattāro",
-      "notes": "Textual variant: PTS \"cattāro\" vs SC/VRI \"cattārome\""
+      "notes": "Textual variant: PTS \"cattāro\" vs SC/VRI \"cattārome\", BJT has \"tatiyābhisandasuttaṃ\", Thai has \"tattha\""
     },
     {
       "position": 15,
@@ -59,10 +64,11 @@
       "sc": "itipi",
       "vri": "itipi",
       "bjt": "itipi",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "iti",
-      "notes": "Textual variant: PTS \"iti\" vs SC/VRI \"itipi\""
+      "notes": "Textual variant: PTS \"iti\" vs SC/VRI/BJT \"itipi\""
     },
     {
       "position": 23,
@@ -70,10 +76,11 @@
       "sc": "bhagavāti",
       "vri": "bhagavāti",
       "bjt": "bhagavā",
+      "thai": null,
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.6,
       "preferred": "bhagavā",
-      "notes": "Textual variant: PTS \"bhagavā\" vs SC/VRI \"bhagavāti\""
+      "notes": "Textual variant: PTS \"bhagavā\" vs SC/VRI \"bhagavāti\", BJT agrees with PTS"
     },
     {
       "position": 61,
@@ -81,10 +88,11 @@
       "sc": "payatapāṇi",
       "vri": "payatapāṇi",
       "bjt": "bhagavato",
+      "thai": null,
       "type": "variant",
       "confidence": 0.7,
       "preferred": "payatapāṇī",
-      "notes": "Textual variant: PTS \"payatapāṇī\" vs SC/VRI \"payatapāṇi\""
+      "notes": "Textual variant: PTS \"payatapāṇī\" vs SC/VRI \"payatapāṇi\", BJT has \"bhagavato\""
     }
   ],
   "uncertain": [
@@ -94,6 +102,7 @@
       "sc": null,
       "vri": null,
       "bjt": "cattārome",
+      "thai": "yonisomanasikārabahulīkāro",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "me",
@@ -105,6 +114,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "pi",
@@ -116,6 +126,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "content",
@@ -127,6 +138,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "straddling",
@@ -138,6 +150,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "page",
@@ -149,6 +162,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "break",
@@ -160,6 +174,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "has",
@@ -171,6 +186,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "been",
@@ -182,6 +198,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "moved",
@@ -193,6 +210,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "the",
@@ -204,6 +222,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "page",
@@ -215,6 +234,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "above",
@@ -226,6 +246,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ayam",
@@ -237,6 +258,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "pathamo",
@@ -248,6 +270,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "param",
@@ -259,6 +282,7 @@
       "sc": null,
       "vri": null,
       "bjt": "dhamme",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "dhamme",
@@ -270,6 +294,7 @@
       "sc": null,
       "vri": null,
       "bjt": "svākkhāto",
+      "thai": null,
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "param",

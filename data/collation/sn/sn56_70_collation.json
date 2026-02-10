@@ -5,17 +5,19 @@
     "gretil": 37,
     "sc": 31,
     "vri": 30,
-    "bjt": 19
+    "bjt": 19,
+    "thai": 632
   },
   "has_bjt": true,
+  "has_thai": true,
   "stats": {
     "total_positions": 37,
-    "orthographic": 4,
+    "orthographic": 0,
     "errors": 2,
     "variants": 5,
     "uncertain": 9,
-    "match": 11,
-    "other": 6
+    "match": 1,
+    "other": 20
   },
   "errors": [
     {
@@ -24,10 +26,11 @@
       "sc": "evameva",
       "vri": "evameva",
       "bjt": "kayavikkayasuttaṃ",
+      "thai": "bhāvitā",
       "type": "error",
       "confidence": 0.9,
       "preferred": "evameva",
-      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evameva\" is valid"
+      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evameva\" is valid, BJT has \"kayavikkayasuttaṃ\", Thai has \"bhāvitā\""
     },
     {
       "position": 22,
@@ -35,10 +38,11 @@
       "sc": "paccantaṃ",
       "vri": "paccantaṃ",
       "bjt": null,
+      "thai": "ce",
       "type": "error",
       "confidence": 0.9,
       "preferred": "paccantaṃ",
-      "notes": "PTS \"paccantam\" not in DPD, SC/VRI \"paccantaṃ\" is valid"
+      "notes": "PTS \"paccantam\" not in DPD, SC/VRI \"paccantaṃ\" is valid, Thai has \"ce\""
     }
   ],
   "variants": [
@@ -48,10 +52,11 @@
       "sc": "eteva",
       "vri": "eteva",
       "bjt": "eteva",
+      "thai": "aññaṃ",
       "type": "variant",
-      "confidence": 0.7,
+      "confidence": 0.8,
       "preferred": "ete",
-      "notes": "Textual variant: PTS \"ete\" vs SC/VRI \"eteva\""
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"aññaṃ\""
     },
     {
       "position": 17,
@@ -59,10 +64,11 @@
       "sc": "ajeṭṭhāpacāyinoti",
       "vri": "ajeṭṭhāpacāyinoti",
       "bjt": "appaṭiviratāpeyogo",
+      "thai": "dhamme",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "jeṭṭhāpacāyino",
-      "notes": "Textual variant: PTS \"jeṭṭhāpacāyino\" vs SC/VRI \"ajeṭṭhāpacāyinoti\""
+      "notes": "Textual variant: PTS \"jeṭṭhāpacāyino\" vs SC/VRI \"ajeṭṭhāpacāyinoti\", BJT has \"appaṭiviratāpeyogo\", Thai has \"dhamme\""
     },
     {
       "position": 23,
@@ -70,10 +76,11 @@
       "sc": "paññā",
       "vri": "paññā",
       "bjt": null,
+      "thai": "maraṇakāle",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "paññāya",
-      "notes": "Textual variant: PTS \"paññāya\" vs SC/VRI \"paññā\""
+      "notes": "Textual variant: PTS \"paññāya\" vs SC/VRI \"paññā\", Thai has \"maraṇakāle\""
     },
     {
       "position": 24,
@@ -81,10 +88,11 @@
       "sc": "surāmerayaodakā",
       "vri": "surāmerayaodakā",
       "bjt": null,
+      "thai": "aññaṃ",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "surāmeraya",
-      "notes": "Textual variant: PTS \"surāmeraya\" vs SC/VRI \"surāmerayaodakā\""
+      "notes": "Textual variant: PTS \"surāmeraya\" vs SC/VRI \"surāmerayaodakā\", Thai has \"aññaṃ\""
     },
     {
       "position": 26,
@@ -92,10 +100,11 @@
       "sc": "petteyyā",
       "vri": "petteyyā",
       "bjt": null,
+      "thai": "atha",
       "type": "variant",
       "confidence": 0.7,
       "preferred": "matteyyā",
-      "notes": "Textual variant: PTS \"matteyyā\" vs SC/VRI \"petteyyā\""
+      "notes": "Textual variant: PTS \"matteyyā\" vs SC/VRI \"petteyyā\", Thai has \"atha\""
     }
   ],
   "uncertain": [
@@ -105,6 +114,7 @@
       "sc": null,
       "vri": null,
       "bjt": "evameva",
+      "thai": "ca",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "eva",
@@ -116,10 +126,11 @@
       "sc": "paṭhamaāmakadhaññapeyyālavaggo",
       "vri": "tassuddānaṃ",
       "bjt": null,
+      "thai": "ārādheti",
       "type": "uncertain",
       "confidence": 0.3,
       "preferred": "uddānaṃ",
-      "notes": "Three-way disagreement: PTS \"uddānaṃ\", SC \"paṭhamaāmakadhaññapeyyālavaggo\", VRI \"tassuddānaṃ\""
+      "notes": "Multi-way disagreement: PTS \"uddānaṃ\", SC \"paṭhamaāmakadhaññapeyyālavaggo\", VRI \"tassuddānaṃ\", Thai \"ārādheti\""
     },
     {
       "position": 30,
@@ -127,10 +138,11 @@
       "sc": null,
       "vri": "dutiyaāmakadhaññapeyyālavaggo",
       "bjt": null,
+      "thai": "parikkhayā",
       "type": "uncertain",
       "confidence": 0.5,
       "preferred": "dutiyaāmakadhaññapeyyālavaggo",
-      "notes": "Three-way disagreement, one valid reading"
+      "notes": "Multi-way disagreement, one valid reading"
     },
     {
       "position": 31,
@@ -138,6 +150,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": "antarāparinibbāyī",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "brahma",
@@ -149,6 +162,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": "hoti",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "pacāyikan",
@@ -160,6 +174,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": "upahaccaparinibbāyī",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "ti",
@@ -171,6 +186,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": "hoti",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "chapter",
@@ -182,6 +198,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": "asaṅkhāraparinibbāyī",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "viii",
@@ -193,6 +210,7 @@
       "sc": null,
       "vri": null,
       "bjt": null,
+      "thai": "hoti",
       "type": "pts_addition",
       "confidence": 0.7,
       "preferred": "appakāviratam",

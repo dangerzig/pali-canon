@@ -157,13 +157,13 @@ Master builder for entire Tipiṭaka:
 
 ```python
 def main():
-    results['vinaya'] = build_vinaya_critical()    # 4 witnesses
-    results['dn'] = build_dn_critical()            # 4 witnesses
-    results['mn'] = build_mn_critical()            # 4 witnesses
-    results['sn'] = build_sn_critical()            # 4 witnesses
-    results['an'] = build_an_critical()            # 4 witnesses
-    results['kn'] = build_kn_critical()            # 4 witnesses
-    results['abhidhamma'] = build_abhidhamma_critical()  # 4 witnesses
+    results['vinaya'] = build_vinaya_critical()    # 5 witnesses
+    results['dn'] = build_dn_critical()            # 5 witnesses
+    results['mn'] = build_mn_critical()            # 5 witnesses
+    results['sn'] = build_sn_critical()            # 5 witnesses
+    results['an'] = build_an_critical()            # 5 witnesses
+    results['kn'] = build_kn_critical()            # 5 witnesses
+    results['abhidhamma'] = build_abhidhamma_critical()  # 5 witnesses
 ```
 
 ### Lemmatization Layer
@@ -374,7 +374,7 @@ python src/generate_final_summary.py
 
 **Status:** ✓ VERIFIED CORRECT (February 2026)
 
-The `classify_variant()` function in `collate_nikaya.py` correctly implements four-witness classification:
+The `classify_variant()` function in `collate_nikaya.py` correctly implements five-witness classification:
 
 1. **Error** (high confidence): SC=VRI=BJT≠PTS AND PTS reading is NOT in DPD → transcription/OCR error
 2. **Error** (standard): SC=VRI≠PTS AND PTS reading is NOT in DPD → transcription/OCR error
