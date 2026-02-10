@@ -246,22 +246,28 @@ class Store:
         if not data_dir.exists():
             return []
 
-        # Try to use index file for faster loading
+        # Try to use index file for faster loading (DN/MN only)
         index_path = data_dir / "_index.json"
         if index_path.exists():
-            return self._list_suttas_from_index(index_path)
+            result = self._list_suttas_from_index(index_path)
+            if result:
+                return result
 
-        # Fallback: scan individual files (slower)
+        # Fallback: scan individual files (used for SN/AN/KN and when no index)
         return self._list_suttas_from_files(data_dir, nikaya)
 
     def _list_suttas_from_index(self, index_path: Path) -> list[SuttaInfo]:
-        """Load sutta list from pre-built index file (fast path)."""
+        """Load sutta list from pre-built index file (fast path).
+
+        Only handles indexes with a 'suttas' key (DN/MN) where each entry
+        is an individual sutta. Returns empty for SN/AN/KN indexes which
+        have collection-level keys (samyuttas/nipatas/texts) — the caller
+        falls through to _list_suttas_from_files() for those.
+        """
         data = self._load_json(index_path)
         suttas = []
 
-        # Handle different index formats
         if "suttas" in data:
-            # DN/MN/KN style index
             for s in data["suttas"]:
                 suttas.append(SuttaInfo(
                     id=s["id"],
@@ -270,26 +276,6 @@ class Store:
                     vagga=s.get("vagga"),
                     pts=s.get("pts"),
                     segment_count=s.get("segments"),
-                ))
-        elif "nipatas" in data:
-            # AN style index
-            for nipata in data["nipatas"]:
-                suttas.append(SuttaInfo(
-                    id=nipata["id"],
-                    title_pali=nipata.get("name_pali"),
-                    title_eng=nipata.get("name_eng"),
-                    pts=nipata.get("pts"),
-                    segment_count=nipata.get("segments"),
-                ))
-        elif "samyuttas" in data:
-            # SN style index
-            for samyutta in data["samyuttas"]:
-                suttas.append(SuttaInfo(
-                    id=samyutta["id"],
-                    title_pali=samyutta.get("name_pali"),
-                    title_eng=samyutta.get("name_eng"),
-                    pts=samyutta.get("pts"),
-                    segment_count=samyutta.get("segments"),
                 ))
 
         return suttas
