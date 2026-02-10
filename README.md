@@ -39,21 +39,21 @@ print(f"Found in {len(results)} segments")
 
 ## Data Coverage
 
-| Piṭaka | Texts | Witnesses | Words |
-|--------|-------|-----------|-------|
-| **Vinaya** | 5 | SC, GRETIL, VRI, BJT, Thai | ~595K |
-| **Sutta** | 273 units | SC, GRETIL, VRI, BJT, Thai | ~5.2M |
-| **Abhidhamma** | 11 | SC, GRETIL, VRI, BJT, Thai | ~1.3M |
+| Piṭaka | Texts | Witnesses | SC Words |
+|--------|-------|-----------|----------|
+| **Vinaya** | 5 | SC, GRETIL, VRI, BJT, Thai | ~421K |
+| **Sutta** | 273 units | SC, GRETIL, VRI, BJT, Thai | ~1.6M |
+| **Abhidhamma** | 11 | SC, GRETIL, VRI, BJT, Thai | ~820K |
 
 ### Sutta Piṭaka Detail
 
 | Nikāya | Suttas | SC | GRETIL | VRI | BJT | Thai |
 |--------|--------|-----|--------|-----|-----|------|
-| DN | 34 | 144K | 175K | 144K | 214K | 145K |
-| MN | 152 | 247K | 250K | 249K | 292K | 249K |
-| SN | 56 files | 265K | 280K | 268K | 559K | 265K |
-| AN | 11 files | 301K | 334K | 303K | 466K | 300K |
-| KN | 20 texts | 640K | 1.1M | 524K | 674K | 523K |
+| DN | 34 | 144K | 175K | 144K | 216K | 145K |
+| MN | 152 | 247K | 250K | 249K | 295K | 249K |
+| SN | 56 files | 265K | 280K | 268K | 551K | 265K |
+| AN | 11 files | 301K | 334K | 303K | 452K | 300K |
+| KN | 20 texts | 640K | 1.1M | 524K | 644K | 523K |
 
 ## Installation
 

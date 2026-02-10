@@ -74,6 +74,47 @@ def run_test(script_name: str, description: str) -> tuple[bool, float]:
         return False, duration
 
 
+def run_pytest(quick_only: bool) -> tuple[bool, float]:
+    """Run pytest unit tests and return (success, duration)."""
+    project_root = SCRIPTS_DIR.parent
+    start = time.time()
+    try:
+        cmd = [sys.executable, "-m", "pytest", str(project_root / "tests"),
+               "-m", "not slow", "-q"]
+        if not quick_only:
+            cmd = [sys.executable, "-m", "pytest", str(project_root / "tests"), "-q"]
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=300,
+            cwd=str(project_root),
+        )
+        duration = time.time() - start
+        success = result.returncode == 0
+
+        if success:
+            # Show summary line from pytest output
+            lines = result.stdout.strip().split('\n')
+            summary = lines[-1] if lines else ""
+            print(f"  PASS: Unit Tests ({duration:.1f}s) — {summary}")
+        else:
+            print(f"  FAIL: Unit Tests ({duration:.1f}s)")
+            output = result.stdout + result.stderr
+            lines = output.strip().split('\n')
+            if len(lines) > 10:
+                print("    ...")
+            for line in lines[-10:]:
+                print(f"    {line}")
+
+        return success, duration
+
+    except FileNotFoundError:
+        duration = time.time() - start
+        print("  SKIP: Unit Tests (pytest not installed)")
+        return True, duration  # Don't fail if pytest not available
+
+
 def main():
     quick_only = "--quick" in sys.argv
 
@@ -95,6 +136,15 @@ def main():
     failed = 0
     total_time = 0.0
 
+    # Run pytest unit tests first
+    success, duration = run_pytest(quick_only)
+    total_time += duration
+    if success:
+        passed += 1
+    else:
+        failed += 1
+
+    # Run data validation scripts
     for script_name, description, _is_quick in tests:
         success, duration = run_test(script_name, description)
         total_time += duration

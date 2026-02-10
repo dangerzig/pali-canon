@@ -275,10 +275,10 @@ KN (nested items):
   },
   "abhidhamma_pitaka": {...},
   "grand_totals": {
-    "sc_words": 1596896,
+    "sc_words": 2837350,
     "gretil_words": 3059680,
-    "vri_words": 2418765,
-    "bjt_words": 2205510,
+    "vri_words": 2618883,
+    "bjt_words": 3514083,
     "thai_words": 2642000
   }
 }
@@ -359,9 +359,9 @@ python src/generate_final_summary.py
 | Total Python code | ~23,000 lines |
 | Python modules | 56 files |
 | GRETIL words | 3,243,906 |
-| VRI words | 2,418,765 |
-| SC words | 1,606,474 |
-| BJT words | 2,205,510 |
+| VRI words | 2,618,883 |
+| SC words | 2,837,350 |
+| BJT words | 3,514,083 |
 | Thai words | ~2,642,000 |
 | Unique word forms | 127,026 |
 | Unique word coverage | 97.8% |
