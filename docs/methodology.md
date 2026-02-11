@@ -460,6 +460,7 @@ data/
 - Custom lemma database for 187 words not in DPD (organized for potential upstream contribution)
 
 **Future Work:**
+- Lemmatization of variant readings in the collation apparatus, to distinguish semantic variants (different lemmas) from orthographic/inflectional variants (same lemma)
 - Context-aware disambiguation for polysemous forms
 - Expansion of custom lemma database based on remaining unknown words
 - Integration with translation corpora for parallel text analysis
