@@ -67,7 +67,7 @@ Lemmatization covers the complete SC Mahāsaṅgīti Tipiṭaka (all three piṭ
 - Unique word forms: 153,716
 - Words identified: 150,619
 - Sandhi decompositions: 52,708
-- Custom lemmas: 160 applied (187 entries in database)
+- Custom lemmas: 160 applied (193 entries in database)
 - **Unique word coverage: 98.0%**
 
 The high coverage reflects that high-frequency words are well-covered, while remaining unknown forms are predominantly rare words (hapax legomena) from verse texts and specialized Abhidhamma terminology.

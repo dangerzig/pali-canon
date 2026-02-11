@@ -204,7 +204,7 @@ class Vocabulary:
         """Generate a document-term matrix for analysis.
 
         Args:
-            nikaya: Nikaya ID (dn, mn, sn, an, kn)
+            nikaya: Nikaya ID (dn, mn, sn, an, kn, vinaya, abhidhamma)
             unit: Document unit - "sutta" or "segment"
             terms: Term type - "lemmas" or "words"
             min_df: Minimum document frequency (exclude rare terms)

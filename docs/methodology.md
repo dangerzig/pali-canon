@@ -257,13 +257,13 @@ The DPD deconstructor provides pre-analyzed sandhi splits for attested compounds
 
 Words not found in DPD are handled by a custom lemma database (`src/pali/custom_lemmas.py`) organized into four categories:
 
-1. **Potential DPD Additions** (71 entries): Legitimate Pāli words missing from DPD that could be submitted upstream. These include technical terms from Netti/Peṭakopadesa, rare verb forms, and plant/animal names from Jātaka literature.
+1. **Potential DPD Additions** (83 entries): Legitimate Pāli words missing from DPD that could be submitted upstream. These include technical terms from Netti/Peṭakopadesa, rare verb forms, and plant/animal names from Jātaka literature.
 
-2. **Metrical Variants** (37 entries): Forms differing only in vowel length due to metrical requirements (e.g., *bhumyā* for *bhūmyā*, *uppari* for *upari*). These are scribal or poetic variants, not distinct lemmas.
+2. **Metrical Variants** (42 entries): Forms differing only in vowel length due to metrical requirements (e.g., *bhumyā* for *bhūmyā*, *uppari* for *upari*). These are scribal or poetic variants, not distinct lemmas.
 
-3. **Project-Specific** (40 entries): Proper nouns, rare compounds, and archaic forms too specialized for general dictionaries.
+3. **Project-Specific** (30 entries): Proper nouns, rare compounds, and archaic forms too specialized for general dictionaries.
 
-4. **Sandhi Decompositions** (39 entries): Complex sandhi compounds not handled by DPD's deconstructor (e.g., *tvevahaṃ* → *tu* + *eva* + *ahaṃ*).
+4. **Sandhi Decompositions** (38 entries): Complex sandhi compounds not handled by DPD's deconstructor (e.g., *tvevahaṃ* → *tu* + *eva* + *ahaṃ*).
 
 This modular approach separates words that could benefit the broader Pāli digital humanities community (potential DPD additions) from project-specific handling.
 
@@ -457,7 +457,7 @@ data/
 - Error detection using DPD validation with majority-voting confidence scoring
 - Variant apparatus with recorded readings from all five witnesses
 - Lemmatization at 98.0% unique-word coverage across the complete Tipiṭaka (Sutta, Vinaya, and Abhidhamma; 2,847,465 tokens, 153,716 unique forms)
-- Custom lemma database for 187 words not in DPD (organized for potential upstream contribution)
+- Custom lemma database for 193 words not in DPD (organized for potential upstream contribution)
 
 **Future Work:**
 - Lemmatization of variant readings in the collation apparatus, to distinguish semantic variants (different lemmas) from orthographic/inflectional variants (same lemma)

@@ -104,3 +104,61 @@ class TestExporterToLatex:
         latex = exporter.to_latex("dn999")
         # Should still produce valid document structure
         assert "\\begin{document}" in latex
+
+
+# =========================================================================
+# Exporter.export_latex()
+# =========================================================================
+
+@requires_data
+class TestExporterExportLatex:
+    @pytest.fixture
+    def exporter(self, data_dir):
+        return Exporter(data_dir)
+
+    def test_creates_file(self, exporter, tmp_path):
+        output = tmp_path / "dn1.tex"
+        exporter.export_latex("dn1", str(output))
+        assert output.exists()
+
+    def test_file_content(self, exporter, tmp_path):
+        output = tmp_path / "dn1.tex"
+        exporter.export_latex("dn1", str(output))
+        content = output.read_text(encoding="utf-8")
+        assert "\\begin{document}" in content
+        assert "Brahmajālasutta" in content
+
+    def test_custom_title(self, exporter, tmp_path):
+        output = tmp_path / "custom.tex"
+        exporter.export_latex("dn1", str(output), title="Test Title")
+        content = output.read_text(encoding="utf-8")
+        assert "Test Title" in content
+
+    def test_multiple_suttas(self, exporter, tmp_path):
+        output = tmp_path / "multi.tex"
+        exporter.export_latex(["dn1", "dn2"], str(output))
+        content = output.read_text(encoding="utf-8")
+        assert "\\tableofcontents" in content
+
+
+# =========================================================================
+# Exporter.export_pdf()
+# =========================================================================
+
+@requires_data
+class TestExporterExportPdf:
+    @pytest.fixture
+    def exporter(self, data_dir):
+        return Exporter(data_dir)
+
+    def test_returns_bool(self, exporter, tmp_path):
+        output = tmp_path / "test.pdf"
+        result = exporter.export_pdf("dn1", str(output))
+        assert isinstance(result, bool)
+
+    def test_keep_tex(self, exporter, tmp_path):
+        output = tmp_path / "test.pdf"
+        exporter.export_pdf("dn1", str(output), keep_tex=True)
+        tex_path = tmp_path / "test.tex"
+        # .tex file should exist regardless of whether PDF compiled
+        assert tex_path.exists()

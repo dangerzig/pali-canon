@@ -5,6 +5,12 @@ from conftest import requires_data
 
 from pali import Canon, Sutta, Segment, SuttaInfo, NikayaInfo
 
+try:
+    import pandas
+    HAS_PANDAS = True
+except ImportError:
+    HAS_PANDAS = False
+
 
 # =========================================================================
 # Canon basics
@@ -100,3 +106,66 @@ class TestCanon:
         assert isinstance(latex, str)
         assert "\\begin{document}" in latex
         assert "Brahmajālasutta" in latex
+
+    def test_close_clears_resources(self, data_dir):
+        from pali import Canon
+        c = Canon(data_dir)
+        # Force search initialization
+        c._get_search()
+        assert c._search is not None
+        c.close()
+        assert c._search is None
+        assert c._vocab is None
+        assert c._exporter is None
+
+    def test_export_vocabulary(self, canon, tmp_path):
+        output = tmp_path / "vocab.csv"
+        canon.export_vocabulary("dn", str(output))
+        assert output.exists()
+        content = output.read_text(encoding="utf-8")
+        assert "lemma,count" in content
+
+    @pytest.mark.skipif(not HAS_PANDAS, reason="pandas not installed")
+    def test_export_dtm(self, canon, tmp_path):
+        output = tmp_path / "dtm.csv"
+        canon.export_dtm("dn", str(output))
+        assert output.exists()
+        assert output.stat().st_size > 0
+
+    def test_export_latex(self, canon, tmp_path):
+        output = tmp_path / "dn1.tex"
+        canon.export_latex("dn1", str(output))
+        assert output.exists()
+        content = output.read_text(encoding="utf-8")
+        assert "\\begin{document}" in content
+
+    def test_export_pdf_returns_bool(self, canon, tmp_path):
+        output = tmp_path / "dn1.pdf"
+        result = canon.export_pdf("dn1", str(output))
+        assert isinstance(result, bool)
+
+    def test_export_tipitaka_raw(self, canon, tmp_path):
+        import csv
+        csv.field_size_limit(10 * 1024 * 1024)
+        output = tmp_path / "raw.csv"
+        canon.export_tipitaka_raw(str(output))
+        assert output.exists()
+        with open(output, encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            assert "book" in reader.fieldnames
+
+    def test_export_tipitaka_data_creates_all_files(self, canon, tmp_path):
+        outdir = tmp_path / "export"
+        canon.export_tipitaka_data(str(outdir))
+        expected = [
+            "tipitaka_raw.csv",
+            "tipitaka_suttas_raw.csv",
+            "tipitaka_long.csv",
+            "tipitaka_long_words.csv",
+            "tipitaka_wide.csv",
+            "tipitaka_suttas_long.csv",
+            "tipitaka_suttas_wide.csv",
+        ]
+        for filename in expected:
+            assert (outdir / filename).exists(), f"Missing: {filename}"
+            assert (outdir / filename).stat().st_size > 0, f"Empty: {filename}"

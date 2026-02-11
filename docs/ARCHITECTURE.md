@@ -411,7 +411,7 @@ python src/generate_final_summary.py
 | Thai words | ~2,642,000 |
 | Unique word forms | 153,716 |
 | Token-level coverage | 99.8% |
-| Custom lemmas | 187 entries |
+| Custom lemmas | 193 entries |
 | Unknown tokens | 6,136 (0.22% of corpus) |
 
 ---

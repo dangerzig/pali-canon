@@ -119,7 +119,7 @@ pali/
 
 ### Lemmatization
 
-99.8% token-level coverage across the complete Tipiṭaka (~2.85M tokens) using the Digital Pāli Dictionary, with 187 custom lemma entries for rare forms.
+99.8% token-level coverage across the complete Tipiṭaka (~2.85M tokens) using the Digital Pāli Dictionary, with 193 custom lemma entries for rare forms.
 
 ```python
 # Get lemmatized tokens

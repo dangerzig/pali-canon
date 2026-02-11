@@ -280,3 +280,249 @@ class TestExports:
         assert dn1[0]["collection"] == "dn"
         assert len(dn1[0]["text"]) > 0
         assert len(dn1[0]["text_lemmatized"]) > 0
+
+
+# =========================================================================
+# R package CSV export methods
+# =========================================================================
+
+@requires_lemmatized
+class TestExportTipitakaRaw:
+    def setup_method(self):
+        from conftest import DATA_DIR
+        self.vocab = Vocabulary(DATA_DIR)
+
+    def test_creates_csv(self, tmp_path):
+        output = tmp_path / "raw.csv"
+        self.vocab.export_tipitaka_raw(str(output))
+        assert output.exists()
+
+    def test_csv_structure(self, tmp_path):
+        import csv
+        csv.field_size_limit(10 * 1024 * 1024)
+        output = tmp_path / "raw.csv"
+        self.vocab.export_tipitaka_raw(str(output))
+
+        with open(output, encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+
+        assert set(reader.fieldnames) == {"book", "book_name", "text"}
+        assert len(rows) == 7  # one per collection
+        books = [r["book"] for r in rows]
+        assert "dn" in books
+        assert "vinaya" in books
+        assert "abhidhamma" in books
+
+    def test_text_non_empty(self, tmp_path):
+        import csv
+        csv.field_size_limit(10 * 1024 * 1024)
+        output = tmp_path / "raw.csv"
+        self.vocab.export_tipitaka_raw(str(output))
+
+        with open(output, encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                assert len(row["text"]) > 0, f"Empty text for {row['book']}"
+
+
+@requires_lemmatized
+class TestExportTipitakaSuttasRaw:
+    def setup_method(self):
+        from conftest import DATA_DIR
+        self.vocab = Vocabulary(DATA_DIR)
+
+    def test_csv_structure(self, tmp_path):
+        import csv
+        csv.field_size_limit(10 * 1024 * 1024)
+        output = tmp_path / "suttas_raw.csv"
+        self.vocab.export_tipitaka_suttas_raw(str(output))
+
+        with open(output, encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+
+        assert set(reader.fieldnames) == {"sutta", "nikaya", "text"}
+        # Should have many rows (one per text unit)
+        assert len(rows) > 100
+        # DN should have 34 suttas
+        dn_rows = [r for r in rows if r["nikaya"] == "dn"]
+        assert len(dn_rows) == 34
+
+    def test_dn1_present(self, tmp_path):
+        import csv
+        csv.field_size_limit(10 * 1024 * 1024)
+        output = tmp_path / "suttas_raw.csv"
+        self.vocab.export_tipitaka_suttas_raw(str(output))
+
+        with open(output, encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+
+        dn1 = [r for r in rows if r["sutta"] == "dn1"]
+        assert len(dn1) == 1
+        assert "Evaṃ" in dn1[0]["text"]
+
+
+@requires_lemmatized
+class TestExportTipitakaLong:
+    def setup_method(self):
+        from conftest import DATA_DIR
+        self.vocab = Vocabulary(DATA_DIR)
+
+    def test_csv_structure(self, tmp_path):
+        import csv
+        output = tmp_path / "long.csv"
+        self.vocab.export_tipitaka_long(str(output))
+
+        with open(output, encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+
+        assert set(reader.fieldnames) == {"word", "n", "total", "freq", "book"}
+        assert len(rows) > 0
+
+    def test_has_all_collections(self, tmp_path):
+        import csv
+        output = tmp_path / "long.csv"
+        self.vocab.export_tipitaka_long(str(output))
+
+        with open(output, encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            books = set(r["book"] for r in reader)
+
+        for coll in ALL_COLLECTIONS:
+            assert coll in books, f"Missing collection: {coll}"
+
+    def test_freq_valid(self, tmp_path):
+        import csv
+        output = tmp_path / "long.csv"
+        self.vocab.export_tipitaka_long(str(output))
+
+        with open(output, encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                freq = float(row["freq"])
+                assert 0 <= freq <= 1.0, f"Invalid freq {freq} for {row['word']}"
+                break  # just check first row for speed
+
+
+@requires_lemmatized
+class TestExportTipitakaWide:
+    def setup_method(self):
+        from conftest import DATA_DIR
+        self.vocab = Vocabulary(DATA_DIR)
+
+    def test_csv_structure(self, tmp_path):
+        import csv
+        output = tmp_path / "wide.csv"
+        self.vocab.export_tipitaka_wide(str(output))
+
+        with open(output, encoding="utf-8") as f:
+            reader = csv.reader(f)
+            header = next(reader)
+            rows = list(reader)
+
+        assert header[0] == "book"
+        assert len(header) > 10  # many columns (words)
+        assert len(rows) == 7  # one per collection
+
+
+@requires_lemmatized
+class TestExportTipitakaSuttasLong:
+    def setup_method(self):
+        from conftest import DATA_DIR
+        self.vocab = Vocabulary(DATA_DIR)
+
+    def test_csv_structure(self, tmp_path):
+        import csv
+        output = tmp_path / "suttas_long.csv"
+        self.vocab.export_tipitaka_suttas_long(str(output))
+
+        with open(output, encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+
+        assert set(reader.fieldnames) == {"word", "n", "total", "freq", "sutta", "nikaya"}
+        assert len(rows) > 0
+
+    def test_has_multiple_nikayas(self, tmp_path):
+        import csv
+        output = tmp_path / "suttas_long.csv"
+        self.vocab.export_tipitaka_suttas_long(str(output))
+
+        with open(output, encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            nikayas = set(r["nikaya"] for r in reader)
+
+        assert len(nikayas) == 7
+
+
+@requires_lemmatized
+class TestExportVocabulary:
+    def setup_method(self):
+        from conftest import DATA_DIR
+        self.vocab = Vocabulary(DATA_DIR)
+
+    def test_creates_csv(self, tmp_path):
+        output = tmp_path / "vocab.csv"
+        self.vocab.export_vocabulary("dn", str(output))
+        assert output.exists()
+
+    def test_csv_structure(self, tmp_path):
+        import csv
+        output = tmp_path / "vocab.csv"
+        self.vocab.export_vocabulary("dn", str(output))
+
+        with open(output, encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            rows = list(reader)
+
+        assert set(reader.fieldnames) == {"lemma", "count"}
+        assert len(rows) > 100  # DN has many unique lemmas
+
+    def test_sorted_by_count_descending(self, tmp_path):
+        import csv
+        output = tmp_path / "vocab.csv"
+        self.vocab.export_vocabulary("dn", str(output))
+
+        with open(output, encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            counts = [int(r["count"]) for r in reader]
+
+        # Should be sorted descending
+        assert counts == sorted(counts, reverse=True)
+
+
+try:
+    import pandas
+    HAS_PANDAS = True
+except ImportError:
+    HAS_PANDAS = False
+
+requires_pandas = pytest.mark.skipif(not HAS_PANDAS, reason="pandas not installed")
+
+
+@requires_lemmatized
+@requires_pandas
+class TestExportDtm:
+    def setup_method(self):
+        from conftest import DATA_DIR
+        self.vocab = Vocabulary(DATA_DIR)
+
+    def test_creates_csv(self, tmp_path):
+        output = tmp_path / "dtm.csv"
+        self.vocab.export_dtm("dn", str(output))
+        assert output.exists()
+
+    def test_csv_has_sutta_rows(self, tmp_path):
+        import csv
+        output = tmp_path / "dtm.csv"
+        self.vocab.export_dtm("dn", str(output))
+
+        with open(output, encoding="utf-8") as f:
+            reader = csv.reader(f)
+            header = next(reader)
+            rows = list(reader)
+
+        assert len(rows) == 34  # 34 DN suttas

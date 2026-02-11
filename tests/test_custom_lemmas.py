@@ -125,3 +125,25 @@ class TestDictionaryConsistency:
             assert len(parts) == len(components), (
                 f"{word}: {len(parts)} parts but {len(components)} components"
             )
+
+
+# =========================================================================
+# reload_config()
+# =========================================================================
+
+class TestReloadConfig:
+    def test_reload_preserves_data(self):
+        from pali.custom_lemmas import reload_config
+        # Record state before reload
+        words_before = get_all_custom_words()
+        reload_config()
+        words_after = get_all_custom_words()
+        assert words_before == words_after
+
+    def test_reload_repopulates_dicts(self):
+        from pali.custom_lemmas import reload_config
+        reload_config()
+        # All dicts should be populated after reload
+        assert len(CUSTOM_LEMMAS) > 0
+        assert len(CUSTOM_SANDHI) > 0
+        assert len(POTENTIAL_DPD_ADDITIONS) > 0

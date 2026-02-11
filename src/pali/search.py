@@ -64,7 +64,7 @@ class Search:
 
         Args:
             lemma: The lemma (dictionary form) to search for
-            nikaya: Optional filter by nikaya (dn, mn, sn, an, kn)
+            nikaya: Optional filter by nikaya (dn, mn, sn, an, kn, vinaya, abhidhamma)
             limit: Maximum occurrences to return (default 1000)
 
         Returns:
