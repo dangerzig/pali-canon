@@ -10,6 +10,9 @@ import json
 from .text import parse_sutta_id, iter_file_segments
 from .store import Store, NIKAYAS
 
+# All collections in canonical order
+ALL_COLLECTIONS = ["dn", "mn", "sn", "an", "kn", "vinaya", "abhidhamma"]
+
 # Optional imports for data science functionality
 try:
     import pandas as pd
@@ -387,9 +390,11 @@ class Vocabulary:
             "sn": "Samyutta Nikaya",
             "an": "Anguttara Nikaya",
             "kn": "Khuddaka Nikaya",
+            "vinaya": "Vinaya Pitaka",
+            "abhidhamma": "Abhidhamma Pitaka",
         }
 
-        for nikaya in ["dn", "mn", "sn", "an", "kn"]:
+        for nikaya in ALL_COLLECTIONS:
             texts = []
             for sutta_info in store.list_suttas(nikaya, lemmatized=use_lemmas):
                 sutta = store.get_sutta(sutta_info.id, lemmatized=use_lemmas, include_tokens=False)
@@ -431,13 +436,13 @@ class Vocabulary:
         """
         rows = []
 
-        for nikaya in ["dn", "mn", "sn", "an", "kn"]:
+        for nikaya in ALL_COLLECTIONS:
             nikaya_dir = self.lemmatized_dir / nikaya
             if not nikaya_dir.exists():
                 continue
 
             if by_sutta:
-                # Count per sutta
+                # Count per sutta/text
                 doc_counts: dict[str, Counter] = {}
                 for json_file in sorted(nikaya_dir.glob("*.json")):
                     if json_file.name.startswith("_"):
@@ -455,7 +460,7 @@ class Vocabulary:
                             "book": doc_id,
                         })
             else:
-                # Count per nikaya
+                # Count per collection
                 word_counts: Counter = Counter()
                 for json_file in sorted(nikaya_dir.glob("*.json")):
                     if json_file.name.startswith("_"):
@@ -501,7 +506,7 @@ class Vocabulary:
         doc_counts: dict[str, Counter] = {}
         doc_totals: dict[str, int] = {}
 
-        for nikaya in ["dn", "mn", "sn", "an", "kn"]:
+        for nikaya in ALL_COLLECTIONS:
             nikaya_dir = self.lemmatized_dir / nikaya
             if not nikaya_dir.exists():
                 continue
@@ -557,13 +562,13 @@ class Vocabulary:
         store = Store(self.data_dir)
         rows = []
 
-        for nikaya in ["dn", "mn", "sn", "an", "kn"]:
-            for sutta_info in store.list_suttas(nikaya, lemmatized=use_lemmas):
+        for collection in ALL_COLLECTIONS:
+            for sutta_info in store.list_suttas(collection, lemmatized=use_lemmas):
                 sutta = store.get_sutta(sutta_info.id, lemmatized=use_lemmas, include_tokens=False)
                 if sutta:
                     rows.append({
                         "sutta": sutta_info.id,
-                        "nikaya": nikaya,
+                        "nikaya": collection,
                         "text": sutta.text,
                     })
 
@@ -584,18 +589,18 @@ class Vocabulary:
         """
         rows = []
 
-        for nikaya in ["dn", "mn", "sn", "an", "kn"]:
-            nikaya_dir = self.lemmatized_dir / nikaya
-            if not nikaya_dir.exists():
+        for collection in ALL_COLLECTIONS:
+            collection_dir = self.lemmatized_dir / collection
+            if not collection_dir.exists():
                 continue
 
             doc_counts: dict[str, Counter] = {}
-            for json_file in sorted(nikaya_dir.glob("*.json")):
+            for json_file in sorted(collection_dir.glob("*.json")):
                 if json_file.name.startswith("_"):
                     continue
-                self._collect_tipitaka_counts(json_file, nikaya, use_lemmas, doc_counts, by_sutta=True)
+                self._collect_tipitaka_counts(json_file, collection, use_lemmas, doc_counts, by_sutta=True)
 
-            for sutta_id, word_counts in doc_counts.items():
+            for text_id, word_counts in doc_counts.items():
                 total = sum(word_counts.values())
                 for word, n in word_counts.items():
                     rows.append({
@@ -603,8 +608,8 @@ class Vocabulary:
                         "n": n,
                         "total": total,
                         "freq": n / total if total > 0 else 0,
-                        "sutta": sutta_id,
-                        "nikaya": nikaya,
+                        "sutta": text_id,
+                        "nikaya": collection,
                     })
 
         with open(output_path, "w", encoding="utf-8", newline="") as f:
@@ -613,6 +618,69 @@ class Vocabulary:
             for row in rows:
                 writer.writerow([row["word"], row["n"], row["total"],
                                 f'{row["freq"]:.10f}', row["sutta"], row["nikaya"]])
+
+    def export_tipitaka_texts(self, output_path: str) -> None:
+        """Export both surface and lemmatized text per text unit.
+
+        Creates CSV with columns: id, collection, pitaka, title, text, text_lemmatized
+        One row per text unit (sutta/vinaya section/abhidhamma book).
+
+        This is the primary export for the tipitaka.critical R package,
+        which ships only this text data and computes frequency tables on load.
+
+        Args:
+            output_path: Output CSV path
+        """
+        pitaka_map = {
+            "dn": "sutta", "mn": "sutta", "sn": "sutta",
+            "an": "sutta", "kn": "sutta",
+            "vinaya": "vinaya", "abhidhamma": "abhidhamma",
+        }
+
+        rows = []
+
+        for collection in ALL_COLLECTIONS:
+            collection_dir = self.lemmatized_dir / collection
+            if not collection_dir.exists():
+                continue
+
+            for json_file in sorted(collection_dir.glob("*.json")):
+                if json_file.name.startswith("_"):
+                    continue
+
+                with open(json_file, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+
+                for doc_id, segments in iter_file_segments(data, collection):
+                    # Build surface text and lemmatized text from tokens
+                    surface_words = []
+                    lemma_words = []
+                    for segment in segments:
+                        for token in segment.get("tokens", []):
+                            word = token.get("word", "")
+                            lemma = token.get("lemma", "")
+                            if word:
+                                surface_words.append(word)
+                                # Use lemma if available, otherwise use surface form
+                                lemma_words.append(lemma if lemma else word)
+
+                    title = data.get("title_pali", "") or data.get("name_pali", "")
+
+                    rows.append({
+                        "id": doc_id,
+                        "collection": collection,
+                        "pitaka": pitaka_map.get(collection, ""),
+                        "title": title,
+                        "text": " ".join(surface_words),
+                        "text_lemmatized": " ".join(lemma_words),
+                    })
+
+        with open(output_path, "w", encoding="utf-8", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["id", "collection", "pitaka", "title", "text", "text_lemmatized"])
+            for row in rows:
+                writer.writerow([row["id"], row["collection"], row["pitaka"],
+                                row["title"], row["text"], row["text_lemmatized"]])
 
     def _collect_tipitaka_counts(
         self,

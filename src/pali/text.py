@@ -68,8 +68,19 @@ KN_TEXT_PREFIXES = {
     "ne", "pe", "mil",
 }
 
-# Standard nikāya codes
-NIKAYA_CODES = ("dn", "mn", "sn", "an", "kn")
+# Vinaya text IDs (each is a standalone text in data/canonical/vinaya/)
+VINAYA_TEXT_IDS = {
+    "suttavibhanga1", "suttavibhanga2", "mahavagga", "cullavagga", "parivara",
+}
+
+# Abhidhamma text IDs (each is a standalone text in data/canonical/abhidhamma/)
+ABHIDHAMMA_TEXT_IDS = {
+    "dhammasangani", "vibhanga", "dhatukatha", "puggalapannatti",
+    "kathavatthu", "yamaka1", "yamaka2", "patthana",
+}
+
+# Standard collection codes (includes all three piṭakas)
+NIKAYA_CODES = ("dn", "mn", "sn", "an", "kn", "vinaya", "abhidhamma")
 
 # Collections with nested sutta structure
 NESTED_COLLECTIONS = {"sn", "an"}
@@ -77,22 +88,33 @@ NESTED_COLLECTIONS = {"sn", "an"}
 # Collections with items structure (KN)
 ITEMS_COLLECTIONS = {"kn"}
 
+# Collections with flat segments (one text per file, like DN/MN)
+FLAT_COLLECTIONS = {"dn", "mn", "vinaya", "abhidhamma"}
+
 
 def parse_sutta_id(sutta_id: str) -> Optional[str]:
-    """Determine which nikāya a sutta ID belongs to.
+    """Determine which collection a text ID belongs to.
 
-    Checks KN text prefixes first (they're more specific than
-    standard nikāya prefixes like "sn", "an").
+    Checks specific text ID sets first (KN, Vinaya, Abhidhamma),
+    then standard nikāya prefixes.
 
     Args:
-        sutta_id: Sutta ID (e.g., "dn1", "sn1.1", "dhp1")
+        sutta_id: Text ID (e.g., "dn1", "sn1.1", "dhp1", "mahavagga")
 
     Returns:
-        Nikāya code ("dn", "mn", "sn", "an", "kn") or None
+        Collection code ("dn", "mn", "sn", "an", "kn", "vinaya",
+        "abhidhamma") or None
     """
+    # Check Vinaya/Abhidhamma text IDs (exact match)
+    if sutta_id in VINAYA_TEXT_IDS:
+        return "vinaya"
+    if sutta_id in ABHIDHAMMA_TEXT_IDS:
+        return "abhidhamma"
+    # Check KN text prefixes
     for prefix in KN_TEXT_PREFIXES:
         if sutta_id.startswith(prefix):
             return "kn"
+    # Check standard nikāya prefixes
     for n in NIKAYA_CODES:
         if sutta_id.startswith(n):
             return n
@@ -148,7 +170,7 @@ def iter_file_segments(data: dict, nikaya: str):
     Yields:
         (doc_id, segments_list) tuples
     """
-    if nikaya in ("dn", "mn"):
+    if nikaya in FLAT_COLLECTIONS:
         yield (data["id"], data.get("segments", []))
     elif nikaya in NESTED_COLLECTIONS:
         for sutta_data in data.get("suttas", []):

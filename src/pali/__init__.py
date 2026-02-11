@@ -50,12 +50,21 @@ __all__ = [
 class Canon:
     """Main interface for accessing Pāli Canon data.
 
-    Provides methods to navigate and retrieve texts from the five nikāyas:
+    Provides methods to navigate and retrieve texts from the complete Tipiṭaka:
+
+    Sutta Piṭaka:
     - DN (Dīgha Nikāya) - Long Discourses
     - MN (Majjhima Nikāya) - Middle Length Discourses
     - SN (Saṃyutta Nikāya) - Connected Discourses
     - AN (Aṅguttara Nikāya) - Numerical Discourses
     - KN (Khuddaka Nikāya) - Minor Collection
+
+    Vinaya Piṭaka:
+    - Suttavibhaṅga I & II, Mahāvagga, Cūḷavagga, Parivāra
+
+    Abhidhamma Piṭaka:
+    - Dhammasaṅgaṇī, Vibhaṅga, Dhātukathā, Puggalapaññatti,
+      Kathāvatthu, Yamaka I & II, Paṭṭhāna
 
     Example:
         canon = Canon()
@@ -565,17 +574,36 @@ class Canon:
         """
         self._get_vocab().export_tipitaka_wide(output_path, use_lemmas, by_sutta, min_freq)
 
+    def export_tipitaka_texts(self, output_path: str) -> None:
+        """Export both surface and lemmatized text per text unit.
+
+        Creates CSV with columns: id, collection, pitaka, title, text, text_lemmatized
+        One row per text unit (sutta/vinaya section/abhidhamma book).
+        Covers the full Tipitaka (all three pitakas).
+
+        This is the primary export for the tipitaka.critical R package.
+
+        Args:
+            output_path: Output CSV path
+
+        Example:
+            canon.export_tipitaka_texts("../tipitaka.critical/data-raw/texts.csv")
+        """
+        self._get_vocab().export_tipitaka_texts(output_path)
+
     def export_tipitaka_data(self, output_dir: str) -> None:
         """Export all data files needed for tipitaka R package.
 
+        Covers the complete Tipiṭaka (Sutta, Vinaya, and Abhidhamma).
+
         Generates the following files in output_dir:
-        - tipitaka_raw.csv: Full text per nikaya
-        - tipitaka_suttas_raw.csv: Full text per sutta
-        - tipitaka_long.csv: Word frequencies by nikaya (lemmas)
-        - tipitaka_long_words.csv: Word frequencies by nikaya (surface forms)
-        - tipitaka_wide.csv: Frequency matrix by nikaya
-        - tipitaka_suttas_long.csv: Word frequencies by sutta
-        - tipitaka_suttas_wide.csv: Frequency matrix by sutta
+        - tipitaka_raw.csv: Full text per collection
+        - tipitaka_suttas_raw.csv: Full text per text unit
+        - tipitaka_long.csv: Word frequencies by collection (lemmas)
+        - tipitaka_long_words.csv: Word frequencies by collection (surface forms)
+        - tipitaka_wide.csv: Frequency matrix by collection
+        - tipitaka_suttas_long.csv: Word frequencies by text unit
+        - tipitaka_suttas_wide.csv: Frequency matrix by text unit
 
         Args:
             output_dir: Directory to write CSV files

@@ -116,7 +116,7 @@ pali/
 
 ### Lemmatization
 
-99.78% token-level coverage using the Digital Pāli Dictionary, with custom lemmas for rare forms.
+98.0% unique-word coverage across the complete Tipiṭaka (2.8M tokens) using the Digital Pāli Dictionary, with custom lemmas for rare forms.
 
 ```python
 # Get lemmatized tokens
@@ -151,13 +151,17 @@ canon.export_dtm("dn", "dn_dtm.csv")
 
 ### R Package Export
 
-Generate all data files for the [tipitaka R package](https://github.com/dangerzig/tipitaka):
+Generate data files for the [tipitaka](https://github.com/dangerzig/tipitaka) and tipitaka.critical R packages:
 
 ```python
+# Full export for tipitaka R package
 canon.export_tipitaka_data("../tipitaka/data-raw/critical/")
+
+# Texts export for tipitaka.critical R package (surface + lemmatized text)
+canon.export_tipitaka_texts("../tipitaka.critical/data-raw/texts.csv")
 ```
 
-This generates 7 CSV files: nikaya-level and sutta-level text, lemma frequencies, and frequency matrices. See [TIPITAKA_R_PACKAGE_INSTRUCTIONS.md](TIPITAKA_R_PACKAGE_INSTRUCTIONS.md) for details.
+The `export_tipitaka_data` generates 7 CSV files covering all three piṭakas. The `export_tipitaka_texts` generates a single CSV with both surface and lemmatized text per text unit.
 
 ## Sources
 

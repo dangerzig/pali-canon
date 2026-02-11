@@ -455,7 +455,7 @@ data/
 - Five-way alignment pipeline (PTS/GRETIL, SC, VRI, BJT, Thai)
 - Error detection using DPD validation with majority-voting confidence scoring
 - Variant apparatus with recorded readings from all five witnesses
-- Lemmatization at 99.78% token-level coverage across the Sutta Piṭaka
+- Lemmatization at 98.0% unique-word coverage across the complete Tipiṭaka (Sutta, Vinaya, and Abhidhamma)
 - Custom lemma database for 187 words not in DPD (organized for potential upstream contribution)
 
 **Future Work:**

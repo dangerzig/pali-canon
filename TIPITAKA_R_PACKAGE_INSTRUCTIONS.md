@@ -1,26 +1,58 @@
-# Tipitaka R Package — Data Generation
+# Tipitaka R Packages — Data Generation
 
-This document explains how to regenerate the data files for the [tipitaka R package](https://github.com/dangerzig/tipitaka) from the pali-canon Python library.
+This document explains how to regenerate the data files for the R packages from the pali-canon Python library.
 
 ## Overview
 
-The tipitaka R package (v1.0.0, submitted to CRAN Feb 2026) contains:
+There are two R packages:
 
-**VRI original datasets** (unchanged from v0.1.x):
+### tipitaka (existing CRAN package)
+Contains VRI original datasets (unchanged from v0.1.x):
 - `tipitaka_raw`, `tipitaka_long`, `tipitaka_wide` — VRI Chattha Sangayana data
 
-**Critical edition datasets** (new in v1.0.0):
-- `tipitaka_raw_critical` — Full text per nikaya
-- `tipitaka_suttas_raw` — Full text per sutta (5,764 suttas)
-- `tipitaka_long_critical` — Lemma frequencies by nikaya
-- `tipitaka_long_words` — Surface form frequencies by nikaya
-- `tipitaka_wide_critical` — Lemma x nikaya frequency matrix
-- `tipitaka_suttas_long` — Lemma frequencies by sutta
-- `tipitaka_suttas_wide` — Lemma x sutta sparse matrix (dgCMatrix)
+**Functions**: `pali_sort()`, `pali_lt()`, `pali_gt()`, `pali_eq()`
 
-**Functions**: `pali_sort()`, `pali_lt()`, `pali_gt()`, `pali_eq()`, `search_lemma()`
+### tipitaka.critical (new companion package)
+Contains the lemmatized critical edition of the complete Tipitaka:
+- `texts` — Full surface and lemmatized text per text unit (5,777 units across all three pitakas)
+- `lemmas()` — Lemma frequencies by text unit (computed on first use)
+- `dtm()` — Lemma x text unit sparse frequency matrix (computed on first use)
+- `search_lemma()` — Search for lemma occurrences
 
-## Step 1: Generate CSV files from Python
+**Coverage**: All three pitakas (Sutta, Vinaya, Abhidhamma), 2.8M tokens, 98.0% unique-word coverage.
+
+## Generating Data for tipitaka.critical
+
+### Step 1: Generate texts CSV from Python
+
+```bash
+cd ~/pali
+PYTHONPATH=src python -c "
+from pali import Canon
+canon = Canon()
+canon.export_tipitaka_texts('../tipitaka.critical/data-raw/texts.csv')
+"
+```
+
+This generates a single CSV with columns: `id`, `collection`, `pitaka`, `title`, `text`, `text_lemmatized`.
+
+### Step 2: Build R .rda file
+
+```bash
+cd ~/tipitaka.critical
+Rscript data-raw/build_data.R
+```
+
+### Step 3: Check
+
+```bash
+Rscript -e 'devtools::document()'
+Rscript -e 'devtools::check()'
+```
+
+## Generating Data for tipitaka (legacy export)
+
+The full export still works for regenerating all CSV formats:
 
 ```bash
 cd ~/pali
@@ -31,48 +63,23 @@ canon.export_tipitaka_data('../tipitaka/data-raw/critical/')
 "
 ```
 
-This generates 7 CSV files in `../tipitaka/data-raw/critical/`:
+This generates 7 CSV files covering all three pitakas:
 
 | File | Description | Rows |
 |------|-------------|------|
-| `tipitaka_raw.csv` | Text per nikaya | 5 |
-| `tipitaka_suttas_raw.csv` | Text per sutta | 5,764 |
-| `tipitaka_long.csv` | Lemma frequencies by nikaya | ~70K |
-| `tipitaka_long_words.csv` | Surface form frequencies by nikaya | ~105K |
-| `tipitaka_wide.csv` | Lemma frequency matrix by nikaya | 5 |
-| `tipitaka_suttas_long.csv` | Lemma frequencies by sutta | ~5M |
-| `tipitaka_suttas_wide.csv` | Lemma frequency matrix by sutta | ~5.7K |
-
-## Step 2: Build R .rda files
-
-```bash
-cd ~/tipitaka
-Rscript data-raw/critical.R
-```
-
-This reads the CSVs and creates compressed `.rda` files in `data/`. Note that `tipitaka_suttas_wide` is built as a sparse `dgCMatrix` from `tipitaka_suttas_long` (not from the wide CSV) to reduce size from 815MB to 1.3MB.
-
-## Step 3: Regenerate docs and check
-
-```bash
-cd ~/tipitaka
-Rscript -e 'devtools::document()'
-Rscript -e 'devtools::check()'
-```
-
-Should pass with 0 errors, 0 warnings, 0 notes (or only a size NOTE).
-
-## Step 4: Knit README
-
-```bash
-Rscript -e 'devtools::install()'  # new datasets must be loadable
-Rscript -e 'rmarkdown::render("README.Rmd")'
-```
+| `tipitaka_raw.csv` | Text per collection | 7 |
+| `tipitaka_suttas_raw.csv` | Text per text unit | 5,777 |
+| `tipitaka_long.csv` | Lemma frequencies by collection | ~100K |
+| `tipitaka_long_words.csv` | Surface form frequencies by collection | ~150K |
+| `tipitaka_wide.csv` | Lemma frequency matrix by collection | 7 |
+| `tipitaka_suttas_long.csv` | Lemma frequencies by text unit | ~8M |
+| `tipitaka_suttas_wide.csv` | Lemma frequency matrix by text unit | ~5.8K |
 
 ## Key Design Decisions
 
-- **Sparse matrix**: `tipitaka_suttas_wide` is 99.3% zeros, stored as `dgCMatrix` from the Matrix package (in Depends, not Imports, for LazyData S4 compatibility)
-- **Backward compatibility**: All VRI datasets preserved unchanged; `sati_sutta_long` and `sati_sutta_raw` removed (replaced by extracting from critical edition)
+- **Two packages**: `tipitaka` (minimal VRI data for CRAN) + `tipitaka.critical` (full critical edition)
+- **Compute on load**: tipitaka.critical ships only text data; frequency tables and sparse matrix are computed on first use (~5 sec)
 - **Five witnesses**: PTS/GRETIL (base text), SuttaCentral, VRI, BJT, Thai Royal Edition
 - **Corrections**: Where SC=VRI=BJT disagree with PTS and PTS reading is not in DPD
-- **Lemmatization**: DPD-based, 99.78% token-level coverage
+- **Lemmatization**: DPD-based, 98.0% unique-word coverage across the complete Tipitaka
+- **Sparse matrix**: The document-term matrix is 99%+ zeros, stored as `dgCMatrix` from the Matrix package

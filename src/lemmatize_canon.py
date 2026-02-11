@@ -1105,7 +1105,7 @@ def process_collection(collection: str, lemmatizer: Lemmatizer):
     for i, input_path in enumerate(files):
         output_path = output_dir / input_path.name
 
-        if collection in ("dn", "mn"):
+        if collection in ("dn", "mn", "vinaya", "abhidhamma"):
             process_dn_mn_file(input_path, output_path, lemmatizer)
         elif collection in ("sn", "an"):
             process_sn_an_file(input_path, output_path, lemmatizer)
@@ -1121,7 +1121,7 @@ def main():
     print("=" * 60)
 
     with Lemmatizer() as lemmatizer:
-        collections = ["dn", "mn", "sn", "an", "kn"]
+        collections = ["dn", "mn", "sn", "an", "kn", "vinaya", "abhidhamma"]
 
         for collection in collections:
             print(f"\nProcessing {collection.upper()}...")

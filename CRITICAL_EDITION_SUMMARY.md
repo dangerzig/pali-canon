@@ -61,17 +61,16 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 
 ## Lemmatization Statistics
 
-Lemmatization covers the SC Mahāsaṅgīti Sutta Piṭaka text (1.6M words):
+Lemmatization covers the complete SC Mahāsaṅgīti Tipiṭaka (all three piṭakas: Sutta, Vinaya, and Abhidhamma):
 
-- Total word tokens: 1,606,474
-- Unique word forms: 127,026
-- Words identified: 124,270
-- Sandhi decompositions: 42,449
+- Total word tokens: 2,847,465
+- Unique word forms: 153,716
+- Words identified: 150,619
+- Sandhi decompositions: 52,708
 - Custom lemmas: 160 applied (193 entries in database)
-- **Unique word coverage: 97.8%**
-- **Token-level coverage: 99.78%**
+- **Unique word coverage: 98.0%**
 
-The high token-level coverage reflects that high-frequency words are well-covered, while remaining unknown forms are predominantly rare words (hapax legomena) from verse texts.
+The high coverage reflects that high-frequency words are well-covered, while remaining unknown forms are predominantly rare words (hapax legomena) from verse texts and specialized Abhidhamma terminology.
 
 ---
 

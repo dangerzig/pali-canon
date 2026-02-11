@@ -8,20 +8,23 @@ from typing import Optional
 
 from .models import Sutta, Segment, SuttaInfo, NikayaInfo
 from .text import (
-    KN_TEXT_PREFIXES, NESTED_COLLECTIONS, ITEMS_COLLECTIONS,
+    KN_TEXT_PREFIXES, NESTED_COLLECTIONS, ITEMS_COLLECTIONS, FLAT_COLLECTIONS,
+    VINAYA_TEXT_IDS, ABHIDHAMMA_TEXT_IDS,
     parse_sutta_id, iter_file_segments,
 )
 
 # Default data directory (relative to package)
 _DEFAULT_DATA_DIR = Path(__file__).parent.parent.parent / "data"
 
-# Nikāya metadata
+# Collection metadata
 NIKAYAS = {
     "dn": {"name_pali": "Dīgha Nikāya", "name_eng": "Long Discourses"},
     "mn": {"name_pali": "Majjhima Nikāya", "name_eng": "Middle Length Discourses"},
     "sn": {"name_pali": "Saṃyutta Nikāya", "name_eng": "Connected Discourses"},
     "an": {"name_pali": "Aṅguttara Nikāya", "name_eng": "Numerical Discourses"},
     "kn": {"name_pali": "Khuddaka Nikāya", "name_eng": "Minor Collection"},
+    "vinaya": {"name_pali": "Vinaya Piṭaka", "name_eng": "Basket of Discipline"},
+    "abhidhamma": {"name_pali": "Abhidhamma Piṭaka", "name_eng": "Basket of Higher Doctrine"},
 }
 
 
@@ -105,6 +108,12 @@ class Store:
             if path.exists():
                 return path
 
+        # For Vinaya/Abhidhamma: direct file mapping by text ID
+        elif nikaya in ("vinaya", "abhidhamma"):
+            path = data_dir / f"{sutta_id}.json"
+            if path.exists():
+                return path
+
         # For SN/AN: file is the samyutta/nipata (sn1.json contains sn1.1, sn1.2, etc.)
         elif nikaya in NESTED_COLLECTIONS:
             # Normalize: handle both "sn1.1" and "1.1" formats
@@ -169,8 +178,8 @@ class Store:
 
         data = self._load_json(path)
 
-        # For DN/MN: the file IS the sutta
-        if nikaya in ("dn", "mn"):
+        # For DN/MN/Vinaya/Abhidhamma: the file IS the text
+        if nikaya in FLAT_COLLECTIONS:
             return Sutta.from_dict(data, include_tokens=include_tokens and lemmatized)
 
         # For SN/AN: find the specific sutta in the nested structure
@@ -293,8 +302,8 @@ class Store:
 
             data = self._load_json(path)
 
-            # DN/MN: one sutta per file
-            if nikaya in ("dn", "mn"):
+            # DN/MN/Vinaya/Abhidhamma: one text per file
+            if nikaya in FLAT_COLLECTIONS:
                 segment_count = len(data.get("segments", []))
                 suttas.append(SuttaInfo(
                     id=data["id"],
