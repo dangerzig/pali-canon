@@ -37,8 +37,11 @@ class TestEscapeLatex:
         assert escape_latex(text) == text
 
     def test_backslash(self):
-        result = escape_latex("a\\b")
-        assert "textbackslash" in result
+        assert escape_latex("a\\b") == r"a\textbackslash{}b"
+
+    def test_backslash_with_braces(self):
+        """Regression: backslash + braces must not double-escape."""
+        assert escape_latex("\\{x}") == r"\textbackslash{}\{x\}"
 
 
 # =========================================================================

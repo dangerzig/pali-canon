@@ -103,8 +103,9 @@ def escape_latex(text: str) -> str:
     """Escape special LaTeX characters."""
     if not text:
         return ""
+    # Replace backslash first with placeholder to avoid double-escaping
+    text = text.replace('\\', '\x00')
     replacements = [
-        ('\\', r'\textbackslash{}'),
         ('&', r'\&'),
         ('%', r'\%'),
         ('$', r'\$'),
@@ -117,6 +118,7 @@ def escape_latex(text: str) -> str:
     ]
     for old, new in replacements:
         text = text.replace(old, new)
+    text = text.replace('\x00', r'\textbackslash{}')
     return text
 
 
