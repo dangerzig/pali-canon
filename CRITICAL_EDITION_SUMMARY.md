@@ -39,7 +39,7 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 | **TOTAL** | | **1,596,878** | **2,129,164** | **1,487,175** | **2,157,467** |
 
 ### Abhidhamma Piṭaka (5 witnesses: SC/GRETIL/VRI/BJT/Thai)
-- **11 texts** (Dhammasaṅgaṇī, Vibhaṅga, Dhātukathā, Puggalapaññatti, Kathāvatthu, Yamaka 1-2, Paṭṭhāna 1-3 + Duka)
+- **7 texts** (Dhammasaṅgaṇī, Vibhaṅga, Dhātukathā, Puggalapaññatti, Kathāvatthu, Yamaka, Paṭṭhāna)
 - SC: 819,916 words
 - GRETIL: 554,423 words
 - VRI: 712,654 words

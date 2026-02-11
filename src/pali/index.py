@@ -227,6 +227,13 @@ class SearchIndex:
                 self._lemma_batch.append(
                     (lemma, token["word"], segment_id, sutta_id, nikaya, token.get("pos"))
                 )
+            # Also index component lemmas from sandhi tokens
+            for comp in token.get("components") or []:
+                comp_lemma = comp.get("lemma")
+                if comp_lemma:
+                    self._lemma_batch.append(
+                        (comp_lemma, token["word"], segment_id, sutta_id, nikaya, comp.get("pos"))
+                    )
 
         # Flush batches when they reach the threshold
         if len(self._fts_batch) >= self._batch_size:

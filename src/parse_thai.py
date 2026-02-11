@@ -286,9 +286,9 @@ SN_VOLUMES = {
 AN_VOLUMES = {
     'an_vol1': [20],   # Eka+Duka+Tikanipāta
     'an_vol2': [21],   # Catukkanipāta
-    'an_vol3': [22],   # Pañcakanipāta
-    'an_vol4': [23],   # Chakka+Sattakanipāta
-    'an_vol5': [24],   # Aṭṭhaka+Navaka+Dasaka+Ekādasakanipāta
+    'an_vol3': [22],   # Pañcaka+Chakkanipāta
+    'an_vol4': [23],   # Sattaka+Aṭṭhaka+Navakanipāta
+    'an_vol5': [24],   # Dasaka+Ekādasakanipāta
 }
 
 # KN: volumes 25-33 (some texts combined)
@@ -318,24 +318,25 @@ def extract_text_from_volumes(db_path, volumes):
     conn = sqlite3.connect(db_path)
     all_text = []
 
-    for vol in volumes:
-        vol_str = f'{vol:02d}'
-        cursor = conn.execute(
-            "SELECT content FROM main WHERE volume = ? ORDER BY CAST(page AS INTEGER)",
-            (vol_str,)
-        )
-        rows = cursor.fetchall()
-        if not rows:
-            print(f"WARNING: No data found for volume {vol_str}")
-        for row in rows:
-            content = row[0]
-            if content:
-                # Clean formatting artifacts
-                content = content.replace('\t', ' ')
-                content = re.sub(r'\s+', ' ', content)
-                all_text.append(content.strip())
-
-    conn.close()
+    try:
+        for vol in volumes:
+            vol_str = f'{vol:02d}'
+            cursor = conn.execute(
+                "SELECT content FROM main WHERE volume = ? ORDER BY CAST(page AS INTEGER)",
+                (vol_str,)
+            )
+            rows = cursor.fetchall()
+            if not rows:
+                print(f"WARNING: No data found for volume {vol_str}")
+            for row in rows:
+                content = row[0]
+                if content:
+                    # Clean formatting artifacts
+                    content = content.replace('\t', ' ')
+                    content = re.sub(r'\s+', ' ', content)
+                    all_text.append(content.strip())
+    finally:
+        conn.close()
 
     # Join all pages and transliterate
     thai_text = ' '.join(all_text)

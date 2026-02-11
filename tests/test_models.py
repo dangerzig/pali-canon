@@ -59,6 +59,13 @@ class TestToken:
         assert "sandhi" not in d
         assert "components" not in d
 
+    def test_to_dict_sandhi_without_components(self):
+        """Regression: sandhi set but components None should not emit components."""
+        t = Token(word="dhammañca", sandhi=["dhammaṃ", "ca"])
+        d = t.to_dict()
+        assert "sandhi" in d
+        assert "components" not in d
+
 
 # =========================================================================
 # Segment

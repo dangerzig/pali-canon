@@ -12,7 +12,7 @@ This project creates a digital critical edition of the complete Pāli Tipiṭaka
 ## Codebase Statistics
 
 - **Total Lines**: ~23,000 lines of Python
-- **Files**: 56 Python modules (50 in `src/`, 6 in `scripts/`)
+- **Files**: 57 Python modules (51 in `src/`, 6 in `scripts/`)
 - **Language**: Python 3.10+
 - **Dependencies**: Standard library + PyYAML (json, re, pathlib, sqlite3, difflib, yaml)
 
@@ -144,7 +144,7 @@ Uses:
 Parses complete GRETIL archive:
 - Vinaya Piṭaka (5 texts)
 - Sutta Piṭaka (5 nikāyas)
-- Abhidhamma Piṭaka (11 texts)
+- Abhidhamma Piṭaka (7 texts)
 
 Key functions:
 - `clean_html_text()`: Strip HTML, normalize whitespace
@@ -403,15 +403,15 @@ python src/generate_final_summary.py
 | Metric | Value |
 |--------|-------|
 | Total Python code | ~23,000 lines |
-| Python modules | 56 files |
-| GRETIL words | 3,243,906 |
+| Python modules | 57 files |
+| GRETIL words | 3,059,680 |
 | VRI words | 2,618,883 |
 | SC words | 2,837,350 |
 | BJT words | 3,514,083 |
 | Thai words | ~2,642,000 |
 | Unique word forms | 153,716 |
 | Token-level coverage | 99.8% |
-| Custom lemmas | 193 entries |
+| Custom lemmas | 187 entries |
 | Unknown tokens | 6,136 (0.22% of corpus) |
 
 ---

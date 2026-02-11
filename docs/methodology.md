@@ -267,7 +267,7 @@ Words not found in DPD are handled by a custom lemma database (`src/pali/custom_
 
 This modular approach separates words that could benefit the broader Pāli digital humanities community (potential DPD additions) from project-specific handling.
 
-### 5.5 Output Format
+### 5.6 Output Format
 
 Each segment is annotated with token-level information:
 
@@ -388,7 +388,7 @@ The high uncertain count in AN reflects the structural complexity of the Aṅgut
 
 The addition of the Buddha Jayanti Tipitaka as the fourth witness had a particularly dramatic effect on the Vinaya and Abhidhamma piṭakas, where it resolved a large number of previously uncertain readings. In the Vinaya, the number of uncertain positions fell from 312,363 (three-witness) to 44,228 (four-witness)—a reduction of 86%. The Abhidhamma showed a similar pattern, with 15,055 uncertain readings resolved and 2,902 additional errors confidently identified.
 
-BJT is also the largest witness by word count (3,514,083 words across the canon, compared to 3,243,906 for GRETIL, 2,837,350 for SC, and 2,618,883 for VRI). The size difference is most pronounced in the Saṃyutta Nikāya, where BJT contains 551,483 words compared to GRETIL's 279,549. This discrepancy arises because BJT fully expands peyyāla passages that other editions abbreviate, preserving repetitive text that is elsewhere indicated only by ellipsis markers.
+BJT is also the largest witness by word count (3,514,083 words across the canon, compared to 3,059,680 for GRETIL, 2,837,350 for SC, and 2,618,883 for VRI). The size difference is most pronounced in the Saṃyutta Nikāya, where BJT contains 551,483 words compared to GRETIL's 279,549. This discrepancy arises because BJT fully expands peyyāla passages that other editions abbreviate, preserving repetitive text that is elsewhere indicated only by ellipsis markers.
 
 #### 6.4.3 Impact of the Fifth Witness (Thai)
 
@@ -435,7 +435,7 @@ data/
 │   ├── an/            # 11 nipātas (1,408 suttas)
 │   ├── kn/            # 20 texts (2,351 items)
 │   ├── vinaya/        # 5 texts
-│   └── abhidhamma/    # 11 texts
+│   └── abhidhamma/    # 7 texts
 ├── gretil-parsed/     # PTS editions (GRETIL source)
 ├── vri-parsed/        # Chaṭṭha Saṅgāyana (VRI/CST)
 ├── bjt-parsed/        # Buddha Jayanti Tipitaka

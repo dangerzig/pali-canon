@@ -38,6 +38,49 @@ class TestSearchIndex:
         idx = SearchIndex(tmp_path)
         idx.close()  # Should not raise
 
+    def test_index_segment_includes_sandhi_components(self, tmp_path):
+        """Regression: sandhi component lemmas must be indexed."""
+        import sqlite3
+        idx = SearchIndex(tmp_path, index_path=tmp_path / "test.db")
+        conn = idx._get_conn()
+        # Create tables
+        conn.executescript("""
+            CREATE TABLE lemma_index (
+                lemma TEXT NOT NULL,
+                word TEXT NOT NULL,
+                segment_id TEXT NOT NULL,
+                sutta_id TEXT NOT NULL,
+                nikaya TEXT NOT NULL,
+                pos TEXT
+            );
+            CREATE VIRTUAL TABLE segments_fts USING fts5(
+                segment_id, sutta_id, nikaya, pali, tokenize='unicode61'
+            );
+        """)
+        idx._batch_size = 10000
+        idx._lemma_batch = []
+        idx._fts_batch = []
+        segment = {
+            "id": "dn1:1.1",
+            "pali": "dhammañca",
+            "tokens": [
+                {
+                    "word": "dhammañca",
+                    "sandhi": ["dhammaṃ", "ca"],
+                    "components": [
+                        {"lemma": "dhamma", "pos": "masc"},
+                        {"lemma": "ca", "pos": "ind"},
+                    ]
+                }
+            ]
+        }
+        idx._index_segment(conn, segment, "dn1", "dn")
+        # Both component lemmas should be in the batch
+        lemmas = [row[0] for row in idx._lemma_batch]
+        assert "dhamma" in lemmas
+        assert "ca" in lemmas
+        idx.close()
+
 
 # =========================================================================
 # Search.search_lemma()

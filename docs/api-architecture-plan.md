@@ -165,30 +165,30 @@ canon.export_pdf("dn", "digha_nikaya.pdf", title="Dīgha Nikāya")
 ## Data Classes
 
 ```python
-@dataclass
+@dataclass(slots=True)
 class Sutta:
     id: str
-    title_pali: str
-    title_eng: str
-    collection: str
-    vagga: str
-    pts: str
+    title_pali: str | None
+    title_eng: str | None
+    collection: str | None
+    vagga: str | None
+    pts: str | None
     segments: list[Segment]
 
-@dataclass
+@dataclass(slots=True)
 class Segment:
     id: str
     pali: str
-    pts: str | None
     tokens: list[Token] | None
 
-@dataclass
+@dataclass(slots=True)
 class Token:
     word: str
     lemma: str | None
     pos: str | None
     root: str | None
     sandhi: list[str] | None
+    components: list[dict] | None
 ```
 
 ## Architecture

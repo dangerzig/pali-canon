@@ -45,7 +45,7 @@ print(f"By nikaya: {results.by_nikaya}")
 |--------|-------|-----------|----------|
 | **Vinaya** | 5 | SC, GRETIL, VRI, BJT, Thai | ~421K |
 | **Sutta** | 273 units | SC, GRETIL, VRI, BJT, Thai | ~1.6M |
-| **Abhidhamma** | 11 | SC, GRETIL, VRI, BJT, Thai | ~820K |
+| **Abhidhamma** | 7 | SC, GRETIL, VRI, BJT, Thai | ~820K |
 
 ### Sutta Piṭaka Detail
 
@@ -119,7 +119,7 @@ pali/
 
 ### Lemmatization
 
-99.8% token-level coverage across the complete Tipiṭaka (~2.85M tokens) using the Digital Pāli Dictionary, with 193 custom lemma entries for rare forms.
+99.8% token-level coverage across the complete Tipiṭaka (~2.85M tokens) using the Digital Pāli Dictionary, with 187 custom lemma entries for rare forms.
 
 ```python
 # Get lemmatized tokens
