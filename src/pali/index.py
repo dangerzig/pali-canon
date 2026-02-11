@@ -5,6 +5,8 @@ from pathlib import Path
 from typing import Optional
 import json
 
+from .text import FLAT_COLLECTIONS, NESTED_COLLECTIONS, ITEMS_COLLECTIONS
+
 
 class SearchIndex:
     """SQLite-based search index for lemma and text lookups."""
@@ -151,13 +153,12 @@ class SearchIndex:
                 data = json.load(f)
 
             # Handle different structures
-            if nikaya in ("dn", "mn"):
+            if nikaya in FLAT_COLLECTIONS:  # dn, mn, vinaya, abhidhamma
                 self._index_sutta(conn, data, nikaya)
-            elif nikaya in ("sn", "an"):
-                # Nested suttas
+            elif nikaya in NESTED_COLLECTIONS:  # sn, an
                 for sutta_data in data.get("suttas", []):
                     self._index_nested_sutta(conn, sutta_data, data, nikaya)
-            elif nikaya == "kn":
+            elif nikaya in ITEMS_COLLECTIONS:  # kn
                 if "items" in data:
                     for item in data["items"]:
                         self._index_kn_item(conn, item, data, nikaya)
