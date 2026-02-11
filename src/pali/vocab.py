@@ -544,6 +544,35 @@ class Vocabulary:
                     row.append(f"{freq:.10f}")
                 writer.writerow(row)
 
+    def export_tipitaka_suttas_raw(self, output_path: str, use_lemmas: bool = True) -> None:
+        """Export per-sutta raw text for tipitaka R package.
+
+        Creates CSV with columns: sutta, nikaya, text
+        One row per sutta with the full text.
+
+        Args:
+            output_path: Output CSV path
+            use_lemmas: If True, use lemmatized text source
+        """
+        store = Store(self.data_dir)
+        rows = []
+
+        for nikaya in ["dn", "mn", "sn", "an", "kn"]:
+            for sutta_info in store.list_suttas(nikaya, lemmatized=use_lemmas):
+                sutta = store.get_sutta(sutta_info.id, lemmatized=use_lemmas, include_tokens=False)
+                if sutta:
+                    rows.append({
+                        "sutta": sutta_info.id,
+                        "nikaya": nikaya,
+                        "text": sutta.text,
+                    })
+
+        with open(output_path, "w", encoding="utf-8", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(["sutta", "nikaya", "text"])
+            for row in rows:
+                writer.writerow([row["sutta"], row["nikaya"], row["text"]])
+
     def export_tipitaka_suttas_long(self, output_path: str, use_lemmas: bool = True) -> None:
         """Export sutta-level word frequencies (new format for critical edition).
 

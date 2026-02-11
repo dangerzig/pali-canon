@@ -1,23 +1,28 @@
-# Pāli Canon Python Library Plan
+# Pāli Canon Python Library — API Reference
+
+## Status
+
+This document describes the Canon API. Features marked with **[IMPLEMENTED]** are working; features marked **[PLANNED]** are not yet built.
 
 ## Overview
 
 A Python library for accessing the critical edition data, supporting:
-- Hierarchical navigation (pitaka → nikaya → vagga → sutta → segment)
-- Edition selection (PTS, VRI, SC) with optional corrections
-- Lemmatized text with token-level annotations
-- Vocabulary statistics and document-term matrices for analysis
-- Export to pandas DataFrames, numpy arrays, CSV, and LaTeX/PDF
+- **[IMPLEMENTED]** Hierarchical navigation (nikaya → sutta → segment)
+- **[PLANNED]** Edition selection (PTS, VRI, SC) with optional corrections
+- **[IMPLEMENTED]** Lemmatized text with token-level annotations
+- **[IMPLEMENTED]** Vocabulary statistics and document-term matrices for analysis
+- **[IMPLEMENTED]** Export to pandas DataFrames, CSV, and LaTeX/PDF
+- **[IMPLEMENTED]** R package data export (7 CSV files)
 
 ## Installation
 
 ```bash
-pip install pali-canon  # future PyPI package
-# or
-pip install -e .        # local development
+# Local development (no pip install needed)
+cd ~/pali
+PYTHONPATH=src python -c "from pali import Canon; Canon()"
 ```
 
-## Basic Usage
+## Basic Usage [IMPLEMENTED]
 
 ```python
 from pali import Canon
@@ -27,8 +32,7 @@ canon = Canon()
 
 # Get a sutta
 sutta = canon.get_sutta("dn1")
-sutta = canon.get_sutta("dn1", edition="pts", lemmatized=True)
-sutta = canon.get_sutta("dn1", edition="critical", corrections=True)
+sutta = canon.get_sutta("dn1", lemmatized=True)
 
 # Access segments
 for segment in sutta.segments:
@@ -36,6 +40,9 @@ for segment in sutta.segments:
     if segment.tokens:
         for token in segment.tokens:
             print(f"  {token.word} → {token.lemma} ({token.pos})")
+
+# Get plain text
+text = canon.get_text("dn1")
 
 # Get segment range
 segments = canon.get_segments("dn1", from_id="dn1:1.1.1", to_id="dn1:1.5.0")
@@ -45,41 +52,37 @@ canon.list_nikayas()           # ['dn', 'mn', 'sn', 'an', 'kn']
 canon.list_suttas("dn")        # [SuttaInfo(id='dn1', title='Brahmajālasutta', ...), ...]
 ```
 
-## Edition Selection
+## Edition Selection [PLANNED]
+
+Not yet implemented. Currently returns SC Mahāsaṅgīti text (canonical) or lemmatized version.
 
 ```python
-# SuttaCentral Mahāsaṅgīti edition
-sutta = canon.get_sutta("dn1", edition="sc")
-
-# PTS edition (via GRETIL)
+# Future API:
 sutta = canon.get_sutta("dn1", edition="pts")
-
-# VRI Chaṭṭha Saṅgāyana
-sutta = canon.get_sutta("dn1", edition="vri")
-
-# Critical edition (PTS with corrections applied)
 sutta = canon.get_sutta("dn1", edition="critical")
-
-# Get all witnesses for comparison
 witnesses = canon.get_witnesses("dn1")
-# {'sc': 'Evaṃ me sutaṃ...', 'pts': 'Evam me sutaṃ...', 'vri': 'Evaṃ me sutaṃ...'}
 ```
 
-## Search
+## Search [IMPLEMENTED]
 
 ```python
 # Search by lemma
 results = canon.search_lemma("dhamma")
-print(results.total)           # 4523
+print(results.total)
 print(results.by_nikaya)       # {'dn': 892, 'mn': 1456, ...}
 for occ in results.occurrences[:10]:
-    print(occ.segment_id, occ.word_form, occ.context)
+    print(occ.segment_id, occ.word, occ.pos)
 
-# Search by text
+# Full-text search (SQLite FTS5)
 results = canon.search_text("evaṃ me sutaṃ")
+for r in results[:10]:
+    print(f"{r.segment_id}: {r.snippet}")
 
-# Find by PTS reference
-segment = canon.find_by_pts("D", "i", 1)  # D i 1
+# Get all lemmas
+all_lemmas = canon.get_all_lemmas()
+
+# [PLANNED] Find by PTS reference
+# segment = canon.find_by_pts("D", "i", 1)
 ```
 
 ## Vocabulary & Statistics
@@ -99,46 +102,52 @@ df = canon.get_vocabulary("dn1", as_dataframe=True)
 # columns: lemma, count, pos, forms
 ```
 
-## Analysis Export
+## Vocabulary & Analysis Export [IMPLEMENTED]
 
 ```python
 # Document-term matrix (for clustering, topic modeling)
-dtm = canon.document_term_matrix("dn")
-# Returns: scipy.sparse matrix or pandas DataFrame
+matrix, doc_ids, terms = canon.document_term_matrix("dn")
+# Returns: (scipy.sparse.csr_matrix, doc_ids, term_list)
 
-dtm = canon.document_term_matrix("dn",
+# With options
+df = canon.document_term_matrix("dn",
     unit="sutta",           # or "segment"
     terms="lemmas",         # or "words"
     min_df=2,               # minimum document frequency
-    as_dataframe=True
+    as_dataframe=True       # returns pandas DataFrame
 )
 
-# TF-IDF weighted
-tfidf = canon.document_term_matrix("dn", weighting="tfidf")
-
-# Export to CSV for R
-canon.export_dtm("dn", "dn_dtm.csv", format="csv")
+# Export to CSV
+canon.export_dtm("dn", "dn_dtm.csv")
 canon.export_vocabulary("dn", "dn_vocab.csv")
-
-# Export lemma frequencies per sutta
-canon.export_lemma_counts("dn", "dn_lemma_counts.csv")
 ```
 
-## Critical Apparatus
+## R Package Export [IMPLEMENTED]
 
 ```python
-# Get variants for a sutta
+# Generate all 7 CSV files for tipitaka R package
+canon.export_tipitaka_data("../tipitaka/data-raw/critical/")
+
+# Individual exports
+canon.export_tipitaka_raw("tipitaka_raw.csv")
+canon.export_tipitaka_suttas_raw("tipitaka_suttas_raw.csv")
+canon.export_tipitaka_long("tipitaka_long.csv")
+canon.export_tipitaka_long("tipitaka_long_words.csv", use_lemmas=False)
+canon.export_tipitaka_wide("tipitaka_wide.csv")
+```
+
+## Critical Apparatus [PLANNED]
+
+Not yet exposed via the Canon API. Collation data exists in `data/collation/`.
+
+```python
+# Future API:
 apparatus = canon.get_apparatus("dn1")
 for variant in apparatus.variants:
     print(f"{variant.segment_id}: {variant.readings}")
-    print(f"  Type: {variant.type}, Preferred: {variant.preferred}")
-
-# Filter by type
-errors = [v for v in apparatus.variants if v.type == "error"]
-substantive = [v for v in apparatus.variants if v.type == "variant"]
 ```
 
-## Print/Typeset Export
+## LaTeX/PDF Export [IMPLEMENTED]
 
 ```python
 # Generate LaTeX
@@ -209,163 +218,97 @@ src/pali/
   - `scipy` for sparse matrices
   - `numpy` for numerical operations
 
-## Implementation Phases
+## Implementation Status
 
-### Phase 1: Python Core Library
-1. `Canon` class with basic navigation
-2. `get_sutta()`, `list_nikayas()`, `list_suttas()`
-3. Edition selection (sc, pts, vri, critical)
-4. Lemmatized text access
+### Phase 1: Python Core Library — COMPLETE
+- `Canon` class with basic navigation
+- `get_sutta()`, `get_text()`, `list_nikayas()`, `list_suttas()`
+- Lemmatized text access with token-level analysis
 
-### Phase 2: Python Search
-1. SQLite index for lemma occurrences
-2. `search_lemma()`, `search_text()`
-3. PTS reference lookup
+### Phase 2: Python Search — COMPLETE
+- SQLite FTS5 index for full-text search
+- `search_lemma()`, `search_text()`, `get_all_lemmas()`
+- PTS reference lookup: NOT YET IMPLEMENTED
 
-### Phase 3: Python Analysis Export
-1. `get_vocabulary()` with DataFrame support
-2. `document_term_matrix()`
-3. CSV/RDS export for R
+### Phase 3: Python Analysis Export — COMPLETE
+- `get_vocabulary()` with DataFrame support
+- `document_term_matrix()` with sparse matrix output
+- R package CSV export (`export_tipitaka_data()`)
 
-### Phase 4: Python Print Export
-1. Integrate existing `typeset_critical.py`
-2. `to_latex()`, `export_pdf()`
+### Phase 4: Python Print Export — COMPLETE
+- `to_latex()`, `export_latex()`, `export_pdf()`
 
-### Phase 5: R Package Update
-1. Fork existing tipitaka package
-2. Generate new data frames from Python
-3. Add new API functions
-4. Update documentation and vignettes
-5. Submit to CRAN
+### Phase 5: R Package Update — COMPLETE
+- tipitaka v1.0.0 submitted to CRAN (Feb 2026)
+- 7 new critical edition datasets + `search_lemma()` function
+- Backwards compatible with v0.1.x
 
-## R Package: tipitaka v2
+### Future Work
+- Edition selection (PTS, VRI, SC, critical) via `get_sutta()` parameter
+- Critical apparatus API (`get_apparatus()`, `get_witnesses()`)
+- PTS reference lookup (`find_by_pts()`)
+- TF-IDF weighting in document-term matrix
+- PyPI package publication
 
-Adapt the existing [tipitaka R package](https://github.com/dangerzig/tipitaka) to use the new critical edition data while preserving backwards compatibility.
+## R Package: tipitaka v1.0.0 — COMPLETE
 
-### Existing API (preserve)
+The [tipitaka R package](https://github.com/dangerzig/tipitaka) was updated to v1.0.0 and submitted to CRAN (Feb 2026).
 
-```r
-library(tipitaka)
+### Datasets
 
-# Data frames (existing)
-tipitaka_raw      # Complete text, one row per volume
-tipitaka_long     # word, n, total, freq, book
-tipitaka_wide     # Word frequencies matrix (books × words)
-tipitaka_names    # Book names
-sutta_pitaka      # Sutta book names
-vinaya_pitaka     # Vinaya book names
-abhidhamma_pitaka # Abhidhamma book names
-pali_alphabet     # Pali alphabet in order
-pali_stop_words   # Stop words
+**Preserved from v0.1.x:**
+- `tipitaka_raw`, `tipitaka_long`, `tipitaka_wide` — VRI data
+- `tipitaka_names`, `sutta_pitaka`, `vinaya_pitaka`, `abhidhamma_pitaka`
+- `pali_alphabet`, `pali_stop_words`
 
-# Functions (existing)
-pali_lt(word1, word2)   # Less-than comparison
-pali_gt(word1, word2)   # Greater-than comparison
-pali_eq(word1, word2)   # Equality comparison
-pali_sort(word_list)    # Sort by Pali alphabet
-```
+**New in v1.0.0 (from critical edition):**
+- `tipitaka_raw_critical` — Text per nikaya
+- `tipitaka_suttas_raw` — Text per sutta (5,764 rows)
+- `tipitaka_long_critical` — Lemma frequencies by nikaya
+- `tipitaka_long_words` — Surface form frequencies by nikaya
+- `tipitaka_wide_critical` — Lemma x nikaya frequency matrix
+- `tipitaka_suttas_long` — Lemma frequencies by sutta
+- `tipitaka_suttas_wide` — Sparse dgCMatrix (sutta x lemma)
 
-### New API (add)
+**Removed:** `sati_sutta_long`, `sati_sutta_raw` (replaced by critical edition extraction)
 
-```r
-# Edition selection (default: critical)
-tipitaka_raw_pts      # PTS edition text
-tipitaka_raw_vri      # VRI edition text (= current tipitaka_raw)
-tipitaka_raw_sc       # SuttaCentral edition text
-tipitaka_raw_critical # Corrected PTS text
-
-# Lemmatized data (NEW)
-tipitaka_lemmas       # lemma, word, n, total, freq, book, pos
-tipitaka_lemmas_wide  # Lemma frequencies matrix (books × lemmas)
-
-# Finer granularity (NEW)
-tipitaka_suttas       # One row per sutta (not just per volume)
-tipitaka_suttas_long  # word, n, sutta, nikaya
-tipitaka_suttas_wide  # Word frequencies (suttas × words)
-
-# Critical apparatus (NEW)
-tipitaka_variants     # segment_id, pts, vri, sc, type, preferred
-
-# Helper functions (NEW)
-get_sutta(id, edition = "critical", lemmatized = FALSE)
-get_nikaya(nikaya, edition = "critical")
-search_lemma(lemma)   # Find all occurrences
-```
-
-### Example: Clustering with Lemmas
-
-```r
-library(tipitaka)
-
-# Old way (surface forms, VRI only)
-dist_m <- dist(tipitaka_wide)
-cluster <- hclust(dist_m)
-plot(cluster)
-
-# New way (lemmas, critical edition, sutta-level)
-dist_m <- dist(tipitaka_suttas_wide)  # More granular
-cluster <- hclust(dist_m)
-plot(cluster)
-
-# Or with lemmas for better clustering
-dist_m <- dist(tipitaka_lemmas_wide)
-cluster <- hclust(dist_m)
-plot(cluster)
-```
+### Functions
+- `pali_lt()`, `pali_gt()`, `pali_eq()`, `pali_sort()` — Pali string operations (C++)
+- `search_lemma()` — Search for lemma occurrences across suttas
 
 ### Data Generation
 
-The R package data will be generated from the Python library:
-
-```python
-# Python script to generate R package data
+```bash
+# Step 1: Generate CSVs from Python
+cd ~/pali && PYTHONPATH=src python -c "
 from pali import Canon
+Canon().export_tipitaka_data('../tipitaka/data-raw/critical/')
+"
 
-canon = Canon()
-
-# Generate tipitaka_long equivalent
-canon.export_long("tipitaka_long.rds", format="rds")
-
-# Generate lemmatized version
-canon.export_long("tipitaka_lemmas.rds", format="rds", lemmatized=True)
-
-# Generate sutta-level data
-canon.export_suttas_long("tipitaka_suttas_long.rds")
-
-# Generate wide matrices
-canon.export_wide("tipitaka_wide.rds")
-canon.export_wide("tipitaka_lemmas_wide.rds", lemmatized=True)
+# Step 2: Build .rda files
+cd ~/tipitaka && Rscript data-raw/critical.R
 ```
 
-### Implementation Approach
-
-1. **Keep existing data as-is** for backwards compatibility
-2. **Add new data frames** with `_lemmas`, `_suttas`, `_pts`, `_vri`, `_sc` suffixes
-3. **Add new functions** for edition selection and lemma search
-4. **Generate data from Python** during package build (not runtime)
-5. **Update vignettes** to show new clustering workflows
+See [TIPITAKA_R_PACKAGE_INSTRUCTIONS.md](../TIPITAKA_R_PACKAGE_INSTRUCTIONS.md) for full details.
 
 ## Verification
 
-1. Install: `pip install -e .`
-2. Test basic access:
-   ```python
-   from pali import Canon
-   canon = Canon()
-   sutta = canon.get_sutta("dn1")
-   print(sutta.title_pali)
-   ```
-3. Test lemmatized access:
-   ```python
-   sutta = canon.get_sutta("dn1", lemmatized=True)
-   print(sutta.segments[0].tokens)
-   ```
-4. Test search:
-   ```python
-   results = canon.search_lemma("buddha")
-   print(results.total)
-   ```
-5. Test export:
-   ```python
-   canon.export_dtm("dn", "test_dtm.csv")
-   ```
+```python
+from pali import Canon
+canon = Canon()
+
+# Basic access
+sutta = canon.get_sutta("dn1")
+print(sutta.title_pali)
+
+# Lemmatized access
+sutta = canon.get_sutta("dn1", lemmatized=True)
+print(sutta.segments[0].tokens[:3])
+
+# Search
+results = canon.search_lemma("buddha")
+print(results.total)
+
+# R package export
+canon.export_tipitaka_data("/tmp/test_export/")
+```

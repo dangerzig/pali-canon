@@ -505,6 +505,21 @@ class Canon:
         """
         self._get_vocab().export_tipitaka_raw(output_path, use_lemmas)
 
+    def export_tipitaka_suttas_raw(self, output_path: str, use_lemmas: bool = True) -> None:
+        """Export per-sutta raw text for R package.
+
+        Creates CSV with columns: sutta, nikaya, text
+        One row per sutta with the full critical edition text.
+
+        Args:
+            output_path: Output CSV path
+            use_lemmas: If True, use lemmatized text source
+
+        Example:
+            canon.export_tipitaka_suttas_raw("data-raw/tipitaka_suttas_raw.csv")
+        """
+        self._get_vocab().export_tipitaka_suttas_raw(output_path, use_lemmas)
+
     def export_tipitaka_long(
         self,
         output_path: str,
@@ -555,6 +570,7 @@ class Canon:
 
         Generates the following files in output_dir:
         - tipitaka_raw.csv: Full text per nikaya
+        - tipitaka_suttas_raw.csv: Full text per sutta
         - tipitaka_long.csv: Word frequencies by nikaya (lemmas)
         - tipitaka_long_words.csv: Word frequencies by nikaya (surface forms)
         - tipitaka_wide.csv: Frequency matrix by nikaya
@@ -572,6 +588,9 @@ class Canon:
 
         print("Exporting tipitaka_raw.csv...")
         self.export_tipitaka_raw(str(out / "tipitaka_raw.csv"))
+
+        print("Exporting tipitaka_suttas_raw.csv...")
+        self.export_tipitaka_suttas_raw(str(out / "tipitaka_suttas_raw.csv"))
 
         print("Exporting tipitaka_long.csv (lemmas by nikaya)...")
         self.export_tipitaka_long(str(out / "tipitaka_long.csv"), use_lemmas=True)

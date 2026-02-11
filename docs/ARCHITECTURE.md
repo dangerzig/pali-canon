@@ -303,6 +303,47 @@ KN (nested items):
 
 ---
 
+## Canon API (`pali/__init__.py`, `pali/vocab.py`)
+
+The `Canon` class provides a high-level Python API for accessing the critical edition data. Key capabilities:
+
+### Core Access
+- `get_sutta(sutta_id)` — Load a single sutta with text and metadata
+- `get_text(sutta_id)` — Get plain text for a sutta
+- `list_suttas(nikaya)` — List all suttas in a nikaya
+- `search_lemma(lemma)` — Find all occurrences of a lemma across the corpus
+- `search_text(query)` — Full-text search using SQLite FTS5
+
+### Vocabulary Analysis
+- `get_vocabulary(sutta_id=, nikaya=)` — Vocabulary statistics
+- `document_term_matrix(nikaya)` — Sparse document-term matrix (requires scipy)
+
+### R Package Export (`export_tipitaka_data()`)
+Generates all CSV files needed for the `tipitaka` R package:
+
+| Method | Output File | Description |
+|--------|------------|-------------|
+| `export_tipitaka_raw()` | `tipitaka_raw.csv` | Full text per nikaya (5 rows) |
+| `export_tipitaka_suttas_raw()` | `tipitaka_suttas_raw.csv` | Full text per sutta (5,764 rows) |
+| `export_tipitaka_long()` | `tipitaka_long.csv` | Lemma frequencies by nikaya |
+| `export_tipitaka_long(use_lemmas=False)` | `tipitaka_long_words.csv` | Surface form frequencies by nikaya |
+| `export_tipitaka_wide()` | `tipitaka_wide.csv` | Lemma frequency matrix by nikaya |
+| `export_tipitaka_suttas_long()` | `tipitaka_suttas_long.csv` | Lemma frequencies by sutta |
+| `export_tipitaka_wide(by_sutta=True)` | `tipitaka_suttas_wide.csv` | Lemma frequency matrix by sutta |
+
+Usage:
+```python
+from pali import Canon
+canon = Canon()
+canon.export_tipitaka_data("../tipitaka/data-raw/critical/")
+```
+
+### LaTeX/PDF Export
+- `to_latex(sutta_ids)` — Generate LaTeX document
+- `export_pdf(sutta_ids, output_path)` — Export to PDF (requires XeLaTeX)
+
+---
+
 ## Future Extensions
 
 ### 1. REST API

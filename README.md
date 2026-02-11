@@ -15,17 +15,18 @@ This project provides:
 ```python
 from pali import Canon
 
-# Initialize with data directory
-canon = Canon("data")
+# Initialize (uses default data directory)
+canon = Canon()
 
 # Load a sutta
 sutta = canon.get_sutta("dn1")
 print(sutta.title_pali)  # "Brahmajālasutta"
+print(sutta.text[:100])  # First 100 chars of text
 
 # Get lemmatized version with tokens
 sutta = canon.get_sutta("dn1", lemmatized=True)
-for segment in sutta.segments[:3]:
-    print(segment.pali)
+for token in sutta.segments[0].tokens[:5]:
+    print(f"{token.word} -> {token.lemma} ({token.pos})")
 
 # Vocabulary statistics
 vocab = canon.get_vocabulary("dn1")
@@ -34,7 +35,8 @@ print(f"Top 10: {vocab.top_lemmas[:10]}")
 
 # Search by lemma
 results = canon.search_lemma("dhamma")
-print(f"Found in {len(results)} segments")
+print(f"Found {results.total} occurrences")
+print(f"By nikaya: {results.by_nikaya}")
 ```
 
 ## Data Coverage
@@ -61,14 +63,17 @@ Requires Python 3.10+.
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-repo/pali.git
-cd pali
+git clone https://github.com/dangerzig/pali-canon.git
+cd pali-canon
 
 # Install dependencies
 pip install pyyaml
 
-# Optional: for vocabulary analysis
+# Optional: for vocabulary analysis and sparse matrices
 pip install pandas scipy
+
+# Run with PYTHONPATH (no pip install needed)
+PYTHONPATH=src python -c "from pali import Canon; print(Canon().list_nikayas())"
 ```
 
 ## Project Structure
@@ -80,8 +85,9 @@ pali/
 │   │   ├── __init__.py    # Public API (Canon class)
 │   │   ├── models.py      # Data models (Sutta, Segment, Token)
 │   │   ├── store.py       # JSON file access
-│   │   ├── vocab.py       # Vocabulary analysis
-│   │   ├── index.py       # Search index
+│   │   ├── search.py      # Lemma and text search (SQLite FTS5)
+│   │   ├── vocab.py       # Vocabulary analysis & R package export
+│   │   ├── export.py      # LaTeX/PDF export
 │   │   └── custom_lemmas.yaml  # Custom lemma mappings
 │   ├── parse_*.py         # Source file parsers
 │   ├── lemmatize_canon.py # Lemmatization pipeline
@@ -140,8 +146,18 @@ Document-term matrices for computational analysis:
 vocab = canon.get_vocabulary(nikaya="dn")
 
 # Export document-term matrix
-canon.vocab.export_dtm("dn", "dn_dtm.csv")
+canon.export_dtm("dn", "dn_dtm.csv")
 ```
+
+### R Package Export
+
+Generate all data files for the [tipitaka R package](https://github.com/dangerzig/tipitaka):
+
+```python
+canon.export_tipitaka_data("../tipitaka/data-raw/critical/")
+```
+
+This generates 7 CSV files: nikaya-level and sutta-level text, lemma frequencies, and frequency matrices. See [TIPITAKA_R_PACKAGE_INSTRUCTIONS.md](TIPITAKA_R_PACKAGE_INSTRUCTIONS.md) for details.
 
 ## Sources
 
