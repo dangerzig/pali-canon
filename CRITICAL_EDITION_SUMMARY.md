@@ -10,7 +10,7 @@ The digital critical edition now covers the **entire Pāli Canon** (Tipiṭaka).
 
 | Source | Edition | Total Words |
 |--------|---------|-------------|
-| GRETIL | PTS (Pali Text Society) | 3,243,906 |
+| GRETIL | PTS (Pali Text Society) | 3,059,680 |
 | VRI | Chaṭṭha Saṅgāyana (CST4) | 2,618,883 |
 | SuttaCentral | Mahāsaṅgīti | 2,837,350 |
 | BJT | Buddha Jayanti Tipitaka | 3,514,083 |
@@ -67,7 +67,7 @@ Lemmatization covers the complete SC Mahāsaṅgīti Tipiṭaka (all three piṭ
 - Unique word forms: 153,716
 - Words identified: 150,619
 - Sandhi decompositions: 52,708
-- Custom lemmas: 160 applied (193 entries in database)
+- Custom lemmas: 160 applied (187 entries in database)
 - **Unique word coverage: 98.0%**
 
 The high coverage reflects that high-frequency words are well-covered, while remaining unknown forms are predominantly rare words (hapax legomena) from verse texts and specialized Abhidhamma terminology.

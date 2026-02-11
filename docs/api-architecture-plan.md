@@ -48,7 +48,7 @@ text = canon.get_text("dn1")
 segments = canon.get_segments("dn1", from_id="dn1:1.1.1", to_id="dn1:1.5.0")
 
 # List available texts
-canon.list_nikayas()           # ['dn', 'mn', 'sn', 'an', 'kn']
+canon.list_nikayas()           # ['dn', 'mn', 'sn', 'an', 'kn', 'vinaya', 'abhidhamma']
 canon.list_suttas("dn")        # [SuttaInfo(id='dn1', title='Brahmajālasutta', ...), ...]
 ```
 
@@ -197,13 +197,15 @@ class Token:
 ```
 src/pali/
 ├── __init__.py          # Public API (Canon class)
-├── canon.py             # Main Canon class
 ├── models.py            # Data classes (Sutta, Segment, Token, etc.)
 ├── store.py             # JSON file access layer
+├── text.py              # Text utilities (tokenization, normalization)
 ├── search.py            # Lemma/text search
-├── vocab.py             # Vocabulary statistics
-├── export.py            # CSV, LaTeX, PDF export
-└── index.py             # SQLite indexes for search
+├── index.py             # SQLite indexes for search
+├── vocab.py             # Vocabulary statistics & R package export
+├── export.py            # LaTeX/PDF export
+├── custom_lemmas.py     # Custom lemma lookups
+└── custom_lemmas.yaml   # Custom lemma mappings
 ```
 
 ### Data Access
@@ -263,7 +265,7 @@ The [tipitaka R package](https://github.com/dangerzig/tipitaka) was updated to v
 
 **New in v1.0.0 (from critical edition):**
 - `tipitaka_raw_critical` — Text per nikaya
-- `tipitaka_suttas_raw` — Text per sutta (5,764 rows)
+- `tipitaka_suttas_raw` — Text per sutta (5,777 rows)
 - `tipitaka_long_critical` — Lemma frequencies by nikaya
 - `tipitaka_long_words` — Surface form frequencies by nikaya
 - `tipitaka_wide_critical` — Lemma x nikaya frequency matrix

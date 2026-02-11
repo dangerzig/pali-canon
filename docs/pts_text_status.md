@@ -44,7 +44,7 @@ The `src/analyze_pts_ocr.py` script analyzed all 34 DN suttas:
 ### Short-term (Current Project)
 
 1. **Continue using SC canonical text** for lemmatization
-   - Already achieving 97.5% coverage
+   - Already achieving 98.0% coverage
    - Good quality Unicode with proper diacritics
    - Pre-segmented with translation-aligned IDs
 

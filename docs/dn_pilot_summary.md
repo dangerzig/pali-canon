@@ -41,7 +41,7 @@ Extract and validate PTS Dīgha Nikāya text as a foundation for PTS-based canon
 
 **Source:** SuttaCentral Mahāsaṅgīti edition
 
-**Status:** Already lemmatized at 97.5% coverage
+**Status:** Already lemmatized at 98.0% coverage (full Tipiṭaka)
 
 **Quality:** Excellent - proper Unicode, pre-segmented
 
@@ -80,11 +80,11 @@ Extract and validate PTS Dīgha Nikāya text as a foundation for PTS-based canon
 2. **Use GRETIL** for PTS reference alignment
 3. **Create SC→PTS page mapping** by aligning segment boundaries
 
-### For Other Collections (Future)
+### For Other Collections (COMPLETED)
 
-1. Download remaining GRETIL volumes (MN, SN, AN, KN)
-2. Apply same extraction approach
-3. Build unified PTS reference system
+1. ~~Download remaining GRETIL volumes (MN, SN, AN, KN)~~ — Done
+2. ~~Apply same extraction approach~~ — Done
+3. ~~Build unified PTS reference system~~ — Done (five-witness collation across entire Tipiṭaka)
 
 ### For True PTS Authority (Long-term)
 
@@ -100,11 +100,11 @@ Extract and validate PTS Dīgha Nikāya text as a foundation for PTS-based canon
 | GRETIL PTS | Good | ✓ | 97% | PTS reference |
 | OCR PTS | Poor | ✗ | 100% | Page mapping only |
 
-## Next Steps (Pending User Decision)
+## Next Steps (ALL COMPLETED)
 
-1. **Align GRETIL with SC segments** - Map PTS page references to SC segment IDs
-2. **Expand to other nikāyas** - Download MN, SN, AN, KN from GRETIL
-3. **Build variant apparatus** - Document textual differences between editions
+1. ~~**Align GRETIL with SC segments**~~ — Done (word-level alignment across all collections)
+2. ~~**Expand to other nikāyas**~~ — Done (all 5 nikāyas + Vinaya + Abhidhamma)
+3. ~~**Build variant apparatus**~~ — Done (five-witness collation with error/variant classification)
 
 ---
 
