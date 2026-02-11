@@ -24,10 +24,15 @@ This project creates a digital critical edition of the complete Pāli Tipiṭaka
 pali/
 ├── src/                    # All Python source code
 │   ├── pali/               # Core library modules
-│   │   ├── __init__.py     # Canon API
+│   │   ├── __init__.py     # Canon API (main entry point)
 │   │   ├── models.py       # Data models (Token, Segment, Sutta)
-│   │   ├── custom_lemmas.py # Custom lemma database
-│   │   └── normalize.py    # Text normalization utilities
+│   │   ├── store.py        # JSON data access layer
+│   │   ├── text.py         # Text utilities (tokenization, normalization)
+│   │   ├── search.py       # Lemma and text search
+│   │   ├── index.py        # SQLite search index
+│   │   ├── vocab.py        # Vocabulary statistics and R exports
+│   │   ├── export.py       # LaTeX/PDF export
+│   │   └── custom_lemmas.py # Custom lemma database
 │   ├── parse_*.py          # Source text parsers
 │   ├── build_*.py          # Pipeline builders
 │   ├── lemmatize_*.py      # Lemmatization tools
@@ -156,7 +161,7 @@ Parses VRI Chaṭṭha Saṅgāyana files:
 
 ### Building Layer
 
-#### `build_critical_complete.py` (842 lines)
+#### `build_critical_complete.py` (902 lines)
 Master builder for entire Tipiṭaka:
 
 ```python
@@ -172,7 +177,7 @@ def main():
 
 ### Lemmatization Layer
 
-#### `lemmatize_canon.py` (~800 lines)
+#### `lemmatize_canon.py` (~1,165 lines)
 The most complex module. Features:
 
 1. **DPD Integration**: SQLite queries against DPD headwords
@@ -199,10 +204,10 @@ class Lemmatizer:
 #### `pali/custom_lemmas.py` + `custom_lemmas.yaml`
 Custom lemma database for words not in DPD. Loads from YAML for easy editing. Organized into:
 
-1. **POTENTIAL_DPD_ADDITIONS** (83 entries): Legitimate words for upstream contribution
-2. **METRICAL_VARIANTS** (42 entries): Vowel length variations for meter
-3. **PROJECT_SPECIFIC** (30 entries): Proper nouns, rare compounds
-4. **SANDHI_DECOMPOSITIONS** (38 entries): Complex sandhi not in DPD
+1. **potential_dpd_additions** (83 entries): Legitimate words for upstream contribution
+2. **metrical_variants** (42 entries): Vowel length variations for meter
+3. **project_specific** (30 entries): Proper nouns, rare compounds
+4. **sandhi_decompositions** (38 entries): Complex sandhi not in DPD
 
 ```python
 def get_custom_lemma(word: str) -> Optional[dict]
@@ -323,8 +328,8 @@ Generates all CSV files needed for the `tipitaka` R package:
 
 | Method | Output File | Description |
 |--------|------------|-------------|
-| `export_tipitaka_raw()` | `tipitaka_raw.csv` | Full text per nikaya (5 rows) |
-| `export_tipitaka_suttas_raw()` | `tipitaka_suttas_raw.csv` | Full text per sutta (5,764 rows) |
+| `export_tipitaka_raw()` | `tipitaka_raw.csv` | Full text per collection (7 rows) |
+| `export_tipitaka_suttas_raw()` | `tipitaka_suttas_raw.csv` | Full text per text unit (5,777 rows) |
 | `export_tipitaka_long()` | `tipitaka_long.csv` | Lemma frequencies by nikaya |
 | `export_tipitaka_long(use_lemmas=False)` | `tipitaka_long_words.csv` | Surface form frequencies by nikaya |
 | `export_tipitaka_wide()` | `tipitaka_wide.csv` | Lemma frequency matrix by nikaya |
@@ -404,12 +409,10 @@ python src/generate_final_summary.py
 | SC words | 2,837,350 |
 | BJT words | 3,514,083 |
 | Thai words | ~2,642,000 |
-| Unique word forms | 127,026 |
-| Unique word coverage | 97.8% |
-| Token-level coverage | 99.78% |
-| Words identified | 124,270 |
-| Custom lemmas | 160 applied |
-| Unknown tokens | 3,578 (0.22% of corpus) |
+| Unique word forms | 153,716 |
+| Token-level coverage | 99.8% |
+| Custom lemmas | 193 entries |
+| Unknown tokens | 6,136 (0.22% of corpus) |
 
 ---
 

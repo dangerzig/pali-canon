@@ -21,7 +21,7 @@ class TestCanon:
 
     def test_list_nikayas(self, canon):
         nikayas = canon.list_nikayas()
-        assert nikayas == ["dn", "mn", "sn", "an", "kn"]
+        assert nikayas == ["dn", "mn", "sn", "an", "kn", "vinaya", "abhidhamma"]
 
     def test_get_nikaya_info(self, canon):
         info = canon.get_nikaya_info("dn")
@@ -62,6 +62,38 @@ class TestCanon:
         assert len(segments) > 0
         assert all(isinstance(s, Segment) for s in segments)
         assert segments[0].id.startswith("dn1:")
+
+    def test_get_nikaya_info_vinaya(self, canon):
+        info = canon.get_nikaya_info("vinaya")
+        assert isinstance(info, NikayaInfo)
+        assert info.id == "vinaya"
+        assert info.sutta_count > 0
+
+    def test_get_nikaya_info_abhidhamma(self, canon):
+        info = canon.get_nikaya_info("abhidhamma")
+        assert isinstance(info, NikayaInfo)
+        assert info.id == "abhidhamma"
+        assert info.sutta_count > 0
+
+    def test_get_sutta_vinaya(self, canon):
+        sutta = canon.get_sutta("mahavagga")
+        assert isinstance(sutta, Sutta)
+        assert sutta.id == "mahavagga"
+        assert sutta.segment_count > 0
+
+    def test_get_sutta_abhidhamma(self, canon):
+        sutta = canon.get_sutta("dhammasangani")
+        assert isinstance(sutta, Sutta)
+        assert sutta.id == "dhammasangani"
+        assert sutta.segment_count > 0
+
+    def test_list_suttas_vinaya(self, canon):
+        suttas = canon.list_suttas("vinaya")
+        assert len(suttas) == 5
+
+    def test_list_suttas_abhidhamma(self, canon):
+        suttas = canon.list_suttas("abhidhamma")
+        assert len(suttas) == 8
 
     def test_to_latex(self, canon):
         latex = canon.to_latex("dn1")

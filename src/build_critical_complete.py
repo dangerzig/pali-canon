@@ -822,6 +822,7 @@ def main() -> None:
     sutta_vri = sum(results[n].get('vri_words', 0) for n in ['dn', 'mn', 'sn', 'an', 'kn'])
     sutta_sc = sum(results[n].get('sc_words', 0) for n in ['dn', 'mn', 'sn', 'an', 'kn'])
     sutta_bjt = sum(results[n].get('bjt_words', 0) for n in ['dn', 'mn', 'sn', 'an', 'kn'])
+    sutta_thai = sum(results[n].get('thai_words', 0) for n in ['dn', 'mn', 'sn', 'an', 'kn'])
 
     log("")
     log("VINAYA PIṬAKA (5 witnesses: SC, GRETIL, VRI, BJT, Thai)")
@@ -830,6 +831,7 @@ def main() -> None:
     log(f"  GRETIL: {results['vinaya'].get('gretil_words', 0):,} words")
     log(f"  VRI: {results['vinaya'].get('vri_words', 0):,} words")
     log(f"  BJT: {results['vinaya'].get('bjt_words', 0):,} words")
+    log(f"  Thai: {results['vinaya'].get('thai_words', 0):,} words")
     log("")
 
     log("SUTTA PIṬAKA (5 witnesses: SC, GRETIL, VRI, BJT, Thai)")
@@ -842,6 +844,7 @@ def main() -> None:
     log(f"  GRETIL Total: {sutta_gretil:,} words")
     log(f"  VRI Total: {sutta_vri:,} words")
     log(f"  BJT Total: {sutta_bjt:,} words")
+    log(f"  Thai Total: {sutta_thai:,} words")
     log("")
 
     log("ABHIDHAMMA PIṬAKA (5 witnesses: SC, GRETIL, VRI, BJT, Thai)")
@@ -850,6 +853,7 @@ def main() -> None:
     log(f"  GRETIL: {results['abhidhamma'].get('gretil_words', 0):,} words")
     log(f"  VRI: {results['abhidhamma'].get('vri_words', 0):,} words")
     log(f"  BJT: {results['abhidhamma'].get('bjt_words', 0):,} words")
+    log(f"  Thai: {results['abhidhamma'].get('thai_words', 0):,} words")
     log("")
 
     # Grand totals
@@ -857,6 +861,7 @@ def main() -> None:
     total_gretil = results['vinaya'].get('gretil_words', 0) + sutta_gretil + results['abhidhamma'].get('gretil_words', 0)
     total_vri = results['vinaya'].get('vri_words', 0) + sutta_vri + results['abhidhamma'].get('vri_words', 0)
     total_bjt = results['vinaya'].get('bjt_words', 0) + sutta_bjt + results['abhidhamma'].get('bjt_words', 0)
+    total_thai = results['vinaya'].get('thai_words', 0) + sutta_thai + results['abhidhamma'].get('thai_words', 0)
 
     log("─" * 40)
     log("GRAND TOTALS")
@@ -864,6 +869,7 @@ def main() -> None:
     log(f"  GRETIL (all): {total_gretil:,} words")
     log(f"  VRI (all): {total_vri:,} words")
     log(f"  BJT (all): {total_bjt:,} words")
+    log(f"  Thai (all): {total_thai:,} words")
 
     # Save master summary
     overall = {
@@ -880,6 +886,7 @@ def main() -> None:
                 'gretil_words': sutta_gretil,
                 'vri_words': sutta_vri,
                 'bjt_words': sutta_bjt,
+                'thai_words': sutta_thai,
             }
         },
         'abhidhamma_pitaka': results['abhidhamma'],
@@ -888,6 +895,7 @@ def main() -> None:
             'gretil_words': total_gretil,
             'vri_words': total_vri,
             'bjt_words': total_bjt,
+            'thai_words': total_thai,
         }
     }
 

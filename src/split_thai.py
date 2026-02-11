@@ -722,7 +722,7 @@ SN_SAMYUTTA_NAMES = {
     'khandha': 22, 'rādha': 23, 'diṭṭhi': 24,
     'okkanta': 25, 'uppāda': 26, 'kilesa': 27,
     'sārīputta': 28, 'nāga': 29, 'supaṇṇa': 30, 'gandhabbakāya': 31,
-    'valāhaka': 32, 'vacchagotta': 33, 'jhāna': 34, 'samādhi': 34,
+    'valāhaka': 32, 'vacchagotta': 33, 'jhāna': [34, 53], 'samādhi': 34,
     'saḷāyatana': 35, 'vedanā': 36, 'mātugāma': 37, 'jambukhādaka': 38,
     'sāmaṇḍaka': 39, 'moggallāna': 40,
     'citta': 41, 'cittagahapatipucchā': 41,
@@ -730,7 +730,7 @@ SN_SAMYUTTA_NAMES = {
     'asaṅkhata': 43, 'abyākata': 44,
     'magga': 45, 'bojjhaṅga': 46, 'satipaṭṭhāna': 47, 'indriya': 48,
     'sammappadhāna': 49, 'bala': 50, 'iddhipāda': 51,
-    'anuruddha': 52, 'jhāna': 53, 'ānāpāna': 54,
+    'anuruddha': 52, 'ānāpāna': 54,
     'sotāpatti': 55, 'sacca': 56,
 }
 
@@ -764,8 +764,17 @@ def _find_samyutta_regions(text, sam_start, sam_end):
         if len(name) < 3:
             continue
 
-        sam_num = SN_SAMYUTTA_NAMES.get(name)
-        if sam_num is None or sam_num < sam_start or sam_num > sam_end:
+        sam_value = SN_SAMYUTTA_NAMES.get(name)
+        if sam_value is None:
+            continue
+        # Handle list values (e.g., 'jhāna' maps to both 34 and 53)
+        candidates = sam_value if isinstance(sam_value, list) else [sam_value]
+        sam_num = None
+        for c in candidates:
+            if sam_start <= c <= sam_end:
+                sam_num = c
+                break
+        if sam_num is None:
             continue
 
         after = text[m.end():m.end()+30].strip()

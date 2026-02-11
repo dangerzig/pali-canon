@@ -93,6 +93,16 @@ class TestFindSuttaFile:
         assert path is not None
         assert path.name == "dhp.json"
 
+    def test_vinaya(self):
+        path = self.store._find_sutta_file("vinaya", "mahavagga", lemmatized=False)
+        assert path is not None
+        assert path.name == "mahavagga.json"
+
+    def test_abhidhamma(self):
+        path = self.store._find_sutta_file("abhidhamma", "dhammasangani", lemmatized=False)
+        assert path is not None
+        assert path.name == "dhammasangani.json"
+
     def test_nonexistent(self):
         path = self.store._find_sutta_file("dn", "dn999", lemmatized=False)
         assert path is None
@@ -142,6 +152,18 @@ class TestGetSutta:
         sutta = self.store.get_sutta("dn1")
         assert sutta.text  # Non-empty string
 
+    def test_vinaya_sutta(self):
+        sutta = self.store.get_sutta("mahavagga")
+        assert sutta is not None
+        assert sutta.id == "mahavagga"
+        assert len(sutta.segments) > 0
+
+    def test_abhidhamma_sutta(self):
+        sutta = self.store.get_sutta("dhammasangani")
+        assert sutta is not None
+        assert sutta.id == "dhammasangani"
+        assert len(sutta.segments) > 0
+
 
 # =========================================================================
 # list_suttas()
@@ -176,6 +198,14 @@ class TestListSuttas:
         ids = [s.id for s in suttas]
         assert "dhp1-20" in ids or any("dhp" in i for i in ids)
 
+    def test_vinaya_count(self):
+        suttas = self.store.list_suttas("vinaya")
+        assert len(suttas) == 5
+
+    def test_abhidhamma_count(self):
+        suttas = self.store.list_suttas("abhidhamma")
+        assert len(suttas) == 8
+
     def test_invalid_nikaya(self):
         suttas = self.store.list_suttas("xyz")
         assert suttas == []
@@ -206,6 +236,18 @@ class TestGetNikayaInfo:
         info = self.store.get_nikaya_info("dn")
         suttas = self.store.list_suttas("dn")
         assert info.sutta_count == len(suttas)
+
+    def test_vinaya(self):
+        info = self.store.get_nikaya_info("vinaya")
+        assert info is not None
+        assert info.id == "vinaya"
+        assert info.sutta_count == 5
+
+    def test_abhidhamma(self):
+        info = self.store.get_nikaya_info("abhidhamma")
+        assert info is not None
+        assert info.id == "abhidhamma"
+        assert info.sutta_count == 8
 
 
 # =========================================================================

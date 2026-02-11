@@ -5,6 +5,7 @@ from pali.text import (
     tokenize, word_count, tokenize_with_positions,
     parse_sutta_id, normalize_pali, normalize_title,
     iter_file_segments, PALI_WORD_PATTERN, KN_TEXT_PREFIXES,
+    VINAYA_TEXT_IDS, ABHIDHAMMA_TEXT_IDS,
 )
 
 
@@ -138,6 +139,23 @@ class TestParseSuttaId:
     def test_apadana_prefixes(self):
         assert parse_sutta_id("tha-ap1") == "kn"
         assert parse_sutta_id("thi-ap1") == "kn"
+
+    def test_vinaya_text_ids(self):
+        for text_id in VINAYA_TEXT_IDS:
+            assert parse_sutta_id(text_id) == "vinaya", f"{text_id} should map to vinaya"
+
+    def test_abhidhamma_text_ids(self):
+        for text_id in ABHIDHAMMA_TEXT_IDS:
+            assert parse_sutta_id(text_id) == "abhidhamma", f"{text_id} should map to abhidhamma"
+
+    def test_vinaya_not_kn(self):
+        # Vinaya IDs should not be confused with KN prefixes
+        assert parse_sutta_id("mahavagga") == "vinaya"
+        assert parse_sutta_id("cullavagga") == "vinaya"
+
+    def test_abhidhamma_not_other(self):
+        assert parse_sutta_id("dhammasangani") == "abhidhamma"
+        assert parse_sutta_id("patthana") == "abhidhamma"
 
 
 # =========================================================================

@@ -317,12 +317,20 @@ class Vocabulary:
             for token in segment.get("tokens", []):
                 if terms == "lemmas":
                     term = token.get("lemma")
+                    if term:
+                        doc_term_counts[doc_id][term] += 1
+                        seen_terms.add(term)
+                    elif token.get("components"):
+                        for comp in token["components"]:
+                            comp_lemma = comp.get("lemma")
+                            if comp_lemma:
+                                doc_term_counts[doc_id][comp_lemma] += 1
+                                seen_terms.add(comp_lemma)
                 else:
                     term = token.get("word")
-
-                if term:
-                    doc_term_counts[doc_id][term] += 1
-                    seen_terms.add(term)
+                    if term:
+                        doc_term_counts[doc_id][term] += 1
+                        seen_terms.add(term)
 
         # Update document frequency counts
         for term in seen_terms:
@@ -661,8 +669,15 @@ class Vocabulary:
                             lemma = token.get("lemma", "")
                             if word:
                                 surface_words.append(word)
-                                # Use lemma if available, otherwise use surface form
-                                lemma_words.append(lemma if lemma else word)
+                                if lemma:
+                                    lemma_words.append(lemma)
+                                elif token.get("components"):
+                                    # Join component lemmas for sandhi tokens
+                                    comp_lemmas = [c.get("lemma", "") for c in token["components"]]
+                                    lemma_words.append(" ".join(l for l in comp_lemmas if l))
+                                else:
+                                    # Fall back to surface form
+                                    lemma_words.append(word)
 
                     title = data.get("title_pali", "") or data.get("name_pali", "")
 
@@ -697,9 +712,19 @@ class Vocabulary:
         def count_segments(segments: list, target_counter: Counter) -> None:
             for segment in segments:
                 for token in segment.get("tokens", []):
-                    term = token.get("lemma") if use_lemmas else token.get("word")
-                    if term:
-                        target_counter[term] += 1
+                    if use_lemmas:
+                        term = token.get("lemma")
+                        if term:
+                            target_counter[term] += 1
+                        elif token.get("components"):
+                            for comp in token["components"]:
+                                comp_lemma = comp.get("lemma")
+                                if comp_lemma:
+                                    target_counter[comp_lemma] += 1
+                    else:
+                        term = token.get("word")
+                        if term:
+                            target_counter[term] += 1
 
         for doc_id, segments in iter_file_segments(data, nikaya):
             if by_sutta:

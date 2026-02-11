@@ -85,9 +85,12 @@ pali/
 │   │   ├── __init__.py    # Public API (Canon class)
 │   │   ├── models.py      # Data models (Sutta, Segment, Token)
 │   │   ├── store.py       # JSON file access
+│   │   ├── text.py        # Text utilities (tokenization, normalization)
 │   │   ├── search.py      # Lemma and text search (SQLite FTS5)
+│   │   ├── index.py       # SQLite search index
 │   │   ├── vocab.py       # Vocabulary analysis & R package export
 │   │   ├── export.py      # LaTeX/PDF export
+│   │   ├── custom_lemmas.py    # Custom lemma lookups
 │   │   └── custom_lemmas.yaml  # Custom lemma mappings
 │   ├── parse_*.py         # Source file parsers
 │   ├── lemmatize_canon.py # Lemmatization pipeline
@@ -116,7 +119,7 @@ pali/
 
 ### Lemmatization
 
-98.0% unique-word coverage across the complete Tipiṭaka (2.8M tokens) using the Digital Pāli Dictionary, with custom lemmas for rare forms.
+99.8% token-level coverage across the complete Tipiṭaka (~2.85M tokens) using the Digital Pāli Dictionary, with 193 custom lemma entries for rare forms.
 
 ```python
 # Get lemmatized tokens

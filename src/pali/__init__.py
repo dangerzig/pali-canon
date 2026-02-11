@@ -10,8 +10,8 @@ Usage:
 
     canon = Canon()
 
-    # List available nikāyas
-    nikayas = canon.list_nikayas()  # ['dn', 'mn', 'sn', 'an', 'kn']
+    # List available collections
+    nikayas = canon.list_nikayas()  # ['dn', 'mn', 'sn', 'an', 'kn', 'vinaya', 'abhidhamma']
 
     # Get a sutta
     sutta = canon.get_sutta("dn1")
@@ -114,10 +114,10 @@ class Canon:
         return self._search
 
     def list_nikayas(self) -> list[str]:
-        """List available nikāya IDs.
+        """List available collection IDs.
 
         Returns:
-            List of nikāya IDs: ['dn', 'mn', 'sn', 'an', 'kn']
+            List of collection IDs: ['dn', 'mn', 'sn', 'an', 'kn', 'vinaya', 'abhidhamma']
         """
         return self._store.list_nikayas()
 
@@ -125,7 +125,7 @@ class Canon:
         """Get metadata for a nikāya.
 
         Args:
-            nikaya: Nikāya ID (dn, mn, sn, an, kn)
+            nikaya: Collection ID (dn, mn, sn, an, kn, vinaya, abhidhamma)
 
         Returns:
             NikayaInfo with name, sutta count, segment count, or None if not found
@@ -133,10 +133,10 @@ class Canon:
         return self._store.get_nikaya_info(nikaya)
 
     def list_suttas(self, nikaya: str, lemmatized: bool = False) -> list[SuttaInfo]:
-        """List all suttas in a nikāya.
+        """List all texts in a collection.
 
         Args:
-            nikaya: Nikāya ID (dn, mn, sn, an, kn)
+            nikaya: Collection ID (dn, mn, sn, an, kn, vinaya, abhidhamma)
             lemmatized: Whether to use lemmatized data directory
 
         Returns:
@@ -245,7 +245,7 @@ class Canon:
 
         Args:
             lemma: The lemma (dictionary form) to search for
-            nikaya: Optional filter by nikaya (dn, mn, sn, an, kn)
+            nikaya: Optional filter by collection (dn, mn, sn, an, kn, vinaya, abhidhamma)
             limit: Maximum occurrences to return (default 1000)
 
         Returns:
@@ -359,7 +359,7 @@ class Canon:
         topic modeling, and other text analysis.
 
         Args:
-            nikaya: Nikaya ID (dn, mn, sn, an, kn)
+            nikaya: Collection ID (dn, mn, sn, an, kn, vinaya, abhidhamma)
             unit: Document unit - "sutta" or "segment"
             terms: Term type - "lemmas" or "words"
             min_df: Minimum document frequency (exclude rare terms)
