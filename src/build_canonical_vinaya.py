@@ -51,10 +51,14 @@ def load_bilara_segments(filepath: Path) -> list:
         # Remove HTML tags
         clean = re.sub(r'<[^>]+>', '', text).strip()
         if clean and clean != '{}':
-            segments.append({
-                "id": seg_id,
-                "pali": normalize_pali(clean)
-            })
+            # Strip English structural labels (e.g., "Chapter 1. Kaṭhina" -> "Kaṭhina")
+            clean = re.sub(r'^Chapter\s+\d+\.\s*', '', clean)
+            pali = normalize_pali(clean)
+            if pali:
+                segments.append({
+                    "id": seg_id,
+                    "pali": pali
+                })
     return segments
 
 

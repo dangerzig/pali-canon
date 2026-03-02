@@ -313,10 +313,10 @@ Token fields:
 
 | Metric | Value |
 |--------|-------|
-| Total word tokens | 2,847,465 |
-| Unique word forms | 153,716 |
+| Total word tokens | 2,847,446 |
+| Unique word forms | 153,715 |
 | Forms found | 150,619 |
-| Forms not found | 3,727 |
+| Forms not found | 3,726 |
 | Sandhi compounds (DPD) | 52,708 |
 | Particle splits | 114 |
 | Metrical normalizations (final) | 2,918 |
@@ -333,7 +333,7 @@ Note: These statistics cover the complete Tipiṭaka (Sutta, Vinaya, and Abhidha
 
 ### 6.2 Analysis of Unknown Words
 
-The remaining 3,727 unique word forms (2.4%) not resolved by the lemmatizer represent a small fraction of token occurrences (approximately 0.22% of the corpus), since the vast majority are hapax legomena. These fall into several categories:
+The remaining 3,726 unique word forms (2.4%) not resolved by the lemmatizer represent a small fraction of token occurrences (approximately 0.22% of the corpus), since the vast majority are hapax legomena. These fall into several categories:
 
 1. **Hapax legomena**: Rare words occurring only once in the canon, predominantly from verse texts (Apadāna, Jātaka gāthās, Theragāthā/Therīgāthā)
 2. **Complex compounds**: Multi-word compounds not in the DPD deconstructor
@@ -456,7 +456,7 @@ data/
 - Five-way alignment pipeline (PTS/GRETIL, SC, VRI, BJT, Thai)
 - Error detection using DPD validation with majority-voting confidence scoring
 - Variant apparatus with recorded readings from all five witnesses
-- Lemmatization at 98.0% unique-word coverage across the complete Tipiṭaka (Sutta, Vinaya, and Abhidhamma; 2,847,465 tokens, 153,716 unique forms)
+- Lemmatization at 98.0% unique-word coverage across the complete Tipiṭaka (Sutta, Vinaya, and Abhidhamma; 2,847,446 tokens, 153,715 unique forms)
 - Custom lemma database for 193 words not in DPD (organized for potential upstream contribution)
 
 **Future Work:**

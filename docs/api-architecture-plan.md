@@ -18,7 +18,7 @@ A Python library for accessing the critical edition data, supporting:
 
 ```bash
 # Local development (no pip install needed)
-cd ~/pali
+cd ~/pali-canon
 PYTHONPATH=src python -c "from pali import Canon; Canon()"
 ```
 
@@ -282,7 +282,7 @@ The [tipitaka R package](https://github.com/dangerzig/tipitaka) was updated to v
 
 ```bash
 # Step 1: Generate CSVs from Python
-cd ~/pali && PYTHONPATH=src python -c "
+cd ~/pali-canon && PYTHONPATH=src python -c "
 from pali import Canon
 Canon().export_tipitaka_data('../tipitaka/data-raw/critical/')
 "

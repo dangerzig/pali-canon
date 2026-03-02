@@ -26,7 +26,7 @@ Contains the lemmatized critical edition of the complete Tipitaka:
 ### Step 1: Generate texts CSV from Python
 
 ```bash
-cd ~/pali
+cd ~/pali-canon
 PYTHONPATH=src python -c "
 from pali import Canon
 canon = Canon()
@@ -55,7 +55,7 @@ Rscript -e 'devtools::check()'
 The full export still works for regenerating all CSV formats:
 
 ```bash
-cd ~/pali
+cd ~/pali-canon
 PYTHONPATH=src python -c "
 from pali import Canon
 canon = Canon()

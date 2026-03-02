@@ -409,7 +409,7 @@ python src/generate_final_summary.py
 | SC words | 2,837,350 |
 | BJT words | 3,514,083 |
 | Thai words | ~2,642,000 |
-| Unique word forms | 153,716 |
+| Unique word forms | 153,715 |
 | Token-level coverage | 99.8% |
 | Custom lemmas | 193 entries |
 | Unknown tokens | 6,136 (0.22% of corpus) |

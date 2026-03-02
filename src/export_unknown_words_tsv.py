@@ -6,8 +6,11 @@ Generates a TSV with:
 - word: the unknown word form
 - category: classification (potential_headword, metrical_variant, sandhi_ending, etc.)
 - inferred_pos: POS guess from word endings
+- suggested_lemma: closest DPD headword found via normalization heuristics
+- suggested_meaning: meaning of the suggested lemma
+- suggested_method: how we found the suggestion (metrical, sandhi_strip, prefix, etc.)
 - total_count: total occurrences across entire canon
-- dn_count, mn_count, sn_count, an_count, kn_count: per-collection counts
+- per-collection counts (dn, mn, sn, an, kn, vinaya, abhidhamma)
 - nikaya_count: DN+MN+SN+AN combined
 - text_count: number of distinct texts containing the word
 - all_texts: semicolon-separated list of all text references
@@ -17,22 +20,50 @@ Generates a TSV with:
 
 import json
 import re
+import sys
 from pathlib import Path
 from collections import defaultdict
 
+# Allow importing sibling modules
+sys.path.insert(0, str(Path(__file__).parent))
+
 from export_unknown_words_detailed import POS_RULES, infer_pos
+from dpd_lookup import DPD
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 LEMMATIZED_DIR = DATA_DIR / "lemmatized"
-OUTPUT_DIR = DATA_DIR / "unknown_words_report"
+WORK_DIR = Path(__file__).parent.parent / "work"
 
-COLLECTIONS = ['dn', 'mn', 'sn', 'an', 'kn']
+COLLECTIONS = ['dn', 'mn', 'sn', 'an', 'kn', 'vinaya', 'abhidhamma']
 
 # Pronoun-verb fusion patterns
 PRONOUN_VERB_PATTERNS = [
     r'ohama$', r'ohaṃ$', r'āmhā$', r'amhā$',
     r'āmī$', r'āmā$', r'osmi$', r'asmi$', r'amhi$',
 ]
+
+# Metrical lengthening: long → short final vowel
+METRICAL_MAP = {'ā': 'a', 'ī': 'i', 'ū': 'u'}
+
+# Common sandhi suffixes to try stripping
+SANDHI_SUFFIXES = [
+    ('ti', 'quotation marker -ti'),
+    ('tī', 'quotation marker -tī'),
+    ('pi', 'particle -pi'),
+    ('pī', 'particle -pī'),
+    ('ca', 'particle -ca'),
+    ('va', 'particle -va'),
+    ('vā', 'particle -vā'),
+    ('ssa', 'genitive -ssa'),
+    ('ṃ', 'niggahīta -ṃ'),
+    ('n', 'sandhi -n'),
+]
+
+# English words that sometimes leak through from source metadata
+ENGLISH_SKIP = {
+    'chapter', 'section', 'the', 'of', 'and', 'on', 'in', 'is', 'to',
+    'for', 'display', 'title', 'only', 'not', 'available',
+}
 
 
 def categorize_word(word):
@@ -54,6 +85,61 @@ def categorize_word(word):
     return 'potential_headword'
 
 
+def suggest_lemma(word, dpd):
+    """
+    Try various normalizations to find a plausible DPD match.
+    Returns (lemma, meaning, method) or ('', '', '').
+    """
+    # 1. Try metrical normalization (shorten final vowel)
+    if len(word) > 3 and word[-1] in METRICAL_MAP:
+        normalized = word[:-1] + METRICAL_MAP[word[-1]]
+        result = dpd.lookup(normalized)
+        if result.entries:
+            e = result.entries[0]
+            return e.lemma, e.meaning, f'metrical: {normalized}'
+        # Also try the shortened form as a lookup
+        if result.deconstructor:
+            return '', ' + '.join(result.deconstructor), f'metrical+sandhi: {normalized}'
+
+    # 2. Try stripping common sandhi suffixes
+    for suffix, desc in SANDHI_SUFFIXES:
+        if word.endswith(suffix) and len(word) > len(suffix) + 2:
+            base = word[:-len(suffix)]
+            result = dpd.lookup(base)
+            if result.entries:
+                e = result.entries[0]
+                return e.lemma, e.meaning, f'strip {desc}: {base}'
+            if result.deconstructor:
+                return '', ' + '.join(result.deconstructor), f'strip {desc}+sandhi: {base}'
+            # Try with metrical normalization on the base too
+            if len(base) > 3 and base[-1] in METRICAL_MAP:
+                base2 = base[:-1] + METRICAL_MAP[base[-1]]
+                result2 = dpd.lookup(base2)
+                if result2.entries:
+                    e = result2.entries[0]
+                    return e.lemma, e.meaning, f'strip {desc}+metrical: {base2}'
+
+    # 3. Try DPD deconstructor on the raw word
+    result = dpd.lookup(word)
+    if result.deconstructor:
+        return '', ' + '.join(result.deconstructor), 'deconstructor'
+
+    # 4. Try prefix search for longest matching headword
+    #    (useful for compounds: the first element is often a known word)
+    if len(word) > 6:
+        # Try splitting at various points
+        for split_pos in range(len(word) - 3, 2, -1):
+            prefix = word[:split_pos]
+            result = dpd.lookup(prefix)
+            if result.entries:
+                e = result.entries[0]
+                remainder = word[split_pos:]
+                return e.lemma, e.meaning, f'prefix {prefix} + {remainder}'
+                break
+
+    return '', '', ''
+
+
 def extract_context(seg_pali, word, max_len=120):
     """Extract a short context snippet around the word."""
     # Strip HTML tags
@@ -61,12 +147,10 @@ def extract_context(seg_pali, word, max_len=120):
     # Find the word in the Pāli text
     idx = seg_pali.lower().find(word.lower())
     if idx == -1:
-        # Fallback: return truncated segment
         if len(seg_pali) <= max_len:
             return seg_pali
         return seg_pali[:max_len] + '…'
 
-    # Get a window around the word
     start = max(0, idx - 30)
     end = min(len(seg_pali), idx + len(word) + 30)
 
@@ -89,7 +173,7 @@ def process_file(fpath, collection, unknown_words):
             seg_pali = seg.get('pali', '')
             for tok in seg.get('tokens', []):
                 word = tok.get('word', '')
-                if word and not tok.get('lemma') and not tok.get('sandhi'):
+                if word and not tok.get('lemma') and not tok.get('sandhi') and word.lower() not in ENGLISH_SKIP:
                     info = unknown_words[word]
                     info['total_count'] += 1
                     info['collection_counts'][collection] += 1
@@ -100,7 +184,6 @@ def process_file(fpath, collection, unknown_words):
                     full_ref = f"{text_ref}:{seg_id}"
                     info['full_refs'].append(full_ref)
 
-                    # Capture first context snippet
                     if not info['context'] and seg_pali:
                         info['context'] = extract_context(seg_pali, word)
 
@@ -119,7 +202,6 @@ def process_file(fpath, collection, unknown_words):
 def tsv_escape(val):
     """Escape a value for TSV output."""
     s = str(val)
-    # If it contains tabs or newlines, quote it
     if '\t' in s or '\n' in s or '\r' in s:
         s = s.replace('"', '""')
         s = f'"{s}"'
@@ -132,7 +214,7 @@ def main():
     print("=" * 70)
     print()
 
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    WORK_DIR.mkdir(parents=True, exist_ok=True)
 
     # Collect all unknown words
     unknown_words = defaultdict(lambda: {
@@ -146,8 +228,10 @@ def main():
     for coll in COLLECTIONS:
         coll_dir = LEMMATIZED_DIR / coll
         if not coll_dir.exists():
+            print(f"  {coll.upper()}: not found, skipping")
             continue
-        print(f"Processing {coll.upper()}...")
+        n_files = len(list(coll_dir.glob("*.json")))
+        print(f"Processing {coll.upper()} ({n_files} files)...")
         for fpath in sorted(coll_dir.glob("*.json")):
             if fpath.name.startswith('_'):
                 continue
@@ -165,15 +249,33 @@ def main():
     )
 
     # Collection breakdown summary
-    nikaya_total = 0
-    kn_total = 0
-    for word, info in sorted_words:
-        nik = sum(info['collection_counts'][c] for c in ['dn', 'mn', 'sn', 'an'])
-        nikaya_total += nik
-        kn_total += info['collection_counts']['kn']
+    for coll in COLLECTIONS:
+        total = sum(info['collection_counts'][coll] for _, info in sorted_words)
+        if total > 0:
+            unique = sum(1 for _, info in sorted_words if info['collection_counts'][coll] > 0)
+            print(f"  {coll.upper()}: {total} occurrences ({unique} unique)")
 
-    print(f"Nikāya (DN+MN+SN+AN) occurrences: {nikaya_total}")
-    print(f"Khuddaka Nikāya occurrences: {kn_total}")
+    nikaya_total = sum(
+        sum(info['collection_counts'][c] for c in ['dn', 'mn', 'sn', 'an'])
+        for _, info in sorted_words
+    )
+    print(f"  Nikāya total (DN+MN+SN+AN): {nikaya_total}")
+    print()
+
+    # Suggest lemmas using DPD
+    print("Looking up suggested lemmas in DPD...")
+    dpd = DPD()
+    suggestions = {}
+    found_count = 0
+    for i, (word, info) in enumerate(sorted_words):
+        lemma, meaning, method = suggest_lemma(word, dpd)
+        suggestions[word] = (lemma, meaning, method)
+        if lemma or meaning:
+            found_count += 1
+        if (i + 1) % 500 == 0:
+            print(f"  {i + 1}/{len(sorted_words)} processed...")
+    dpd.close()
+    print(f"  Suggestions found for {found_count}/{len(sorted_words)} words")
     print()
 
     # Write TSV
@@ -181,12 +283,17 @@ def main():
         'word',
         'category',
         'inferred_pos',
+        'suggested_lemma',
+        'suggested_meaning',
+        'suggestion_method',
         'total_count',
         'dn_count',
         'mn_count',
         'sn_count',
         'an_count',
         'kn_count',
+        'vin_count',
+        'abh_count',
         'nikaya_count',
         'text_count',
         'all_texts',
@@ -194,7 +301,7 @@ def main():
         'dpd_feedback',
     ]
 
-    tsv_file = OUTPUT_DIR / "unknown_words_for_dpd.tsv"
+    tsv_file = WORK_DIR / "unknown_words_for_dpd.tsv"
     with open(tsv_file, 'w', encoding='utf-8') as f:
         f.write('\t'.join(headers) + '\n')
 
@@ -202,17 +309,23 @@ def main():
             cc = info['collection_counts']
             nik_count = cc['dn'] + cc['mn'] + cc['sn'] + cc['an']
             texts_sorted = sorted(info['text_refs'])
+            lemma, meaning, method = suggestions[word]
 
             row = [
                 word,
                 categorize_word(word),
                 infer_pos(word),
+                lemma,
+                meaning,
+                method,
                 str(info['total_count']),
                 str(cc['dn']),
                 str(cc['mn']),
                 str(cc['sn']),
                 str(cc['an']),
                 str(cc['kn']),
+                str(cc['vinaya']),
+                str(cc['abhidhamma']),
                 str(nik_count),
                 str(len(info['text_refs'])),
                 '; '.join(texts_sorted),
@@ -228,12 +341,12 @@ def main():
     # Print top 20 for spot-check
     print()
     print("Top 20 by frequency:")
-    print(f"  {'word':<30} {'cat':<20} {'total':>5} {'nik':>4} {'kn':>4} {'texts':>5}")
-    print("  " + "-" * 75)
+    print(f"  {'word':<30} {'cat':<18} {'total':>5} {'suggestion':<40}")
+    print("  " + "-" * 90)
     for word, info in sorted_words[:20]:
-        cc = info['collection_counts']
-        nik = cc['dn'] + cc['mn'] + cc['sn'] + cc['an']
-        print(f"  {word:<30} {categorize_word(word):<20} {info['total_count']:>5} {nik:>4} {cc['kn']:>4} {len(info['text_refs']):>5}")
+        lemma, meaning, method = suggestions[word]
+        suggestion = f"{lemma}: {meaning[:30]}" if lemma else (meaning[:40] if meaning else "")
+        print(f"  {word:<30} {categorize_word(word):<18} {info['total_count']:>5} {suggestion:<40}")
 
     print()
     print("Done!")

@@ -8,7 +8,7 @@ import json
 import re
 from pathlib import Path
 
-DATA_DIR = Path("/Users/danzigmond/pali/data")
+DATA_DIR = Path("/Users/danzigmond/pali-canon/data")
 SC_DN_DIR = DATA_DIR / "suttacentral-ms/root/pli/ms/sutta/dn"
 VRI_DIR = DATA_DIR / "vri-raw"
 OUTPUT_DIR = DATA_DIR / "canonical/dn"
