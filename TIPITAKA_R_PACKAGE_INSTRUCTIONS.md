@@ -19,7 +19,7 @@ Contains the lemmatized critical edition of the complete Tipitaka:
 - `dtm()` — Lemma x text unit sparse frequency matrix (computed on first use)
 - `search_lemma()` — Search for lemma occurrences
 
-**Coverage**: All three pitakas (Sutta, Vinaya, Abhidhamma), 2.8M tokens, 98.0% unique-word coverage.
+**Coverage**: All three pitakas (Sutta, Vinaya, Abhidhamma), 2.8M tokens, 98.8% unique-word coverage.
 
 ## Generating Data for tipitaka.critical
 
@@ -81,5 +81,5 @@ This generates 7 CSV files covering all three pitakas:
 - **Compute on load**: tipitaka.critical ships only text data; frequency tables and sparse matrix are computed on first use (~5 sec)
 - **Five witnesses**: PTS/GRETIL (base text), SuttaCentral, VRI, BJT, Thai Royal Edition
 - **Corrections**: Where SC=VRI=BJT disagree with PTS and PTS reading is not in DPD
-- **Lemmatization**: DPD-based, 98.0% unique-word coverage across the complete Tipitaka
+- **Lemmatization**: DPD-based, 98.8% unique-word coverage across the complete Tipitaka
 - **Sparse matrix**: The document-term matrix is 99%+ zeros, stored as `dgCMatrix` from the Matrix package

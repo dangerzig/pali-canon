@@ -410,13 +410,13 @@ python src/generate_final_summary.py
 | BJT words | 3,514,083 |
 | Thai words | ~2,642,000 |
 | Unique word forms | 153,715 |
-| Token-level coverage | 99.8% |
+| Token-level coverage | 99.90% |
 | Custom lemmas | 193 entries |
-| Unknown tokens | 6,136 (0.22% of corpus) |
+| Unknown tokens | ~2,978 (~0.10% of corpus) |
 
 ---
 
-*Last updated: February 2026*
+*Last updated: March 2026*
 
 ---
 

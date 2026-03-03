@@ -41,7 +41,7 @@ Extract and validate PTS Dīgha Nikāya text as a foundation for PTS-based canon
 
 **Source:** SuttaCentral Mahāsaṅgīti edition
 
-**Status:** Already lemmatized at 98.0% coverage (full Tipiṭaka)
+**Status:** Already lemmatized at 98.8% coverage (full Tipiṭaka)
 
 **Quality:** Excellent - proper Unicode, pre-segmented
 

@@ -6,7 +6,7 @@ This paper describes the creation of a critical digital edition of the Pāli Can
 
 The edition uses the Pali Text Society (PTS) editions as the authoritative base text, with variant readings from four additional witnesses—the SuttaCentral Mahāsaṅgīti edition, the Chaṭṭha Saṅgāyana (VRI/CST), the Buddha Jayanti Tipitaka (BJT), and the Thai Royal Edition (Syām Raṭṭha)—recorded in the apparatus. Where PTS contains errors—confirmed by agreement of multiple witnesses against a reading not attested in the DPD—corrections are applied and documented transparently.
 
-The resulting dataset provides: (1) a unified reference system enabling citation by PTS volume and page, SC segment ID, or VRI section number; (2) a critical apparatus preserving all variant readings between editions; (3) full lemmatization with word-level morphological analysis achieving 99.78% token-level coverage; and (4) a research-ready format suitable for the computational analyses proposed in earlier work. This infrastructure enables systematic investigation of textual strata, formulaic patterns, and the relative age of canonical texts—questions of longstanding scholarly interest that have remained difficult to address without comprehensive morphological annotation.
+The resulting dataset provides: (1) a unified reference system enabling citation by PTS volume and page, SC segment ID, or VRI section number; (2) a critical apparatus preserving all variant readings between editions; (3) full lemmatization with word-level morphological analysis achieving 99.90% token-level coverage; and (4) a research-ready format suitable for the computational analyses proposed in earlier work. This infrastructure enables systematic investigation of textual strata, formulaic patterns, and the relative age of canonical texts—questions of longstanding scholarly interest that have remained difficult to address without comprehensive morphological annotation.
 
 ## 1. Introduction
 
@@ -28,7 +28,7 @@ What was needed, we concluded, was "a more refined corpus" with proper lemmatiza
 
 This paper describes the creation of a fully lemmatized critical edition of the complete Pāli Canon, with the following contributions:
 
-1. **Comprehensive lemmatization** using the Digital Pāli Dictionary (DPD), achieving 99.78% token-level coverage across the corpus through a combination of direct lookup, sandhi decomposition, orthographic normalization, and a custom lemma database for words not in DPD.
+1. **Comprehensive lemmatization** using the Digital Pāli Dictionary (DPD), achieving 99.90% token-level coverage across the corpus through a combination of direct lookup, sandhi decomposition, orthographic normalization, sandhi-aware compound splitting, negative prefix handling, and a custom lemma database for words not in DPD.
 
 2. **Five-witness critical apparatus** collating the PTS, SuttaCentral, VRI, BJT, and Thai (Syām Raṭṭha) editions, with systematic classification of differences as orthographic variants, textual errors, or genuine readings.
 
@@ -458,7 +458,7 @@ data/
 - Five-way alignment pipeline (PTS/GRETIL, SC, VRI, BJT, Thai)
 - Error detection using DPD validation with majority-voting confidence scoring
 - Variant apparatus with recorded readings from all five witnesses
-- Lemmatization at 98.0% unique-word coverage across the complete Tipiṭaka (Sutta, Vinaya, and Abhidhamma; 2,847,446 tokens, 153,715 unique forms)
+- Lemmatization at 98.8% unique-word coverage across the complete Tipiṭaka (Sutta, Vinaya, and Abhidhamma; 2,847,446 tokens, 153,715 unique forms)
 - Custom lemma database for 193 words not in DPD (organized for potential upstream contribution)
 
 **Future Work:**
