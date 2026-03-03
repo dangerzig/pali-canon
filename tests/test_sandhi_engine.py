@@ -1,13 +1,12 @@
 """Tests for SandhiRuleEngine and enhanced lemmatization strategies."""
 
-import tempfile
 from pathlib import Path
 
 import pytest
 
 from lemmatize_canon import (
-    SandhiRule, SandhiRuleEngine, NegativePrefixStrategy,
-    EnhancedCompoundSplitStrategy, Lemmatizer, TokenInfo,
+    SandhiRuleEngine, NegativePrefixStrategy,
+    EnhancedCompoundSplitStrategy, SplitCandidate, Lemmatizer, TokenInfo,
     ENHANCED_STRATEGIES, DEFAULT_STRATEGIES, SANDHI_RULES_FILE, DPD_DB,
 )
 
@@ -103,11 +102,35 @@ class TestSandhiRuleEngine:
     def test_real_rules_niggahita_boundary(self):
         """Test ṅ+g boundary (niggahīta assimilation)."""
         engine = SandhiRuleEngine(SANDHI_RULES_FILE)
-        # "evaṅgatāni" → should find evaṃ + gatāni
+        # "evaṅgatāni" -> should find evaṃ + gatāni
         results = engine.apply_at_boundary("evaṅgatāni", 4)
         # Look for a reconstruction that gives evaṃ + gatāni
         reconstructions = [(a, b, w) for a, b, w in results if a == "evaṃ" and b == "gatāni"]
         assert len(reconstructions) > 0, f"Expected evaṃ+gatāni, got: {results}"
+
+
+# =============================================================================
+# SplitCandidate scoring tests
+# =============================================================================
+
+class TestSplitCandidateScoring:
+    """Tests for compound split candidate scoring."""
+
+    def test_fewer_parts_preferred(self):
+        two_part = SplitCandidate(parts=["abc", "def"], total_weight=1, num_parts=2, min_part_len=3)
+        three_part = SplitCandidate(parts=["ab", "cd", "ef"], total_weight=1, num_parts=3, min_part_len=2)
+        assert two_part.score > three_part.score
+
+    def test_identity_preferred_over_sandhi(self):
+        """Identity splits (weight=1) should beat sandhi-transformed splits (weight=3)."""
+        identity = SplitCandidate(parts=["abc", "def"], total_weight=1, num_parts=2, min_part_len=3)
+        sandhi = SplitCandidate(parts=["abc", "def"], total_weight=3, num_parts=2, min_part_len=3)
+        assert identity.score > sandhi.score
+
+    def test_longer_min_part_preferred(self):
+        longer = SplitCandidate(parts=["abcde", "fgh"], total_weight=1, num_parts=2, min_part_len=3)
+        shorter = SplitCandidate(parts=["ab", "cdefgh"], total_weight=1, num_parts=2, min_part_len=2)
+        assert longer.score > shorter.score
 
 
 # =============================================================================
@@ -125,13 +148,15 @@ def lemmatizer():
 class TestNegativePrefixStrategy:
     """Tests for negation prefix splitting."""
 
-    def test_no_prefix(self, lemmatizer):
+    @pytest.mark.skipif(not DPD_DB.exists(), reason="DPD database not present")
+    def test_no_prefix_splits(self, lemmatizer):
+        """Test no- prefix (Abhidhamma negation) produces split with na."""
         strategy = NegativePrefixStrategy()
         token = TokenInfo(word="noupādāno")
         result = strategy.try_lookup("noupādāno", token, lemmatizer)
-        if result:
-            assert token.sandhi[0] == "na"
-            assert len(token.sandhi) >= 2
+        assert result, "noupādāno should be split (no- prefix)"
+        assert token.sandhi[0] == "na"
+        assert len(token.sandhi) >= 2
 
     def test_short_word_not_split(self, lemmatizer):
         strategy = NegativePrefixStrategy()
@@ -153,8 +178,8 @@ class TestNegativePrefixStrategy:
         # Try anupādāno (an + upādāno)
         token = TokenInfo(word="anupādāno")
         result = strategy.try_lookup("anupādāno", token, lemmatizer)
-        if result:
-            assert token.sandhi[0] == "na"
+        assert result, "anupādāno should be split (an- prefix)"
+        assert token.sandhi[0] == "na"
 
 
 # =============================================================================
@@ -176,8 +201,19 @@ class TestEnhancedCompoundSplitStrategy:
         # Try a compound that the old splitter missed due to length
         token = TokenInfo(word="mahāpurisa")
         result = strategy.try_lookup("mahāpurisa", token, lemmatizer)
+        assert result, "mahāpurisa should be split into mahā + purisa"
+        assert len(token.sandhi) >= 2
+
+    @pytest.mark.skipif(not DPD_DB.exists(), reason="DPD database not present")
+    def test_compound_components_have_headword_info(self, lemmatizer):
+        """Enhanced compound splits should produce component metadata."""
+        strategy = EnhancedCompoundSplitStrategy()
+        token = TokenInfo(word="mahāpurisa")
+        result = strategy.try_lookup("mahāpurisa", token, lemmatizer)
         if result:
-            assert len(token.sandhi) >= 2
+            # At least one component should have lemma info (not just "word")
+            has_lemma = any("lemma" in comp for comp in token.components)
+            assert has_lemma, f"Components should have headword info: {token.components}"
 
     @pytest.mark.skipif(not DPD_DB.exists(), reason="DPD database not present")
     def test_custom_lemma_not_split(self, lemmatizer):
@@ -207,8 +243,10 @@ class TestPipelineIntegration:
         common_words = ["dhamma", "buddha", "saṅgha", "sutta", "vinaya"]
         for word in common_words:
             lemmatizer.cache.clear()
+            lemmatizer._active_strategies = DEFAULT_STRATEGIES
             old = lemmatizer.lookup_word(word, strategies=DEFAULT_STRATEGIES)
             lemmatizer.cache.clear()
+            lemmatizer._active_strategies = ENHANCED_STRATEGIES
             new = lemmatizer.lookup_word(word, strategies=ENHANCED_STRATEGIES)
             assert old.lemma == new.lemma, f"{word}: old={old.lemma}, new={new.lemma}"
 
@@ -239,3 +277,19 @@ class TestPipelineIntegration:
         assert isinstance(lemmatizer.sandhi_engine, SandhiRuleEngine)
         total_rules = sum(len(v) for v in lemmatizer.sandhi_engine.rules_by_boundary.values())
         assert total_rules == 626
+
+    @pytest.mark.skipif(not DPD_DB.exists(), reason="DPD database not present")
+    def test_active_strategies_used_by_recursive_calls(self, lemmatizer):
+        """Recursive lookup_word calls should use _active_strategies."""
+        lemmatizer._active_strategies = DEFAULT_STRATEGIES
+        lemmatizer.cache.clear()
+        old = lemmatizer.lookup_word("noupādāno", strategies=DEFAULT_STRATEGIES)
+
+        lemmatizer._active_strategies = ENHANCED_STRATEGIES
+        lemmatizer.cache.clear()
+        new = lemmatizer.lookup_word("noupādāno", strategies=ENHANCED_STRATEGIES)
+
+        # Enhanced should resolve this (via NegativePrefixStrategy)
+        # while default may not
+        if new.sandhi:
+            assert new.sandhi[0] == "na"

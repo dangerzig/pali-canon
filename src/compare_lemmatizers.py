@@ -77,8 +77,9 @@ def compare_collections(collections: list[str], output_path: str = None):
         print(f"\nTotal unique words across collections: {len(all_words):,}")
         print(f"\nRunning old pipeline...")
 
+        lemmatizer._active_strategies = DEFAULT_STRATEGIES
         old_results = {}
-        for word in all_words:
+        for word in sorted(all_words):
             lemmatizer.cache.clear()
             token = lemmatizer.lookup_word(word, strategies=DEFAULT_STRATEGIES)
             old_results[word] = token
@@ -88,8 +89,9 @@ def compare_collections(collections: list[str], output_path: str = None):
         lemmatizer._valid_word_cache.clear()
 
         print("Running enhanced pipeline...")
+        lemmatizer._active_strategies = ENHANCED_STRATEGIES
         new_results = {}
-        for word in all_words:
+        for word in sorted(all_words):
             lemmatizer.cache.clear()
             token = lemmatizer.lookup_word(word, strategies=ENHANCED_STRATEGIES)
             new_results[word] = token

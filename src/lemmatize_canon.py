@@ -564,18 +564,6 @@ class CustomLemmaStrategy(LookupStrategy):
 # Enhanced Strategies (sandhi-aware)
 # =============================================================================
 
-# Pali negation prefix patterns, ordered by specificity
-NEGATIVE_PREFIX_PATTERNS = [
-    # (prefix_in_fused, min_len, reconstruct_prefix, reconstruct_remainder_fn)
-    # no- (Abhidhamma style): noupādāno → no + upādāno
-    ('no', 5, 'na', lambda w: w[2:]),
-    # an- before vowel: anagga → na + agga
-    ('an', 5, 'na', lambda w: w[2:]),
-    # nā- (lengthened): nādhigacchati → na + adhigacchati
-    ('nā', 6, 'na', lambda w: w[2:]),
-]
-
-
 class NegativePrefixStrategy(LookupStrategy):
     """Handle Pali negation prefixes (no-, na-, an-, nā-, a-).
 
@@ -598,11 +586,9 @@ class NegativePrefixStrategy(LookupStrategy):
                 return self._build_negation_result(token, 'na', remainder, remainder_token)
 
         # Pattern 2: na- + doubled consonant: nappahoti → na + pahoti
-        if len(word) >= 5 and word.startswith('na') and len(word) > 3:
+        if len(word) >= 5 and word.startswith('na'):
             c = word[2]
-            if c not in 'aeiouāīū' and len(word) > 3 and word[3] == c:
-                # Skip if this is just a valid word starting with 'na'
-                # (don't split 'natthi' etc. that DPD already handles)
+            if c not in 'aeiouāīū' and word[3] == c:
                 remainder = word[3:]  # de-geminate: drop the first doubled consonant
                 remainder_token = ctx.lookup_word(remainder)
                 if remainder_token.lemma or remainder_token.sandhi:
@@ -627,9 +613,9 @@ class NegativePrefixStrategy(LookupStrategy):
 
         # Pattern 5: a- + doubled consonant: aññāṇa → na + ñāṇa
         # Only accept if remainder resolves as a direct lemma (not via compound split)
-        if len(word) >= 6 and word[0] == 'a' and word[0] not in 'eiouāīū':
+        if len(word) >= 6 and word[0] == 'a':
             c = word[1]
-            if c not in 'aeiouāīū' and len(word) > 2 and word[2] == c:
+            if c not in 'aeiouāīū' and word[2] == c:
                 remainder = word[2:]  # de-geminate
                 remainder_token = ctx.lookup_word(remainder)
                 if remainder_token.lemma:
@@ -664,14 +650,21 @@ class NegativePrefixStrategy(LookupStrategy):
 class SplitCandidate:
     """A candidate compound split with scoring info."""
     parts: list[str]
-    tokens: list[TokenInfo]
     total_weight: int = 0
     num_parts: int = 0
     min_part_len: int = 0
 
     @property
     def score(self) -> tuple:
-        """Score for ranking: fewer parts, lower weight (prefer identity), longer min part."""
+        """Score for ranking: fewer parts, lower weight (prefer identity), longer min part.
+
+        Weight preference: lower total_weight is better. Identity splits (no sandhi
+        transformation, weight=1) are preferred over sandhi-reconstructed splits
+        (weight 2-4) when both produce valid components. This is correct because
+        if the raw boundary characters already give valid words, there is no reason
+        to apply a sandhi transformation. Sandhi rules only help when the identity
+        split fails (e.g. "evaṅ" is not valid, but "evaṃ" via sandhi rule is).
+        """
         return (-self.num_parts, -self.total_weight, self.min_part_len)
 
 
@@ -689,7 +682,8 @@ class EnhancedCompoundSplitStrategy(LookupStrategy):
     stat_key = "enhanced_compound_splits"
 
     def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
-        if len(word) < 6:
+        # Minimum splittable word: 2 * min_component (8 for words < 10 chars)
+        if len(word) < 8:
             return False
 
         # Skip words in custom lemma database
@@ -704,14 +698,10 @@ class EnhancedCompoundSplitStrategy(LookupStrategy):
         if best and len(best.parts) > 1:
             token.sandhi = best.parts
             token.components = []
-            for i, part in enumerate(best.parts):
-                part_token = best.tokens[i] if i < len(best.tokens) else None
-                if part_token and (part_token.lemma or part_token.sandhi):
-                    comp = ctx._get_headword_info(part)
-                    if comp:
-                        token.components.append(comp)
-                    else:
-                        token.components.append({"word": part})
+            for part in best.parts:
+                comp = ctx._get_headword_info(part)
+                if comp:
+                    token.components.append(comp)
                 else:
                     token.components.append({"word": part})
             return True
@@ -756,11 +746,8 @@ class EnhancedCompoundSplitStrategy(LookupStrategy):
 
                 right_valid = self._is_valid_component(right, ctx)
                 if right_valid:
-                    left_token = TokenInfo(word=left)
-                    right_token = TokenInfo(word=right)
                     candidates.append(SplitCandidate(
                         parts=[left, right],
-                        tokens=[left_token, right_token],
                         total_weight=weight,
                         num_parts=2,
                         min_part_len=min(len(left), len(right)),
@@ -769,10 +756,8 @@ class EnhancedCompoundSplitStrategy(LookupStrategy):
                     # Recurse on the right part
                     sub = self._find_best_split(right, ctx, sandhi_engine, max_depth - 1)
                     if sub:
-                        left_token = TokenInfo(word=left)
                         candidates.append(SplitCandidate(
                             parts=[left] + sub.parts,
-                            tokens=[left_token] + sub.tokens,
                             total_weight=weight + sub.total_weight,
                             num_parts=1 + sub.num_parts,
                             min_part_len=min(len(left), sub.min_part_len),
@@ -832,6 +817,7 @@ class Lemmatizer:
         self.conn.row_factory = sqlite3.Row
         self.cache = {}  # word -> TokenInfo
         self._valid_word_cache = {}  # word -> bool (for _is_valid_word)
+        self._active_strategies = ENHANCED_STRATEGIES
         self.sandhi_engine = SandhiRuleEngine(sandhi_rules_path)
         self.stats = {
             "total_words": 0,
@@ -1175,11 +1161,11 @@ class Lemmatizer:
         """Look up a word and return its lemma info.
 
         Uses a pipeline of lookup strategies, trying each in order until
-        one succeeds. Strategies are defined in DEFAULT_STRATEGIES.
+        one succeeds.
 
         Args:
             word: The word to look up
-            strategies: Optional custom strategy list (defaults to DEFAULT_STRATEGIES)
+            strategies: Optional custom strategy list (defaults to self._active_strategies)
 
         Returns:
             TokenInfo with lemma/sandhi information
@@ -1199,7 +1185,7 @@ class Lemmatizer:
 
         # Try each strategy in order until one succeeds
         if strategies is None:
-            strategies = ENHANCED_STRATEGIES
+            strategies = self._active_strategies
 
         for strategy in strategies:
             # Skip if we already have a result
@@ -1474,6 +1460,7 @@ def main():
     print("=" * 60)
 
     with Lemmatizer() as lemmatizer:
+        lemmatizer._active_strategies = strategies
         for collection in args.collections:
             print(f"\nProcessing {collection.upper()}...")
             process_collection(collection, lemmatizer, strategies)
