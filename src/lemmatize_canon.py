@@ -10,19 +10,22 @@ Processes all canonical files and creates lemmatized versions with:
 - Sandhi decomposition for compound words
 """
 
+import argparse
+import csv
 import json
 import re
 import sqlite3
 from abc import ABC, abstractmethod
 from pathlib import Path
 from collections import Counter
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
 
 DATA_DIR = Path(__file__).parent.parent / "data"
 CANONICAL_DIR = DATA_DIR / "canonical"
 LEMMATIZED_DIR = DATA_DIR / "lemmatized"
 DPD_DB = DATA_DIR / "dpd/dpd.db"
+SANDHI_RULES_FILE = DATA_DIR / "dpd/sandhi_rules.tsv"
 DPPN_FILE = DATA_DIR / "dppn/proper_names.json"
 
 # Import custom lemmas for words not in DPD
@@ -155,6 +158,84 @@ except ImportError:
                 d["sandhi"] = self.sandhi
                 d["components"] = self.components
             return d
+
+
+# =============================================================================
+# Sandhi Rule Engine
+# =============================================================================
+
+@dataclass
+class SandhiRule:
+    """A single sandhi transformation rule from DPD."""
+    index: int
+    chA: str      # end of first part in fused form (always 1 char)
+    chB: str      # start of second part in fused form (always 1 char)
+    ch1: str      # what to reconstruct at end of first word (0-3 chars)
+    ch2: str      # what to reconstruct at start of second word (0-3 chars)
+    weight: int   # reliability weight (2-4, higher = more reliable)
+
+
+class SandhiRuleEngine:
+    """Engine for applying DPD sandhi rules at word boundaries.
+
+    At each candidate split position in a word, looks up matching rules
+    by the boundary characters (chA, chB) and returns all possible
+    reconstructions of the original two words.
+    """
+
+    def __init__(self, path: Path = SANDHI_RULES_FILE):
+        self.rules_by_boundary: dict[tuple[str, str], list[SandhiRule]] = {}
+        if path.exists():
+            self._load_rules(path)
+
+    def _load_rules(self, path: Path) -> None:
+        with open(path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f, delimiter='\t')
+            for row in reader:
+                rule = SandhiRule(
+                    index=int(row['index']),
+                    chA=row['chA'],
+                    chB=row['chB'],
+                    ch1=row['ch1'],
+                    ch2=row['ch2'],
+                    weight=int(row['weight']),
+                )
+                key = (rule.chA, rule.chB)
+                if key not in self.rules_by_boundary:
+                    self.rules_by_boundary[key] = []
+                self.rules_by_boundary[key].append(rule)
+
+    def apply_at_boundary(self, word: str, split_pos: int) -> list[tuple[str, str, int]]:
+        """Apply sandhi rules at a given split position.
+
+        Args:
+            word: The fused word
+            split_pos: Position to split (left = word[:split_pos], right = word[split_pos:])
+
+        Returns:
+            List of (reconstructed_a, reconstructed_b, weight) tuples.
+            Always includes the identity split (weight=1) if both halves are non-empty.
+        """
+        if split_pos <= 0 or split_pos >= len(word):
+            return []
+
+        left = word[:split_pos]
+        right = word[split_pos:]
+        results = []
+
+        # Identity split (no transformation)
+        results.append((left, right, 1))
+
+        # Look up rules by boundary characters
+        boundary_key = (left[-1], right[0])
+        rules = self.rules_by_boundary.get(boundary_key, [])
+        for rule in rules:
+            reconstructed_a = left[:-1] + rule.ch1
+            reconstructed_b = rule.ch2 + right[1:]
+            if reconstructed_a and reconstructed_b:
+                results.append((reconstructed_a, reconstructed_b, rule.weight))
+
+        return results
 
 
 # =============================================================================
@@ -479,6 +560,231 @@ class CustomLemmaStrategy(LookupStrategy):
         return False
 
 
+# =============================================================================
+# Enhanced Strategies (sandhi-aware)
+# =============================================================================
+
+# Pali negation prefix patterns, ordered by specificity
+NEGATIVE_PREFIX_PATTERNS = [
+    # (prefix_in_fused, min_len, reconstruct_prefix, reconstruct_remainder_fn)
+    # no- (Abhidhamma style): noupādāno → no + upādāno
+    ('no', 5, 'na', lambda w: w[2:]),
+    # an- before vowel: anagga → na + agga
+    ('an', 5, 'na', lambda w: w[2:]),
+    # nā- (lengthened): nādhigacchati → na + adhigacchati
+    ('nā', 6, 'na', lambda w: w[2:]),
+]
+
+
+class NegativePrefixStrategy(LookupStrategy):
+    """Handle Pali negation prefixes (no-, na-, an-, nā-, a-).
+
+    Tries several negation prefix patterns and validates that the
+    remainder resolves via full lookup_word (not just _is_valid_word).
+    """
+
+    stat_key = "negative_prefix"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        # Skip words in custom lemma database (they have known correct analysis)
+        if get_custom_lemma(word):
+            return False
+
+        # Pattern 1: no- prefix (Abhidhamma negation)
+        if len(word) >= 5 and word.startswith('no'):
+            remainder = word[2:]
+            remainder_token = ctx.lookup_word(remainder)
+            if remainder_token.lemma or remainder_token.sandhi:
+                return self._build_negation_result(token, 'na', remainder, remainder_token)
+
+        # Pattern 2: na- + doubled consonant: nappahoti → na + pahoti
+        if len(word) >= 5 and word.startswith('na') and len(word) > 3:
+            c = word[2]
+            if c not in 'aeiouāīū' and len(word) > 3 and word[3] == c:
+                # Skip if this is just a valid word starting with 'na'
+                # (don't split 'natthi' etc. that DPD already handles)
+                remainder = word[3:]  # de-geminate: drop the first doubled consonant
+                remainder_token = ctx.lookup_word(remainder)
+                if remainder_token.lemma or remainder_token.sandhi:
+                    return self._build_negation_result(token, 'na', remainder, remainder_token)
+
+        # Pattern 3: an- before vowel: anagga → na + agga
+        # For long words (>12), require direct lemma to avoid false splits on compounds
+        if len(word) >= 5 and word.startswith('an') and word[2] in 'aeiouāīū':
+            remainder = word[2:]
+            remainder_token = ctx.lookup_word(remainder)
+            if len(word) <= 12 and (remainder_token.lemma or remainder_token.sandhi):
+                return self._build_negation_result(token, 'na', remainder, remainder_token)
+            elif len(word) > 12 and remainder_token.lemma:
+                return self._build_negation_result(token, 'na', remainder, remainder_token)
+
+        # Pattern 4: nā- (lengthened na before vowel)
+        if len(word) >= 6 and word.startswith('nā'):
+            remainder = word[2:]
+            remainder_token = ctx.lookup_word(remainder)
+            if remainder_token.lemma or remainder_token.sandhi:
+                return self._build_negation_result(token, 'na', remainder, remainder_token)
+
+        # Pattern 5: a- + doubled consonant: aññāṇa → na + ñāṇa
+        # Only accept if remainder resolves as a direct lemma (not via compound split)
+        if len(word) >= 6 and word[0] == 'a' and word[0] not in 'eiouāīū':
+            c = word[1]
+            if c not in 'aeiouāīū' and len(word) > 2 and word[2] == c:
+                remainder = word[2:]  # de-geminate
+                remainder_token = ctx.lookup_word(remainder)
+                if remainder_token.lemma:
+                    return self._build_negation_result(token, 'na', remainder, remainder_token)
+
+        # Pattern 6: a- before consonant (only for longer words, high false-positive risk)
+        # Only accept if remainder resolves as a direct lemma
+        if len(word) >= 9 and word[0] == 'a' and word[1] not in 'aeiouāīū':
+            remainder = word[1:]
+            remainder_token = ctx.lookup_word(remainder)
+            if remainder_token.lemma:
+                return self._build_negation_result(token, 'na', remainder, remainder_token)
+
+        return False
+
+    def _build_negation_result(self, token: TokenInfo, prefix: str,
+                                remainder: str, remainder_token: TokenInfo) -> bool:
+        na_info = {'lemma': 'na', 'pos': 'ind'}
+        if remainder_token.sandhi:
+            token.sandhi = [prefix] + remainder_token.sandhi
+            token.components = [na_info] + remainder_token.components
+        else:
+            token.sandhi = [prefix, remainder]
+            comp = {'lemma': remainder_token.lemma, 'pos': remainder_token.pos}
+            if remainder_token.root:
+                comp['root'] = remainder_token.root
+            token.components = [na_info, comp]
+        return True
+
+
+@dataclass
+class SplitCandidate:
+    """A candidate compound split with scoring info."""
+    parts: list[str]
+    tokens: list[TokenInfo]
+    total_weight: int = 0
+    num_parts: int = 0
+    min_part_len: int = 0
+
+    @property
+    def score(self) -> tuple:
+        """Score for ranking: fewer parts, lower weight (prefer identity), longer min part."""
+        return (-self.num_parts, -self.total_weight, self.min_part_len)
+
+
+class EnhancedCompoundSplitStrategy(LookupStrategy):
+    """Sandhi-aware compound splitter using DPD sandhi rules.
+
+    Improvements over CompoundSplitStrategy:
+    - Lower minimum word length (6 vs 15)
+    - Uses sandhi rules at every split position
+    - Bidirectional search (longest-prefix and longest-suffix)
+    - Weight-based ranking of candidates
+    - Skips words in custom lemma database
+    """
+
+    stat_key = "enhanced_compound_splits"
+
+    def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
+        if len(word) < 6:
+            return False
+
+        # Skip words in custom lemma database
+        if get_custom_lemma(word):
+            return False
+
+        sandhi_engine = getattr(ctx, 'sandhi_engine', None)
+        if sandhi_engine is None:
+            return False
+
+        best = self._find_best_split(word, ctx, sandhi_engine, max_depth=4)
+        if best and len(best.parts) > 1:
+            token.sandhi = best.parts
+            token.components = []
+            for i, part in enumerate(best.parts):
+                part_token = best.tokens[i] if i < len(best.tokens) else None
+                if part_token and (part_token.lemma or part_token.sandhi):
+                    comp = ctx._get_headword_info(part)
+                    if comp:
+                        token.components.append(comp)
+                    else:
+                        token.components.append({"word": part})
+                else:
+                    token.components.append({"word": part})
+            return True
+        return False
+
+    @staticmethod
+    def _normalize_metrical(word: str) -> str:
+        """Normalize long vowels to short for compound component lookup."""
+        result = word
+        for long_v, short_v in METRICAL_NORMALIZATIONS.items():
+            result = result.replace(long_v, short_v)
+        return result
+
+    def _is_valid_component(self, word: str, ctx: 'Lemmatizer') -> bool:
+        """Check if a word is a valid compound component (with metrical fallback)."""
+        if ctx._is_valid_word(word):
+            return True
+        normalized = self._normalize_metrical(word)
+        if normalized != word and ctx._is_valid_word(normalized):
+            return True
+        return False
+
+    def _find_best_split(self, word: str, ctx: 'Lemmatizer',
+                          sandhi_engine: SandhiRuleEngine,
+                          max_depth: int) -> Optional[SplitCandidate]:
+        if max_depth <= 0:
+            return None
+
+        min_component = 3 if len(word) >= 10 else 4
+        candidates = []
+
+        # Try every split position
+        for pos in range(min_component, len(word) - min_component + 1):
+            reconstructions = sandhi_engine.apply_at_boundary(word, pos)
+            for left, right, weight in reconstructions:
+                if len(left) < min_component or len(right) < min_component:
+                    continue
+
+                left_valid = self._is_valid_component(left, ctx)
+                if not left_valid:
+                    continue
+
+                right_valid = self._is_valid_component(right, ctx)
+                if right_valid:
+                    left_token = TokenInfo(word=left)
+                    right_token = TokenInfo(word=right)
+                    candidates.append(SplitCandidate(
+                        parts=[left, right],
+                        tokens=[left_token, right_token],
+                        total_weight=weight,
+                        num_parts=2,
+                        min_part_len=min(len(left), len(right)),
+                    ))
+                elif len(right) >= min_component * 2 and max_depth > 1:
+                    # Recurse on the right part
+                    sub = self._find_best_split(right, ctx, sandhi_engine, max_depth - 1)
+                    if sub:
+                        left_token = TokenInfo(word=left)
+                        candidates.append(SplitCandidate(
+                            parts=[left] + sub.parts,
+                            tokens=[left_token] + sub.tokens,
+                            total_weight=weight + sub.total_weight,
+                            num_parts=1 + sub.num_parts,
+                            min_part_len=min(len(left), sub.min_part_len),
+                        ))
+
+        if not candidates:
+            return None
+
+        # Return best candidate by score
+        return max(candidates, key=lambda c: c.score)
+
+
 # Default strategy pipeline - order matters!
 DEFAULT_STRATEGIES: list[LookupStrategy] = [
     DPDLookupStrategy(),
@@ -497,14 +803,36 @@ DEFAULT_STRATEGIES: list[LookupStrategy] = [
     CustomLemmaStrategy(),
 ]
 
+# Enhanced strategy pipeline with sandhi-aware splitting
+ENHANCED_STRATEGIES: list[LookupStrategy] = [
+    DPDLookupStrategy(),
+    ShortPronounStrategy(),
+    SandhiNcaStrategy(),
+    ParticleSplitStrategy(),
+    DPPNStrategy(),
+    PronounVerbSplitStrategy(),
+    VerbEndingStrategy(),
+    InternalMetricalStrategy(),
+    KnownCompoundStrategy(),
+    TitleMatchStrategy(),
+    ApadanaTitleStrategy(),
+    CausativeAbsolutiveStrategy(),
+    NegativePrefixStrategy(),         # NEW (after name/title strategies)
+    EnhancedCompoundSplitStrategy(),  # NEW (replaces CompoundSplitStrategy)
+    CustomLemmaStrategy(),
+]
+
 
 class Lemmatizer:
     """Lemmatizer using the Digital Pali Dictionary."""
 
-    def __init__(self, db_path: Path = DPD_DB, dppn_path: Path = DPPN_FILE):
+    def __init__(self, db_path: Path = DPD_DB, dppn_path: Path = DPPN_FILE,
+                 sandhi_rules_path: Path = SANDHI_RULES_FILE):
         self.conn = sqlite3.connect(db_path)
         self.conn.row_factory = sqlite3.Row
         self.cache = {}  # word -> TokenInfo
+        self._valid_word_cache = {}  # word -> bool (for _is_valid_word)
+        self.sandhi_engine = SandhiRuleEngine(sandhi_rules_path)
         self.stats = {
             "total_words": 0,
             "unique_words": set(),
@@ -518,6 +846,8 @@ class Lemmatizer:
             "verb_ending_normalizations": 0,
             "internal_metrical": 0,
             "compound_splits": 0,
+            "enhanced_compound_splits": 0,
+            "negative_prefix": 0,
             "dppn_matches": 0,
             "known_compounds": 0,
             "title_matches": 0,
@@ -751,10 +1081,14 @@ class Lemmatizer:
         return None
 
     def _is_valid_word(self, word: str) -> bool:
-        """Check if a word exists in the DPD lookup table."""
+        """Check if a word exists in the DPD lookup table (cached)."""
+        if word in self._valid_word_cache:
+            return self._valid_word_cache[word]
         cursor = self.conn.execute(
             "SELECT 1 FROM lookup WHERE lookup_key = ? LIMIT 1", (word,))
-        return cursor.fetchone() is not None
+        result = cursor.fetchone() is not None
+        self._valid_word_cache[word] = result
+        return result
 
     def _try_compound_split(self, word: str, max_depth: int = 8, is_final: bool = True) -> Optional[list]:
         """
@@ -865,7 +1199,7 @@ class Lemmatizer:
 
         # Try each strategy in order until one succeeds
         if strategies is None:
-            strategies = DEFAULT_STRATEGIES
+            strategies = ENHANCED_STRATEGIES
 
         for strategy in strategies:
             # Skip if we already have a result
@@ -978,7 +1312,8 @@ class Lemmatizer:
             return result
         return None
 
-    def lemmatize_segment(self, segment: dict) -> dict:
+    def lemmatize_segment(self, segment: dict,
+                          strategies: list[LookupStrategy] = None) -> dict:
         """Lemmatize a single segment."""
         pali_text = segment.get("pali", "")
         tokens = self.tokenize(pali_text)
@@ -987,7 +1322,7 @@ class Lemmatizer:
         for word in tokens:
             self.stats["total_words"] += 1
             self.stats["unique_words"].add(word)
-            token_info = self.lookup_word(word)
+            token_info = self.lookup_word(word, strategies=strategies)
             token_infos.append(token_info.to_dict())
 
         return {
@@ -998,7 +1333,7 @@ class Lemmatizer:
 
     def get_stats(self) -> dict:
         """Get current statistics."""
-        return {
+        result = {
             "total_words": self.stats["total_words"],
             "unique_words": len(self.stats["unique_words"]),
             "words_found": self.stats["words_found"],
@@ -1011,6 +1346,8 @@ class Lemmatizer:
             "verb_ending_normalizations": self.stats["verb_ending_normalizations"],
             "internal_metrical": self.stats["internal_metrical"],
             "compound_splits": self.stats["compound_splits"],
+            "enhanced_compound_splits": self.stats["enhanced_compound_splits"],
+            "negative_prefix": self.stats["negative_prefix"],
             "dppn_matches": self.stats["dppn_matches"],
             "known_compounds": self.stats["known_compounds"],
             "title_matches": self.stats["title_matches"],
@@ -1023,9 +1360,11 @@ class Lemmatizer:
             "top_lemmas": self.stats["lemma_counts"].most_common(100),
             "unknown_words": self.stats["unknown_words"].most_common(500),
         }
+        return result
 
 
-def process_dn_mn_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer):
+def process_dn_mn_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer,
+                       strategies: list[LookupStrategy] = None):
     """Process DN or MN file (flat segments array)."""
     with open(input_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -1033,7 +1372,7 @@ def process_dn_mn_file(input_path: Path, output_path: Path, lemmatizer: Lemmatiz
     # Lemmatize each segment
     lemmatized_segments = []
     for segment in data.get("segments", []):
-        lemmatized_segments.append(lemmatizer.lemmatize_segment(segment))
+        lemmatized_segments.append(lemmatizer.lemmatize_segment(segment, strategies))
 
     # Create output with same metadata
     output = {k: v for k, v in data.items() if k != "segments"}
@@ -1044,7 +1383,8 @@ def process_dn_mn_file(input_path: Path, output_path: Path, lemmatizer: Lemmatiz
         json.dump(output, f, indent=2, ensure_ascii=False)
 
 
-def process_sn_an_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer):
+def process_sn_an_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer,
+                       strategies: list[LookupStrategy] = None):
     """Process SN or AN file (nested suttas array)."""
     with open(input_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -1054,7 +1394,7 @@ def process_sn_an_file(input_path: Path, output_path: Path, lemmatizer: Lemmatiz
     for sutta in data.get("suttas", []):
         lemmatized_segments = []
         for segment in sutta.get("segments", []):
-            lemmatized_segments.append(lemmatizer.lemmatize_segment(segment))
+            lemmatized_segments.append(lemmatizer.lemmatize_segment(segment, strategies))
 
         lemmatized_sutta = {k: v for k, v in sutta.items() if k != "segments"}
         lemmatized_sutta["segments"] = lemmatized_segments
@@ -1069,7 +1409,8 @@ def process_sn_an_file(input_path: Path, output_path: Path, lemmatizer: Lemmatiz
         json.dump(output, f, indent=2, ensure_ascii=False)
 
 
-def process_kn_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer):
+def process_kn_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer,
+                    strategies: list[LookupStrategy] = None):
     """Process KN file (nested items array)."""
     with open(input_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -1079,7 +1420,7 @@ def process_kn_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer)
     for item in data.get("items", []):
         lemmatized_segments = []
         for segment in item.get("segments", []):
-            lemmatized_segments.append(lemmatizer.lemmatize_segment(segment))
+            lemmatized_segments.append(lemmatizer.lemmatize_segment(segment, strategies))
 
         lemmatized_item = {k: v for k, v in item.items() if k != "segments"}
         lemmatized_item["segments"] = lemmatized_segments
@@ -1094,7 +1435,8 @@ def process_kn_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer)
         json.dump(output, f, indent=2, ensure_ascii=False)
 
 
-def process_collection(collection: str, lemmatizer: Lemmatizer):
+def process_collection(collection: str, lemmatizer: Lemmatizer,
+                       strategies: list[LookupStrategy] = None):
     """Process all files in a collection."""
     input_dir = CANONICAL_DIR / collection
     output_dir = LEMMATIZED_DIR / collection
@@ -1106,26 +1448,35 @@ def process_collection(collection: str, lemmatizer: Lemmatizer):
         output_path = output_dir / input_path.name
 
         if collection in ("dn", "mn", "vinaya", "abhidhamma"):
-            process_dn_mn_file(input_path, output_path, lemmatizer)
+            process_dn_mn_file(input_path, output_path, lemmatizer, strategies)
         elif collection in ("sn", "an"):
-            process_sn_an_file(input_path, output_path, lemmatizer)
+            process_sn_an_file(input_path, output_path, lemmatizer, strategies)
         elif collection == "kn":
-            process_kn_file(input_path, output_path, lemmatizer)
+            process_kn_file(input_path, output_path, lemmatizer, strategies)
 
         print(f"  [{i+1}/{len(files)}] {input_path.name}")
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Lemmatize the Pāli Canon")
+    parser.add_argument('--legacy', action='store_true',
+                        help='Use legacy pipeline without sandhi-aware splitting')
+    parser.add_argument('--collections', nargs='*',
+                        default=["dn", "mn", "sn", "an", "kn", "vinaya", "abhidhamma"],
+                        help='Collections to process (default: all)')
+    args = parser.parse_args()
+
+    pipeline_name = "legacy" if args.legacy else "enhanced"
+    strategies = DEFAULT_STRATEGIES if args.legacy else ENHANCED_STRATEGIES
+
     print("=" * 60)
-    print("Lemmatizing the Pāli Canon")
+    print(f"Lemmatizing the Pāli Canon ({pipeline_name} pipeline)")
     print("=" * 60)
 
     with Lemmatizer() as lemmatizer:
-        collections = ["dn", "mn", "sn", "an", "kn", "vinaya", "abhidhamma"]
-
-        for collection in collections:
+        for collection in args.collections:
             print(f"\nProcessing {collection.upper()}...")
-            process_collection(collection, lemmatizer)
+            process_collection(collection, lemmatizer, strategies)
 
         # Generate and save statistics
         stats = lemmatizer.get_stats()
@@ -1149,6 +1500,8 @@ def main():
         print(f"Pronoun-verb splits: {stats['pronoun_verb_splits']:,}")
         print(f"Verb ending norm:    {stats['verb_ending_normalizations']:,}")
         print(f"Compound splits:     {stats['compound_splits']:,}")
+        print(f"Enh. compounds:      {stats['enhanced_compound_splits']:,}")
+        print(f"Negative prefix:     {stats['negative_prefix']:,}")
         print(f"DPPN matches:        {stats['dppn_matches']:,}")
         print(f"Known compounds:     {stats['known_compounds']:,}")
         print(f"Title matches:       {stats['title_matches']:,}")

@@ -315,25 +315,26 @@ Token fields:
 |--------|-------|
 | Total word tokens | 2,847,446 |
 | Unique word forms | 153,715 |
-| Forms found | 150,619 |
-| Forms not found | 3,726 |
-| Sandhi compounds (DPD) | 52,708 |
-| Particle splits | 114 |
-| Metrical normalizations (final) | 2,918 |
-| Metrical normalizations (internal) | 84 |
-| Orthographic variants (-n→-ṃ) | 2,240 |
-| Pronoun-verb splits | 33 |
-| Compound splits | 256 |
+| Forms found | 151,878 |
+| Forms not found | 1,837 |
+| Sandhi compounds (DPD) | 52,715 |
+| Particle splits | 245 |
+| Metrical normalizations (final) | 2,919 |
+| Metrical normalizations (internal) | 88 |
+| Orthographic variants (-n→-ṃ) | 2,241 |
+| Pronoun-verb splits | 40 |
+| Enhanced compound splits | 1,624 |
+| Negative prefix splits | 124 |
 | DPPN proper nouns | 21 |
-| Custom lemmas | 160 |
-| **Unique word coverage** | **98.0%** |
-| **Token-level coverage** | **99.78%** |
+| Custom lemmas | 156 |
+| **Unique word coverage** | **98.8%** |
+| **Token-level coverage** | **99.90%** |
 
-Note: These statistics cover the complete Tipiṭaka (Sutta, Vinaya, and Abhidhamma piṭakas). Token-level coverage (99.78%) measures what percentage of all word occurrences in the corpus are lemmatized. Unique word coverage (98.0%) measures what percentage of distinct word forms are resolved. The difference arises because high-frequency words (particles, pronouns, common verbs) are well-covered by DPD, while the remaining unresolved forms are predominantly rare words (hapax legomena) from verse texts.
+Note: These statistics cover the complete Tipiṭaka (Sutta, Vinaya, and Abhidhamma piṭakas). Token-level coverage (99.90%) measures what percentage of all word occurrences in the corpus are lemmatized. Unique word coverage (98.8%) measures what percentage of distinct word forms are resolved. The difference arises because high-frequency words (particles, pronouns, common verbs) are well-covered by DPD, while the remaining unresolved forms are predominantly rare words (hapax legomena) from verse texts.
 
 ### 6.2 Analysis of Unknown Words
 
-The remaining 3,726 unique word forms (2.4%) not resolved by the lemmatizer represent a small fraction of token occurrences (approximately 0.22% of the corpus), since the vast majority are hapax legomena. These fall into several categories:
+The remaining 1,837 unique word forms (1.2%) not resolved by the lemmatizer represent a small fraction of token occurrences (approximately 0.10% of the corpus), since the vast majority are hapax legomena. These fall into several categories:
 
 1. **Hapax legomena**: Rare words occurring only once in the canon, predominantly from verse texts (Apadāna, Jātaka gāthās, Theragāthā/Therīgāthā)
 2. **Complex compounds**: Multi-word compounds not in the DPD deconstructor
@@ -345,16 +346,17 @@ The following categories were successfully handled by the lemmatizer:
 
 | Category | Words Resolved | Method |
 |----------|---------------|--------|
-| Metrical lengthening (final) | 2,918 | Normalize final long vowels (ā→a, ī→i, ū→u) |
-| Orthographic variants | 2,240 | Normalize -n to -ṃ |
-| Compound splitting | 256 | Recursive splitting of long dvandva compounds |
-| Custom lemmas | 160 | Manual mappings for words not in DPD |
-| Particle sandhi | 114 | Split trailing ca, api, ti, va, tu |
-| Internal metrical | 84 | Normalize all long vowels in word |
-| Pronoun-verb sandhi | 33 | Split aham-, -osmi, -omhi patterns |
+| Metrical lengthening (final) | 2,919 | Normalize final long vowels (ā→a, ī→i, ū→u) |
+| Orthographic variants | 2,241 | Normalize -n to -ṃ |
+| Enhanced compound splitting | 1,624 | Sandhi-aware recursive splitting using 626 DPD rules |
+| Particle sandhi | 245 | Split trailing ca, api, ti, va, tu |
+| Custom lemmas | 156 | Manual mappings for words not in DPD |
+| Negative prefix splitting | 124 | Split Pali negation prefixes (no-, na-, an-, a-) |
+| Internal metrical | 88 | Normalize all long vowels in word |
+| Pronoun-verb sandhi | 40 | Split aham-, -osmi, -omhi patterns |
 | DPPN proper nouns | 21 | Match against DPPN with inflection handling |
 
-The high token-level coverage (99.78%) despite lower unique-word coverage (98.0%) reflects the Zipfian distribution of vocabulary: a small number of high-frequency words account for most tokens, while the "long tail" of rare words contributes minimally to overall coverage.
+The high token-level coverage (99.90%) despite lower unique-word coverage (98.8%) reflects the Zipfian distribution of vocabulary: a small number of high-frequency words account for most tokens, while the "long tail" of rare words contributes minimally to overall coverage.
 
 ### 6.3 Most Frequent Lemmas
 

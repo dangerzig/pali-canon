@@ -65,12 +65,15 @@ Lemmatization covers the complete SC Mahāsaṅgīti Tipiṭaka (all three piṭ
 
 - Total word tokens: 2,847,446
 - Unique word forms: 153,715
-- Words identified: 150,619
-- Sandhi decompositions: 52,708
-- Custom lemmas: 160 applied (193 entries in database)
-- **Unique word coverage: 98.0%**
+- Words identified: 151,878
+- Sandhi decompositions: 52,715
+- Enhanced compound splits: 1,624
+- Negative prefix splits: 124
+- Custom lemmas: 156 applied (193 entries in database)
+- **Unique word coverage: 98.8%**
+- **Token-level coverage: 99.90%**
 
-The high coverage reflects that high-frequency words are well-covered, while remaining unknown forms are predominantly rare words (hapax legomena) from verse texts and specialized Abhidhamma terminology.
+The enhanced pipeline uses 626 empirically-derived sandhi rules from the DPD project for compound splitting and handles Pali negation prefixes (no-, na-, an-, a-). The high coverage reflects that high-frequency words are well-covered, while remaining unknown forms are predominantly rare words (hapax legomena) from verse texts.
 
 ---
 
