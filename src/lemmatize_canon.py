@@ -172,7 +172,7 @@ class SandhiRule:
     chB: str      # start of second part in fused form (always 1 char)
     ch1: str      # what to reconstruct at end of first word (0-3 chars)
     ch2: str      # what to reconstruct at start of second word (0-3 chars)
-    weight: int   # reliability weight (2-4, higher = more reliable)
+    weight: int   # reliability weight from TSV (2-4); identity splits use weight=1
 
 
 class SandhiRuleEngine:
@@ -191,15 +191,19 @@ class SandhiRuleEngine:
     def _load_rules(self, path: Path) -> None:
         with open(path, 'r', encoding='utf-8') as f:
             reader = csv.DictReader(f, delimiter='\t')
-            for row in reader:
-                rule = SandhiRule(
-                    index=int(row['index']),
-                    chA=row['chA'],
-                    chB=row['chB'],
-                    ch1=row['ch1'],
-                    ch2=row['ch2'],
-                    weight=int(row['weight']),
-                )
+            for line_num, row in enumerate(reader, start=2):
+                try:
+                    rule = SandhiRule(
+                        index=int(row['index']),
+                        chA=row['chA'],
+                        chB=row['chB'],
+                        ch1=row['ch1'],
+                        ch2=row['ch2'],
+                        weight=int(row['weight']),
+                    )
+                except (KeyError, ValueError, TypeError) as e:
+                    print(f"Warning: skipping malformed sandhi rule at {path}:{line_num}: {e}")
+                    continue
                 key = (rule.chA, rule.chB)
                 if key not in self.rules_by_boundary:
                     self.rules_by_boundary[key] = []
@@ -813,6 +817,8 @@ class Lemmatizer:
 
     def __init__(self, db_path: Path = DPD_DB, dppn_path: Path = DPPN_FILE,
                  sandhi_rules_path: Path = SANDHI_RULES_FILE):
+        if not db_path.exists():
+            raise FileNotFoundError(f"DPD database not found: {db_path}")
         self.conn = sqlite3.connect(db_path)
         self.conn.row_factory = sqlite3.Row
         self.cache = {}  # word -> TokenInfo

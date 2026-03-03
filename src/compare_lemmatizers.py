@@ -78,21 +78,21 @@ def compare_collections(collections: list[str], output_path: str = None):
         print(f"\nRunning old pipeline...")
 
         lemmatizer._active_strategies = DEFAULT_STRATEGIES
+        lemmatizer.cache.clear()
+        lemmatizer._valid_word_cache.clear()
         old_results = {}
         for word in sorted(all_words):
-            lemmatizer.cache.clear()
             token = lemmatizer.lookup_word(word, strategies=DEFAULT_STRATEGIES)
             old_results[word] = token
 
-        # Reset stats and cache
+        # Reset cache for clean enhanced run
+        lemmatizer._active_strategies = ENHANCED_STRATEGIES
         lemmatizer.cache.clear()
         lemmatizer._valid_word_cache.clear()
 
         print("Running enhanced pipeline...")
-        lemmatizer._active_strategies = ENHANCED_STRATEGIES
         new_results = {}
         for word in sorted(all_words):
-            lemmatizer.cache.clear()
             token = lemmatizer.lookup_word(word, strategies=ENHANCED_STRATEGIES)
             new_results[word] = token
 
