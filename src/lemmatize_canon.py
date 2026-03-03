@@ -828,8 +828,8 @@ class Lemmatizer:
         self.stats = {
             "total_words": 0,
             "unique_words": set(),
-            "words_found": 0,
-            "words_not_found": 0,
+            # words_found, words_not_found, lemma_counts, unknown_words
+            # are computed in get_stats() from unique_words + cache
             "sandhi_words": 0,
             "normalized_variants": 0,
             "particle_splits": 0,
@@ -849,8 +849,6 @@ class Lemmatizer:
             "sandhi_nca": 0,
             "english_words": 0,
             "custom_lemmas": 0,
-            "unknown_words": Counter(),
-            "lemma_counts": Counter(),
         }
 
         # Load DPPN proper names
@@ -1203,15 +1201,6 @@ class Lemmatizer:
                 if strategy.stat_key:
                     self.stats[strategy.stat_key] += 1
 
-        # Update overall stats
-        if token.lemma or token.sandhi:
-            self.stats["words_found"] += 1
-            if token.lemma:
-                self.stats["lemma_counts"][token.lemma] += 1
-        else:
-            self.stats["words_not_found"] += 1
-            self.stats["unknown_words"][word] += 1
-
         self.cache[word] = token
         return token
 
@@ -1324,12 +1313,34 @@ class Lemmatizer:
         }
 
     def get_stats(self) -> dict:
-        """Get current statistics."""
+        """Get current statistics.
+
+        words_found/words_not_found are computed from the corpus word set
+        and cache, not from incremental counters, to avoid inflated counts
+        from recursive lookups (compound parts, negation remainders).
+        """
+        # Compute words_found/not_found from actual corpus words only
+        unique = self.stats["unique_words"]
+        words_found = 0
+        words_not_found = 0
+        lemma_counts = Counter()
+        unknown_words = Counter()
+        for word in unique:
+            token = self.cache.get(word)
+            if token and (token.lemma or token.sandhi):
+                words_found += 1
+                if token.lemma:
+                    lemma_counts[token.lemma] += 1
+            else:
+                words_not_found += 1
+                unknown_words[word] += 1
+
+        num_unique = len(unique)
         result = {
             "total_words": self.stats["total_words"],
-            "unique_words": len(self.stats["unique_words"]),
-            "words_found": self.stats["words_found"],
-            "words_not_found": self.stats["words_not_found"],
+            "unique_words": num_unique,
+            "words_found": words_found,
+            "words_not_found": words_not_found,
             "sandhi_words": self.stats["sandhi_words"],
             "normalized_variants": self.stats["normalized_variants"],
             "particle_splits": self.stats["particle_splits"],
@@ -1348,9 +1359,9 @@ class Lemmatizer:
             "short_pronouns": self.stats["short_pronouns"],
             "sandhi_nca": self.stats["sandhi_nca"],
             "custom_lemmas": self.stats["custom_lemmas"],
-            "coverage": f"{self.stats['words_found'] / max(1, len(self.stats['unique_words'])) * 100:.1f}%",
-            "top_lemmas": self.stats["lemma_counts"].most_common(100),
-            "unknown_words": self.stats["unknown_words"].most_common(500),
+            "coverage": f"{words_found / max(1, num_unique) * 100:.1f}%",
+            "top_lemmas": lemma_counts.most_common(100),
+            "unknown_words": unknown_words.most_common(500),
         }
         return result
 

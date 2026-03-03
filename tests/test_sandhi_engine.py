@@ -442,6 +442,18 @@ class TestPipelineIntegration:
         if new.sandhi:
             assert new.sandhi[0] == "na"
 
+    def test_stats_words_found_plus_not_found_equals_unique(self, lemmatizer):
+        """words_found + words_not_found must equal unique_words (no inflation)."""
+        # Process words that trigger recursive lookups (compounds, negation)
+        lemmatizer.stats["unique_words"] = set()
+        lemmatizer.cache.clear()
+        words = ["dhamma", "noupādāno", "mahāpurisa", "zzzznotaword"]
+        for w in words:
+            lemmatizer.stats["unique_words"].add(w)
+            lemmatizer.lookup_word(w)
+        stats = lemmatizer.get_stats()
+        assert stats["words_found"] + stats["words_not_found"] == stats["unique_words"]
+
     def test_dpd_db_missing_raises_error(self, tmp_path):
         """Lemmatizer should raise FileNotFoundError if DPD database is missing."""
         with pytest.raises(FileNotFoundError):
