@@ -88,7 +88,7 @@ Note: some collation files cap entries at 1,000 per category per text, so totals
 | Nikāya | Texts | Errors | Variants |
 |--------|-------|--------|----------|
 | DN | 34 | 4,355 | 9,135 |
-| MN | 150 | 4,555 | 11,534 |
+| MN | 152 | 4,632 | 11,663 |
 | SN | 1,564 | 15,617 | 10,411 |
 | AN | 843 | 5,164 | 26,433 |
 | KN | 17 | 8,532 | 10,683 |

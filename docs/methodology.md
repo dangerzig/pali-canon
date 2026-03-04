@@ -376,13 +376,13 @@ The five-witness collation pipeline annotated 2,880,314 word positions across th
 | Collection | Errors | Variants | Uncertain | Total |
 |------------|-------:|--------:|---------:|------:|
 | DN | 4,355 | 9,135 | 19,651 | 33,141 |
-| MN | 4,555 | 11,534 | 37,919 | 54,008 |
+| MN | 4,632 | 11,663 | 38,064 | 54,359 |
 | SN | 15,617 | 10,411 | 59,256 | 85,284 |
 | AN | 5,164 | 26,433 | 185,808 | 217,405 |
 | KN | 8,532 | 10,683 | 16,255 | 35,470 |
 | Vinaya | 4,580 | 5,000 | 5,000 | 14,580 |
 | Abhidhamma | 5,145 | 5,409 | 7,000 | 17,554 |
-| **Total** | **47,948** | **78,605** | **330,889** | **457,442** |
+| **Total** | **48,025** | **78,734** | **331,034** | **457,793** |
 
 The high uncertain count in AN reflects the structural complexity of the Aṅguttara, where very short suttas and heavy use of peyyāla (abbreviated repetitions) create alignment challenges between editions.
 
