@@ -131,6 +131,55 @@ class TestDictionaryConsistency:
 # reload_config()
 # =========================================================================
 
+class TestYamlValidation:
+    def test_malformed_lemma_entries_skipped(self):
+        """Malformed entries (non-dict, missing keys) should be silently skipped."""
+        from pali.custom_lemmas import _build_lemma_dict, _CONFIG
+        import copy
+
+        # Save original config
+        original = copy.deepcopy(_CONFIG)
+
+        # Inject malformed entries
+        _CONFIG['potential_dpd_additions'] = {
+            'good_word': {'lemma': 'test', 'pos': 'noun'},
+            'bad_string': 'not_a_dict',
+            'bad_missing_lemma': {'pos': 'noun'},
+            'bad_missing_pos': {'lemma': 'test'},
+            'bad_none': None,
+        }
+
+        result = _build_lemma_dict('potential_dpd_additions')
+
+        # Only the good entry should survive
+        assert 'good_word' in result
+        assert len(result) == 1
+
+        # Restore
+        _CONFIG.clear()
+        _CONFIG.update(original)
+
+    def test_malformed_sandhi_entries_skipped(self):
+        """Malformed sandhi entries should be silently skipped."""
+        from pali.custom_lemmas import _build_sandhi_dict, _CONFIG
+        import copy
+
+        original = copy.deepcopy(_CONFIG)
+
+        _CONFIG['sandhi_decompositions'] = {
+            'good_word': {'parts': ['a', 'b'], 'components': [{'lemma': 'a', 'pos': 'noun'}, {'lemma': 'b', 'pos': 'noun'}]},
+            'bad_string': 'not_a_dict',
+            'bad_missing_parts': {'components': []},
+        }
+
+        result = _build_sandhi_dict()
+        assert 'good_word' in result
+        assert len(result) == 1
+
+        _CONFIG.clear()
+        _CONFIG.update(original)
+
+
 class TestReloadConfig:
     def test_reload_preserves_data(self):
         from pali.custom_lemmas import reload_config

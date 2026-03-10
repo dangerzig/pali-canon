@@ -412,7 +412,7 @@ python src/generate_final_summary.py
 | Unique word forms | 153,715 |
 | Token-level coverage | 99.90% |
 | Custom lemmas | 193 entries |
-| Unknown tokens | ~2,978 (~0.10% of corpus) |
+| Unknown tokens | ~1,837 (~0.10% of corpus) |
 
 ---
 

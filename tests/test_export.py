@@ -165,3 +165,17 @@ class TestExporterExportPdf:
         tex_path = tmp_path / "test.tex"
         # .tex file should exist regardless of whether PDF compiled
         assert tex_path.exists()
+
+    def test_tex_preserved_on_failure(self, exporter, tmp_path):
+        """When PDF compilation fails, .tex should still be preserved if keep_tex=True."""
+        output = tmp_path / "test_fail.pdf"
+        # Even if xelatex isn't installed, the .tex file should survive
+        result = exporter.export_pdf("dn1", str(output), keep_tex=True)
+        tex_path = tmp_path / "test_fail.tex"
+        assert tex_path.exists()
+
+    def test_nonexistent_sutta_pdf(self, exporter, tmp_path):
+        """export_pdf with nonexistent sutta should still return bool."""
+        output = tmp_path / "no_sutta.pdf"
+        result = exporter.export_pdf("dn999", str(output))
+        assert isinstance(result, bool)

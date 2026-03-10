@@ -18,7 +18,7 @@ import sqlite3
 from abc import ABC, abstractmethod
 from pathlib import Path
 from collections import Counter
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Optional
 
 DATA_DIR = Path(__file__).parent.parent / "data"
@@ -100,6 +100,7 @@ VERB_ENDING_NORMALIZATIONS = [
 # Minimum word length to attempt compound splitting
 # Shorter words are unlikely to be decomposable compounds
 MIN_COMPOUND_LENGTH = 15
+MIN_COMPOUND_PART_LEN = 4
 
 # Known compound decompositions (jhāna compounds, etc.)
 KNOWN_COMPOUNDS = {
@@ -111,9 +112,9 @@ KNOWN_COMPOUNDS = {
 
 # Title/chapter patterns (vagga, vatthu endings are proper nouns)
 TITLE_PATTERNS = [
-    (r'vaggo$', 'vagga'),      # chapter title (masculine nominative)
-    (r'vagga$', 'vagga'),      # chapter title (stem)
-    (r'vatthu$', 'vatthu'),    # story title
+    (re.compile(r'vaggo$'), 'vagga'),      # chapter title (masculine nominative)
+    (re.compile(r'vagga$'), 'vagga'),      # chapter title (stem)
+    (re.compile(r'vatthu$'), 'vatthu'),    # story title
 ]
 
 # Apadāna title patterns: [name]thera/therī + apadāna
@@ -123,19 +124,22 @@ APADANA_PATTERN = re.compile(r'^(.+?)(thera|therī|therassa|therassā)(apadāna|
 # These verbs have -ay-/-e- causative infix before -itvā/-etvā
 CAUSATIVE_ABSOLUTIVE_PATTERNS = [
     # -ayitvā → look up base with -eti (causative)
-    (r'(.+)ayitvā$', r'\1eti'),
+    (re.compile(r'(.+)ayitvā$'), r'\1eti'),
     # -etvā → look up base with -eti
-    (r'(.+)etvā$', r'\1eti'),
+    (re.compile(r'(.+)etvā$'), r'\1eti'),
     # -āpetvā → look up base with -āpeti (causative)
-    (r'(.+)āpetvā$', r'\1āpeti'),
+    (re.compile(r'(.+)āpetvā$'), r'\1āpeti'),
 ]
+
+# Common case endings that might appear at the end of compounds
+CASE_ENDINGS = ['assa', 'ānaṃ', 'ena', 'āya', 'ssa', 'aṃ', 'ehi', 'āsu', 'esu', 'ā']
 
 
 # Import Token from shared models (canonical data model with to_dict())
 try:
     from pali.models import Token as TokenInfo
 except ImportError:
-    @dataclass
+    @dataclass(slots=True)
     class TokenInfo:
         """Information about a lemmatized token."""
         word: str
@@ -145,7 +149,7 @@ except ImportError:
         sandhi: Optional[list] = None
         components: Optional[list] = None
 
-        def to_dict(self):
+        def to_dict(self) -> dict:
             """Convert to dict, excluding None values."""
             d = {"word": self.word}
             if self.lemma is not None:
@@ -156,6 +160,7 @@ except ImportError:
                 d["root"] = self.root
             if self.sandhi is not None:
                 d["sandhi"] = self.sandhi
+            if self.components is not None:
                 d["components"] = self.components
             return d
 
@@ -333,10 +338,10 @@ class SandhiNcaStrategy(LookupStrategy):
                     token.components = base_token.components + [particle_info]
                 else:
                     token.sandhi = [base, particle]
-                    token.components = [
-                        {'lemma': base_token.lemma, 'pos': base_token.pos},
-                        particle_info
-                    ]
+                    comp = {'lemma': base_token.lemma, 'pos': base_token.pos}
+                    if base_token.root:
+                        comp['root'] = base_token.root
+                    token.components = [comp, particle_info]
                 return True
         return False
 
@@ -389,20 +394,24 @@ class PronounVerbSplitStrategy(LookupStrategy):
     def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
         pv_split = ctx._try_pronoun_verb_split(word)
         if pv_split:
-            verb_part, pronoun, pronoun_info = pv_split
-            verb_token = ctx.lookup_word(verb_part)
-            if verb_token.lemma or verb_token.sandhi:
-                if verb_token.sandhi:
-                    token.sandhi = [pronoun] + verb_token.sandhi
-                    token.components = [pronoun_info] + verb_token.components
+            lookup_part, known_part, known_info, is_prefix = pv_split
+            lookup_token = ctx.lookup_word(lookup_part)
+            if lookup_token.lemma or lookup_token.sandhi:
+                if lookup_token.sandhi:
+                    lookup_parts = lookup_token.sandhi
+                    lookup_comps = lookup_token.components
                 else:
-                    token.sandhi = [pronoun, verb_part]
-                    token.components = [
-                        pronoun_info,
-                        {'lemma': verb_token.lemma, 'pos': verb_token.pos}
-                    ]
-                    if verb_token.root:
-                        token.components[1]['root'] = verb_token.root
+                    lookup_parts = [lookup_part]
+                    comp = {'lemma': lookup_token.lemma, 'pos': lookup_token.pos}
+                    if lookup_token.root:
+                        comp['root'] = lookup_token.root
+                    lookup_comps = [comp]
+                if is_prefix:
+                    token.sandhi = [known_part] + lookup_parts
+                    token.components = [known_info] + lookup_comps
+                else:
+                    token.sandhi = lookup_parts + [known_part]
+                    token.components = lookup_comps + [known_info]
                 return True
         return False
 
@@ -415,22 +424,9 @@ class VerbEndingStrategy(LookupStrategy):
     def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
         verb_norm = ctx._try_verb_ending_normalization(word)
         if verb_norm:
-            cursor = ctx.conn.execute("""
-                SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
-            """, (verb_norm,))
-            row = cursor.fetchone()
-            if row and row['headwords']:
-                try:
-                    headword_ids = json.loads(row['headwords'])
-                    if headword_ids:
-                        hw_info = ctx._get_headword_by_id(headword_ids[0])
-                        if hw_info:
-                            token.lemma = hw_info.get('lemma')
-                            token.pos = hw_info.get('pos')
-                            token.root = hw_info.get('root')
-                            return True
-                except (json.JSONDecodeError, TypeError):
-                    pass
+            row = ctx._lookup_dpd(verb_norm)
+            if ctx._apply_headword_to_token(token, row):
+                return True
         return False
 
 
@@ -442,22 +438,9 @@ class InternalMetricalStrategy(LookupStrategy):
     def try_lookup(self, word: str, token: TokenInfo, ctx: 'Lemmatizer') -> bool:
         internal_norm = ctx._try_internal_metrical_normalization(word)
         if internal_norm:
-            cursor = ctx.conn.execute("""
-                SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
-            """, (internal_norm,))
-            row = cursor.fetchone()
-            if row and row['headwords']:
-                try:
-                    headword_ids = json.loads(row['headwords'])
-                    if headword_ids:
-                        hw_info = ctx._get_headword_by_id(headword_ids[0])
-                        if hw_info:
-                            token.lemma = hw_info.get('lemma')
-                            token.pos = hw_info.get('pos')
-                            token.root = hw_info.get('root')
-                            return True
-                except (json.JSONDecodeError, TypeError):
-                    pass
+            row = ctx._lookup_dpd(internal_norm)
+            if ctx._apply_headword_to_token(token, row):
+                return True
         return False
 
 
@@ -704,6 +687,10 @@ class EnhancedCompoundSplitStrategy(LookupStrategy):
             token.components = []
             for part in best.parts:
                 comp = ctx._get_headword_info(part)
+                if not comp:
+                    normalized = self._normalize_metrical(part)
+                    if normalized != part:
+                        comp = ctx._get_headword_info(normalized)
                 if comp:
                     token.components.append(comp)
                 else:
@@ -870,15 +857,15 @@ class Lemmatizer:
                     elif name.endswith('ā'):
                         self.dppn_stems[name[:-1]] = (name, category)
 
-    def close(self):
+    def close(self) -> None:
         """Close the database connection."""
         self.conn.close()
 
-    def __enter__(self):
+    def __enter__(self) -> 'Lemmatizer':
         """Context manager entry."""
         return self
 
-    def __exit__(self, exc_type, exc_val, exc_tb):
+    def __exit__(self, exc_type, exc_val, exc_tb) -> bool:
         """Context manager exit - ensures connection is closed."""
         self.close()
         return False
@@ -966,9 +953,9 @@ class Lemmatizer:
     def _try_title_match(self, word: str) -> Optional[dict]:
         """Check if word is a chapter/story title (vagga, vatthu endings)."""
         for pattern, base_word in TITLE_PATTERNS:
-            if re.search(pattern, word):
+            if pattern.search(word):
                 # Extract the title name part
-                title_name = re.sub(pattern, '', word)
+                title_name = pattern.sub('', word)
                 if title_name:
                     return {
                         'lemma': word,
@@ -1003,10 +990,10 @@ class Lemmatizer:
     def _try_causative_absolutive(self, word: str) -> Optional[str]:
         """Try to find the base verb for causative absolutive forms (-ayitvā, -etvā, -āpetvā)."""
         for pattern, replacement in CAUSATIVE_ABSOLUTIVE_PATTERNS:
-            match = re.match(pattern, word)
+            match = pattern.match(word)
             if match:
                 # Try looking up the causative verb form
-                base_verb = re.sub(pattern, replacement, word)
+                base_verb = pattern.sub(replacement, word)
                 if self._is_valid_word(base_verb):
                     return base_verb
                 # Try without the causative marker
@@ -1033,11 +1020,15 @@ class Lemmatizer:
         return None
 
     def _try_pronoun_verb_split(self, word: str) -> Optional[tuple]:
-        """Try to split pronoun from verb (e.g., ahamanusāsissāmī → ahaṃ + anusāsissāmi)."""
+        """Try to split pronoun from verb (e.g., ahamanusāsissāmī → ahaṃ + anusāsissāmi).
+
+        Returns (lookup_part, known_part, known_info, is_prefix) where is_prefix
+        indicates whether the known_part is a prefix (True) or suffix (False).
+        """
         # Check for aham- prefix
         if word.startswith('aham') and len(word) > 6:
             verb_part = word[4:]  # Remove 'aham'
-            return (verb_part, 'ahaṃ', {'lemma': 'ahaṃ', 'pos': 'pron'})
+            return (verb_part, 'ahaṃ', {'lemma': 'ahaṃ', 'pos': 'pron'}, True)
 
         # Check for -osmi/-omhi/-asmi/-amhi suffix (verb "to be" fused with noun/adj)
         for suffix in ['osmī', 'osmi', 'omhī', 'omhi', 'asmī', 'asmi', 'amhī', 'amhi']:
@@ -1049,7 +1040,7 @@ class Lemmatizer:
                 else:
                     base = base + 'a'
                 verb_lemma = 'asmi' if 'sm' in suffix else 'amhi'
-                return (base, suffix, {'lemma': 'attā', 'pos': 'pron', 'verb': verb_lemma})
+                return (base, suffix, {'lemma': 'attā', 'pos': 'pron', 'verb': verb_lemma}, False)
 
         return None
 
@@ -1094,14 +1085,8 @@ class Lemmatizer:
         for long_v, short_v in METRICAL_NORMALIZATIONS.items():
             normalized = normalized.replace(long_v, short_v)
 
-        # Minimum component length to avoid splitting on case endings
-        MIN_PART_LEN = 4
-
-        # Common case endings that might appear at the end of compounds
-        CASE_ENDINGS = ['assa', 'ānaṃ', 'ena', 'āya', 'ssa', 'aṃ', 'ehi', 'āsu', 'esu', 'ā']
-
         # For final word in compound, try stripping case endings
-        if is_final and len(word) > MIN_PART_LEN + 3:
+        if is_final and len(word) > MIN_COMPOUND_PART_LEN + 3:
             for ending in CASE_ENDINGS:
                 if word.endswith(ending) or normalized.endswith(ending):
                     stem = word[:-len(ending)]
@@ -1113,13 +1098,13 @@ class Lemmatizer:
                         return [word]  # Return the inflected form as-is
 
         # For short words, just check if valid
-        if len(word) < MIN_PART_LEN * 2:
+        if len(word) < MIN_COMPOUND_PART_LEN * 2:
             if self._is_valid_word(word) or self._is_valid_word(normalized):
                 return [word]
             return None
 
         # Try to find longest valid prefix
-        for prefix_len in range(len(word) - MIN_PART_LEN, MIN_PART_LEN - 1, -1):
+        for prefix_len in range(len(word) - MIN_COMPOUND_PART_LEN, MIN_COMPOUND_PART_LEN - 1, -1):
             prefix = word[:prefix_len]
             prefix_norm = normalized[:prefix_len]
             remainder = word[prefix_len:]
@@ -1131,7 +1116,7 @@ class Lemmatizer:
                 if len(remainder) == 0:
                     return [prefix]
 
-                if len(remainder) >= MIN_PART_LEN:
+                if len(remainder) >= MIN_COMPOUND_PART_LEN:
                     remainder_split = self._try_compound_split(remainder, max_depth - 1, is_final)
                     if remainder_split is not None:
                         return [prefix] + remainder_split
@@ -1142,13 +1127,13 @@ class Lemmatizer:
                 prefix_wc_norm = prefix_norm + remainder[0]
                 if self._is_valid_word(prefix_with_consonant) or self._is_valid_word(prefix_wc_norm):
                     new_remainder = remainder[1:]
-                    if len(new_remainder) >= MIN_PART_LEN:
+                    if len(new_remainder) >= MIN_COMPOUND_PART_LEN:
                         remainder_split = self._try_compound_split(new_remainder, max_depth - 1, is_final)
                         if remainder_split is not None:
                             return [prefix_with_consonant] + remainder_split
 
             # Try with 'a' added to prefix (compound junction vowel)
-            if not prefix.endswith('a') and len(remainder) >= MIN_PART_LEN:
+            if not prefix.endswith('a') and len(remainder) >= MIN_COMPOUND_PART_LEN:
                 prefix_a = prefix + 'a'
                 if self._is_valid_word(prefix_a):
                     remainder_split = self._try_compound_split(remainder, max_depth - 1, is_final)
@@ -1208,7 +1193,7 @@ class Lemmatizer:
         """Check if a DPD lookup row has useful data (not just a stub entry)."""
         return row and (row['headwords'] or row['deconstructor'])
 
-    def _lookup_dpd(self, word: str):
+    def _lookup_dpd(self, word: str) -> Optional[sqlite3.Row]:
         """Look up a word in the DPD lookup table."""
         cursor = self.conn.execute("""
             SELECT headwords, deconstructor FROM lookup WHERE lookup_key = ?
@@ -1359,6 +1344,7 @@ class Lemmatizer:
             "short_pronouns": self.stats["short_pronouns"],
             "sandhi_nca": self.stats["sandhi_nca"],
             "custom_lemmas": self.stats["custom_lemmas"],
+            "english_words": self.stats["english_words"],
             "coverage": f"{words_found / max(1, num_unique) * 100:.1f}%",
             "top_lemmas": lemma_counts.most_common(100),
             "unknown_words": unknown_words.most_common(500),
@@ -1366,72 +1352,44 @@ class Lemmatizer:
         return result
 
 
-def process_dn_mn_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer,
-                       strategies: list[LookupStrategy] = None):
-    """Process DN or MN file (flat segments array)."""
+def _lemmatize_segments(segments: list, lemmatizer: Lemmatizer,
+                        strategies: list[LookupStrategy] = None) -> list:
+    """Lemmatize a list of segments."""
+    return [lemmatizer.lemmatize_segment(seg, strategies) for seg in segments]
+
+
+def process_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer,
+                 strategies: list[LookupStrategy] = None,
+                 nested_key: Optional[str] = None) -> None:
+    """Process a canonical JSON file, lemmatizing all segments.
+
+    Args:
+        input_path: Input JSON file path
+        output_path: Output JSON file path
+        lemmatizer: Lemmatizer instance
+        strategies: Lookup strategies to use
+        nested_key: If None, segments are at top level ("segments" key).
+                    If set (e.g. "suttas", "items"), segments are nested
+                    under each item in that array.
+    """
     with open(input_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    # Lemmatize each segment
-    lemmatized_segments = []
-    for segment in data.get("segments", []):
-        lemmatized_segments.append(lemmatizer.lemmatize_segment(segment, strategies))
-
-    # Create output with same metadata
-    output = {k: v for k, v in data.items() if k != "segments"}
-    output["segments"] = lemmatized_segments
-
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
-
-
-def process_sn_an_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer,
-                       strategies: list[LookupStrategy] = None):
-    """Process SN or AN file (nested suttas array)."""
-    with open(input_path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-
-    # Lemmatize each sutta's segments
-    lemmatized_suttas = []
-    for sutta in data.get("suttas", []):
-        lemmatized_segments = []
-        for segment in sutta.get("segments", []):
-            lemmatized_segments.append(lemmatizer.lemmatize_segment(segment, strategies))
-
-        lemmatized_sutta = {k: v for k, v in sutta.items() if k != "segments"}
-        lemmatized_sutta["segments"] = lemmatized_segments
-        lemmatized_suttas.append(lemmatized_sutta)
-
-    # Create output with same metadata
-    output = {k: v for k, v in data.items() if k != "suttas"}
-    output["suttas"] = lemmatized_suttas
-
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(output, f, indent=2, ensure_ascii=False)
-
-
-def process_kn_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer,
-                    strategies: list[LookupStrategy] = None):
-    """Process KN file (nested items array)."""
-    with open(input_path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-
-    # Lemmatize each item's segments
-    lemmatized_items = []
-    for item in data.get("items", []):
-        lemmatized_segments = []
-        for segment in item.get("segments", []):
-            lemmatized_segments.append(lemmatizer.lemmatize_segment(segment, strategies))
-
-        lemmatized_item = {k: v for k, v in item.items() if k != "segments"}
-        lemmatized_item["segments"] = lemmatized_segments
-        lemmatized_items.append(lemmatized_item)
-
-    # Create output with same metadata
-    output = {k: v for k, v in data.items() if k != "items"}
-    output["items"] = lemmatized_items
+    if nested_key is None:
+        # Flat structure: segments at top level (DN, MN, Vinaya, Abhidhamma)
+        output = {k: v for k, v in data.items() if k != "segments"}
+        output["segments"] = _lemmatize_segments(
+            data.get("segments", []), lemmatizer, strategies)
+    else:
+        # Nested structure: segments inside each item (SN/AN suttas, KN items)
+        lemmatized_items = []
+        for item in data.get(nested_key, []):
+            lemmatized_item = {k: v for k, v in item.items() if k != "segments"}
+            lemmatized_item["segments"] = _lemmatize_segments(
+                item.get("segments", []), lemmatizer, strategies)
+            lemmatized_items.append(lemmatized_item)
+        output = {k: v for k, v in data.items() if k != nested_key}
+        output[nested_key] = lemmatized_items
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w', encoding='utf-8') as f:
@@ -1439,7 +1397,7 @@ def process_kn_file(input_path: Path, output_path: Path, lemmatizer: Lemmatizer,
 
 
 def process_collection(collection: str, lemmatizer: Lemmatizer,
-                       strategies: list[LookupStrategy] = None):
+                       strategies: list[LookupStrategy] = None) -> None:
     """Process all files in a collection."""
     input_dir = CANONICAL_DIR / collection
     output_dir = LEMMATIZED_DIR / collection
@@ -1451,16 +1409,16 @@ def process_collection(collection: str, lemmatizer: Lemmatizer,
         output_path = output_dir / input_path.name
 
         if collection in ("dn", "mn", "vinaya", "abhidhamma"):
-            process_dn_mn_file(input_path, output_path, lemmatizer, strategies)
+            process_file(input_path, output_path, lemmatizer, strategies)
         elif collection in ("sn", "an"):
-            process_sn_an_file(input_path, output_path, lemmatizer, strategies)
+            process_file(input_path, output_path, lemmatizer, strategies, nested_key="suttas")
         elif collection == "kn":
-            process_kn_file(input_path, output_path, lemmatizer, strategies)
+            process_file(input_path, output_path, lemmatizer, strategies, nested_key="items")
 
         print(f"  [{i+1}/{len(files)}] {input_path.name}")
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description="Lemmatize the Pāli Canon")
     parser.add_argument('--legacy', action='store_true',
                         help='Use legacy pipeline without sandhi-aware splitting')

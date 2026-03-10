@@ -149,7 +149,7 @@ Differences between editions are classified as follows:
 
 ### 4.4 Correction Types Identified
 
-Analysis of the complete Dīgha Nikāya (34 suttas, 164,949 words) identified 1,015 corrections where the PTS reading was emended based on SC/VRI agreement. These fall into several categories:
+Analysis of the complete Dīgha Nikāya (34 suttas, 164,949 words) in the initial three-witness pilot identified 1,015 corrections where the PTS reading was emended based on SC/VRI agreement. These fall into several categories:
 
 | Category | Example |
 |----------|---------|
@@ -159,7 +159,7 @@ Analysis of the complete Dīgha Nikāya (34 suttas, 164,949 words) identified 1,
 | Retroflex consonants | *khānumataṃ* → *khāṇumataṃ* |
 | Vowel length | *micchājivena* → *micchājīvena* |
 
-In addition to corrections, the apparatus records 28,786 variant readings where editions differ but all readings represent valid Pāli forms.
+In the full five-witness collation, DN shows 4,355 normalizations and 9,200 variant readings (see Section 6.4). The increase from the pilot reflects the contributions of the BJT and Thai witnesses.
 
 ### 4.5 Output Format
 
@@ -369,20 +369,20 @@ The most frequently occurring lemmas reflect the doctrinal and narrative content
 
 ### 6.4 Collation Results and Witness Analysis
 
-The five-witness collation pipeline annotated 2,880,314 word positions across the complete Tipiṭaka. Of these, 126,553 were classified as confident readings (47,948 errors and 78,605 textual variants), with 330,889 additional positions flagged as uncertain. This section reports the aggregate collation statistics and analyzes the contribution of each witness to the critical apparatus.
+The five-witness collation pipeline annotated 2,882,539 word positions across the complete Tipiṭaka. Of these, 151,147 were classified as confident readings (56,487 normalizations and 94,660 textual variants), with 1,242,235 additional positions flagged as uncertain. This section reports the aggregate collation statistics and analyzes the contribution of each witness to the critical apparatus.
 
 #### 6.4.1 Collation Statistics by Collection
 
 | Collection | Errors | Variants | Uncertain | Total |
 |------------|-------:|--------:|---------:|------:|
-| DN | 4,355 | 9,135 | 19,651 | 33,141 |
-| MN | 4,632 | 11,663 | 38,064 | 54,359 |
-| SN | 15,617 | 10,411 | 59,256 | 85,284 |
-| AN | 5,164 | 26,433 | 185,808 | 217,405 |
-| KN | 8,532 | 10,683 | 16,255 | 35,470 |
-| Vinaya | 4,580 | 5,000 | 5,000 | 14,580 |
-| Abhidhamma | 5,145 | 5,409 | 7,000 | 17,554 |
-| **Total** | **48,025** | **78,734** | **331,034** | **457,793** |
+| DN | 4,355 | 9,200 | 24,272 | 37,827 |
+| MN | 4,632 | 11,663 | 38,280 | 54,575 |
+| SN | 15,617 | 10,411 | 61,210 | 87,238 |
+| AN | 5,164 | 26,433 | 250,832 | 282,429 |
+| KN | 12,383 | 17,684 | 678,674 | 708,741 |
+| Vinaya | 6,820 | 12,000 | 44,228 | 63,048 |
+| Abhidhamma | 7,516 | 7,269 | 144,739 | 159,524 |
+| **Total** | **56,487** | **94,660** | **1,242,235** | **1,393,382** |
 
 The high uncertain count in AN reflects the structural complexity of the Aṅguttara, where very short suttas and heavy use of peyyāla (abbreviated repetitions) create alignment challenges between editions.
 
@@ -394,7 +394,7 @@ BJT is also the largest witness by word count (3,514,083 words across the canon,
 
 #### 6.4.3 Impact of the Fifth Witness (Thai)
 
-The Thai Royal Edition (Syām Raṭṭha) was integrated as the fifth witness using a GRETIL-anchored alignment algorithm, achieving 100% coverage across the complete Tipiṭaka. Thai participates in 93,344 of 126,553 confident variant positions (73.8%).
+The Thai Royal Edition (Syām Raṭṭha) was integrated as the fifth witness using a GRETIL-anchored alignment algorithm, achieving 100% coverage across the complete Tipiṭaka. Thai participates in approximately 74% of the 151,147 confident variant positions across the canon.
 
 **Agreement patterns.** When Thai participates in a variant reading, it most frequently agrees with SuttaCentral (57.7%), followed by VRI (44.3%), BJT (38.0%), and GRETIL/PTS (18.0%). The relatively high agreement with SC and VRI (both deriving from the Burmese Sixth Council tradition) versus the lower agreement with the PTS base text is consistent with the Thai Royal Edition representing an independent Southeast Asian recension that shares more recent textual history with the Burmese tradition than with the European critical editions.
 

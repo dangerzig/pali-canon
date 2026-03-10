@@ -9,14 +9,16 @@ For standalone CLI usage, see src/typeset_critical.py.
 Both share the same LaTeX preamble for consistency.
 """
 
+import logging
 import subprocess
-import re
 from pathlib import Path
 from datetime import datetime
 from typing import Optional, Union
 
 from .store import Store
 from .text import parse_sutta_id
+
+logger = logging.getLogger(__name__)
 
 
 # LaTeX preamble for critical editions
@@ -350,17 +352,17 @@ class Exporter:
                     timeout=120,
                 )
                 if result.returncode != 0:
-                    print(f"XeLaTeX error: {result.stderr[-500:]}")
+                    logger.error("XeLaTeX error: %s", result.stderr[-500:])
                     return False
 
             success = output_path.exists()
             return success
 
         except FileNotFoundError:
-            print("XeLaTeX not found. Please install a TeX distribution.")
+            logger.error("XeLaTeX not found. Please install a TeX distribution.")
             return False
         except subprocess.TimeoutExpired:
-            print("XeLaTeX compilation timed out.")
+            logger.error("XeLaTeX compilation timed out.")
             return False
         finally:
             # Clean up auxiliary files
@@ -368,5 +370,5 @@ class Exporter:
                 aux_file = output_path.with_suffix(ext)
                 if aux_file.exists():
                     aux_file.unlink()
-            if not keep_tex and tex_path.exists():
+            if not keep_tex and success and tex_path.exists():
                 tex_path.unlink()

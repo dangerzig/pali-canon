@@ -8,7 +8,7 @@ from collections import Counter
 import json
 
 from .text import parse_sutta_id, iter_file_segments
-from .store import Store, NIKAYAS
+from .store import Store
 
 # All collections in canonical order
 ALL_COLLECTIONS = ["dn", "mn", "sn", "an", "kn", "vinaya", "abhidhamma"]
@@ -389,7 +389,6 @@ class Vocabulary:
             output_path: Output CSV path
             use_lemmas: If True, use lemmatized text
         """
-        store = Store(self.data_dir)
         rows = []
 
         nikaya_names = {
@@ -404,8 +403,8 @@ class Vocabulary:
 
         for nikaya in ALL_COLLECTIONS:
             texts = []
-            for sutta_info in store.list_suttas(nikaya, lemmatized=use_lemmas):
-                sutta = store.get_sutta(sutta_info.id, lemmatized=use_lemmas, include_tokens=False)
+            for sutta_info in self._store.list_suttas(nikaya, lemmatized=use_lemmas):
+                sutta = self._store.get_sutta(sutta_info.id, lemmatized=use_lemmas, include_tokens=False)
                 if sutta:
                     texts.append(sutta.text)
 
@@ -567,12 +566,11 @@ class Vocabulary:
             output_path: Output CSV path
             use_lemmas: If True, use lemmatized text source
         """
-        store = Store(self.data_dir)
         rows = []
 
         for collection in ALL_COLLECTIONS:
-            for sutta_info in store.list_suttas(collection, lemmatized=use_lemmas):
-                sutta = store.get_sutta(sutta_info.id, lemmatized=use_lemmas, include_tokens=False)
+            for sutta_info in self._store.list_suttas(collection, lemmatized=use_lemmas):
+                sutta = self._store.get_sutta(sutta_info.id, lemmatized=use_lemmas, include_tokens=False)
                 if sutta:
                     rows.append({
                         "sutta": sutta_info.id,
@@ -732,5 +730,5 @@ class Vocabulary:
                     doc_counts[doc_id] = Counter()
                 count_segments(segments, doc_counts[doc_id])
             else:
-                target = list(doc_counts.values())[0]
+                target = next(iter(doc_counts.values()))
                 count_segments(segments, target)

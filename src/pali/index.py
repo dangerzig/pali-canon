@@ -21,6 +21,10 @@ class SearchIndex:
         self.data_dir = data_dir
         self.index_path = index_path or (data_dir / "index.db")
         self._conn: Optional[sqlite3.Connection] = None
+        # Transient build state
+        self._fts_batch: list = []
+        self._lemma_batch: list = []
+        self._batch_size: int = 1000
 
     def _get_conn(self) -> sqlite3.Connection:
         """Get or create database connection."""
@@ -92,10 +96,9 @@ class SearchIndex:
             );
         """)
 
-        # Initialize batch buffers
-        self._fts_batch = []
-        self._lemma_batch = []
-        self._batch_size = 1000
+        # Reset batch buffers
+        self._fts_batch.clear()
+        self._lemma_batch.clear()
 
         # Index lemmatized data within a transaction
         try:
@@ -123,8 +126,8 @@ class SearchIndex:
             raise
         finally:
             # Clean up batch buffers
-            self._fts_batch = []
-            self._lemma_batch = []
+            self._fts_batch.clear()
+            self._lemma_batch.clear()
 
     def _flush_batches(self, conn: sqlite3.Connection) -> None:
         """Flush batched inserts to the database."""
@@ -322,26 +325,29 @@ class SearchIndex:
 
         conn = self._get_conn()
 
-        if nikaya:
-            cursor = conn.execute(
-                """SELECT segment_id, sutta_id, nikaya,
-                          snippet(segments_fts, 3, '»', '«', '...', 30) as snippet
-                   FROM segments_fts
-                   WHERE segments_fts MATCH ? AND nikaya = ?
-                   LIMIT ?""",
-                (query, nikaya, limit)
-            )
-        else:
-            cursor = conn.execute(
-                """SELECT segment_id, sutta_id, nikaya,
-                          snippet(segments_fts, 3, '»', '«', '...', 30) as snippet
-                   FROM segments_fts
-                   WHERE segments_fts MATCH ?
-                   LIMIT ?""",
-                (query, limit)
-            )
+        try:
+            if nikaya:
+                cursor = conn.execute(
+                    """SELECT segment_id, sutta_id, nikaya,
+                              snippet(segments_fts, 3, '«', '»', '...', 30) as snippet
+                       FROM segments_fts
+                       WHERE segments_fts MATCH ? AND nikaya = ?
+                       LIMIT ?""",
+                    (query, nikaya, limit)
+                )
+            else:
+                cursor = conn.execute(
+                    """SELECT segment_id, sutta_id, nikaya,
+                              snippet(segments_fts, 3, '«', '»', '...', 30) as snippet
+                       FROM segments_fts
+                       WHERE segments_fts MATCH ?
+                       LIMIT ?""",
+                    (query, limit)
+                )
 
-        return [dict(row) for row in cursor.fetchall()]
+            return [dict(row) for row in cursor.fetchall()]
+        except sqlite3.OperationalError:
+            return []
 
     def get_sutta_ids(self, nikaya: Optional[str] = None) -> list[str]:
         """Get all sutta IDs, optionally filtered by nikaya."""

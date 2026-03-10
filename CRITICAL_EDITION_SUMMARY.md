@@ -81,24 +81,22 @@ The enhanced pipeline uses 626 empirically-derived sandhi rules from the DPD pro
 
 Word-level collation across witnesses, with automatic classification of differences.
 
-Note: some collation files cap entries at 1,000 per category per text, so totals below are lower bounds.
-
 ### Sutta Piṭaka (5 witnesses: SC/GRETIL/VRI/BJT/Thai)
 
 | Nikāya | Texts | Errors | Variants |
 |--------|-------|--------|----------|
-| DN | 34 | 4,355 | 9,135 |
+| DN | 34 | 4,355 | 9,200 |
 | MN | 152 | 4,632 | 11,663 |
 | SN | 1,564 | 15,617 | 10,411 |
 | AN | 843 | 5,164 | 26,433 |
-| KN | 17 | 8,532 | 10,683 |
+| KN | 17 | 12,383 | 17,684 |
 
 ### Vinaya & Abhidhamma (5 witnesses: SC/GRETIL/VRI/BJT/Thai)
 
 | Piṭaka | Texts | Errors | Variants |
 |--------|-------|--------|----------|
-| Vinaya | 5 | 4,580 | 5,000 |
-| Abhidhamma | 7 | 5,145 | 5,409 |
+| Vinaya | 5 | 6,820 | 12,000 |
+| Abhidhamma | 7 | 7,516 | 7,269 |
 
 ### Classification Methodology
 

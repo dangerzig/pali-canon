@@ -8,9 +8,8 @@ from typing import Optional
 
 from .models import Sutta, Segment, SuttaInfo, NikayaInfo
 from .text import (
-    KN_TEXT_PREFIXES, NESTED_COLLECTIONS, ITEMS_COLLECTIONS, FLAT_COLLECTIONS,
-    VINAYA_TEXT_IDS, ABHIDHAMMA_TEXT_IDS,
-    parse_sutta_id, iter_file_segments,
+    NESTED_COLLECTIONS, FLAT_COLLECTIONS,
+    parse_sutta_id,
 )
 
 # Default data directory (relative to package)

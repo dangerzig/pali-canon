@@ -29,8 +29,8 @@ class Token:
             d["root"] = self.root
         if self.sandhi is not None:
             d["sandhi"] = self.sandhi
-            if self.components is not None:
-                d["components"] = self.components
+        if self.components is not None:
+            d["components"] = self.components
         return d
 
 

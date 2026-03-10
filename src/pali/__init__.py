@@ -25,11 +25,14 @@ Usage:
             print(f"{token.word} -> {token.lemma}")
 """
 
+import logging
 from pathlib import Path
 from typing import Optional, Union
 
 from .models import Sutta, Segment, Token, SuttaInfo, NikayaInfo
-from .store import Store, NIKAYAS
+
+logger = logging.getLogger(__name__)
+from .store import Store
 from .search import Search, LemmaSearchResult, TextSearchResult
 from .vocab import Vocabulary, VocabularyStats
 from .export import Exporter
@@ -614,25 +617,25 @@ class Canon:
         out = Path(output_dir)
         out.mkdir(parents=True, exist_ok=True)
 
-        print("Exporting tipitaka_raw.csv...")
+        logger.info("Exporting tipitaka_raw.csv...")
         self.export_tipitaka_raw(str(out / "tipitaka_raw.csv"))
 
-        print("Exporting tipitaka_suttas_raw.csv...")
+        logger.info("Exporting tipitaka_suttas_raw.csv...")
         self.export_tipitaka_suttas_raw(str(out / "tipitaka_suttas_raw.csv"))
 
-        print("Exporting tipitaka_long.csv (lemmas by nikaya)...")
+        logger.info("Exporting tipitaka_long.csv (lemmas by nikaya)...")
         self.export_tipitaka_long(str(out / "tipitaka_long.csv"), use_lemmas=True)
 
-        print("Exporting tipitaka_long_words.csv (surface forms by nikaya)...")
+        logger.info("Exporting tipitaka_long_words.csv (surface forms by nikaya)...")
         self.export_tipitaka_long(str(out / "tipitaka_long_words.csv"), use_lemmas=False)
 
-        print("Exporting tipitaka_wide.csv...")
+        logger.info("Exporting tipitaka_wide.csv...")
         self.export_tipitaka_wide(str(out / "tipitaka_wide.csv"), use_lemmas=True, min_freq=10)
 
-        print("Exporting tipitaka_suttas_long.csv...")
+        logger.info("Exporting tipitaka_suttas_long.csv...")
         self._get_vocab().export_tipitaka_suttas_long(str(out / "tipitaka_suttas_long.csv"))
 
-        print("Exporting tipitaka_suttas_wide.csv...")
+        logger.info("Exporting tipitaka_suttas_wide.csv...")
         self.export_tipitaka_wide(str(out / "tipitaka_suttas_wide.csv"), use_lemmas=True, by_sutta=True, min_freq=10)
 
-        print("Done! Files written to:", output_dir)
+        logger.info("Done! Files written to: %s", output_dir)

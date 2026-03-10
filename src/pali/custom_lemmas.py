@@ -67,6 +67,8 @@ def _build_lemma_dict(section: str) -> dict[str, tuple[str, str]]:
     result = {}
     data = _CONFIG.get(section, {})
     for word, info in data.items():
+        if not isinstance(info, dict) or 'lemma' not in info or 'pos' not in info:
+            continue
         result[word] = (info['lemma'], info['pos'])
     return result
 
@@ -75,6 +77,8 @@ def _build_sandhi_dict() -> dict[str, tuple[list, list]]:
     result = {}
     data = _CONFIG.get('sandhi_decompositions', {})
     for word, info in data.items():
+        if not isinstance(info, dict) or 'parts' not in info or 'components' not in info:
+            continue
         result[word] = (info['parts'], info['components'])
     return result
 

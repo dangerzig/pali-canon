@@ -1,10 +1,13 @@
 """Search functionality for the Pāli Canon."""
 
+import logging
 from dataclasses import dataclass, field
 from typing import Optional
 from pathlib import Path
 
 from .index import SearchIndex
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -50,9 +53,9 @@ class Search:
     def ensure_index(self) -> None:
         """Ensure search index is built."""
         if not self._index.is_built():
-            print("Building search index (this may take a few minutes)...")
+            logger.info("Building search index (this may take a few minutes)...")
             self._index.build()
-            print("Index built.")
+            logger.info("Index built.")
 
     def search_lemma(
         self,

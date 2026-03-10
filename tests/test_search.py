@@ -38,6 +38,71 @@ class TestSearchIndex:
         idx = SearchIndex(tmp_path)
         idx.close()  # Should not raise
 
+    def test_search_text_malformed_query(self, tmp_path):
+        """Malformed FTS5 queries should return empty list, not raise."""
+        import sqlite3
+        idx = SearchIndex(tmp_path, index_path=tmp_path / "test.db")
+        conn = idx._get_conn()
+        conn.executescript("""
+            CREATE VIRTUAL TABLE segments_fts USING fts5(
+                segment_id, sutta_id, nikaya, pali, tokenize='unicode61'
+            );
+            CREATE TABLE lemma_index (
+                lemma TEXT NOT NULL,
+                word TEXT NOT NULL,
+                segment_id TEXT NOT NULL,
+                sutta_id TEXT NOT NULL,
+                nikaya TEXT NOT NULL,
+                pos TEXT
+            );
+            CREATE TABLE sutta_meta (
+                sutta_id TEXT PRIMARY KEY,
+                nikaya TEXT NOT NULL,
+                title_pali TEXT,
+                title_eng TEXT,
+                pts TEXT,
+                segment_count INTEGER
+            );
+        """)
+        # Force is_built() to return True by ensuring tables exist
+        results = idx.search_text("OR AND NOT")
+        assert results == []
+        results = idx.search_text("unclosed\"quote")
+        assert results == []
+        idx.close()
+
+    def test_get_sutta_ids_empty(self, tmp_path):
+        """get_sutta_ids on empty index should return empty list."""
+        import sqlite3
+        idx = SearchIndex(tmp_path, index_path=tmp_path / "test.db")
+        conn = idx._get_conn()
+        conn.executescript("""
+            CREATE TABLE lemma_index (
+                lemma TEXT NOT NULL,
+                word TEXT NOT NULL,
+                segment_id TEXT NOT NULL,
+                sutta_id TEXT NOT NULL,
+                nikaya TEXT NOT NULL,
+                pos TEXT
+            );
+            CREATE VIRTUAL TABLE segments_fts USING fts5(
+                segment_id, sutta_id, nikaya, pali, tokenize='unicode61'
+            );
+            CREATE TABLE sutta_meta (
+                sutta_id TEXT PRIMARY KEY,
+                nikaya TEXT NOT NULL,
+                title_pali TEXT,
+                title_eng TEXT,
+                pts TEXT,
+                segment_count INTEGER
+            );
+        """)
+        result = idx.get_sutta_ids()
+        assert result == []
+        result_filtered = idx.get_sutta_ids(nikaya="dn")
+        assert result_filtered == []
+        idx.close()
+
     def test_index_segment_includes_sandhi_components(self, tmp_path):
         """Regression: sandhi component lemmas must be indexed."""
         import sqlite3

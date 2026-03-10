@@ -500,7 +500,15 @@ try:
 except ImportError:
     HAS_PANDAS = False
 
+try:
+    import numpy as np
+    from scipy import sparse
+    HAS_SCIPY = True
+except ImportError:
+    HAS_SCIPY = False
+
 requires_pandas = pytest.mark.skipif(not HAS_PANDAS, reason="pandas not installed")
+requires_scipy = pytest.mark.skipif(not HAS_SCIPY, reason="scipy not installed")
 
 
 @requires_lemmatized
@@ -526,3 +534,36 @@ class TestExportDtm:
             rows = list(reader)
 
         assert len(rows) == 34  # 34 DN suttas
+
+
+# =========================================================================
+# document_term_matrix() — sparse matrix path
+# =========================================================================
+
+@requires_lemmatized
+@requires_scipy
+class TestDocumentTermMatrixSparse:
+    def setup_method(self):
+        from conftest import DATA_DIR
+        self.vocab = Vocabulary(DATA_DIR)
+
+    def test_returns_sparse_tuple(self):
+        result = self.vocab.document_term_matrix("dn", min_df=10)
+        assert isinstance(result, tuple)
+        matrix, doc_list, term_list = result
+        assert sparse.issparse(matrix)
+        assert matrix.shape[0] == len(doc_list)
+        assert matrix.shape[1] == len(term_list)
+
+    def test_dn_has_34_docs(self):
+        matrix, doc_list, term_list = self.vocab.document_term_matrix("dn", min_df=10)
+        assert len(doc_list) == 34
+
+    def test_values_nonnegative(self):
+        matrix, _, _ = self.vocab.document_term_matrix("dn", min_df=10)
+        assert matrix.min() >= 0
+
+    def test_min_df_filters_terms(self):
+        _, _, terms_low = self.vocab.document_term_matrix("dn", min_df=1)
+        _, _, terms_high = self.vocab.document_term_matrix("dn", min_df=10)
+        assert len(terms_high) <= len(terms_low)
