@@ -22,20 +22,28 @@ def test_basic_structure():
     canon = Canon()
     errors = []
 
-    # Expected counts (approximate - based on traditional counts)
+    # Expected counts (approximate - based on traditional counts).
+    # Vinaya/Abhidhamma are counted per book (5 and ~8 volumes), not per sutta.
     expected = {
         'dn': (34, 30, 40),      # (expected, min, max)
         'mn': (152, 150, 160),
         'sn': (2889, 1800, 3000),  # varies by counting method
         'an': (2344, 1400, 2500),  # varies by counting method
         'kn': (None, 1000, 5000),  # highly variable
+        'vinaya': (5, 4, 8),       # Suttavibhaṅga 1/2, Mahā/Cūḷavagga, Parivāra
+        'abhidhamma': (8, 6, 12),  # 7 books, some split across volumes
     }
+    EXPECTED_COLLECTIONS = {'dn', 'mn', 'sn', 'an', 'kn', 'vinaya', 'abhidhamma'}
 
     nikayas = canon.list_nikayas()
-    print(f"Nikāyas found: {nikayas}")
+    print(f"Collections found: {nikayas}")
 
-    if set(nikayas) != {'dn', 'mn', 'sn', 'an', 'kn'}:
-        errors.append(f"Missing nikāyas: expected dn,mn,sn,an,kn, got {nikayas}")
+    missing = EXPECTED_COLLECTIONS - set(nikayas)
+    unexpected = set(nikayas) - EXPECTED_COLLECTIONS
+    if missing:
+        errors.append(f"Missing collections: {sorted(missing)}")
+    if unexpected:
+        errors.append(f"Unexpected collections: {sorted(unexpected)}")
 
     for nikaya in nikayas:
         info = canon.get_nikaya_info(nikaya)

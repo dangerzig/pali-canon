@@ -13,7 +13,8 @@ Covers:
 import pytest
 
 from lemmatize_canon import (
-    Lemmatizer, TokenInfo, ENHANCED_STRATEGIES, FINITE_VERB_POS, DPD_DB,
+    Lemmatizer, TokenInfo, ENHANCED_STRATEGIES, DEFAULT_STRATEGIES,
+    FINITE_VERB_POS, DPD_DB,
 )
 
 requires_dpd = pytest.mark.skipif(not DPD_DB.exists(), reason="DPD database not present")
@@ -210,3 +211,40 @@ class TestNtiVerbs:
     @requires_dpd
     def test_select_deconstruction_keeps_nti_nonverb(self, lemmatizer):
         assert lemmatizer._select_deconstruction(["evaṃ + iti"], "evanti") == ["evaṃ", "iti"]
+
+    @requires_dpd
+    @pytest.mark.parametrize("word,lemma", [
+        ("desessantī", "deseti"), ("vuṭṭhahissantī", "vuṭṭhahati"),
+    ])
+    def test_lengthened_ntī_verb_not_split(self, lemmatizer, word, lemma):
+        """Metrically lengthened -ntī 3pl verbs (no own DPD entry) must not split."""
+        t = lemmatizer.lookup_word(word)
+        assert t.sandhi is None, f"{word} wrongly split as {t.sandhi}"
+        assert t.lemma == lemma
+
+    @requires_dpd
+    def test_select_deconstruction_rejects_lengthened_ntī_verb(self, lemmatizer):
+        # desessantī has no DPD row; the shortened desessanti is a finite verb.
+        assert lemmatizer._select_deconstruction(["desessaṃ + iti"], "desessantī") is None
+
+
+class TestCachePipelineIsolation:
+    """Regression for CODE_REVIEW finding 5: cache must not leak across pipelines."""
+
+    @requires_dpd
+    def test_no_cross_pipeline_contamination(self, lemmatizer):
+        # noupādāno resolves differently: enhanced splits (na + upādāno), legacy does not.
+        lemmatizer._active_strategies = ENHANCED_STRATEGIES
+        enh = lemmatizer.lookup_word("noupādāno", strategies=ENHANCED_STRATEGIES)
+        # switch pipeline on the SAME instance, WITHOUT a manual cache.clear()
+        lemmatizer._active_strategies = DEFAULT_STRATEGIES
+        leg = lemmatizer.lookup_word("noupādāno", strategies=DEFAULT_STRATEGIES)
+        assert enh.sandhi == ["na", "upādāno"]   # enhanced result
+        assert leg.sandhi is None                # legacy result, not the cached split
+        assert lemmatizer._cache_pipeline is DEFAULT_STRATEGIES
+
+    @requires_dpd
+    def test_switch_back_recomputes(self, lemmatizer):
+        lemmatizer.lookup_word("noupādāno", strategies=DEFAULT_STRATEGIES)
+        again = lemmatizer.lookup_word("noupādāno", strategies=ENHANCED_STRATEGIES)
+        assert again.sandhi == ["na", "upādāno"]

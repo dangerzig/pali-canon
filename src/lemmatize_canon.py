@@ -823,6 +823,10 @@ class Lemmatizer:
         self._valid_word_cache = {}  # word -> bool (for _is_valid_word)
         self._finite_verb_cache = {}  # word -> bool (for _is_finite_verb)
         self._active_strategies = ENHANCED_STRATEGIES
+        # The word cache (self.cache) is valid for ONE strategy pipeline at a
+        # time; track which, so a switch (legacy vs enhanced on the same
+        # instance) cannot serve a result computed under the other pipeline.
+        self._cache_pipeline = self._active_strategies
         self.sandhi_engine = SandhiRuleEngine(sandhi_rules_path)
         self.stats = {
             "total_words": 0,
@@ -1171,6 +1175,16 @@ class Lemmatizer:
         Returns:
             TokenInfo with lemma/sandhi information
         """
+        # The cache holds results for a single pipeline; if the requested
+        # pipeline differs from the one the cache was built under, drop it so a
+        # legacy/enhanced switch on the same instance cannot return a stale,
+        # cross-pipeline result (and recursive sub-lookups stay consistent).
+        if strategies is None:
+            strategies = self._active_strategies
+        if strategies is not self._cache_pipeline:
+            self.cache.clear()
+            self._cache_pipeline = strategies
+
         # Check cache first
         if word in self.cache:
             return self.cache[word]
@@ -1183,10 +1197,6 @@ class Lemmatizer:
             return token
 
         token = TokenInfo(word=word)
-
-        # Try each strategy in order until one succeeds
-        if strategies is None:
-            strategies = self._active_strategies
 
         for strategy in strategies:
             # Skip if we already have a result
@@ -1371,8 +1381,9 @@ class Lemmatizer:
         the -nti ending: a ṃ-host contracts to -nti only as the 3rd-plural verb
         ending; a genuinely QUOTED 3pl verb surfaces as -ntīti (gacchanti+iti ->
         gacchantīti), never bare -nti. So a reconstructing quotative split is
-        rejected when the surface ends in -nti and is itself a finite verb
-        (santi, bhavissanti, abhinandunti -> the verb). This mirrors the -ti rule
+        rejected when the surface ends in -nti (or its metrically lengthened -ntī)
+        and is itself a finite verb (santi, bhavissanti, abhinandunti, desessantī
+        -> the verb). This mirrors the -ti rule
         for jānāti. Otherwise the first reconstructing candidate wins (we do not
         re-rank hosts among valid quotative splits — that is homograph
         disambiguation outside this fix's scope).
@@ -1391,9 +1402,14 @@ class Lemmatizer:
                 candidates.append(parts)
         if not candidates:
             return None  # no quotative split reconstructs -> headword fallback
-        # -nti finite verb is a 3rd-plural verb, not a quotative (santi, not saṃ+iti)
-        if word.endswith('nti') and self._is_finite_verb(word):
-            return None
+        # -nti/-ntī finite verb is a 3rd-plural verb, not a quotative (santi, not
+        # saṃ+iti). The metrically lengthened -ntī surface (desessantī) usually
+        # lacks its own DPD entry — the split is reached by normalising to -nti —
+        # so also test that shortened form for finite-verb status.
+        if word.endswith(('nti', 'ntī')):
+            short = word[:-1] + 'i' if word.endswith('ntī') else word
+            if self._is_finite_verb(word) or self._is_finite_verb(short):
+                return None
         return candidates[0]
 
     def _get_headword_info(self, word: str) -> Optional[dict]:
