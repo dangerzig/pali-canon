@@ -65,10 +65,17 @@ commentaries fused in one file, so we emit one unit and note the alternative.
 
 The CST also has the sub-commentaries — Vinaya **Sāratthadīpanī** (`vin01t1`,
 `vin01t2`, `vin02t`) and the Abhidhamma **Mūlaṭīkā** (`abh01t`, `abh02t`,
-`abh03t`). **PTS never published these in roman script**, so there is no PTS
-volume structure to align them to. They are excluded from the PTS-organized
-edition (they can only be kept in their native CST structure, which is a
-different artifact). Same goes for any ṭīkā lacking a PTS roman edition.
+`abh03t`). **Neither has a PTS roman edition**, so there is no PTS volume
+structure to align them to. They are excluded (they can only be kept in their
+native CST structure, a different artifact).
+
+Note: the PTS *has* published a few ṭīkās in roman, just none of the Vin/Abh
+ones here — **Līnatthapakāsinī** (Dīgha ṭīkā, 3 vols, de Silva 1970, complete),
+**Sāratthamañjūsā** (Aṅguttara ṭīkā, 3 vols, Peceṇko 1996–99, first 7 nipātas
+only), and **Abhidhammatthavibhāvinī** (on the medieval Abhidhammatthasaṅgaha,
+not a canonical commentary). Both PTS canonical-text ṭīkās are Sutta-side, so a
+future extension could PTS-organize the **DN sub-commentary** (complete) and the
+**AN sub-commentary** (partial).
 
 ## Boundary source
 

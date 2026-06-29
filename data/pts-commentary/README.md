@@ -57,7 +57,12 @@ The **Sutta commentaries** are PTS-organized separately, in
 
 ## Out of scope
 
-- **ṭīkās** (Vinaya Sāratthadīpanī, Abhidhamma Mūlaṭīkā): PTS never published
-  them in roman script, so there is no PTS volume structure to align to.
+- **ṭīkās** (Vinaya Sāratthadīpanī, Abhidhamma Mūlaṭīkā): these two have **no PTS
+  roman edition**, so there is no PTS volume structure to align to. (PTS *did*
+  publish a few sub-commentaries — Dīgha Līnatthapakāsinī, 3 vols; Aṅguttara
+  Sāratthamañjūsā, 3 vols but only the first 7 nipātas; Abhidhammatthavibhāvinī
+  on the medieval Saṅgaha — all Sutta-side or on a non-canonical manual, none on
+  the Vinaya/Abhidhamma commentaries here. The DN/AN ṭīkās could be
+  PTS-organized later if desired.)
 - **Pañcappakaraṇaṭṭhakathā flag:** PTS also issued the Kathāvatthu commentary
   separately (Minayeff, *JPTS* 1889); CST fuses all five, so this is one unit.
