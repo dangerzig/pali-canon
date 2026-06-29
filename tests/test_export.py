@@ -1,7 +1,7 @@
 """Tests for pali.export — LaTeX generation."""
 
 import pytest
-from conftest import requires_data
+from conftest import requires_data, slow
 
 from pali.export import escape_latex, is_verse, format_verse, Exporter
 
@@ -148,6 +148,7 @@ class TestExporterExportLatex:
 # Exporter.export_pdf()
 # =========================================================================
 
+@slow
 @requires_data
 class TestExporterExportPdf:
     @pytest.fixture

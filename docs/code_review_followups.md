@@ -43,11 +43,12 @@ return True for everything → bad PTS readings silently pass as valid variants.
 - Only suppress known malformed-query errors; surface index/DB errors.
 - Effort: medium.
 
-### D. (#6) Tests not tiered (full suite ~7–9 min, corpus-coupled) — MEDIUM
-- Add small deterministic fixtures for unit tests; mark full-corpus tests
-  `slow`/`corpus`; run fast tests per-change, corpus acceptance on release.
-- Add golden-file tests for canonical/lemmatized/collation/export samples.
-- Effort: medium; big developer-velocity payoff.
+### D. (#6) Tests not tiered — DONE (markers); golden files remain
+- Registered `slow` + `corpus` markers (pytest.ini, conftest); marked the heavy
+  export/PDF/index-build tests. Fast tier `pytest -m "not slow and not corpus"`
+  now runs ~4s (was ~3.5 min full). Tiers documented in pytest.ini.
+- REMAINING (smaller follow-up): golden-file fixtures for representative
+  canonical/lemmatized/collation/export outputs to lock formatting.
 
 ### E. (#8) Packaging / external-data setup not reproducible — MEDIUM
 - Add `pyproject.toml` (metadata, Python version, runtime deps, optional

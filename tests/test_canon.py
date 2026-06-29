@@ -1,7 +1,7 @@
 """Tests for pali.Canon — top-level API integration tests."""
 
 import pytest
-from conftest import requires_data
+from conftest import requires_data, slow
 
 from pali import Canon, Sutta, Segment, SuttaInfo, NikayaInfo
 
@@ -139,11 +139,13 @@ class TestCanon:
         content = output.read_text(encoding="utf-8")
         assert "\\begin{document}" in content
 
+    @slow
     def test_export_pdf_returns_bool(self, canon, tmp_path):
         output = tmp_path / "dn1.pdf"
         result = canon.export_pdf("dn1", str(output))
         assert isinstance(result, bool)
 
+    @slow
     def test_export_tipitaka_raw(self, canon, tmp_path):
         import csv
         csv.field_size_limit(10 * 1024 * 1024)
@@ -154,6 +156,7 @@ class TestCanon:
             reader = csv.DictReader(f)
             assert "book" in reader.fieldnames
 
+    @slow
     def test_export_tipitaka_data_creates_all_files(self, canon, tmp_path):
         outdir = tmp_path / "export"
         canon.export_tipitaka_data(str(outdir))
