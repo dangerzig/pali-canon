@@ -10,7 +10,10 @@ per volume: `MANIFEST.csv`.
 The **Sutta commentaries** are PTS-organized separately, in
 `pali-commentary/data/raw-pts` (`.att` files), and are not duplicated here.
 
-## Contents (10 volumes — the complete Vinaya & Abhidhamma aṭṭhakathā)
+Two **Sutta sub-commentaries** that *do* have a PTS roman edition are included
+here as well (see below); the rest of the Sutta ṭīkās have no PTS edition.
+
+## Contents — Vinaya & Abhidhamma aṭṭhakathā (10 volumes)
 
 **Vinaya — Samantapāsādikā (PTS 7 vols, Takakusu & Nagai 1924–47):**
 - `Samantapasadika_I_Bahiranidana_Parajika_I` — Bāhiranidāna + Pārājika I comm.
@@ -25,6 +28,20 @@ The **Sutta commentaries** are PTS-organized separately, in
 - `Atthasalini` — Atthasālinī, comm. on Dhammasaṅgaṇī (PTS 1 vol, Müller 1897)
 - `Sammohavinodani` — Sammohavinodanī, comm. on Vibhaṅga (PTS 1 vol, Buddhadatta 1923)
 - `Pancappakaranatthakatha` — comm. on the last 5 Abhidhamma books (PTS 1 vol, Buddhadatta 1956)
+
+## Contents — Sutta sub-commentaries (ṭīkā) with a PTS edition (4 units)
+
+**Dīgha-nikāya ṭīkā — Līnatthapakāsinī (PTS 3 vols, de Silva 1970, complete):**
+- `Linatthapakasini_I_Silakkhandhavagga` — Sīlakkhandhavagga-ṭīkā (1:1, `s0101t`)
+- `Linatthapakasini_II_Mahavagga` — Mahāvagga-ṭīkā (1:1, `s0102t`)
+- `Linatthapakasini_III_Pathikavagga` — Pāthikavagga-ṭīkā (1:1, `s0103t`)
+
+**Aṅguttara-nikāya ṭīkā — Sāratthamañjūsā (PTS partial, Peceṇko 1996–99):**
+- `Saratthamanjusa_I-III_nipata1-7` — the PTS-covered span, **nipātas 1–7**
+  (`s0401t`+`s0402t`+`s0403t`). The PTS edition splits this into 3 physical
+  volumes, but those page boundaries are **not published online**, so the 3-way
+  split is **FLAGGED/pending** rather than guessed. Nipātas 8–11 (`s0404t`) are
+  **excluded** — no PTS edition exists for them.
 
 ## How the boundaries were set
 
@@ -46,23 +63,25 @@ The **Sutta commentaries** are PTS-organized separately, in
 
 ## Verification status
 
-- **Text conservation: PASS** — output words == CST source words (514,421). No
-  text lost (asserted globally; the vin01a 3-way split is also checked to sum
-  exactly).
+- **Text conservation: PASS** — output words == words of the emitted CST sources
+  (863,068). No text lost (asserted globally; the vin01a 3-way split is also
+  checked to sum exactly). The only deliberate exclusion is AN ṭīkā nipātas 8–11
+  (`s0404t`), which has no PTS edition.
 - **1:1 colophon-confirmed: PASS** — each 1:1 source ends with its expected
-  division colophon (e.g. `Mahāvagga-aṭṭhakathā niṭṭhitā`).
+  division colophon (e.g. `Mahāvagga-aṭṭhakathā niṭṭhitā`,
+  `Sīlakkhandhavaggaṭīkā niṭṭhitā`).
 - **Split anchors: PASS** — each anchor occurs exactly once; Vol II opens at the
   2nd Pārājika, Vol III opens at the Saṅghādisesa and ends at the Nissaggiya
-  colophon.
+  colophon. The AN ṭīkā unit ends at the Sattakanipāta (nipāta 7) colophon.
 
-## Out of scope
+## Out of scope (ṭīkās with no PTS roman edition)
 
-- **ṭīkās** (Vinaya Sāratthadīpanī, Abhidhamma Mūlaṭīkā): these two have **no PTS
-  roman edition**, so there is no PTS volume structure to align to. (PTS *did*
-  publish a few sub-commentaries — Dīgha Līnatthapakāsinī, 3 vols; Aṅguttara
-  Sāratthamañjūsā, 3 vols but only the first 7 nipātas; Abhidhammatthavibhāvinī
-  on the medieval Saṅgaha — all Sutta-side or on a non-canonical manual, none on
-  the Vinaya/Abhidhamma commentaries here. The DN/AN ṭīkās could be
-  PTS-organized later if desired.)
+- **Vinaya Sāratthadīpanī** (`vin*t`) and **Abhidhamma Mūlaṭīkā** (`abh*t`):
+  no PTS roman edition, so no PTS volume structure to align to.
+- **AN ṭīkā nipātas 8–11** (`s0404t`): beyond the PTS Sāratthamañjūsā's coverage.
+- Other Sutta ṭīkās (Majjhima `s02*t`, Saṃyutta `s03*t`, etc.): no PTS edition.
+- The one remaining PTS sub-commentary, **Abhidhammatthavibhāvinī**, is on the
+  medieval Abhidhammatthasaṅgaha (a non-canonical manual), not a canonical
+  commentary, so it is not part of this canon/commentary edition.
 - **Pañcappakaraṇaṭṭhakathā flag:** PTS also issued the Kathāvatthu commentary
   separately (Minayeff, *JPTS* 1889); CST fuses all five, so this is one unit.

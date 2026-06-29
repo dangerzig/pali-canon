@@ -5,7 +5,11 @@ Build a PTS-volume-organized edition of the Vinaya & Abhidhamma commentaries
 boundary reference. This is the CST TEXT segmented to PTS volume boundaries —
 NOT the PTS edition's readings.
 
-Coverage (10 volumes — the complete Vinaya & Abhidhamma aṭṭhakathā):
+Coverage: the complete Vinaya & Abhidhamma aṭṭhakathā (10 volumes), plus the two
+Sutta sub-commentaries (ṭīkā) that have a PTS roman edition — Dīgha
+Līnatthapakāsinī (3 vols, complete) and Aṅguttara Sāratthamañjūsā (PTS partial,
+nipātas 1–7). The Sutta *commentaries* (aṭṭhakathā) live elsewhere, already
+PTS-organized in pali-commentary/data/raw-pts.
 
   Abhidhamma (3, each 1:1):
     abh01a -> Atthasālinī           (Dhammasaṅgaṇī comm., PTS 1 vol, Müller 1897)
@@ -20,6 +24,15 @@ Coverage (10 volumes — the complete Vinaya & Abhidhamma aṭṭhakathā):
     vin02a2 -> Vol V   (Mahāvagga-aṭṭhakathā)                  1:1
     vin02a3 -> Vol VI  (Cūḷavagga-aṭṭhakathā)                  1:1
     vin02a4 -> Vol VII (Parivāra-aṭṭhakathā)                   1:1
+
+  Sutta sub-commentaries (ṭīkā) with a PTS roman edition:
+    Dīgha Līnatthapakāsinī (de Silva 1970, 3 vols, COMPLETE):
+      s0101t -> Vol I   (Sīlakkhandhavagga-ṭīkā)   1:1
+      s0102t -> Vol II  (Mahāvagga-ṭīkā)            1:1
+      s0103t -> Vol III (Pāthikavagga-ṭīkā)         1:1
+    Aṅguttara Sāratthamañjūsā (Peceṇko 1996–99, PARTIAL — nipātas 1–7 only):
+      s0401t+s0402t+s0403t -> one unit (nipātas 1–7); the PTS 3-volume split is
+      FLAGGED (boundaries not publicly sourced). s0404t (nipātas 8–11) excluded.
 
 Boundary basis for the vin01a split (GRETIL gretil/2_pali/4_comm/samp_Npu.htm,
 each file == one PTS volume, carrying [page N] markers):
@@ -83,6 +96,18 @@ ONE_TO_ONE = [
     ("Samantapasadika.VII", "vin02a4.att.txt", "Samantapasadika_VII_Parivara",
      "Samantapāsādikā VII (Parivāra-aṭṭhakathā)", "vinaya",
      "Vinaya-aṭṭhakathā niṭṭhitā"),
+    # Sutta sub-commentaries (ṭīkā) with a complete PTS roman edition.
+    # Dīgha-nikāya ṭīkā = Līnatthapakāsinī, PTS 3 vols (de Silva 1970), one per
+    # DN vagga — matches the 3 CST files exactly (colophon-confirmed).
+    ("Linatthapakasini.I",   "s0101t.tik.txt", "Linatthapakasini_I_Silakkhandhavagga",
+     "Līnatthapakāsinī I (Sīlakkhandhavagga-ṭīkā)", "subcommentary",
+     "Sīlakkhandhavaggaṭīkā niṭṭhitā"),
+    ("Linatthapakasini.II",  "s0102t.tik.txt", "Linatthapakasini_II_Mahavagga",
+     "Līnatthapakāsinī II (Mahāvagga-ṭīkā)", "subcommentary",
+     "Mahāvaggaṭīkā niṭṭhitā"),
+    ("Linatthapakasini.III", "s0103t.tik.txt", "Linatthapakasini_III_Pathikavagga",
+     "Līnatthapakāsinī III (Pāthikavagga-ṭīkā)", "subcommentary",
+     "Dīghanikāyaṭīkā niṭṭhitā"),
 ]
 
 
@@ -152,33 +177,71 @@ def build_samantapasadika_I_III(manifest):
     return nw
 
 
+# Aṅguttara-nikāya ṭīkā = Sāratthamañjūsā. PTS roman ed. (Peceṇko 1996–99) is
+# PARTIAL: it covers only nipātas 1–7 (Ekaka…Sattaka), in 3 physical volumes
+# whose internal page boundaries are not published online. CST has nipātas 1–7
+# in three files (s0401t = Ekaka; s0402t = Duka/Tika/Catukka; s0403t =
+# Pañcaka/Chakka/Sattaka) and nipātas 8–11 in s0404t. We emit the PTS-covered
+# span (1–7) as ONE unit and FLAG the 3-volume split as pending (no guessing,
+# per the Paṭṭhāna policy); nipātas 8–11 are excluded (no PTS edition).
+AN_TIKA_COVERED = ["s0401t.tik.txt", "s0402t.tik.txt", "s0403t.tik.txt"]
+AN_TIKA_EXCLUDED = ["s0404t.tik.txt"]  # nipātas 8–11, not in PTS
+
+
+def build_anguttara_tika(manifest):
+    text = "\n".join(read(f) for f in AN_TIKA_COVERED)
+    tail = "".join(text.split())[-400:]
+    assert "Sattakanipātavaṇṇanāya" in tail and "samattā" in tail, \
+        "AN ṭīkā 1–7 must end at the Sattakanipāta colophon"
+    n = len(words(text))
+    write("Saratthamanjusa_I-III_nipata1-7", text.strip() + "\n")
+    manifest.append([
+        "Saratthamanjusa.I-III", "Sāratthamañjūsā I–III (Aṅguttara ṭīkā, nipātas 1–7)",
+        "subcommentary", "+".join(f.replace(".tik.txt", "") for f in AN_TIKA_COVERED),
+        "PTS Sāratthamañjūsā covers nipātas 1–7 only (Peceṇko 1996–99, 3 vols); "
+        "the 3-volume split is PENDING (boundaries not publicly sourced). "
+        "Nipātas 8–11 (s0404t) excluded: no PTS edition."])
+    print(f"  {'Saratthamanjusa.I-III':22} <- {'s0401t+s0402t+s0403t':15} "
+          f"({n:>7,} words)  Sāratthamañjūsā (Aṅguttara ṭīkā, nipātas 1–7) [3-vol split FLAGGED]")
+    return n
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     manifest = []
-    print(f"Building PTS-organized commentary (Vin+Abh, 10 volumes) -> {OUT}\n")
+    print(f"Building PTS-organized commentary -> {OUT}\n")
     t1 = build_samantapasadika_I_III(manifest)
     t2 = build_one_to_one(manifest)
+    t3 = build_anguttara_tika(manifest)
 
     # Sort manifest into a sensible reading order for the CSV.
     order = {pid: i for i, pid in enumerate([
         "Samantapasadika.I", "Samantapasadika.II", "Samantapasadika.III",
         "Samantapasadika.IV", "Samantapasadika.V", "Samantapasadika.VI",
         "Samantapasadika.VII", "Atthasalini", "Sammohavinodani",
-        "Pancappakaranatthakatha"])}
+        "Pancappakaranatthakatha",
+        "Linatthapakasini.I", "Linatthapakasini.II", "Linatthapakasini.III",
+        "Saratthamanjusa.I-III"])}
     manifest.sort(key=lambda r: order.get(r[0], 99))
     with open(OUT / "MANIFEST.csv", "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["pts_id", "name", "basket", "cst_source", "boundary_basis"])
         w.writerows(manifest)
 
-    # Global text-conservation check: output words == CST source words.
-    src_files = ["vin01a", "vin02a1", "vin02a2", "vin02a3", "vin02a4",
-                 "abh01a", "abh02a", "abh03a"]
-    src_words = sum(len(words(read(f + ".att.txt"))) for f in src_files)
+    # Global text-conservation check: output words == words of the EMITTED CST
+    # sources (s0404t, AN nipātas 8–11, is deliberately excluded — not in PTS).
+    src = (["vin01a.att.txt", "vin02a1.att.txt", "vin02a2.att.txt",
+            "vin02a3.att.txt", "vin02a4.att.txt",
+            "abh01a.att.txt", "abh02a.att.txt", "abh03a.att.txt",
+            "s0101t.tik.txt", "s0102t.tik.txt", "s0103t.tik.txt"]
+           + AN_TIKA_COVERED)
+    src_words = sum(len(words(read(f))) for f in src)
     out_words = sum(len(words(p.read_text(encoding="utf-8")))
                     for p in OUT.glob("*.txt"))
     print(f"\nWrote {len(manifest)} volumes + MANIFEST.csv")
     print(f"text conservation: {out_words:,} == {src_words:,}  {out_words == src_words}")
+    print(f"  (excluded from PTS edition: {', '.join(f.replace('.tik.txt','') for f in AN_TIKA_EXCLUDED)} "
+          f"= AN ṭīkā nipātas 8–11, no PTS edition)")
     assert out_words == src_words, "TEXT LOSS"
 
 
