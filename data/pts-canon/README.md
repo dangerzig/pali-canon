@@ -41,16 +41,25 @@ of stray footnote-digit artifacts present in 2020-04-12.
   Cittayamaka (8th yamaka); split there (mid-CST-file).
 - **Sutta: AN Vol I VERIFIED** against GRETIL (both end at the Tikanipāta); the
   reorganise_pts boundaries align with PTS at the points checked.
+- **Abhidhamma single-volume books VERIFIED against GRETIL** — Dhammasaṅgaṇī,
+  Vibhaṅga, Dhātukathā, Puggalapaññatti and Kathāvatthu each close at the same
+  point as GRETIL's single PTS volume (e.g. Vibhaṅga → Dhammahadayavibhaṅga;
+  Puggalapaññatti → Dasakaniddesa; Kathāvatthu → 35th bhāṇavāra). So CST file =
+  PTS volume holds for these.
+- **Kathāvatthu = one unit, CONFIRMED** — GRETIL also carries it as a single
+  continuously-paginated unit (35 bhāṇavāras); no content-bearing 2-volume split.
+- **Paṭṭhāna top-level Tika/Duka division CONFIRMED consistent with GRETIL** —
+  GRETIL separates the Tikapaṭṭhāna (Parts I–III) from the Dukapaṭṭhāna, matching
+  our Tika / Duka / combined scheme at the major-division level.
 
-## Known TODO (expert verification needed)
+## Known TODO (refinements; none affect text correctness)
 1. **Paṭṭhāna fine PTS sub-volume boundaries.** Emitted at 3 clean CST-grounded
-   divisions (Tika / Duka / combined). The full PTS Paṭṭhāna subdivides the
-   Tikapaṭṭhāna into Parts I–III and arranges the Duka and combined paṭṭhānas
-   across volumes; those boundaries fall mid-CST and are intricate. FLAGGED.
+   divisions (Tika / Duka / combined), now confirmed consistent with GRETIL at
+   that level. The finer split of the Tikapaṭṭhāna into Parts I–III (GRETIL ends
+   them at Paccayavibhaṅgavāra and Kusalattika) falls mid-CST and it is not
+   certain GRETIL's "Parts" equal PTS physical volumes; left FLAGGED rather than
+   guessed.
 2. **Sutta volume boundaries** were set by `reorganise_pts.py` from structural
-   headings, not cross-checked against GRETIL's volume/page markers. A
-   confirmation pass against GRETIL (`an_vol*`, etc.) is outstanding.
-3. **Abhidhamma single-volume books** assume CST file = PTS volume; not yet
-   confirmed against GRETIL page counts.
-4. **Kathāvatthu** kept as one unit (PTS paginates it continuously); the 2-volume
-   physical binding split is not reproduced.
+   headings; AN Vol I is verified against GRETIL, but a full sweep of all 40
+   Sutta volumes against GRETIL (`an_vol*`, `dn_vol*`, `jatak*`) is an
+   outstanding confirmation (not a known defect).
