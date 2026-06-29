@@ -112,7 +112,7 @@ pali/
 │   │   └── custom_lemmas.yaml  # Custom lemma mappings
 │   ├── parse_*.py         # Source file parsers
 │   ├── lemmatize_canon.py # Lemmatization pipeline
-│   └── build_critical_complete.py  # Critical edition builder
+│   └── build_critical_edition.py   # Critical-apparatus edition builder
 ├── data/
 │   ├── canonical/         # SC Mahāsaṅgīti texts
 │   ├── lemmatized/        # Lemmatized SC texts

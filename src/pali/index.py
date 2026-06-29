@@ -42,9 +42,11 @@ class SearchIndex:
     def _source_fingerprint(self) -> tuple[int, str]:
         """Cheap fingerprint of the lemmatized source: (file_count, sha256).
 
-        Hashes each lemmatized JSON file's relative path and byte size (size
-        changes whenever content changes; unlike mtime it is stable across git
-        checkouts and clones). Used to detect a stale index.
+        Hashes each lemmatized JSON file's relative path, byte size, AND
+        modification time (st_mtime_ns). Size alone misses a same-size content
+        edit; including mtime catches it. (A git checkout that rewrites mtimes
+        only causes a harmless one-off rebuild.) Stat-only, so it stays cheap
+        enough to run on every is_built() check.
         """
         lemmatized_dir = self.data_dir / "lemmatized"
         entries = []
@@ -53,7 +55,8 @@ class SearchIndex:
                 if f.name.startswith("_"):
                     continue
                 rel = f.relative_to(lemmatized_dir).as_posix()
-                entries.append(f"{rel}:{f.stat().st_size}")
+                st = f.stat()
+                entries.append(f"{rel}:{st.st_size}:{st.st_mtime_ns}")
         h = hashlib.sha256("\n".join(entries).encode("utf-8")).hexdigest()
         return len(entries), h
 

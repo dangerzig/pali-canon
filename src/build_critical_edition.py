@@ -81,25 +81,34 @@ def build_sutta_critical(collation: dict, edition_id: str, source_path: Path,
 
 
 def _dpd_source() -> Optional[str]:
-    """Best-effort DPD validation provenance (shared with collation)."""
+    """Best-effort DPD validation provenance (repo-relative path)."""
     try:
         from collate_nikaya import get_dpd_validation_source
-        return get_dpd_validation_source()
+        src = Path(get_dpd_validation_source())
+        try:
+            return str(src.relative_to(DATA_DIR.parent))
+        except ValueError:
+            return src.name  # outside the repo: just the file name
     except Exception:
         return None
 
 
-def build(collations: Optional[list[str]] = None) -> int:
+def build(collations: Optional[list[str]] = None,
+          write_summary: bool = True) -> int:
     """Build critical editions for all (or selected) collation files.
 
-    Returns the number of critical files written.
+    Writes data/critical/<nik>/<id>_critical.json per collated text, and (unless
+    a subset is requested) a data/critical/_critical_summary.json with counts and
+    provenance. Returns the number of critical files written.
     """
     generated_at = datetime.now(timezone.utc).isoformat()
     dpd_source = _dpd_source()
     written = 0
+    by_nikaya: dict[str, dict] = {}
     nikaya_dirs = sorted(d for d in COLLATION_DIR.iterdir() if d.is_dir())
     for nik_dir in nikaya_dirs:
         out_dir = CRITICAL_DIR / nik_dir.name
+        n_here = apparatus_here = 0
         for coll_file in sorted(nik_dir.glob("*_collation.json")):
             if coll_file.name.startswith("_"):
                 continue
@@ -113,7 +122,28 @@ def build(collations: Optional[list[str]] = None) -> int:
             (out_dir / f"{edition_id}_critical.json").write_text(
                 json.dumps(edition, ensure_ascii=False, indent=2), encoding="utf-8")
             written += 1
-        logger.info("Built %s critical editions for %s", written, nik_dir.name)
+            n_here += 1
+            apparatus_here += edition["apparatus_count"]
+        if n_here:
+            by_nikaya[nik_dir.name] = {"editions": n_here,
+                                       "apparatus_entries": apparatus_here}
+            logger.info("Built %s critical editions for %s (%s apparatus entries)",
+                        n_here, nik_dir.name, apparatus_here)
+
+    if write_summary and not collations:
+        summary = {
+            "schema_version": SCHEMA_VERSION,
+            "generated_at": generated_at,
+            "builder": "build_critical_edition.py",
+            "dpd_validation_source": dpd_source,
+            "total_editions": written,
+            "total_apparatus_entries": sum(v["apparatus_entries"]
+                                           for v in by_nikaya.values()),
+            "by_nikaya": by_nikaya,
+        }
+        CRITICAL_DIR.mkdir(parents=True, exist_ok=True)
+        (CRITICAL_DIR / "_critical_summary.json").write_text(
+            json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
     return written
 
 

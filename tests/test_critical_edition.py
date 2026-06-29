@@ -71,6 +71,41 @@ class TestBuildSuttaCritical:
         assert prov["generated_at"] == "2026-06-29T00:00:00Z"
 
 
+class TestReleaseSchemaGuard:
+    """The release-check schema guard must reject off-schema critical files."""
+
+    def _load_guard(self):
+        import importlib.util
+        path = Path(__file__).parent.parent / "scripts" / "release_check.py"
+        spec = importlib.util.spec_from_file_location("release_check", path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod
+
+    def test_guard_passes_on_schema_files(self, tmp_path, monkeypatch):
+        import json
+        guard = self._load_guard()
+        d = tmp_path / "dn"
+        d.mkdir()
+        (d / "dn1_critical.json").write_text(json.dumps({
+            "schema_version": 1, "apparatus": [], "apparatus_count": 0,
+            "provenance": {},
+        }), encoding="utf-8")
+        monkeypatch.setattr(guard, "CRITICAL_DIR", tmp_path)
+        assert guard.check_critical_schema() is True
+
+    def test_guard_fails_on_summary_file(self, tmp_path, monkeypatch):
+        import json
+        guard = self._load_guard()
+        d = tmp_path / "sn"
+        d.mkdir()
+        (d / "sn2.3_critical.json").write_text(json.dumps({
+            "id": "sn2.3", "word_count": 61,  # old summary-only schema
+        }), encoding="utf-8")
+        monkeypatch.setattr(guard, "CRITICAL_DIR", tmp_path)
+        assert guard.check_critical_schema() is False
+
+
 class TestBuildWritesFiles:
     def test_build_writes_critical_files(self, tmp_path, monkeypatch):
         import json

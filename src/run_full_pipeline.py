@@ -64,12 +64,14 @@ def process_dn():
             return True
 
     log("DN: Running pipeline...")
-    # Import and run DN pipeline
+    # Import and run DN pipeline. collate_variants now delegates DPD validation
+    # to the fail-closed loader; the critical edition is built with the apparatus
+    # builder (build_critical_edition), not the superseded summary builder.
     from collate_variants import main as collate_main
-    from build_critical import main as build_main
+    from build_critical_edition import build as build_critical
 
     collate_main()
-    build_main()
+    build_critical()
     return True
 
 def process_mn():

@@ -1,77 +1,53 @@
-# Code-review follow-ups (from CODE_REVIEW_A_PLUS.md, 2026-06-29)
+# Code-review follow-ups
 
-Triage of the project-wide review. Findings 4, 5, 7 are **done** on branch
-`lemmatizer-quotative-homograph-fix`; the rest are scoped here as separate work.
+Status of the project-wide review (`CODE_REVIEW_A_PLUS.md`, 2026-06-29) and the
+fix-verification pass (`CODE_REVIEW_FIX_VERIFICATION_2026-06-29.md`). Both report
+files are gitignored; this curated list is the tracked record.
 
-## Done
-- **#4 validate_corpus expects 5 nikāyas** — now validates all 7 collections
-  (added Vinaya/Abhidhamma bounds). `scripts/validate_corpus.py` exits 0.
-- **#5 lemmatizer cache ignores strategy pipeline** — `lookup_word` now tracks
-  the pipeline the cache was built under and drops it on a switch, so legacy and
-  enhanced lookups can't contaminate each other. Regression tests added.
-- **#7 worktree / docs not release-clean** — plan/audit doc contradiction
-  reconciled; scratch audit scripts removed from `src/`. (The `data/vri-raw`
-  edits remain a separate, pre-existing question — see #B below.)
+## Original findings 1–8 — all addressed
 
-## Remaining — proposed as separate issues
+- **#1 critical/ was summary-only** — `src/build_critical_edition.py` builds a
+  real apparatus (selected/rejected readings, witness support, confidence, type,
+  notes, provenance) from collation. Schema: `docs/critical_edition_schema.md`.
+  `data/critical/` regenerated (2,622 schema-valid editions + a summary);
+  3,303 stale summary-only files (texts never collated) were removed, so the
+  tree is now uniform. `build_critical_complete.py` marked superseded.
+- **#2 DPD validation failed open** — `collate_nikaya.load_dpd_words()` fails
+  CLOSED (tries json → lemma_lookup → `dpd.db`, else raises). The legacy
+  `collate_variants.py` now delegates to it (was independently fail-open), and
+  `run_full_pipeline.py` uses the apparatus builder.
+- **#3 search index could go stale** — `index_meta` table + fingerprint
+  (path + size + mtime, so same-size edits are caught); atomic build; narrowed
+  error handling (re-raises index/DB errors).
+- **#4 validate_corpus** — validates all 7 collections; exits 0.
+- **#5 lemmatizer cache** — pipeline-aware; no legacy/enhanced contamination.
+- **#6 test tiers** — `slow`/`corpus` markers; fast tier ~4s.
+- **#7 release hygiene** — plan/audit reconciled; scratch scripts removed;
+  code-review report files gitignored.
+- **#8 packaging** — `pyproject.toml` + `pali-check-data` command.
 
-### A. (#1) `critical/` output is summary-only — DONE (apparatus); running text remains
-- Added `src/build_critical_edition.py`, which assembles a real critical
-  apparatus from the collation output: per divergent position it records every
-  witness's reading, the selected reading, rejected readings, confidence, type,
-  and notes, plus provenance (collation source, DPD validation source, stats,
-  build time). Schema in `docs/critical_edition_schema.md` (v1).
-- Regenerated all of `data/critical/` (2,622 editions) — e.g. dn1 went from a
-  3-field summary to 1,611 apparatus entries. `build_critical_complete.py` is
-  marked superseded.
-- Tests: `tests/test_critical_edition.py` (assembly, selected/rejected,
-  provenance, file writing).
-- REMAINING (follow-up): a single reconstructed *running* critical text (base
-  token stream with selected readings applied) — a presentation layer on top of
-  the apparatus; needs position→base-token mapping.
+## Verification-pass items — addressed
 
-### B. (#2) DPD validation fails OPEN in collation — HIGH, SMALL/MEDIUM
-`collate_nikaya.load_dpd_words()` returns an empty set when
-`dpd_headwords.json` / `lemma_lookup.json` are absent, making `is_valid_word()`
-return True for everything → bad PTS readings silently pass as valid variants.
-- Fail CLOSED (raise) when validation data is missing, or query `dpd.db`
-  directly (it is already a dependency).
-- Record validation source + version in every collation summary.
-- Effort: small-medium. Do this before any new collation runs — it is a silent
-  scholarly-correctness risk.
+- Mixed-schema `data/critical/` → cleaned (uniform schema; stale files removed).
+- `collate_variants.py` fail-open → delegates to the fail-closed loader.
+- `run_full_pipeline.py` → uses `build_critical_edition`, not the summary builder.
+- Docs (README, ARCHITECTURE) → point at `build_critical_edition.py`.
+- Index fingerprint → now path + size + mtime (catches same-size edits).
+- `scripts/release_check.py` → runs compile, validator, data check, and a
+  critical-schema guard.
 
-### C. (#3) Search index has no stale-data detection — HIGH, MEDIUM
-`SearchIndex.is_built()` only checks a table exists; `search_text()` swallows all
-`OperationalError` as "no results".
-- Add an `index_meta` table (schema version, code version, source-data hash,
-  file/token counts, build timestamp); rebuild atomically on mismatch.
-- Only suppress known malformed-query errors; surface index/DB errors.
-- Effort: medium.
+## Genuinely remaining (smaller follow-ups)
 
-### D. (#6) Tests not tiered — DONE (markers); golden files remain
-- Registered `slow` + `corpus` markers (pytest.ini, conftest); marked the heavy
-  export/PDF/index-build tests. Fast tier `pytest -m "not slow and not corpus"`
-  now runs ~4s (was ~3.5 min full). Tiers documented in pytest.ini.
-- REMAINING (smaller follow-up): golden-file fixtures for representative
-  canonical/lemmatized/collation/export outputs to lock formatting.
-
-### E. (#8) Packaging / external-data setup — DONE
-- Added `pyproject.toml`: package metadata, `requires-python >=3.10`, runtime dep
-  (pyyaml), `analysis` extra (pandas/scipy/numpy), `dev` extra (pytest), src
-  layout for the `pali` package, and a `pali-check-data` console script.
-- Added `src/pali_check_data.py`: reports which external/generated data
-  (dpd.db, sandhi rules, DPPN, canonical, lemmatized) is present/missing and
-  exits non-zero if a required resource is absent. README updated.
-
-### B′. `data/vri-raw/*` working-tree edits (20 files) — TRIAGE
-Pre-existing modifications unrelated to the lemmatizer fix; never staged here.
-Decide whether they are intentional source updates (commit with rationale) or
-should be reverted. Owner decision required.
-
-## Suggested order
-1. **B** (fail-closed validation) — small, prevents silent bad data.
-2. **C** (index staleness) — correctness of search results.
-3. **D** (test tiering) — unblocks faster iteration on everything else.
-4. **E** (packaging) — reproducibility for fresh clones/CI.
-5. **A** (real critical edition) — largest; the headline scholarly deliverable.
-6. **B′** — triage the vri-raw edits.
+- **Running critical text** — a single reconstructed text (base token stream
+  with selected readings applied) on top of the apparatus; needs
+  position→base-token mapping.
+- **Golden-file fixtures** — lock formatting of representative canonical /
+  lemmatized / collation / critical / export outputs.
+- **Legacy builders** — `build_critical.py` / `build_critical_complete.py` are
+  marked superseded but still present; archive or remove once nothing references
+  them.
+- **CI / lockfile** — no CI config or pinned lockfile yet.
+- **`data/vri-raw/*` (20 files)** — pre-existing working-tree edits, never
+  staged; owner to decide commit vs revert.
+- **Downstream re-verification of the lemmatizer fix** — regenerate
+  `data/lemmatized/` and re-check the register-paper / `pali-strata` numbers.

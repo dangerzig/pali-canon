@@ -74,6 +74,18 @@ class TestStaleness:
         assert idx.is_built() is True
         assert any(r for r in idx.search_lemma("añña"))
 
+    def test_same_size_edit_marks_stale(self, built_index):
+        """A content edit that keeps the byte size identical must still be caught."""
+        idx, data_dir = built_index
+        assert idx.is_built() is True
+        f = data_dir / "lemmatized" / "dn" / "dn1.json"
+        original = f.read_text(encoding="utf-8")
+        # Same length, different content (swap two characters' worth of text).
+        edited = original.replace("dhammā", "dhammX", 1)
+        assert len(edited) == len(original)
+        f.write_text(edited, encoding="utf-8")
+        assert idx.is_built() is False  # detected despite equal size
+
     def test_schema_bump_marks_stale(self, built_index, monkeypatch):
         idx, _ = built_index
         monkeypatch.setattr("pali.index.INDEX_SCHEMA_VERSION", INDEX_SCHEMA_VERSION + 99)

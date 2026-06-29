@@ -96,7 +96,7 @@ Parsed JSON → Critical Builder → Critical Edition JSON
 
 | Builder | Witnesses | Coverage |
 |---------|-----------|----------|
-| `build_critical_complete.py` | 5 | Full Tipiṭaka |
+| `build_critical_edition.py` | up to 5 | All collated texts (2,622 editions) |
 
 **Critical edition output format:**
 ```json
@@ -161,19 +161,19 @@ Parses VRI Chaṭṭha Saṅgāyana files:
 
 ### Building Layer
 
-#### `build_critical_complete.py` (902 lines)
-Master builder for entire Tipiṭaka:
+#### `build_critical_edition.py` (supported critical-edition builder)
+Assembles the apparatus-bearing critical editions in `data/critical/` from the
+collation output. Each `<id>_critical.json` records, per divergent position, the
+selected reading, rejected readings, witness support, confidence, type, notes,
+and provenance. Schema: `docs/critical_edition_schema.md`. Run:
 
-```python
-def main():
-    results['vinaya'] = build_vinaya_critical()    # 5 witnesses
-    results['dn'] = build_dn_critical()            # 5 witnesses
-    results['mn'] = build_mn_critical()            # 5 witnesses
-    results['sn'] = build_sn_critical()            # 5 witnesses
-    results['an'] = build_an_critical()            # 5 witnesses
-    results['kn'] = build_kn_critical()            # 5 witnesses
-    results['abhidhamma'] = build_abhidhamma_critical()  # 5 witnesses
+```bash
+PYTHONPATH=src python src/build_critical_edition.py
 ```
+
+> `build_critical_complete.py` is **superseded**: it emitted summary-only
+> records (id, witnesses, word_count), not an apparatus. It is retained only for
+> its witness-loading / per-nikaya configuration helpers.
 
 ### Lemmatization Layer
 
@@ -386,8 +386,8 @@ python src/split_bjt.py
 python src/parse_thai.py
 python src/split_thai.py
 
-# Build critical editions
-python src/build_critical_complete.py
+# Build critical editions (apparatus, from collation output)
+python src/build_critical_edition.py
 
 # Run lemmatization
 python src/lemmatize_canon.py
