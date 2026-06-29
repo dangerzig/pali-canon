@@ -15,15 +15,20 @@ Triage of the project-wide review. Findings 4, 5, 7 are **done** on branch
 
 ## Remaining — proposed as separate issues
 
-### A. (#1) `critical/` output is summary-only, not a real apparatus — HIGH, LARGE
-`build_critical_complete.py` emits `id`/`witnesses`/`word_count`, not selected
-readings + apparatus. The real collation lives under `data/collation/` but is
-not assembled into the named critical edition.
-- Define a critical-edition JSON schema: selected reading, rejected readings,
-  witness support, confidence, apparatus notes, provenance.
-- Build it from canonical text + collation output; add an end-to-end test from
-  witnesses to edition.
-- Effort: large (new schema + builder + tests). Highest scholarly value.
+### A. (#1) `critical/` output is summary-only — DONE (apparatus); running text remains
+- Added `src/build_critical_edition.py`, which assembles a real critical
+  apparatus from the collation output: per divergent position it records every
+  witness's reading, the selected reading, rejected readings, confidence, type,
+  and notes, plus provenance (collation source, DPD validation source, stats,
+  build time). Schema in `docs/critical_edition_schema.md` (v1).
+- Regenerated all of `data/critical/` (2,622 editions) — e.g. dn1 went from a
+  3-field summary to 1,611 apparatus entries. `build_critical_complete.py` is
+  marked superseded.
+- Tests: `tests/test_critical_edition.py` (assembly, selected/rejected,
+  provenance, file writing).
+- REMAINING (follow-up): a single reconstructed *running* critical text (base
+  token stream with selected readings applied) — a presentation layer on top of
+  the apparatus; needs position→base-token mapping.
 
 ### B. (#2) DPD validation fails OPEN in collation — HIGH, SMALL/MEDIUM
 `collate_nikaya.load_dpd_words()` returns an empty set when
