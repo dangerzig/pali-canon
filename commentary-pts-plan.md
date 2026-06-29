@@ -114,3 +114,14 @@ Net: the commentary edition is **mostly 1:1** (9 of 13 Vin/Abh commentary
 volumes map cleanly: 3 Abhidhamma + Vinaya Vols V–VII = 6 clean, plus the Sutta
 commentaries already done). Only **4 Vinaya volumes** (the Suttavibhaṅga
 aṭṭhakathā, Vols I–IV) need GRETIL-driven mid-file boundary location.
+
+## DONE (2026-06-29)
+
+All 10 Vin/Abh commentary volumes are built in `data/pts-commentary/`
+(`build_pts_commentary.py`). The Vols I–IV step proved **easier than expected**:
+GRETIL's `samp_4pu` opens at the Pācittiya (CST `vin02a1` start), so **Vol IV is
+a clean 1:1** too, and only **two** cut points remained — both inside `vin01a`,
+falling on CST section headers (`2. Dutiyapārājikaṃ` = Vol II/p.285;
+`2. Saṅghādisesakaṇḍaṃ` = Vol III/p.517). So **7 of 10 are 1:1** and only the
+single file `vin01a` is split (3-way). Text conservation exact; anchors unique;
+colophons confirmed. The ṭīkās remain out of scope.
