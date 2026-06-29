@@ -85,6 +85,17 @@ METRICAL_NORMALIZATIONS = {
     'ū': 'u',
 }
 
+# Short vowel → its long counterpart (forward sandhi of the quotative clitic).
+# Only short vowels are looked up here (the long-vowel branch in
+# _iti_surface_forms does not lengthen), so no long-vowel keys are needed.
+VOWEL_LENGTHEN = {'a': 'ā', 'i': 'ī', 'u': 'ū'}
+
+# DPD part-of-speech tags for FINITE verbs. A finite verb is a complete word,
+# not host + clitic, so DPD's "host + iti" deconstruction of one (jānāti ->
+# jānaṃ + iti) is spurious. Also used to pick the verb reading of a homograph
+# whose first-listed headword is a non-verb (jānāti listed under adj `ja`).
+FINITE_VERB_POS = {"pr", "aor", "fut", "imp", "opt", "cond", "perf", "imperf"}
+
 # Pronoun patterns that fuse with verbs
 # Pattern: (prefix_to_remove, replacement_for_word, pronoun_info)
 # First person verb ending normalizations (metrical lengthening)
@@ -810,6 +821,7 @@ class Lemmatizer:
         self.conn.row_factory = sqlite3.Row
         self.cache = {}  # word -> TokenInfo
         self._valid_word_cache = {}  # word -> bool (for _is_valid_word)
+        self._finite_verb_cache = {}  # word -> bool (for _is_finite_verb)
         self._active_strategies = ENHANCED_STRATEGIES
         self.sandhi_engine = SandhiRuleEngine(sandhi_rules_path)
         self.stats = {
@@ -1201,21 +1213,113 @@ class Lemmatizer:
         return cursor.fetchone()
 
     def _apply_headword_to_token(self, token: TokenInfo, row) -> bool:
-        """Apply headword info from a DPD row to a token. Returns True if successful."""
+        """Apply headword info from a DPD row to a token. Returns True if successful.
+
+        DPD lists the stem/citation reading first, which is correct for the
+        common case (so->ta, me->ahaṃ, bhagavā->bhagavant). For a few homographs
+        the first reading is a non-verb but the surface IS a present verb's
+        citation form (jānāti listed under adj `ja` before verb `jānāti`).
+
+        Bug B fix: override headword[0] ONLY when ALL hold:
+          1. headword[0] is not itself a finite verb;
+          2. headword[0]'s lemma is NOT this surface (so a word that is itself a
+             first-class noun/participle citation — muni, sappi, assa, nikanti —
+             keeps that reading; only words whose sole citation match is a verb,
+             like jānāti vs the unrelated lemma `ja`, are eligible);
+          3. the surface is a present-tense (-ti/-tī) form; and
+          4. a candidate headword is a present verb (pos `pr`) whose lemma is the
+             surface (or its metrically-shortened final, jānātī->jānāti).
+        Tighter than a blanket "lemma == word": blast-radius measurement showed
+        the broad form mis-tagged hundreds of common nouns/pronouns that are
+        homographs of aorist/optative/imperative entries.
+        """
         if not row or not row['headwords']:
             return False
         try:
             headword_ids = json.loads(row['headwords'])
-            if headword_ids:
-                hw_info = self._get_headword_by_id(headword_ids[0])
-                if hw_info:
-                    token.lemma = hw_info.get('lemma')
-                    token.pos = hw_info.get('pos')
-                    token.root = hw_info.get('root')
-                    return True
+            if not headword_ids:
+                return False
+            hw_info = self._get_headword_by_id(headword_ids[0])
+            word = token.word
+            short = (word[:-1] + METRICAL_NORMALIZATIONS[word[-1]]
+                     if word and word[-1] in METRICAL_NORMALIZATIONS else word)
+            citation_forms = {word, short}
+            if (hw_info and hw_info.get('pos') not in FINITE_VERB_POS
+                    and hw_info.get('lemma') not in citation_forms
+                    and (word.endswith('ti') or word.endswith('tī'))):
+                for hid in headword_ids[1:]:
+                    cand = self._get_headword_by_id(hid)
+                    if (cand and cand.get('pos') == 'pr'
+                            and cand.get('lemma') in citation_forms):
+                        hw_info = cand
+                        break
+            if hw_info:
+                token.lemma = hw_info.get('lemma')
+                token.pos = hw_info.get('pos')
+                token.root = hw_info.get('root')
+                return True
         except (json.JSONDecodeError, TypeError):
             pass
         return False
+
+    def _is_finite_verb(self, word: str) -> bool:
+        """True if any DPD headword for `word` is a finite verb (pr/aor/fut/...).
+
+        A finite verb is a complete word, not host + clitic, so a `host + iti`
+        deconstruction of one is suspect even when it reconstructs phonologically
+        (saṃ + iti -> santi, but santi is the verb 'they are').
+        """
+        if word in self._finite_verb_cache:
+            return self._finite_verb_cache[word]
+        result = False
+        row = self._lookup_dpd(word)
+        if row and row['headwords']:
+            try:
+                ids = json.loads(row['headwords'])
+                if ids:
+                    placeholders = ",".join("?" * len(ids))
+                    cur = self.conn.execute(
+                        f"SELECT pos FROM dpd_headwords WHERE id IN ({placeholders})",
+                        ids)
+                    result = any(r['pos'] in FINITE_VERB_POS for r in cur)
+            except (json.JSONDecodeError, TypeError):
+                pass
+        self._finite_verb_cache[word] = result
+        return result
+
+    def _iti_surface_forms(self, host: str) -> set:
+        """Surface words a quotative split `host + iti` can legitimately produce.
+
+        Enumerates the forward-sandhi outcomes so a deconstruction can be
+        accepted only if it actually reconstructs the surface word:
+        - niggahīta-final host: ṃ + iti -> ...nti (evaṃ+iti->evanti) OR
+          ...miti (vimuttaṃ+iti->vimuttamiti);
+        - vowel-final host: short final vowel lengthens (atthi+iti->atthīti,
+          hoti+iti->hotīti); long vowel / o / e absorbs the i (atthī+iti->
+          atthīti, gammo+iti->gammoti); or the iti stays uncontracted in hiatus
+          (dhamadhamā+iti->dhamadhamāiti).
+        Each outcome also gets a metrically lengthened final (-ti -> -tī, so
+        desessaṃ+iti->desessanti->desessantī). This rejects jānaṃ+iti for
+        jānāti while keeping vimuttaṃ+iti for vimuttamiti.
+        """
+        if not host:
+            return set()
+        forms = set()
+        last = host[-1]
+        if last == 'ṃ':
+            stem = host[:-1]
+            forms.add(stem + 'nti')
+            forms.add(stem + 'miti')
+        elif last in 'aiu':
+            forms.add(host[:-1] + VOWEL_LENGTHEN[last] + 'ti')
+            forms.add(host + 'ti')
+            forms.add(host + 'iti')  # uncontracted hiatus
+        elif last in 'āīūoe':
+            forms.add(host + 'ti')
+            forms.add(host + 'iti')  # uncontracted hiatus (dhamadhamā+iti)
+        # Metrically lengthened final: ...ti -> ...tī
+        forms |= {f[:-1] + 'ī' for f in list(forms) if f.endswith('ti')}
+        return forms
 
     def _process_dpd_result(self, token: TokenInfo, row) -> None:
         """Process a DPD lookup result and update the token.
@@ -1226,9 +1330,8 @@ class Lemmatizer:
         if row['deconstructor']:
             try:
                 deconstructions = json.loads(row['deconstructor'])
-                if deconstructions:
-                    # Use first deconstruction
-                    parts = deconstructions[0].replace(' ', '').split('+')
+                parts = self._select_deconstruction(deconstructions, token.word)
+                if parts:
                     token.sandhi = parts
                     token.components = []
                     for part in parts:
@@ -1244,6 +1347,54 @@ class Lemmatizer:
 
         # Get headword info if not a sandhi word
         self._apply_headword_to_token(token, row)
+
+    def _select_deconstruction(self, deconstructions: list, word: str) -> Optional[list]:
+        """Pick a usable deconstruction, rejecting spurious quotative splits.
+
+        Bug A fix: a two-piece `host + iti` split is accepted only if it
+        reconstructs the surface word (see _iti_surface_forms). This rejects
+        DPD's phonologically impossible jānaṃ+iti for the verb jānāti while
+        keeping valid quotatives (vimuttaṃ+iti, hoti+iti).
+
+        Behaviour is engaged ONLY when the PRIMARY (first) deconstruction is a
+        two-piece quotative split. In that case the first quotative split that
+        reconstructs wins (atthā+iti rejected -> atthī+iti for atthīti); if none
+        reconstruct, fall through to headword lookup. Crucially we never fall
+        back to a non-quotative alternative the primary outranks (this avoids
+        visesīti's bogus "vise + asīti"). When the primary is non-quotative or
+        multi-piece, the prior "use the first deconstruction" behaviour stands.
+
+        Reconstruction alone cannot reject a quotative split whose host is
+        niggahīta-final and whose surface is a finite verb: saṃ + iti DOES
+        surface as santi, yet santi is the verb "they are" (and saṃ is itself a
+        rare optative, so a "host is a verb" test does not help). The signal is
+        the -nti ending: a ṃ-host contracts to -nti only as the 3rd-plural verb
+        ending; a genuinely QUOTED 3pl verb surfaces as -ntīti (gacchanti+iti ->
+        gacchantīti), never bare -nti. So a reconstructing quotative split is
+        rejected when the surface ends in -nti and is itself a finite verb
+        (santi, bhavissanti, abhinandunti -> the verb). This mirrors the -ti rule
+        for jānāti. Otherwise the first reconstructing candidate wins (we do not
+        re-rank hosts among valid quotative splits — that is homograph
+        disambiguation outside this fix's scope).
+        Returns the chosen parts, or None to fall through to headword lookup.
+        """
+        if not deconstructions:
+            return None
+        first = [p for p in deconstructions[0].replace(' ', '').split('+') if p]
+        if not (len(first) == 2 and first[-1] == 'iti'):
+            return first or None
+        candidates = []
+        for dec in deconstructions:
+            parts = [p for p in dec.replace(' ', '').split('+') if p]
+            if (len(parts) == 2 and parts[-1] == 'iti'
+                    and word in self._iti_surface_forms(parts[0])):
+                candidates.append(parts)
+        if not candidates:
+            return None  # no quotative split reconstructs -> headword fallback
+        # -nti finite verb is a 3rd-plural verb, not a quotative (santi, not saṃ+iti)
+        if word.endswith('nti') and self._is_finite_verb(word):
+            return None
+        return candidates[0]
 
     def _get_headword_info(self, word: str) -> Optional[dict]:
         """Get headword info for a word (used for sandhi components)."""
