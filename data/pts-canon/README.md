@@ -9,6 +9,14 @@ taken from the GRETIL/Dhammakaya PTS-based digitization (which carries PTS page
 markers). Build: `~/pali-canon/build_pts_canon.py`. Provenance per volume:
 `MANIFEST.csv`.
 
+The CST source text is the VRI Latin distribution `tipitaka_text_latn`
+(2020-04-12), held in `data/vri-raw`. Each `vri-raw` file is the cleaner of the
+available extractions: `vin02m2`/`vin02m3` (Mahāvagga/Cullavagga) use the
+2020-04-12 text, which is free of the footnote-apparatus that had been inlined
+into an earlier copy (cross-references such as `udā. 11`, `kathā. 338`, and
+embedded ṭīkā glosses); `s0516m`/`abh03m8` keep the earlier copy, which is free
+of stray footnote-digit artifacts present in 2020-04-12.
+
 ## Contents (55 volumes)
 - **Sutta (40):** from `pali-commentary/data/raw-pts` (`.mul`), already
   PTS-organized by `reorganise_pts.py`.
@@ -19,7 +27,10 @@ markers). Build: `~/pali-canon/build_pts_canon.py`. Provenance per volume:
 
 ## Verification status
 - **Text conservation: PASS** — output words == CST source words, per basket
-  (Vinaya+Abhidhamma 1,220,873; Sutta 1,487,175). No text lost.
+  (Vinaya+Abhidhamma 1,217,773; Sutta 1,487,175). No text lost. (The
+  Vinaya+Abhidhamma count dropped from 1,220,873 after the Mahāvagga/Cullavagga
+  source was de-contaminated of inlined footnote apparatus; see provenance note
+  above.)
 - **Vinaya: all 5 volumes VERIFIED** against GRETIL by matching closing
   colophons (Mahāvagga, Cullavagga, Suttavibhaṅga I–II, Parivāra). The III/IV
   split matches PTS exactly (Nissaggiya → Pācittiya boundary).
