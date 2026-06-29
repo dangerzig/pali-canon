@@ -39,8 +39,13 @@ of stray footnote-digit artifacts present in 2020-04-12.
   likewise single-volume).
 - **Yamaka I/II boundary: derived from GRETIL** — PTS Vol II begins at the
   Cittayamaka (8th yamaka); split there (mid-CST-file).
-- **Sutta: AN Vol I VERIFIED** against GRETIL (both end at the Tikanipāta); the
-  reorganise_pts boundaries align with PTS at the points checked.
+- **Sutta multi-volume collections VERIFIED against GRETIL** — every inter-volume
+  boundary of the three multi-volume collections matches GRETIL's PTS volumes:
+  **AN** I–V end at Tika / Catukka / Chakka / Navaka / Ekādasaka nipāta; **DN**
+  I–III end at Sīlakkhandhavagga (13 suttas) / Mahāvagga (Pāyāsi) / whole nikāya;
+  **Jātaka** I–VI end at Ekaka / Tika / Navanipāta / Vīsati (Ayoghara) / Asīti
+  (Mahāsutasoma) / Mahānipāta. (Remaining Sutta volumes are single-text/single-
+  vagga units, low boundary risk.)
 - **Abhidhamma single-volume books VERIFIED against GRETIL** — Dhammasaṅgaṇī,
   Vibhaṅga, Dhātukathā, Puggalapaññatti and Kathāvatthu each close at the same
   point as GRETIL's single PTS volume (e.g. Vibhaṅga → Dhammahadayavibhaṅga;
@@ -59,7 +64,7 @@ of stray footnote-digit artifacts present in 2020-04-12.
    them at Paccayavibhaṅgavāra and Kusalattika) falls mid-CST and it is not
    certain GRETIL's "Parts" equal PTS physical volumes; left FLAGGED rather than
    guessed.
-2. **Sutta volume boundaries** were set by `reorganise_pts.py` from structural
-   headings; AN Vol I is verified against GRETIL, but a full sweep of all 40
-   Sutta volumes against GRETIL (`an_vol*`, `dn_vol*`, `jatak*`) is an
-   outstanding confirmation (not a known defect).
+2. **Sutta single-volume texts** (MN paṇṇāsas, SN vaggas, KN texts, Apadāna,
+   Paṭisambhidāmagga): the multi-volume collections (AN, DN, Jātaka) are now
+   verified against GRETIL; the remaining single-unit volumes have low boundary
+   risk and are not individually cross-checked (not a known defect).
