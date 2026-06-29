@@ -22,6 +22,7 @@ Classification rules:
 import re
 import sys
 import json
+import sqlite3
 import warnings
 from pathlib import Path
 from collections import Counter
@@ -113,37 +114,65 @@ except ImportError:
 _sc_file_cache = {}
 
 
-# Load DPD headwords for validation
+# DPD path and word set for validation. We FAIL CLOSED: if no DPD validation
+# source can be loaded, raise rather than silently treating every PTS reading as
+# valid (which would let bad readings pass as variants and make the error/variant
+# distinction depend on whatever untracked data a clone happens to have).
+DPD_DB = DPD_DIR / "dpd.db"
 _dpd_words = None
+_dpd_source = None  # which source the validation set came from (for provenance)
 
 
 def load_dpd_words() -> set:
-    """Load DPD headwords for word validation."""
-    global _dpd_words
+    """Load the set of DPD-known word forms for validation.
+
+    Tries, in order: data/dpd/dpd_headwords.json, data/lemma_lookup.json, then
+    the DPD SQLite database (data/dpd/dpd.db). Raises FileNotFoundError if none
+    is available (fail closed) so collation never runs without real validation.
+    """
+    global _dpd_words, _dpd_source
     if _dpd_words is not None:
         return _dpd_words
 
     dpd_file = DPD_DIR / "dpd_headwords.json"
+    lookup_file = DATA_DIR / "lemma_lookup.json"
     if dpd_file.exists():
         data = json.loads(dpd_file.read_text())
         _dpd_words = set(data.get('headwords', []))
+        _dpd_source = str(dpd_file)
+    elif lookup_file.exists():
+        data = json.loads(lookup_file.read_text())
+        _dpd_words = set(data.keys())
+        _dpd_source = str(lookup_file)
+    elif DPD_DB.exists():
+        conn = sqlite3.connect(DPD_DB)
+        try:
+            _dpd_words = {row[0] for row in conn.execute("SELECT lookup_key FROM lookup")}
+        finally:
+            conn.close()
+        _dpd_source = str(DPD_DB)
     else:
-        # Fallback: try to load from generated lemma lookup
-        lookup_file = DATA_DIR / "lemma_lookup.json"
-        if lookup_file.exists():
-            data = json.loads(lookup_file.read_text())
-            _dpd_words = set(data.keys())
-        else:
-            _dpd_words = set()
+        raise FileNotFoundError(
+            "No DPD validation source found. Expected one of: "
+            f"{dpd_file}, {lookup_file}, or {DPD_DB}. Collation cannot validate "
+            "words without it (refusing to fail open and pass bad readings as "
+            "valid variants)."
+        )
 
+    if not _dpd_words:
+        raise ValueError(f"DPD validation source {_dpd_source} loaded but empty.")
     return _dpd_words
 
 
+def get_dpd_validation_source() -> str:
+    """Path of the DPD source used for validation (loads it if needed)."""
+    load_dpd_words()
+    return _dpd_source
+
+
 def is_valid_word(word: str) -> bool:
-    """Check if a word exists in DPD."""
+    """Check if a word exists in DPD. Fails closed (see load_dpd_words)."""
     dpd = load_dpd_words()
-    if not dpd:
-        return True  # Can't validate without DPD
     word = word.lower().replace('ṁ', 'ṃ').replace('ŋ', 'ṃ')
     return word in dpd
 
