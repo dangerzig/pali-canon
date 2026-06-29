@@ -20,11 +20,16 @@ markers). Build: `~/pali-canon/build_pts_canon.py`. Provenance per volume:
 ## Verification status
 - **Text conservation: PASS** — output words == CST source words, per basket
   (Vinaya+Abhidhamma 1,220,873; Sutta 1,487,175). No text lost.
-- **Vinaya III/IV boundary: VERIFIED** against GRETIL — CST Pārājikapāḷi /
-  Pācittiyapāḷi split matches PTS Vol III / IV exactly (both end / begin at the
-  Nissaggiya → Pācittiya boundary).
+- **Vinaya: all 5 volumes VERIFIED** against GRETIL by matching closing
+  colophons (Mahāvagga, Cullavagga, Suttavibhaṅga I–II, Parivāra). The III/IV
+  split matches PTS exactly (Nissaggiya → Pācittiya boundary).
+- **Abhidhamma single-volume books: VERIFIED** (Dhammasaṅgaṇī, Vibhaṅga — CST
+  span == GRETIL PTS volume span; Dhātukathā/Puggalapaññatti/Kathāvatthu are
+  likewise single-volume).
 - **Yamaka I/II boundary: derived from GRETIL** — PTS Vol II begins at the
   Cittayamaka (8th yamaka); split there (mid-CST-file).
+- **Sutta: AN Vol I VERIFIED** against GRETIL (both end at the Tikanipāta); the
+  reorganise_pts boundaries align with PTS at the points checked.
 
 ## Known TODO (expert verification needed)
 1. **Paṭṭhāna fine PTS sub-volume boundaries.** Emitted at 3 clean CST-grounded
