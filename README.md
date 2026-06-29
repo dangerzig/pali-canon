@@ -66,14 +66,32 @@ Requires Python 3.10+.
 git clone https://github.com/dangerzig/pali-canon.git
 cd pali-canon
 
-# Install dependencies
+# Install the package (core dep: pyyaml)
+pip install -e .
+
+# Optional extras: analysis (pandas/scipy/numpy), dev (pytest)
+pip install -e ".[analysis,dev]"
+
+# Or just run with PYTHONPATH (no install needed)
 pip install pyyaml
-
-# Optional: for vocabulary analysis and sparse matrices
-pip install pandas scipy
-
-# Run with PYTHONPATH (no pip install needed)
 PYTHONPATH=src python -c "from pali import Canon; print(Canon().list_nikayas())"
+```
+
+### External data
+
+The pipeline needs external data (the DPD database, sandhi rules, etc.). Check
+what is present and what is missing:
+
+```bash
+pali-check-data            # after pip install
+# or: PYTHONPATH=src python src/pali_check_data.py
+```
+
+## Testing
+
+```bash
+pytest -m "not slow and not corpus"   # fast unit tests (~4s)
+pytest                                 # full acceptance run (needs corpus + DPD)
 ```
 
 ## Project Structure

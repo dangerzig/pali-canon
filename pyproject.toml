@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pali-canon"
+version = "0.1.0"
+description = "Tools and a Python API for a critical edition of the Pāli Canon"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Dan Zigmond" }]
+dependencies = [
+    "pyyaml",  # custom lemma configuration
+]
+
+[project.optional-dependencies]
+# Analysis features: DataFrame exports, sparse document-term matrices.
+analysis = ["pandas", "scipy", "numpy"]
+# Development / testing.
+dev = ["pytest"]
+
+[project.scripts]
+pali-check-data = "pali_check_data:main"
+
+[tool.setuptools]
+# The importable library is the `pali` package under src/. The standalone
+# pipeline scripts (lemmatize_canon.py, collate_nikaya.py, ...) live alongside
+# it in src/ and are run with PYTHONPATH=src, not installed as modules.
+package-dir = { "" = "src" }
+packages = ["pali"]
+py-modules = ["pali_check_data"]

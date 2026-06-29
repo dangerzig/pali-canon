@@ -50,12 +50,13 @@ return True for everything → bad PTS readings silently pass as valid variants.
 - REMAINING (smaller follow-up): golden-file fixtures for representative
   canonical/lemmatized/collation/export outputs to lock formatting.
 
-### E. (#8) Packaging / external-data setup not reproducible — MEDIUM
-- Add `pyproject.toml` (metadata, Python version, runtime deps, optional
-  `analysis` extras for pandas/scipy, dev/test deps).
-- Add a bootstrap/validation command that reports exactly which external data
-  (DPD, DPPN, sandhi rules) is missing.
-- Effort: medium.
+### E. (#8) Packaging / external-data setup — DONE
+- Added `pyproject.toml`: package metadata, `requires-python >=3.10`, runtime dep
+  (pyyaml), `analysis` extra (pandas/scipy/numpy), `dev` extra (pytest), src
+  layout for the `pali` package, and a `pali-check-data` console script.
+- Added `src/pali_check_data.py`: reports which external/generated data
+  (dpd.db, sandhi rules, DPPN, canonical, lemmatized) is present/missing and
+  exits non-zero if a required resource is absent. README updated.
 
 ### B′. `data/vri-raw/*` working-tree edits (20 files) — TRIAGE
 Pre-existing modifications unrelated to the lemmatizer fix; never staged here.
