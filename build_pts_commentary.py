@@ -30,9 +30,12 @@ PTS-organized in pali-commentary/data/raw-pts.
       s0101t -> Vol I   (Sīlakkhandhavagga-ṭīkā)   1:1
       s0102t -> Vol II  (Mahāvagga-ṭīkā)            1:1
       s0103t -> Vol III (Pāthikavagga-ṭīkā)         1:1
-    Aṅguttara Sāratthamañjūsā (Peceṇko 1996–99, PARTIAL — nipātas 1–7 only):
-      s0401t+s0402t+s0403t -> one unit (nipātas 1–7); the PTS 3-volume split is
-      FLAGGED (boundaries not publicly sourced). s0404t (nipātas 8–11) excluded.
+    Aṅguttara Sāratthamañjūsā (Peceṇko 1996–99, PARTIAL — nipātas 1–2 only, per
+    the editor's own statement, JPTS XXVII p.78 n.67):
+      s0401t            -> Ekanipāta-ṭīkā (nipāta 1; PTS Vols I–II)
+      s0402t[:Tika]     -> Dukanipāta-ṭīkā (nipāta 2; PTS Vol III)
+      The split across the 3 physical PTS vols is FLAGGED (boundaries not
+      published). Nipātas 3–11 (rest of s0402t, s0403t, s0404t) excluded.
 
 Boundary basis for the vin01a split (GRETIL gretil/2_pali/4_comm/samp_Npu.htm,
 each file == one PTS volume, carrying [page N] markers):
@@ -177,33 +180,60 @@ def build_samantapasadika_I_III(manifest):
     return nw
 
 
-# Aṅguttara-nikāya ṭīkā = Sāratthamañjūsā. PTS roman ed. (Peceṇko 1996–99) is
-# PARTIAL: it covers only nipātas 1–7 (Ekaka…Sattaka), in 3 physical volumes
-# whose internal page boundaries are not published online. CST has nipātas 1–7
-# in three files (s0401t = Ekaka; s0402t = Duka/Tika/Catukka; s0403t =
-# Pañcaka/Chakka/Sattaka) and nipātas 8–11 in s0404t. We emit the PTS-covered
-# span (1–7) as ONE unit and FLAG the 3-volume split as pending (no guessing,
-# per the Paṭṭhāna policy); nipātas 8–11 are excluded (no PTS edition).
-AN_TIKA_COVERED = ["s0401t.tik.txt", "s0402t.tik.txt", "s0403t.tik.txt"]
-AN_TIKA_EXCLUDED = ["s0404t.tik.txt"]  # nipātas 8–11, not in PTS
+# Aṅguttara-nikāya ṭīkā = Sāratthamañjūsā (= Manorathapūraṇī-ṭīkā, "Mp-ṭ"). The
+# PTS roman edition (Peceṇko 1996/1998/1999) is PARTIAL, and covers far less than
+# secondary sources imply. Per the EDITOR'S OWN statement (Peceṇko 2002, JPTS
+# XXVII, p. 78 n. 67): "PTS edition by P. Peceṇko, Vols. I–III contain Eka- and
+# Dukanipāta-ṭīkā" — i.e. the three physical volumes together cover ONLY nipātas
+# 1–2 (Ekaka + Duka). (The PTS catalogue's "first seven chapters" is the seven
+# *sub-chapters* of the Ekanipāta-ṭīkā, not seven nipātas.)
+# CST: s0401t = the whole Ekanipāta-ṭīkā (nipāta 1); s0402t opens with the
+# Dukanipāta-ṭīkā (nipāta 2) and continues into Tika/Catukka — so the PTS-covered
+# Duka portion is s0402t up to the Tikanipāta-ṭīkā header (it ends exactly at the
+# Dukanipāta colophon). We emit the two covered nipāta-ṭīkās (Eka, Duka) as clean
+# structural units; nipātas 3–11 are excluded (no PTS edition). The split of
+# these two nipātas across Peceṇko's 3 physical volumes (page boundaries not
+# published) is FLAGGED.
+AN_EKA = "s0401t.tik.txt"        # nipāta 1 (whole file)
+AN_DUKA_FILE = "s0402t.tik.txt"  # nipāta 2 = this file up to the Tikanipāta header
+AN_DUKA_CUT = r"(?m)^\s*\d*\.?\s*Tikanipāta-ṭīkā"
+AN_EXCLUDED = "s0402t (Tika+Catukka), s0403t, s0404t = nipātas 3–11"
+
+
+def _an_duka(full):
+    m = re.search(AN_DUKA_CUT, full)
+    assert m, "Tikanipāta boundary not found in s0402t"
+    duka = full[:m.start()]
+    assert "Dukanipātavaṇṇanāya" in "".join(duka.split())[-400:], \
+        "Duka portion must end at the Dukanipāta colophon"
+    return duka
 
 
 def build_anguttara_tika(manifest):
-    text = "\n".join(read(f) for f in AN_TIKA_COVERED)
-    tail = "".join(text.split())[-400:]
-    assert "Sattakanipātavaṇṇanāya" in tail and "samattā" in tail, \
-        "AN ṭīkā 1–7 must end at the Sattakanipāta colophon"
-    n = len(words(text))
-    write("Saratthamanjusa_I-III_nipata1-7", text.strip() + "\n")
-    manifest.append([
-        "Saratthamanjusa.I-III", "Sāratthamañjūsā I–III (Aṅguttara ṭīkā, nipātas 1–7)",
-        "subcommentary", "+".join(f.replace(".tik.txt", "") for f in AN_TIKA_COVERED),
-        "PTS Sāratthamañjūsā covers nipātas 1–7 only (Peceṇko 1996–99, 3 vols); "
-        "the 3-volume split is PENDING (boundaries not publicly sourced). "
-        "Nipātas 8–11 (s0404t) excluded: no PTS edition."])
-    print(f"  {'Saratthamanjusa.I-III':22} <- {'s0401t+s0402t+s0403t':15} "
-          f"({n:>7,} words)  Sāratthamañjūsā (Aṅguttara ṭīkā, nipātas 1–7) [3-vol split FLAGGED]")
-    return n
+    eka = read(AN_EKA)
+    assert "Ekakanipātavaṇṇanāya" in "".join(eka.split())[-400:], \
+        "Eka must end at the Ekanipāta colophon"
+    duka = _an_duka(read(AN_DUKA_FILE))
+    units = [
+        ("Saratthamanjusa.Eka", "Saratthamanjusa_Ekanipata-tika",
+         "Sāratthamañjūsā — Ekanipāta-ṭīkā (Aṅguttara ṭīkā, nipāta 1; PTS Vols I–II)",
+         AN_EKA, eka),
+        ("Saratthamanjusa.Duka", "Saratthamanjusa_Dukanipata-tika",
+         "Sāratthamañjūsā — Dukanipāta-ṭīkā (Aṅguttara ṭīkā, nipāta 2; PTS Vol III)",
+         f"{AN_DUKA_FILE} (up to Tikanipāta)", duka),
+    ]
+    total = 0
+    for pid, out_name, label, src, chunk in units:
+        write(out_name, chunk.strip() + "\n")
+        n = len(words(chunk))
+        total += n
+        manifest.append([pid, label, "subcommentary", src,
+                         "PTS Sāratthamañjūsā (Peceṇko 1996–99) covers nipātas 1–2 only "
+                         "(editor's statement, JPTS XXVII p.78 n.67). The split across the "
+                         "3 physical PTS vols is FLAGGED (page boundaries unpublished). "
+                         "Nipātas 3–11 excluded: no PTS edition."])
+        print(f"  {pid:22} <- {src:28} ({n:>7,} words)  {label}")
+    return total
 
 
 def main():
@@ -221,7 +251,7 @@ def main():
         "Samantapasadika.VII", "Atthasalini", "Sammohavinodani",
         "Pancappakaranatthakatha",
         "Linatthapakasini.I", "Linatthapakasini.II", "Linatthapakasini.III",
-        "Saratthamanjusa.I-III"])}
+        "Saratthamanjusa.Eka", "Saratthamanjusa.Duka"])}
     manifest.sort(key=lambda r: order.get(r[0], 99))
     with open(OUT / "MANIFEST.csv", "w", newline="") as f:
         w = csv.writer(f)
@@ -229,19 +259,20 @@ def main():
         w.writerows(manifest)
 
     # Global text-conservation check: output words == words of the EMITTED CST
-    # sources (s0404t, AN nipātas 8–11, is deliberately excluded — not in PTS).
-    src = (["vin01a.att.txt", "vin02a1.att.txt", "vin02a2.att.txt",
-            "vin02a3.att.txt", "vin02a4.att.txt",
-            "abh01a.att.txt", "abh02a.att.txt", "abh03a.att.txt",
-            "s0101t.tik.txt", "s0102t.tik.txt", "s0103t.tik.txt"]
-           + AN_TIKA_COVERED)
-    src_words = sum(len(words(read(f))) for f in src)
+    # sources. Full files used in full, plus the partial s0402t (Duka portion
+    # only — Tika/Catukka onward and s0403t/s0404t are excluded, not in PTS).
+    full_src = ["vin01a.att.txt", "vin02a1.att.txt", "vin02a2.att.txt",
+                "vin02a3.att.txt", "vin02a4.att.txt",
+                "abh01a.att.txt", "abh02a.att.txt", "abh03a.att.txt",
+                "s0101t.tik.txt", "s0102t.tik.txt", "s0103t.tik.txt",
+                AN_EKA]
+    src_words = (sum(len(words(read(f))) for f in full_src)
+                 + len(words(_an_duka(read(AN_DUKA_FILE)))))
     out_words = sum(len(words(p.read_text(encoding="utf-8")))
                     for p in OUT.glob("*.txt"))
     print(f"\nWrote {len(manifest)} volumes + MANIFEST.csv")
     print(f"text conservation: {out_words:,} == {src_words:,}  {out_words == src_words}")
-    print(f"  (excluded from PTS edition: {', '.join(f.replace('.tik.txt','') for f in AN_TIKA_EXCLUDED)} "
-          f"= AN ṭīkā nipātas 8–11, no PTS edition)")
+    print(f"  (excluded from PTS edition: {AN_EXCLUDED})")
     assert out_words == src_words, "TEXT LOSS"
 
 

@@ -37,11 +37,19 @@ here as well (see below); the rest of the Sutta ṭīkās have no PTS edition.
 - `Linatthapakasini_III_Pathikavagga` — Pāthikavagga-ṭīkā (1:1, `s0103t`)
 
 **Aṅguttara-nikāya ṭīkā — Sāratthamañjūsā (PTS partial, Peceṇko 1996–99):**
-- `Saratthamanjusa_I-III_nipata1-7` — the PTS-covered span, **nipātas 1–7**
-  (`s0401t`+`s0402t`+`s0403t`). The PTS edition splits this into 3 physical
-  volumes, but those page boundaries are **not published online**, so the 3-way
-  split is **FLAGGED/pending** rather than guessed. Nipātas 8–11 (`s0404t`) are
-  **excluded** — no PTS edition exists for them.
+- `Saratthamanjusa_Ekanipata-tika` — **nipāta 1** (`s0401t`)
+- `Saratthamanjusa_Dukanipata-tika` — **nipāta 2** (`s0402t` up to the
+  Tikanipāta header; ends exactly at the Dukanipāta colophon)
+
+The PTS edition covers **only nipātas 1–2 (Ekaka + Duka)**, per the editor's own
+statement (Primož Peceṇko, *"Līnatthapakāsinī and Sāratthamañjūsā…"*, **JPTS
+XXVII (2002), p. 78 n. 67**: "PTS edition by P. Peceṇko, Vols. I–III contain Eka-
+and Dukanipāta-ṭīkā"). The PTS catalogue's "first seven chapters" refers to the
+seven *sub-chapters* of the Ekanipāta-ṭīkā, **not** seven nipātas. Peceṇko
+prints these two nipātas across 3 physical volumes (I, II = Eka; III = Duka,
+approx.), but the page boundaries are unpublished, so the physical-volume split
+is **FLAGGED**. **Nipātas 3–11** (rest of `s0402t`, plus `s0403t`, `s0404t`) are
+**excluded** — no PTS edition.
 
 ## How the boundaries were set
 
@@ -64,21 +72,22 @@ here as well (see below); the rest of the Sutta ṭīkās have no PTS edition.
 ## Verification status
 
 - **Text conservation: PASS** — output words == words of the emitted CST sources
-  (863,068). No text lost (asserted globally; the vin01a 3-way split is also
-  checked to sum exactly). The only deliberate exclusion is AN ṭīkā nipātas 8–11
-  (`s0404t`), which has no PTS edition.
+  (773,154). No text lost (asserted globally; the vin01a 3-way split is also
+  checked to sum exactly). Deliberate exclusion: AN ṭīkā nipātas 3–11 (rest of
+  `s0402t`, `s0403t`, `s0404t`), which have no PTS edition.
 - **1:1 colophon-confirmed: PASS** — each 1:1 source ends with its expected
   division colophon (e.g. `Mahāvagga-aṭṭhakathā niṭṭhitā`,
   `Sīlakkhandhavaggaṭīkā niṭṭhitā`).
 - **Split anchors: PASS** — each anchor occurs exactly once; Vol II opens at the
   2nd Pārājika, Vol III opens at the Saṅghādisesa and ends at the Nissaggiya
-  colophon. The AN ṭīkā unit ends at the Sattakanipāta (nipāta 7) colophon.
+  colophon. The AN Eka/Duka cut ends exactly at the Dukanipāta colophon.
 
 ## Out of scope (ṭīkās with no PTS roman edition)
 
 - **Vinaya Sāratthadīpanī** (`vin*t`) and **Abhidhamma Mūlaṭīkā** (`abh*t`):
   no PTS roman edition, so no PTS volume structure to align to.
-- **AN ṭīkā nipātas 8–11** (`s0404t`): beyond the PTS Sāratthamañjūsā's coverage.
+- **AN ṭīkā nipātas 3–11** (rest of `s0402t`, `s0403t`, `s0404t`): beyond the
+  PTS Sāratthamañjūsā's coverage (which stops at Duka, nipāta 2).
 - Other Sutta ṭīkās (Majjhima `s02*t`, Saṃyutta `s03*t`, etc.): no PTS edition.
 - The one remaining PTS sub-commentary, **Abhidhammatthavibhāvinī**, is on the
   medieval Abhidhammatthasaṅgaha (a non-canonical manual), not a canonical

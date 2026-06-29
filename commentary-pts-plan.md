@@ -71,11 +71,13 @@ native CST structure, a different artifact).
 
 Note: the PTS *has* published a few ṭīkās in roman, just none of the Vin/Abh
 ones here — **Līnatthapakāsinī** (Dīgha ṭīkā, 3 vols, de Silva 1970, complete),
-**Sāratthamañjūsā** (Aṅguttara ṭīkā, 3 vols, Peceṇko 1996–99, first 7 nipātas
-only), and **Abhidhammatthavibhāvinī** (on the medieval Abhidhammatthasaṅgaha,
-not a canonical commentary). Both PTS canonical-text ṭīkās are Sutta-side, so a
-future extension could PTS-organize the **DN sub-commentary** (complete) and the
-**AN sub-commentary** (partial).
+**Sāratthamañjūsā** (Aṅguttara ṭīkā, 3 vols, Peceṇko 1996–99, **nipātas 1–2
+only** — Eka + Duka, per the editor's own note, JPTS XXVII p.78 n.67), and
+**Abhidhammatthavibhāvinī** (on the medieval Abhidhammatthasaṅgaha, not a
+canonical commentary). Both PTS canonical-text ṭīkās are Sutta-side; the **DN
+sub-commentary** was added complete (3 vols), and the **AN sub-commentary** was
+added for its PTS-covered scope (nipātas 1–2 = Eka + Duka), with nipātas 3–11
+excluded (no PTS edition) and the 3-physical-volume split flagged.
 
 ## Boundary source
 
