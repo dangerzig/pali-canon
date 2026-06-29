@@ -1,0 +1,92 @@
+{
+  "id": "sn19_7",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 29,
+    "sc": 32,
+    "vri": 32,
+    "bjt": 132,
+    "thai": 235
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 5,
+      "type": "error",
+      "selected": "addasaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "addasam",
+        "sc": "addasaṃ",
+        "vri": "addasaṃ",
+        "bjt": "addasaṃ",
+        "thai": "ajjhattaṃ"
+      },
+      "rejected": [
+        "addasam",
+        "ajjhattaṃ"
+      ],
+      "notes": "PTS \"addasam\" not in DPD, SC/VRI/BJT \"addasaṃ\" is valid, Thai has \"ajjhattaṃ\""
+    },
+    {
+      "position": 6,
+      "type": "error",
+      "selected": "usulomaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "usulomam",
+        "sc": "usulomaṃ",
+        "vri": "usulomaṃ",
+        "bjt": "usulomaṃ",
+        "thai": "sukhadukkhaṃ"
+      },
+      "rejected": [
+        "sukhadukkhaṃ",
+        "usulomam"
+      ],
+      "notes": "PTS \"usulomam\" not in DPD, SC/VRI/BJT \"usulomaṃ\" is valid, Thai has \"sukhadukkhaṃ\""
+    },
+    {
+      "position": 24,
+      "type": "variant",
+      "selected": "imasmiññeva",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "imasmiññeva",
+        "sc": "imasmiṃyeva",
+        "vri": "imasmiṃyeva",
+        "bjt": "imasmiṃ",
+        "thai": "sukhadukkhaṃ"
+      },
+      "rejected": [
+        "imasmiṃ",
+        "imasmiṃyeva",
+        "sukhadukkhaṃ"
+      ],
+      "notes": "Textual variant: PTS \"imasmiññeva\" vs SC/VRI \"imasmiṃyeva\", BJT has \"imasmiṃ\", Thai has \"sukhadukkhaṃ\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn19_7_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 29,
+      "orthographic": 2,
+      "errors": 2,
+      "variants": 1,
+      "uncertain": 0,
+      "match": 1,
+      "other": 23
+    }
+  }
+}

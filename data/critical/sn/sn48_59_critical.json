@@ -1,0 +1,124 @@
+{
+  "id": "sn48_59",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 33,
+    "sc": 35,
+    "vri": 35,
+    "bjt": 34,
+    "thai": 5
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "uppādasuttaṃ",
+        "thai": "sabbe"
+      },
+      "rejected": [
+        "sabbe",
+        "sāvatthinidānaṃ",
+        "uppādasuttaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"uppādasuttaṃ\", Thai has \"sabbe\""
+    },
+    {
+      "position": 16,
+      "type": "variant",
+      "selected": "viriyindriyaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "viriyindriyaṃ",
+        "sc": "vīriyindriyaṃ",
+        "vri": "vīriyindriyaṃ",
+        "bjt": "viriyindriyaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "vīriyindriyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"viriyindriyaṃ\" vs SC/VRI \"vīriyindriyaṃ\", BJT agrees with PTS"
+    },
+    {
+      "position": 18,
+      "type": "error",
+      "selected": "samādhindriyaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "samādhindriyam",
+        "sc": "samādhindriyaṃ",
+        "vri": "samādhindriyaṃ",
+        "bjt": "samādhindriyaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "samādhindriyam"
+      ],
+      "notes": "PTS \"samādhindriyam\" not in DPD, SC/VRI/BJT \"samādhindriyaṃ\" is valid"
+    },
+    {
+      "position": 23,
+      "type": "error",
+      "selected": "pañcindriyāni",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "pañcindriyani",
+        "sc": "pañcindriyāni",
+        "vri": "pañcindriyāni",
+        "bjt": "pañcindriyāni",
+        "thai": null
+      },
+      "rejected": [
+        "pañcindriyani"
+      ],
+      "notes": "PTS \"pañcindriyani\" not in DPD, SC/VRI/BJT \"pañcindriyāni\" is valid"
+    },
+    {
+      "position": 32,
+      "type": "uncertain",
+      "selected": "sammāsambuddhassā",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "sammāsambuddhassāti",
+        "sc": "sammāsambuddhassā",
+        "vri": "sammāsambuddhassā",
+        "bjt": "sammāsambuddhassāti",
+        "thai": null
+      },
+      "rejected": [
+        "sammāsambuddhassāti"
+      ],
+      "notes": "Neither reading validated: PTS \"sammāsambuddhassāti\" vs SC/VRI \"sammāsambuddhassā\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn48_59_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 33,
+      "orthographic": 24,
+      "errors": 2,
+      "variants": 2,
+      "uncertain": 1,
+      "match": 0,
+      "other": 4
+    }
+  }
+}

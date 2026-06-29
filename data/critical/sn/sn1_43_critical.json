@@ -1,0 +1,121 @@
+{
+  "id": "sn1_43",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 38,
+    "sc": 37,
+    "vri": 37,
+    "bjt": 38,
+    "thai": 51
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "ubhayo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ubhayo",
+        "sc": null,
+        "vri": null,
+        "bjt": "annamevābhinandanti",
+        "thai": "ubhaye"
+      },
+      "rejected": [
+        "annamevābhinandanti",
+        "ubhaye"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 9,
+      "type": "variant",
+      "selected": "yam",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "yam",
+        "sc": "yaṃ",
+        "vri": "yaṃ",
+        "bjt": "yaṃ",
+        "thai": "yaṃ"
+      },
+      "rejected": [
+        "yaṃ"
+      ],
+      "notes": "Textual variant: PTS \"yam\" vs SC/VRI/BJT/Thai \"yaṃ\""
+    },
+    {
+      "position": 11,
+      "type": "variant",
+      "selected": "nābhinandatīti",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "nābhinandatīti",
+        "sc": "nābhinandatī",
+        "vri": "nābhinandatī",
+        "bjt": "nābhinandatīti",
+        "thai": "nābhinandatīti"
+      },
+      "rejected": [
+        "nābhinandatī"
+      ],
+      "notes": "Textual variant: PTS \"nābhinandatīti\" vs SC/VRI \"nābhinandatī\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 18,
+      "type": "variant",
+      "selected": "tam",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "tam",
+        "sc": "tameva",
+        "vri": "tameva",
+        "bjt": "tameva",
+        "thai": "tameva"
+      },
+      "rejected": [
+        "tameva"
+      ],
+      "notes": "Textual variant: PTS \"tam\" vs SC/VRI/BJT/Thai \"tameva\""
+    },
+    {
+      "position": 19,
+      "type": "pts_addition",
+      "selected": "eva",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_43_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 38,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 3,
+      "uncertain": 2,
+      "match": 27,
+      "other": 6
+    }
+  }
+}

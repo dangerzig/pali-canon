@@ -1,0 +1,107 @@
+{
+  "id": "sn26_8",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 31,
+    "sc": 46,
+    "vri": 46,
+    "bjt": 286,
+    "thai": 17
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "taṇhā",
+        "thai": "po"
+      },
+      "rejected": [
+        "po",
+        "sāvatthinidānaṃ",
+        "taṇhā"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"taṇhā\", Thai has \"po\""
+    },
+    {
+      "position": 14,
+      "type": "pts_addition",
+      "selected": "xxvi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "xxvi",
+        "sc": null,
+        "vri": null,
+        "bjt": "uppādo",
+        "thai": null
+      },
+      "rejected": [
+        "uppādo"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 15,
+      "type": "pts_addition",
+      "selected": "uppādasaṃyutta",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "uppādasaṃyutta",
+        "sc": null,
+        "vri": null,
+        "bjt": "rogānaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "rogānaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 29,
+      "type": "variant",
+      "selected": "atthagamo",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "atthagamo",
+        "sc": "atthaṅgamo",
+        "vri": "atthaṅgamo",
+        "bjt": "atthagamo",
+        "thai": null
+      },
+      "rejected": [
+        "atthaṅgamo"
+      ],
+      "notes": "Textual variant: PTS \"atthagamo\" vs SC/VRI \"atthaṅgamo\", BJT agrees with PTS"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn26_8_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 31,
+      "orthographic": 9,
+      "errors": 0,
+      "variants": 2,
+      "uncertain": 2,
+      "match": 1,
+      "other": 17
+    }
+  }
+}

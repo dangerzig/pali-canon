@@ -1,0 +1,125 @@
+{
+  "id": "sn48_1",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 21,
+    "sc": 21,
+    "vri": 17,
+    "bjt": 18,
+    "thai": 7
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "suddha",
+        "thai": "samuddato"
+      },
+      "rejected": [
+        "samuddato",
+        "suddha",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"suddha\", Thai has \"samuddato\""
+    },
+    {
+      "position": 4,
+      "type": "uncertain",
+      "selected": "etad",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "etad",
+        "sc": "etadavoca",
+        "vri": null,
+        "bjt": null,
+        "thai": "dvādasa"
+      },
+      "rejected": [
+        "dvādasa",
+        "etadavoca"
+      ],
+      "notes": "Multi-way disagreement: PTS \"etad\", SC \"etadavoca\", VRI \"None\", Thai \"dvādasa\""
+    },
+    {
+      "position": 5,
+      "type": "pts_addition",
+      "selected": "avoca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "avoca",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "honti"
+      },
+      "rejected": [
+        "honti"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 12,
+      "type": "variant",
+      "selected": "viriyindriyaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "viriyindriyaṃ",
+        "sc": "vīriyindriyaṃ",
+        "vri": "vīriyindriyaṃ",
+        "bjt": "viriyindriyaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "vīriyindriyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"viriyindriyaṃ\" vs SC/VRI \"vīriyindriyaṃ\", BJT agrees with PTS"
+    },
+    {
+      "position": 15,
+      "type": "error",
+      "selected": "paññindriyaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "paññindriyam",
+        "sc": "paññindriyaṃ",
+        "vri": "paññindriyaṃ",
+        "bjt": "paññindriyaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "paññindriyam"
+      ],
+      "notes": "PTS \"paññindriyam\" not in DPD, SC/VRI/BJT \"paññindriyaṃ\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn48_1_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 21,
+      "orthographic": 10,
+      "errors": 1,
+      "variants": 2,
+      "uncertain": 2,
+      "match": 0,
+      "other": 6
+    }
+  }
+}

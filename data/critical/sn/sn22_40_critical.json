@@ -1,0 +1,122 @@
+{
+  "id": "sn22_40",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 17,
+    "sc": 17,
+    "vri": 16,
+    "bjt": 267,
+    "thai": 1
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "dutiya",
+        "thai": "kho"
+      },
+      "rejected": [
+        "dutiya",
+        "kho",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"dutiya\", Thai has \"kho\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "voca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "voca",
+        "sc": null,
+        "vri": null,
+        "bjt": "suttaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "suttaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 3,
+      "type": "pts_addition",
+      "selected": "dhammānudhammapaṭipannassa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "dhammānudhammapaṭipannassa",
+        "sc": null,
+        "vri": null,
+        "bjt": "dhammānudhammapaṭipannassa",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 7,
+      "type": "pts_addition",
+      "selected": "anudhammo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "anudhammo",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 16,
+      "type": "uncertain",
+      "selected": "vadāmīti",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "vadāmīti",
+        "sc": "ti",
+        "vri": "vadāmī",
+        "bjt": "vihareyya",
+        "thai": null
+      },
+      "rejected": [
+        "ti",
+        "vadāmī",
+        "vihareyya"
+      ],
+      "notes": "Multi-way disagreement: PTS \"vadāmīti\", SC \"ti\", VRI \"vadāmī\", BJT \"vihareyya\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn22_40_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 17,
+      "orthographic": 7,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 4,
+      "match": 0,
+      "other": 5
+    }
+  }
+}

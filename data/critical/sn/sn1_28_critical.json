@@ -1,0 +1,171 @@
+{
+  "id": "sn1_28",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 37,
+    "sc": 35,
+    "vri": 35,
+    "bjt": 46,
+    "thai": 44
+  },
+  "apparatus_count": 8,
+  "apparatus": [
+    {
+      "position": 2,
+      "type": "variant",
+      "selected": "raṭṭhavanto",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "raṭṭhavanto",
+        "sc": "raṭṭhavantopi",
+        "vri": "raṭṭhavantopi",
+        "bjt": "raṭṭhavanto",
+        "thai": "raṭṭhavantopi"
+      },
+      "rejected": [
+        "raṭṭhavantopi"
+      ],
+      "notes": "Textual variant: PTS \"raṭṭhavanto\" vs SC/VRI/Thai \"raṭṭhavantopi\", BJT agrees with PTS"
+    },
+    {
+      "position": 3,
+      "type": "pts_addition",
+      "selected": "pi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pi",
+        "sc": null,
+        "vri": null,
+        "bjt": "pi",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 11,
+      "type": "error",
+      "selected": "kedha",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "gedhataṃham",
+        "sc": "kedha",
+        "vri": "kedha",
+        "bjt": "kedha",
+        "thai": "rodhataṇhaṃ"
+      },
+      "rejected": [
+        "gedhataṃham",
+        "rodhataṇhaṃ"
+      ],
+      "notes": "PTS \"gedhataṃham\" not in DPD, SC/VRI/BJT \"kedha\" is valid, Thai has \"rodhataṇhaṃ\""
+    },
+    {
+      "position": 14,
+      "type": "error",
+      "selected": "lokasmiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "lokasmim",
+        "sc": "lokasmiṃ",
+        "vri": "lokasmiṃ",
+        "bjt": "lokasmiṃ",
+        "thai": null
+      },
+      "rejected": [
+        "lokasmim"
+      ],
+      "notes": "PTS \"lokasmim\" not in DPD, SC/VRI/BJT \"lokasmiṃ\" is valid"
+    },
+    {
+      "position": 15,
+      "type": "variant",
+      "selected": "anussukkāti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "anussukkāti",
+        "sc": "anussukā",
+        "vri": "anussukā",
+        "bjt": "anussukāti",
+        "thai": null
+      },
+      "rejected": [
+        "anussukā",
+        "anussukāti"
+      ],
+      "notes": "Textual variant: PTS \"anussukkāti\" vs SC/VRI \"anussukā\", BJT has \"anussukāti\""
+    },
+    {
+      "position": 17,
+      "type": "error",
+      "selected": "agāraṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "agāram",
+        "sc": "agāraṃ",
+        "vri": "agāraṃ",
+        "bjt": "agāraṃ",
+        "thai": "agāraṃ"
+      },
+      "rejected": [
+        "agāram"
+      ],
+      "notes": "PTS \"agāram\" not in DPD, SC/VRI/BJT/Thai \"agāraṃ\" is valid"
+    },
+    {
+      "position": 18,
+      "type": "variant",
+      "selected": "pabbajitvā",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "pabbajitvā",
+        "sc": "pabbajitā",
+        "vri": "pabbajitā",
+        "bjt": "pabbajitā",
+        "thai": "pabbajitā"
+      },
+      "rejected": [
+        "pabbajitā"
+      ],
+      "notes": "Textual variant: PTS \"pabbajitvā\" vs SC/VRI/BJT/Thai \"pabbajitā\""
+    },
+    {
+      "position": 34,
+      "type": "pts_addition",
+      "selected": "devatāsaṃyutta",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "devatāsaṃyutta",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_28_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 37,
+      "orthographic": 0,
+      "errors": 3,
+      "variants": 3,
+      "uncertain": 2,
+      "match": 21,
+      "other": 8
+    }
+  }
+}

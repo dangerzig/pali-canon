@@ -1,0 +1,93 @@
+{
+  "id": "sn56_76",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 21,
+    "sc": 21,
+    "vri": 22,
+    "bjt": 21,
+    "thai": 632
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "uncertain",
+      "selected": "evam",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "pe",
+        "bjt": "pharusavācāsuttaṃ",
+        "thai": "bahulīkato"
+      },
+      "rejected": [
+        "bahulīkato",
+        "evameva",
+        "pe",
+        "pharusavācāsuttaṃ"
+      ],
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\", BJT \"pharusavācāsuttaṃ\", Thai \"bahulīkato\""
+    },
+    {
+      "position": 1,
+      "type": "uncertain",
+      "selected": "evameva",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": "evameva",
+        "bjt": "evameva",
+        "thai": "anusayasamugghātāya"
+      },
+      "rejected": [
+        "anusayasamugghātāya",
+        "eva"
+      ],
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", Thai \"anusayasamugghātāya\""
+    },
+    {
+      "position": 13,
+      "type": "variant",
+      "selected": "ete",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "ete",
+        "sc": "eteva",
+        "vri": "eteva",
+        "bjt": "eteva",
+        "thai": "dīghāvu"
+      },
+      "rejected": [
+        "dīghāvu",
+        "eteva"
+      ],
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"dīghāvu\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_76_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 21,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 3,
+      "other": 15
+    }
+  }
+}

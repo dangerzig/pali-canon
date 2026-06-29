@@ -1,0 +1,127 @@
+{
+  "id": "an9_48",
+  "schema_version": 1,
+  "nikaya": "AN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 8,
+    "sc": 7,
+    "vri": 0,
+    "bjt": 18,
+    "thai": 5
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "nibbānaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "lviii",
+        "sc": "nibbānaṃ",
+        "vri": null,
+        "bjt": "anupubbapassaddhi",
+        "thai": "nibbānaṃ"
+      },
+      "rejected": [
+        "anupubbapassaddhi",
+        "lviii"
+      ],
+      "notes": "PTS \"lviii\" not in DPD, SC/Thai \"nibbānaṃ\" is valid"
+    },
+    {
+      "position": 1,
+      "type": "sc_error",
+      "selected": "passaddhi",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "passaddhi",
+        "sc": "nibbānan",
+        "vri": null,
+        "bjt": "suttaṃ",
+        "thai": "nibbānanti"
+      },
+      "rejected": [
+        "nibbānan",
+        "nibbānanti",
+        "suttaṃ"
+      ],
+      "notes": "SC \"nibbānan\" not in DPD, PTS \"passaddhi\" is valid"
+    },
+    {
+      "position": 2,
+      "type": "missing",
+      "selected": null,
+      "confidence": null,
+      "witnesses": {
+        "gretil": "passaddhī",
+        "sc": null,
+        "vri": null,
+        "bjt": "kosambinidānaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "kosambinidānaṃ",
+        "passaddhī"
+      ],
+      "notes": "One reading missing"
+    },
+    {
+      "position": 6,
+      "type": "variant",
+      "selected": null,
+      "confidence": null,
+      "witnesses": {
+        "gretil": "aṅguttaranikāya",
+        "sc": "pe",
+        "vri": null,
+        "bjt": "pe",
+        "thai": "pe"
+      },
+      "rejected": [
+        "aṅguttaranikāya",
+        "pe"
+      ],
+      "notes": "Textual variant: PTS \"aṅguttaranikāya\" vs SC \"pe\" (BJT agrees with SC, Thai agrees with SC)"
+    },
+    {
+      "position": 7,
+      "type": "error",
+      "selected": "sattamaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "lixlxii",
+        "sc": "sattamaṃ",
+        "vri": null,
+        "bjt": "nirodha",
+        "thai": null
+      },
+      "rejected": [
+        "lixlxii",
+        "nirodha"
+      ],
+      "notes": "PTS \"lixlxii\" not in DPD, SC \"sattamaṃ\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/an/an9_48_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 8,
+      "orthographic": 1,
+      "errors": 3,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 2,
+      "other": 0
+    }
+  }
+}

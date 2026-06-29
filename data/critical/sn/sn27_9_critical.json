@@ -1,0 +1,175 @@
+{
+  "id": "sn27_9",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 42,
+    "sc": 43,
+    "vri": 43,
+    "bjt": 62,
+    "thai": 17
+  },
+  "apparatus_count": 8,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "dhātu",
+        "thai": "na"
+      },
+      "rejected": [
+        "dhātu",
+        "na",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"dhātu\", Thai has \"na\""
+    },
+    {
+      "position": 3,
+      "type": "variant",
+      "selected": "pathavidhātuyā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pathavidhātuyā",
+        "sc": "pathavīdhātuyā",
+        "vri": "pathavīdhātuyā",
+        "bjt": "paṭhavidhātuyā",
+        "thai": "evametaṃ"
+      },
+      "rejected": [
+        "evametaṃ",
+        "pathavīdhātuyā",
+        "paṭhavidhātuyā"
+      ],
+      "notes": "Textual variant: PTS \"pathavidhātuyā\" vs SC/VRI \"pathavīdhātuyā\", BJT has \"paṭhavidhātuyā\", Thai has \"evametaṃ\""
+    },
+    {
+      "position": 8,
+      "type": "error",
+      "selected": "āpodhātuyā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "āpodhātuya",
+        "sc": "āpodhātuyā",
+        "vri": "āpodhātuyā",
+        "bjt": "āpodhātuyā",
+        "thai": "passaṃ"
+      },
+      "rejected": [
+        "passaṃ",
+        "āpodhātuya"
+      ],
+      "notes": "PTS \"āpodhātuya\" not in DPD, SC/VRI/BJT \"āpodhātuyā\" is valid, Thai has \"passaṃ\""
+    },
+    {
+      "position": 12,
+      "type": "error",
+      "selected": "vāyodhātuyā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "vāyodhātuya",
+        "sc": "vāyodhātuyā",
+        "vri": "vāyodhātuyā",
+        "bjt": "vāyodhātuyā",
+        "thai": "pajānātīti"
+      },
+      "rejected": [
+        "pajānātīti",
+        "vāyodhātuya"
+      ],
+      "notes": "PTS \"vāyodhātuya\" not in DPD, SC/VRI/BJT \"vāyodhātuyā\" is valid, Thai has \"pajānātīti\""
+    },
+    {
+      "position": 31,
+      "type": "variant",
+      "selected": "nekkhammaninnaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "nekkhammaninnaṃ",
+        "sc": "nekkhammaninnañcassa",
+        "vri": "nekkhammaninnañcassa",
+        "bjt": "nekkhammaninnaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "nekkhammaninnañcassa"
+      ],
+      "notes": "Textual variant: PTS \"nekkhammaninnaṃ\" vs SC/VRI \"nekkhammaninnañcassa\", BJT agrees with PTS"
+    },
+    {
+      "position": 32,
+      "type": "pts_addition",
+      "selected": "cassa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "cassa",
+        "sc": null,
+        "vri": null,
+        "bjt": "cassa",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 35,
+      "type": "variant",
+      "selected": "nekkhamma",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "nekkhamma",
+        "sc": "nekkhammaparibhāvitaṃ",
+        "vri": "nekkhammaparibhāvitaṃ",
+        "bjt": "nekkhammaparibhāvitaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "nekkhammaparibhāvitaṃ"
+      ],
+      "notes": "Textual variant: PTS \"nekkhamma\" vs SC/VRI/BJT \"nekkhammaparibhāvitaṃ\""
+    },
+    {
+      "position": 36,
+      "type": "pts_addition",
+      "selected": "paribhāvitaṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "paribhāvitaṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn27_9_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 42,
+      "orthographic": 15,
+      "errors": 2,
+      "variants": 4,
+      "uncertain": 2,
+      "match": 1,
+      "other": 18
+    }
+  }
+}

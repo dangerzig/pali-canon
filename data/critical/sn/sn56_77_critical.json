@@ -1,0 +1,110 @@
+{
+  "id": "sn56_77",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 20,
+    "sc": 19,
+    "vri": 20,
+    "bjt": 19,
+    "thai": 632
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "uncertain",
+      "selected": "evam",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "pe",
+        "bjt": "samphappalāpasuttaṃ",
+        "thai": "cha"
+      },
+      "rejected": [
+        "cha",
+        "evameva",
+        "pe",
+        "samphappalāpasuttaṃ"
+      ],
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\", BJT \"samphappalāpasuttaṃ\", Thai \"cha\""
+    },
+    {
+      "position": 1,
+      "type": "uncertain",
+      "selected": "evameva",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": "evameva",
+        "bjt": "evameva",
+        "thai": "vijjābhāgiyā"
+      },
+      "rejected": [
+        "eva",
+        "vijjābhāgiyā"
+      ],
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", Thai \"vijjābhāgiyā\""
+    },
+    {
+      "position": 18,
+      "type": "error",
+      "selected": "sattamaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "saccasaṃyuttam",
+        "sc": "sattamaṃ",
+        "vri": "sattamaṃ",
+        "bjt": null,
+        "thai": "pakkamissatīti"
+      },
+      "rejected": [
+        "pakkamissatīti",
+        "saccasaṃyuttam"
+      ],
+      "notes": "PTS \"saccasaṃyuttam\" not in DPD, SC/VRI \"sattamaṃ\" is valid, Thai has \"pakkamissatīti\""
+    },
+    {
+      "position": 19,
+      "type": "pts_addition",
+      "selected": "lvi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "lvi",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "hoti"
+      },
+      "rejected": [
+        "hoti"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_77_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 20,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 0,
+      "uncertain": 3,
+      "match": 2,
+      "other": 14
+    }
+  }
+}

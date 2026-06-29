@@ -1,0 +1,156 @@
+{
+  "id": "sn47_27",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT"
+  ],
+  "word_counts": {
+    "gretil": 63,
+    "sc": 68,
+    "vri": 68,
+    "bjt": 70,
+    "thai": 0
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "taṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "taṃ",
+        "sc": "taṃyeva",
+        "vri": "taṃyeva",
+        "bjt": "samattasuttaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "samattasuttaṃ",
+        "taṃyeva"
+      ],
+      "notes": "Textual variant: PTS \"taṃ\" vs SC/VRI \"taṃyeva\", BJT has \"samattasuttaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "yeva",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "yeva",
+        "sc": null,
+        "vri": null,
+        "bjt": "kaṇṭakīvane",
+        "thai": null
+      },
+      "rejected": [
+        "kaṇṭakīvane"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 3,
+      "type": "error",
+      "selected": "ekamantaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "ekam",
+        "sc": "ekamantaṃ",
+        "vri": "ekamantaṃ",
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "ekam"
+      ],
+      "notes": "PTS \"ekam\" not in DPD, SC/VRI \"ekamantaṃ\" is valid"
+    },
+    {
+      "position": 24,
+      "type": "error",
+      "selected": "satipaṭṭhānānaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "satipaṭṭhānānam",
+        "sc": "satipaṭṭhānānaṃ",
+        "vri": "satipaṭṭhānānaṃ",
+        "bjt": "satipaṭṭhānānaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "satipaṭṭhānānam"
+      ],
+      "notes": "PTS \"satipaṭṭhānānam\" not in DPD, SC/VRI/BJT \"satipaṭṭhānānaṃ\" is valid"
+    },
+    {
+      "position": 25,
+      "type": "error",
+      "selected": "samattaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "samattam",
+        "sc": "samattaṃ",
+        "vri": "samattaṃ",
+        "bjt": "samattaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "samattam"
+      ],
+      "notes": "PTS \"samattam\" not in DPD, SC/VRI/BJT \"samattaṃ\" is valid"
+    },
+    {
+      "position": 52,
+      "type": "error",
+      "selected": "abhijjhādomanassaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "abhijjhādomanassam",
+        "sc": "abhijjhādomanassaṃ",
+        "vri": "abhijjhādomanassaṃ",
+        "bjt": "abhijjhādomanassaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "abhijjhādomanassam"
+      ],
+      "notes": "PTS \"abhijjhādomanassam\" not in DPD, SC/VRI/BJT \"abhijjhādomanassaṃ\" is valid"
+    },
+    {
+      "position": 58,
+      "type": "variant",
+      "selected": "samattā",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "samattā",
+        "sc": "samattaṃ",
+        "vri": "samattaṃ",
+        "bjt": "samattaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "samattaṃ"
+      ],
+      "notes": "Textual variant: PTS \"samattā\" vs SC/VRI/BJT \"samattaṃ\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn47_27_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 63,
+      "orthographic": 48,
+      "errors": 4,
+      "variants": 2,
+      "uncertain": 1,
+      "match": 0,
+      "other": 8
+    }
+  }
+}

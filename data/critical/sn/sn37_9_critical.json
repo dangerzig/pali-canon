@@ -1,0 +1,72 @@
+{
+  "id": "sn37_9",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 38,
+    "sc": 39,
+    "vri": 39,
+    "bjt": 46,
+    "thai": 62
+  },
+  "apparatus_count": 2,
+  "apparatus": [
+    {
+      "position": 9,
+      "type": "error",
+      "selected": "nirayaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "nirayam",
+        "sc": "nirayaṃ",
+        "vri": "nirayaṃ",
+        "bjt": "nirayaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "nirayam"
+      ],
+      "notes": "PTS \"nirayam\" not in DPD, SC/VRI/BJT \"nirayaṃ\" is valid"
+    },
+    {
+      "position": 19,
+      "type": "variant",
+      "selected": "anottāpī",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "anottāpī",
+        "sc": "anottappī",
+        "vri": "anottappī",
+        "bjt": "anottāpī",
+        "thai": "cakkhuviññāṇaṃ"
+      },
+      "rejected": [
+        "anottappī",
+        "cakkhuviññāṇaṃ"
+      ],
+      "notes": "Textual variant: PTS \"anottāpī\" vs SC/VRI \"anottappī\", BJT agrees with PTS, Thai has \"cakkhuviññāṇaṃ\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn37_9_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 38,
+      "orthographic": 4,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 0,
+      "match": 3,
+      "other": 29
+    }
+  }
+}

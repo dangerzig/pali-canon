@@ -1,0 +1,155 @@
+{
+  "id": "sn2_7",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 38,
+    "sc": 36,
+    "vri": 36,
+    "bjt": 36,
+    "thai": 35
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "antaṃ",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "antaṃ",
+        "sc": "ekamantaṃ",
+        "vri": "ekamantaṃ",
+        "bjt": "sāvatthiyaṃ",
+        "thai": "ekamantaṃ"
+      },
+      "rejected": [
+        "ekamantaṃ",
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"antaṃ\" vs SC/VRI/Thai \"ekamantaṃ\", BJT has \"sāvatthiyaṃ\""
+    },
+    {
+      "position": 9,
+      "type": "error",
+      "selected": "gāthaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "gātham",
+        "sc": "gāthaṃ",
+        "vri": "gāthaṃ",
+        "bjt": "gāthaṃ",
+        "thai": "gāthaṃ"
+      },
+      "rejected": [
+        "gātham"
+      ],
+      "notes": "PTS \"gātham\" not in DPD, SC/VRI/BJT/Thai \"gāthaṃ\" is valid"
+    },
+    {
+      "position": 17,
+      "type": "error",
+      "selected": "jhānamabujjhi",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "jhānam",
+        "sc": "jhānamabujjhi",
+        "vri": "jhānamabujjhi",
+        "bjt": "jhānambudhā",
+        "thai": "jhānamabuddhi"
+      },
+      "rejected": [
+        "jhānam",
+        "jhānamabuddhi",
+        "jhānambudhā"
+      ],
+      "notes": "PTS \"jhānam\" not in DPD, SC/VRI \"jhānamabujjhi\" is valid, BJT has \"jhānambudhā\", Thai has \"jhānamabuddhi\""
+    },
+    {
+      "position": 18,
+      "type": "pts_addition",
+      "selected": "abuddhi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "abuddhi",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 20,
+      "type": "variant",
+      "selected": "patilīnanisabho",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "patilīnanisabho",
+        "sc": "paṭilīnanisabho",
+        "vri": "paṭilīnanisabho",
+        "bjt": "patilīnanisabho",
+        "thai": "paṭilīnanisabho"
+      },
+      "rejected": [
+        "paṭilīnanisabho"
+      ],
+      "notes": "Textual variant: PTS \"patilīnanisabho\" vs SC/VRI/Thai \"paṭilīnanisabho\", BJT agrees with PTS"
+    },
+    {
+      "position": 21,
+      "type": "variant",
+      "selected": "munīti",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "munīti",
+        "sc": "munī",
+        "vri": "munī",
+        "bjt": "munīti",
+        "thai": "munīti"
+      },
+      "rejected": [
+        "munī"
+      ],
+      "notes": "Textual variant: PTS \"munīti\" vs SC/VRI \"munī\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 37,
+      "type": "pts_addition",
+      "selected": "paṭhamavagga",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "paṭhamavagga",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn2_7_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 38,
+      "orthographic": 0,
+      "errors": 2,
+      "variants": 3,
+      "uncertain": 2,
+      "match": 21,
+      "other": 10
+    }
+  }
+}

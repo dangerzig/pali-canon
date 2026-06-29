@@ -1,0 +1,162 @@
+{
+  "id": "sn52_5",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 55,
+    "sc": 60,
+    "vri": 60,
+    "bjt": 73,
+    "thai": 58
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sākete",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sākete",
+        "sc": "sāketanidānaṃ",
+        "vri": "sāketanidānaṃ",
+        "bjt": "dutiya",
+        "thai": "ariyaṃ"
+      },
+      "rejected": [
+        "ariyaṃ",
+        "dutiya",
+        "sāketanidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sākete\" vs SC/VRI \"sāketanidānaṃ\", BJT has \"dutiya\", Thai has \"ariyaṃ\""
+    },
+    {
+      "position": 3,
+      "type": "pts_addition",
+      "selected": "antaṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "antaṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": "āvuso",
+        "thai": "bhāvento"
+      },
+      "rejected": [
+        "bhāvento",
+        "āvuso"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 9,
+      "type": "error",
+      "selected": "anuruddhaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "anuruddham",
+        "sc": "anuruddhaṃ",
+        "vri": "anuruddhaṃ",
+        "bjt": null,
+        "thai": "dhammā"
+      },
+      "rejected": [
+        "anuruddham",
+        "dhammā"
+      ],
+      "notes": "PTS \"anuruddham\" not in DPD, SC/VRI \"anuruddhaṃ\" is valid, Thai has \"dhammā\""
+    },
+    {
+      "position": 10,
+      "type": "variant",
+      "selected": "etad",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "etad",
+        "sc": "etadavoca",
+        "vri": "etadavoca",
+        "bjt": null,
+        "thai": "abhiññā"
+      },
+      "rejected": [
+        "abhiññā",
+        "etadavoca"
+      ],
+      "notes": "Textual variant: PTS \"etad\" vs SC/VRI \"etadavoca\", Thai has \"abhiññā\""
+    },
+    {
+      "position": 11,
+      "type": "pts_addition",
+      "selected": "avoca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "avoca",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "pariññeyyā"
+      },
+      "rejected": [
+        "pariññeyyā"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 39,
+      "type": "error",
+      "selected": "abhijjhādomanassaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "abhijjhādomanassam",
+        "sc": "abhijjhādomanassaṃ",
+        "vri": "abhijjhādomanassaṃ",
+        "bjt": "abhijjhā",
+        "thai": null
+      },
+      "rejected": [
+        "abhijjhā",
+        "abhijjhādomanassam"
+      ],
+      "notes": "PTS \"abhijjhādomanassam\" not in DPD, SC/VRI \"abhijjhādomanassaṃ\" is valid, BJT has \"abhijjhā\""
+    },
+    {
+      "position": 45,
+      "type": "error",
+      "selected": "ātāpī",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "ātāpīdomanassaṃ",
+        "sc": "ātāpī",
+        "vri": "ātāpī",
+        "bjt": "ātāpī",
+        "thai": null
+      },
+      "rejected": [
+        "ātāpīdomanassaṃ"
+      ],
+      "notes": "PTS \"ātāpīdomanassaṃ\" not in DPD, SC/VRI/BJT \"ātāpī\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn52_5_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 55,
+      "orthographic": 19,
+      "errors": 3,
+      "variants": 2,
+      "uncertain": 2,
+      "match": 4,
+      "other": 25
+    }
+  }
+}

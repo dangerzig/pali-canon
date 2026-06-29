@@ -1,0 +1,108 @@
+{
+  "id": "sn22_153",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 18,
+    "sc": 178,
+    "vri": 178,
+    "bjt": 379,
+    "thai": 1
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "paṭhama",
+        "thai": "okasārīti"
+      },
+      "rejected": [
+        "okasārīti",
+        "paṭhama",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"paṭhama\", Thai has \"okasārīti\""
+    },
+    {
+      "position": 6,
+      "type": "error",
+      "selected": "kiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "kim",
+        "sc": "kiṃ",
+        "vri": "kiṃ",
+        "bjt": "kiṃ",
+        "thai": null
+      },
+      "rejected": [
+        "kim"
+      ],
+      "notes": "PTS \"kim\" not in DPD, SC/VRI/BJT \"kiṃ\" is valid"
+    },
+    {
+      "position": 8,
+      "type": "error",
+      "selected": "kiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "kim",
+        "sc": "kiṃ",
+        "vri": "kiṃ",
+        "bjt": "kiṃ",
+        "thai": null
+      },
+      "rejected": [
+        "kim"
+      ],
+      "notes": "PTS \"kim\" not in DPD, SC/VRI/BJT \"kiṃ\" is valid"
+    },
+    {
+      "position": 13,
+      "type": "variant",
+      "selected": "bhagavammūlakā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "bhagavammūlakā",
+        "sc": "bhagavaṃmūlakā",
+        "vri": "bhagavaṃmūlakā",
+        "bjt": "sati",
+        "thai": null
+      },
+      "rejected": [
+        "bhagavaṃmūlakā",
+        "sati"
+      ],
+      "notes": "Textual variant: PTS \"bhagavammūlakā\" vs SC/VRI \"bhagavaṃmūlakā\", BJT has \"sati\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn22_153_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 18,
+      "orthographic": 6,
+      "errors": 2,
+      "variants": 2,
+      "uncertain": 0,
+      "match": 0,
+      "other": 8
+    }
+  }
+}

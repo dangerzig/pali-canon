@@ -1,0 +1,145 @@
+{
+  "id": "sn34_13",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 56,
+    "sc": 58,
+    "vri": 58,
+    "bjt": 78,
+    "thai": 51
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "samāpattikallitakusala",
+        "thai": "iti"
+      },
+      "rejected": [
+        "iti",
+        "samāpattikallitakusala",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"samāpattikallitakusala\", Thai has \"iti\""
+    },
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "cattāro",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "cattāro",
+        "sc": "cattārome",
+        "vri": "cattārome",
+        "bjt": "suttaṃ",
+        "thai": "hidaṃ"
+      },
+      "rejected": [
+        "cattārome",
+        "hidaṃ",
+        "suttaṃ"
+      ],
+      "notes": "Textual variant: PTS \"cattāro\" vs SC/VRI \"cattārome\", BJT has \"suttaṃ\", Thai has \"hidaṃ\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "sāvatthiyaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 15,
+      "type": "error",
+      "selected": "samādhismiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "samādhismim",
+        "sc": "samādhismiṃ",
+        "vri": "samādhismiṃ",
+        "bjt": "samādhismiṃ",
+        "thai": "rūpaṃ"
+      },
+      "rejected": [
+        "rūpaṃ",
+        "samādhismim"
+      ],
+      "notes": "PTS \"samādhismim\" not in DPD, SC/VRI/BJT \"samādhismiṃ\" is valid, Thai has \"rūpaṃ\""
+    },
+    {
+      "position": 22,
+      "type": "error",
+      "selected": "samādhismiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "samādhismim",
+        "sc": "samādhismiṃ",
+        "vri": "samādhismiṃ",
+        "bjt": "samādhismiṃ",
+        "thai": null
+      },
+      "rejected": [
+        "samādhismim"
+      ],
+      "notes": "PTS \"samādhismim\" not in DPD, SC/VRI/BJT \"samādhismiṃ\" is valid"
+    },
+    {
+      "position": 39,
+      "type": "error",
+      "selected": "kallitakusalo",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "kallilakusalo",
+        "sc": "kallitakusalo",
+        "vri": "kallitakusalo",
+        "bjt": "kallitakusalo",
+        "thai": "vā"
+      },
+      "rejected": [
+        "kallilakusalo",
+        "vā"
+      ],
+      "notes": "PTS \"kallilakusalo\" not in DPD, SC/VRI/BJT \"kallitakusalo\" is valid, Thai has \"vā\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn34_13_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 56,
+      "orthographic": 17,
+      "errors": 3,
+      "variants": 2,
+      "uncertain": 1,
+      "match": 5,
+      "other": 28
+    }
+  }
+}

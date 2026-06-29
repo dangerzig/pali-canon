@@ -1,0 +1,104 @@
+{
+  "id": "sn1_44",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 11,
+    "sc": 10,
+    "vri": 10,
+    "bjt": 11,
+    "thai": 11
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 1,
+      "type": "error",
+      "selected": "dvirāvaṭṭaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "dvirāvaṭṭam",
+        "sc": "dvirāvaṭṭaṃ",
+        "vri": "dvirāvaṭṭaṃ",
+        "bjt": "dvirāvaṭṭaṃ",
+        "thai": "dviāvaṭṭaṃ"
+      },
+      "rejected": [
+        "dvirāvaṭṭam",
+        "dviāvaṭṭaṃ"
+      ],
+      "notes": "PTS \"dvirāvaṭṭam\" not in DPD, SC/VRI/BJT \"dvirāvaṭṭaṃ\" is valid, Thai has \"dviāvaṭṭaṃ\""
+    },
+    {
+      "position": 6,
+      "type": "error",
+      "selected": "pātālaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "pātālam",
+        "sc": "pātālaṃ",
+        "vri": "pātālaṃ",
+        "bjt": "pātālaṃ",
+        "thai": "pātālaṃ"
+      },
+      "rejected": [
+        "pātālam"
+      ],
+      "notes": "PTS \"pātālam\" not in DPD, SC/VRI/BJT/Thai \"pātālaṃ\" is valid"
+    },
+    {
+      "position": 8,
+      "type": "variant",
+      "selected": "isīti",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "isīti",
+        "sc": "isī",
+        "vri": "isī",
+        "bjt": "isīti",
+        "thai": "isīti"
+      },
+      "rejected": [
+        "isī"
+      ],
+      "notes": "Textual variant: PTS \"isīti\" vs SC/VRI \"isī\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 10,
+      "type": "pts_addition",
+      "selected": "ādittavagga",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ādittavagga",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_44_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 11,
+      "orthographic": 0,
+      "errors": 2,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 6,
+      "other": 1
+    }
+  }
+}

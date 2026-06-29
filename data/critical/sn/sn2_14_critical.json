@@ -1,0 +1,125 @@
+{
+  "id": "sn2_14",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 38,
+    "sc": 54,
+    "vri": 54,
+    "bjt": 40,
+    "thai": 43
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "ekamantaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "ekam",
+        "sc": "ekamantaṃ",
+        "vri": "ekamantaṃ",
+        "bjt": "candanasuttaṃ",
+        "thai": "candanasuttaṃ"
+      },
+      "rejected": [
+        "candanasuttaṃ",
+        "ekam"
+      ],
+      "notes": "PTS \"ekam\" not in DPD, SC/VRI \"ekamantaṃ\" is valid, BJT has \"candanasuttaṃ\", Thai has \"candanasuttaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "antaṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "antaṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": "sāvatthiyaṃ",
+        "thai": "ekamantaṃ"
+      },
+      "rejected": [
+        "ekamantaṃ",
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 4,
+      "type": "variant",
+      "selected": "candano",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "candano",
+        "sc": "nandano",
+        "vri": "nandano",
+        "bjt": "candano",
+        "thai": "candano"
+      },
+      "rejected": [
+        "nandano"
+      ],
+      "notes": "Textual variant: PTS \"candano\" vs SC/VRI \"nandano\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 11,
+      "type": "variant",
+      "selected": "tarati",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "tarati",
+        "sc": "gotama",
+        "vri": "gotama",
+        "bjt": "dha",
+        "thai": "tarati"
+      },
+      "rejected": [
+        "dha",
+        "gotama"
+      ],
+      "notes": "Textual variant: PTS \"tarati\" vs SC/VRI \"gotama\", BJT has \"dha\", Thai agrees with PTS"
+    },
+    {
+      "position": 30,
+      "type": "variant",
+      "selected": "virato",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "virato",
+        "sc": "vigatā",
+        "vri": "vigatā",
+        "bjt": "virato",
+        "thai": "virato"
+      },
+      "rejected": [
+        "vigatā"
+      ],
+      "notes": "Textual variant: PTS \"virato\" vs SC/VRI \"vigatā\", BJT agrees with PTS, Thai agrees with PTS"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn2_14_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 38,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 3,
+      "uncertain": 1,
+      "match": 7,
+      "other": 26
+    }
+  }
+}

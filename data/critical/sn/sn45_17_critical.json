@@ -1,0 +1,91 @@
+{
+  "id": "sn45_17",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 26,
+    "sc": 33,
+    "vri": 33,
+    "bjt": 37,
+    "thai": 81
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "dutiyaparisuddhasuttaṃ",
+        "thai": "aṭṭha"
+      },
+      "rejected": [
+        "aṭṭha",
+        "dutiyaparisuddhasuttaṃ",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"dutiyaparisuddhasuttaṃ\", Thai has \"aṭṭha\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "tatravoca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "tatravoca",
+        "sc": null,
+        "vri": null,
+        "bjt": "sāvatthiyaṃ",
+        "thai": "seyyathīdaṃ"
+      },
+      "rejected": [
+        "seyyathīdaṃ",
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 12,
+      "type": "variant",
+      "selected": "seyyathīdaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "seyyathīdaṃ",
+        "sc": "seyyathidaṃ",
+        "vri": "seyyathidaṃ",
+        "bjt": "seyyathīdaṃ",
+        "thai": "seyyathīdaṃ"
+      },
+      "rejected": [
+        "seyyathidaṃ"
+      ],
+      "notes": "Textual variant: PTS \"seyyathīdaṃ\" vs SC/VRI \"seyyathidaṃ\", BJT agrees with PTS, Thai agrees with PTS"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn45_17_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 26,
+      "orthographic": 3,
+      "errors": 0,
+      "variants": 2,
+      "uncertain": 1,
+      "match": 17,
+      "other": 3
+    }
+  }
+}

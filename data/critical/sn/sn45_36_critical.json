@@ -1,0 +1,171 @@
+{
+  "id": "sn45_36",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 41,
+    "sc": 40,
+    "vri": 40,
+    "bjt": 43,
+    "thai": 41
+  },
+  "apparatus_count": 8,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "dutiya",
+        "thai": null
+      },
+      "rejected": [
+        "dutiya",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"dutiya\""
+    },
+    {
+      "position": 4,
+      "type": "variant",
+      "selected": "desissāmi",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "desissāmi",
+        "sc": "desessāmi",
+        "vri": "desessāmi",
+        "bjt": "desissāmi",
+        "thai": null
+      },
+      "rejected": [
+        "desessāmi"
+      ],
+      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI \"desessāmi\", BJT agrees with PTS"
+    },
+    {
+      "position": 5,
+      "type": "error",
+      "selected": "sāmaññatthañca",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "sāmaññatthañ",
+        "sc": "sāmaññatthañca",
+        "vri": "sāmaññatthañca",
+        "bjt": "sāmaññatthañca",
+        "thai": null
+      },
+      "rejected": [
+        "sāmaññatthañ"
+      ],
+      "notes": "PTS \"sāmaññatthañ\" not in DPD, SC/VRI/BJT \"sāmaññatthañca\" is valid"
+    },
+    {
+      "position": 6,
+      "type": "pts_addition",
+      "selected": "ca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ca",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 9,
+      "type": "error",
+      "selected": "katamañca",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "katamañ",
+        "sc": "katamañca",
+        "vri": "katamañca",
+        "bjt": "katamañca",
+        "thai": null
+      },
+      "rejected": [
+        "katamañ"
+      ],
+      "notes": "PTS \"katamañ\" not in DPD, SC/VRI/BJT \"katamañca\" is valid"
+    },
+    {
+      "position": 13,
+      "type": "error",
+      "selected": "ayameva",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "ayam",
+        "sc": "ayameva",
+        "vri": "ayameva",
+        "bjt": "ayameva",
+        "thai": "ayamevāriyo"
+      },
+      "rejected": [
+        "ayam",
+        "ayamevāriyo"
+      ],
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT \"ayameva\" is valid, Thai has \"ayamevāriyo\""
+    },
+    {
+      "position": 14,
+      "type": "pts_addition",
+      "selected": "eva",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 18,
+      "type": "variant",
+      "selected": "seyyathīdaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "seyyathīdaṃ",
+        "sc": "seyyathidaṃ",
+        "vri": "seyyathidaṃ",
+        "bjt": "seyyathīdaṃ",
+        "thai": "seyyathīdaṃ"
+      },
+      "rejected": [
+        "seyyathidaṃ"
+      ],
+      "notes": "Textual variant: PTS \"seyyathīdaṃ\" vs SC/VRI \"seyyathidaṃ\", BJT agrees with PTS, Thai agrees with PTS"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn45_36_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 41,
+      "orthographic": 6,
+      "errors": 3,
+      "variants": 3,
+      "uncertain": 2,
+      "match": 14,
+      "other": 13
+    }
+  }
+}

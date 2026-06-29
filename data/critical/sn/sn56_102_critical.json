@@ -1,0 +1,127 @@
+{
+  "id": "sn56_102",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 27,
+    "sc": 79,
+    "vri": 30,
+    "bjt": 23,
+    "thai": 632
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 1,
+      "type": "uncertain",
+      "selected": "evameva",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": "kho",
+        "vri": "evameva",
+        "bjt": "evameva",
+        "thai": "yaṃ"
+      },
+      "rejected": [
+        "eva",
+        "kho",
+        "yaṃ"
+      ],
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", SC \"kho\", Thai \"yaṃ\""
+    },
+    {
+      "position": 11,
+      "type": "error",
+      "selected": "paccājāyanti",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "paccājayanti",
+        "sc": "paccājāyanti",
+        "vri": "paccājāyanti",
+        "bjt": "paccājāyanti",
+        "thai": "samaṇā"
+      },
+      "rejected": [
+        "paccājayanti",
+        "samaṇā"
+      ],
+      "notes": "PTS \"paccājayanti\" not in DPD, SC/VRI/BJT \"paccājāyanti\" is valid, Thai has \"samaṇā\""
+    },
+    {
+      "position": 14,
+      "type": "variant",
+      "selected": "ete",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "ete",
+        "sc": "eteva",
+        "vri": "eteva",
+        "bjt": "eteva",
+        "thai": "vā"
+      },
+      "rejected": [
+        "eteva",
+        "vā"
+      ],
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"vā\""
+    },
+    {
+      "position": 24,
+      "type": "uncertain",
+      "selected": "paṭhamaṃ",
+      "confidence": 0.5,
+      "witnesses": {
+        "gretil": "paccājayanti",
+        "sc": "paṭhamaṃ",
+        "vri": null,
+        "bjt": null,
+        "thai": "vā"
+      },
+      "rejected": [
+        "paccājayanti",
+        "vā"
+      ],
+      "notes": "Multi-way disagreement, one valid reading"
+    },
+    {
+      "position": 25,
+      "type": "pts_addition",
+      "selected": "pittivisaye",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pittivisaye",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "brāhmaṇā"
+      },
+      "rejected": [
+        "brāhmaṇā"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_102_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 27,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 3,
+      "match": 2,
+      "other": 20
+    }
+  }
+}

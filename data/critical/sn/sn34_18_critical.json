@@ -1,0 +1,110 @@
+{
+  "id": "sn34_18",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 30,
+    "sc": 58,
+    "vri": 58,
+    "bjt": 79,
+    "thai": 51
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "samāpatti",
+        "thai": "aparantānudiṭṭhiyo"
+      },
+      "rejected": [
+        "aparantānudiṭṭhiyo",
+        "samāpatti",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"samāpatti\", Thai has \"aparantānudiṭṭhiyo\""
+    },
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "cattāro",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "cattāro",
+        "sc": "cattārome",
+        "vri": "cattārome",
+        "bjt": "sātaccakārī",
+        "thai": "na"
+      },
+      "rejected": [
+        "cattārome",
+        "na",
+        "sātaccakārī"
+      ],
+      "notes": "Textual variant: PTS \"cattāro\" vs SC/VRI \"cattārome\", BJT has \"sātaccakārī\", Thai has \"na\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "suttaṃ",
+        "thai": "honti"
+      },
+      "rejected": [
+        "honti",
+        "suttaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 24,
+      "type": "error",
+      "selected": "sātaccakārī",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "sākaccakārī",
+        "sc": "sātaccakārī",
+        "vri": "sātaccakārī",
+        "bjt": "sātaccakārī",
+        "thai": null
+      },
+      "rejected": [
+        "sākaccakārī"
+      ],
+      "notes": "PTS \"sākaccakārī\" not in DPD, SC/VRI/BJT \"sātaccakārī\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn34_18_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 30,
+      "orthographic": 18,
+      "errors": 1,
+      "variants": 2,
+      "uncertain": 1,
+      "match": 1,
+      "other": 7
+    }
+  }
+}

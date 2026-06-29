@@ -1,11 +1,2554 @@
 {
   "id": "mn111",
+  "schema_version": 1,
+  "nikaya": "MN",
   "witnesses": [
+    "GRETIL/PTS",
     "SC",
-    "GRETIL",
     "VRI",
     "BJT",
     "Thai"
   ],
-  "word_count": 870
+  "word_counts": {
+    "gretil": 825,
+    "sc": 870,
+    "vri": 866,
+    "bjt": 887,
+    "thai": 871
+  },
+  "apparatus_count": 149,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "evaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evaṃ",
+        "vri": "evaṃ",
+        "bjt": "anupada",
+        "thai": "anupadasuttaṃ"
+      },
+      "rejected": [
+        "anupada",
+        "anupadasuttaṃ",
+        "evam"
+      ],
+      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evaṃ\" is valid, BJT has \"anupada\", Thai has \"anupadasuttaṃ\""
+    },
+    {
+      "position": 25,
+      "type": "variant",
+      "selected": "etad",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "etad",
+        "sc": "etadavoca",
+        "vri": "etadavoca",
+        "bjt": "etadavoca",
+        "thai": "etadavoca"
+      },
+      "rejected": [
+        "etadavoca"
+      ],
+      "notes": "Textual variant: PTS \"etad\" vs SC/VRI/BJT/Thai \"etadavoca\""
+    },
+    {
+      "position": 26,
+      "type": "pts_addition",
+      "selected": "avoca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "avoca",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 36,
+      "type": "variant",
+      "selected": "hāsupañño",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "hāsupañño",
+        "sc": "hāsapañño",
+        "vri": "hāsapañño",
+        "bjt": "hāsupañño",
+        "thai": "hāsapañño"
+      },
+      "rejected": [
+        "hāsapañño"
+      ],
+      "notes": "Textual variant: PTS \"hāsupañño\" vs SC/VRI/Thai \"hāsapañño\", BJT agrees with PTS"
+    },
+    {
+      "position": 52,
+      "type": "variant",
+      "selected": "vipassi",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "vipassi",
+        "sc": "vipassati",
+        "vri": "vipassati",
+        "bjt": "vipassati",
+        "thai": "vipassi"
+      },
+      "rejected": [
+        "vipassati"
+      ],
+      "notes": "Textual variant: PTS \"vipassi\" vs SC/VRI/BJT \"vipassati\", Thai agrees with PTS"
+    },
+    {
+      "position": 53,
+      "type": "error",
+      "selected": "tatridaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "tatr",
+        "sc": "tatridaṃ",
+        "vri": "tatridaṃ",
+        "bjt": "tatridaṃ",
+        "thai": "tatridaṃ"
+      },
+      "rejected": [
+        "tatr"
+      ],
+      "notes": "PTS \"tatr\" not in DPD, SC/VRI/BJT/Thai \"tatridaṃ\" is valid"
+    },
+    {
+      "position": 54,
+      "type": "pts_addition",
+      "selected": "idaṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "idaṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "bhikkhave"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 57,
+      "type": "error",
+      "selected": "anupadadhammavipassanāya",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "anupadahammavipassanāya",
+        "sc": "anupadadhammavipassanāya",
+        "vri": "anupadadhammavipassanāya",
+        "bjt": "anupadadhammavipassanāya",
+        "thai": null
+      },
+      "rejected": [
+        "anupadahammavipassanāya"
+      ],
+      "notes": "PTS \"anupadahammavipassanāya\" not in DPD, SC/VRI/BJT \"anupadadhammavipassanāya\" is valid"
+    },
+    {
+      "position": 62,
+      "type": "error",
+      "selected": "vivicceva",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "vivicc",
+        "sc": "vivicceva",
+        "vri": "vivicceva",
+        "bjt": "vivicceva",
+        "thai": "vivicceva"
+      },
+      "rejected": [
+        "vivicc"
+      ],
+      "notes": "PTS \"vivicc\" not in DPD, SC/VRI/BJT/Thai \"vivicceva\" is valid"
+    },
+    {
+      "position": 63,
+      "type": "pts_addition",
+      "selected": "eva",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 72,
+      "type": "variant",
+      "selected": "paṭhamajjhānaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "paṭhamajjhānaṃ",
+        "sc": "paṭhamaṃ",
+        "vri": "paṭhamaṃ",
+        "bjt": "paṭhamaṃ",
+        "thai": "paṭhamaṃ"
+      },
+      "rejected": [
+        "paṭhamaṃ"
+      ],
+      "notes": "Textual variant: PTS \"paṭhamajjhānaṃ\" vs SC/VRI/BJT/Thai \"paṭhamaṃ\""
+    },
+    {
+      "position": 77,
+      "type": "variant",
+      "selected": "paṭhamajjhāne",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "paṭhamajjhāne",
+        "sc": "paṭhame",
+        "vri": "paṭhame",
+        "bjt": "paṭhame",
+        "thai": "paṭhame"
+      },
+      "rejected": [
+        "paṭhame"
+      ],
+      "notes": "Textual variant: PTS \"paṭhamajjhāne\" vs SC/VRI/BJT/Thai \"paṭhame\""
+    },
+    {
+      "position": 85,
+      "type": "error",
+      "selected": "sukhañca",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "sukhañ",
+        "sc": "sukhañca",
+        "vri": "sukhañca",
+        "bjt": "sukhañca",
+        "thai": "sukhañca"
+      },
+      "rejected": [
+        "sukhañ"
+      ],
+      "notes": "PTS \"sukhañ\" not in DPD, SC/VRI/BJT/Thai \"sukhañca\" is valid"
+    },
+    {
+      "position": 86,
+      "type": "pts_addition",
+      "selected": "ca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ca",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 96,
+      "type": "variant",
+      "selected": "viriyaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "viriyaṃ",
+        "sc": "vīriyaṃ",
+        "vri": "vīriyaṃ",
+        "bjt": "viriyaṃ",
+        "thai": "viriyaṃ"
+      },
+      "rejected": [
+        "vīriyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"viriyaṃ\" vs SC/VRI \"vīriyaṃ\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 98,
+      "type": "variant",
+      "selected": "upekhā",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "upekhā",
+        "sc": "upekkhā",
+        "vri": "upekkhā",
+        "bjt": "upekkhā",
+        "thai": "upekkhā"
+      },
+      "rejected": [
+        "upekkhā"
+      ],
+      "notes": "Textual variant: PTS \"upekhā\" vs SC/VRI/BJT/Thai \"upekkhā\""
+    },
+    {
+      "position": 117,
+      "type": "variant",
+      "selected": "kira",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "kira",
+        "sc": "kirame",
+        "vri": "kirame",
+        "bjt": "kira",
+        "thai": "ma"
+      },
+      "rejected": [
+        "kirame",
+        "ma"
+      ],
+      "notes": "Textual variant: PTS \"kira\" vs SC/VRI \"kirame\", BJT agrees with PTS, Thai has \"ma\""
+    },
+    {
+      "position": 118,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "me",
+        "thai": "yu"
+      },
+      "rejected": [
+        "yu"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 123,
+      "type": "uncertain",
+      "selected": "paṭiventī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "pativedentīti",
+        "sc": "paṭiventī",
+        "vri": "paṭiventī",
+        "bjt": "paṭiventī",
+        "thai": "pativentīti"
+      },
+      "rejected": [
+        "pativedentīti",
+        "pativentīti"
+      ],
+      "notes": "Neither reading validated: PTS \"pativedentīti\" vs SC/VRI \"paṭiventī\""
+    },
+    {
+      "position": 130,
+      "type": "error",
+      "selected": "appaṭibaddho",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "apaṭibaddho",
+        "sc": "appaṭibaddho",
+        "vri": "appaṭibaddho",
+        "bjt": "appaṭibaddho",
+        "thai": "appaṭibaddho"
+      },
+      "rejected": [
+        "apaṭibaddho"
+      ],
+      "notes": "PTS \"apaṭibaddho\" not in DPD, SC/VRI/BJT/Thai \"appaṭibaddho\" is valid"
+    },
+    {
+      "position": 133,
+      "type": "variant",
+      "selected": "vimariyādikatena",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "vimariyādikatena",
+        "sc": "vimariyādīkatena",
+        "vri": "vimariyādīkatena",
+        "bjt": "vimariyādīkatena",
+        "thai": "vimariyādikatena"
+      },
+      "rejected": [
+        "vimariyādīkatena"
+      ],
+      "notes": "Textual variant: PTS \"vimariyādikatena\" vs SC/VRI/BJT \"vimariyādīkatena\", Thai agrees with PTS"
+    },
+    {
+      "position": 138,
+      "type": "variant",
+      "selected": "uttariṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "uttariṃ",
+        "sc": "uttari",
+        "vri": "uttari",
+        "bjt": "uttariṃ",
+        "thai": "uttariṃ"
+      },
+      "rejected": [
+        "uttari"
+      ],
+      "notes": "Textual variant: PTS \"uttariṃ\" vs SC/VRI \"uttari\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 142,
+      "type": "error",
+      "selected": "tabbahulīkārā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "tabbahulikārā",
+        "sc": "tabbahulīkārā",
+        "vri": "tabbahulīkārā",
+        "bjt": "tabbahulīkārā",
+        "thai": "atthi"
+      },
+      "rejected": [
+        "atthi",
+        "tabbahulikārā"
+      ],
+      "notes": "PTS \"tabbahulikārā\" not in DPD, SC/VRI/BJT \"tabbahulīkārā\" is valid, Thai has \"atthi\""
+    },
+    {
+      "position": 143,
+      "type": "variant",
+      "selected": "atthi",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "atthi",
+        "sc": "atthitvevassa",
+        "vri": "atthitvevassa",
+        "bjt": "atthitvevassa",
+        "thai": "tevavassa"
+      },
+      "rejected": [
+        "atthitvevassa",
+        "tevavassa"
+      ],
+      "notes": "Textual variant: PTS \"atthi\" vs SC/VRI/BJT \"atthitvevassa\", Thai has \"tevavassa\""
+    },
+    {
+      "position": 146,
+      "type": "pts_addition",
+      "selected": "assa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "assa",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 150,
+      "type": "pts_addition",
+      "selected": "paraṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "paraṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": "paraṃ",
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "bhikkhave"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 163,
+      "type": "variant",
+      "selected": "dutiyajjhānaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "dutiyajjhānaṃ",
+        "sc": "dutiyaṃ",
+        "vri": "dutiyaṃ",
+        "bjt": "dutiyaṃ",
+        "thai": "dutiyaṃ"
+      },
+      "rejected": [
+        "dutiyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"dutiyajjhānaṃ\" vs SC/VRI/BJT/Thai \"dutiyaṃ\""
+    },
+    {
+      "position": 168,
+      "type": "variant",
+      "selected": "dutiyajjhāne",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "dutiyajjhāne",
+        "sc": "dutiye",
+        "vri": "dutiye",
+        "bjt": "dutiye",
+        "thai": "dutiye"
+      },
+      "rejected": [
+        "dutiye"
+      ],
+      "notes": "Textual variant: PTS \"dutiyajjhāne\" vs SC/VRI/BJT/Thai \"dutiye\""
+    },
+    {
+      "position": 174,
+      "type": "error",
+      "selected": "sukhañca",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "sukhañ",
+        "sc": "sukhañca",
+        "vri": "sukhañca",
+        "bjt": "sukhañca",
+        "thai": "sukhañca"
+      },
+      "rejected": [
+        "sukhañ"
+      ],
+      "notes": "PTS \"sukhañ\" not in DPD, SC/VRI/BJT/Thai \"sukhañca\" is valid"
+    },
+    {
+      "position": 175,
+      "type": "pts_addition",
+      "selected": "ca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ca",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 185,
+      "type": "variant",
+      "selected": "viriyaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "viriyaṃ",
+        "sc": "vīriyaṃ",
+        "vri": "vīriyaṃ",
+        "bjt": "viriyaṃ",
+        "thai": "viriyaṃ"
+      },
+      "rejected": [
+        "vīriyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"viriyaṃ\" vs SC/VRI \"vīriyaṃ\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 187,
+      "type": "variant",
+      "selected": "upekhā",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "upekhā",
+        "sc": "upekkhā",
+        "vri": "upekkhā",
+        "bjt": "upekkhā",
+        "thai": "upekkhā"
+      },
+      "rejected": [
+        "upekkhā"
+      ],
+      "notes": "Textual variant: PTS \"upekhā\" vs SC/VRI/BJT/Thai \"upekkhā\""
+    },
+    {
+      "position": 198,
+      "type": "error",
+      "selected": "upaṭṭhahanti",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "upāṭṭhahanti",
+        "sc": "upaṭṭhahanti",
+        "vri": "upaṭṭhahanti",
+        "bjt": "upaṭṭhahanti",
+        "thai": "upaṭṭhahanti"
+      },
+      "rejected": [
+        "upāṭṭhahanti"
+      ],
+      "notes": "PTS \"upāṭṭhahanti\" not in DPD, SC/VRI/BJT/Thai \"upaṭṭhahanti\" is valid"
+    },
+    {
+      "position": 203,
+      "type": "error",
+      "selected": "evaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evaṃ",
+        "vri": "evaṃ",
+        "bjt": "evaṃ",
+        "thai": "evaṃ"
+      },
+      "rejected": [
+        "evam"
+      ],
+      "notes": "PTS \"evam\" not in DPD, SC/VRI/BJT/Thai \"evaṃ\" is valid"
+    },
+    {
+      "position": 206,
+      "type": "variant",
+      "selected": "kira",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "kira",
+        "sc": "kirame",
+        "vri": "kirame",
+        "bjt": "kira",
+        "thai": "kirame"
+      },
+      "rejected": [
+        "kirame"
+      ],
+      "notes": "Textual variant: PTS \"kira\" vs SC/VRI/Thai \"kirame\", BJT agrees with PTS"
+    },
+    {
+      "position": 207,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "me",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 212,
+      "type": "uncertain",
+      "selected": "paṭiventī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "pativedentīti",
+        "sc": "paṭiventī",
+        "vri": "paṭiventī",
+        "bjt": "paṭiventī",
+        "thai": "pativentīti"
+      },
+      "rejected": [
+        "pativedentīti",
+        "pativentīti"
+      ],
+      "notes": "Neither reading validated: PTS \"pativedentīti\" vs SC/VRI \"paṭiventī\""
+    },
+    {
+      "position": 222,
+      "type": "variant",
+      "selected": "vimariyādikatena",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "vimariyādikatena",
+        "sc": "vimariyādīkatena",
+        "vri": "vimariyādīkatena",
+        "bjt": "vimariyādīkatena",
+        "thai": "vimariyādikatena"
+      },
+      "rejected": [
+        "vimariyādīkatena"
+      ],
+      "notes": "Textual variant: PTS \"vimariyādikatena\" vs SC/VRI/BJT \"vimariyādīkatena\", Thai agrees with PTS"
+    },
+    {
+      "position": 227,
+      "type": "variant",
+      "selected": "uttaraṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "uttaraṃ",
+        "sc": "uttari",
+        "vri": "uttari",
+        "bjt": "uttariṃ",
+        "thai": "uttariṃ"
+      },
+      "rejected": [
+        "uttari",
+        "uttariṃ"
+      ],
+      "notes": "Textual variant: PTS \"uttaraṃ\" vs SC/VRI \"uttari\", BJT has \"uttariṃ\", Thai has \"uttariṃ\""
+    },
+    {
+      "position": 231,
+      "type": "error",
+      "selected": "tabbahulīkārā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "tabbahulikārā",
+        "sc": "tabbahulīkārā",
+        "vri": "tabbahulīkārā",
+        "bjt": "tabbahulīkārā",
+        "thai": "atthi"
+      },
+      "rejected": [
+        "atthi",
+        "tabbahulikārā"
+      ],
+      "notes": "PTS \"tabbahulikārā\" not in DPD, SC/VRI/BJT \"tabbahulīkārā\" is valid, Thai has \"atthi\""
+    },
+    {
+      "position": 232,
+      "type": "variant",
+      "selected": "atthi",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "atthi",
+        "sc": "atthitvevassa",
+        "vri": "atthitvevassa",
+        "bjt": "atthitvevassa",
+        "thai": "tevavassa"
+      },
+      "rejected": [
+        "atthitvevassa",
+        "tevavassa"
+      ],
+      "notes": "Textual variant: PTS \"atthi\" vs SC/VRI/BJT \"atthitvevassa\", Thai has \"tevavassa\""
+    },
+    {
+      "position": 235,
+      "type": "pts_addition",
+      "selected": "assa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "assa",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 239,
+      "type": "pts_addition",
+      "selected": "paraṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "paraṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": "paraṃ",
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "bhikkhave"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 245,
+      "type": "variant",
+      "selected": "upekhako",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "upekhako",
+        "sc": "upekkhako",
+        "vri": "upekkhako",
+        "bjt": "upekkhako",
+        "thai": "upekkhako"
+      },
+      "rejected": [
+        "upekkhako"
+      ],
+      "notes": "Textual variant: PTS \"upekhako\" vs SC/VRI/BJT/Thai \"upekkhako\""
+    },
+    {
+      "position": 251,
+      "type": "error",
+      "selected": "sukhañca",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "sukhañ",
+        "sc": "sukhañca",
+        "vri": "sukhañca",
+        "bjt": "sukhañca",
+        "thai": "sukhañca"
+      },
+      "rejected": [
+        "sukhañ"
+      ],
+      "notes": "PTS \"sukhañ\" not in DPD, SC/VRI/BJT/Thai \"sukhañca\" is valid"
+    },
+    {
+      "position": 252,
+      "type": "pts_addition",
+      "selected": "ca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ca",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 255,
+      "type": "error",
+      "selected": "yaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "yan",
+        "sc": "yaṃ",
+        "vri": "yaṃ",
+        "bjt": "yaṃ",
+        "thai": "yantaṃ"
+      },
+      "rejected": [
+        "yan",
+        "yantaṃ"
+      ],
+      "notes": "PTS \"yan\" not in DPD, SC/VRI/BJT \"yaṃ\" is valid, Thai has \"yantaṃ\""
+    },
+    {
+      "position": 259,
+      "type": "variant",
+      "selected": "upekhako",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "upekhako",
+        "sc": "upekkhako",
+        "vri": "upekkhako",
+        "bjt": "upekkhako",
+        "thai": "upekkhako"
+      },
+      "rejected": [
+        "upekkhako"
+      ],
+      "notes": "Textual variant: PTS \"upekhako\" vs SC/VRI/BJT/Thai \"upekkhako\""
+    },
+    {
+      "position": 263,
+      "type": "variant",
+      "selected": "tatiyajjhānaṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "tatiyajjhānaṃ",
+        "sc": "tatiyaṃ",
+        "vri": "tatiyaṃ",
+        "bjt": "taṃ",
+        "thai": "jhānaṃ"
+      },
+      "rejected": [
+        "jhānaṃ",
+        "tatiyaṃ",
+        "taṃ"
+      ],
+      "notes": "Textual variant: PTS \"tatiyajjhānaṃ\" vs SC/VRI \"tatiyaṃ\", BJT has \"taṃ\", Thai has \"jhānaṃ\""
+    },
+    {
+      "position": 268,
+      "type": "variant",
+      "selected": "tatiyajjhāne",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "tatiyajjhāne",
+        "sc": "tatiye",
+        "vri": "tatiye",
+        "bjt": "tatiye",
+        "thai": "tatiye"
+      },
+      "rejected": [
+        "tatiye"
+      ],
+      "notes": "Textual variant: PTS \"tatiyajjhāne\" vs SC/VRI/BJT/Thai \"tatiye\""
+    },
+    {
+      "position": 272,
+      "type": "pts_addition",
+      "selected": "sukhañ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sukhañ",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "yu"
+      },
+      "rejected": [
+        "yu"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 273,
+      "type": "pts_addition",
+      "selected": "ca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ca",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "paṭivedentīti"
+      },
+      "rejected": [
+        "paṭivedentīti"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 276,
+      "type": "error",
+      "selected": "sampajaññañca",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "sampajaññañ",
+        "sc": "sampajaññañca",
+        "vri": "sampajaññañca",
+        "bjt": "sampajaññañca",
+        "thai": "sampajaññañca"
+      },
+      "rejected": [
+        "sampajaññañ"
+      ],
+      "notes": "PTS \"sampajaññañ\" not in DPD, SC/VRI/BJT/Thai \"sampajaññañca\" is valid"
+    },
+    {
+      "position": 277,
+      "type": "pts_addition",
+      "selected": "ca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ca",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 287,
+      "type": "variant",
+      "selected": "viriyaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "viriyaṃ",
+        "sc": "vīriyaṃ",
+        "vri": "vīriyaṃ",
+        "bjt": null,
+        "thai": "viriyaṃ"
+      },
+      "rejected": [
+        "vīriyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"viriyaṃ\" vs SC/VRI \"vīriyaṃ\", Thai agrees with PTS"
+    },
+    {
+      "position": 304,
+      "type": "error",
+      "selected": "evaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evaṃ",
+        "vri": "evaṃ",
+        "bjt": null,
+        "thai": "evaṃ"
+      },
+      "rejected": [
+        "evam"
+      ],
+      "notes": "PTS \"evam\" not in DPD, SC/VRI/Thai \"evaṃ\" is valid"
+    },
+    {
+      "position": 307,
+      "type": "variant",
+      "selected": "kira",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "kira",
+        "sc": "kirame",
+        "vri": "kirame",
+        "bjt": null,
+        "thai": "kirame"
+      },
+      "rejected": [
+        "kirame"
+      ],
+      "notes": "Textual variant: PTS \"kira\" vs SC/VRI/Thai \"kirame\""
+    },
+    {
+      "position": 308,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 313,
+      "type": "uncertain",
+      "selected": "paṭiventī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "pativedentīti",
+        "sc": "paṭiventī",
+        "vri": "paṭiventī",
+        "bjt": null,
+        "thai": "pativentīti"
+      },
+      "rejected": [
+        "pativedentīti",
+        "pativentīti"
+      ],
+      "notes": "Neither reading validated: PTS \"pativedentīti\" vs SC/VRI \"paṭiventī\""
+    },
+    {
+      "position": 323,
+      "type": "variant",
+      "selected": "vimariyādikatena",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "vimariyādikatena",
+        "sc": "vimariyādīkatena",
+        "vri": "vimariyādīkatena",
+        "bjt": null,
+        "thai": "vimariyādikatena"
+      },
+      "rejected": [
+        "vimariyādīkatena"
+      ],
+      "notes": "Textual variant: PTS \"vimariyādikatena\" vs SC/VRI \"vimariyādīkatena\", Thai agrees with PTS"
+    },
+    {
+      "position": 328,
+      "type": "variant",
+      "selected": "uttariṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "uttariṃ",
+        "sc": "uttari",
+        "vri": "uttari",
+        "bjt": null,
+        "thai": "uttariṃ"
+      },
+      "rejected": [
+        "uttari"
+      ],
+      "notes": "Textual variant: PTS \"uttariṃ\" vs SC/VRI \"uttari\", Thai agrees with PTS"
+    },
+    {
+      "position": 332,
+      "type": "error",
+      "selected": "tabbahulīkārā",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "tabbahulikārā",
+        "sc": "tabbahulīkārā",
+        "vri": "tabbahulīkārā",
+        "bjt": null,
+        "thai": "atthi"
+      },
+      "rejected": [
+        "atthi",
+        "tabbahulikārā"
+      ],
+      "notes": "PTS \"tabbahulikārā\" not in DPD, SC/VRI \"tabbahulīkārā\" is valid, Thai has \"atthi\""
+    },
+    {
+      "position": 333,
+      "type": "variant",
+      "selected": "atthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "atthi",
+        "sc": "atthitvevassa",
+        "vri": "atthitvevassa",
+        "bjt": null,
+        "thai": "tevavassa"
+      },
+      "rejected": [
+        "atthitvevassa",
+        "tevavassa"
+      ],
+      "notes": "Textual variant: PTS \"atthi\" vs SC/VRI \"atthitvevassa\", Thai has \"tevavassa\""
+    },
+    {
+      "position": 336,
+      "type": "pts_addition",
+      "selected": "assa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "assa",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 340,
+      "type": "pts_addition",
+      "selected": "paraṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "paraṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "bhikkhave"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 349,
+      "type": "variant",
+      "selected": "pubbe",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "pubbe",
+        "sc": "pubbeva",
+        "vri": "pubbeva",
+        "bjt": null,
+        "thai": "pubbeva"
+      },
+      "rejected": [
+        "pubbeva"
+      ],
+      "notes": "Textual variant: PTS \"pubbe\" vs SC/VRI/Thai \"pubbeva\""
+    },
+    {
+      "position": 352,
+      "type": "variant",
+      "selected": "atthagamā",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "atthagamā",
+        "sc": "atthaṅgamā",
+        "vri": "atthaṅgamā",
+        "bjt": null,
+        "thai": "atthaṅgamā"
+      },
+      "rejected": [
+        "atthaṅgamā"
+      ],
+      "notes": "Textual variant: PTS \"atthagamā\" vs SC/VRI/Thai \"atthaṅgamā\""
+    },
+    {
+      "position": 354,
+      "type": "error",
+      "selected": "upekkhāsatipārisuddhiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "upekhāsatipārisuddhaṃ",
+        "sc": "upekkhāsatipārisuddhiṃ",
+        "vri": "upekkhāsatipārisuddhiṃ",
+        "bjt": null,
+        "thai": "upekkhāsatipārisuddhiṃ"
+      },
+      "rejected": [
+        "upekhāsatipārisuddhaṃ"
+      ],
+      "notes": "PTS \"upekhāsatipārisuddhaṃ\" not in DPD, SC/VRI/Thai \"upekkhāsatipārisuddhiṃ\" is valid"
+    },
+    {
+      "position": 355,
+      "type": "variant",
+      "selected": "catutthajjhānaṃ",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "catutthajjhānaṃ",
+        "sc": "catutthaṃ",
+        "vri": "catutthaṃ",
+        "bjt": null,
+        "thai": "catutthaṃ"
+      },
+      "rejected": [
+        "catutthaṃ"
+      ],
+      "notes": "Textual variant: PTS \"catutthajjhānaṃ\" vs SC/VRI/Thai \"catutthaṃ\""
+    },
+    {
+      "position": 360,
+      "type": "variant",
+      "selected": "catutthajjhāne",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "catutthajjhāne",
+        "sc": "catutthe",
+        "vri": "catutthe",
+        "bjt": null,
+        "thai": "catutthe"
+      },
+      "rejected": [
+        "catutthe"
+      ],
+      "notes": "Textual variant: PTS \"catutthajjhāne\" vs SC/VRI/Thai \"catutthe\""
+    },
+    {
+      "position": 365,
+      "type": "variant",
+      "selected": "passi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "passi",
+        "sc": "passaddhattā",
+        "vri": "passaddhattā",
+        "bjt": null,
+        "thai": "parisuddhattā"
+      },
+      "rejected": [
+        "parisuddhattā",
+        "passaddhattā"
+      ],
+      "notes": "Textual variant: PTS \"passi\" vs SC/VRI \"passaddhattā\", Thai has \"parisuddhattā\""
+    },
+    {
+      "position": 366,
+      "type": "pts_addition",
+      "selected": "vedanā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "vedanā",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 370,
+      "type": "pts_addition",
+      "selected": "pārisuddhi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pārisuddhi",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 380,
+      "type": "variant",
+      "selected": "viriyaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "viriyaṃ",
+        "sc": "vīriyaṃ",
+        "vri": "vīriyaṃ",
+        "bjt": "viriyaṃ",
+        "thai": "viriyaṃ"
+      },
+      "rejected": [
+        "vīriyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"viriyaṃ\" vs SC/VRI \"vīriyaṃ\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 382,
+      "type": "variant",
+      "selected": "upekhā",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "upekhā",
+        "sc": "upekkhā",
+        "vri": "upekkhā",
+        "bjt": "upekkhā",
+        "thai": "upekkhā"
+      },
+      "rejected": [
+        "upekkhā"
+      ],
+      "notes": "Textual variant: PTS \"upekhā\" vs SC/VRI/BJT/Thai \"upekkhā\""
+    },
+    {
+      "position": 401,
+      "type": "variant",
+      "selected": "kira",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "kira",
+        "sc": "kirame",
+        "vri": "kirame",
+        "bjt": "kira",
+        "thai": "kirame"
+      },
+      "rejected": [
+        "kirame"
+      ],
+      "notes": "Textual variant: PTS \"kira\" vs SC/VRI/Thai \"kirame\", BJT agrees with PTS"
+    },
+    {
+      "position": 402,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "me",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 407,
+      "type": "uncertain",
+      "selected": "paṭiventī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "pativedentīti",
+        "sc": "paṭiventī",
+        "vri": "paṭiventī",
+        "bjt": "paṭiventī",
+        "thai": "pativentīti"
+      },
+      "rejected": [
+        "pativedentīti",
+        "pativentīti"
+      ],
+      "notes": "Neither reading validated: PTS \"pativedentīti\" vs SC/VRI \"paṭiventī\""
+    },
+    {
+      "position": 417,
+      "type": "variant",
+      "selected": "vimariyādikatena",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "vimariyādikatena",
+        "sc": "vimariyādīkatena",
+        "vri": "vimariyādīkatena",
+        "bjt": "vimariyādīkatena",
+        "thai": "vimariyādikatena"
+      },
+      "rejected": [
+        "vimariyādīkatena"
+      ],
+      "notes": "Textual variant: PTS \"vimariyādikatena\" vs SC/VRI/BJT \"vimariyādīkatena\", Thai agrees with PTS"
+    },
+    {
+      "position": 422,
+      "type": "variant",
+      "selected": "uttariṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "uttariṃ",
+        "sc": "uttari",
+        "vri": "uttari",
+        "bjt": "uttariṃ",
+        "thai": "uttariṃ"
+      },
+      "rejected": [
+        "uttari"
+      ],
+      "notes": "Textual variant: PTS \"uttariṃ\" vs SC/VRI \"uttari\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 426,
+      "type": "error",
+      "selected": "tabbahulīkārā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "tabbahulikārā",
+        "sc": "tabbahulīkārā",
+        "vri": "tabbahulīkārā",
+        "bjt": "tabbahulīkārā",
+        "thai": "atthi"
+      },
+      "rejected": [
+        "atthi",
+        "tabbahulikārā"
+      ],
+      "notes": "PTS \"tabbahulikārā\" not in DPD, SC/VRI/BJT \"tabbahulīkārā\" is valid, Thai has \"atthi\""
+    },
+    {
+      "position": 427,
+      "type": "variant",
+      "selected": "atthi",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "atthi",
+        "sc": "atthitvevassa",
+        "vri": "atthitvevassa",
+        "bjt": "atthitvevassa",
+        "thai": "tevavassa"
+      },
+      "rejected": [
+        "atthitvevassa",
+        "tevavassa"
+      ],
+      "notes": "Textual variant: PTS \"atthi\" vs SC/VRI/BJT \"atthitvevassa\", Thai has \"tevavassa\""
+    },
+    {
+      "position": 430,
+      "type": "pts_addition",
+      "selected": "assa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "assa",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 434,
+      "type": "pts_addition",
+      "selected": "paraṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "paraṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": "paraṃ",
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "bhikkhave"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 441,
+      "type": "uncertain",
+      "selected": "atthagamā",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "atthagamā",
+        "sc": "atthaṅgamā",
+        "vri": null,
+        "bjt": "ca",
+        "thai": null
+      },
+      "rejected": [
+        "atthaṅgamā",
+        "ca"
+      ],
+      "notes": "Multi-way disagreement: PTS \"atthagamā\", SC \"atthaṅgamā\", VRI \"None\", BJT \"ca\""
+    },
+    {
+      "position": 459,
+      "type": "pts_addition",
+      "selected": "ca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ca",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 466,
+      "type": "variant",
+      "selected": "viriyaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "viriyaṃ",
+        "sc": "vīriyaṃ",
+        "vri": "vīriyaṃ",
+        "bjt": null,
+        "thai": "viriyaṃ"
+      },
+      "rejected": [
+        "vīriyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"viriyaṃ\" vs SC/VRI \"vīriyaṃ\", Thai agrees with PTS"
+    },
+    {
+      "position": 468,
+      "type": "variant",
+      "selected": "upekhā",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "upekhā",
+        "sc": "upekkhā",
+        "vri": "upekkhā",
+        "bjt": null,
+        "thai": "upekkhā"
+      },
+      "rejected": [
+        "upekkhā"
+      ],
+      "notes": "Textual variant: PTS \"upekhā\" vs SC/VRI/Thai \"upekkhā\""
+    },
+    {
+      "position": 487,
+      "type": "variant",
+      "selected": "kira",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "kira",
+        "sc": "kirame",
+        "vri": "kirame",
+        "bjt": null,
+        "thai": "kirame"
+      },
+      "rejected": [
+        "kirame"
+      ],
+      "notes": "Textual variant: PTS \"kira\" vs SC/VRI/Thai \"kirame\""
+    },
+    {
+      "position": 488,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 493,
+      "type": "uncertain",
+      "selected": "paṭiventī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "pativedentīti",
+        "sc": "paṭiventī",
+        "vri": "paṭiventī",
+        "bjt": null,
+        "thai": "pativentīti"
+      },
+      "rejected": [
+        "pativedentīti",
+        "pativentīti"
+      ],
+      "notes": "Neither reading validated: PTS \"pativedentīti\" vs SC/VRI \"paṭiventī\""
+    },
+    {
+      "position": 503,
+      "type": "variant",
+      "selected": "vimariyādikatena",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "vimariyādikatena",
+        "sc": "vimariyādīkatena",
+        "vri": "vimariyādīkatena",
+        "bjt": null,
+        "thai": "vimariyādikatena"
+      },
+      "rejected": [
+        "vimariyādīkatena"
+      ],
+      "notes": "Textual variant: PTS \"vimariyādikatena\" vs SC/VRI \"vimariyādīkatena\", Thai agrees with PTS"
+    },
+    {
+      "position": 508,
+      "type": "variant",
+      "selected": "uttariṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "uttariṃ",
+        "sc": "uttari",
+        "vri": "uttari",
+        "bjt": null,
+        "thai": "uttariṃ"
+      },
+      "rejected": [
+        "uttari"
+      ],
+      "notes": "Textual variant: PTS \"uttariṃ\" vs SC/VRI \"uttari\", Thai agrees with PTS"
+    },
+    {
+      "position": 512,
+      "type": "error",
+      "selected": "tabbahulīkārā",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "tabbahulikārā",
+        "sc": "tabbahulīkārā",
+        "vri": "tabbahulīkārā",
+        "bjt": null,
+        "thai": "atthi"
+      },
+      "rejected": [
+        "atthi",
+        "tabbahulikārā"
+      ],
+      "notes": "PTS \"tabbahulikārā\" not in DPD, SC/VRI \"tabbahulīkārā\" is valid, Thai has \"atthi\""
+    },
+    {
+      "position": 513,
+      "type": "variant",
+      "selected": "atthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "atthi",
+        "sc": "atthitvevassa",
+        "vri": "atthitvevassa",
+        "bjt": null,
+        "thai": "tevavassa"
+      },
+      "rejected": [
+        "atthitvevassa",
+        "tevavassa"
+      ],
+      "notes": "Textual variant: PTS \"atthi\" vs SC/VRI \"atthitvevassa\", Thai has \"tevavassa\""
+    },
+    {
+      "position": 516,
+      "type": "pts_addition",
+      "selected": "assa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "assa",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 520,
+      "type": "pts_addition",
+      "selected": "paraṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "paraṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "bhikkhave"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 525,
+      "type": "uncertain",
+      "selected": "samatikkamā",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "samatikkamā",
+        "sc": "samatikkamma",
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "samatikkamma"
+      ],
+      "notes": "Multi-way disagreement: PTS \"samatikkamā\", SC \"samatikkamma\", VRI \"None\""
+    },
+    {
+      "position": 546,
+      "type": "variant",
+      "selected": "viriyaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "viriyaṃ",
+        "sc": "vīriyaṃ",
+        "vri": "vīriyaṃ",
+        "bjt": "viriyaṃ",
+        "thai": "viriyaṃ"
+      },
+      "rejected": [
+        "vīriyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"viriyaṃ\" vs SC/VRI \"vīriyaṃ\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 548,
+      "type": "variant",
+      "selected": "upekhā",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "upekhā",
+        "sc": "upekkhā",
+        "vri": "upekkhā",
+        "bjt": "upekkhā",
+        "thai": "upekkhā"
+      },
+      "rejected": [
+        "upekkhā"
+      ],
+      "notes": "Textual variant: PTS \"upekhā\" vs SC/VRI/BJT/Thai \"upekkhā\""
+    },
+    {
+      "position": 567,
+      "type": "variant",
+      "selected": "kira",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "kira",
+        "sc": "kirame",
+        "vri": "kirame",
+        "bjt": "kira",
+        "thai": "kirame"
+      },
+      "rejected": [
+        "kirame"
+      ],
+      "notes": "Textual variant: PTS \"kira\" vs SC/VRI/Thai \"kirame\", BJT agrees with PTS"
+    },
+    {
+      "position": 568,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "me",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 573,
+      "type": "uncertain",
+      "selected": "paṭiventī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "pativedentīti",
+        "sc": "paṭiventī",
+        "vri": "paṭiventī",
+        "bjt": "paṭiventī",
+        "thai": "pativentīti"
+      },
+      "rejected": [
+        "pativedentīti",
+        "pativentīti"
+      ],
+      "notes": "Neither reading validated: PTS \"pativedentīti\" vs SC/VRI \"paṭiventī\""
+    },
+    {
+      "position": 583,
+      "type": "variant",
+      "selected": "vimariyādikatena",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "vimariyādikatena",
+        "sc": "vimariyādīkatena",
+        "vri": "vimariyādīkatena",
+        "bjt": "vimariyādīkatena",
+        "thai": "vimariyādikatena"
+      },
+      "rejected": [
+        "vimariyādīkatena"
+      ],
+      "notes": "Textual variant: PTS \"vimariyādikatena\" vs SC/VRI/BJT \"vimariyādīkatena\", Thai agrees with PTS"
+    },
+    {
+      "position": 588,
+      "type": "variant",
+      "selected": "uttariṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "uttariṃ",
+        "sc": "uttari",
+        "vri": "uttari",
+        "bjt": "uttariṃ",
+        "thai": "uttariṃ"
+      },
+      "rejected": [
+        "uttari"
+      ],
+      "notes": "Textual variant: PTS \"uttariṃ\" vs SC/VRI \"uttari\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 592,
+      "type": "error",
+      "selected": "tabbahulīkārā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "tabbahulikārā",
+        "sc": "tabbahulīkārā",
+        "vri": "tabbahulīkārā",
+        "bjt": "tabbahulīkārā",
+        "thai": "atthi"
+      },
+      "rejected": [
+        "atthi",
+        "tabbahulikārā"
+      ],
+      "notes": "PTS \"tabbahulikārā\" not in DPD, SC/VRI/BJT \"tabbahulīkārā\" is valid, Thai has \"atthi\""
+    },
+    {
+      "position": 593,
+      "type": "variant",
+      "selected": "atthi",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "atthi",
+        "sc": "atthitvevassa",
+        "vri": "atthitvevassa",
+        "bjt": "atthitvevassa",
+        "thai": "tevavassa"
+      },
+      "rejected": [
+        "atthitvevassa",
+        "tevavassa"
+      ],
+      "notes": "Textual variant: PTS \"atthi\" vs SC/VRI/BJT \"atthitvevassa\", Thai has \"tevavassa\""
+    },
+    {
+      "position": 596,
+      "type": "pts_addition",
+      "selected": "assa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "assa",
+        "sc": null,
+        "vri": null,
+        "bjt": "parisuddhattāsyā",
+        "thai": null
+      },
+      "rejected": [
+        "parisuddhattāsyā"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 600,
+      "type": "pts_addition",
+      "selected": "paraṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "paraṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": "paraṃ",
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "bhikkhave"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 605,
+      "type": "uncertain",
+      "selected": "samatikkamā",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "samatikkamā",
+        "sc": "samatikkamma",
+        "vri": null,
+        "bjt": "samatikkamā",
+        "thai": null
+      },
+      "rejected": [
+        "samatikkamma"
+      ],
+      "notes": "PTS/BJT \"samatikkamā\" vs SC \"samatikkamma\""
+    },
+    {
+      "position": 606,
+      "type": "uncertain",
+      "selected": "na",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "na",
+        "sc": "natthi",
+        "vri": null,
+        "bjt": "paṭighasaññānaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "natthi",
+        "paṭighasaññānaṃ"
+      ],
+      "notes": "Multi-way disagreement: PTS \"na\", SC \"natthi\", VRI \"None\", BJT \"paṭighasaññānaṃ\""
+    },
+    {
+      "position": 607,
+      "type": "uncertain",
+      "selected": "tthi",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "tthi",
+        "sc": "kiñcī",
+        "vri": null,
+        "bjt": "atthaṅgamā",
+        "thai": null
+      },
+      "rejected": [
+        "atthaṅgamā",
+        "kiñcī"
+      ],
+      "notes": "Multi-way disagreement: PTS \"tthi\", SC \"kiñcī\", VRI \"None\", BJT \"atthaṅgamā\""
+    },
+    {
+      "position": 608,
+      "type": "uncertain",
+      "selected": "kiñcīti",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "kiñcīti",
+        "sc": "ti",
+        "vri": null,
+        "bjt": "nānattasaññānaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "nānattasaññānaṃ",
+        "ti"
+      ],
+      "notes": "Multi-way disagreement: PTS \"kiñcīti\", SC \"ti\", VRI \"None\", BJT \"nānattasaññānaṃ\""
+    },
+    {
+      "position": 627,
+      "type": "uncertain",
+      "selected": "viriyaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "viriyaṃ",
+        "sc": "vīriyaṃ",
+        "vri": null,
+        "bjt": "viriyaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "vīriyaṃ"
+      ],
+      "notes": "PTS/BJT \"viriyaṃ\" vs SC \"vīriyaṃ\""
+    },
+    {
+      "position": 629,
+      "type": "uncertain",
+      "selected": "upekkhā",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "upekhāmanasikāro",
+        "sc": "upekkhā",
+        "vri": null,
+        "bjt": "upekkhā",
+        "thai": null
+      },
+      "rejected": [
+        "upekhāmanasikāro"
+      ],
+      "notes": "SC/BJT \"upekkhā\" vs PTS \"upekhāmanasikāro\""
+    },
+    {
+      "position": 647,
+      "type": "uncertain",
+      "selected": "kira",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "kira",
+        "sc": "kirame",
+        "vri": null,
+        "bjt": "kira",
+        "thai": null
+      },
+      "rejected": [
+        "kirame"
+      ],
+      "notes": "PTS/BJT \"kira\" vs SC \"kirame\""
+    },
+    {
+      "position": 648,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "me",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 653,
+      "type": "uncertain",
+      "selected": "paṭiventī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "pativedentīti",
+        "sc": "paṭiventī",
+        "vri": "paṭiventī",
+        "bjt": "paṭiventī",
+        "thai": "pativentīti"
+      },
+      "rejected": [
+        "pativedentīti",
+        "pativentīti"
+      ],
+      "notes": "Neither reading validated: PTS \"pativedentīti\" vs SC/VRI \"paṭiventī\""
+    },
+    {
+      "position": 663,
+      "type": "variant",
+      "selected": "vimariyādikatena",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "vimariyādikatena",
+        "sc": "vimariyādīkatena",
+        "vri": "vimariyādīkatena",
+        "bjt": "vimariyādīkatena",
+        "thai": "vimariyādikatena"
+      },
+      "rejected": [
+        "vimariyādīkatena"
+      ],
+      "notes": "Textual variant: PTS \"vimariyādikatena\" vs SC/VRI/BJT \"vimariyādīkatena\", Thai agrees with PTS"
+    },
+    {
+      "position": 668,
+      "type": "variant",
+      "selected": "uttariṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "uttariṃ",
+        "sc": "uttari",
+        "vri": "uttari",
+        "bjt": "uttariṃ",
+        "thai": "uttariṃ"
+      },
+      "rejected": [
+        "uttari"
+      ],
+      "notes": "Textual variant: PTS \"uttariṃ\" vs SC/VRI \"uttari\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 672,
+      "type": "error",
+      "selected": "tabbahulīkārā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "tabbahulikārā",
+        "sc": "tabbahulīkārā",
+        "vri": "tabbahulīkārā",
+        "bjt": "tabbahulīkārā",
+        "thai": "atthi"
+      },
+      "rejected": [
+        "atthi",
+        "tabbahulikārā"
+      ],
+      "notes": "PTS \"tabbahulikārā\" not in DPD, SC/VRI/BJT \"tabbahulīkārā\" is valid, Thai has \"atthi\""
+    },
+    {
+      "position": 673,
+      "type": "variant",
+      "selected": "atthi",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "atthi",
+        "sc": "atthitvevassa",
+        "vri": "atthitvevassa",
+        "bjt": "atthi",
+        "thai": "tevavassa"
+      },
+      "rejected": [
+        "atthitvevassa",
+        "tevavassa"
+      ],
+      "notes": "Textual variant: PTS \"atthi\" vs SC/VRI \"atthitvevassa\", BJT agrees with PTS, Thai has \"tevavassa\""
+    },
+    {
+      "position": 676,
+      "type": "pts_addition",
+      "selected": "assa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "assa",
+        "sc": null,
+        "vri": null,
+        "bjt": "pajānāti",
+        "thai": null
+      },
+      "rejected": [
+        "pajānāti"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 680,
+      "type": "pts_addition",
+      "selected": "paraṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "paraṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": "paraṃ",
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "bhikkhave"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 685,
+      "type": "uncertain",
+      "selected": "samatikkamma",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "samatikkamā",
+        "sc": "samatikkamma",
+        "vri": null,
+        "bjt": "samatikkamma",
+        "thai": null
+      },
+      "rejected": [
+        "samatikkamā"
+      ],
+      "notes": "SC/BJT \"samatikkamma\" vs PTS \"samatikkamā\""
+    },
+    {
+      "position": 708,
+      "type": "variant",
+      "selected": "kira",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "kira",
+        "sc": "kirame",
+        "vri": "kirame",
+        "bjt": "kira",
+        "thai": "kirame"
+      },
+      "rejected": [
+        "kirame"
+      ],
+      "notes": "Textual variant: PTS \"kira\" vs SC/VRI/Thai \"kirame\", BJT agrees with PTS"
+    },
+    {
+      "position": 709,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "me",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 714,
+      "type": "uncertain",
+      "selected": "paṭiventī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "pativedentīti",
+        "sc": "paṭiventī",
+        "vri": "paṭiventī",
+        "bjt": "paṭiventī",
+        "thai": "pativentīti"
+      },
+      "rejected": [
+        "pativedentīti",
+        "pativentīti"
+      ],
+      "notes": "Neither reading validated: PTS \"pativedentīti\" vs SC/VRI \"paṭiventī\""
+    },
+    {
+      "position": 724,
+      "type": "variant",
+      "selected": "vimariyādikatena",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "vimariyādikatena",
+        "sc": "vimariyādīkatena",
+        "vri": "vimariyādīkatena",
+        "bjt": "vimariyādīkatena",
+        "thai": "vimariyādikatena"
+      },
+      "rejected": [
+        "vimariyādīkatena"
+      ],
+      "notes": "Textual variant: PTS \"vimariyādikatena\" vs SC/VRI/BJT \"vimariyādīkatena\", Thai agrees with PTS"
+    },
+    {
+      "position": 729,
+      "type": "variant",
+      "selected": "uttariṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "uttariṃ",
+        "sc": "uttari",
+        "vri": "uttari",
+        "bjt": "uttariṃ",
+        "thai": "uttariṃ"
+      },
+      "rejected": [
+        "uttari"
+      ],
+      "notes": "Textual variant: PTS \"uttariṃ\" vs SC/VRI \"uttari\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 733,
+      "type": "error",
+      "selected": "tabbahulīkārā",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "tabbahulikārā",
+        "sc": "tabbahulīkārā",
+        "vri": "tabbahulīkārā",
+        "bjt": "atthitvevassa",
+        "thai": "atthi"
+      },
+      "rejected": [
+        "atthi",
+        "atthitvevassa",
+        "tabbahulikārā"
+      ],
+      "notes": "PTS \"tabbahulikārā\" not in DPD, SC/VRI \"tabbahulīkārā\" is valid, BJT has \"atthitvevassa\", Thai has \"atthi\""
+    },
+    {
+      "position": 734,
+      "type": "uncertain",
+      "selected": "atthi",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "atthi",
+        "sc": "atthitvevassa",
+        "vri": "natthitvevassa",
+        "bjt": null,
+        "thai": "tevavassa"
+      },
+      "rejected": [
+        "atthitvevassa",
+        "natthitvevassa",
+        "tevavassa"
+      ],
+      "notes": "Multi-way disagreement: PTS \"atthi\", SC \"atthitvevassa\", VRI \"natthitvevassa\", Thai \"tevavassa\""
+    },
+    {
+      "position": 737,
+      "type": "pts_addition",
+      "selected": "assa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "assa",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 740,
+      "type": "uncertain",
+      "selected": "ca",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "ca",
+        "sc": "caparaṃ",
+        "vri": null,
+        "bjt": "ca",
+        "thai": null
+      },
+      "rejected": [
+        "caparaṃ"
+      ],
+      "notes": "PTS/BJT \"ca\" vs SC \"caparaṃ\""
+    },
+    {
+      "position": 741,
+      "type": "pts_addition",
+      "selected": "paraṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "paraṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": "paraṃ",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 746,
+      "type": "uncertain",
+      "selected": "samatikkamā",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "samatikkamā",
+        "sc": "samatikkamma",
+        "vri": null,
+        "bjt": "nāsaññāyatanaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "nāsaññāyatanaṃ",
+        "samatikkamma"
+      ],
+      "notes": "Multi-way disagreement: PTS \"samatikkamā\", SC \"samatikkamma\", VRI \"None\", BJT \"nāsaññāyatanaṃ\""
+    },
+    {
+      "position": 752,
+      "type": "pts_addition",
+      "selected": "assa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "assa",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 768,
+      "type": "pts_addition",
+      "selected": "te",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "te",
+        "sc": null,
+        "vri": null,
+        "bjt": "te",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 777,
+      "type": "uncertain",
+      "selected": "kira",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "kira",
+        "sc": "kirame",
+        "vri": null,
+        "bjt": "kira",
+        "thai": null
+      },
+      "rejected": [
+        "kirame"
+      ],
+      "notes": "PTS/BJT \"kira\" vs SC \"kirame\""
+    },
+    {
+      "position": 778,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "me",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 783,
+      "type": "uncertain",
+      "selected": "paṭiventī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "pativedentīti",
+        "sc": "paṭiventī",
+        "vri": null,
+        "bjt": "paṭiventī",
+        "thai": null
+      },
+      "rejected": [
+        "pativedentīti"
+      ],
+      "notes": "SC/BJT \"paṭiventī\" vs PTS \"pativedentīti\""
+    },
+    {
+      "position": 793,
+      "type": "uncertain",
+      "selected": "vimariyādīkatena",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "vimariyādikatena",
+        "sc": "vimariyādīkatena",
+        "vri": null,
+        "bjt": "vimariyādīkatena",
+        "thai": null
+      },
+      "rejected": [
+        "vimariyādikatena"
+      ],
+      "notes": "SC/BJT \"vimariyādīkatena\" vs PTS \"vimariyādikatena\""
+    },
+    {
+      "position": 797,
+      "type": "uncertain",
+      "selected": "natthi",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "na",
+        "sc": "natthi",
+        "vri": null,
+        "bjt": "natthi",
+        "thai": null
+      },
+      "rejected": [
+        "na"
+      ],
+      "notes": "SC/BJT \"natthi\" vs PTS \"na\""
+    },
+    {
+      "position": 798,
+      "type": "uncertain",
+      "selected": "uttari",
+      "confidence": 0.5,
+      "witnesses": {
+        "gretil": "tthi",
+        "sc": "uttari",
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "tthi"
+      ],
+      "notes": "Multi-way disagreement, one valid reading"
+    },
+    {
+      "position": 799,
+      "type": "pts_addition",
+      "selected": "uttariṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "uttariṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": "uttariṃ",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 803,
+      "type": "uncertain",
+      "selected": "tabbahulīkārā",
+      "confidence": 0.5,
+      "witnesses": {
+        "gretil": "tabbahulikārā",
+        "sc": "tabbahulīkārā",
+        "vri": null,
+        "bjt": "natthitvevassa",
+        "thai": null
+      },
+      "rejected": [
+        "natthitvevassa",
+        "tabbahulikārā"
+      ],
+      "notes": "Multi-way disagreement, one valid reading"
+    },
+    {
+      "position": 804,
+      "type": "uncertain",
+      "selected": "na",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "na",
+        "sc": "natthi",
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "natthi"
+      ],
+      "notes": "Multi-way disagreement: PTS \"na\", SC \"natthi\", VRI \"None\""
+    },
+    {
+      "position": 805,
+      "type": "uncertain",
+      "selected": "tthi",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "tthi",
+        "sc": "tvevassa",
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "tvevassa"
+      ],
+      "notes": "Multi-way disagreement: PTS \"tthi\", SC \"tvevassa\", VRI \"None\""
+    },
+    {
+      "position": 808,
+      "type": "pts_addition",
+      "selected": "assa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "assa",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/mn/mn111_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 825,
+      "orthographic": 123,
+      "errors": 22,
+      "variants": 57,
+      "uncertain": 70,
+      "match": 332,
+      "other": 221
+    }
+  }
 }

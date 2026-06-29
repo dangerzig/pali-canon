@@ -1,0 +1,108 @@
+{
+  "id": "sn52_13",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 23,
+    "sc": 24,
+    "vri": 24,
+    "bjt": 23,
+    "thai": 10
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "imesaṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "imesaṃ",
+        "sc": "imesañca",
+        "vri": "imesañca",
+        "bjt": "dibbasotasuttaṃ",
+        "thai": "taṃ"
+      },
+      "rejected": [
+        "dibbasotasuttaṃ",
+        "imesañca",
+        "taṃ"
+      ],
+      "notes": "Textual variant: PTS \"imesaṃ\" vs SC/VRI \"imesañca\", BJT has \"dibbasotasuttaṃ\", Thai has \"taṃ\""
+    },
+    {
+      "position": 3,
+      "type": "pts_addition",
+      "selected": "avuso",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "avuso",
+        "sc": null,
+        "vri": null,
+        "bjt": "āvuso",
+        "thai": "gaṅgā"
+      },
+      "rejected": [
+        "gaṅgā",
+        "āvuso"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 10,
+      "type": "error",
+      "selected": "atikkantamānusikāya",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "atikkantamānussikāya",
+        "sc": "atikkantamānusikāya",
+        "vri": "atikkantamānusikāya",
+        "bjt": "atikkantamānusikāya",
+        "thai": null
+      },
+      "rejected": [
+        "atikkantamānussikāya"
+      ],
+      "notes": "PTS \"atikkantamānussikāya\" not in DPD, SC/VRI/BJT \"atikkantamānusikāya\" is valid"
+    },
+    {
+      "position": 16,
+      "type": "error",
+      "selected": "mānuse",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "mānusse",
+        "sc": "mānuse",
+        "vri": "mānuse",
+        "bjt": "mānuse",
+        "thai": null
+      },
+      "rejected": [
+        "mānusse"
+      ],
+      "notes": "PTS \"mānusse\" not in DPD, SC/VRI/BJT \"mānuse\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn52_13_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 23,
+      "orthographic": 10,
+      "errors": 2,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 0,
+      "other": 9
+    }
+  }
+}

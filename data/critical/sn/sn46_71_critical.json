@@ -1,0 +1,71 @@
+{
+  "id": "sn46_71",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 4,
+    "sc": 4,
+    "vri": 4,
+    "bjt": 580,
+    "thai": 1
+  },
+  "apparatus_count": 2,
+  "apparatus": [
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "dukkhe",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "dukkhe",
+        "sc": null,
+        "vri": null,
+        "bjt": "anattasuttāni",
+        "thai": null
+      },
+      "rejected": [
+        "anattasuttāni"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "anattasaññā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "anattasaññā",
+        "sc": null,
+        "vri": null,
+        "bjt": "dukkhe",
+        "thai": null
+      },
+      "rejected": [
+        "dukkhe"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn46_71_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 4,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 0,
+      "uncertain": 2,
+      "match": 0,
+      "other": 2
+    }
+  }
+}

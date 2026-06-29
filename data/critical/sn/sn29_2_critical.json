@@ -1,0 +1,90 @@
+{
+  "id": "sn29_2",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 48,
+    "sc": 59,
+    "vri": 59,
+    "bjt": 59,
+    "thai": 17
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "paṇītatara",
+        "thai": "paccayo"
+      },
+      "rejected": [
+        "paccayo",
+        "paṇītatara",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"paṇītatara\", Thai has \"paccayo\""
+    },
+    {
+      "position": 3,
+      "type": "pts_addition",
+      "selected": "xxix",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "xxix",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "sopi"
+      },
+      "rejected": [
+        "sopi"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 4,
+      "type": "pts_addition",
+      "selected": "nāgasaṃyutta",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "nāgasaṃyutta",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "anattā"
+      },
+      "rejected": [
+        "anattā"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn29_2_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 48,
+      "orthographic": 30,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 1,
+      "other": 14
+    }
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "id": "sn34_6",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 85,
+    "sc": 86,
+    "vri": 86,
+    "bjt": 4466,
+    "thai": 51
+  },
+  "apparatus_count": 8,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "gocara",
+        "thai": "tassuddānaṃ"
+      },
+      "rejected": [
+        "gocara",
+        "sāvatthinidānaṃ",
+        "tassuddānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"gocara\", Thai has \"tassuddānaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "cattāro",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "cattāro",
+        "sc": "cattārome",
+        "vri": "cattārome",
+        "bjt": "kusala",
+        "thai": "natumhākena"
+      },
+      "rejected": [
+        "cattārome",
+        "kusala",
+        "natumhākena"
+      ],
+      "notes": "Textual variant: PTS \"cattāro\" vs SC/VRI \"cattārome\", BJT has \"kusala\", Thai has \"natumhākena\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "suttaṃ",
+        "thai": "deva"
+      },
+      "rejected": [
+        "deva",
+        "suttaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 28,
+      "type": "pts_addition",
+      "selected": "xxiv",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "xxiv",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 29,
+      "type": "pts_addition",
+      "selected": "jhānasaṃyutta",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "jhānasaṃyutta",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 51,
+      "type": "error",
+      "selected": "samādhismiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "samādhismim",
+        "sc": "samādhismiṃ",
+        "vri": "samādhismiṃ",
+        "bjt": "samādhismiṃ",
+        "thai": null
+      },
+      "rejected": [
+        "samādhismim"
+      ],
+      "notes": "PTS \"samādhismim\" not in DPD, SC/VRI/BJT \"samādhismiṃ\" is valid"
+    },
+    {
+      "position": 64,
+      "type": "error",
+      "selected": "ayaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "ayam",
+        "sc": "ayaṃ",
+        "vri": "ayaṃ",
+        "bjt": "ayaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "ayam"
+      ],
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT \"ayaṃ\" is valid"
+    },
+    {
+      "position": 66,
+      "type": "error",
+      "selected": "catunnaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "catunnam",
+        "sc": "catunnaṃ",
+        "vri": "catunnaṃ",
+        "bjt": "catunnaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "catunnam"
+      ],
+      "notes": "PTS \"catunnam\" not in DPD, SC/VRI/BJT \"catunnaṃ\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn34_6_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 85,
+      "orthographic": 69,
+      "errors": 3,
+      "variants": 2,
+      "uncertain": 3,
+      "match": 3,
+      "other": 5
+    }
+  }
+}

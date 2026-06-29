@@ -1,0 +1,163 @@
+{
+  "id": "sn23_13",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 26,
+    "sc": 39,
+    "vri": 39,
+    "bjt": 868,
+    "thai": 16
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 4,
+      "type": "variant",
+      "selected": "katamannu",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "katamannu",
+        "sc": "katamaṃ",
+        "vri": "katamaṃ",
+        "bjt": "katamannu",
+        "thai": "rāgo"
+      },
+      "rejected": [
+        "katamaṃ",
+        "rāgo"
+      ],
+      "notes": "Textual variant: PTS \"katamannu\" vs SC/VRI \"katamaṃ\", BJT agrees with PTS, Thai has \"rāgo\""
+    },
+    {
+      "position": 7,
+      "type": "uncertain",
+      "selected": "aniccanti",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "aniccanti",
+        "sc": "aniccan",
+        "vri": "anicca",
+        "bjt": "aniccantī",
+        "thai": "yā"
+      },
+      "rejected": [
+        "anicca",
+        "aniccan",
+        "aniccantī",
+        "yā"
+      ],
+      "notes": "Multi-way disagreement: PTS \"aniccanti\", SC \"aniccan\", VRI \"anicca\", BJT \"aniccantī\", Thai \"yā\""
+    },
+    {
+      "position": 14,
+      "type": "variant",
+      "selected": "sañña",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "sañña",
+        "sc": "saññā",
+        "vri": "saññā",
+        "bjt": "saññā",
+        "thai": "khayā"
+      },
+      "rejected": [
+        "khayā",
+        "saññā"
+      ],
+      "notes": "Textual variant: PTS \"sañña\" vs SC/VRI/BJT \"saññā\", Thai has \"khayā\""
+    },
+    {
+      "position": 18,
+      "type": "error",
+      "selected": "viññāṇaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "viññāṇam",
+        "sc": "viññāṇaṃ",
+        "vri": "viññāṇaṃ",
+        "bjt": "viññāṇaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "viññāṇam"
+      ],
+      "notes": "PTS \"viññāṇam\" not in DPD, SC/VRI/BJT \"viññāṇaṃ\" is valid"
+    },
+    {
+      "position": 20,
+      "type": "error",
+      "selected": "evaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evaṃ",
+        "vri": "evaṃ",
+        "bjt": "evaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "evam"
+      ],
+      "notes": "PTS \"evam\" not in DPD, SC/VRI/BJT \"evaṃ\" is valid"
+    },
+    {
+      "position": 23,
+      "type": "error",
+      "selected": "nāparaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "nāparam",
+        "sc": "nāparaṃ",
+        "vri": "nāparaṃ",
+        "bjt": "sutavā",
+        "thai": null
+      },
+      "rejected": [
+        "nāparam",
+        "sutavā"
+      ],
+      "notes": "PTS \"nāparam\" not in DPD, SC/VRI \"nāparaṃ\" is valid, BJT has \"sutavā\""
+    },
+    {
+      "position": 25,
+      "type": "uncertain",
+      "selected": "pajānātī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "pajānātīti",
+        "sc": "pajānātī",
+        "vri": "pajānātī",
+        "bjt": "rūpasmimpi",
+        "thai": null
+      },
+      "rejected": [
+        "pajānātīti",
+        "rūpasmimpi"
+      ],
+      "notes": "Neither reading validated: PTS \"pajānātīti\" vs SC/VRI \"pajānātī\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn23_13_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 26,
+      "orthographic": 4,
+      "errors": 3,
+      "variants": 2,
+      "uncertain": 2,
+      "match": 0,
+      "other": 15
+    }
+  }
+}

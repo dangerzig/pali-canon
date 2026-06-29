@@ -1,0 +1,159 @@
+{
+  "id": "sn43_2",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 35,
+    "sc": 34,
+    "vri": 34,
+    "bjt": 75,
+    "thai": 62
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "asaṅkhataṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "asaṅkhataṃ",
+        "sc": "asaṅkhatañca",
+        "vri": "asaṅkhatañca",
+        "bjt": "samathavipassanāsuttaṃ",
+        "thai": "jivhāviññeyyā"
+      },
+      "rejected": [
+        "asaṅkhatañca",
+        "jivhāviññeyyā",
+        "samathavipassanāsuttaṃ"
+      ],
+      "notes": "Textual variant: PTS \"asaṅkhataṃ\" vs SC/VRI \"asaṅkhatañca\", BJT has \"samathavipassanāsuttaṃ\", Thai has \"jivhāviññeyyā\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "ca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ca",
+        "sc": null,
+        "vri": null,
+        "bjt": "asaṅkhatañca",
+        "thai": "ca"
+      },
+      "rejected": [
+        "asaṅkhatañca"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 4,
+      "type": "variant",
+      "selected": "desissāmi",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "desissāmi",
+        "sc": "desessāmi",
+        "vri": "desessāmi",
+        "bjt": "desissāmi",
+        "thai": "cakkhuviññeyyā"
+      },
+      "rejected": [
+        "cakkhuviññeyyā",
+        "desessāmi"
+      ],
+      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI \"desessāmi\", BJT agrees with PTS, Thai has \"cakkhuviññeyyā\""
+    },
+    {
+      "position": 24,
+      "type": "variant",
+      "selected": "asaṅkhatagāmi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "asaṅkhatagāmi",
+        "sc": "asaṅkhatagāmimaggo",
+        "vri": "asaṅkhatagāmimaggo",
+        "bjt": "asaṅkhatagāmī",
+        "thai": null
+      },
+      "rejected": [
+        "asaṅkhatagāmimaggo",
+        "asaṅkhatagāmī"
+      ],
+      "notes": "Textual variant: PTS \"asaṅkhatagāmi\" vs SC/VRI \"asaṅkhatagāmimaggo\", BJT has \"asaṅkhatagāmī\""
+    },
+    {
+      "position": 25,
+      "type": "pts_addition",
+      "selected": "maggo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "maggo",
+        "sc": null,
+        "vri": null,
+        "bjt": "maggo",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 29,
+      "type": "error",
+      "selected": "ayaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "ayam",
+        "sc": "ayaṃ",
+        "vri": "ayaṃ",
+        "bjt": "ayaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "ayam"
+      ],
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT \"ayaṃ\" is valid"
+    },
+    {
+      "position": 32,
+      "type": "variant",
+      "selected": "asaṅkhatagāmi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "asaṅkhatagāmi",
+        "sc": "asaṅkhatagāmimaggo",
+        "vri": "asaṅkhatagāmimaggo",
+        "bjt": "asaṅkhatagāmī",
+        "thai": null
+      },
+      "rejected": [
+        "asaṅkhatagāmimaggo",
+        "asaṅkhatagāmī"
+      ],
+      "notes": "Textual variant: PTS \"asaṅkhatagāmi\" vs SC/VRI \"asaṅkhatagāmimaggo\", BJT has \"asaṅkhatagāmī\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn43_2_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 35,
+      "orthographic": 16,
+      "errors": 1,
+      "variants": 4,
+      "uncertain": 2,
+      "match": 0,
+      "other": 12
+    }
+  }
+}

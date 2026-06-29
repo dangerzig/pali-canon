@@ -1,0 +1,200 @@
+{
+  "id": "sn56_25",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 66,
+    "sc": 75,
+    "vri": 75,
+    "bjt": 76,
+    "thai": 632
+  },
+  "apparatus_count": 10,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "jānato",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "jānato",
+        "sc": "jānatohaṃ",
+        "vri": "jānatohaṃ",
+        "bjt": "jānato",
+        "thai": "samādhisambojjhaṅgassa"
+      },
+      "rejected": [
+        "jānatohaṃ",
+        "samādhisambojjhaṅgassa"
+      ],
+      "notes": "Textual variant: PTS \"jānato\" vs SC/VRI \"jānatohaṃ\", BJT agrees with PTS, Thai has \"samādhisambojjhaṅgassa\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "ham",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ham",
+        "sc": null,
+        "vri": null,
+        "bjt": "ahaṃ",
+        "thai": "bhāvanāya"
+      },
+      "rejected": [
+        "ahaṃ",
+        "bhāvanāya"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 4,
+      "type": "error",
+      "selected": "āsavānaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "āsavānam",
+        "sc": "āsavānaṃ",
+        "vri": "āsavānaṃ",
+        "bjt": "āsavānaṃ",
+        "thai": "bhāvanāya"
+      },
+      "rejected": [
+        "bhāvanāya",
+        "āsavānam"
+      ],
+      "notes": "PTS \"āsavānam\" not in DPD, SC/VRI/BJT \"āsavānaṃ\" is valid, Thai has \"bhāvanāya\""
+    },
+    {
+      "position": 24,
+      "type": "variant",
+      "selected": "khāyo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "khāyo",
+        "sc": "khayo",
+        "vri": "khayo",
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "khayo"
+      ],
+      "notes": "Textual variant: PTS \"khāyo\" vs SC/VRI \"khayo\""
+    },
+    {
+      "position": 26,
+      "type": "error",
+      "selected": "ayaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "ayam",
+        "sc": "ayaṃ",
+        "vri": "ayaṃ",
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "ayam"
+      ],
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI \"ayaṃ\" is valid"
+    },
+    {
+      "position": 28,
+      "type": "pts_addition",
+      "selected": "ti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ti",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 30,
+      "type": "pts_addition",
+      "selected": "ayam",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ayam",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 31,
+      "type": "pts_addition",
+      "selected": "dukkhanirodhagāminī",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "dukkhanirodhagāminī",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 32,
+      "type": "pts_addition",
+      "selected": "patipadā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "patipadā",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 43,
+      "type": "pts_addition",
+      "selected": "evam",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_25_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 66,
+      "orthographic": 25,
+      "errors": 2,
+      "variants": 2,
+      "uncertain": 6,
+      "match": 2,
+      "other": 29
+    }
+  }
+}

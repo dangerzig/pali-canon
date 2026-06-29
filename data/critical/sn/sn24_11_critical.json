@@ -1,0 +1,124 @@
+{
+  "id": "sn24_11",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 26,
+    "sc": 25,
+    "vri": 25,
+    "bjt": 222,
+    "thai": 16
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "antavālokasuttaṃ",
+        "thai": "vā"
+      },
+      "rejected": [
+        "antavālokasuttaṃ",
+        "sāvatthinidānaṃ",
+        "vā"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"antavālokasuttaṃ\", Thai has \"vā\""
+    },
+    {
+      "position": 6,
+      "type": "error",
+      "selected": "kiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "kim",
+        "sc": "kiṃ",
+        "vri": "kiṃ",
+        "bjt": "kiṃ",
+        "thai": "aññathā"
+      },
+      "rejected": [
+        "aññathā",
+        "kim"
+      ],
+      "notes": "PTS \"kim\" not in DPD, SC/VRI/BJT \"kiṃ\" is valid, Thai has \"aññathā\""
+    },
+    {
+      "position": 8,
+      "type": "error",
+      "selected": "kiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "kim",
+        "sc": "kiṃ",
+        "vri": "kiṃ",
+        "bjt": "kiṃ",
+        "thai": "tassa"
+      },
+      "rejected": [
+        "kim",
+        "tassa"
+      ],
+      "notes": "PTS \"kim\" not in DPD, SC/VRI/BJT \"kiṃ\" is valid, Thai has \"tassa\""
+    },
+    {
+      "position": 16,
+      "type": "variant",
+      "selected": "bhagavammūlakā",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "bhagavammūlakā",
+        "sc": "bhagavaṃmūlakā",
+        "vri": "bhagavaṃmūlakā",
+        "bjt": "bhagavammūlakā",
+        "thai": null
+      },
+      "rejected": [
+        "bhagavaṃmūlakā"
+      ],
+      "notes": "Textual variant: PTS \"bhagavammūlakā\" vs SC/VRI \"bhagavaṃmūlakā\", BJT agrees with PTS"
+    },
+    {
+      "position": 25,
+      "type": "pts_addition",
+      "selected": "sotāpittivaggo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sotāpittivaggo",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn24_11_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 26,
+      "orthographic": 5,
+      "errors": 2,
+      "variants": 2,
+      "uncertain": 1,
+      "match": 0,
+      "other": 16
+    }
+  }
+}

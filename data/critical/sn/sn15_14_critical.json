@@ -1,0 +1,123 @@
+{
+  "id": "sn15_14",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 27,
+    "sc": 27,
+    "vri": 28,
+    "bjt": 61,
+    "thai": 15
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 2,
+      "type": "uncertain",
+      "selected": "anamataggāyam",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "anamataggāyam",
+        "sc": "anamataggoyaṃ",
+        "vri": "pe",
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "anamataggoyaṃ",
+        "pe"
+      ],
+      "notes": "Multi-way disagreement: PTS \"anamataggāyam\", SC \"anamataggoyaṃ\", VRI \"pe\""
+    },
+    {
+      "position": 13,
+      "type": "pts_addition",
+      "selected": "mātābhūtapubbo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "mātābhūtapubbo",
+        "sc": null,
+        "vri": null,
+        "bjt": "mātābhūtapubbo",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 20,
+      "type": "error",
+      "selected": "anamataggoyaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "anamataggāyam",
+        "sc": "anamataggoyaṃ",
+        "vri": "anamataggoyaṃ",
+        "bjt": "anamataggoyaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "anamataggāyam"
+      ],
+      "notes": "PTS \"anamataggāyam\" not in DPD, SC/VRI/BJT \"anamataggoyaṃ\" is valid"
+    },
+    {
+      "position": 24,
+      "type": "error",
+      "selected": "alaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "alam",
+        "sc": "alaṃ",
+        "vri": "alaṃ",
+        "bjt": "koṭi",
+        "thai": null
+      },
+      "rejected": [
+        "alam",
+        "koṭi"
+      ],
+      "notes": "PTS \"alam\" not in DPD, SC/VRI \"alaṃ\" is valid, BJT has \"koṭi\""
+    },
+    {
+      "position": 25,
+      "type": "uncertain",
+      "selected": "vimuccitunti",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "vimuccitunti",
+        "sc": "vimuccitun",
+        "vri": "vimuccitu",
+        "bjt": "vimuccitunti",
+        "thai": null
+      },
+      "rejected": [
+        "vimuccitu",
+        "vimuccitun"
+      ],
+      "notes": "PTS/BJT \"vimuccitunti\" vs SC \"vimuccitun\", VRI \"vimuccitu\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn15_14_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 27,
+      "orthographic": 10,
+      "errors": 2,
+      "variants": 0,
+      "uncertain": 3,
+      "match": 2,
+      "other": 10
+    }
+  }
+}

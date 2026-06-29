@@ -1,0 +1,119 @@
+{
+  "id": "sn15_11",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 43,
+    "sc": 49,
+    "vri": 61,
+    "bjt": 72,
+    "thai": 15
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 10,
+      "type": "variant",
+      "selected": "pubbākoṭi",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "pubbākoṭi",
+        "sc": "pubbā",
+        "vri": "pubbā",
+        "bjt": "pubbā",
+        "thai": "dutiyo"
+      },
+      "rejected": [
+        "dutiyo",
+        "pubbā"
+      ],
+      "notes": "Textual variant: PTS \"pubbākoṭi\" vs SC/VRI/BJT \"pubbā\", Thai has \"dutiyo\""
+    },
+    {
+      "position": 22,
+      "type": "error",
+      "selected": "niṭṭhamettha",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "niṭṭham",
+        "sc": "niṭṭhamettha",
+        "vri": "niṭṭhamettha",
+        "bjt": "niṭṭhamettha",
+        "thai": null
+      },
+      "rejected": [
+        "niṭṭham"
+      ],
+      "notes": "PTS \"niṭṭham\" not in DPD, SC/VRI/BJT \"niṭṭhamettha\" is valid"
+    },
+    {
+      "position": 25,
+      "type": "pts_addition",
+      "selected": "amhehi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "amhehi",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 26,
+      "type": "pts_addition",
+      "selected": "pi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pi",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 42,
+      "type": "variant",
+      "selected": "pathamaṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pathamaṃ",
+        "sc": "alaṃ",
+        "vri": "alaṃ",
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "alaṃ"
+      ],
+      "notes": "Textual variant: PTS \"pathamaṃ\" vs SC/VRI \"alaṃ\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn15_11_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 43,
+      "orthographic": 16,
+      "errors": 1,
+      "variants": 2,
+      "uncertain": 2,
+      "match": 0,
+      "other": 22
+    }
+  }
+}

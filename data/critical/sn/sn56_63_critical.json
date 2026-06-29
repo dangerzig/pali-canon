@@ -1,0 +1,92 @@
+{
+  "id": "sn56_63",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 21,
+    "sc": 21,
+    "vri": 21,
+    "bjt": 58,
+    "thai": 632
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "evameva",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "evameva",
+        "bjt": "paññāsuttaṃ",
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "bhikkhave",
+        "evam",
+        "paññāsuttaṃ"
+      ],
+      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evameva\" is valid, BJT has \"paññāsuttaṃ\", Thai has \"bhikkhave\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "eva",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": null,
+        "bjt": "evameva",
+        "thai": "chando"
+      },
+      "rejected": [
+        "chando",
+        "evameva"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 14,
+      "type": "variant",
+      "selected": "ete",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "ete",
+        "sc": "eteva",
+        "vri": "eteva",
+        "bjt": "eteva",
+        "thai": "rattiṃ"
+      },
+      "rejected": [
+        "eteva",
+        "rattiṃ"
+      ],
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"rattiṃ\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_63_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 21,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 1,
+      "other": 17
+    }
+  }
+}

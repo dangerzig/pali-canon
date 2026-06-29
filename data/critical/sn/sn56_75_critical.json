@@ -1,0 +1,111 @@
+{
+  "id": "sn56_75",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 22,
+    "sc": 21,
+    "vri": 22,
+    "bjt": 21,
+    "thai": 632
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "uncertain",
+      "selected": "evam",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "pe",
+        "bjt": "pisuṇavācāsuttaṃ",
+        "thai": "samaye"
+      },
+      "rejected": [
+        "evameva",
+        "pe",
+        "pisuṇavācāsuttaṃ",
+        "samaye"
+      ],
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\", BJT \"pisuṇavācāsuttaṃ\", Thai \"samaye\""
+    },
+    {
+      "position": 1,
+      "type": "uncertain",
+      "selected": "evameva",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": "evameva",
+        "bjt": "evameva",
+        "thai": "bhikkhuno"
+      },
+      "rejected": [
+        "bhikkhuno",
+        "eva"
+      ],
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", Thai \"bhikkhuno\""
+    },
+    {
+      "position": 8,
+      "type": "error",
+      "selected": "pisuṇāya",
+      "confidence": 0.85,
+      "witnesses": {
+        "gretil": "pisunāya",
+        "sc": "pisuṇāya",
+        "vri": "pisuṇāya",
+        "bjt": "pisunāya",
+        "thai": "etadavocuṃ"
+      },
+      "rejected": [
+        "etadavocuṃ",
+        "pisunāya"
+      ],
+      "notes": "PTS \"pisunāya\" not in DPD, SC/VRI \"pisuṇāya\" is valid, BJT agrees with PTS, Thai has \"etadavocuṃ\""
+    },
+    {
+      "position": 13,
+      "type": "variant",
+      "selected": "ete",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "ete",
+        "sc": "eteva",
+        "vri": "eteva",
+        "bjt": "eteva",
+        "thai": "sambahulā"
+      },
+      "rejected": [
+        "eteva",
+        "sambahulā"
+      ],
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"sambahulā\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_75_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 22,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 3,
+      "other": 15
+    }
+  }
+}

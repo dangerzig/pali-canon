@@ -1,0 +1,152 @@
+{
+  "id": "sn9_10",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 86,
+    "sc": 80,
+    "vri": 80,
+    "bjt": 80,
+    "thai": 85
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 18,
+      "type": "variant",
+      "selected": "sajjhāya",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "sajjhāya",
+        "sc": "sajjhāyabahulo",
+        "vri": "sajjhāyabahulo",
+        "bjt": "sajjhāyabahulo",
+        "thai": "sajjhāyabahulo"
+      },
+      "rejected": [
+        "sajjhāyabahulo"
+      ],
+      "notes": "Textual variant: PTS \"sajjhāya\" vs SC/VRI/BJT/Thai \"sajjhāyabahulo\""
+    },
+    {
+      "position": 19,
+      "type": "pts_addition",
+      "selected": "bahulo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "bahulo",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 36,
+      "type": "error",
+      "selected": "dhammaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "dhammam",
+        "sc": "dhammaṃ",
+        "vri": "dhammaṃ",
+        "bjt": "dhammaṃ",
+        "thai": "dhammaṃ"
+      },
+      "rejected": [
+        "dhammam"
+      ],
+      "notes": "PTS \"dhammam\" not in DPD, SC/VRI/BJT/Thai \"dhammaṃ\" is valid"
+    },
+    {
+      "position": 69,
+      "type": "pts_addition",
+      "selected": "vanasaṃyutta",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "vanasaṃyutta",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 76,
+      "type": "variant",
+      "selected": "diṭṭhaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "diṭṭhaṃ",
+        "sc": "diṭṭhaṃva",
+        "vri": "diṭṭhaṃva",
+        "bjt": "diṭṭhaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "diṭṭhaṃva"
+      ],
+      "notes": "Textual variant: PTS \"diṭṭhaṃ\" vs SC/VRI \"diṭṭhaṃva\", BJT agrees with PTS"
+    },
+    {
+      "position": 82,
+      "type": "error",
+      "selected": "nikkhepanamāhu",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "nikkhepanam",
+        "sc": "nikkhepanamāhu",
+        "vri": "nikkhepanamāhu",
+        "bjt": "nikkhepanamāhu",
+        "thai": "nikkhepanamāhu"
+      },
+      "rejected": [
+        "nikkhepanam"
+      ],
+      "notes": "PTS \"nikkhepanam\" not in DPD, SC/VRI/BJT/Thai \"nikkhepanamāhu\" is valid"
+    },
+    {
+      "position": 83,
+      "type": "pts_addition",
+      "selected": "āhu",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "āhu",
+        "sc": null,
+        "vri": null,
+        "bjt": "santoti",
+        "thai": "santoti"
+      },
+      "rejected": [
+        "santoti"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn9_10_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 86,
+      "orthographic": 0,
+      "errors": 2,
+      "variants": 2,
+      "uncertain": 3,
+      "match": 65,
+      "other": 14
+    }
+  }
+}

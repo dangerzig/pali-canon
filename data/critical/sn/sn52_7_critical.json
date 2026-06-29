@@ -1,0 +1,72 @@
+{
+  "id": "sn52_7",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 45,
+    "sc": 60,
+    "vri": 60,
+    "bjt": 84,
+    "thai": 58
+  },
+  "apparatus_count": 2,
+  "apparatus": [
+    {
+      "position": 13,
+      "type": "variant",
+      "selected": "bahulīkata",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "bahulīkata",
+        "sc": "bahulīkatā",
+        "vri": "bahulīkatā",
+        "bjt": "bahulīkatā",
+        "thai": null
+      },
+      "rejected": [
+        "bahulīkatā"
+      ],
+      "notes": "Textual variant: PTS \"bahulīkata\" vs SC/VRI/BJT \"bahulīkatā\""
+    },
+    {
+      "position": 33,
+      "type": "error",
+      "selected": "vineyya",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "vineyyaloke",
+        "sc": "vineyya",
+        "vri": "vineyya",
+        "bjt": "vineyya",
+        "thai": "dhamme"
+      },
+      "rejected": [
+        "dhamme",
+        "vineyyaloke"
+      ],
+      "notes": "PTS \"vineyyaloke\" not in DPD, SC/VRI/BJT \"vineyya\" is valid, Thai has \"dhamme\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn52_7_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 45,
+      "orthographic": 10,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 0,
+      "match": 2,
+      "other": 31
+    }
+  }
+}

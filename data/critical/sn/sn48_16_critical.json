@@ -1,0 +1,89 @@
+{
+  "id": "sn48_16",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 37,
+    "sc": 69,
+    "vri": 69,
+    "bjt": 74,
+    "thai": 7
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 15,
+      "type": "error",
+      "selected": "pañcannaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "pañcannam",
+        "sc": "pañcannaṃ",
+        "vri": "pañcannaṃ",
+        "bjt": "pañcannaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "pañcannam"
+      ],
+      "notes": "PTS \"pañcannam\" not in DPD, SC/VRI/BJT \"pañcannaṃ\" is valid"
+    },
+    {
+      "position": 30,
+      "type": "error",
+      "selected": "phalavemattatā",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "phaḷavemattatā",
+        "sc": "phalavemattatā",
+        "vri": "phalavemattatā",
+        "bjt": "phalavematattā",
+        "thai": null
+      },
+      "rejected": [
+        "phalavematattā",
+        "phaḷavemattatā"
+      ],
+      "notes": "PTS \"phaḷavemattatā\" not in DPD, SC/VRI \"phalavemattatā\" is valid, BJT has \"phalavematattā\""
+    },
+    {
+      "position": 34,
+      "type": "variant",
+      "selected": "hoti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "hoti",
+        "sc": "hotī",
+        "vri": "hotī",
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "hotī"
+      ],
+      "notes": "Textual variant: PTS \"hoti\" vs SC/VRI \"hotī\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn48_16_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 37,
+      "orthographic": 22,
+      "errors": 2,
+      "variants": 1,
+      "uncertain": 0,
+      "match": 0,
+      "other": 12
+    }
+  }
+}

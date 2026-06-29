@@ -1,0 +1,171 @@
+{
+  "id": "sn1_56",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 28,
+    "sc": 23,
+    "vri": 23,
+    "bjt": 27,
+    "thai": 41
+  },
+  "apparatus_count": 8,
+  "apparatus": [
+    {
+      "position": 7,
+      "type": "error",
+      "selected": "saṃsāramāpādi",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "saṃsāram",
+        "sc": "saṃsāramāpādi",
+        "vri": "saṃsāramāpādi",
+        "bjt": "su",
+        "thai": "saṃsāramāpādi"
+      },
+      "rejected": [
+        "saṃsāram",
+        "su"
+      ],
+      "notes": "PTS \"saṃsāram\" not in DPD, SC/VRI/Thai \"saṃsāramāpādi\" is valid, BJT has \"su\""
+    },
+    {
+      "position": 8,
+      "type": "pts_addition",
+      "selected": "āpādi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "āpādi",
+        "sc": null,
+        "vri": null,
+        "bjt": "saṃsāramāpādi",
+        "thai": "kiṃsu"
+      },
+      "rejected": [
+        "kiṃsu",
+        "saṃsāramāpādi"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 11,
+      "type": "uncertain",
+      "selected": "parimuccatī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "parimuccatīti",
+        "sc": "parimuccatī",
+        "vri": "parimuccatī",
+        "bjt": "parimuccatīti",
+        "thai": null
+      },
+      "rejected": [
+        "parimuccatīti"
+      ],
+      "notes": "Neither reading validated: PTS \"parimuccatīti\" vs SC/VRI \"parimuccatī\""
+    },
+    {
+      "position": 15,
+      "type": "error",
+      "selected": "cittamassa",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "cittam",
+        "sc": "cittamassa",
+        "vri": "cittamassa",
+        "bjt": "cittamassa",
+        "thai": "cittamassa"
+      },
+      "rejected": [
+        "cittam"
+      ],
+      "notes": "PTS \"cittam\" not in DPD, SC/VRI/BJT/Thai \"cittamassa\" is valid"
+    },
+    {
+      "position": 16,
+      "type": "pts_addition",
+      "selected": "assa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "assa",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 19,
+      "type": "error",
+      "selected": "saṃsāramāpādi",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "saṃsāram",
+        "sc": "saṃsāramāpādi",
+        "vri": "saṃsāramāpādi",
+        "bjt": "saṃsāramāpādi",
+        "thai": "saṃsāramāpādi"
+      },
+      "rejected": [
+        "saṃsāram"
+      ],
+      "notes": "PTS \"saṃsāram\" not in DPD, SC/VRI/BJT/Thai \"saṃsāramāpādi\" is valid"
+    },
+    {
+      "position": 20,
+      "type": "pts_addition",
+      "selected": "āpādi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "āpādi",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "dukkhamassa"
+      },
+      "rejected": [
+        "dukkhamassa"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 25,
+      "type": "pts_addition",
+      "selected": "devatāsaṃyutta",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "devatāsaṃyutta",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_56_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 28,
+      "orthographic": 0,
+      "errors": 3,
+      "variants": 0,
+      "uncertain": 5,
+      "match": 9,
+      "other": 11
+    }
+  }
+}

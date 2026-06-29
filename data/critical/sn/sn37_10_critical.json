@@ -1,0 +1,92 @@
+{
+  "id": "sn37_10",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 36,
+    "sc": 37,
+    "vri": 37,
+    "bjt": 46,
+    "thai": 62
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 6,
+      "type": "error",
+      "selected": "nirayaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "nirayam",
+        "sc": "nirayaṃ",
+        "vri": "nirayaṃ",
+        "bjt": "bhedā",
+        "thai": "nirodho"
+      },
+      "rejected": [
+        "bhedā",
+        "nirayam",
+        "nirodho"
+      ],
+      "notes": "PTS \"nirayam\" not in DPD, SC/VRI \"nirayaṃ\" is valid, BJT has \"bhedā\", Thai has \"nirodho\""
+    },
+    {
+      "position": 16,
+      "type": "variant",
+      "selected": "anottāpī",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "anottāpī",
+        "sc": "anottappī",
+        "vri": "anottappī",
+        "bjt": "anottāpī",
+        "thai": null
+      },
+      "rejected": [
+        "anottappī"
+      ],
+      "notes": "Textual variant: PTS \"anottāpī\" vs SC/VRI \"anottappī\", BJT agrees with PTS"
+    },
+    {
+      "position": 33,
+      "type": "error",
+      "selected": "nirayaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "nirayam",
+        "sc": "nirayaṃ",
+        "vri": "nirayaṃ",
+        "bjt": "bhedā",
+        "thai": "taṃ"
+      },
+      "rejected": [
+        "bhedā",
+        "nirayam",
+        "taṃ"
+      ],
+      "notes": "PTS \"nirayam\" not in DPD, SC/VRI \"nirayaṃ\" is valid, BJT has \"bhedā\", Thai has \"taṃ\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn37_10_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 36,
+      "orthographic": 11,
+      "errors": 2,
+      "variants": 1,
+      "uncertain": 0,
+      "match": 3,
+      "other": 19
+    }
+  }
+}

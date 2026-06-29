@@ -1,0 +1,141 @@
+{
+  "id": "sn1_13",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 37,
+    "sc": 37,
+    "vri": 37,
+    "bjt": 37,
+    "thai": 40
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "antaṃ",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "antaṃ",
+        "sc": "ekamantaṃ",
+        "vri": "ekamantaṃ",
+        "bjt": "sāvatthiyaṃ",
+        "thai": "ekamantaṃ"
+      },
+      "rejected": [
+        "ekamantaṃ",
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"antaṃ\" vs SC/VRI/Thai \"ekamantaṃ\", BJT has \"sāvatthiyaṃ\""
+    },
+    {
+      "position": 9,
+      "type": "error",
+      "selected": "gāthaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "gātham",
+        "sc": "gāthaṃ",
+        "vri": "gāthaṃ",
+        "bjt": "gāthaṃ",
+        "thai": "gāthaṃ"
+      },
+      "rejected": [
+        "gātham"
+      ],
+      "notes": "PTS \"gātham\" not in DPD, SC/VRI/BJT/Thai \"gāthaṃ\" is valid"
+    },
+    {
+      "position": 15,
+      "type": "error",
+      "selected": "gosamitaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "gosamitam",
+        "sc": "gosamitaṃ",
+        "vri": "gosamitaṃ",
+        "bjt": "gosamitaṃ",
+        "thai": "gosamikaṃ"
+      },
+      "rejected": [
+        "gosamikaṃ",
+        "gosamitam"
+      ],
+      "notes": "PTS \"gosamitam\" not in DPD, SC/VRI/BJT \"gosamitaṃ\" is valid, Thai has \"gosamikaṃ\""
+    },
+    {
+      "position": 18,
+      "type": "variant",
+      "selected": "suriyasamā",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "suriyasamā",
+        "sc": "sūriyasamā",
+        "vri": "sūriyasamā",
+        "bjt": "suriyasamā",
+        "thai": "suriyasamā"
+      },
+      "rejected": [
+        "sūriyasamā"
+      ],
+      "notes": "Textual variant: PTS \"suriyasamā\" vs SC/VRI \"sūriyasamā\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 20,
+      "type": "variant",
+      "selected": "samudda",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "samudda",
+        "sc": "samuddaparamā",
+        "vri": "samuddaparamā",
+        "bjt": "samuddaparamā",
+        "thai": "samuddaparamā"
+      },
+      "rejected": [
+        "samuddaparamā"
+      ],
+      "notes": "Textual variant: PTS \"samudda\" vs SC/VRI/BJT/Thai \"samuddaparamā\""
+    },
+    {
+      "position": 21,
+      "type": "variant",
+      "selected": "paramā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "paramā",
+        "sc": "sarā",
+        "vri": "sarā",
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "sarā"
+      ],
+      "notes": "Textual variant: PTS \"paramā\" vs SC/VRI \"sarā\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_13_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 37,
+      "orthographic": 0,
+      "errors": 2,
+      "variants": 4,
+      "uncertain": 0,
+      "match": 27,
+      "other": 4
+    }
+  }
+}

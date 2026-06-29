@@ -1,0 +1,112 @@
+{
+  "id": "sn37_23",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 23,
+    "sc": 27,
+    "vri": 26,
+    "bjt": 44,
+    "thai": 62
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "upaṭṭhitasati",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "upaṭṭhitasati",
+        "sc": "upaṭṭhitassati",
+        "vri": "upaṭṭhitassati",
+        "bjt": "āraddhaviriyasuttaṃ",
+        "thai": "pavattā"
+      },
+      "rejected": [
+        "pavattā",
+        "upaṭṭhitassati",
+        "āraddhaviriyasuttaṃ"
+      ],
+      "notes": "Textual variant: PTS \"upaṭṭhitasati\" vs SC/VRI \"upaṭṭhitassati\", BJT has \"āraddhaviriyasuttaṃ\", Thai has \"pavattā\""
+    },
+    {
+      "position": 15,
+      "type": "error",
+      "selected": "paraṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "param",
+        "sc": "paraṃ",
+        "vri": "paraṃ",
+        "bjt": "parammaraṇā",
+        "thai": "atthaṃ"
+      },
+      "rejected": [
+        "atthaṃ",
+        "param",
+        "parammaraṇā"
+      ],
+      "notes": "PTS \"param\" not in DPD, SC/VRI \"paraṃ\" is valid, BJT has \"parammaraṇā\", Thai has \"atthaṃ\""
+    },
+    {
+      "position": 19,
+      "type": "error",
+      "selected": "lokaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "lokam",
+        "sc": "lokaṃ",
+        "vri": "lokaṃ",
+        "bjt": "lokaṃ",
+        "thai": "agaruṃ"
+      },
+      "rejected": [
+        "agaruṃ",
+        "lokam"
+      ],
+      "notes": "PTS \"lokam\" not in DPD, SC/VRI/BJT \"lokaṃ\" is valid, Thai has \"agaruṃ\""
+    },
+    {
+      "position": 20,
+      "type": "variant",
+      "selected": "upapajjati",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "upapajjati",
+        "sc": "upapajjatī",
+        "vri": "upapajjatī",
+        "bjt": "upapajjatīti",
+        "thai": "karitvāti"
+      },
+      "rejected": [
+        "karitvāti",
+        "upapajjatī",
+        "upapajjatīti"
+      ],
+      "notes": "Textual variant: PTS \"upapajjati\" vs SC/VRI \"upapajjatī\", BJT has \"upapajjatīti\", Thai has \"karitvāti\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn37_23_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 23,
+      "orthographic": 0,
+      "errors": 2,
+      "variants": 2,
+      "uncertain": 0,
+      "match": 1,
+      "other": 18
+    }
+  }
+}

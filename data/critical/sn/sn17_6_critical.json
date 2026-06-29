@@ -1,0 +1,147 @@
+{
+  "id": "sn17_6",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 30,
+    "sc": 32,
+    "vri": 33,
+    "bjt": 59,
+    "thai": 15
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthiyaṃ",
+        "vri": "sāvatthiyaṃ",
+        "bjt": "asanivicakkasuttaṃ",
+        "thai": "no"
+      },
+      "rejected": [
+        "asanivicakkasuttaṃ",
+        "no",
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthiyaṃ\", BJT has \"asanivicakkasuttaṃ\", Thai has \"no\""
+    },
+    {
+      "position": 10,
+      "type": "error",
+      "selected": "sekhaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "sekham",
+        "sc": "sekhaṃ",
+        "vri": "sekhaṃ",
+        "bjt": "āgacchatu",
+        "thai": "cāhaṃ"
+      },
+      "rejected": [
+        "cāhaṃ",
+        "sekham",
+        "āgacchatu"
+      ],
+      "notes": "PTS \"sekham\" not in DPD, SC/VRI \"sekhaṃ\" is valid, BJT has \"āgacchatu\", Thai has \"cāhaṃ\""
+    },
+    {
+      "position": 11,
+      "type": "error",
+      "selected": "appattamānasaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "appattamānasam",
+        "sc": "appattamānasaṃ",
+        "vri": "appattamānasaṃ",
+        "bjt": "sekhaṃ",
+        "thai": "vadeyyaṃ"
+      },
+      "rejected": [
+        "appattamānasam",
+        "sekhaṃ",
+        "vadeyyaṃ"
+      ],
+      "notes": "PTS \"appattamānasam\" not in DPD, SC/VRI \"appattamānasaṃ\" is valid, BJT has \"sekhaṃ\", Thai has \"vadeyyaṃ\""
+    },
+    {
+      "position": 13,
+      "type": "variant",
+      "selected": "anupāpuṇāti",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "anupāpuṇāti",
+        "sc": "anupāpuṇātu",
+        "vri": "anupāpuṇātu",
+        "bjt": "anupāpuṇātu",
+        "thai": "kallo"
+      },
+      "rejected": [
+        "anupāpuṇātu",
+        "kallo"
+      ],
+      "notes": "Textual variant: PTS \"anupāpuṇāti\" vs SC/VRI/BJT \"anupāpuṇātu\", Thai has \"kallo\""
+    },
+    {
+      "position": 17,
+      "type": "error",
+      "selected": "lābhasakkārasilokassetaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "lābhasakkārasilokassetam",
+        "sc": "lābhasakkārasilokassetaṃ",
+        "vri": "lābhasakkārasilokassetaṃ",
+        "bjt": "lābhasakkārasilokassetaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "lābhasakkārasilokassetam"
+      ],
+      "notes": "PTS \"lābhasakkārasilokassetam\" not in DPD, SC/VRI/BJT \"lābhasakkārasilokassetaṃ\" is valid"
+    },
+    {
+      "position": 28,
+      "type": "uncertain",
+      "selected": "sikkhitabbanti",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "sikkhitabbanti",
+        "sc": "sikkhitabban",
+        "vri": "sikkhitabba",
+        "bjt": "sikkhitabbanti",
+        "thai": null
+      },
+      "rejected": [
+        "sikkhitabba",
+        "sikkhitabban"
+      ],
+      "notes": "PTS/BJT \"sikkhitabbanti\" vs SC \"sikkhitabban\", VRI \"sikkhitabba\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn17_6_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 30,
+      "orthographic": 10,
+      "errors": 3,
+      "variants": 2,
+      "uncertain": 1,
+      "match": 0,
+      "other": 14
+    }
+  }
+}

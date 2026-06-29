@@ -1,0 +1,73 @@
+{
+  "id": "sn15_18",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 11,
+    "sc": 15,
+    "vri": 15,
+    "bjt": 60,
+    "thai": 15
+  },
+  "apparatus_count": 2,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthiyaṃ",
+        "vri": "sāvatthiyaṃ",
+        "bjt": "puttasuttaṃ",
+        "thai": "viññāṇanidānaṃ"
+      },
+      "rejected": [
+        "puttasuttaṃ",
+        "sāvatthiyaṃ",
+        "viññāṇanidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthiyaṃ\", BJT has \"puttasuttaṃ\", Thai has \"viññāṇanidānaṃ\""
+    },
+    {
+      "position": 8,
+      "type": "pts_addition",
+      "selected": "puttabhūtapubbo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "puttabhūtapubbo",
+        "sc": null,
+        "vri": null,
+        "bjt": "puttabhūtapubbo",
+        "thai": "viññāṇaṃ"
+      },
+      "rejected": [
+        "viññāṇaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn15_18_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 11,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 1,
+      "other": 8
+    }
+  }
+}

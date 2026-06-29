@@ -1,0 +1,127 @@
+{
+  "id": "sn56_94",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 22,
+    "sc": 19,
+    "vri": 20,
+    "bjt": 19,
+    "thai": 632
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "uncertain",
+      "selected": "evam",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "pe",
+        "bjt": "tulākūṭādisuttāni",
+        "thai": "evaṃ"
+      },
+      "rejected": [
+        "evameva",
+        "evaṃ",
+        "pe",
+        "tulākūṭādisuttāni"
+      ],
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\", BJT \"tulākūṭādisuttāni\", Thai \"evaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "uncertain",
+      "selected": "evameva",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": "evameva",
+        "bjt": "evameva",
+        "thai": "vadeyya"
+      },
+      "rejected": [
+        "eva",
+        "vadeyya"
+      ],
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", Thai \"vadeyya\""
+    },
+    {
+      "position": 10,
+      "type": "pts_addition",
+      "selected": "mānakūṭā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "mānakūṭā",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "nānākaraṇaṃ"
+      },
+      "rejected": [
+        "nānākaraṇaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 11,
+      "type": "pts_addition",
+      "selected": "pativiratā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pativiratā",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "vadāmi"
+      },
+      "rejected": [
+        "vadāmi"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 14,
+      "type": "variant",
+      "selected": "ete",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "ete",
+        "sc": "eteva",
+        "vri": "eteva",
+        "bjt": "eteva",
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "bhikkhave",
+        "eteva"
+      ],
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"bhikkhave\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_94_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 22,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 4,
+      "match": 2,
+      "other": 15
+    }
+  }
+}

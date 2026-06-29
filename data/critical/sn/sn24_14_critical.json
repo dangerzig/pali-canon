@@ -1,0 +1,110 @@
+{
+  "id": "sn24_14",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 25,
+    "sc": 27,
+    "vri": 27,
+    "bjt": 236,
+    "thai": 16
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "aññaṃ",
+        "thai": "hoti"
+      },
+      "rejected": [
+        "aññaṃ",
+        "hoti",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"aññaṃ\", Thai has \"hoti\""
+    },
+    {
+      "position": 6,
+      "type": "error",
+      "selected": "kiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "kim",
+        "sc": "kiṃ",
+        "vri": "kiṃ",
+        "bjt": "kiṃ",
+        "thai": "viññāṇavipariṇāmānuparivattijā"
+      },
+      "rejected": [
+        "kim",
+        "viññāṇavipariṇāmānuparivattijā"
+      ],
+      "notes": "PTS \"kim\" not in DPD, SC/VRI/BJT \"kiṃ\" is valid, Thai has \"viññāṇavipariṇāmānuparivattijā\""
+    },
+    {
+      "position": 8,
+      "type": "error",
+      "selected": "kiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "kim",
+        "sc": "kiṃ",
+        "vri": "kiṃ",
+        "bjt": "kiṃ",
+        "thai": "cittaṃ"
+      },
+      "rejected": [
+        "cittaṃ",
+        "kim"
+      ],
+      "notes": "PTS \"kim\" not in DPD, SC/VRI/BJT \"kiṃ\" is valid, Thai has \"cittaṃ\""
+    },
+    {
+      "position": 16,
+      "type": "uncertain",
+      "selected": "sarīra",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "sarīranti",
+        "sc": "sarīran",
+        "vri": "sarīra",
+        "bjt": "sarīra",
+        "thai": null
+      },
+      "rejected": [
+        "sarīran",
+        "sarīranti"
+      ],
+      "notes": "VRI/BJT \"sarīra\" vs PTS \"sarīranti\", SC \"sarīran\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn24_14_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 25,
+      "orthographic": 5,
+      "errors": 2,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 0,
+      "other": 16
+    }
+  }
+}

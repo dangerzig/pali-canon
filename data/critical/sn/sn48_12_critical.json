@@ -1,0 +1,90 @@
+{
+  "id": "sn48_12",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 40,
+    "sc": 43,
+    "vri": 43,
+    "bjt": 44,
+    "thai": 7
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 7,
+      "type": "error",
+      "selected": "paññindriyaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "paññindriyam",
+        "sc": "paññindriyaṃ",
+        "vri": "paññindriyaṃ",
+        "bjt": "satindriyaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "paññindriyam",
+        "satindriyaṃ"
+      ],
+      "notes": "PTS \"paññindriyam\" not in DPD, SC/VRI \"paññindriyaṃ\" is valid, BJT has \"satindriyaṃ\""
+    },
+    {
+      "position": 15,
+      "type": "variant",
+      "selected": "pañcindriyānaṃ",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "pañcindriyānaṃ",
+        "sc": "pañcannaṃ",
+        "vri": "pañcannaṃ",
+        "bjt": "pañcannaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "pañcannaṃ"
+      ],
+      "notes": "Textual variant: PTS \"pañcindriyānaṃ\" vs SC/VRI/BJT \"pañcannaṃ\""
+    },
+    {
+      "position": 39,
+      "type": "variant",
+      "selected": "hoti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "hoti",
+        "sc": "hotī",
+        "vri": "hotī",
+        "bjt": "hotīti",
+        "thai": null
+      },
+      "rejected": [
+        "hotī",
+        "hotīti"
+      ],
+      "notes": "Textual variant: PTS \"hoti\" vs SC/VRI \"hotī\", BJT has \"hotīti\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn48_12_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 40,
+      "orthographic": 29,
+      "errors": 1,
+      "variants": 2,
+      "uncertain": 0,
+      "match": 0,
+      "other": 8
+    }
+  }
+}

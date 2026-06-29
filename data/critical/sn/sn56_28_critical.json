@@ -1,0 +1,117 @@
+{
+  "id": "sn56_28",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 44,
+    "sc": 43,
+    "vri": 43,
+    "bjt": 47,
+    "thai": 632
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 5,
+      "type": "error",
+      "selected": "dukkhaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "dukkham",
+        "sc": "dukkhaṃ",
+        "vri": "dukkhaṃ",
+        "bjt": "dukkhaṃ",
+        "thai": "hoti"
+      },
+      "rejected": [
+        "dukkham",
+        "hoti"
+      ],
+      "notes": "PTS \"dukkham\" not in DPD, SC/VRI/BJT \"dukkhaṃ\" is valid, Thai has \"hoti\""
+    },
+    {
+      "position": 12,
+      "type": "pts_addition",
+      "selected": "bhikkhave",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "bhikkhave",
+        "sc": null,
+        "vri": null,
+        "bjt": "bhikkhave",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 25,
+      "type": "variant",
+      "selected": "tasmā",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "tasmā",
+        "sc": "tasmātiha",
+        "vri": "tasmātiha",
+        "bjt": "tasmātiha",
+        "thai": null
+      },
+      "rejected": [
+        "tasmātiha"
+      ],
+      "notes": "Textual variant: PTS \"tasmā\" vs SC/VRI/BJT \"tasmātiha\""
+    },
+    {
+      "position": 26,
+      "type": "pts_addition",
+      "selected": "ti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ti",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 43,
+      "type": "pts_addition",
+      "selected": "lvi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "lvi",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_28_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 44,
+      "orthographic": 20,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 3,
+      "match": 1,
+      "other": 18
+    }
+  }
+}

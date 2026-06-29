@@ -1,0 +1,174 @@
+{
+  "id": "sn48_4",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 36,
+    "sc": 38,
+    "vri": 39,
+    "bjt": 1741,
+    "thai": 7
+  },
+  "apparatus_count": 8,
+  "apparatus": [
+    {
+      "position": 12,
+      "type": "error",
+      "selected": "imesaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "imesam",
+        "sc": "imesaṃ",
+        "vri": "imesaṃ",
+        "bjt": "bhikkhu",
+        "thai": null
+      },
+      "rejected": [
+        "bhikkhu",
+        "imesam"
+      ],
+      "notes": "PTS \"imesam\" not in DPD, SC/VRI \"imesaṃ\" is valid, BJT has \"bhikkhu\""
+    },
+    {
+      "position": 13,
+      "type": "error",
+      "selected": "pañcannaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "pañcannam",
+        "sc": "pañcannaṃ",
+        "vri": "pañcannaṃ",
+        "bjt": "imesaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "imesaṃ",
+        "pañcannam"
+      ],
+      "notes": "PTS \"pañcannam\" not in DPD, SC/VRI \"pañcannaṃ\" is valid, BJT has \"imesaṃ\""
+    },
+    {
+      "position": 14,
+      "type": "error",
+      "selected": "indriyānaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "indriyānam",
+        "sc": "indriyānaṃ",
+        "vri": "indriyānaṃ",
+        "bjt": "pañcannaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "indriyānam",
+        "pañcannaṃ"
+      ],
+      "notes": "PTS \"indriyānam\" not in DPD, SC/VRI \"indriyānaṃ\" is valid, BJT has \"pañcannaṃ\""
+    },
+    {
+      "position": 18,
+      "type": "error",
+      "selected": "yathābhūtaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "yathābhūtam",
+        "sc": "yathābhūtaṃ",
+        "vri": "yathābhūtaṃ",
+        "bjt": "yathābhūtaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "yathābhūtam"
+      ],
+      "notes": "PTS \"yathābhūtam\" not in DPD, SC/VRI/BJT \"yathābhūtaṃ\" is valid"
+    },
+    {
+      "position": 20,
+      "type": "variant",
+      "selected": "anupādā",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "anupādā",
+        "sc": "anupādāvimutto",
+        "vri": "anupādāvimutto",
+        "bjt": "anupādā",
+        "thai": null
+      },
+      "rejected": [
+        "anupādāvimutto"
+      ],
+      "notes": "Textual variant: PTS \"anupādā\" vs SC/VRI \"anupādāvimutto\", BJT agrees with PTS"
+    },
+    {
+      "position": 21,
+      "type": "pts_addition",
+      "selected": "vimutto",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "vimutto",
+        "sc": null,
+        "vri": null,
+        "bjt": "vimutto",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 23,
+      "type": "error",
+      "selected": "ayaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "ayam",
+        "sc": "ayaṃ",
+        "vri": "ayaṃ",
+        "bjt": "ayaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "ayam"
+      ],
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT \"ayaṃ\" is valid"
+    },
+    {
+      "position": 30,
+      "type": "error",
+      "selected": "ohitabhāro",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "ohītabhāro",
+        "sc": "ohitabhāro",
+        "vri": "ohitabhāro",
+        "bjt": "ohitabhāro",
+        "thai": null
+      },
+      "rejected": [
+        "ohītabhāro"
+      ],
+      "notes": "PTS \"ohītabhāro\" not in DPD, SC/VRI/BJT \"ohitabhāro\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn48_4_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 36,
+      "orthographic": 16,
+      "errors": 6,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 0,
+      "other": 12
+    }
+  }
+}

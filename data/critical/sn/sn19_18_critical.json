@@ -1,0 +1,72 @@
+{
+  "id": "sn19_18",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 12,
+    "sc": 12,
+    "vri": 12,
+    "bjt": 143,
+    "thai": 235
+  },
+  "apparatus_count": 2,
+  "apparatus": [
+    {
+      "position": 5,
+      "type": "uncertain",
+      "selected": "saṃghāṭipi",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "saṃghāṭi",
+        "sc": "saṃghāṭipi",
+        "vri": "saṃghāṭipi",
+        "bjt": "saṃghāṭi",
+        "thai": "ñāṇaṃ"
+      },
+      "rejected": [
+        "saṃghāṭi",
+        "ñāṇaṃ"
+      ],
+      "notes": "Neither reading validated: PTS \"saṃghāṭi\" vs SC/VRI \"saṃghāṭipi\""
+    },
+    {
+      "position": 6,
+      "type": "pts_addition",
+      "selected": "pi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pi",
+        "sc": null,
+        "vri": null,
+        "bjt": "pi",
+        "thai": "bhavanirodhagāminiyā"
+      },
+      "rejected": [
+        "bhavanirodhagāminiyā"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn19_18_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 12,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 0,
+      "uncertain": 2,
+      "match": 0,
+      "other": 10
+    }
+  }
+}

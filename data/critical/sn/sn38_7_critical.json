@@ -1,0 +1,158 @@
+{
+  "id": "sn38_7",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 89,
+    "sc": 100,
+    "vri": 105,
+    "bjt": 90,
+    "thai": 62
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 13,
+      "type": "variant",
+      "selected": "imā",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "imā",
+        "sc": "imāvuso",
+        "vri": "imāvuso",
+        "bjt": "imā",
+        "thai": "paṭissutvā"
+      },
+      "rejected": [
+        "imāvuso",
+        "paṭissutvā"
+      ],
+      "notes": "Textual variant: PTS \"imā\" vs SC/VRI \"imāvuso\", BJT agrees with PTS, Thai has \"paṭissutvā\""
+    },
+    {
+      "position": 14,
+      "type": "pts_addition",
+      "selected": "āvuso",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "āvuso",
+        "sc": null,
+        "vri": null,
+        "bjt": "āvuso",
+        "thai": "uṭṭhāyāsanā"
+      },
+      "rejected": [
+        "uṭṭhāyāsanā"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 40,
+      "type": "error",
+      "selected": "paṭipadā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "patipadā",
+        "sc": "paṭipadā",
+        "vri": "paṭipadā",
+        "bjt": "paṭipadā",
+        "thai": "saṅkhittena"
+      },
+      "rejected": [
+        "patipadā",
+        "saṅkhittena"
+      ],
+      "notes": "PTS \"patipadā\" not in DPD, SC/VRI/BJT \"paṭipadā\" is valid, Thai has \"saṅkhittena\""
+    },
+    {
+      "position": 70,
+      "type": "error",
+      "selected": "ayaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "ayam",
+        "sc": "ayaṃ",
+        "vri": "ayaṃ",
+        "bjt": "ayaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "ayam"
+      ],
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT \"ayaṃ\" is valid"
+    },
+    {
+      "position": 72,
+      "type": "error",
+      "selected": "etāsaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "etāsam",
+        "sc": "etāsaṃ",
+        "vri": "etāsaṃ",
+        "bjt": "etāsaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "etāsam"
+      ],
+      "notes": "PTS \"etāsam\" not in DPD, SC/VRI/BJT \"etāsaṃ\" is valid"
+    },
+    {
+      "position": 78,
+      "type": "variant",
+      "selected": "bhaddakā",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "bhaddakā",
+        "sc": "bhaddikā",
+        "vri": "bhaddikā",
+        "bjt": "bhaddikā",
+        "thai": null
+      },
+      "rejected": [
+        "bhaddikā"
+      ],
+      "notes": "Textual variant: PTS \"bhaddakā\" vs SC/VRI/BJT \"bhaddikā\""
+    },
+    {
+      "position": 86,
+      "type": "uncertain",
+      "selected": "appamādāyā",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "appamādāyāti",
+        "sc": "appamādāyā",
+        "vri": "appamādāyā",
+        "bjt": "appamādāyāti",
+        "thai": null
+      },
+      "rejected": [
+        "appamādāyāti"
+      ],
+      "notes": "Neither reading validated: PTS \"appamādāyāti\" vs SC/VRI \"appamādāyā\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn38_7_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 89,
+      "orthographic": 20,
+      "errors": 3,
+      "variants": 2,
+      "uncertain": 2,
+      "match": 3,
+      "other": 59
+    }
+  }
+}

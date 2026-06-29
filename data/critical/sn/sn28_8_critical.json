@@ -1,0 +1,141 @@
+{
+  "id": "sn28_8",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 19,
+    "sc": 18,
+    "vri": 18,
+    "bjt": 133,
+    "thai": 17
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "ākiñcaññāyatana",
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "bhikkhave",
+        "sāvatthinidānaṃ",
+        "ākiñcaññāyatana"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"ākiñcaññāyatana\", Thai has \"bhikkhave\""
+    },
+    {
+      "position": 6,
+      "type": "error",
+      "selected": "idhāhaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "idhāham",
+        "sc": "idhāhaṃ",
+        "vri": "idhāhaṃ",
+        "bjt": "nivāsetvā",
+        "thai": null
+      },
+      "rejected": [
+        "idhāham",
+        "nivāsetvā"
+      ],
+      "notes": "PTS \"idhāham\" not in DPD, SC/VRI \"idhāhaṃ\" is valid, BJT has \"nivāsetvā\""
+    },
+    {
+      "position": 8,
+      "type": "pts_addition",
+      "selected": "sabbaso",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sabbaso",
+        "sc": null,
+        "vri": null,
+        "bjt": "sabbaso",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 11,
+      "type": "error",
+      "selected": "nevasaññānāsaññāyatanaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "nevasaññānāsaññāyatanam",
+        "sc": "nevasaññānāsaññāyatanaṃ",
+        "vri": "nevasaññānāsaññāyatanaṃ",
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "nevasaññānāsaññāyatanam"
+      ],
+      "notes": "PTS \"nevasaññānāsaññāyatanam\" not in DPD, SC/VRI \"nevasaññānāsaññāyatanaṃ\" is valid"
+    },
+    {
+      "position": 15,
+      "type": "variant",
+      "selected": "vuṭṭhito",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "vuṭṭhito",
+        "sc": "vuṭṭhitoti",
+        "vri": "vuṭṭhitoti",
+        "bjt": "mayhaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "mayhaṃ",
+        "vuṭṭhitoti"
+      ],
+      "notes": "Textual variant: PTS \"vuṭṭhito\" vs SC/VRI \"vuṭṭhitoti\", BJT has \"mayhaṃ\""
+    },
+    {
+      "position": 16,
+      "type": "pts_addition",
+      "selected": "ti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ti",
+        "sc": null,
+        "vri": null,
+        "bjt": "āvuso",
+        "thai": null
+      },
+      "rejected": [
+        "āvuso"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn28_8_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 19,
+      "orthographic": 7,
+      "errors": 2,
+      "variants": 2,
+      "uncertain": 2,
+      "match": 1,
+      "other": 5
+    }
+  }
+}

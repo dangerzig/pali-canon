@@ -1,0 +1,127 @@
+{
+  "id": "sn52_14",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 29,
+    "sc": 30,
+    "vri": 30,
+    "bjt": 116,
+    "thai": 10
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "imesañca",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "imesañ",
+        "sc": "imesañca",
+        "vri": "imesañca",
+        "bjt": "cetopariyasuttaṃ",
+        "thai": "na"
+      },
+      "rejected": [
+        "cetopariyasuttaṃ",
+        "imesañ",
+        "na"
+      ],
+      "notes": "PTS \"imesañ\" not in DPD, SC/VRI \"imesañca\" is valid, BJT has \"cetopariyasuttaṃ\", Thai has \"na\""
+    },
+    {
+      "position": 3,
+      "type": "pts_addition",
+      "selected": "avuso",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "avuso",
+        "sc": null,
+        "vri": null,
+        "bjt": "haṃ",
+        "thai": "kātuṃ"
+      },
+      "rejected": [
+        "haṃ",
+        "kātuṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 7,
+      "type": "error",
+      "selected": "bahulīkatattā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "bahuparasattānam",
+        "sc": "bahulīkatattā",
+        "vri": "bahulīkatattā",
+        "bjt": "bahulīkatattā",
+        "thai": "deva"
+      },
+      "rejected": [
+        "bahuparasattānam",
+        "deva"
+      ],
+      "notes": "PTS \"bahuparasattānam\" not in DPD, SC/VRI/BJT \"bahulīkatattā\" is valid, Thai has \"deva\""
+    },
+    {
+      "position": 21,
+      "type": "variant",
+      "selected": "vimuttaṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "vimuttaṃ",
+        "sc": "avimuttaṃ",
+        "vri": "avimuttaṃ",
+        "bjt": "vā",
+        "thai": null
+      },
+      "rejected": [
+        "avimuttaṃ",
+        "vā"
+      ],
+      "notes": "Textual variant: PTS \"vimuttaṃ\" vs SC/VRI \"avimuttaṃ\", BJT has \"vā\""
+    },
+    {
+      "position": 24,
+      "type": "variant",
+      "selected": "vimuttaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "vimuttaṃ",
+        "sc": "avimuttaṃ",
+        "vri": "avimuttaṃ",
+        "bjt": "vimuttaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "avimuttaṃ"
+      ],
+      "notes": "Textual variant: PTS \"vimuttaṃ\" vs SC/VRI \"avimuttaṃ\", BJT agrees with PTS"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn52_14_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 29,
+      "orthographic": 12,
+      "errors": 2,
+      "variants": 2,
+      "uncertain": 1,
+      "match": 0,
+      "other": 12
+    }
+  }
+}

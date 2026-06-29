@@ -1,0 +1,91 @@
+{
+  "id": "sn14_28",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 46,
+    "sc": 43,
+    "vri": 44,
+    "bjt": 350,
+    "thai": 15
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 2,
+      "type": "uncertain",
+      "selected": "dhātuso",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "dhātuso",
+        "sc": "dhātusova",
+        "vri": "pe",
+        "bjt": null,
+        "thai": "udapādi"
+      },
+      "rejected": [
+        "dhātusova",
+        "pe",
+        "udapādi"
+      ],
+      "notes": "Multi-way disagreement: PTS \"dhātuso\", SC \"dhātusova\", VRI \"pe\", Thai \"udapādi\""
+    },
+    {
+      "position": 26,
+      "type": "error",
+      "selected": "saddhiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "saddhim",
+        "sc": "saddhiṃ",
+        "vri": "saddhiṃ",
+        "bjt": "saddhiṃ",
+        "thai": null
+      },
+      "rejected": [
+        "saddhim"
+      ],
+      "notes": "PTS \"saddhim\" not in DPD, SC/VRI/BJT \"saddhiṃ\" is valid"
+    },
+    {
+      "position": 44,
+      "type": "uncertain",
+      "selected": "samentī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "samentīti",
+        "sc": "samentī",
+        "vri": "samentī",
+        "bjt": "samenti",
+        "thai": null
+      },
+      "rejected": [
+        "samenti",
+        "samentīti"
+      ],
+      "notes": "Neither reading validated: PTS \"samentīti\" vs SC/VRI \"samentī\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn14_28_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 46,
+      "orthographic": 23,
+      "errors": 1,
+      "variants": 0,
+      "uncertain": 2,
+      "match": 0,
+      "other": 20
+    }
+  }
+}

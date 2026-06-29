@@ -1,0 +1,93 @@
+{
+  "id": "sn34_17",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 29,
+    "sc": 58,
+    "vri": 58,
+    "bjt": 79,
+    "thai": 51
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "samāpatti",
+        "thai": "dukkhaṃ"
+      },
+      "rejected": [
+        "dukkhaṃ",
+        "samāpatti",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"samāpatti\", Thai has \"dukkhaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "cattāro",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "cattāro",
+        "sc": "cattārome",
+        "vri": "cattārome",
+        "bjt": "sakkaccakārī",
+        "thai": "yaṃ"
+      },
+      "rejected": [
+        "cattārome",
+        "sakkaccakārī",
+        "yaṃ"
+      ],
+      "notes": "Textual variant: PTS \"cattāro\" vs SC/VRI \"cattārome\", BJT has \"sakkaccakārī\", Thai has \"yaṃ\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "suttaṃ",
+        "thai": "dukkhaṃ"
+      },
+      "rejected": [
+        "dukkhaṃ",
+        "suttaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn34_17_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 29,
+      "orthographic": 5,
+      "errors": 0,
+      "variants": 2,
+      "uncertain": 1,
+      "match": 1,
+      "other": 20
+    }
+  }
+}

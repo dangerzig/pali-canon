@@ -1,0 +1,111 @@
+{
+  "id": "sn56_91",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 20,
+    "sc": 19,
+    "vri": 20,
+    "bjt": 38,
+    "thai": 632
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "uncertain",
+      "selected": "evam",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "pe",
+        "bjt": "khettavatthusuttaṃ",
+        "thai": "dhamme"
+      },
+      "rejected": [
+        "dhamme",
+        "evameva",
+        "khettavatthusuttaṃ",
+        "pe"
+      ],
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\", BJT \"khettavatthusuttaṃ\", Thai \"dhamme\""
+    },
+    {
+      "position": 1,
+      "type": "uncertain",
+      "selected": "evameva",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": "evameva",
+        "bjt": "evameva",
+        "thai": "saṃghe"
+      },
+      "rejected": [
+        "eva",
+        "saṃghe"
+      ],
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", Thai \"saṃghe\""
+    },
+    {
+      "position": 12,
+      "type": "variant",
+      "selected": "ete",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "ete",
+        "sc": "eteva",
+        "vri": "eteva",
+        "bjt": "eteva",
+        "thai": "asaṅkheyyo"
+      },
+      "rejected": [
+        "asaṅkheyyo",
+        "eteva"
+      ],
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"asaṅkheyyo\""
+    },
+    {
+      "position": 17,
+      "type": "error",
+      "selected": "khettavatthupaṭiggahaṇā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "khettavatthupaṭiggahanā",
+        "sc": "khettavatthupaṭiggahaṇā",
+        "vri": "khettavatthupaṭiggahaṇā",
+        "bjt": "khettavatthupaṭiggahaṇā",
+        "thai": "seyyathāpi"
+      },
+      "rejected": [
+        "khettavatthupaṭiggahanā",
+        "seyyathāpi"
+      ],
+      "notes": "PTS \"khettavatthupaṭiggahanā\" not in DPD, SC/VRI/BJT \"khettavatthupaṭiggahaṇā\" is valid, Thai has \"seyyathāpi\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_91_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 20,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 2,
+      "other": 14
+    }
+  }
+}

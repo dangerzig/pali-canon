@@ -1,0 +1,112 @@
+{
+  "id": "sn56_78",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 20,
+    "sc": 19,
+    "vri": 20,
+    "bjt": 20,
+    "thai": 632
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "uncertain",
+      "selected": "evam",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "pe",
+        "bjt": "bījagāmasuttaṃ",
+        "thai": "bhante"
+      },
+      "rejected": [
+        "bhante",
+        "bījagāmasuttaṃ",
+        "evameva",
+        "pe"
+      ],
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\", BJT \"bījagāmasuttaṃ\", Thai \"bhante\""
+    },
+    {
+      "position": 1,
+      "type": "uncertain",
+      "selected": "evameva",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": "evameva",
+        "bjt": "evameva",
+        "thai": "bhagavantaṃ"
+      },
+      "rejected": [
+        "bhagavantaṃ",
+        "eva"
+      ],
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", Thai \"bhagavantaṃ\""
+    },
+    {
+      "position": 12,
+      "type": "variant",
+      "selected": "ete",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "ete",
+        "sc": "eteva",
+        "vri": "eteva",
+        "bjt": "eteva",
+        "thai": "lābhā"
+      },
+      "rejected": [
+        "eteva",
+        "lābhā"
+      ],
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"lābhā\""
+    },
+    {
+      "position": 18,
+      "type": "error",
+      "selected": "appaṭiviratā",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "appativiratā",
+        "sc": "appaṭiviratā",
+        "vri": "appaṭiviratā",
+        "bjt": "appaṭiviratāpe",
+        "thai": "yesaṃ"
+      },
+      "rejected": [
+        "appativiratā",
+        "appaṭiviratāpe",
+        "yesaṃ"
+      ],
+      "notes": "PTS \"appativiratā\" not in DPD, SC/VRI \"appaṭiviratā\" is valid, BJT has \"appaṭiviratāpe\", Thai has \"yesaṃ\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_78_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 20,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 2,
+      "other": 14
+    }
+  }
+}

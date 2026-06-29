@@ -1,0 +1,108 @@
+{
+  "id": "sn26_3",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 30,
+    "sc": 36,
+    "vri": 36,
+    "bjt": 144,
+    "thai": 17
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "viññāṇa",
+        "thai": "nirodhāya"
+      },
+      "rejected": [
+        "nirodhāya",
+        "sāvatthinidānaṃ",
+        "viññāṇa"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"viññāṇa\", Thai has \"nirodhāya\""
+    },
+    {
+      "position": 8,
+      "type": "error",
+      "selected": "manoviññāṇassa",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "manoviññānassa",
+        "sc": "manoviññāṇassa",
+        "vri": "manoviññāṇassa",
+        "bjt": "sotaviññāṇassa",
+        "thai": "paccuppannassa"
+      },
+      "rejected": [
+        "manoviññānassa",
+        "paccuppannassa",
+        "sotaviññāṇassa"
+      ],
+      "notes": "PTS \"manoviññānassa\" not in DPD, SC/VRI \"manoviññāṇassa\" is valid, BJT has \"sotaviññāṇassa\", Thai has \"paccuppannassa\""
+    },
+    {
+      "position": 26,
+      "type": "variant",
+      "selected": "atthagamo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "atthagamo",
+        "sc": "atthaṅgamo",
+        "vri": "atthaṅgamo",
+        "bjt": "atthagamoti",
+        "thai": null
+      },
+      "rejected": [
+        "atthagamoti",
+        "atthaṅgamo"
+      ],
+      "notes": "Textual variant: PTS \"atthagamo\" vs SC/VRI \"atthaṅgamo\", BJT has \"atthagamoti\""
+    },
+    {
+      "position": 29,
+      "type": "pts_addition",
+      "selected": "xxvi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "xxvi",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn26_3_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 30,
+      "orthographic": 11,
+      "errors": 1,
+      "variants": 2,
+      "uncertain": 1,
+      "match": 1,
+      "other": 14
+    }
+  }
+}

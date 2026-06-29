@@ -1,0 +1,102 @@
+{
+  "id": "sn1_24",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 35,
+    "sc": 34,
+    "vri": 33,
+    "bjt": 44,
+    "thai": 33
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 5,
+      "type": "error",
+      "selected": "dukkhameti",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "dukkham",
+        "sc": "dukkhameti",
+        "vri": "dukkhameti",
+        "bjt": "dukkhameti",
+        "thai": "dukkhameti"
+      },
+      "rejected": [
+        "dukkham"
+      ],
+      "notes": "PTS \"dukkham\" not in DPD, SC/VRI/BJT/Thai \"dukkhameti\" is valid"
+    },
+    {
+      "position": 6,
+      "type": "pts_addition",
+      "selected": "eti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "eti",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 24,
+      "type": "error",
+      "selected": "saṃyatattamāgataṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "sayatattam",
+        "sc": "saṃyatattamāgataṃ",
+        "vri": "saṃyatattamāgataṃ",
+        "bjt": "yatattamāgataṃ",
+        "thai": "yatattamāgataṃ"
+      },
+      "rejected": [
+        "sayatattam",
+        "yatattamāgataṃ"
+      ],
+      "notes": "PTS \"sayatattam\" not in DPD, SC/VRI \"saṃyatattamāgataṃ\" is valid, BJT has \"yatattamāgataṃ\", Thai has \"yatattamāgataṃ\""
+    },
+    {
+      "position": 25,
+      "type": "pts_addition",
+      "selected": "āgataṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "āgataṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_24_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 35,
+      "orthographic": 2,
+      "errors": 2,
+      "variants": 0,
+      "uncertain": 2,
+      "match": 25,
+      "other": 4
+    }
+  }
+}

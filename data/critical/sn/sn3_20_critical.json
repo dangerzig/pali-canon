@@ -1,0 +1,69 @@
+{
+  "id": "sn3_20",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 89,
+    "sc": 325,
+    "vri": 326,
+    "bjt": 86,
+    "thai": 87
+  },
+  "apparatus_count": 2,
+  "apparatus": [
+    {
+      "position": 12,
+      "type": "pts_addition",
+      "selected": "kho",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "kho",
+        "sc": null,
+        "vri": null,
+        "bjt": "kho",
+        "thai": "kho"
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 72,
+      "type": "variant",
+      "selected": "ahitāya",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "ahitāya",
+        "sc": "ahosi",
+        "vri": "ahosi",
+        "bjt": "ahitāya",
+        "thai": "ahitāya"
+      },
+      "rejected": [
+        "ahosi"
+      ],
+      "notes": "Textual variant: PTS \"ahitāya\" vs SC/VRI \"ahosi\", BJT agrees with PTS, Thai agrees with PTS"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn3_20_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 89,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 2,
+      "other": 85
+    }
+  }
+}

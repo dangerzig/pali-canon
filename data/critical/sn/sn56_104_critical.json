@@ -1,0 +1,111 @@
+{
+  "id": "sn56_104",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 27,
+    "sc": 23,
+    "vri": 30,
+    "bjt": 23,
+    "thai": 632
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "uncertain",
+      "selected": "evam",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "pe",
+        "bjt": "catutthapetticutisuttaṃ",
+        "thai": "jarāya"
+      },
+      "rejected": [
+        "catutthapetticutisuttaṃ",
+        "evameva",
+        "jarāya",
+        "pe"
+      ],
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\", BJT \"catutthapetticutisuttaṃ\", Thai \"jarāya\""
+    },
+    {
+      "position": 1,
+      "type": "uncertain",
+      "selected": "evameva",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": "evameva",
+        "bjt": "evameva",
+        "thai": "maraṇena"
+      },
+      "rejected": [
+        "eva",
+        "maraṇena"
+      ],
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", Thai \"maraṇena\""
+    },
+    {
+      "position": 14,
+      "type": "variant",
+      "selected": "ete",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "ete",
+        "sc": "eteva",
+        "vri": "eteva",
+        "bjt": "eteva",
+        "thai": "bhagavā"
+      },
+      "rejected": [
+        "bhagavā",
+        "eteva"
+      ],
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"bhagavā\""
+    },
+    {
+      "position": 25,
+      "type": "uncertain",
+      "selected": "pittivisaye",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "pittivisaye",
+        "sc": null,
+        "vri": "pe",
+        "bjt": null,
+        "thai": "katamaṃ"
+      },
+      "rejected": [
+        "katamaṃ",
+        "pe"
+      ],
+      "notes": "Multi-way disagreement: PTS \"pittivisaye\", SC \"None\", VRI \"pe\", Thai \"katamaṃ\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_104_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 27,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 3,
+      "match": 2,
+      "other": 21
+    }
+  }
+}

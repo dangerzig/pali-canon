@@ -1,0 +1,152 @@
+{
+  "id": "sn1_75",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 41,
+    "sc": 39,
+    "vri": 39,
+    "bjt": 43,
+    "thai": 41
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 1,
+      "type": "error",
+      "selected": "bhītā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "bhīrā",
+        "sc": "bhītā",
+        "vri": "bhītā",
+        "bjt": "devatā",
+        "thai": "bhītā"
+      },
+      "rejected": [
+        "bhīrā",
+        "devatā"
+      ],
+      "notes": "PTS \"bhīrā\" not in DPD, SC/VRI/Thai \"bhītā\" is valid, BJT has \"devatā\""
+    },
+    {
+      "position": 5,
+      "type": "error",
+      "selected": "canekāyatanappavutto",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "vanekāyatanaṃ",
+        "sc": "canekāyatanappavutto",
+        "vri": "canekāyatanappavutto",
+        "bjt": "ca",
+        "thai": null
+      },
+      "rejected": [
+        "ca",
+        "vanekāyatanaṃ"
+      ],
+      "notes": "PTS \"vanekāyatanaṃ\" not in DPD, SC/VRI \"canekāyatanappavutto\" is valid, BJT has \"ca\""
+    },
+    {
+      "position": 6,
+      "type": "pts_addition",
+      "selected": "pavutto",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pavutto",
+        "sc": null,
+        "vri": null,
+        "bjt": "pavutto",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 25,
+      "type": "error",
+      "selected": "gharamāvasanto",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "gharam",
+        "sc": "gharamāvasanto",
+        "vri": "gharamāvasanto",
+        "bjt": "gharamāvasanto",
+        "thai": "gharamāvasanto"
+      },
+      "rejected": [
+        "gharam"
+      ],
+      "notes": "PTS \"gharam\" not in DPD, SC/VRI/BJT/Thai \"gharamāvasanto\" is valid"
+    },
+    {
+      "position": 26,
+      "type": "pts_addition",
+      "selected": "āvasanto",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "āvasanto",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 28,
+      "type": "pts_addition",
+      "selected": "chetvāvagga",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "chetvāvagga",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 36,
+      "type": "variant",
+      "selected": "catusu",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "catusu",
+        "sc": "catūsu",
+        "vri": "catūsu",
+        "bjt": "catūsu",
+        "thai": "catūsu"
+      },
+      "rejected": [
+        "catūsu"
+      ],
+      "notes": "Textual variant: PTS \"catusu\" vs SC/VRI/BJT/Thai \"catūsu\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_75_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 41,
+      "orthographic": 0,
+      "errors": 3,
+      "variants": 1,
+      "uncertain": 3,
+      "match": 26,
+      "other": 8
+    }
+  }
+}

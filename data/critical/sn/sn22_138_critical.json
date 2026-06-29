@@ -1,0 +1,125 @@
+{
+  "id": "sn22_138",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT"
+  ],
+  "word_counts": {
+    "gretil": 35,
+    "sc": 37,
+    "vri": 37,
+    "bjt": 54,
+    "thai": 0
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "dutiya",
+        "thai": null
+      },
+      "rejected": [
+        "dutiya",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"dutiya\""
+    },
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "yam",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "yam",
+        "sc": "yaṃ",
+        "vri": "yaṃ",
+        "bjt": "dukkha",
+        "thai": null
+      },
+      "rejected": [
+        "dukkha",
+        "yaṃ"
+      ],
+      "notes": "Textual variant: PTS \"yam\" vs SC/VRI \"yaṃ\", BJT has \"dukkha\""
+    },
+    {
+      "position": 3,
+      "type": "error",
+      "selected": "aniccaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "aniccam",
+        "sc": "aniccaṃ",
+        "vri": "aniccaṃ",
+        "bjt": "dukkhaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "aniccam",
+        "dukkhaṃ"
+      ],
+      "notes": "PTS \"aniccam\" not in DPD, SC/VRI \"aniccaṃ\" is valid, BJT has \"dukkhaṃ\""
+    },
+    {
+      "position": 11,
+      "type": "error",
+      "selected": "rūpaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "rūpam",
+        "sc": "rūpaṃ",
+        "vri": "rūpaṃ",
+        "bjt": "rūpaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "rūpam"
+      ],
+      "notes": "PTS \"rūpam\" not in DPD, SC/VRI/BJT \"rūpaṃ\" is valid"
+    },
+    {
+      "position": 27,
+      "type": "variant",
+      "selected": "yam",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "yam",
+        "sc": "yaṃ",
+        "vri": "yaṃ",
+        "bjt": "saññā",
+        "thai": null
+      },
+      "rejected": [
+        "saññā",
+        "yaṃ"
+      ],
+      "notes": "Textual variant: PTS \"yam\" vs SC/VRI \"yaṃ\", BJT has \"saññā\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn22_138_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 35,
+      "orthographic": 21,
+      "errors": 2,
+      "variants": 3,
+      "uncertain": 0,
+      "match": 0,
+      "other": 9
+    }
+  }
+}

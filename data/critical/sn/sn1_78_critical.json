@@ -1,0 +1,177 @@
+{
+  "id": "sn1_78",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 30,
+    "sc": 29,
+    "vri": 29,
+    "bjt": 31,
+    "thai": 28
+  },
+  "apparatus_count": 8,
+  "apparatus": [
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "atthakāmo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "atthakāmo",
+        "sc": null,
+        "vri": null,
+        "bjt": "devatā",
+        "thai": "kimatthakāmo"
+      },
+      "rejected": [
+        "devatā",
+        "kimatthakāmo"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 9,
+      "type": "variant",
+      "selected": "mucceyya",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "mucceyya",
+        "sc": "muñceyya",
+        "vri": "muñceyya",
+        "bjt": "su",
+        "thai": "muñceyya"
+      },
+      "rejected": [
+        "muñceyya",
+        "su"
+      ],
+      "notes": "Textual variant: PTS \"mucceyya\" vs SC/VRI/Thai \"muñceyya\", BJT has \"su\""
+    },
+    {
+      "position": 10,
+      "type": "error",
+      "selected": "kalyāṇaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "kalyāṇam",
+        "sc": "kalyāṇaṃ",
+        "vri": "kalyāṇaṃ",
+        "bjt": "muñceyya",
+        "thai": "kalyāṇiṃ"
+      },
+      "rejected": [
+        "kalyāṇam",
+        "kalyāṇiṃ",
+        "muñceyya"
+      ],
+      "notes": "PTS \"kalyāṇam\" not in DPD, SC/VRI \"kalyāṇaṃ\" is valid, BJT has \"muñceyya\", Thai has \"kalyāṇiṃ\""
+    },
+    {
+      "position": 11,
+      "type": "variant",
+      "selected": "pāpiyaṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pāpiyaṃ",
+        "sc": "pāpikaṃ",
+        "vri": "pāpikaṃ",
+        "bjt": "kalyāṇaṃ",
+        "thai": "pāpikañca"
+      },
+      "rejected": [
+        "kalyāṇaṃ",
+        "pāpikañca",
+        "pāpikaṃ"
+      ],
+      "notes": "Textual variant: PTS \"pāpiyaṃ\" vs SC/VRI \"pāpikaṃ\", BJT has \"kalyāṇaṃ\", Thai has \"pāpikañca\""
+    },
+    {
+      "position": 19,
+      "type": "error",
+      "selected": "attānaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "attānam",
+        "sc": "attānaṃ",
+        "vri": "attānaṃ",
+        "bjt": "attānaṃ",
+        "thai": "attānaṃ"
+      },
+      "rejected": [
+        "attānam"
+      ],
+      "notes": "PTS \"attānam\" not in DPD, SC/VRI/BJT/Thai \"attānaṃ\" is valid"
+    },
+    {
+      "position": 24,
+      "type": "variant",
+      "selected": "kalyāṇiṃ",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "kalyāṇiṃ",
+        "sc": "kalyāṇaṃ",
+        "vri": "kalyāṇaṃ",
+        "bjt": "kalyāṇaṃ",
+        "thai": "kalyāṇiṃ"
+      },
+      "rejected": [
+        "kalyāṇaṃ"
+      ],
+      "notes": "Textual variant: PTS \"kalyāṇiṃ\" vs SC/VRI/BJT \"kalyāṇaṃ\", Thai agrees with PTS"
+    },
+    {
+      "position": 25,
+      "type": "variant",
+      "selected": "pāpikaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "pāpikaṃ",
+        "sc": "pāpikañca",
+        "vri": "pāpikañca",
+        "bjt": "pāpikañca",
+        "thai": "pāpikañca"
+      },
+      "rejected": [
+        "pāpikañca"
+      ],
+      "notes": "Textual variant: PTS \"pāpikaṃ\" vs SC/VRI/BJT/Thai \"pāpikañca\""
+    },
+    {
+      "position": 26,
+      "type": "pts_addition",
+      "selected": "ca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ca",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_78_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 30,
+      "orthographic": 0,
+      "errors": 2,
+      "variants": 4,
+      "uncertain": 2,
+      "match": 14,
+      "other": 8
+    }
+  }
+}

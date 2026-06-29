@@ -1,0 +1,111 @@
+{
+  "id": "sn27_6",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 27,
+    "sc": 30,
+    "vri": 30,
+    "bjt": 62,
+    "thai": 17
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "saññā",
+        "thai": "yadanattā"
+      },
+      "rejected": [
+        "saññā",
+        "sāvatthinidānaṃ",
+        "yadanattā"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"saññā\", Thai has \"yadanattā\""
+    },
+    {
+      "position": 5,
+      "type": "error",
+      "selected": "cittasseso",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "citasseso",
+        "sc": "cittasseso",
+        "vri": "cittasseso",
+        "bjt": "cittasse",
+        "thai": "na"
+      },
+      "rejected": [
+        "citasseso",
+        "cittasse",
+        "na"
+      ],
+      "notes": "PTS \"citasseso\" not in DPD, SC/VRI \"cittasseso\" is valid, BJT has \"cittasse\", Thai has \"na\""
+    },
+    {
+      "position": 14,
+      "type": "error",
+      "selected": "phoṭṭhabbasaññāya",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "poṭṭhabbasaññāya",
+        "sc": "phoṭṭhabbasaññāya",
+        "vri": "phoṭṭhabbasaññāya",
+        "bjt": "phoṭṭhabbasaññāya",
+        "thai": "yadaniccaṃ"
+      },
+      "rejected": [
+        "poṭṭhabbasaññāya",
+        "yadaniccaṃ"
+      ],
+      "notes": "PTS \"poṭṭhabbasaññāya\" not in DPD, SC/VRI/BJT \"phoṭṭhabbasaññāya\" is valid, Thai has \"yadaniccaṃ\""
+    },
+    {
+      "position": 18,
+      "type": "error",
+      "selected": "cittasseso",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "citasseso",
+        "sc": "cittasseso",
+        "vri": "cittasseso",
+        "bjt": "cittasse",
+        "thai": null
+      },
+      "rejected": [
+        "citasseso",
+        "cittasse"
+      ],
+      "notes": "PTS \"citasseso\" not in DPD, SC/VRI \"cittasseso\" is valid, BJT has \"cittasse\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn27_6_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 27,
+      "orthographic": 6,
+      "errors": 3,
+      "variants": 1,
+      "uncertain": 0,
+      "match": 0,
+      "other": 17
+    }
+  }
+}

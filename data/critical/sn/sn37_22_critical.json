@@ -1,0 +1,91 @@
+{
+  "id": "sn37_22",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 10,
+    "sc": 8,
+    "vri": 8,
+    "bjt": 88,
+    "thai": 62
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "āraddhaviriyo",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "āraddhaviriyo",
+        "sc": "āraddhavīriyo",
+        "vri": "āraddhavīriyo",
+        "bjt": "āraddhaviriyo",
+        "thai": "sākhāpalāse"
+      },
+      "rejected": [
+        "sākhāpalāse",
+        "āraddhavīriyo"
+      ],
+      "notes": "Textual variant: PTS \"āraddhaviriyo\" vs SC/VRI \"āraddhavīriyo\", BJT agrees with PTS, Thai has \"sākhāpalāse\""
+    },
+    {
+      "position": 8,
+      "type": "pts_addition",
+      "selected": "peyyālavaggo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "peyyālavaggo",
+        "sc": null,
+        "vri": null,
+        "bjt": "bhikkhave",
+        "thai": "sammukhībhūtaṃ"
+      },
+      "rejected": [
+        "bhikkhave",
+        "sammukhībhūtaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 9,
+      "type": "pts_addition",
+      "selected": "dutiyo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "dutiyo",
+        "sc": null,
+        "vri": null,
+        "bjt": "pañcahi",
+        "thai": "bhagavantaṃ"
+      },
+      "rejected": [
+        "bhagavantaṃ",
+        "pañcahi"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T04:46:46.357651+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn37_22_collation.json",
+    "dpd_validation_source": "/Users/danzigmond/pali-canon/data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 10,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 0,
+      "other": 7
+    }
+  }
+}
