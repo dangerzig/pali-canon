@@ -1,9 +1,10 @@
 # Lemmatizer fix: scoped plan
 
-Status: **planned, not started.** `src/lemmatize_canon.py` is currently at its
-original (unmodified) state; two trial fixes were attempted and fully reverted
-on 2026-06-28 after blast-radius measurement showed they were unsafe. This
-document scopes a proper, audited fix.
+Status: **IMPLEMENTED and audited** (branch `lemmatizer-quotative-homograph-fix`,
+2026-06-29). Both bugs below are fixed in `src/lemmatize_canon.py`, plus a
+symmetric `-nti` finite-verb class; see `docs/lemmatizer_quotative_homograph_audit.md`
+for the blast-radius audit and acceptance results. The text below is the original
+scoping plan, kept for the rationale and the "why naive fixes fail" record.
 
 ## Motivation
 
