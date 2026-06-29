@@ -1,0 +1,179 @@
+{
+  "id": "sn17_21",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 42,
+    "sc": 32,
+    "vri": 103,
+    "bjt": 61,
+    "thai": 15
+  },
+  "apparatus_count": 8,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthiyaṃ",
+        "vri": "sāvatthiyaṃ",
+        "bjt": "chavisuttaṃ",
+        "thai": "dhammānaṃ"
+      },
+      "rejected": [
+        "chavisuttaṃ",
+        "dhammānaṃ",
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthiyaṃ\", BJT has \"chavisuttaṃ\", Thai has \"dhammānaṃ\""
+    },
+    {
+      "position": 4,
+      "type": "uncertain",
+      "selected": "lābhasakkāra",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "lābhasakkāra",
+        "sc": "pe",
+        "vri": null,
+        "bjt": null,
+        "thai": "dhammānaṃ"
+      },
+      "rejected": [
+        "dhammānaṃ",
+        "pe"
+      ],
+      "notes": "Multi-way disagreement: PTS \"lābhasakkāra\", SC \"pe\", VRI \"None\", Thai \"dhammānaṃ\""
+    },
+    {
+      "position": 5,
+      "type": "uncertain",
+      "selected": "na",
+      "confidence": 0.5,
+      "witnesses": {
+        "gretil": "xvii",
+        "sc": "na",
+        "vri": null,
+        "bjt": null,
+        "thai": "nirodhagāminīpaṭipadaṃ"
+      },
+      "rejected": [
+        "nirodhagāminīpaṭipadaṃ",
+        "xvii"
+      ],
+      "notes": "Multi-way disagreement, one valid reading"
+    },
+    {
+      "position": 20,
+      "type": "uncertain",
+      "selected": "nahāruṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "nahāruṃ",
+        "sc": null,
+        "vri": "nhāruṃ",
+        "bjt": "nahāruṃ",
+        "thai": null
+      },
+      "rejected": [
+        "nhāruṃ"
+      ],
+      "notes": "PTS/BJT \"nahāruṃ\" vs VRI \"nhāruṃ\""
+    },
+    {
+      "position": 22,
+      "type": "uncertain",
+      "selected": "nahāruṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "nahāruṃ",
+        "sc": null,
+        "vri": "nhāruṃ",
+        "bjt": "nahāruṃ",
+        "thai": null
+      },
+      "rejected": [
+        "nhāruṃ"
+      ],
+      "notes": "PTS/BJT \"nahāruṃ\" vs VRI \"nhāruṃ\""
+    },
+    {
+      "position": 32,
+      "type": "uncertain",
+      "selected": "dāruṇo",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "dāruno",
+        "sc": "dāruṇo",
+        "vri": "bhikkhave",
+        "bjt": "dāruṇo",
+        "thai": null
+      },
+      "rejected": [
+        "bhikkhave",
+        "dāruno"
+      ],
+      "notes": "SC/BJT \"dāruṇo\" vs PTS \"dāruno\", VRI \"bhikkhave\""
+    },
+    {
+      "position": 35,
+      "type": "error",
+      "selected": "lābhasakkārasiloko",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "lābhasakkarāsiloko",
+        "sc": "lābhasakkārasiloko",
+        "vri": "lābhasakkārasiloko",
+        "bjt": "lābhasakkārasiloko",
+        "thai": null
+      },
+      "rejected": [
+        "lābhasakkarāsiloko"
+      ],
+      "notes": "PTS \"lābhasakkarāsiloko\" not in DPD, SC/VRI/BJT \"lābhasakkārasiloko\" is valid"
+    },
+    {
+      "position": 40,
+      "type": "uncertain",
+      "selected": "sikkhitabbanti",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "sikkhitabbanti",
+        "sc": "sikkhitabban",
+        "vri": "sikkhitabba",
+        "bjt": "sikkhitabbanti",
+        "thai": null
+      },
+      "rejected": [
+        "sikkhitabba",
+        "sikkhitabban"
+      ],
+      "notes": "PTS/BJT \"sikkhitabbanti\" vs SC \"sikkhitabban\", VRI \"sikkhitabba\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn17_21_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 42,
+      "orthographic": 4,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 6,
+      "match": 0,
+      "other": 30
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "id": "sn10_6",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 55,
+    "sc": 54,
+    "vri": 54,
+    "bjt": 54,
+    "thai": 53
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 24,
+      "type": "error",
+      "selected": "puttakaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "puttakam",
+        "sc": "puttakaṃ",
+        "vri": "puttakaṃ",
+        "bjt": "puttakaṃ",
+        "thai": "puttakaṃ"
+      },
+      "rejected": [
+        "puttakam"
+      ],
+      "notes": "PTS \"puttakam\" not in DPD, SC/VRI/BJT/Thai \"puttakaṃ\" is valid"
+    },
+    {
+      "position": 29,
+      "type": "variant",
+      "selected": "karī",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "karī",
+        "sc": "kari",
+        "vri": "kari",
+        "bjt": "kari",
+        "thai": null
+      },
+      "rejected": [
+        "kari"
+      ],
+      "notes": "Textual variant: PTS \"karī\" vs SC/VRI/BJT \"kari\""
+    },
+    {
+      "position": 37,
+      "type": "error",
+      "selected": "vijāniya",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "vijānīya",
+        "sc": "vijāniya",
+        "vri": "vijāniya",
+        "bjt": "vijāniya",
+        "thai": "vijāniya"
+      },
+      "rejected": [
+        "vijānīya"
+      ],
+      "notes": "PTS \"vijānīya\" not in DPD, SC/VRI/BJT/Thai \"vijāniya\" is valid"
+    },
+    {
+      "position": 49,
+      "type": "error",
+      "selected": "susīlyamattano",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "susīlyam",
+        "sc": "susīlyamattano",
+        "vri": "susīlyamattano",
+        "bjt": "susīlamattano",
+        "thai": "susīlyamattano"
+      },
+      "rejected": [
+        "susīlamattano",
+        "susīlyam"
+      ],
+      "notes": "PTS \"susīlyam\" not in DPD, SC/VRI/Thai \"susīlyamattano\" is valid, BJT has \"susīlamattano\""
+    },
+    {
+      "position": 50,
+      "type": "pts_addition",
+      "selected": "attano",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "attano",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn10_6_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 55,
+      "orthographic": 1,
+      "errors": 3,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 42,
+      "other": 7
+    }
+  }
+}

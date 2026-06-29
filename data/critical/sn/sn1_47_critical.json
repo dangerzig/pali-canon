@@ -1,0 +1,101 @@
+{
+  "id": "sn1_47",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 40,
+    "sc": 38,
+    "vri": 38,
+    "bjt": 86,
+    "thai": 38
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 14,
+      "type": "error",
+      "selected": "ārāmaropā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "arāmaropā",
+        "sc": "ārāmaropā",
+        "vri": "ārāmaropā",
+        "bjt": "ārāmaropā",
+        "thai": null
+      },
+      "rejected": [
+        "arāmaropā"
+      ],
+      "notes": "PTS \"arāmaropā\" not in DPD, SC/VRI/BJT \"ārāmaropā\" is valid"
+    },
+    {
+      "position": 19,
+      "type": "error",
+      "selected": "papañca",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "papañ",
+        "sc": "papañca",
+        "vri": "papañca",
+        "bjt": "papañca",
+        "thai": "papañca"
+      },
+      "rejected": [
+        "papañ"
+      ],
+      "notes": "PTS \"papañ\" not in DPD, SC/VRI/BJT/Thai \"papañca\" is valid"
+    },
+    {
+      "position": 21,
+      "type": "pts_addition",
+      "selected": "udapānañ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "udapānañ",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 22,
+      "type": "pts_addition",
+      "selected": "ca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ca",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_47_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 40,
+      "orthographic": 0,
+      "errors": 2,
+      "variants": 0,
+      "uncertain": 2,
+      "match": 31,
+      "other": 5
+    }
+  }
+}

@@ -12,11 +12,52 @@ import pytest
 # Add src to path so we can import collate_nikaya
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
+import collate_nikaya
 from collate_nikaya import (
     normalize_for_comparison,
     words_are_related,
     classify_variant,
 )
+
+
+class TestDpdValidationFailsClosed:
+    """Finding 2: DPD word validation must fail closed, not pass everything."""
+
+    def _reset(self):
+        collate_nikaya._dpd_words = None
+        collate_nikaya._dpd_source = None
+
+    def test_raises_when_no_source(self, tmp_path):
+        self._reset()
+        with patch.object(collate_nikaya, "DPD_DIR", tmp_path / "nodir"), \
+             patch.object(collate_nikaya, "DATA_DIR", tmp_path / "nodata"), \
+             patch.object(collate_nikaya, "DPD_DB", tmp_path / "no.db"):
+            with pytest.raises(FileNotFoundError):
+                collate_nikaya.load_dpd_words()
+        self._reset()
+
+    def test_falls_back_to_dpd_db(self, tmp_path):
+        from pathlib import Path
+        real_db = Path(__file__).parent.parent / "data" / "dpd" / "dpd.db"
+        if not real_db.exists():
+            pytest.skip("dpd.db not present")
+        self._reset()
+        with patch.object(collate_nikaya, "DPD_DIR", tmp_path / "nodir"), \
+             patch.object(collate_nikaya, "DATA_DIR", tmp_path / "nodata"), \
+             patch.object(collate_nikaya, "DPD_DB", real_db):
+            words = collate_nikaya.load_dpd_words()
+            assert len(words) > 100000
+            assert collate_nikaya.get_dpd_validation_source().endswith("dpd.db")
+        self._reset()
+
+    def test_is_valid_word_rejects_garbage(self):
+        real_db = collate_nikaya.DPD_DIR / "dpd.db"
+        if not (collate_nikaya.DPD_DIR / "dpd_headwords.json").exists() and not real_db.exists():
+            pytest.skip("no DPD validation source present")
+        self._reset()
+        assert collate_nikaya.is_valid_word("bhikkhu") is True
+        assert collate_nikaya.is_valid_word("zzqxnotaword") is False
+        self._reset()
 
 
 # =========================================================================

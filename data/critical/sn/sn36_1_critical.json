@@ -1,0 +1,93 @@
+{
+  "id": "sn36_1",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 38,
+    "sc": 39,
+    "vri": 39,
+    "bjt": 374,
+    "thai": 62
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 16,
+      "type": "variant",
+      "selected": "vedanā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "vedanā",
+        "sc": "vedanāti",
+        "vri": "vedanāti",
+        "bjt": "vedayitaṃ",
+        "thai": "hoti"
+      },
+      "rejected": [
+        "hoti",
+        "vedanāti",
+        "vedayitaṃ"
+      ],
+      "notes": "Textual variant: PTS \"vedanā\" vs SC/VRI \"vedanāti\", BJT has \"vedayitaṃ\", Thai has \"hoti\""
+    },
+    {
+      "position": 17,
+      "type": "pts_addition",
+      "selected": "ti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ti",
+        "sc": null,
+        "vri": null,
+        "bjt": "taṃ",
+        "thai": "kathañca"
+      },
+      "rejected": [
+        "kathañca",
+        "taṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 31,
+      "type": "error",
+      "selected": "khayagāminaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "khayagāminam",
+        "sc": "khayagāminaṃ",
+        "vri": "khayagāminaṃ",
+        "bjt": "taṃ",
+        "thai": "sarasaṅkappā"
+      },
+      "rejected": [
+        "khayagāminam",
+        "sarasaṅkappā",
+        "taṃ"
+      ],
+      "notes": "PTS \"khayagāminam\" not in DPD, SC/VRI \"khayagāminaṃ\" is valid, BJT has \"taṃ\", Thai has \"sarasaṅkappā\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn36_1_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 38,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 0,
+      "other": 35
+    }
+  }
+}

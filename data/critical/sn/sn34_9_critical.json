@@ -1,0 +1,145 @@
+{
+  "id": "sn34_9",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 84,
+    "sc": 86,
+    "vri": 86,
+    "bjt": 117,
+    "thai": 51
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "sātaccakārī",
+        "thai": "ca"
+      },
+      "rejected": [
+        "ca",
+        "sātaccakārī",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"sātaccakārī\", Thai has \"ca\""
+    },
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "cattāro",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "cattāro",
+        "sc": "cattārome",
+        "vri": "cattārome",
+        "bjt": "suttaṃ",
+        "thai": "sabbaṃ"
+      },
+      "rejected": [
+        "cattārome",
+        "sabbaṃ",
+        "suttaṃ"
+      ],
+      "notes": "Textual variant: PTS \"cattāro\" vs SC/VRI \"cattārome\", BJT has \"suttaṃ\", Thai has \"sabbaṃ\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "sāvatthiyaṃ",
+        "thai": "rūpaṃ"
+      },
+      "rejected": [
+        "rūpaṃ",
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 54,
+      "type": "error",
+      "selected": "yvāyaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "yvāyam",
+        "sc": "yvāyaṃ",
+        "vri": "yvāyaṃ",
+        "bjt": "yvāyaṃ",
+        "thai": "yathābhūtaṃ"
+      },
+      "rejected": [
+        "yathābhūtaṃ",
+        "yvāyam"
+      ],
+      "notes": "PTS \"yvāyam\" not in DPD, SC/VRI/BJT \"yvāyaṃ\" is valid, Thai has \"yathābhūtaṃ\""
+    },
+    {
+      "position": 62,
+      "type": "error",
+      "selected": "ayaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "ayam",
+        "sc": "ayaṃ",
+        "vri": "ayaṃ",
+        "bjt": "ayaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "ayam"
+      ],
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT \"ayaṃ\" is valid"
+    },
+    {
+      "position": 65,
+      "type": "error",
+      "selected": "jhāyīnaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "jhāyīnam",
+        "sc": "jhāyīnaṃ",
+        "vri": "jhāyīnaṃ",
+        "bjt": "jhāyīnaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "jhāyīnam"
+      ],
+      "notes": "PTS \"jhāyīnam\" not in DPD, SC/VRI/BJT \"jhāyīnaṃ\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn34_9_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 84,
+      "orthographic": 53,
+      "errors": 3,
+      "variants": 2,
+      "uncertain": 1,
+      "match": 2,
+      "other": 23
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "id": "sn1_12",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 42,
+    "sc": 45,
+    "vri": 45,
+    "bjt": 48,
+    "thai": 44
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "antaṃ",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "antaṃ",
+        "sc": "ekamantaṃ",
+        "vri": "ekamantaṃ",
+        "bjt": "suttaṃ",
+        "thai": "ekamantaṃ"
+      },
+      "rejected": [
+        "ekamantaṃ",
+        "suttaṃ"
+      ],
+      "notes": "Textual variant: PTS \"antaṃ\" vs SC/VRI/Thai \"ekamantaṃ\", BJT has \"suttaṃ\""
+    },
+    {
+      "position": 9,
+      "type": "error",
+      "selected": "gāthaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "gātham",
+        "sc": "gāthaṃ",
+        "vri": "gāthaṃ",
+        "bjt": "gāthaṃ",
+        "thai": "gāthaṃ"
+      },
+      "rejected": [
+        "gātham"
+      ],
+      "notes": "PTS \"gātham\" not in DPD, SC/VRI/BJT/Thai \"gāthaṃ\" is valid"
+    },
+    {
+      "position": 14,
+      "type": "variant",
+      "selected": "gomiko",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "gomiko",
+        "sc": "gomā",
+        "vri": "gomā",
+        "bjt": "gomiko",
+        "thai": "gomiko"
+      },
+      "rejected": [
+        "gomā"
+      ],
+      "notes": "Textual variant: PTS \"gomiko\" vs SC/VRI \"gomā\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 26,
+      "type": "variant",
+      "selected": "nirupadhīti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "nirupadhīti",
+        "sc": "nirūpadhī",
+        "vri": "nirūpadhī",
+        "bjt": "nirūpadhīti",
+        "thai": "nirūpadhīti"
+      },
+      "rejected": [
+        "nirūpadhī",
+        "nirūpadhīti"
+      ],
+      "notes": "Textual variant: PTS \"nirupadhīti\" vs SC/VRI \"nirūpadhī\", BJT has \"nirūpadhīti\", Thai has \"nirūpadhīti\""
+    },
+    {
+      "position": 30,
+      "type": "variant",
+      "selected": "gomiko",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "gomiko",
+        "sc": "gomā",
+        "vri": "gomā",
+        "bjt": "gomiko",
+        "thai": "gomiko"
+      },
+      "rejected": [
+        "gomā"
+      ],
+      "notes": "Textual variant: PTS \"gomiko\" vs SC/VRI \"gomā\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 41,
+      "type": "variant",
+      "selected": "nirupadhīti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "nirupadhīti",
+        "sc": "nirūpadhī",
+        "vri": "nirūpadhī",
+        "bjt": "nirūpadhīti",
+        "thai": "nirūpadhīti"
+      },
+      "rejected": [
+        "nirūpadhī",
+        "nirūpadhīti"
+      ],
+      "notes": "Textual variant: PTS \"nirupadhīti\" vs SC/VRI \"nirūpadhī\", BJT has \"nirūpadhīti\", Thai has \"nirūpadhīti\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_12_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 42,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 5,
+      "uncertain": 0,
+      "match": 33,
+      "other": 3
+    }
+  }
+}

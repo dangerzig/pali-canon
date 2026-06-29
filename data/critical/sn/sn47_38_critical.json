@@ -1,0 +1,156 @@
+{
+  "id": "sn47_38",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT"
+  ],
+  "word_counts": {
+    "gretil": 70,
+    "sc": 94,
+    "vri": 94,
+    "bjt": 93,
+    "thai": 0
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "cattāro",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "cattāro",
+        "sc": "cattārome",
+        "vri": "cattārome",
+        "bjt": "pariññātasuttaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "cattārome",
+        "pariññātasuttaṃ"
+      ],
+      "notes": "Textual variant: PTS \"cattāro\" vs SC/VRI \"cattārome\", BJT has \"pariññātasuttaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "cattārome",
+        "thai": null
+      },
+      "rejected": [
+        "cattārome"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 34,
+      "type": "error",
+      "selected": "vedanānaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "vedanānam",
+        "sc": "vedanānaṃ",
+        "vri": "vedanānaṃ",
+        "bjt": "vedanānaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "vedanānam"
+      ],
+      "notes": "PTS \"vedanānam\" not in DPD, SC/VRI/BJT \"vedanānaṃ\" is valid"
+    },
+    {
+      "position": 36,
+      "type": "error",
+      "selected": "amataṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "amatam",
+        "sc": "amataṃ",
+        "vri": "amataṃ",
+        "bjt": "amataṃ",
+        "thai": null
+      },
+      "rejected": [
+        "amatam"
+      ],
+      "notes": "PTS \"amatam\" not in DPD, SC/VRI/BJT \"amataṃ\" is valid"
+    },
+    {
+      "position": 40,
+      "type": "error",
+      "selected": "cittānupassī",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "cittam",
+        "sc": "cittānupassī",
+        "vri": "cittānupassī",
+        "bjt": "cittānupassī",
+        "thai": null
+      },
+      "rejected": [
+        "cittam"
+      ],
+      "notes": "PTS \"cittam\" not in DPD, SC/VRI/BJT \"cittānupassī\" is valid"
+    },
+    {
+      "position": 64,
+      "type": "error",
+      "selected": "dhammānaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "dhammānam",
+        "sc": "dhammānaṃ",
+        "vri": "dhammānaṃ",
+        "bjt": "dhammānaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "dhammānam"
+      ],
+      "notes": "PTS \"dhammānam\" not in DPD, SC/VRI/BJT \"dhammānaṃ\" is valid"
+    },
+    {
+      "position": 67,
+      "type": "error",
+      "selected": "sacchikataṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "sacchikatam",
+        "sc": "sacchikataṃ",
+        "vri": "sacchikataṃ",
+        "bjt": "sacchikataṃ",
+        "thai": null
+      },
+      "rejected": [
+        "sacchikatam"
+      ],
+      "notes": "PTS \"sacchikatam\" not in DPD, SC/VRI/BJT \"sacchikataṃ\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn47_38_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 70,
+      "orthographic": 61,
+      "errors": 5,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 0,
+      "other": 2
+    }
+  }
+}

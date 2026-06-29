@@ -1,0 +1,158 @@
+{
+  "id": "sn10_10",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 51,
+    "sc": 48,
+    "vri": 48,
+    "bjt": 49,
+    "thai": 48
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "ekaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "ekam",
+        "sc": "ekaṃ",
+        "vri": "ekaṃ",
+        "bjt": "dutiyasukkā",
+        "thai": "dutiyasukkāsuttaṃ"
+      },
+      "rejected": [
+        "dutiyasukkā",
+        "dutiyasukkāsuttaṃ",
+        "ekam"
+      ],
+      "notes": "PTS \"ekam\" not in DPD, SC/VRI \"ekaṃ\" is valid, BJT has \"dutiyasukkā\", Thai has \"dutiyasukkāsuttaṃ\""
+    },
+    {
+      "position": 8,
+      "type": "pts_addition",
+      "selected": "yakkhasaṃyutta",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "yakkhasaṃyutta",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 18,
+      "type": "error",
+      "selected": "bhojanaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "bhojanam",
+        "sc": "bhojanaṃ",
+        "vri": "bhojanaṃ",
+        "bjt": "bhojanaṃ",
+        "thai": "bhojanaṃ"
+      },
+      "rejected": [
+        "bhojanam"
+      ],
+      "notes": "PTS \"bhojanam\" not in DPD, SC/VRI/BJT/Thai \"bhojanaṃ\" is valid"
+    },
+    {
+      "position": 33,
+      "type": "error",
+      "selected": "velāyaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "velāyam",
+        "sc": "velāyaṃ",
+        "vri": "velāyaṃ",
+        "bjt": "velāyaṃ",
+        "thai": "velāyaṃ"
+      },
+      "rejected": [
+        "velāyam"
+      ],
+      "notes": "PTS \"velāyam\" not in DPD, SC/VRI/BJT/Thai \"velāyaṃ\" is valid"
+    },
+    {
+      "position": 35,
+      "type": "error",
+      "selected": "gāthaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "gātham",
+        "sc": "gāthaṃ",
+        "vri": "gāthaṃ",
+        "bjt": "gāthaṃ",
+        "thai": "gāthaṃ"
+      },
+      "rejected": [
+        "gātham"
+      ],
+      "notes": "PTS \"gātham\" not in DPD, SC/VRI/BJT/Thai \"gāthaṃ\" is valid"
+    },
+    {
+      "position": 41,
+      "type": "variant",
+      "selected": "sapañño",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "sapañño",
+        "sc": "sappañño",
+        "vri": "sappañño",
+        "bjt": "sappañño",
+        "thai": "sappañño"
+      },
+      "rejected": [
+        "sappañño"
+      ],
+      "notes": "Textual variant: PTS \"sapañño\" vs SC/VRI/BJT/Thai \"sappañño\""
+    },
+    {
+      "position": 42,
+      "type": "error",
+      "selected": "vatāyaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "vatāyam",
+        "sc": "vatāyaṃ",
+        "vri": "vatāyaṃ",
+        "bjt": "vatāyamūpāsako",
+        "thai": "vatāyamupāsako"
+      },
+      "rejected": [
+        "vatāyam",
+        "vatāyamupāsako",
+        "vatāyamūpāsako"
+      ],
+      "notes": "PTS \"vatāyam\" not in DPD, SC/VRI \"vatāyaṃ\" is valid, BJT has \"vatāyamūpāsako\", Thai has \"vatāyamupāsako\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn10_10_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 51,
+      "orthographic": 1,
+      "errors": 5,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 38,
+      "other": 5
+    }
+  }
+}

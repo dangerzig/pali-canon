@@ -1,0 +1,73 @@
+{
+  "id": "sn25_5",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 27,
+    "sc": 38,
+    "vri": 38,
+    "bjt": 87,
+    "thai": 16
+  },
+  "apparatus_count": 2,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "vedanā",
+        "thai": "sutavā"
+      },
+      "rejected": [
+        "sutavā",
+        "sāvatthinidānaṃ",
+        "vedanā"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"vedanā\", Thai has \"sutavā\""
+    },
+    {
+      "position": 26,
+      "type": "pts_addition",
+      "selected": "okkantikasaṃyutta",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "okkantikasaṃyutta",
+        "sc": null,
+        "vri": null,
+        "bjt": "vuccati",
+        "thai": null
+      },
+      "rejected": [
+        "vuccati"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn25_5_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 27,
+      "orthographic": 3,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 0,
+      "other": 22
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "id": "sn9_4",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 70,
+    "sc": 69,
+    "vri": 69,
+    "bjt": 71,
+    "thai": 70
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 12,
+      "type": "variant",
+      "selected": "vassaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "vassaṃ",
+        "sc": "vassaṃvuṭṭhā",
+        "vri": "vassaṃvuṭṭhā",
+        "bjt": "vassaṃ",
+        "thai": "vassaṃ"
+      },
+      "rejected": [
+        "vassaṃvuṭṭhā"
+      ],
+      "notes": "Textual variant: PTS \"vassaṃ\" vs SC/VRI \"vassaṃvuṭṭhā\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 13,
+      "type": "pts_addition",
+      "selected": "vutthā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "vutthā",
+        "sc": null,
+        "vri": null,
+        "bjt": "vutthā",
+        "thai": "vutthā"
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 31,
+      "type": "error",
+      "selected": "gāthaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "gātham",
+        "sc": "gāthaṃ",
+        "vri": "gāthaṃ",
+        "bjt": "gāthaṃ",
+        "thai": "gāthaṃ"
+      },
+      "rejected": [
+        "gātham"
+      ],
+      "notes": "PTS \"gātham\" not in DPD, SC/VRI/BJT/Thai \"gāthaṃ\" is valid"
+    },
+    {
+      "position": 45,
+      "type": "error",
+      "selected": "gotamasāvakā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "gotamasavakā",
+        "sc": "gotamasāvakā",
+        "vri": "gotamasāvakā",
+        "bjt": "me",
+        "thai": "gotamasāvakā"
+      },
+      "rejected": [
+        "gotamasavakā",
+        "me"
+      ],
+      "notes": "PTS \"gotamasavakā\" not in DPD, SC/VRI/Thai \"gotamasāvakā\" is valid, BJT has \"me\""
+    },
+    {
+      "position": 55,
+      "type": "variant",
+      "selected": "ajjhabhāsi",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "ajjhabhāsi",
+        "sc": "paccabhāsi",
+        "vri": "paccabhāsi",
+        "bjt": "ajjhabhāsi",
+        "thai": "ajjhabhāsi"
+      },
+      "rejected": [
+        "paccabhāsi"
+      ],
+      "notes": "Textual variant: PTS \"ajjhabhāsi\" vs SC/VRI \"paccabhāsi\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 56,
+      "type": "variant",
+      "selected": "magadhaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "magadhaṃ",
+        "sc": "māgadhaṃ",
+        "vri": "māgadhaṃ",
+        "bjt": "magadhaṃ",
+        "thai": "magadhaṃ"
+      },
+      "rejected": [
+        "māgadhaṃ"
+      ],
+      "notes": "Textual variant: PTS \"magadhaṃ\" vs SC/VRI \"māgadhaṃ\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 62,
+      "type": "variant",
+      "selected": "vajjabhūmiyā",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "vajjabhūmiyā",
+        "sc": "vajjibhūmiyā",
+        "vri": "vajjibhūmiyā",
+        "bjt": "vajjibhūmiyā",
+        "thai": "vajjibhūmiyā"
+      },
+      "rejected": [
+        "vajjibhūmiyā"
+      ],
+      "notes": "Textual variant: PTS \"vajjabhūmiyā\" vs SC/VRI/BJT/Thai \"vajjibhūmiyā\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn9_4_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 70,
+      "orthographic": 0,
+      "errors": 2,
+      "variants": 4,
+      "uncertain": 1,
+      "match": 53,
+      "other": 10
+    }
+  }
+}

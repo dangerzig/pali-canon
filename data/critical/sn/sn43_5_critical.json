@@ -1,0 +1,91 @@
+{
+  "id": "sn43_5",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 12,
+    "sc": 12,
+    "vri": 12,
+    "bjt": 53,
+    "thai": 62
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 3,
+      "type": "variant",
+      "selected": "asaṅkhatagāmi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "asaṅkhatagāmi",
+        "sc": "asaṅkhatagāmimaggo",
+        "vri": "asaṅkhatagāmimaggo",
+        "bjt": "asaṅkhatagāmī",
+        "thai": "ca"
+      },
+      "rejected": [
+        "asaṅkhatagāmimaggo",
+        "asaṅkhatagāmī",
+        "ca"
+      ],
+      "notes": "Textual variant: PTS \"asaṅkhatagāmi\" vs SC/VRI \"asaṅkhatagāmimaggo\", BJT has \"asaṅkhatagāmī\", Thai has \"ca\""
+    },
+    {
+      "position": 4,
+      "type": "pts_addition",
+      "selected": "maggo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "maggo",
+        "sc": null,
+        "vri": null,
+        "bjt": "maggo",
+        "thai": "ratā"
+      },
+      "rejected": [
+        "ratā"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 10,
+      "type": "variant",
+      "selected": "asaṅkhatagāmi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "asaṅkhatagāmi",
+        "sc": "asaṅkhatagāmimaggo",
+        "vri": "asaṅkhatagāmimaggo",
+        "bjt": "asaṅkhatagāmī",
+        "thai": null
+      },
+      "rejected": [
+        "asaṅkhatagāmimaggo",
+        "asaṅkhatagāmī"
+      ],
+      "notes": "Textual variant: PTS \"asaṅkhatagāmi\" vs SC/VRI \"asaṅkhatagāmimaggo\", BJT has \"asaṅkhatagāmī\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn43_5_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 12,
+      "orthographic": 4,
+      "errors": 0,
+      "variants": 2,
+      "uncertain": 1,
+      "match": 1,
+      "other": 4
+    }
+  }
+}

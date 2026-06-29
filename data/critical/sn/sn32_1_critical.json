@@ -1,0 +1,128 @@
+{
+  "id": "sn32_1",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 35,
+    "sc": 36,
+    "vri": 36,
+    "bjt": 40,
+    "thai": 50
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "suddhika",
+        "thai": "katamesaṃ"
+      },
+      "rejected": [
+        "katamesaṃ",
+        "suddhika",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"suddhika\", Thai has \"katamesaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "tatra",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "tatra",
+        "sc": null,
+        "vri": null,
+        "bjt": "suttaṃ",
+        "thai": "āvuso"
+      },
+      "rejected": [
+        "suttaṃ",
+        "āvuso"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "voca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "voca",
+        "sc": null,
+        "vri": null,
+        "bjt": "sāvatthiyaṃ",
+        "thai": "ānanda"
+      },
+      "rejected": [
+        "sāvatthiyaṃ",
+        "ānanda"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 6,
+      "type": "variant",
+      "selected": "desissāmi",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "desissāmi",
+        "sc": "desessāmi",
+        "vri": "desessāmi",
+        "bjt": "desissāmi",
+        "thai": "vayo"
+      },
+      "rejected": [
+        "desessāmi",
+        "vayo"
+      ],
+      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI \"desessāmi\", BJT agrees with PTS, Thai has \"vayo\""
+    },
+    {
+      "position": 16,
+      "type": "error",
+      "selected": "sītavalāhakā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "sītavalāhakādevā",
+        "sc": "sītavalāhakā",
+        "vri": "sītavalāhakā",
+        "bjt": "sītavalāhakā",
+        "thai": "byākareyyāsīti"
+      },
+      "rejected": [
+        "byākareyyāsīti",
+        "sītavalāhakādevā"
+      ],
+      "notes": "PTS \"sītavalāhakādevā\" not in DPD, SC/VRI/BJT \"sītavalāhakā\" is valid, Thai has \"byākareyyāsīti\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn32_1_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 35,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 2,
+      "uncertain": 2,
+      "match": 0,
+      "other": 30
+    }
+  }
+}

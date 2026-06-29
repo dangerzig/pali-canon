@@ -1,0 +1,92 @@
+{
+  "id": "sn37_17",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 31,
+    "sc": 32,
+    "vri": 47,
+    "bjt": 44,
+    "thai": 62
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 7,
+      "type": "error",
+      "selected": "paraṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "param",
+        "sc": "paraṃ",
+        "vri": "paraṃ",
+        "bjt": "parammaraṇā",
+        "thai": "mārassa"
+      },
+      "rejected": [
+        "mārassa",
+        "param",
+        "parammaraṇā"
+      ],
+      "notes": "PTS \"param\" not in DPD, SC/VRI \"paraṃ\" is valid, BJT has \"parammaraṇā\", Thai has \"mārassa\""
+    },
+    {
+      "position": 11,
+      "type": "error",
+      "selected": "lokaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "lokam",
+        "sc": "lokaṃ",
+        "vri": "lokaṃ",
+        "bjt": "lokaṃ",
+        "thai": "yathākāmakaraṇīyo"
+      },
+      "rejected": [
+        "lokam",
+        "yathākāmakaraṇīyo"
+      ],
+      "notes": "PTS \"lokam\" not in DPD, SC/VRI/BJT \"lokaṃ\" is valid, Thai has \"yathākāmakaraṇīyo\""
+    },
+    {
+      "position": 21,
+      "type": "variant",
+      "selected": "ottāpī",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "ottāpī",
+        "sc": "ottappī",
+        "vri": "ottappī",
+        "bjt": "ottāpī",
+        "thai": "antaṃ"
+      },
+      "rejected": [
+        "antaṃ",
+        "ottappī"
+      ],
+      "notes": "Textual variant: PTS \"ottāpī\" vs SC/VRI \"ottappī\", BJT agrees with PTS, Thai has \"antaṃ\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn37_17_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 31,
+      "orthographic": 0,
+      "errors": 2,
+      "variants": 1,
+      "uncertain": 0,
+      "match": 2,
+      "other": 26
+    }
+  }
+}

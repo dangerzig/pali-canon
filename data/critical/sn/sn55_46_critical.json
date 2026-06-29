@@ -1,0 +1,127 @@
+{
+  "id": "sn55_46",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 41,
+    "sc": 52,
+    "vri": 52,
+    "bjt": 103,
+    "thai": 14
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "catuhi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "catuhi",
+        "sc": "catūhi",
+        "vri": "catūhi",
+        "bjt": "suddhakasuttaṃ",
+        "thai": "dhammavicayasambojjhaṅgo"
+      },
+      "rejected": [
+        "catūhi",
+        "dhammavicayasambojjhaṅgo",
+        "suddhakasuttaṃ"
+      ],
+      "notes": "Textual variant: PTS \"catuhi\" vs SC/VRI \"catūhi\", BJT has \"suddhakasuttaṃ\", Thai has \"dhammavicayasambojjhaṅgo\""
+    },
+    {
+      "position": 9,
+      "type": "error",
+      "selected": "sambodhiparāyaṇo",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "sambodhiparayāno",
+        "sc": "sambodhiparāyaṇo",
+        "vri": "sambodhiparāyaṇo",
+        "bjt": "sambodhiparāyanoti",
+        "thai": "samaye"
+      },
+      "rejected": [
+        "samaye",
+        "sambodhiparayāno",
+        "sambodhiparāyanoti"
+      ],
+      "notes": "PTS \"sambodhiparayāno\" not in DPD, SC/VRI \"sambodhiparāyaṇo\" is valid, BJT has \"sambodhiparāyanoti\", Thai has \"samaye\""
+    },
+    {
+      "position": 11,
+      "type": "variant",
+      "selected": "catuhi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "catuhi",
+        "sc": "catūhi",
+        "vri": "catūhi",
+        "bjt": null,
+        "thai": "bhāveti"
+      },
+      "rejected": [
+        "bhāveti",
+        "catūhi"
+      ],
+      "notes": "Textual variant: PTS \"catuhi\" vs SC/VRI \"catūhi\", Thai has \"bhāveti\""
+    },
+    {
+      "position": 31,
+      "type": "variant",
+      "selected": "catuhi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "catuhi",
+        "sc": "catūhi",
+        "vri": "catūhi",
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "catūhi"
+      ],
+      "notes": "Textual variant: PTS \"catuhi\" vs SC/VRI \"catūhi\""
+    },
+    {
+      "position": 39,
+      "type": "variant",
+      "selected": "sambodhiparāyano",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sambodhiparāyano",
+        "sc": "sambodhiparāyaṇo",
+        "vri": "sambodhiparāyaṇo",
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "sambodhiparāyaṇo"
+      ],
+      "notes": "Textual variant: PTS \"sambodhiparāyano\" vs SC/VRI \"sambodhiparāyaṇo\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn55_46_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 41,
+      "orthographic": 24,
+      "errors": 1,
+      "variants": 4,
+      "uncertain": 0,
+      "match": 1,
+      "other": 11
+    }
+  }
+}

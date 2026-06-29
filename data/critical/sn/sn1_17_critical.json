@@ -1,0 +1,155 @@
+{
+  "id": "sn1_17",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 39,
+    "sc": 36,
+    "vri": 38,
+    "bjt": 41,
+    "thai": 38
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 2,
+      "type": "variant",
+      "selected": "avyattena",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "avyattena",
+        "sc": "abyattena",
+        "vri": "abyattena",
+        "bjt": "abyattena",
+        "thai": "abyattena"
+      },
+      "rejected": [
+        "abyattena"
+      ],
+      "notes": "Textual variant: PTS \"avyattena\" vs SC/VRI/BJT/Thai \"abyattena\""
+    },
+    {
+      "position": 5,
+      "type": "variant",
+      "selected": "bahū",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "bahū",
+        "sc": "bahūhi",
+        "vri": "bahūhi",
+        "bjt": "bahū",
+        "thai": "bahū"
+      },
+      "rejected": [
+        "bahūhi"
+      ],
+      "notes": "Textual variant: PTS \"bahū\" vs SC/VRI \"bahūhi\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 11,
+      "type": "uncertain",
+      "selected": "visīdatī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "visīdatīti",
+        "sc": "visīdatī",
+        "vri": "visīdatī",
+        "bjt": "visīdatīti",
+        "thai": "visīdatīti"
+      },
+      "rejected": [
+        "visīdatīti"
+      ],
+      "notes": "Neither reading validated: PTS \"visīdatīti\" vs SC/VRI \"visīdatī\""
+    },
+    {
+      "position": 18,
+      "type": "variant",
+      "selected": "nivāreyya",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "nivāreyya",
+        "sc": "nivāraye",
+        "vri": "nivāraye",
+        "bjt": "nivāraye",
+        "thai": "nivāraye"
+      },
+      "rejected": [
+        "nivāraye"
+      ],
+      "notes": "Textual variant: PTS \"nivāreyya\" vs SC/VRI/BJT/Thai \"nivāraye\""
+    },
+    {
+      "position": 24,
+      "type": "uncertain",
+      "selected": "kummova",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "kummo",
+        "sc": "kummova",
+        "vri": "ti",
+        "bjt": "kummova",
+        "thai": "kummova"
+      },
+      "rejected": [
+        "kummo",
+        "ti"
+      ],
+      "notes": "SC/BJT/Thai \"kummova\" vs PTS \"kummo\", VRI \"ti\""
+    },
+    {
+      "position": 33,
+      "type": "error",
+      "selected": "aññamaheṭhayāno",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "aññam",
+        "sc": "aññamaheṭhayāno",
+        "vri": "aññamaheṭhayāno",
+        "bjt": "aññamaheṭhayāno",
+        "thai": "aññamaheṭhayāno"
+      },
+      "rejected": [
+        "aññam"
+      ],
+      "notes": "PTS \"aññam\" not in DPD, SC/VRI/BJT/Thai \"aññamaheṭhayāno\" is valid"
+    },
+    {
+      "position": 34,
+      "type": "pts_addition",
+      "selected": "aheṭhayāno",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "aheṭhayāno",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_17_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 39,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 3,
+      "uncertain": 3,
+      "match": 23,
+      "other": 9
+    }
+  }
+}

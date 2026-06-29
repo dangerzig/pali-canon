@@ -1,0 +1,163 @@
+{
+  "id": "sn37_13",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 40,
+    "sc": 37,
+    "vri": 37,
+    "bjt": 44,
+    "thai": 62
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 4,
+      "type": "variant",
+      "selected": "mātu",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "mātu",
+        "sc": "mātugāmo",
+        "vri": "mātugāmo",
+        "bjt": "mātugāmo",
+        "thai": "na"
+      },
+      "rejected": [
+        "mātugāmo",
+        "na"
+      ],
+      "notes": "Textual variant: PTS \"mātu\" vs SC/VRI/BJT \"mātugāmo\", Thai has \"na\""
+    },
+    {
+      "position": 7,
+      "type": "pts_addition",
+      "selected": "nirayam",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "nirayam",
+        "sc": null,
+        "vri": null,
+        "bjt": "parammaraṇā",
+        "thai": "abhivadati"
+      },
+      "rejected": [
+        "abhivadati",
+        "parammaraṇā"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 11,
+      "type": "pts_addition",
+      "selected": "xxxvii",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "xxxvii",
+        "sc": null,
+        "vri": null,
+        "bjt": "saddho",
+        "thai": "ayaṃ"
+      },
+      "rejected": [
+        "ayaṃ",
+        "saddho"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 12,
+      "type": "pts_addition",
+      "selected": "peyyālavaggo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "peyyālavaggo",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "vuccati"
+      },
+      "rejected": [
+        "vuccati"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 13,
+      "type": "pts_addition",
+      "selected": "dutiyo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "dutiyo",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "bhikkhave"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 20,
+      "type": "variant",
+      "selected": "anottāpī",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "anottāpī",
+        "sc": "anottappī",
+        "vri": "anottappī",
+        "bjt": "ottāpī",
+        "thai": "gato"
+      },
+      "rejected": [
+        "anottappī",
+        "gato",
+        "ottāpī"
+      ],
+      "notes": "Textual variant: PTS \"anottāpī\" vs SC/VRI \"anottappī\", BJT has \"ottāpī\", Thai has \"gato\""
+    },
+    {
+      "position": 37,
+      "type": "error",
+      "selected": "nirayaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "nirayam",
+        "sc": "nirayaṃ",
+        "vri": "nirayaṃ",
+        "bjt": "bhedā",
+        "thai": "piyarūpā"
+      },
+      "rejected": [
+        "bhedā",
+        "nirayam",
+        "piyarūpā"
+      ],
+      "notes": "PTS \"nirayam\" not in DPD, SC/VRI \"nirayaṃ\" is valid, BJT has \"bhedā\", Thai has \"piyarūpā\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn37_13_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 40,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 2,
+      "uncertain": 4,
+      "match": 0,
+      "other": 33
+    }
+  }
+}

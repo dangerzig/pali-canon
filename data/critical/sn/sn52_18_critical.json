@@ -1,0 +1,129 @@
+{
+  "id": "sn52_18",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 14,
+    "sc": 12,
+    "vri": 12,
+    "bjt": 13,
+    "thai": 11
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "imesañca",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "imesañ",
+        "sc": "imesañca",
+        "vri": "imesañca",
+        "bjt": "nānādhimuttikasuttaṃ",
+        "thai": "ehambho"
+      },
+      "rejected": [
+        "ehambho",
+        "imesañ",
+        "nānādhimuttikasuttaṃ"
+      ],
+      "notes": "PTS \"imesañ\" not in DPD, SC/VRI \"imesañca\" is valid, BJT has \"nānādhimuttikasuttaṃ\", Thai has \"ehambho\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "panāham",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "panāham",
+        "sc": null,
+        "vri": null,
+        "bjt": "panā",
+        "thai": "kinte"
+      },
+      "rejected": [
+        "kinte",
+        "panā"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 7,
+      "type": "error",
+      "selected": "bahulīkatattā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "bahuanekadhātum",
+        "sc": "bahulīkatattā",
+        "vri": "bahulīkatattā",
+        "bjt": "bahulīkatattā",
+        "thai": "muṇḍo"
+      },
+      "rejected": [
+        "bahuanekadhātum",
+        "muṇḍo"
+      ],
+      "notes": "PTS \"bahuanekadhātum\" not in DPD, SC/VRI/BJT \"bahulīkatattā\" is valid, Thai has \"muṇḍo\""
+    },
+    {
+      "position": 8,
+      "type": "variant",
+      "selected": "nānādhātuṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "nānādhātuṃ",
+        "sc": "anekadhātunānādhātulokaṃ",
+        "vri": "anekadhātunānādhātulokaṃ",
+        "bjt": "sattānaṃ",
+        "thai": "kapālamanussiyaṃ"
+      },
+      "rejected": [
+        "anekadhātunānādhātulokaṃ",
+        "kapālamanussiyaṃ",
+        "sattānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"nānādhātuṃ\" vs SC/VRI \"anekadhātunānādhātulokaṃ\", BJT has \"sattānaṃ\", Thai has \"kapālamanussiyaṃ\""
+    },
+    {
+      "position": 10,
+      "type": "pts_addition",
+      "selected": "yathābhūtam",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "yathābhūtam",
+        "sc": null,
+        "vri": null,
+        "bjt": "yathābhūtaṃ",
+        "thai": "ehi"
+      },
+      "rejected": [
+        "ehi",
+        "yathābhūtaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn52_18_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 14,
+      "orthographic": 1,
+      "errors": 2,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 0,
+      "other": 8
+    }
+  }
+}

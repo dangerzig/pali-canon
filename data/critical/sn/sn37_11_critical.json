@@ -1,0 +1,93 @@
+{
+  "id": "sn37_11",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 36,
+    "sc": 37,
+    "vri": 37,
+    "bjt": 46,
+    "thai": 62
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 6,
+      "type": "error",
+      "selected": "nirayaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "nirayam",
+        "sc": "nirayaṃ",
+        "vri": "nirayaṃ",
+        "bjt": "bhedā",
+        "thai": "tvaṃ"
+      },
+      "rejected": [
+        "bhedā",
+        "nirayam",
+        "tvaṃ"
+      ],
+      "notes": "PTS \"nirayam\" not in DPD, SC/VRI \"nirayaṃ\" is valid, BJT has \"bhedā\", Thai has \"tvaṃ\""
+    },
+    {
+      "position": 16,
+      "type": "variant",
+      "selected": "anottāpī",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "anottāpī",
+        "sc": "anottappī",
+        "vri": "anottappī",
+        "bjt": "anottāpī",
+        "thai": "upādānaṃ"
+      },
+      "rejected": [
+        "anottappī",
+        "upādānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"anottāpī\" vs SC/VRI \"anottappī\", BJT agrees with PTS, Thai has \"upādānaṃ\""
+    },
+    {
+      "position": 33,
+      "type": "error",
+      "selected": "nirayaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "nirayam",
+        "sc": "nirayaṃ",
+        "vri": "nirayaṃ",
+        "bjt": "bhedā",
+        "thai": "kāmūpasañhitā"
+      },
+      "rejected": [
+        "bhedā",
+        "kāmūpasañhitā",
+        "nirayam"
+      ],
+      "notes": "PTS \"nirayam\" not in DPD, SC/VRI \"nirayaṃ\" is valid, BJT has \"bhedā\", Thai has \"kāmūpasañhitā\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn37_11_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 36,
+      "orthographic": 1,
+      "errors": 2,
+      "variants": 1,
+      "uncertain": 0,
+      "match": 2,
+      "other": 30
+    }
+  }
+}

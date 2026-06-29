@@ -1,0 +1,73 @@
+{
+  "id": "sn14_30",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 25,
+    "sc": 25,
+    "vri": 26,
+    "bjt": 43,
+    "thai": 15
+  },
+  "apparatus_count": 2,
+  "apparatus": [
+    {
+      "position": 1,
+      "type": "error",
+      "selected": "samayaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "samayam",
+        "sc": "samayaṃ",
+        "vri": "samayaṃ",
+        "bjt": "samayaṃ",
+        "thai": "konāgamanassa"
+      },
+      "rejected": [
+        "konāgamanassa",
+        "samayam"
+      ],
+      "notes": "PTS \"samayam\" not in DPD, SC/VRI/BJT \"samayaṃ\" is valid, Thai has \"konāgamanassa\""
+    },
+    {
+      "position": 24,
+      "type": "error",
+      "selected": "paṭhamaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "pathamam",
+        "sc": "paṭhamaṃ",
+        "vri": "paṭhamaṃ",
+        "bjt": null,
+        "thai": "pubbeva"
+      },
+      "rejected": [
+        "pathamam",
+        "pubbeva"
+      ],
+      "notes": "PTS \"pathamam\" not in DPD, SC/VRI \"paṭhamaṃ\" is valid, Thai has \"pubbeva\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn14_30_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 25,
+      "orthographic": 13,
+      "errors": 2,
+      "variants": 0,
+      "uncertain": 0,
+      "match": 2,
+      "other": 8
+    }
+  }
+}

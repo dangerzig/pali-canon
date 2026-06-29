@@ -1,0 +1,143 @@
+{
+  "id": "sn36_28",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 28,
+    "sc": 40,
+    "vri": 40,
+    "bjt": 55,
+    "thai": 62
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 10,
+      "type": "variant",
+      "selected": "vedanā",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "vedanā",
+        "sc": "vedanānaṃ",
+        "vri": "vedanānaṃ",
+        "bjt": null,
+        "thai": "vedanā"
+      },
+      "rejected": [
+        "vedanānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"vedanā\" vs SC/VRI \"vedanānaṃ\", Thai agrees with PTS"
+    },
+    {
+      "position": 11,
+      "type": "variant",
+      "selected": "samudayaṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "samudayaṃ",
+        "sc": "samudayañca",
+        "vri": "samudayañca",
+        "bjt": null,
+        "thai": "vedanāpaccayā"
+      },
+      "rejected": [
+        "samudayañca",
+        "vedanāpaccayā"
+      ],
+      "notes": "Textual variant: PTS \"samudayaṃ\" vs SC/VRI \"samudayañca\", Thai has \"vedanāpaccayā\""
+    },
+    {
+      "position": 17,
+      "type": "pts_addition",
+      "selected": "vedanānirodhagāminim",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "vedanānirodhagāminim",
+        "sc": null,
+        "vri": null,
+        "bjt": "vedanānirodhagāminiṃ",
+        "thai": "upādānanirodhā"
+      },
+      "rejected": [
+        "upādānanirodhā",
+        "vedanānirodhagāminiṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 18,
+      "type": "pts_addition",
+      "selected": "paṭipadaṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "paṭipadaṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": "paṭipadaṃ",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 23,
+      "type": "error",
+      "selected": "sayaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "sayam",
+        "sc": "sayaṃ",
+        "vri": "sayaṃ",
+        "bjt": "imā",
+        "thai": "atthaṅgamo"
+      },
+      "rejected": [
+        "atthaṅgamo",
+        "imā",
+        "sayam"
+      ],
+      "notes": "PTS \"sayam\" not in DPD, SC/VRI \"sayaṃ\" is valid, BJT has \"imā\", Thai has \"atthaṅgamo\""
+    },
+    {
+      "position": 27,
+      "type": "variant",
+      "selected": "viharantīti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "viharantīti",
+        "sc": "viharantī",
+        "vri": "viharantī",
+        "bjt": "tisso",
+        "thai": "dhamme"
+      },
+      "rejected": [
+        "dhamme",
+        "tisso",
+        "viharantī"
+      ],
+      "notes": "Textual variant: PTS \"viharantīti\" vs SC/VRI \"viharantī\", BJT has \"tisso\", Thai has \"dhamme\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn36_28_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 28,
+      "orthographic": 1,
+      "errors": 1,
+      "variants": 3,
+      "uncertain": 2,
+      "match": 1,
+      "other": 20
+    }
+  }
+}

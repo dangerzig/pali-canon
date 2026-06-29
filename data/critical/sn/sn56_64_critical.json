@@ -1,0 +1,146 @@
+{
+  "id": "sn56_64",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 20,
+    "sc": 19,
+    "vri": 19,
+    "bjt": 55,
+    "thai": 632
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "evameva",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "evameva",
+        "bjt": "surāmerayasuttaṃ",
+        "thai": "mayhaṃ"
+      },
+      "rejected": [
+        "evam",
+        "mayhaṃ",
+        "surāmerayasuttaṃ"
+      ],
+      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evameva\" is valid, BJT has \"surāmerayasuttaṃ\", Thai has \"mayhaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "eva",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": null,
+        "bjt": "evameva",
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "bhikkhave",
+        "evameva"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 8,
+      "type": "variant",
+      "selected": "surāmerayamajjapamādaṭṭhānā",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "surāmerayamajjapamādaṭṭhānā",
+        "sc": "surāmerayamajjappamādaṭṭhānā",
+        "vri": "surāmerayamajjappamādaṭṭhānā",
+        "bjt": "surāmerayamajjapamādaṭṭhānā",
+        "thai": "iti"
+      },
+      "rejected": [
+        "iti",
+        "surāmerayamajjappamādaṭṭhānā"
+      ],
+      "notes": "Textual variant: PTS \"surāmerayamajjapamādaṭṭhānā\" vs SC/VRI \"surāmerayamajjappamādaṭṭhānā\", BJT agrees with PTS, Thai has \"iti\""
+    },
+    {
+      "position": 12,
+      "type": "variant",
+      "selected": "ete",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "ete",
+        "sc": "eteva",
+        "vri": "eteva",
+        "bjt": "eteva",
+        "thai": "āyasmā"
+      },
+      "rejected": [
+        "eteva",
+        "āyasmā"
+      ],
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"āyasmā\""
+    },
+    {
+      "position": 17,
+      "type": "variant",
+      "selected": "surāmerayamajjapamādaṭṭhānā",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "surāmerayamajjapamādaṭṭhānā",
+        "sc": "surāmerayamajjappamādaṭṭhānā",
+        "vri": "surāmerayamajjappamādaṭṭhānā",
+        "bjt": "surāmerayamajjapamādaṭṭhānā",
+        "thai": "upasaṅkamitvā"
+      },
+      "rejected": [
+        "surāmerayamajjappamādaṭṭhānā",
+        "upasaṅkamitvā"
+      ],
+      "notes": "Textual variant: PTS \"surāmerayamajjapamādaṭṭhānā\" vs SC/VRI \"surāmerayamajjappamādaṭṭhānā\", BJT agrees with PTS, Thai has \"upasaṅkamitvā\""
+    },
+    {
+      "position": 18,
+      "type": "variant",
+      "selected": "appaṭiviratā",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "appaṭiviratā",
+        "sc": "apaṭiviratā",
+        "vri": "apaṭiviratā",
+        "bjt": "appaṭiviratā",
+        "thai": "bhagavantaṃ"
+      },
+      "rejected": [
+        "apaṭiviratā",
+        "bhagavantaṃ"
+      ],
+      "notes": "Textual variant: PTS \"appaṭiviratā\" vs SC/VRI \"apaṭiviratā\", BJT agrees with PTS, Thai has \"bhagavantaṃ\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_64_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 20,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 4,
+      "uncertain": 1,
+      "match": 2,
+      "other": 12
+    }
+  }
+}

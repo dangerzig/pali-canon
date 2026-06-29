@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
 """
+SUPERSEDED by src/build_critical_edition.py.
+
+This builder only emitted summary records (id, witnesses, word_count), not a
+critical apparatus. The apparatus-bearing editions in data/critical/ are now
+produced by build_critical_edition.py from the collation output (see
+docs/critical_edition_schema.md). Do not use this module to (re)generate
+data/critical/; it is retained for its witness-loading / per-nikaya config
+helpers only.
+
 Build complete critical editions for the entire Tipiṭaka.
 
 Five-witness editions (GRETIL/SC/VRI/BJT/Thai):

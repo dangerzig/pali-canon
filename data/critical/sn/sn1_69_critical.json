@@ -1,0 +1,104 @@
+{
+  "id": "sn1_69",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 24,
+    "sc": 23,
+    "vri": 23,
+    "bjt": 24,
+    "thai": 23
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "bajjhati",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "bajjhati",
+        "sc": "bajjhatī",
+        "vri": "bajjhatī",
+        "bjt": "bajjhati",
+        "thai": "bajjhati"
+      },
+      "rejected": [
+        "bajjhatī"
+      ],
+      "notes": "Textual variant: PTS \"bajjhati\" vs SC/VRI \"bajjhatī\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 10,
+      "type": "uncertain",
+      "selected": "bandhananti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "bandhananti",
+        "sc": "bandhanan",
+        "vri": "bandhana",
+        "bjt": "bandhananti",
+        "thai": "bandhananti"
+      },
+      "rejected": [
+        "bandhana",
+        "bandhanan"
+      ],
+      "notes": "PTS/BJT/Thai \"bandhananti\" vs SC \"bandhanan\", VRI \"bandhana\""
+    },
+    {
+      "position": 12,
+      "type": "variant",
+      "selected": "bajjhati",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "bajjhati",
+        "sc": "bajjhatī",
+        "vri": "bajjhatī",
+        "bjt": "bajjhati",
+        "thai": "bajjhati"
+      },
+      "rejected": [
+        "bajjhatī"
+      ],
+      "notes": "Textual variant: PTS \"bajjhati\" vs SC/VRI \"bajjhatī\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 23,
+      "type": "pts_addition",
+      "selected": "chetvāvagga",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "chetvāvagga",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_69_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 24,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 2,
+      "uncertain": 2,
+      "match": 14,
+      "other": 6
+    }
+  }
+}

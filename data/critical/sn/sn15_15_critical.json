@@ -1,0 +1,92 @@
+{
+  "id": "sn15_15",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 18,
+    "sc": 18,
+    "vri": 19,
+    "bjt": 61,
+    "thai": 15
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 2,
+      "type": "uncertain",
+      "selected": "anamataggāyaṃ",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "anamataggāyaṃ",
+        "sc": "anamataggoyaṃ",
+        "vri": "pe",
+        "bjt": null,
+        "thai": "vedanā"
+      },
+      "rejected": [
+        "anamataggoyaṃ",
+        "pe",
+        "vedanā"
+      ],
+      "notes": "Multi-way disagreement: PTS \"anamataggāyaṃ\", SC \"anamataggoyaṃ\", VRI \"pe\", Thai \"vedanā\""
+    },
+    {
+      "position": 6,
+      "type": "pts_addition",
+      "selected": "evam",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": null,
+        "vri": null,
+        "bjt": "koṭi",
+        "thai": "kiṃjātiko"
+      },
+      "rejected": [
+        "kiṃjātiko",
+        "koṭi"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 7,
+      "type": "pts_addition",
+      "selected": "peyyālo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "peyyālo",
+        "sc": null,
+        "vri": null,
+        "bjt": "na",
+        "thai": "kiṃpabhavo"
+      },
+      "rejected": [
+        "kiṃpabhavo",
+        "na"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn15_15_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 18,
+      "orthographic": 4,
+      "errors": 0,
+      "variants": 0,
+      "uncertain": 3,
+      "match": 1,
+      "other": 10
+    }
+  }
+}

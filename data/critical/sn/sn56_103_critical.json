@@ -1,0 +1,129 @@
+{
+  "id": "sn56_103",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 29,
+    "sc": 23,
+    "vri": 30,
+    "bjt": 23,
+    "thai": 632
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "uncertain",
+      "selected": "evam",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "pe",
+        "bjt": "catutthapetticutisuttaṃ",
+        "thai": "atthi"
+      },
+      "rejected": [
+        "atthi",
+        "catutthapetticutisuttaṃ",
+        "evameva",
+        "pe"
+      ],
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\", BJT \"catutthapetticutisuttaṃ\", Thai \"atthi\""
+    },
+    {
+      "position": 1,
+      "type": "uncertain",
+      "selected": "evameva",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": "evameva",
+        "bjt": "evameva",
+        "thai": "kho"
+      },
+      "rejected": [
+        "eva",
+        "kho"
+      ],
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", Thai \"kho\""
+    },
+    {
+      "position": 14,
+      "type": "variant",
+      "selected": "ete",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "ete",
+        "sc": "eteva",
+        "vri": "eteva",
+        "bjt": "eteva",
+        "thai": "āyasmā"
+      },
+      "rejected": [
+        "eteva",
+        "āyasmā"
+      ],
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"āyasmā\""
+    },
+    {
+      "position": 27,
+      "type": "uncertain",
+      "selected": "pe",
+      "confidence": 0.5,
+      "witnesses": {
+        "gretil": "saccasaṃyuttam",
+        "sc": null,
+        "vri": "pe",
+        "bjt": null,
+        "thai": "yathābhūtaṃ"
+      },
+      "rejected": [
+        "saccasaṃyuttam",
+        "yathābhūtaṃ"
+      ],
+      "notes": "Multi-way disagreement, one valid reading"
+    },
+    {
+      "position": 28,
+      "type": "uncertain",
+      "selected": "aṭṭhārasamaṃ",
+      "confidence": 0.5,
+      "witnesses": {
+        "gretil": "lvi",
+        "sc": null,
+        "vri": "aṭṭhārasamaṃ",
+        "bjt": null,
+        "thai": "paṭivijjhanti"
+      },
+      "rejected": [
+        "lvi",
+        "paṭivijjhanti"
+      ],
+      "notes": "Multi-way disagreement, one valid reading"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_103_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 29,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 4,
+      "match": 4,
+      "other": 20
+    }
+  }
+}

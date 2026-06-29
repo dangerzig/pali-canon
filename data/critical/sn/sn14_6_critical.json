@@ -1,0 +1,111 @@
+{
+  "id": "sn14_6",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 23,
+    "sc": 24,
+    "vri": 25,
+    "bjt": 24,
+    "thai": 14
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 2,
+      "type": "uncertain",
+      "selected": "dhātunānattam",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "dhātunānattam",
+        "sc": "dhātunānattaṃ",
+        "vri": "pe",
+        "bjt": "kho",
+        "thai": "asati"
+      },
+      "rejected": [
+        "asati",
+        "dhātunānattaṃ",
+        "kho",
+        "pe"
+      ],
+      "notes": "Multi-way disagreement: PTS \"dhātunānattam\", SC \"dhātunānattaṃ\", VRI \"pe\", BJT \"kho\", Thai \"asati\""
+    },
+    {
+      "position": 5,
+      "type": "variant",
+      "selected": "desissāmi",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "desissāmi",
+        "sc": "desessāmi",
+        "vri": "desessāmi",
+        "bjt": "desessāmi",
+        "thai": "vipassissa"
+      },
+      "rejected": [
+        "desessāmi",
+        "vipassissa"
+      ],
+      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI/BJT \"desessāmi\", Thai has \"vipassissa\""
+    },
+    {
+      "position": 6,
+      "type": "variant",
+      "selected": "tam",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "tam",
+        "sc": "taṃ",
+        "vri": "taṃ",
+        "bjt": "taṃ",
+        "thai": "bodhisattassa"
+      },
+      "rejected": [
+        "bodhisattassa",
+        "taṃ"
+      ],
+      "notes": "Textual variant: PTS \"tam\" vs SC/VRI/BJT \"taṃ\", Thai has \"bodhisattassa\""
+    },
+    {
+      "position": 21,
+      "type": "uncertain",
+      "selected": "dhātunānattanti",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "dhātunānattanti",
+        "sc": "dhātunānattan",
+        "vri": "dhātunānatta",
+        "bjt": "dhātunānattanti",
+        "thai": null
+      },
+      "rejected": [
+        "dhātunānatta",
+        "dhātunānattan"
+      ],
+      "notes": "PTS/BJT \"dhātunānattanti\" vs SC \"dhātunānattan\", VRI \"dhātunānatta\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn14_6_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 23,
+      "orthographic": 14,
+      "errors": 0,
+      "variants": 2,
+      "uncertain": 2,
+      "match": 1,
+      "other": 4
+    }
+  }
+}

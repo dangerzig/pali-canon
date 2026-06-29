@@ -1,0 +1,153 @@
+{
+  "id": "sn1_26",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 38,
+    "sc": 37,
+    "vri": 37,
+    "bjt": 49,
+    "thai": 37
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 6,
+      "type": "variant",
+      "selected": "bhavantaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "bhavantaṃ",
+        "sc": "bhagavantaṃ",
+        "vri": "bhagavantaṃ",
+        "bjt": "bhagavantaṃ",
+        "thai": "bhagavantaṃ"
+      },
+      "rejected": [
+        "bhagavantaṃ"
+      ],
+      "notes": "Textual variant: PTS \"bhavantaṃ\" vs SC/VRI/BJT/Thai \"bhagavantaṃ\""
+    },
+    {
+      "position": 7,
+      "type": "error",
+      "selected": "puṭṭhumāgamma",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "puṭṭhum",
+        "sc": "puṭṭhumāgamma",
+        "vri": "puṭṭhumāgamma",
+        "bjt": "puṭṭhumāgamma",
+        "thai": "puṭṭhumāgamma"
+      },
+      "rejected": [
+        "puṭṭhum"
+      ],
+      "notes": "PTS \"puṭṭhum\" not in DPD, SC/VRI/BJT/Thai \"puṭṭhumāgamma\" is valid"
+    },
+    {
+      "position": 8,
+      "type": "pts_addition",
+      "selected": "āgamma",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "āgamma",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 17,
+      "type": "error",
+      "selected": "pañcamettha",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "pañcametthana",
+        "sc": "pañcamettha",
+        "vri": "pañcamettha",
+        "bjt": "pañcamettha",
+        "thai": "pañcamettha"
+      },
+      "rejected": [
+        "pañcametthana"
+      ],
+      "notes": "PTS \"pañcametthana\" not in DPD, SC/VRI/BJT/Thai \"pañcamettha\" is valid"
+    },
+    {
+      "position": 22,
+      "type": "error",
+      "selected": "rattimābhāti",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "rattim",
+        "sc": "rattimābhāti",
+        "vri": "rattimābhāti",
+        "bjt": "rattiṃ",
+        "thai": "rattimābhāti"
+      },
+      "rejected": [
+        "rattim",
+        "rattiṃ"
+      ],
+      "notes": "PTS \"rattim\" not in DPD, SC/VRI/Thai \"rattimābhāti\" is valid, BJT has \"rattiṃ\""
+    },
+    {
+      "position": 23,
+      "type": "pts_addition",
+      "selected": "ābhāti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ābhāti",
+        "sc": null,
+        "vri": null,
+        "bjt": "ābhāti",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 30,
+      "type": "variant",
+      "selected": "pabhāsati",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "pabhāsati",
+        "sc": "pakāsati",
+        "vri": "pakāsati",
+        "bjt": "pakāsati",
+        "thai": "pakāsati"
+      },
+      "rejected": [
+        "pakāsati"
+      ],
+      "notes": "Textual variant: PTS \"pabhāsati\" vs SC/VRI/BJT/Thai \"pakāsati\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_26_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 38,
+      "orthographic": 0,
+      "errors": 3,
+      "variants": 2,
+      "uncertain": 2,
+      "match": 25,
+      "other": 6
+    }
+  }
+}

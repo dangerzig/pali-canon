@@ -1,0 +1,160 @@
+{
+  "id": "sn1_53",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 32,
+    "sc": 32,
+    "vri": 32,
+    "bjt": 36,
+    "thai": 40
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "pathavato",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pathavato",
+        "sc": "pavasato",
+        "vri": "pavasato",
+        "bjt": "devatā",
+        "thai": "pasavato"
+      },
+      "rejected": [
+        "devatā",
+        "pasavato",
+        "pavasato"
+      ],
+      "notes": "Textual variant: PTS \"pathavato\" vs SC/VRI \"pavasato\", BJT has \"devatā\", Thai has \"pasavato\""
+    },
+    {
+      "position": 11,
+      "type": "error",
+      "selected": "mittaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "mittam",
+        "sc": "mittaṃ",
+        "vri": "mittaṃ",
+        "bjt": "mittaṃ",
+        "thai": "mittaṃ"
+      },
+      "rejected": [
+        "mittam"
+      ],
+      "notes": "PTS \"mittam\" not in DPD, SC/VRI/BJT/Thai \"mittaṃ\" is valid"
+    },
+    {
+      "position": 12,
+      "type": "uncertain",
+      "selected": "samparāyikanti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "samparāyikanti",
+        "sc": "samparāyikan",
+        "vri": "samparāyika",
+        "bjt": "samparāyikanti",
+        "thai": "samparāyikanti"
+      },
+      "rejected": [
+        "samparāyika",
+        "samparāyikan"
+      ],
+      "notes": "PTS/BJT/Thai \"samparāyikanti\" vs SC \"samparāyikan\", VRI \"samparāyika\""
+    },
+    {
+      "position": 14,
+      "type": "variant",
+      "selected": "pathavato",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "pathavato",
+        "sc": "pavasato",
+        "vri": "pavasato",
+        "bjt": "pavasato",
+        "thai": "pasavato"
+      },
+      "rejected": [
+        "pasavato",
+        "pavasato"
+      ],
+      "notes": "Textual variant: PTS \"pathavato\" vs SC/VRI/BJT \"pavasato\", Thai has \"pasavato\""
+    },
+    {
+      "position": 15,
+      "type": "error",
+      "selected": "mittaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "mittam",
+        "sc": "mittaṃ",
+        "vri": "mittaṃ",
+        "bjt": "mittaṃ",
+        "thai": "mittaṃ"
+      },
+      "rejected": [
+        "mittam"
+      ],
+      "notes": "PTS \"mittam\" not in DPD, SC/VRI/BJT/Thai \"mittaṃ\" is valid"
+    },
+    {
+      "position": 25,
+      "type": "uncertain",
+      "selected": "sayaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "sayam",
+        "sc": "sayaṅkatāni",
+        "vri": "sayaṃkatāni",
+        "bjt": "sayaṃ",
+        "thai": "sayaṃ"
+      },
+      "rejected": [
+        "sayam",
+        "sayaṃkatāni",
+        "sayaṅkatāni"
+      ],
+      "notes": "BJT/Thai \"sayaṃ\" vs PTS \"sayam\", SC \"sayaṅkatāni\", VRI \"sayaṃkatāni\""
+    },
+    {
+      "position": 26,
+      "type": "pts_addition",
+      "selected": "katāni",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "katāni",
+        "sc": null,
+        "vri": null,
+        "bjt": "katāni",
+        "thai": "katāni"
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_53_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 32,
+      "orthographic": 0,
+      "errors": 2,
+      "variants": 2,
+      "uncertain": 3,
+      "match": 21,
+      "other": 4
+    }
+  }
+}

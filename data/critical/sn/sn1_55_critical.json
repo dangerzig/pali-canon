@@ -1,0 +1,156 @@
+{
+  "id": "sn1_55",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 26,
+    "sc": 22,
+    "vri": 22,
+    "bjt": 27,
+    "thai": 10
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 7,
+      "type": "error",
+      "selected": "saṃsāramāpādi",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "saṃsāram",
+        "sc": "saṃsāramāpādi",
+        "vri": "saṃsāramāpādi",
+        "bjt": "su",
+        "thai": null
+      },
+      "rejected": [
+        "saṃsāram",
+        "su"
+      ],
+      "notes": "PTS \"saṃsāram\" not in DPD, SC/VRI \"saṃsāramāpādi\" is valid, BJT has \"su\""
+    },
+    {
+      "position": 8,
+      "type": "pts_addition",
+      "selected": "āpādi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "āpādi",
+        "sc": null,
+        "vri": null,
+        "bjt": "saṃsāramāpādi",
+        "thai": null
+      },
+      "rejected": [
+        "saṃsāramāpādi"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 16,
+      "type": "error",
+      "selected": "cittamassa",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "cittam",
+        "sc": "cittamassa",
+        "vri": "cittamassa",
+        "bjt": "cittamassa",
+        "thai": null
+      },
+      "rejected": [
+        "cittam"
+      ],
+      "notes": "PTS \"cittam\" not in DPD, SC/VRI/BJT \"cittamassa\" is valid"
+    },
+    {
+      "position": 17,
+      "type": "pts_addition",
+      "selected": "assa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "assa",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 20,
+      "type": "error",
+      "selected": "saṃsāramāpādi",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "saṃsāram",
+        "sc": "saṃsāramāpādi",
+        "vri": "saṃsāramāpādi",
+        "bjt": "saṃsāramāpādi",
+        "thai": null
+      },
+      "rejected": [
+        "saṃsāram"
+      ],
+      "notes": "PTS \"saṃsāram\" not in DPD, SC/VRI/BJT \"saṃsāramāpādi\" is valid"
+    },
+    {
+      "position": 22,
+      "type": "uncertain",
+      "selected": "mahabbhaya",
+      "confidence": 0.5,
+      "witnesses": {
+        "gretil": "dukkham",
+        "sc": null,
+        "vri": "mahabbhaya",
+        "bjt": "mahabbhayanti",
+        "thai": null
+      },
+      "rejected": [
+        "dukkham",
+        "mahabbhayanti"
+      ],
+      "notes": "Multi-way disagreement, one valid reading"
+    },
+    {
+      "position": 23,
+      "type": "uncertain",
+      "selected": "assa",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "assa",
+        "sc": null,
+        "vri": "nti",
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "nti"
+      ],
+      "notes": "Multi-way disagreement: PTS \"assa\", SC \"None\", VRI \"nti\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_55_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 26,
+      "orthographic": 6,
+      "errors": 3,
+      "variants": 0,
+      "uncertain": 4,
+      "match": 0,
+      "other": 13
+    }
+  }
+}

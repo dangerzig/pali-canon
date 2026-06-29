@@ -1,0 +1,93 @@
+{
+  "id": "sn56_72",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 20,
+    "sc": 19,
+    "vri": 20,
+    "bjt": 19,
+    "thai": 632
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "uncertain",
+      "selected": "evam",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "pe",
+        "bjt": "adinnādānasuttaṃ",
+        "thai": "te"
+      },
+      "rejected": [
+        "adinnādānasuttaṃ",
+        "evameva",
+        "pe",
+        "te"
+      ],
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\", BJT \"adinnādānasuttaṃ\", Thai \"te\""
+    },
+    {
+      "position": 1,
+      "type": "uncertain",
+      "selected": "evameva",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": "evameva",
+        "bjt": "evameva",
+        "thai": "sabbe"
+      },
+      "rejected": [
+        "eva",
+        "sabbe"
+      ],
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", Thai \"sabbe\""
+    },
+    {
+      "position": 12,
+      "type": "variant",
+      "selected": "ete",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "ete",
+        "sc": "eteva",
+        "vri": "eteva",
+        "bjt": "eteva",
+        "thai": "ca"
+      },
+      "rejected": [
+        "ca",
+        "eteva"
+      ],
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"ca\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_72_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 20,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 2,
+      "other": 15
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "id": "sn1_9",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 45,
+    "sc": 42,
+    "vri": 42,
+    "bjt": 98,
+    "thai": 40
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "antaṃ",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "antaṃ",
+        "sc": "ekamantaṃ",
+        "vri": "ekamantaṃ",
+        "bjt": "sāvatthiyaṃ",
+        "thai": "ekamantaṃ"
+      },
+      "rejected": [
+        "ekamantaṃ",
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"antaṃ\" vs SC/VRI/Thai \"ekamantaṃ\", BJT has \"sāvatthiyaṃ\""
+    },
+    {
+      "position": 9,
+      "type": "error",
+      "selected": "gāthaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "gātham",
+        "sc": "gāthaṃ",
+        "vri": "gāthaṃ",
+        "bjt": "gāthaṃ",
+        "thai": "gāthaṃ"
+      },
+      "rejected": [
+        "gātham"
+      ],
+      "notes": "PTS \"gātham\" not in DPD, SC/VRI/BJT/Thai \"gāthaṃ\" is valid"
+    },
+    {
+      "position": 16,
+      "type": "error",
+      "selected": "monamatthi",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "monam",
+        "sc": "monamatthi",
+        "vri": "monamatthi",
+        "bjt": "monamatthi",
+        "thai": "monamatthi"
+      },
+      "rejected": [
+        "monam"
+      ],
+      "notes": "PTS \"monam\" not in DPD, SC/VRI/BJT/Thai \"monamatthi\" is valid"
+    },
+    {
+      "position": 17,
+      "type": "pts_addition",
+      "selected": "atthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "atthi",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 28,
+      "type": "error",
+      "selected": "mānaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "mānam",
+        "sc": "mānaṃ",
+        "vri": "mānaṃ",
+        "bjt": "mānaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "mānam"
+      ],
+      "notes": "PTS \"mānam\" not in DPD, SC/VRI/BJT \"mānaṃ\" is valid"
+    },
+    {
+      "position": 44,
+      "type": "pts_addition",
+      "selected": "nandanavagga",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "nandanavagga",
+        "sc": null,
+        "vri": null,
+        "bjt": "ekamantaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "ekamantaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_9_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 45,
+      "orthographic": 1,
+      "errors": 3,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 31,
+      "other": 7
+    }
+  }
+}

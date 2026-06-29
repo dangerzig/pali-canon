@@ -1,0 +1,92 @@
+{
+  "id": "sn27_5",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 33,
+    "sc": 36,
+    "vri": 36,
+    "bjt": 68,
+    "thai": 17
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "vedanā",
+        "thai": "kataṃ"
+      },
+      "rejected": [
+        "kataṃ",
+        "sāvatthinidānaṃ",
+        "vedanā"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"vedanā\", Thai has \"kataṃ\""
+    },
+    {
+      "position": 6,
+      "type": "error",
+      "selected": "cittasseso",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "citasseso",
+        "sc": "cittasseso",
+        "vri": "cittasseso",
+        "bjt": "cittasse",
+        "thai": "dukkhaṃ"
+      },
+      "rejected": [
+        "citasseso",
+        "cittasse",
+        "dukkhaṃ"
+      ],
+      "notes": "PTS \"citasseso\" not in DPD, SC/VRI \"cittasseso\" is valid, BJT has \"cittasse\", Thai has \"dukkhaṃ\""
+    },
+    {
+      "position": 21,
+      "type": "error",
+      "selected": "manosamphassajāya",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "manasamphassajāya",
+        "sc": "manosamphassajāya",
+        "vri": "manosamphassajāya",
+        "bjt": "manosamphassajāya",
+        "thai": null
+      },
+      "rejected": [
+        "manasamphassajāya"
+      ],
+      "notes": "PTS \"manasamphassajāya\" not in DPD, SC/VRI/BJT \"manosamphassajāya\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn27_5_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 33,
+      "orthographic": 14,
+      "errors": 2,
+      "variants": 1,
+      "uncertain": 0,
+      "match": 1,
+      "other": 15
+    }
+  }
+}

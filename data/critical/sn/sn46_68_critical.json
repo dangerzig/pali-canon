@@ -1,0 +1,71 @@
+{
+  "id": "sn46_68",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 4,
+    "sc": 4,
+    "vri": 4,
+    "bjt": 81,
+    "thai": 1
+  },
+  "apparatus_count": 2,
+  "apparatus": [
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "sabbaloke",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sabbaloke",
+        "sc": null,
+        "vri": null,
+        "bjt": "aniccasuttaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "aniccasuttaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "anabhiratisaññā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "anabhiratisaññā",
+        "sc": null,
+        "vri": null,
+        "bjt": "aniccasaññā",
+        "thai": null
+      },
+      "rejected": [
+        "aniccasaññā"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn46_68_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 4,
+      "orthographic": 1,
+      "errors": 0,
+      "variants": 0,
+      "uncertain": 2,
+      "match": 0,
+      "other": 1
+    }
+  }
+}

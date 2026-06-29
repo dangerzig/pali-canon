@@ -1,0 +1,124 @@
+{
+  "id": "sn1_18",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 29,
+    "sc": 25,
+    "vri": 25,
+    "bjt": 28,
+    "thai": 25
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 6,
+      "type": "error",
+      "selected": "nindaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "nindam",
+        "sc": "nindaṃ",
+        "vri": "nindaṃ",
+        "bjt": "nindaṃ",
+        "thai": "niddaṃ"
+      },
+      "rejected": [
+        "niddaṃ",
+        "nindam"
+      ],
+      "notes": "PTS \"nindam\" not in DPD, SC/VRI/BJT \"nindaṃ\" is valid, Thai has \"niddaṃ\""
+    },
+    {
+      "position": 7,
+      "type": "variant",
+      "selected": "appabodhati",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "appabodhati",
+        "sc": "apabodhati",
+        "vri": "apabodhati",
+        "bjt": "appabodhati",
+        "thai": "apabodheti"
+      },
+      "rejected": [
+        "apabodhati",
+        "apabodheti"
+      ],
+      "notes": "Textual variant: PTS \"appabodhati\" vs SC/VRI \"apabodhati\", BJT agrees with PTS, Thai has \"apabodheti\""
+    },
+    {
+      "position": 10,
+      "type": "uncertain",
+      "selected": "kasāmivā",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "kasām",
+        "sc": "kasāmivā",
+        "vri": "kasāmivā",
+        "bjt": "kasāmivāti",
+        "thai": "kasāmivāti"
+      },
+      "rejected": [
+        "kasām",
+        "kasāmivāti"
+      ],
+      "notes": "Neither reading validated: PTS \"kasām\" vs SC/VRI \"kasāmivā\""
+    },
+    {
+      "position": 11,
+      "type": "pts_addition",
+      "selected": "ivā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ivā",
+        "sc": null,
+        "vri": null,
+        "bjt": "bhagavā",
+        "thai": "hirinisedhā"
+      },
+      "rejected": [
+        "bhagavā",
+        "hirinisedhā"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 26,
+      "type": "pts_addition",
+      "selected": "devatāsaṃyutta",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "devatāsaṃyutta",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_18_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 29,
+      "orthographic": 2,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 3,
+      "match": 14,
+      "other": 8
+    }
+  }
+}

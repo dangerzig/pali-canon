@@ -1,0 +1,92 @@
+{
+  "id": "sn52_19",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 12,
+    "sc": 13,
+    "vri": 13,
+    "bjt": 13,
+    "thai": 11
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "imesañca",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "imesañ",
+        "sc": "imesañca",
+        "vri": "imesañca",
+        "bjt": "nānādhimuttikasuttaṃ",
+        "thai": "hīnāyāvattitvā"
+      },
+      "rejected": [
+        "hīnāyāvattitvā",
+        "imesañ",
+        "nānādhimuttikasuttaṃ"
+      ],
+      "notes": "PTS \"imesañ\" not in DPD, SC/VRI \"imesañca\" is valid, BJT has \"nānādhimuttikasuttaṃ\", Thai has \"hīnāyāvattitvā\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "panāham",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "panāham",
+        "sc": null,
+        "vri": null,
+        "bjt": "panā",
+        "thai": "bhuñjassu"
+      },
+      "rejected": [
+        "bhuñjassu",
+        "panā"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 7,
+      "type": "error",
+      "selected": "bahulīkatattā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "bahusattānaṃ",
+        "sc": "bahulīkatattā",
+        "vri": "bahulīkatattā",
+        "bjt": "bahulīkatattā",
+        "thai": "kho"
+      },
+      "rejected": [
+        "bahusattānaṃ",
+        "kho"
+      ],
+      "notes": "PTS \"bahusattānaṃ\" not in DPD, SC/VRI/BJT \"bahulīkatattā\" is valid, Thai has \"kho\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn52_19_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 12,
+      "orthographic": 0,
+      "errors": 2,
+      "variants": 0,
+      "uncertain": 1,
+      "match": 0,
+      "other": 9
+    }
+  }
+}

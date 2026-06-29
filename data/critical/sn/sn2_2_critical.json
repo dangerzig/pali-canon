@@ -1,0 +1,152 @@
+{
+  "id": "sn2_2",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 29,
+    "sc": 25,
+    "vri": 25,
+    "bjt": 25,
+    "thai": 32
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthiyaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "sāvatthiyaṃ",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "sāvatthiyaṃ",
+        "thai": "sāvatthiyaṃ"
+      },
+      "rejected": [
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthiyaṃ\" vs SC/VRI \"sāvatthinidānaṃ\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "ekam",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ekam",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "ekamantaṃ"
+      },
+      "rejected": [
+        "ekamantaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 3,
+      "type": "pts_addition",
+      "selected": "antaṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "antaṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 11,
+      "type": "error",
+      "selected": "gāthaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "gātham",
+        "sc": "gāthaṃ",
+        "vri": "gāthaṃ",
+        "bjt": "gāthaṃ",
+        "thai": "gāthaṃ"
+      },
+      "rejected": [
+        "gātham"
+      ],
+      "notes": "PTS \"gātham\" not in DPD, SC/VRI/BJT/Thai \"gāthaṃ\" is valid"
+    },
+    {
+      "position": 19,
+      "type": "error",
+      "selected": "hadayassānupattiṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "hadayassānuppattiṃ",
+        "sc": "hadayassānupattiṃ",
+        "vri": "hadayassānupattiṃ",
+        "bjt": "hadayassānupattiṃ",
+        "thai": "hadayassānupattiṃ"
+      },
+      "rejected": [
+        "hadayassānuppattiṃ"
+      ],
+      "notes": "PTS \"hadayassānuppattiṃ\" not in DPD, SC/VRI/BJT/Thai \"hadayassānupattiṃ\" is valid"
+    },
+    {
+      "position": 24,
+      "type": "variant",
+      "selected": "asito",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "asito",
+        "sc": "anissito",
+        "vri": "anissito",
+        "bjt": "anissito",
+        "thai": "anissito"
+      },
+      "rejected": [
+        "anissito"
+      ],
+      "notes": "Textual variant: PTS \"asito\" vs SC/VRI/BJT/Thai \"anissito\""
+    },
+    {
+      "position": 28,
+      "type": "pts_addition",
+      "selected": "paṭhamovagga",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "paṭhamovagga",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn2_2_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 29,
+      "orthographic": 0,
+      "errors": 2,
+      "variants": 2,
+      "uncertain": 3,
+      "match": 14,
+      "other": 8
+    }
+  }
+}

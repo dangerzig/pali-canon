@@ -1,0 +1,140 @@
+{
+  "id": "sn2_15",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 34,
+    "sc": 37,
+    "vri": 37,
+    "bjt": 31,
+    "thai": 30
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "ekamantaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "ekam",
+        "sc": "ekamantaṃ",
+        "vri": "ekamantaṃ",
+        "bjt": "vasudattasuttaṃ",
+        "thai": "vāsudattasuttaṃ"
+      },
+      "rejected": [
+        "ekam",
+        "vasudattasuttaṃ",
+        "vāsudattasuttaṃ"
+      ],
+      "notes": "PTS \"ekam\" not in DPD, SC/VRI \"ekamantaṃ\" is valid, BJT has \"vasudattasuttaṃ\", Thai has \"vāsudattasuttaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "antaṃ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "antaṃ",
+        "sc": null,
+        "vri": null,
+        "bjt": "sāvatthiyaṃ",
+        "thai": "ekamantaṃ"
+      },
+      "rejected": [
+        "ekamantaṃ",
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 6,
+      "type": "variant",
+      "selected": "bhagavato",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "bhagavato",
+        "sc": "bhagavantaṃ",
+        "vri": "bhagavantaṃ",
+        "bjt": "bhagavato",
+        "thai": "bhagavato"
+      },
+      "rejected": [
+        "bhagavantaṃ"
+      ],
+      "notes": "Textual variant: PTS \"bhagavato\" vs SC/VRI \"bhagavantaṃ\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 18,
+      "type": "uncertain",
+      "selected": "sīdatī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "sato",
+        "sc": "sīdatī",
+        "vri": "sīdatī",
+        "bjt": "sato",
+        "thai": "sato"
+      },
+      "rejected": [
+        "sato"
+      ],
+      "notes": "Neither reading validated: PTS \"sato\" vs SC/VRI \"sīdatī\""
+    },
+    {
+      "position": 19,
+      "type": "pts_addition",
+      "selected": "bhikkhu",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "bhikkhu",
+        "sc": null,
+        "vri": null,
+        "bjt": "bhikkhu",
+        "thai": "bhikkhu"
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 20,
+      "type": "pts_addition",
+      "selected": "paribbaje",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "paribbaje",
+        "sc": null,
+        "vri": null,
+        "bjt": "paribbajeti",
+        "thai": "paribbajeti"
+      },
+      "rejected": [
+        "paribbajeti"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn2_15_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 34,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 4,
+      "match": 3,
+      "other": 25
+    }
+  }
+}

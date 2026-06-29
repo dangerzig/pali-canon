@@ -1,0 +1,91 @@
+{
+  "id": "sn52_21",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 14,
+    "sc": 15,
+    "vri": 15,
+    "bjt": 225,
+    "thai": 11
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "imesañca",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "imesañ",
+        "sc": "imesañca",
+        "vri": "imesañca",
+        "bjt": "jhānasuttaṃ",
+        "thai": "maggaṃ"
+      },
+      "rejected": [
+        "imesañ",
+        "jhānasuttaṃ",
+        "maggaṃ"
+      ],
+      "notes": "PTS \"imesañ\" not in DPD, SC/VRI \"imesañca\" is valid, BJT has \"jhānasuttaṃ\", Thai has \"maggaṃ\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "panāham",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "panāham",
+        "sc": null,
+        "vri": null,
+        "bjt": "panā",
+        "thai": "sikkhaṃ"
+      },
+      "rejected": [
+        "panā",
+        "sikkhaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 11,
+      "type": "error",
+      "selected": "yathābhūtaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "yathābhūtam",
+        "sc": "yathābhūtaṃ",
+        "vri": "yathābhūtaṃ",
+        "bjt": "yathābhūtaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "yathābhūtam"
+      ],
+      "notes": "PTS \"yathābhūtam\" not in DPD, SC/VRI/BJT \"yathābhūtaṃ\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn52_21_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 14,
+      "orthographic": 1,
+      "errors": 2,
+      "variants": 0,
+      "uncertain": 1,
+      "match": 0,
+      "other": 10
+    }
+  }
+}

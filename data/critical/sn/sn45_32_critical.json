@@ -1,0 +1,153 @@
+{
+  "id": "sn45_32",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 42,
+    "sc": 40,
+    "vri": 40,
+    "bjt": 49,
+    "thai": 61
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "paṭipannasuttaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "paṭipannasuttaṃ",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"paṭipannasuttaṃ\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "micchāpaṭipannañ",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "micchāpaṭipannañ",
+        "sc": null,
+        "vri": null,
+        "bjt": "micchāpaṭipannañca",
+        "thai": null
+      },
+      "rejected": [
+        "micchāpaṭipannañca"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 3,
+      "type": "pts_addition",
+      "selected": "ca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ca",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "ca"
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 6,
+      "type": "variant",
+      "selected": "desissāmi",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "desissāmi",
+        "sc": "desessāmi",
+        "vri": "desessāmi",
+        "bjt": "desissāmi",
+        "thai": "desissāmi"
+      },
+      "rejected": [
+        "desessāmi"
+      ],
+      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI \"desessāmi\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 7,
+      "type": "error",
+      "selected": "sammāpaṭipannañca",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "sammāpaṭipannañ",
+        "sc": "sammāpaṭipannañca",
+        "vri": "sammāpaṭipannañca",
+        "bjt": "sammāpaṭipannañca",
+        "thai": "sammāpaṭipannañca"
+      },
+      "rejected": [
+        "sammāpaṭipannañ"
+      ],
+      "notes": "PTS \"sammāpaṭipannañ\" not in DPD, SC/VRI/BJT/Thai \"sammāpaṭipannañca\" is valid"
+    },
+    {
+      "position": 8,
+      "type": "pts_addition",
+      "selected": "ca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ca",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 23,
+      "type": "error",
+      "selected": "ayaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "ayam",
+        "sc": "ayaṃ",
+        "vri": "ayaṃ",
+        "bjt": "ayaṃ",
+        "thai": "ayaṃ"
+      },
+      "rejected": [
+        "ayam"
+      ],
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT/Thai \"ayaṃ\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn45_32_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 42,
+      "orthographic": 1,
+      "errors": 2,
+      "variants": 2,
+      "uncertain": 3,
+      "match": 29,
+      "other": 5
+    }
+  }
+}

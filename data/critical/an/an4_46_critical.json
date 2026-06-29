@@ -1,0 +1,132 @@
+{
+  "id": "an4_46",
+  "schema_version": 1,
+  "nikaya": "AN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 65,
+    "sc": 317,
+    "vri": 685,
+    "bjt": 61,
+    "thai": 311
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 2,
+      "type": "variant",
+      "selected": "bhikkhave",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "bhikkhave",
+        "sc": "bhagavā",
+        "vri": "bhagavā",
+        "bjt": "bhikkhave",
+        "thai": "tassā"
+      },
+      "rejected": [
+        "bhagavā",
+        "tassā"
+      ],
+      "notes": "Textual variant: PTS \"bhikkhave\" vs SC/VRI \"bhagavā\", BJT agrees with PTS, Thai has \"tassā\""
+    },
+    {
+      "position": 12,
+      "type": "uncertain",
+      "selected": "jāto",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "jāto",
+        "sc": "devaputto",
+        "vri": "mātugāmo",
+        "bjt": "jātoti",
+        "thai": "abhikkantāya"
+      },
+      "rejected": [
+        "abhikkantāya",
+        "devaputto",
+        "jātoti",
+        "mātugāmo"
+      ],
+      "notes": "Multi-way disagreement: PTS \"jāto\", SC \"devaputto\", VRI \"mātugāmo\", BJT \"jātoti\", Thai \"abhikkantāya\""
+    },
+    {
+      "position": 17,
+      "type": "uncertain",
+      "selected": "dassanīyaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "dassanīyaṃ",
+        "sc": "jetavanaṃ",
+        "vri": "atthakāmā",
+        "bjt": "dassanīyaṃ",
+        "thai": "obhāsetvā"
+      },
+      "rejected": [
+        "atthakāmā",
+        "jetavanaṃ",
+        "obhāsetvā"
+      ],
+      "notes": "PTS/BJT \"dassanīyaṃ\" vs SC \"jetavanaṃ\", VRI \"atthakāmā\", Thai \"obhāsetvā\""
+    },
+    {
+      "position": 34,
+      "type": "uncertain",
+      "selected": "anuttaraṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "anuttaraṃ",
+        "sc": "yattha",
+        "vri": "mātāti",
+        "bjt": "anuttaraṃ",
+        "thai": "rohitasso"
+      },
+      "rejected": [
+        "mātāti",
+        "rohitasso",
+        "yattha"
+      ],
+      "notes": "PTS/BJT \"anuttaraṃ\" vs SC \"yattha\", VRI \"mātāti\", Thai \"rohitasso\""
+    },
+    {
+      "position": 37,
+      "type": "uncertain",
+      "selected": "bhikkhave",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "bhikkhave",
+        "sc": "bhante",
+        "vri": "vā",
+        "bjt": "bhikkhave",
+        "thai": "etadavoca"
+      },
+      "rejected": [
+        "bhante",
+        "etadavoca",
+        "vā"
+      ],
+      "notes": "PTS/BJT \"bhikkhave\" vs SC \"bhante\", VRI \"vā\", Thai \"etadavoca\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/an/an4_46_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 65,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 4,
+      "match": 0,
+      "other": 60
+    }
+  }
+}

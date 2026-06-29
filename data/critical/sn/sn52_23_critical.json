@@ -1,0 +1,111 @@
+{
+  "id": "sn52_23",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 17,
+    "sc": 26,
+    "vri": 26,
+    "bjt": 15,
+    "thai": 11
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "imesañca",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "imesañ",
+        "sc": "imesañca",
+        "vri": "imesañca",
+        "bjt": "jhānasuttaṃ",
+        "thai": "netaṃ"
+      },
+      "rejected": [
+        "imesañ",
+        "jhānasuttaṃ",
+        "netaṃ"
+      ],
+      "notes": "PTS \"imesañ\" not in DPD, SC/VRI \"imesañca\" is valid, BJT has \"jhānasuttaṃ\", Thai has \"netaṃ\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "panāham",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "panāham",
+        "sc": null,
+        "vri": null,
+        "bjt": "panā",
+        "thai": "vijjati"
+      },
+      "rejected": [
+        "panā",
+        "vijjati"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 4,
+      "type": "error",
+      "selected": "catunnaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "catunnam",
+        "sc": "catunnaṃ",
+        "vri": "catunnaṃ",
+        "bjt": "catunnaṃ",
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "bhikkhave",
+        "catunnam"
+      ],
+      "notes": "PTS \"catunnam\" not in DPD, SC/VRI/BJT \"catunnaṃ\" is valid, Thai has \"bhikkhave\""
+    },
+    {
+      "position": 10,
+      "type": "variant",
+      "selected": "atikkantamānussakena",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "atikkantamānussakena",
+        "sc": "atikkantamānusakena",
+        "vri": "atikkantamānusakena",
+        "bjt": "vodānaṃ",
+        "thai": "ariyaṃ"
+      },
+      "rejected": [
+        "ariyaṃ",
+        "atikkantamānusakena",
+        "vodānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"atikkantamānussakena\" vs SC/VRI \"atikkantamānusakena\", BJT has \"vodānaṃ\", Thai has \"ariyaṃ\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn52_23_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 17,
+      "orthographic": 3,
+      "errors": 2,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 0,
+      "other": 10
+    }
+  }
+}

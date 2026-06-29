@@ -1,0 +1,74 @@
+{
+  "id": "sn25_6",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 21,
+    "sc": 28,
+    "vri": 28,
+    "bjt": 81,
+    "thai": 17
+  },
+  "apparatus_count": 2,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "saññā",
+        "thai": "vedanā"
+      },
+      "rejected": [
+        "saññā",
+        "sāvatthinidānaṃ",
+        "vedanā"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"saññā\", Thai has \"vedanā\""
+    },
+    {
+      "position": 9,
+      "type": "error",
+      "selected": "phoṭṭhabbasaññā",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "poṭṭhabbasaññā",
+        "sc": "phoṭṭhabbasaññā",
+        "vri": "phoṭṭhabbasaññā",
+        "bjt": "aniccā",
+        "thai": null
+      },
+      "rejected": [
+        "aniccā",
+        "poṭṭhabbasaññā"
+      ],
+      "notes": "PTS \"poṭṭhabbasaññā\" not in DPD, SC/VRI \"phoṭṭhabbasaññā\" is valid, BJT has \"aniccā\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn25_6_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 21,
+      "orthographic": 9,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 0,
+      "match": 1,
+      "other": 9
+    }
+  }
+}

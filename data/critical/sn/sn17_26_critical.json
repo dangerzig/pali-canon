@@ -1,0 +1,129 @@
+{
+  "id": "sn17_26",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 22,
+    "sc": 28,
+    "vri": 23,
+    "bjt": 50,
+    "thai": 15
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthiyaṃ",
+        "vri": "sāvatthiyaṃ",
+        "bjt": "kusaladhammasamucchedasuttaṃ",
+        "thai": "vā"
+      },
+      "rejected": [
+        "kusaladhammasamucchedasuttaṃ",
+        "sāvatthiyaṃ",
+        "vā"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthiyaṃ\", BJT has \"kusaladhammasamucchedasuttaṃ\", Thai has \"vā\""
+    },
+    {
+      "position": 10,
+      "type": "uncertain",
+      "selected": "kusalo",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "kusalo",
+        "sc": null,
+        "vri": "sukko",
+        "bjt": "kusalo",
+        "thai": "vā"
+      },
+      "rejected": [
+        "sukko",
+        "vā"
+      ],
+      "notes": "PTS/BJT \"kusalo\" vs VRI \"sukko\", Thai \"vā\""
+    },
+    {
+      "position": 12,
+      "type": "uncertain",
+      "selected": "samucchedamagamā",
+      "confidence": 0.5,
+      "witnesses": {
+        "gretil": "samucchedam",
+        "sc": null,
+        "vri": "samucchedamagamā",
+        "bjt": "samacchedamagamā",
+        "thai": "dhamme"
+      },
+      "rejected": [
+        "dhamme",
+        "samacchedamagamā",
+        "samucchedam"
+      ],
+      "notes": "Multi-way disagreement, one valid reading"
+    },
+    {
+      "position": 13,
+      "type": "pts_addition",
+      "selected": "agamā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "agamā",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "sayaṃ"
+      },
+      "rejected": [
+        "sayaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 20,
+      "type": "uncertain",
+      "selected": "osikkhitabbanti",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "osikkhitabbanti",
+        "sc": "sayaṃ",
+        "vri": "sikkhitabba",
+        "bjt": "pharuso",
+        "thai": null
+      },
+      "rejected": [
+        "pharuso",
+        "sayaṃ",
+        "sikkhitabba"
+      ],
+      "notes": "Multi-way disagreement: PTS \"osikkhitabbanti\", SC \"sayaṃ\", VRI \"sikkhitabba\", BJT \"pharuso\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn17_26_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 22,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 4,
+      "match": 0,
+      "other": 17
+    }
+  }
+}

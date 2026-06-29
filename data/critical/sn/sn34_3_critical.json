@@ -1,0 +1,71 @@
+{
+  "id": "sn34_3",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 83,
+    "sc": 86,
+    "vri": 86,
+    "bjt": 119,
+    "thai": 51
+  },
+  "apparatus_count": 2,
+  "apparatus": [
+    {
+      "position": 62,
+      "type": "error",
+      "selected": "ayaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "ayam",
+        "sc": "ayaṃ",
+        "vri": "ayaṃ",
+        "bjt": "ayaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "ayam"
+      ],
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT \"ayaṃ\" is valid"
+    },
+    {
+      "position": 65,
+      "type": "error",
+      "selected": "jhāyīnaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "jhāyīyaṃ",
+        "sc": "jhāyīnaṃ",
+        "vri": "jhāyīnaṃ",
+        "bjt": "jhāyīnaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "jhāyīyaṃ"
+      ],
+      "notes": "PTS \"jhāyīyaṃ\" not in DPD, SC/VRI/BJT \"jhāyīnaṃ\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn34_3_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 83,
+      "orthographic": 51,
+      "errors": 2,
+      "variants": 0,
+      "uncertain": 0,
+      "match": 2,
+      "other": 28
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "id": "sn22_14",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT"
+  ],
+  "word_counts": {
+    "gretil": 22,
+    "sc": 47,
+    "vri": 47,
+    "bjt": 99,
+    "thai": 0
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "anattānupassanā",
+        "thai": null
+      },
+      "rejected": [
+        "anattānupassanā",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"anattānupassanā\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "voca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "voca",
+        "sc": null,
+        "vri": null,
+        "bjt": "sāvatthiyaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 3,
+      "type": "pts_addition",
+      "selected": "rūpam",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "rūpam",
+        "sc": null,
+        "vri": null,
+        "bjt": "saddhāpabbajitassa",
+        "thai": null
+      },
+      "rejected": [
+        "saddhāpabbajitassa"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 12,
+      "type": "error",
+      "selected": "viññāṇaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "viññāṇam",
+        "sc": "viññāṇaṃ",
+        "vri": "viññāṇaṃ",
+        "bjt": "vedanāya",
+        "thai": null
+      },
+      "rejected": [
+        "vedanāya",
+        "viññāṇam"
+      ],
+      "notes": "PTS \"viññāṇam\" not in DPD, SC/VRI \"viññāṇaṃ\" is valid, BJT has \"vedanāya\""
+    },
+    {
+      "position": 14,
+      "type": "error",
+      "selected": "evaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evaṃ",
+        "vri": "evaṃ",
+        "bjt": "vihareyya",
+        "thai": null
+      },
+      "rejected": [
+        "evam",
+        "vihareyya"
+      ],
+      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evaṃ\" is valid, BJT has \"vihareyya\""
+    },
+    {
+      "position": 15,
+      "type": "error",
+      "selected": "passaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "passam",
+        "sc": "passaṃ",
+        "vri": "passaṃ",
+        "bjt": "saññāya",
+        "thai": null
+      },
+      "rejected": [
+        "passam",
+        "saññāya"
+      ],
+      "notes": "PTS \"passam\" not in DPD, SC/VRI \"passaṃ\" is valid, BJT has \"saññāya\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn22_14_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 22,
+      "orthographic": 1,
+      "errors": 3,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 0,
+      "other": 15
+    }
+  }
+}

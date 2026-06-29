@@ -1,0 +1,176 @@
+{
+  "id": "sn34_10",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 85,
+    "sc": 87,
+    "vri": 87,
+    "bjt": 118,
+    "thai": 51
+  },
+  "apparatus_count": 8,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "sappāyakārī",
+        "thai": "tesaṃ"
+      },
+      "rejected": [
+        "sappāyakārī",
+        "sāvatthinidānaṃ",
+        "tesaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"sappāyakārī\", Thai has \"tesaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "cattāro",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "cattāro",
+        "sc": "cattārome",
+        "vri": "cattārome",
+        "bjt": "suttaṃ",
+        "thai": "pahānā"
+      },
+      "rejected": [
+        "cattārome",
+        "pahānā",
+        "suttaṃ"
+      ],
+      "notes": "Textual variant: PTS \"cattāro\" vs SC/VRI \"cattārome\", BJT has \"suttaṃ\", Thai has \"pahānā\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "sāvatthiyaṃ",
+        "thai": "na"
+      },
+      "rejected": [
+        "na",
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 11,
+      "type": "error",
+      "selected": "samādhismiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "samādhismim",
+        "sc": "samādhismiṃ",
+        "vri": "samādhismiṃ",
+        "bjt": "samādhismiṃ",
+        "thai": "saṅkhārā"
+      },
+      "rejected": [
+        "samādhismim",
+        "saṅkhārā"
+      ],
+      "notes": "PTS \"samādhismim\" not in DPD, SC/VRI/BJT \"samādhismiṃ\" is valid, Thai has \"saṅkhārā\""
+    },
+    {
+      "position": 15,
+      "type": "error",
+      "selected": "samādhismiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "samādhismim",
+        "sc": "samādhismiṃ",
+        "vri": "samādhismiṃ",
+        "bjt": "samādhismiṃ",
+        "thai": "paritassati"
+      },
+      "rejected": [
+        "paritassati",
+        "samādhismim"
+      ],
+      "notes": "PTS \"samādhismim\" not in DPD, SC/VRI/BJT \"samādhismiṃ\" is valid, Thai has \"paritassati\""
+    },
+    {
+      "position": 40,
+      "type": "pts_addition",
+      "selected": "xxxiv",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "xxxiv",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 41,
+      "type": "pts_addition",
+      "selected": "jhānasaṃyutta",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "jhānasaṃyutta",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 67,
+      "type": "error",
+      "selected": "jhāyīnaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "jhāyīnam",
+        "sc": "jhāyīnaṃ",
+        "vri": "jhāyīnaṃ",
+        "bjt": "jhāyīnaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "jhāyīnam"
+      ],
+      "notes": "PTS \"jhāyīnam\" not in DPD, SC/VRI/BJT \"jhāyīnaṃ\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn34_10_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 85,
+      "orthographic": 52,
+      "errors": 3,
+      "variants": 2,
+      "uncertain": 3,
+      "match": 2,
+      "other": 23
+    }
+  }
+}

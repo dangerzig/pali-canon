@@ -31,6 +31,11 @@ requires_lemmatized = pytest.mark.skipif(
     reason="Lemmatized data files not present"
 )
 
+# Reusable tier markers (registered in pytest.ini). Import from conftest so the
+# fast tier (`-m "not slow and not corpus"`) is consistent across test modules.
+slow = pytest.mark.slow
+corpus = pytest.mark.corpus
+
 
 @pytest.fixture
 def data_dir():

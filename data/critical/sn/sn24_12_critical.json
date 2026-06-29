@@ -1,0 +1,145 @@
+{
+  "id": "sn24_12",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 24,
+    "sc": 25,
+    "vri": 25,
+    "bjt": 222,
+    "thai": 16
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "anantavālokasuttaṃ",
+        "thai": "cittaṃ"
+      },
+      "rejected": [
+        "anantavālokasuttaṃ",
+        "cittaṃ",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"anantavālokasuttaṃ\", Thai has \"cittaṃ\""
+    },
+    {
+      "position": 6,
+      "type": "error",
+      "selected": "kiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "kim",
+        "sc": "kiṃ",
+        "vri": "kiṃ",
+        "bjt": "kiṃ",
+        "thai": "ca"
+      },
+      "rejected": [
+        "ca",
+        "kim"
+      ],
+      "notes": "PTS \"kim\" not in DPD, SC/VRI/BJT \"kiṃ\" is valid, Thai has \"ca\""
+    },
+    {
+      "position": 8,
+      "type": "error",
+      "selected": "kiṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "kim",
+        "sc": "kiṃ",
+        "vri": "kiṃ",
+        "bjt": "kiṃ",
+        "thai": "ca"
+      },
+      "rejected": [
+        "ca",
+        "kim"
+      ],
+      "notes": "PTS \"kim\" not in DPD, SC/VRI/BJT \"kiṃ\" is valid, Thai has \"ca\""
+    },
+    {
+      "position": 9,
+      "type": "error",
+      "selected": "abhinivissa",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "ābhinivissa",
+        "sc": "abhinivissa",
+        "vri": "abhinivissa",
+        "bjt": "abhinivissa",
+        "thai": "paritassati"
+      },
+      "rejected": [
+        "paritassati",
+        "ābhinivissa"
+      ],
+      "notes": "PTS \"ābhinivissa\" not in DPD, SC/VRI/BJT \"abhinivissa\" is valid, Thai has \"paritassati\""
+    },
+    {
+      "position": 16,
+      "type": "variant",
+      "selected": "bhagavammūlakā",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "bhagavammūlakā",
+        "sc": "bhagavaṃmūlakā",
+        "vri": "bhagavaṃmūlakā",
+        "bjt": "bhagavammūlakā",
+        "thai": null
+      },
+      "rejected": [
+        "bhagavaṃmūlakā"
+      ],
+      "notes": "Textual variant: PTS \"bhagavammūlakā\" vs SC/VRI \"bhagavaṃmūlakā\", BJT agrees with PTS"
+    },
+    {
+      "position": 22,
+      "type": "error",
+      "selected": "sambodhiparāyano",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "samparāyano",
+        "sc": "sambodhiparāyano",
+        "vri": "sambodhiparāyano",
+        "bjt": "sambodhiparāyanoti",
+        "thai": null
+      },
+      "rejected": [
+        "sambodhiparāyanoti",
+        "samparāyano"
+      ],
+      "notes": "PTS \"samparāyano\" not in DPD, SC/VRI \"sambodhiparāyano\" is valid, BJT has \"sambodhiparāyanoti\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn24_12_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 24,
+      "orthographic": 11,
+      "errors": 4,
+      "variants": 2,
+      "uncertain": 0,
+      "match": 0,
+      "other": 7
+    }
+  }
+}

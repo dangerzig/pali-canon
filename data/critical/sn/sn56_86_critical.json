@@ -1,0 +1,164 @@
+{
+  "id": "sn56_86",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 22,
+    "sc": 19,
+    "vri": 20,
+    "bjt": 19,
+    "thai": 632
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "uncertain",
+      "selected": "evam",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "pe",
+        "bjt": "kumārikasuttaṃ",
+        "thai": "javanapañño"
+      },
+      "rejected": [
+        "evameva",
+        "javanapañño",
+        "kumārikasuttaṃ",
+        "pe"
+      ],
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\", BJT \"kumārikasuttaṃ\", Thai \"javanapañño\""
+    },
+    {
+      "position": 1,
+      "type": "uncertain",
+      "selected": "evameva",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": "evameva",
+        "bjt": "evameva",
+        "thai": "na"
+      },
+      "rejected": [
+        "eva",
+        "na"
+      ],
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", Thai \"na\""
+    },
+    {
+      "position": 8,
+      "type": "error",
+      "selected": "itthikumārikapaṭiggahaṇā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "itthikumārapāṭiggahaṇā",
+        "sc": "itthikumārikapaṭiggahaṇā",
+        "vri": "itthikumārikapaṭiggahaṇā",
+        "bjt": "itthikumārikapaṭiggahaṇā",
+        "thai": "parikkhayā"
+      },
+      "rejected": [
+        "itthikumārapāṭiggahaṇā",
+        "parikkhayā"
+      ],
+      "notes": "PTS \"itthikumārapāṭiggahaṇā\" not in DPD, SC/VRI/BJT \"itthikumārikapaṭiggahaṇā\" is valid, Thai has \"parikkhayā\""
+    },
+    {
+      "position": 10,
+      "type": "error",
+      "selected": "atha",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "ātha",
+        "sc": "atha",
+        "vri": "atha",
+        "bjt": "atha",
+        "thai": "tanuttā"
+      },
+      "rejected": [
+        "tanuttā",
+        "ātha"
+      ],
+      "notes": "PTS \"ātha\" not in DPD, SC/VRI/BJT \"atha\" is valid, Thai has \"tanuttā\""
+    },
+    {
+      "position": 12,
+      "type": "variant",
+      "selected": "ete",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "ete",
+        "sc": "eteva",
+        "vri": "eteva",
+        "bjt": "eteva",
+        "thai": "hoti"
+      },
+      "rejected": [
+        "eteva",
+        "hoti"
+      ],
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"hoti\""
+    },
+    {
+      "position": 17,
+      "type": "error",
+      "selected": "itthikumārikapaṭiggahaṇā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "itthikumārapaṭiggahaṇā",
+        "sc": "itthikumārikapaṭiggahaṇā",
+        "vri": "itthikumārikapaṭiggahaṇā",
+        "bjt": "itthikumārikapaṭiggahaṇā",
+        "thai": "dukkhassantaṃ"
+      },
+      "rejected": [
+        "dukkhassantaṃ",
+        "itthikumārapaṭiggahaṇā"
+      ],
+      "notes": "PTS \"itthikumārapaṭiggahaṇā\" not in DPD, SC/VRI/BJT \"itthikumārikapaṭiggahaṇā\" is valid, Thai has \"dukkhassantaṃ\""
+    },
+    {
+      "position": 21,
+      "type": "pts_addition",
+      "selected": "lvi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "lvi",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "mahānāma"
+      },
+      "rejected": [
+        "mahānāma"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_86_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 22,
+      "orthographic": 0,
+      "errors": 3,
+      "variants": 1,
+      "uncertain": 3,
+      "match": 0,
+      "other": 15
+    }
+  }
+}

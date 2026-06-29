@@ -1,0 +1,144 @@
+{
+  "id": "sn34_7",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 83,
+    "sc": 86,
+    "vri": 86,
+    "bjt": 119,
+    "thai": 51
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "gocara",
+        "thai": "assutavā"
+      },
+      "rejected": [
+        "assutavā",
+        "gocara",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"gocara\", Thai has \"assutavā\""
+    },
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "cattāro",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "cattāro",
+        "sc": "cattārome",
+        "vri": "cattārome",
+        "bjt": "abhinīhāra",
+        "thai": "puthujjano"
+      },
+      "rejected": [
+        "abhinīhāra",
+        "cattārome",
+        "puthujjano"
+      ],
+      "notes": "Textual variant: PTS \"cattāro\" vs SC/VRI \"cattārome\", BJT has \"abhinīhāra\", Thai has \"puthujjano\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "suttaṃ",
+        "thai": "ariyānaṃ"
+      },
+      "rejected": [
+        "ariyānaṃ",
+        "suttaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 54,
+      "type": "error",
+      "selected": "yvāyaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "yvāyam",
+        "sc": "yvāyaṃ",
+        "vri": "yvāyaṃ",
+        "bjt": "yvāyaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "yvāyam"
+      ],
+      "notes": "PTS \"yvāyam\" not in DPD, SC/VRI/BJT \"yvāyaṃ\" is valid"
+    },
+    {
+      "position": 62,
+      "type": "error",
+      "selected": "ayaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "ayam",
+        "sc": "ayaṃ",
+        "vri": "ayaṃ",
+        "bjt": "ayaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "ayam"
+      ],
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT \"ayaṃ\" is valid"
+    },
+    {
+      "position": 65,
+      "type": "variant",
+      "selected": "jhāyinaṃ",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "jhāyinaṃ",
+        "sc": "jhāyīnaṃ",
+        "vri": "jhāyīnaṃ",
+        "bjt": "jhāyīnaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "jhāyīnaṃ"
+      ],
+      "notes": "Textual variant: PTS \"jhāyinaṃ\" vs SC/VRI/BJT \"jhāyīnaṃ\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn34_7_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 83,
+      "orthographic": 41,
+      "errors": 2,
+      "variants": 3,
+      "uncertain": 1,
+      "match": 1,
+      "other": 35
+    }
+  }
+}

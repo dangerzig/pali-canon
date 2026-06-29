@@ -1,0 +1,156 @@
+{
+  "id": "sn1_14",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 27,
+    "sc": 25,
+    "vri": 25,
+    "bjt": 36,
+    "thai": 35
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 3,
+      "type": "variant",
+      "selected": "balivaddo",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "balivaddo",
+        "sc": "balībaddo",
+        "vri": "balībaddo",
+        "bjt": "balivaddo",
+        "thai": "balibaddho"
+      },
+      "rejected": [
+        "balibaddho",
+        "balībaddo"
+      ],
+      "notes": "Textual variant: PTS \"balivaddo\" vs SC/VRI \"balībaddo\", BJT agrees with PTS, Thai has \"balibaddho\""
+    },
+    {
+      "position": 5,
+      "type": "variant",
+      "selected": "kumārī",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "kumārī",
+        "sc": "komārī",
+        "vri": "komārī",
+        "bjt": "komārī",
+        "thai": "komārī"
+      },
+      "rejected": [
+        "komārī"
+      ],
+      "notes": "Textual variant: PTS \"kumārī\" vs SC/VRI/BJT/Thai \"komārī\""
+    },
+    {
+      "position": 10,
+      "type": "variant",
+      "selected": "puttānaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "puttānaṃ",
+        "sc": "puttāna",
+        "vri": "puttāna",
+        "bjt": "puttāna",
+        "thai": "puttāna"
+      },
+      "rejected": [
+        "puttāna"
+      ],
+      "notes": "Textual variant: PTS \"puttānaṃ\" vs SC/VRI/BJT/Thai \"puttāna\""
+    },
+    {
+      "position": 11,
+      "type": "variant",
+      "selected": "pubbajoti",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "pubbajoti",
+        "sc": "pubbajo",
+        "vri": "pubbajo",
+        "bjt": "pubbajoti",
+        "thai": "pubbajoti"
+      },
+      "rejected": [
+        "pubbajo"
+      ],
+      "notes": "Textual variant: PTS \"pubbajoti\" vs SC/VRI \"pubbajo\", BJT agrees with PTS, Thai agrees with PTS"
+    },
+    {
+      "position": 22,
+      "type": "error",
+      "selected": "puttānamassavo",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "puttānam",
+        "sc": "puttānamassavo",
+        "vri": "puttānamassavo",
+        "bjt": "puttānamassavoti",
+        "thai": "puttānamassavoti"
+      },
+      "rejected": [
+        "puttānam",
+        "puttānamassavoti"
+      ],
+      "notes": "PTS \"puttānam\" not in DPD, SC/VRI \"puttānamassavo\" is valid, BJT has \"puttānamassavoti\", Thai has \"puttānamassavoti\""
+    },
+    {
+      "position": 23,
+      "type": "pts_addition",
+      "selected": "assavo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "assavo",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": "pañcamaṃ"
+      },
+      "rejected": [
+        "pañcamaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 26,
+      "type": "pts_addition",
+      "selected": "nandanavagga",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "nandanavagga",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_14_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 27,
+      "orthographic": 1,
+      "errors": 1,
+      "variants": 4,
+      "uncertain": 2,
+      "match": 16,
+      "other": 3
+    }
+  }
+}

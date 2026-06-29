@@ -1,0 +1,143 @@
+{
+  "id": "sn48_29",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 54,
+    "sc": 105,
+    "vri": 105,
+    "bjt": 1886,
+    "thai": 8
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "cha",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "cha",
+        "sc": "chayimāni",
+        "vri": "chayimāni",
+        "bjt": "samaṇasuttaṃ",
+        "thai": "mohavinayapariyosānaṃ"
+      },
+      "rejected": [
+        "chayimāni",
+        "mohavinayapariyosānaṃ",
+        "samaṇasuttaṃ"
+      ],
+      "notes": "Textual variant: PTS \"cha\" vs SC/VRI \"chayimāni\", BJT has \"samaṇasuttaṃ\", Thai has \"mohavinayapariyosānaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "yimāni",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "yimāni",
+        "sc": null,
+        "vri": null,
+        "bjt": "pañcimāni",
+        "thai": "evaṃ"
+      },
+      "rejected": [
+        "evaṃ",
+        "pañcimāni"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 18,
+      "type": "error",
+      "selected": "channaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "channam",
+        "sc": "channaṃ",
+        "vri": "channaṃ",
+        "bjt": "pañcannaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "channam",
+        "pañcannaṃ"
+      ],
+      "notes": "PTS \"channam\" not in DPD, SC/VRI \"channaṃ\" is valid, BJT has \"pañcannaṃ\""
+    },
+    {
+      "position": 21,
+      "type": "variant",
+      "selected": "atthagamañca",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "atthagamañca",
+        "sc": "atthaṅgamañca",
+        "vri": "atthaṅgamañca",
+        "bjt": "atthagamañca",
+        "thai": null
+      },
+      "rejected": [
+        "atthaṅgamañca"
+      ],
+      "notes": "Textual variant: PTS \"atthagamañca\" vs SC/VRI \"atthaṅgamañca\", BJT agrees with PTS"
+    },
+    {
+      "position": 49,
+      "type": "error",
+      "selected": "samaṇā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "sayam",
+        "sc": "samaṇā",
+        "vri": "samaṇā",
+        "bjt": "samaṇā",
+        "thai": null
+      },
+      "rejected": [
+        "sayam"
+      ],
+      "notes": "PTS \"sayam\" not in DPD, SC/VRI/BJT \"samaṇā\" is valid"
+    },
+    {
+      "position": 53,
+      "type": "variant",
+      "selected": "viharantīti",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "viharantīti",
+        "sc": "viharantī",
+        "vri": "viharantī",
+        "bjt": "viharantīti",
+        "thai": null
+      },
+      "rejected": [
+        "viharantī"
+      ],
+      "notes": "Textual variant: PTS \"viharantīti\" vs SC/VRI \"viharantī\", BJT agrees with PTS"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn48_29_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 54,
+      "orthographic": 39,
+      "errors": 2,
+      "variants": 3,
+      "uncertain": 1,
+      "match": 0,
+      "other": 9
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "id": "sn20_1",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 57,
+    "sc": 60,
+    "vri": 70,
+    "bjt": 70,
+    "thai": 235
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "evaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evaṃ",
+        "vri": "evaṃ",
+        "bjt": "kūṭasuttaṃ",
+        "thai": "ca"
+      },
+      "rejected": [
+        "ca",
+        "evam",
+        "kūṭasuttaṃ"
+      ],
+      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evaṃ\" is valid, BJT has \"kūṭasuttaṃ\", Thai has \"ca\""
+    },
+    {
+      "position": 12,
+      "type": "pts_addition",
+      "selected": "opammasaṃyutta",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "opammasaṃyutta",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 17,
+      "type": "uncertain",
+      "selected": "āmantesi",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "avoca",
+        "sc": "etadavoca",
+        "vri": "āmantesi",
+        "bjt": "āmantesi",
+        "thai": "bhikkhave"
+      },
+      "rejected": [
+        "avoca",
+        "bhikkhave",
+        "etadavoca"
+      ],
+      "notes": "VRI/BJT \"āmantesi\" vs PTS \"avoca\", SC \"etadavoca\", Thai \"bhikkhave\""
+    },
+    {
+      "position": 33,
+      "type": "error",
+      "selected": "evameva",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "evameva",
+        "bjt": "evameva",
+        "thai": "iti"
+      },
+      "rejected": [
+        "evam",
+        "iti"
+      ],
+      "notes": "PTS \"evam\" not in DPD, SC/VRI/BJT \"evameva\" is valid, Thai has \"iti\""
+    },
+    {
+      "position": 49,
+      "type": "variant",
+      "selected": "tasmāti",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "tasmāti",
+        "sc": "tasmātiha",
+        "vri": "tasmātiha",
+        "bjt": "tasmātiha",
+        "thai": "deseti"
+      },
+      "rejected": [
+        "deseti",
+        "tasmātiha"
+      ],
+      "notes": "Textual variant: PTS \"tasmāti\" vs SC/VRI/BJT \"tasmātiha\", Thai has \"deseti\""
+    },
+    {
+      "position": 55,
+      "type": "uncertain",
+      "selected": "viharissāmā",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "viharissāmāti",
+        "sc": "viharissāmā",
+        "vri": "viharissāmā",
+        "bjt": "viharissāmā",
+        "thai": null
+      },
+      "rejected": [
+        "viharissāmāti"
+      ],
+      "notes": "Neither reading validated: PTS \"viharissāmāti\" vs SC/VRI \"viharissāmā\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn20_1_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 57,
+      "orthographic": 5,
+      "errors": 2,
+      "variants": 1,
+      "uncertain": 3,
+      "match": 5,
+      "other": 41
+    }
+  }
+}

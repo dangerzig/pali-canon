@@ -1,0 +1,92 @@
+{
+  "id": "sn43_7",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 10,
+    "sc": 12,
+    "vri": 12,
+    "bjt": 53,
+    "thai": 62
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 5,
+      "type": "variant",
+      "selected": "asaṅkhatagāmi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "asaṅkhatagāmi",
+        "sc": "asaṅkhatagāmimaggo",
+        "vri": "asaṅkhatagāmimaggo",
+        "bjt": "asaṅkhatagāmī",
+        "thai": "ma"
+      },
+      "rejected": [
+        "asaṅkhatagāmimaggo",
+        "asaṅkhatagāmī",
+        "ma"
+      ],
+      "notes": "Textual variant: PTS \"asaṅkhatagāmi\" vs SC/VRI \"asaṅkhatagāmimaggo\", BJT has \"asaṅkhatagāmī\", Thai has \"ma\""
+    },
+    {
+      "position": 8,
+      "type": "pts_addition",
+      "selected": "vaggo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "vaggo",
+        "sc": null,
+        "vri": null,
+        "bjt": "kho",
+        "thai": "atha"
+      },
+      "rejected": [
+        "atha",
+        "kho"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 9,
+      "type": "pts_addition",
+      "selected": "pathamo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pathamo",
+        "sc": null,
+        "vri": null,
+        "bjt": "bhikkhave",
+        "thai": "kho"
+      },
+      "rejected": [
+        "bhikkhave",
+        "kho"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn43_7_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 10,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 0,
+      "other": 7
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "id": "sn37_12",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 39,
+    "sc": 40,
+    "vri": 40,
+    "bjt": 611,
+    "thai": 62
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 6,
+      "type": "error",
+      "selected": "nirayaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "nirayam",
+        "sc": "nirayaṃ",
+        "vri": "nirayaṃ",
+        "bjt": "kāyassa",
+        "thai": "gato"
+      },
+      "rejected": [
+        "gato",
+        "kāyassa",
+        "nirayam"
+      ],
+      "notes": "PTS \"nirayam\" not in DPD, SC/VRI \"nirayaṃ\" is valid, BJT has \"kāyassa\", Thai has \"gato\""
+    },
+    {
+      "position": 16,
+      "type": "variant",
+      "selected": "anottāpī",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "anottāpī",
+        "sc": "anottappī",
+        "vri": "anottappī",
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [
+        "anottappī"
+      ],
+      "notes": "Textual variant: PTS \"anottāpī\" vs SC/VRI \"anottappī\""
+    },
+    {
+      "position": 36,
+      "type": "error",
+      "selected": "nirayaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "nirayam",
+        "sc": "nirayaṃ",
+        "vri": "nirayaṃ",
+        "bjt": "nirayaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "nirayam"
+      ],
+      "notes": "PTS \"nirayam\" not in DPD, SC/VRI/BJT \"nirayaṃ\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn37_12_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 39,
+      "orthographic": 17,
+      "errors": 2,
+      "variants": 1,
+      "uncertain": 0,
+      "match": 0,
+      "other": 19
+    }
+  }
+}

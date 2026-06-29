@@ -1,0 +1,94 @@
+{
+  "id": "sn17_25",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 22,
+    "sc": 90,
+    "vri": 23,
+    "bjt": 49,
+    "thai": 15
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthiyaṃ",
+        "vri": "sāvatthiyaṃ",
+        "bjt": "kusalamūlasamucchedasuttaṃ",
+        "thai": "imesaṃ"
+      },
+      "rejected": [
+        "imesaṃ",
+        "kusalamūlasamucchedasuttaṃ",
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthiyaṃ\", BJT has \"kusalamūlasamucchedasuttaṃ\", Thai has \"imesaṃ\""
+    },
+    {
+      "position": 11,
+      "type": "uncertain",
+      "selected": "kusalamūla",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "kusalamūla",
+        "sc": "vā",
+        "vri": "kusalo",
+        "bjt": "kusalamūlaṃ",
+        "thai": "brāhmaṇesu"
+      },
+      "rejected": [
+        "brāhmaṇesu",
+        "kusalamūlaṃ",
+        "kusalo",
+        "vā"
+      ],
+      "notes": "Multi-way disagreement: PTS \"kusalamūla\", SC \"vā\", VRI \"kusalo\", BJT \"kusalamūlaṃ\", Thai \"brāhmaṇesu\""
+    },
+    {
+      "position": 20,
+      "type": "uncertain",
+      "selected": "sikkhitabbanti",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "sikkhitabbanti",
+        "sc": "te",
+        "vri": "sikkhitabba",
+        "bjt": "sikkhitabbanti",
+        "thai": null
+      },
+      "rejected": [
+        "sikkhitabba",
+        "te"
+      ],
+      "notes": "PTS/BJT \"sikkhitabbanti\" vs SC \"te\", VRI \"sikkhitabba\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn17_25_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 22,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 1,
+      "other": 18
+    }
+  }
+}

@@ -3,9 +3,12 @@
 import pytest
 from pathlib import Path
 from collections import Counter
-from conftest import requires_data, requires_lemmatized
+from conftest import requires_data, requires_lemmatized, slow, corpus
 
 from pali.vocab import Vocabulary, VocabularyStats, ALL_COLLECTIONS
+
+# Every test here needs the full lemmatized corpus.
+pytestmark = corpus
 
 
 # =========================================================================
@@ -248,6 +251,7 @@ class TestAllCollections:
 # Export methods (smoke tests)
 # =========================================================================
 
+@slow
 @requires_lemmatized
 class TestExports:
     def setup_method(self):
@@ -286,6 +290,7 @@ class TestExports:
 # R package CSV export methods
 # =========================================================================
 
+@slow
 @requires_lemmatized
 class TestExportTipitakaRaw:
     def setup_method(self):
@@ -326,6 +331,7 @@ class TestExportTipitakaRaw:
                 assert len(row["text"]) > 0, f"Empty text for {row['book']}"
 
 
+@slow
 @requires_lemmatized
 class TestExportTipitakaSuttasRaw:
     def setup_method(self):
@@ -364,6 +370,7 @@ class TestExportTipitakaSuttasRaw:
         assert "Evaṃ" in dn1[0]["text"]
 
 
+@slow
 @requires_lemmatized
 class TestExportTipitakaLong:
     def setup_method(self):
@@ -407,6 +414,7 @@ class TestExportTipitakaLong:
                 break  # just check first row for speed
 
 
+@slow
 @requires_lemmatized
 class TestExportTipitakaWide:
     def setup_method(self):
@@ -428,6 +436,7 @@ class TestExportTipitakaWide:
         assert len(rows) == 7  # one per collection
 
 
+@slow
 @requires_lemmatized
 class TestExportTipitakaSuttasLong:
     def setup_method(self):

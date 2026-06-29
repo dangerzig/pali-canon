@@ -1,0 +1,189 @@
+{
+  "id": "sn1_6",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 36,
+    "sc": 33,
+    "vri": 33,
+    "bjt": 33,
+    "thai": 32
+  },
+  "apparatus_count": 9,
+  "apparatus": [
+    {
+      "position": 1,
+      "type": "variant",
+      "selected": "antaṃ",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "antaṃ",
+        "sc": "ekamantaṃ",
+        "vri": "ekamantaṃ",
+        "bjt": "sāvatthiyaṃ",
+        "thai": "ekamantaṃ"
+      },
+      "rejected": [
+        "ekamantaṃ",
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Textual variant: PTS \"antaṃ\" vs SC/VRI/Thai \"ekamantaṃ\", BJT has \"sāvatthiyaṃ\""
+    },
+    {
+      "position": 9,
+      "type": "error",
+      "selected": "gāthaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "gātham",
+        "sc": "gāthaṃ",
+        "vri": "gāthaṃ",
+        "bjt": "gāthaṃ",
+        "thai": "gāthaṃ"
+      },
+      "rejected": [
+        "gātham"
+      ],
+      "notes": "PTS \"gātham\" not in DPD, SC/VRI/BJT/Thai \"gāthaṃ\" is valid"
+    },
+    {
+      "position": 17,
+      "type": "variant",
+      "selected": "katīhi",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "katīhi",
+        "sc": "katibhi",
+        "vri": "katibhi",
+        "bjt": "katīhi",
+        "thai": "katibhi"
+      },
+      "rejected": [
+        "katibhi"
+      ],
+      "notes": "Textual variant: PTS \"katīhi\" vs SC/VRI/Thai \"katibhi\", BJT agrees with PTS"
+    },
+    {
+      "position": 18,
+      "type": "variant",
+      "selected": "rajaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "rajaṃ",
+        "sc": "rajamādeti",
+        "vri": "rajamādeti",
+        "bjt": "rajamādeti",
+        "thai": "rajamādeti"
+      },
+      "rejected": [
+        "rajamādeti"
+      ],
+      "notes": "Textual variant: PTS \"rajaṃ\" vs SC/VRI/BJT/Thai \"rajamādeti\""
+    },
+    {
+      "position": 25,
+      "type": "error",
+      "selected": "pañca",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "pañcasuttesu",
+        "sc": "pañca",
+        "vri": "pañca",
+        "bjt": "pañca",
+        "thai": "pañca"
+      },
+      "rejected": [
+        "pañcasuttesu"
+      ],
+      "notes": "PTS \"pañcasuttesu\" not in DPD, SC/VRI/BJT/Thai \"pañca\" is valid"
+    },
+    {
+      "position": 27,
+      "type": "variant",
+      "selected": "pañcahi",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "pañcahi",
+        "sc": "pañcabhi",
+        "vri": "pañcabhi",
+        "bjt": "pañcahi",
+        "thai": "pañcabhi"
+      },
+      "rejected": [
+        "pañcabhi"
+      ],
+      "notes": "Textual variant: PTS \"pañcahi\" vs SC/VRI/Thai \"pañcabhi\", BJT agrees with PTS"
+    },
+    {
+      "position": 28,
+      "type": "error",
+      "selected": "rajamādeti",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "rajam",
+        "sc": "rajamādeti",
+        "vri": "rajamādeti",
+        "bjt": "rajamādeti",
+        "thai": "rajamādeti"
+      },
+      "rejected": [
+        "rajam"
+      ],
+      "notes": "PTS \"rajam\" not in DPD, SC/VRI/BJT/Thai \"rajamādeti\" is valid"
+    },
+    {
+      "position": 30,
+      "type": "pts_addition",
+      "selected": "pañcahi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pañcahi",
+        "sc": null,
+        "vri": null,
+        "bjt": "pañcahi",
+        "thai": "parisujjhatīti"
+      },
+      "rejected": [
+        "parisujjhatīti"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 33,
+      "type": "pts_addition",
+      "selected": "devatāsaṃyutta",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "devatāsaṃyutta",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_6_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 36,
+      "orthographic": 1,
+      "errors": 3,
+      "variants": 4,
+      "uncertain": 2,
+      "match": 18,
+      "other": 8
+    }
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "id": "sn36_2",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 45,
+    "sc": 45,
+    "vri": 45,
+    "bjt": 374,
+    "thai": 62
+  },
+  "apparatus_count": 9,
+  "apparatus": [
+    {
+      "position": 16,
+      "type": "variant",
+      "selected": "vedanā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "vedanā",
+        "sc": "vedanāti",
+        "vri": "vedanāti",
+        "bjt": "vedayitaṃ",
+        "thai": "hoti"
+      },
+      "rejected": [
+        "hoti",
+        "vedanāti",
+        "vedayitaṃ"
+      ],
+      "notes": "Textual variant: PTS \"vedanā\" vs SC/VRI \"vedanāti\", BJT has \"vedayitaṃ\", Thai has \"hoti\""
+    },
+    {
+      "position": 17,
+      "type": "pts_addition",
+      "selected": "ti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ti",
+        "sc": null,
+        "vri": null,
+        "bjt": "taṃ",
+        "thai": "katamāni"
+      },
+      "rejected": [
+        "katamāni",
+        "taṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 18,
+      "type": "pts_addition",
+      "selected": "xxxvi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "xxxvi",
+        "sc": null,
+        "vri": null,
+        "bjt": "dukkhasminti",
+        "thai": null
+      },
+      "rejected": [
+        "dukkhasminti"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 19,
+      "type": "pts_addition",
+      "selected": "pathamasagāthavaggo",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pathamasagāthavaggo",
+        "sc": null,
+        "vri": null,
+        "bjt": "taṃ",
+        "thai": null
+      },
+      "rejected": [
+        "taṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 35,
+      "type": "error",
+      "selected": "dukkhanti",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "dukkhan",
+        "sc": "dukkhanti",
+        "vri": "dukkhanti",
+        "bjt": "panetaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "dukkhan",
+        "panetaṃ"
+      ],
+      "notes": "PTS \"dukkhan\" not in DPD, SC/VRI \"dukkhanti\" is valid, BJT has \"panetaṃ\""
+    },
+    {
+      "position": 36,
+      "type": "pts_addition",
+      "selected": "ti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ti",
+        "sc": null,
+        "vri": null,
+        "bjt": "bhikkhu",
+        "thai": null
+      },
+      "rejected": [
+        "bhikkhu"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 38,
+      "type": "error",
+      "selected": "mosadhammaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "mosadhammam",
+        "sc": "mosadhammaṃ",
+        "vri": "mosadhammaṃ",
+        "bjt": "saṅkhārānaññeva",
+        "thai": null
+      },
+      "rejected": [
+        "mosadhammam",
+        "saṅkhārānaññeva"
+      ],
+      "notes": "PTS \"mosadhammam\" not in DPD, SC/VRI \"mosadhammaṃ\" is valid, BJT has \"saṅkhārānaññeva\""
+    },
+    {
+      "position": 40,
+      "type": "error",
+      "selected": "phussa",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "phussaphussavayam",
+        "sc": "phussa",
+        "vri": "phussa",
+        "bjt": "sandhāya",
+        "thai": null
+      },
+      "rejected": [
+        "phussaphussavayam",
+        "sandhāya"
+      ],
+      "notes": "PTS \"phussaphussavayam\" not in DPD, SC/VRI \"phussa\" is valid, BJT has \"sandhāya\""
+    },
+    {
+      "position": 44,
+      "type": "variant",
+      "selected": "virajjatīti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "virajjatīti",
+        "sc": "virajjatī",
+        "vri": "virajjatī",
+        "bjt": "vedayitaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "vedayitaṃ",
+        "virajjatī"
+      ],
+      "notes": "Textual variant: PTS \"virajjatīti\" vs SC/VRI \"virajjatī\", BJT has \"vedayitaṃ\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn36_2_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 45,
+      "orthographic": 0,
+      "errors": 3,
+      "variants": 2,
+      "uncertain": 4,
+      "match": 0,
+      "other": 36
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "id": "sn55_33",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 43,
+    "sc": 62,
+    "vri": 62,
+    "bjt": 243,
+    "thai": 14
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "cattāro",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "cattāro",
+        "sc": "cattārome",
+        "vri": "cattārome",
+        "bjt": "dutiyābhisandasuttaṃ",
+        "thai": "samathanimittaṃ"
+      },
+      "rejected": [
+        "cattārome",
+        "dutiyābhisandasuttaṃ",
+        "samathanimittaṃ"
+      ],
+      "notes": "Textual variant: PTS \"cattāro\" vs SC/VRI \"cattārome\", BJT has \"dutiyābhisandasuttaṃ\", Thai has \"samathanimittaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "me",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "me",
+        "sc": null,
+        "vri": null,
+        "bjt": "cattārome",
+        "thai": "ko"
+      },
+      "rejected": [
+        "cattārome",
+        "ko"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 26,
+      "type": "pts_addition",
+      "selected": "hoti",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "hoti",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn55_33_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 43,
+      "orthographic": 23,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 1,
+      "other": 16
+    }
+  }
+}

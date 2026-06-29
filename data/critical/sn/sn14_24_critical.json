@@ -1,0 +1,113 @@
+{
+  "id": "sn14_24",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 49,
+    "sc": 59,
+    "vri": 60,
+    "bjt": 232,
+    "thai": 15
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 2,
+      "type": "uncertain",
+      "selected": "dhātuso",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "dhātuso",
+        "sc": "dhātusova",
+        "vri": "pe",
+        "bjt": "bhikkhave",
+        "thai": "saṅkhāranirodhā"
+      },
+      "rejected": [
+        "bhikkhave",
+        "dhātusova",
+        "pe",
+        "saṅkhāranirodhā"
+      ],
+      "notes": "Multi-way disagreement: PTS \"dhātuso\", SC \"dhātusova\", VRI \"pe\", BJT \"bhikkhave\", Thai \"saṅkhāranirodhā\""
+    },
+    {
+      "position": 7,
+      "type": "variant",
+      "selected": "asaddhā",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "asaddhā",
+        "sc": "assaddhā",
+        "vri": "assaddhā",
+        "bjt": "assaddhehi",
+        "thai": "kimhi"
+      },
+      "rejected": [
+        "assaddhehi",
+        "assaddhā",
+        "kimhi"
+      ],
+      "notes": "Textual variant: PTS \"asaddhā\" vs SC/VRI \"assaddhā\", BJT has \"assaddhehi\", Thai has \"kimhi\""
+    },
+    {
+      "position": 8,
+      "type": "error",
+      "selected": "assaddhehi",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "asaddhehi",
+        "sc": "assaddhehi",
+        "vri": "assaddhehi",
+        "bjt": "saddhiṃ",
+        "thai": "nu"
+      },
+      "rejected": [
+        "asaddhehi",
+        "nu",
+        "saddhiṃ"
+      ],
+      "notes": "PTS \"asaddhehi\" not in DPD, SC/VRI \"assaddhehi\" is valid, BJT has \"saddhiṃ\", Thai has \"nu\""
+    },
+    {
+      "position": 47,
+      "type": "uncertain",
+      "selected": "samentī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "samentīti",
+        "sc": "samentī",
+        "vri": "samentī",
+        "bjt": "samāhitehi",
+        "thai": null
+      },
+      "rejected": [
+        "samentīti",
+        "samāhitehi"
+      ],
+      "notes": "Neither reading validated: PTS \"samentīti\" vs SC/VRI \"samentī\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn14_24_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 49,
+      "orthographic": 7,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 0,
+      "other": 38
+    }
+  }
+}

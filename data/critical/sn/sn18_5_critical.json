@@ -1,0 +1,194 @@
+{
+  "id": "sn18_5",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 45,
+    "sc": 53,
+    "vri": 56,
+    "bjt": 256,
+    "thai": 1
+  },
+  "apparatus_count": 9,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthiyaṃ",
+        "vri": "sāvatthiyaṃ",
+        "bjt": "vedanāsuttaṃ",
+        "thai": "pajānanti"
+      },
+      "rejected": [
+        "pajānanti",
+        "sāvatthiyaṃ",
+        "vedanāsuttaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthiyaṃ\", BJT has \"vedanāsuttaṃ\", Thai has \"pajānanti\""
+    },
+    {
+      "position": 2,
+      "type": "error",
+      "selected": "kiṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "kim",
+        "sc": "kiṃ",
+        "vri": "kiṃ",
+        "bjt": "taṃ",
+        "thai": null
+      },
+      "rejected": [
+        "kim",
+        "taṃ"
+      ],
+      "notes": "PTS \"kim\" not in DPD, SC/VRI \"kiṃ\" is valid, BJT has \"taṃ\""
+    },
+    {
+      "position": 20,
+      "type": "variant",
+      "selected": "vedā",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "vedā",
+        "sc": "vedanā",
+        "vri": "vedanā",
+        "bjt": "vedanā",
+        "thai": null
+      },
+      "rejected": [
+        "vedanā"
+      ],
+      "notes": "Textual variant: PTS \"vedā\" vs SC/VRI/BJT \"vedanā\""
+    },
+    {
+      "position": 23,
+      "type": "error",
+      "selected": "aniccā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "aniccāvāti",
+        "sc": "aniccā",
+        "vri": "aniccā",
+        "bjt": "aniccā",
+        "thai": null
+      },
+      "rejected": [
+        "aniccāvāti"
+      ],
+      "notes": "PTS \"aniccāvāti\" not in DPD, SC/VRI/BJT \"aniccā\" is valid"
+    },
+    {
+      "position": 26,
+      "type": "uncertain",
+      "selected": "evam",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evaṃ",
+        "vri": "pe",
+        "bjt": "aniccā",
+        "thai": null
+      },
+      "rejected": [
+        "aniccā",
+        "evaṃ",
+        "pe"
+      ],
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evaṃ\", VRI \"pe\", BJT \"aniccā\""
+    },
+    {
+      "position": 32,
+      "type": "variant",
+      "selected": "vedanāya",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "vedanāya",
+        "sc": "vedanāyapi",
+        "vri": "vedanāyapi",
+        "bjt": "vedanāya",
+        "thai": null
+      },
+      "rejected": [
+        "vedanāyapi"
+      ],
+      "notes": "Textual variant: PTS \"vedanāya\" vs SC/VRI \"vedanāyapi\", BJT agrees with PTS"
+    },
+    {
+      "position": 33,
+      "type": "pts_addition",
+      "selected": "pi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "pi",
+        "sc": null,
+        "vri": null,
+        "bjt": "pi",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 40,
+      "type": "variant",
+      "selected": "vedanāya",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "vedanāya",
+        "sc": "vedanāyapi",
+        "vri": "vedanāyapi",
+        "bjt": "vedanāya",
+        "thai": null
+      },
+      "rejected": [
+        "vedanāyapi"
+      ],
+      "notes": "Textual variant: PTS \"vedanāya\" vs SC/VRI \"vedanāyapi\", BJT agrees with PTS"
+    },
+    {
+      "position": 43,
+      "type": "uncertain",
+      "selected": "pajānātī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "pajānātīti",
+        "sc": "pajānātī",
+        "vri": "pajānātī",
+        "bjt": "nibbindaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "nibbindaṃ",
+        "pajānātīti"
+      ],
+      "notes": "Neither reading validated: PTS \"pajānātīti\" vs SC/VRI \"pajānātī\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn18_5_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 45,
+      "orthographic": 20,
+      "errors": 2,
+      "variants": 4,
+      "uncertain": 3,
+      "match": 0,
+      "other": 16
+    }
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "id": "sn27_2",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 43,
+    "sc": 43,
+    "vri": 43,
+    "bjt": 62,
+    "thai": 17
+  },
+  "apparatus_count": 5,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "rūpa",
+        "thai": "dukkhaṃ"
+      },
+      "rejected": [
+        "dukkhaṃ",
+        "rūpa",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"rūpa\", Thai has \"dukkhaṃ\""
+    },
+    {
+      "position": 14,
+      "type": "error",
+      "selected": "phoṭṭhabbesu",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "poṭṭhabbesu",
+        "sc": "phoṭṭhabbesu",
+        "vri": "phoṭṭhabbesu",
+        "bjt": "phoṭṭhabbesu",
+        "thai": null
+      },
+      "rejected": [
+        "poṭṭhabbesu"
+      ],
+      "notes": "PTS \"poṭṭhabbesu\" not in DPD, SC/VRI/BJT \"phoṭṭhabbesu\" is valid"
+    },
+    {
+      "position": 31,
+      "type": "variant",
+      "selected": "nekkhammaninnaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "nekkhammaninnaṃ",
+        "sc": "nekkhammaninnañcassa",
+        "vri": "nekkhammaninnañcassa",
+        "bjt": "nekkhammaninnaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "nekkhammaninnañcassa"
+      ],
+      "notes": "Textual variant: PTS \"nekkhammaninnaṃ\" vs SC/VRI \"nekkhammaninnañcassa\", BJT agrees with PTS"
+    },
+    {
+      "position": 32,
+      "type": "pts_addition",
+      "selected": "cassa",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "cassa",
+        "sc": null,
+        "vri": null,
+        "bjt": "cassa",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 36,
+      "type": "error",
+      "selected": "cittaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "cittam",
+        "sc": "cittaṃ",
+        "vri": "cittaṃ",
+        "bjt": "cittaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "cittam"
+      ],
+      "notes": "PTS \"cittam\" not in DPD, SC/VRI/BJT \"cittaṃ\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn27_2_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 43,
+      "orthographic": 23,
+      "errors": 2,
+      "variants": 2,
+      "uncertain": 1,
+      "match": 1,
+      "other": 14
+    }
+  }
+}

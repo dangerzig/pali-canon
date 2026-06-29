@@ -1,0 +1,91 @@
+{
+  "id": "sn29_1",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 23,
+    "sc": 22,
+    "vri": 22,
+    "bjt": 22,
+    "thai": 17
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "suddhika",
+        "thai": "sukhaṃ"
+      },
+      "rejected": [
+        "suddhika",
+        "sukhaṃ",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"suddhika\", Thai has \"sukhaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "tatra",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "tatra",
+        "sc": null,
+        "vri": null,
+        "bjt": "suttaṃ",
+        "thai": "tatra"
+      },
+      "rejected": [
+        "suttaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "voca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "voca",
+        "sc": null,
+        "vri": null,
+        "bjt": "sāvatthiyaṃ",
+        "thai": "kho"
+      },
+      "rejected": [
+        "kho",
+        "sāvatthiyaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn29_1_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 23,
+      "orthographic": 12,
+      "errors": 0,
+      "variants": 1,
+      "uncertain": 2,
+      "match": 1,
+      "other": 7
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "id": "sn56_66",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 17,
+    "sc": 17,
+    "vri": 17,
+    "bjt": 53,
+    "thai": 632
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "evameva",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "evameva",
+        "bjt": "matteyyasuttaṃ",
+        "thai": "iddhipādānaṃ"
+      },
+      "rejected": [
+        "evam",
+        "iddhipādānaṃ",
+        "matteyyasuttaṃ"
+      ],
+      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evameva\" is valid, BJT has \"matteyyasuttaṃ\", Thai has \"iddhipādānaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "eva",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": null,
+        "bjt": "evameva",
+        "thai": "bhāvitattā"
+      },
+      "rejected": [
+        "bhāvitattā",
+        "evameva"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 6,
+      "type": "variant",
+      "selected": "suttā",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "suttā",
+        "sc": "sattā",
+        "vri": "sattā",
+        "bjt": "sattā",
+        "thai": "katamesaṃ"
+      },
+      "rejected": [
+        "katamesaṃ",
+        "sattā"
+      ],
+      "notes": "Textual variant: PTS \"suttā\" vs SC/VRI/BJT \"sattā\", Thai has \"katamesaṃ\""
+    },
+    {
+      "position": 11,
+      "type": "variant",
+      "selected": "ete",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "ete",
+        "sc": "eteva",
+        "vri": "eteva",
+        "bjt": "eteva",
+        "thai": "āyasmato"
+      },
+      "rejected": [
+        "eteva",
+        "āyasmato"
+      ],
+      "notes": "Textual variant: PTS \"ete\" vs SC/VRI/BJT \"eteva\", Thai has \"āyasmato\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_66_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 17,
+      "orthographic": 0,
+      "errors": 1,
+      "variants": 2,
+      "uncertain": 1,
+      "match": 2,
+      "other": 11
+    }
+  }
+}

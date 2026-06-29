@@ -22,39 +22,21 @@ SC_DIR = DATA_DIR / "canonical/dn"
 DPD_DIR = DATA_DIR / "dpd"
 OUTPUT_DIR = DATA_DIR / "collation/dn"
 
-# Load DPD headwords for validation
-_dpd_words = None
+# DPD word validation delegates to collate_nikaya, which FAILS CLOSED (raises)
+# when no DPD source is available rather than treating every word as valid.
+# (This legacy module previously failed open; see CODE_REVIEW finding 2.)
 
 
 def load_dpd_words() -> set:
-    """Load DPD headwords for word validation."""
-    global _dpd_words
-    if _dpd_words is not None:
-        return _dpd_words
-
-    dpd_file = DPD_DIR / "dpd_headwords.json"
-    if dpd_file.exists():
-        data = json.loads(dpd_file.read_text())
-        _dpd_words = set(data.get('headwords', []))
-    else:
-        # Fallback: try to load from generated lemma lookup
-        lookup_file = DATA_DIR / "lemma_lookup.json"
-        if lookup_file.exists():
-            data = json.loads(lookup_file.read_text())
-            _dpd_words = set(data.keys())
-        else:
-            _dpd_words = set()
-
-    return _dpd_words
+    """Load the set of DPD-known word forms (fail-closed; see collate_nikaya)."""
+    from collate_nikaya import load_dpd_words as _load
+    return _load()
 
 
 def is_valid_word(word: str) -> bool:
-    """Check if a word exists in DPD."""
-    dpd = load_dpd_words()
-    if not dpd:
-        return True  # Can't validate without DPD
-    word = word.lower().replace('ṁ', 'ṃ').replace('ŋ', 'ṃ')
-    return word in dpd
+    """Check if a word exists in DPD (fail-closed; see collate_nikaya)."""
+    from collate_nikaya import is_valid_word as _is_valid
+    return _is_valid(word)
 
 
 def normalize_for_comparison(word: str) -> str:

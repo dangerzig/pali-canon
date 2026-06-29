@@ -1,0 +1,91 @@
+{
+  "id": "sn52_15",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 15,
+    "sc": 15,
+    "vri": 15,
+    "bjt": 33,
+    "thai": 10
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "imesañca",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "imesañ",
+        "sc": "imesañca",
+        "vri": "imesañca",
+        "bjt": "ṭhānasuttaṃ",
+        "thai": "mahājanakāyo"
+      },
+      "rejected": [
+        "imesañ",
+        "mahājanakāyo",
+        "ṭhānasuttaṃ"
+      ],
+      "notes": "PTS \"imesañ\" not in DPD, SC/VRI \"imesañca\" is valid, BJT has \"ṭhānasuttaṃ\", Thai has \"mahājanakāyo\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "panāham",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "panāham",
+        "sc": null,
+        "vri": null,
+        "bjt": "panā",
+        "thai": "vighātassa"
+      },
+      "rejected": [
+        "panā",
+        "vighātassa"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 12,
+      "type": "error",
+      "selected": "yathābhūtaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "yathābhūtam",
+        "sc": "yathābhūtaṃ",
+        "vri": "yathābhūtaṃ",
+        "bjt": "yathābhūtaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "yathābhūtam"
+      ],
+      "notes": "PTS \"yathābhūtam\" not in DPD, SC/VRI/BJT \"yathābhūtaṃ\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn52_15_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 15,
+      "orthographic": 4,
+      "errors": 2,
+      "variants": 0,
+      "uncertain": 1,
+      "match": 0,
+      "other": 8
+    }
+  }
+}

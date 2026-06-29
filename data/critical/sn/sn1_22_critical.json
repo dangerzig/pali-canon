@@ -1,0 +1,153 @@
+{
+  "id": "sn1_22",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 30,
+    "sc": 27,
+    "vri": 27,
+    "bjt": 40,
+    "thai": 36
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "nāphusantaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "nāphusantam",
+        "sc": "nāphusantaṃ",
+        "vri": "nāphusantaṃ",
+        "bjt": "phusatisuttaṃ",
+        "thai": "phusatisuttaṃ"
+      },
+      "rejected": [
+        "nāphusantam",
+        "phusatisuttaṃ"
+      ],
+      "notes": "PTS \"nāphusantam\" not in DPD, SC/VRI \"nāphusantaṃ\" is valid, BJT has \"phusatisuttaṃ\", Thai has \"phusatisuttaṃ\""
+    },
+    {
+      "position": 3,
+      "type": "variant",
+      "selected": "phusantaṃ",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "phusantaṃ",
+        "sc": "phusantañca",
+        "vri": "phusantañca",
+        "bjt": "phusantaṃ",
+        "thai": "phusantañca"
+      },
+      "rejected": [
+        "phusantañca"
+      ],
+      "notes": "Textual variant: PTS \"phusantaṃ\" vs SC/VRI/Thai \"phusantañca\", BJT agrees with PTS"
+    },
+    {
+      "position": 4,
+      "type": "pts_addition",
+      "selected": "ca",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "ca",
+        "sc": null,
+        "vri": null,
+        "bjt": "ca",
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 8,
+      "type": "error",
+      "selected": "phusantaṃ",
+      "confidence": 0.98,
+      "witnesses": {
+        "gretil": "phusantam",
+        "sc": "phusantaṃ",
+        "vri": "phusantaṃ",
+        "bjt": "phusantaṃ",
+        "thai": "phusantaṃ"
+      },
+      "rejected": [
+        "phusantam"
+      ],
+      "notes": "PTS \"phusantam\" not in DPD, SC/VRI/BJT/Thai \"phusantaṃ\" is valid"
+    },
+    {
+      "position": 19,
+      "type": "variant",
+      "selected": "tam",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "tam",
+        "sc": "tameva",
+        "vri": "tameva",
+        "bjt": "tameva",
+        "thai": "tameva"
+      },
+      "rejected": [
+        "tameva"
+      ],
+      "notes": "Textual variant: PTS \"tam\" vs SC/VRI/BJT/Thai \"tameva\""
+    },
+    {
+      "position": 20,
+      "type": "pts_addition",
+      "selected": "eva",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 26,
+      "type": "variant",
+      "selected": "paṭivātaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "paṭivātaṃ",
+        "sc": "paṭivātaṃva",
+        "vri": "paṭivātaṃva",
+        "bjt": "paṭivātaṃva",
+        "thai": "paṭivātaṃva"
+      },
+      "rejected": [
+        "paṭivātaṃva"
+      ],
+      "notes": "Textual variant: PTS \"paṭivātaṃ\" vs SC/VRI/BJT/Thai \"paṭivātaṃva\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn1_22_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 30,
+      "orthographic": 0,
+      "errors": 2,
+      "variants": 3,
+      "uncertain": 2,
+      "match": 18,
+      "other": 5
+    }
+  }
+}

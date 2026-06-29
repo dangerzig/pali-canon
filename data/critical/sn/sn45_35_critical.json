@@ -1,0 +1,156 @@
+{
+  "id": "sn45_35",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 38,
+    "sc": 38,
+    "vri": 38,
+    "bjt": 41,
+    "thai": 36
+  },
+  "apparatus_count": 7,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "sāmaññasuttaṃ",
+        "thai": "pariyodapeyya"
+      },
+      "rejected": [
+        "pariyodapeyya",
+        "sāmaññasuttaṃ",
+        "sāvatthinidānaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"sāmaññasuttaṃ\", Thai has \"pariyodapeyya\""
+    },
+    {
+      "position": 4,
+      "type": "variant",
+      "selected": "desissāmi",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "desissāmi",
+        "sc": "desessāmi",
+        "vri": "desessāmi",
+        "bjt": "desissāmi",
+        "thai": "desessāmi"
+      },
+      "rejected": [
+        "desessāmi"
+      ],
+      "notes": "Textual variant: PTS \"desissāmi\" vs SC/VRI/Thai \"desessāmi\", BJT agrees with PTS"
+    },
+    {
+      "position": 12,
+      "type": "error",
+      "selected": "ayameva",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "ayam",
+        "sc": "ayameva",
+        "vri": "ayameva",
+        "bjt": "ayameva",
+        "thai": null
+      },
+      "rejected": [
+        "ayam"
+      ],
+      "notes": "PTS \"ayam\" not in DPD, SC/VRI/BJT \"ayameva\" is valid"
+    },
+    {
+      "position": 13,
+      "type": "pts_addition",
+      "selected": "eva",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 17,
+      "type": "variant",
+      "selected": "seyyathīdaṃ",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "seyyathīdaṃ",
+        "sc": "seyyathidaṃ",
+        "vri": "seyyathidaṃ",
+        "bjt": "seyyathīdaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "seyyathidaṃ"
+      ],
+      "notes": "Textual variant: PTS \"seyyathīdaṃ\" vs SC/VRI \"seyyathidaṃ\", BJT agrees with PTS"
+    },
+    {
+      "position": 30,
+      "type": "error",
+      "selected": "sakadāgāmiphalaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "sakadāgāmiphalam",
+        "sc": "sakadāgāmiphalaṃ",
+        "vri": "sakadāgāmiphalaṃ",
+        "bjt": "sakadāgāmiphalaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "sakadāgāmiphalam"
+      ],
+      "notes": "PTS \"sakadāgāmiphalam\" not in DPD, SC/VRI/BJT \"sakadāgāmiphalaṃ\" is valid"
+    },
+    {
+      "position": 31,
+      "type": "error",
+      "selected": "anāgāmiphalaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "anāgāmiphalam",
+        "sc": "anāgāmiphalaṃ",
+        "vri": "anāgāmiphalaṃ",
+        "bjt": "anāgāmiphalaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "anāgāmiphalam"
+      ],
+      "notes": "PTS \"anāgāmiphalam\" not in DPD, SC/VRI/BJT \"anāgāmiphalaṃ\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn45_35_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 38,
+      "orthographic": 21,
+      "errors": 3,
+      "variants": 3,
+      "uncertain": 1,
+      "match": 8,
+      "other": 2
+    }
+  }
+}

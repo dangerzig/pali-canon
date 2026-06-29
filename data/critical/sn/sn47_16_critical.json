@@ -1,0 +1,139 @@
+{
+  "id": "sn47_16",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT"
+  ],
+  "word_counts": {
+    "gretil": 24,
+    "sc": 175,
+    "vri": 175,
+    "bjt": 202,
+    "thai": 0
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "variant",
+      "selected": "sāvatthi",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthi",
+        "sc": "sāvatthinidānaṃ",
+        "vri": "sāvatthinidānaṃ",
+        "bjt": "uttiyasuttaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "sāvatthinidānaṃ",
+        "uttiyasuttaṃ"
+      ],
+      "notes": "Textual variant: PTS \"sāvatthi\" vs SC/VRI \"sāvatthinidānaṃ\", BJT has \"uttiyasuttaṃ\""
+    },
+    {
+      "position": 1,
+      "type": "pts_addition",
+      "selected": "nīdānam",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "nīdānam",
+        "sc": null,
+        "vri": null,
+        "bjt": null,
+        "thai": null
+      },
+      "rejected": [],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 11,
+      "type": "error",
+      "selected": "tvaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "tvam",
+        "sc": "tvaṃ",
+        "vri": "tvaṃ",
+        "bjt": "tvaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "tvam"
+      ],
+      "notes": "PTS \"tvam\" not in DPD, SC/VRI/BJT \"tvaṃ\" is valid"
+    },
+    {
+      "position": 15,
+      "type": "uncertain",
+      "selected": "pāranti",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "pāranti",
+        "sc": "pāran",
+        "vri": "pāra",
+        "bjt": "sīle",
+        "thai": null
+      },
+      "rejected": [
+        "pāra",
+        "pāran",
+        "sīle"
+      ],
+      "notes": "Multi-way disagreement: PTS \"pāranti\", SC \"pāran\", VRI \"pāra\", BJT \"sīle\""
+    },
+    {
+      "position": 21,
+      "type": "error",
+      "selected": "arahataṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "arahatam",
+        "sc": "arahataṃ",
+        "vri": "arahataṃ",
+        "bjt": "arahataṃ",
+        "thai": null
+      },
+      "rejected": [
+        "arahatam"
+      ],
+      "notes": "PTS \"arahatam\" not in DPD, SC/VRI/BJT \"arahataṃ\" is valid"
+    },
+    {
+      "position": 22,
+      "type": "variant",
+      "selected": "ahosī",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "ahosī",
+        "sc": "ahosīti",
+        "vri": "ahosīti",
+        "bjt": "ahosīti",
+        "thai": null
+      },
+      "rejected": [
+        "ahosīti"
+      ],
+      "notes": "Textual variant: PTS \"ahosī\" vs SC/VRI/BJT \"ahosīti\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn47_16_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 24,
+      "orthographic": 13,
+      "errors": 2,
+      "variants": 2,
+      "uncertain": 2,
+      "match": 0,
+      "other": 5
+    }
+  }
+}

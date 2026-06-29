@@ -1,0 +1,75 @@
+{
+  "id": "sn56_89",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 19,
+    "sc": 19,
+    "vri": 20,
+    "bjt": 19,
+    "thai": 632
+  },
+  "apparatus_count": 2,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "uncertain",
+      "selected": "evam",
+      "confidence": 0.3,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evameva",
+        "vri": "pe",
+        "bjt": "kukkuṭasūkarasuttaṃ",
+        "thai": "yato"
+      },
+      "rejected": [
+        "evameva",
+        "kukkuṭasūkarasuttaṃ",
+        "pe",
+        "yato"
+      ],
+      "notes": "Multi-way disagreement: PTS \"evam\", SC \"evameva\", VRI \"pe\", BJT \"kukkuṭasūkarasuttaṃ\", Thai \"yato\""
+    },
+    {
+      "position": 1,
+      "type": "uncertain",
+      "selected": "evameva",
+      "confidence": 0.6,
+      "witnesses": {
+        "gretil": "eva",
+        "sc": null,
+        "vri": "evameva",
+        "bjt": "evameva",
+        "thai": "kho"
+      },
+      "rejected": [
+        "eva",
+        "kho"
+      ],
+      "notes": "VRI/BJT \"evameva\" vs PTS \"eva\", Thai \"kho\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn56_89_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 19,
+      "orthographic": 0,
+      "errors": 0,
+      "variants": 0,
+      "uncertain": 2,
+      "match": 2,
+      "other": 15
+    }
+  }
+}

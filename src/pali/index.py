@@ -1,11 +1,17 @@
 """SQLite index for fast lemma and text search."""
 
+import hashlib
+import os
 import sqlite3
+import time
 from pathlib import Path
 from typing import Optional
 import json
 
 from .text import FLAT_COLLECTIONS, NESTED_COLLECTIONS, ITEMS_COLLECTIONS
+
+# Bump when the index schema changes so old indexes are rebuilt automatically.
+INDEX_SCHEMA_VERSION = 2
 
 
 class SearchIndex:
@@ -33,86 +39,124 @@ class SearchIndex:
             self._conn.row_factory = sqlite3.Row
         return self._conn
 
+    def _source_fingerprint(self) -> tuple[int, str]:
+        """Cheap fingerprint of the lemmatized source: (file_count, sha256).
+
+        Hashes each lemmatized JSON file's relative path, byte size, AND
+        modification time (st_mtime_ns). Size alone misses a same-size content
+        edit; including mtime catches it. (A git checkout that rewrites mtimes
+        only causes a harmless one-off rebuild.) Stat-only, so it stays cheap
+        enough to run on every is_built() check.
+        """
+        lemmatized_dir = self.data_dir / "lemmatized"
+        entries = []
+        if lemmatized_dir.is_dir():
+            for f in sorted(lemmatized_dir.rglob("*.json")):
+                if f.name.startswith("_"):
+                    continue
+                rel = f.relative_to(lemmatized_dir).as_posix()
+                st = f.stat()
+                entries.append(f"{rel}:{st.st_size}:{st.st_mtime_ns}")
+        h = hashlib.sha256("\n".join(entries).encode("utf-8")).hexdigest()
+        return len(entries), h
+
+    def _read_meta(self, conn: sqlite3.Connection) -> Optional[dict]:
+        """Return the index_meta row as a dict, or None if absent/empty."""
+        try:
+            cur = conn.execute("SELECT key, value FROM index_meta")
+        except sqlite3.OperationalError:
+            return None
+        meta = {k: v for k, v in cur.fetchall()}
+        return meta or None
+
     def is_built(self) -> bool:
-        """Check if index has been built."""
+        """Check if a current (non-stale) index exists.
+
+        Returns False if the index is missing, lacks the core tables, was built
+        under a different schema version, or no longer matches the source-data
+        fingerprint — any of which forces build() to rebuild.
+        """
         if not self.index_path.exists():
             return False
         conn = self._get_conn()
         cursor = conn.execute(
             "SELECT name FROM sqlite_master WHERE type='table' AND name='lemma_index'"
         )
-        return cursor.fetchone() is not None
+        if cursor.fetchone() is None:
+            return False
+        meta = self._read_meta(conn)
+        if not meta:
+            return False  # pre-metadata index -> treat as stale
+        if meta.get("schema_version") != str(INDEX_SCHEMA_VERSION):
+            return False
+        count, source_hash = self._source_fingerprint()
+        return (meta.get("source_file_count") == str(count)
+                and meta.get("source_hash") == source_hash)
 
     def build(self, force: bool = False) -> None:
         """Build the search index from lemmatized data.
 
-        Uses batched inserts and transactions for better performance
-        on large corpora.
+        Built atomically: the index is written to a temporary file and then
+        renamed over index_path, so a failed or interrupted build never leaves a
+        half-written index in place. An index_meta row records the schema
+        version, source fingerprint, counts, and build time for staleness checks.
 
         Args:
-            force: If True, rebuild even if index exists
+            force: If True, rebuild even if a current index exists.
         """
         if self.is_built() and not force:
             return
 
-        conn = self._get_conn()
+        # Build into a temp DB, then atomically replace the real one.
+        tmp_path = self.index_path.with_name(self.index_path.name + ".building")
+        if tmp_path.exists():
+            tmp_path.unlink()
 
-        # Drop existing tables if rebuilding
-        conn.executescript("""
-            DROP TABLE IF EXISTS lemma_index;
-            DROP TABLE IF EXISTS segments_fts;
-            DROP TABLE IF EXISTS sutta_meta;
-        """)
-
-        # Create tables
-        conn.executescript("""
-            -- Lemma occurrences
-            CREATE TABLE lemma_index (
-                lemma TEXT NOT NULL,
-                word TEXT NOT NULL,
-                segment_id TEXT NOT NULL,
-                sutta_id TEXT NOT NULL,
-                nikaya TEXT NOT NULL,
-                pos TEXT
-            );
-
-            -- Full-text search on segments
-            CREATE VIRTUAL TABLE segments_fts USING fts5(
-                segment_id,
-                sutta_id,
-                nikaya,
-                pali,
-                tokenize='unicode61'
-            );
-
-            -- Sutta metadata for quick lookups
-            CREATE TABLE sutta_meta (
-                sutta_id TEXT PRIMARY KEY,
-                nikaya TEXT NOT NULL,
-                title_pali TEXT,
-                title_eng TEXT,
-                pts TEXT,
-                segment_count INTEGER
-            );
-        """)
-
-        # Reset batch buffers
         self._fts_batch.clear()
         self._lemma_batch.clear()
+        count, source_hash = self._source_fingerprint()
 
-        # Index lemmatized data within a transaction
+        conn = sqlite3.connect(str(tmp_path))
         try:
-            lemmatized_dir = self.data_dir / "lemmatized"
-            for nikaya_dir in sorted(lemmatized_dir.iterdir()):
-                if not nikaya_dir.is_dir():
-                    continue
-                nikaya = nikaya_dir.name
-                self._index_nikaya(conn, nikaya_dir, nikaya)
+            conn.executescript("""
+                CREATE TABLE lemma_index (
+                    lemma TEXT NOT NULL,
+                    word TEXT NOT NULL,
+                    segment_id TEXT NOT NULL,
+                    sutta_id TEXT NOT NULL,
+                    nikaya TEXT NOT NULL,
+                    pos TEXT
+                );
+                CREATE VIRTUAL TABLE segments_fts USING fts5(
+                    segment_id,
+                    sutta_id,
+                    nikaya,
+                    pali,
+                    tokenize='unicode61'
+                );
+                CREATE TABLE sutta_meta (
+                    sutta_id TEXT PRIMARY KEY,
+                    nikaya TEXT NOT NULL,
+                    title_pali TEXT,
+                    title_eng TEXT,
+                    pts TEXT,
+                    segment_count INTEGER
+                );
+                CREATE TABLE index_meta (
+                    key TEXT PRIMARY KEY,
+                    value TEXT
+                );
+            """)
 
-            # Flush any remaining batched inserts
+            lemmatized_dir = self.data_dir / "lemmatized"
+            if lemmatized_dir.is_dir():
+                for nikaya_dir in sorted(lemmatized_dir.iterdir()):
+                    if not nikaya_dir.is_dir():
+                        continue
+                    self._index_nikaya(conn, nikaya_dir, nikaya_dir.name)
+
             self._flush_batches(conn)
 
-            # Create indexes
             conn.executescript("""
                 CREATE INDEX idx_lemma ON lemma_index(lemma);
                 CREATE INDEX idx_lemma_nikaya ON lemma_index(lemma, nikaya);
@@ -120,14 +164,34 @@ class SearchIndex:
                 CREATE INDEX idx_sutta ON lemma_index(sutta_id);
             """)
 
+            token_count = conn.execute("SELECT COUNT(*) FROM lemma_index").fetchone()[0]
+            meta = {
+                "schema_version": str(INDEX_SCHEMA_VERSION),
+                "source_file_count": str(count),
+                "source_hash": source_hash,
+                "token_count": str(token_count),
+                "built_at": str(int(time.time())),
+            }
+            conn.executemany(
+                "INSERT INTO index_meta (key, value) VALUES (?, ?)",
+                list(meta.items()),
+            )
             conn.commit()
         except Exception:
-            conn.rollback()
+            conn.close()
+            if tmp_path.exists():
+                tmp_path.unlink()
             raise
         finally:
-            # Clean up batch buffers
             self._fts_batch.clear()
             self._lemma_batch.clear()
+
+        conn.close()
+        # Drop the live connection before swapping the file underneath it.
+        if self._conn is not None:
+            self._conn.close()
+            self._conn = None
+        os.replace(tmp_path, self.index_path)
 
     def _flush_batches(self, conn: sqlite3.Connection) -> None:
         """Flush batched inserts to the database."""
@@ -346,7 +410,16 @@ class SearchIndex:
                 )
 
             return [dict(row) for row in cursor.fetchall()]
-        except sqlite3.OperationalError:
+        except sqlite3.OperationalError as e:
+            # Surface index/DB corruption (missing table, unreadable file, lock)
+            # instead of hiding it as "no results"; swallow only malformed user
+            # FTS5 queries (unterminated string, syntax error, bad MATCH, etc.).
+            msg = str(e).lower()
+            index_errors = ("no such table", "no such module", "no such index",
+                            "disk image is malformed", "not a database",
+                            "database is locked", "file is encrypted")
+            if any(s in msg for s in index_errors):
+                raise
             return []
 
     def get_sutta_ids(self, nikaya: Optional[str] = None) -> list[str]:

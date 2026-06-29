@@ -1,0 +1,144 @@
+{
+  "id": "sn52_16",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 15,
+    "sc": 16,
+    "vri": 16,
+    "bjt": 16,
+    "thai": 10
+  },
+  "apparatus_count": 6,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "imesañca",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "imesañ",
+        "sc": "imesañca",
+        "vri": "imesañca",
+        "bjt": "ṭhānasuttaṃ",
+        "thai": "aṭṭhaṅgikaṃ"
+      },
+      "rejected": [
+        "aṭṭhaṅgikaṃ",
+        "imesañ",
+        "ṭhānasuttaṃ"
+      ],
+      "notes": "PTS \"imesañ\" not in DPD, SC/VRI \"imesañca\" is valid, BJT has \"ṭhānasuttaṃ\", Thai has \"aṭṭhaṅgikaṃ\""
+    },
+    {
+      "position": 2,
+      "type": "pts_addition",
+      "selected": "panāham",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "panāham",
+        "sc": null,
+        "vri": null,
+        "bjt": "panā",
+        "thai": "bhāventaṃ"
+      },
+      "rejected": [
+        "bhāventaṃ",
+        "panā"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 4,
+      "type": "error",
+      "selected": "catunnaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "catunnam",
+        "sc": "catunnaṃ",
+        "vri": "catunnaṃ",
+        "bjt": "catunnaṃ",
+        "thai": "aṭṭhaṅgikaṃ"
+      },
+      "rejected": [
+        "aṭṭhaṅgikaṃ",
+        "catunnam"
+      ],
+      "notes": "PTS \"catunnam\" not in DPD, SC/VRI/BJT \"catunnaṃ\" is valid, Thai has \"aṭṭhaṅgikaṃ\""
+    },
+    {
+      "position": 11,
+      "type": "error",
+      "selected": "vipākaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "vipākam",
+        "sc": "vipākaṃ",
+        "vri": "vipākaṃ",
+        "bjt": "aṭṭhānato",
+        "thai": null
+      },
+      "rejected": [
+        "aṭṭhānato",
+        "vipākam"
+      ],
+      "notes": "PTS \"vipākam\" not in DPD, SC/VRI \"vipākaṃ\" is valid, BJT has \"aṭṭhānato\""
+    },
+    {
+      "position": 12,
+      "type": "error",
+      "selected": "yathābhūtaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "yathābhūtam",
+        "sc": "yathābhūtaṃ",
+        "vri": "yathābhūtaṃ",
+        "bjt": "yathābhūtaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "yathābhūtam"
+      ],
+      "notes": "PTS \"yathābhūtam\" not in DPD, SC/VRI/BJT \"yathābhūtaṃ\" is valid"
+    },
+    {
+      "position": 13,
+      "type": "uncertain",
+      "selected": "pajānāmī",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "pajanāmī",
+        "sc": "pajānāmī",
+        "vri": "pajānāmī",
+        "bjt": "pajānāmī",
+        "thai": null
+      },
+      "rejected": [
+        "pajanāmī"
+      ],
+      "notes": "Neither reading validated: PTS \"pajanāmī\" vs SC/VRI \"pajānāmī\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn52_16_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 15,
+      "orthographic": 1,
+      "errors": 4,
+      "variants": 0,
+      "uncertain": 2,
+      "match": 0,
+      "other": 8
+    }
+  }
+}

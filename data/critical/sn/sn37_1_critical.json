@@ -1,0 +1,74 @@
+{
+  "id": "sn37_1",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 72,
+    "sc": 75,
+    "vri": 75,
+    "bjt": 77,
+    "thai": 62
+  },
+  "apparatus_count": 2,
+  "apparatus": [
+    {
+      "position": 34,
+      "type": "error",
+      "selected": "mātugāmo",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "mātugamo",
+        "sc": "mātugāmo",
+        "vri": "mātugāmo",
+        "bjt": "mātugāmo",
+        "thai": "ca"
+      },
+      "rejected": [
+        "ca",
+        "mātugamo"
+      ],
+      "notes": "PTS \"mātugamo\" not in DPD, SC/VRI/BJT \"mātugāmo\" is valid, Thai has \"ca\""
+    },
+    {
+      "position": 71,
+      "type": "uncertain",
+      "selected": "purisassā",
+      "confidence": 0.4,
+      "witnesses": {
+        "gretil": "purisassa",
+        "sc": "purisassā",
+        "vri": "purisassā",
+        "bjt": "purisassāti",
+        "thai": "nirujjhanti"
+      },
+      "rejected": [
+        "nirujjhanti",
+        "purisassa",
+        "purisassāti"
+      ],
+      "notes": "Neither reading validated: PTS \"purisassa\" vs SC/VRI \"purisassā\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn37_1_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 72,
+      "orthographic": 12,
+      "errors": 1,
+      "variants": 0,
+      "uncertain": 1,
+      "match": 5,
+      "other": 53
+    }
+  }
+}

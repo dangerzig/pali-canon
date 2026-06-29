@@ -1,0 +1,111 @@
+{
+  "id": "sn19_11",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT",
+    "Thai"
+  ],
+  "word_counts": {
+    "gretil": 25,
+    "sc": 27,
+    "vri": 27,
+    "bjt": 176,
+    "thai": 235
+  },
+  "apparatus_count": 4,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "error",
+      "selected": "evaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "evam",
+        "sc": "evaṃ",
+        "vri": "evaṃ",
+        "bjt": "kumbhaṇḍasuttaṃ",
+        "thai": "vijjatīti"
+      },
+      "rejected": [
+        "evam",
+        "kumbhaṇḍasuttaṃ",
+        "vijjatīti"
+      ],
+      "notes": "PTS \"evam\" not in DPD, SC/VRI \"evaṃ\" is valid, BJT has \"kumbhaṇḍasuttaṃ\", Thai has \"vijjatīti\""
+    },
+    {
+      "position": 7,
+      "type": "error",
+      "selected": "idhāhaṃ",
+      "confidence": 0.9,
+      "witnesses": {
+        "gretil": "idhāham",
+        "sc": "idhāhaṃ",
+        "vri": "idhāhaṃ",
+        "bjt": null,
+        "thai": "viharati"
+      },
+      "rejected": [
+        "idhāham",
+        "viharati"
+      ],
+      "notes": "PTS \"idhāham\" not in DPD, SC/VRI \"idhāhaṃ\" is valid, Thai has \"viharati\""
+    },
+    {
+      "position": 9,
+      "type": "error",
+      "selected": "gijjhakūṭā",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "gijjhakuṭā",
+        "sc": "gijjhakūṭā",
+        "vri": "gijjhakūṭā",
+        "bjt": "gijjhakūṭā",
+        "thai": "kho"
+      },
+      "rejected": [
+        "gijjhakuṭā",
+        "kho"
+      ],
+      "notes": "PTS \"gijjhakuṭā\" not in DPD, SC/VRI/BJT \"gijjhakūṭā\" is valid, Thai has \"kho\""
+    },
+    {
+      "position": 20,
+      "type": "variant",
+      "selected": "imasmiññeva",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "imasmiññeva",
+        "sc": "imasmiṃyeva",
+        "vri": "imasmiṃyeva",
+        "bjt": "imasmiṃ",
+        "thai": "saṅkhātadhammāse"
+      },
+      "rejected": [
+        "imasmiṃ",
+        "imasmiṃyeva",
+        "saṅkhātadhammāse"
+      ],
+      "notes": "Textual variant: PTS \"imasmiññeva\" vs SC/VRI \"imasmiṃyeva\", BJT has \"imasmiṃ\", Thai has \"saṅkhātadhammāse\""
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn19_11_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 25,
+      "orthographic": 2,
+      "errors": 3,
+      "variants": 1,
+      "uncertain": 0,
+      "match": 1,
+      "other": 18
+    }
+  }
+}

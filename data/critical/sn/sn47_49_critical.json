@@ -1,0 +1,87 @@
+{
+  "id": "sn47_49",
+  "schema_version": 1,
+  "nikaya": "SN",
+  "witnesses": [
+    "GRETIL/PTS",
+    "SC",
+    "VRI",
+    "BJT"
+  ],
+  "word_counts": {
+    "gretil": 56,
+    "sc": 65,
+    "vri": 65,
+    "bjt": 78,
+    "thai": 0
+  },
+  "apparatus_count": 3,
+  "apparatus": [
+    {
+      "position": 0,
+      "type": "pts_addition",
+      "selected": "sāvatthiyam",
+      "confidence": 0.7,
+      "witnesses": {
+        "gretil": "sāvatthiyam",
+        "sc": null,
+        "vri": null,
+        "bjt": "vedanāsuttaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "vedanāsuttaṃ"
+      ],
+      "notes": "Present in PTS but missing in SC/VRI"
+    },
+    {
+      "position": 11,
+      "type": "variant",
+      "selected": "adukkhamasukhāvedanā",
+      "confidence": 0.8,
+      "witnesses": {
+        "gretil": "adukkhamasukhāvedanā",
+        "sc": "adukkhamasukhā",
+        "vri": "adukkhamasukhā",
+        "bjt": "adukkhamasukhā",
+        "thai": null
+      },
+      "rejected": [
+        "adukkhamasukhā"
+      ],
+      "notes": "Textual variant: PTS \"adukkhamasukhāvedanā\" vs SC/VRI/BJT \"adukkhamasukhā\""
+    },
+    {
+      "position": 49,
+      "type": "error",
+      "selected": "vedanānaṃ",
+      "confidence": 0.95,
+      "witnesses": {
+        "gretil": "vedanānam",
+        "sc": "vedanānaṃ",
+        "vri": "vedanānaṃ",
+        "bjt": "vedanānaṃ",
+        "thai": null
+      },
+      "rejected": [
+        "vedanānam"
+      ],
+      "notes": "PTS \"vedanānam\" not in DPD, SC/VRI/BJT \"vedanānaṃ\" is valid"
+    }
+  ],
+  "provenance": {
+    "generated_at": "2026-06-29T14:02:39.852925+00:00",
+    "builder": "build_critical_edition.py",
+    "collation_source": "data/collation/sn/sn47_49_collation.json",
+    "dpd_validation_source": "data/dpd/dpd_headwords.json",
+    "collation_stats": {
+      "total_positions": 56,
+      "orthographic": 52,
+      "errors": 1,
+      "variants": 1,
+      "uncertain": 1,
+      "match": 0,
+      "other": 1
+    }
+  }
+}
